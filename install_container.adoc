@@ -1,0 +1,14 @@
+=== Installation as a container (podman/docker)
+
+Containers are published on DockerHub.
+
+https://hub.docker.com/r/jamesread/olivetin 
+
+....
+user@host: mkdir /etc/OliveTin/
+user@host: # create your config.yaml file
+user@host: docker pull jamesread/olivetin
+user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin
+....
+
+Then visit http://localhost:1337

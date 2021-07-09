@@ -1,0 +1,20 @@
+=== Installation as a systemd service (recommended)
+
+Running OliveTin as a systemd service on a Linux machine means it can use any program installed on your machine (you don't have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.
+
+==== Using a Linux package (.rpm, .deb, etc)
+
+There are .deb, .rpm, and similar packages published for OliveTin on each
+release page. Pick a package most relevant to the Linux distribution you are
+using from the downloads page.
+
+==== Manual setup (.tar.gz)
+
+A .tar.gz file is provided for people who are using other Linux distributions or want to set things up manually. 
+
+1. Copy the `OliveTin` binary to `/usr/local/bin/OliveTin`
+2. Copy the `webui` directory contents to `/var/www/olivetin/` (eg, `/var/www/olivetin/index.html`)
+3. Copy the `OliveTin.service` file to `/etc/systemd/system/`
+4. Create a `config.yaml` in `/etc/OliveTin` using the example provided above to get you started.
+
+Run `systemctl restart OliveTin` and check `systemctl status OliveTin`.

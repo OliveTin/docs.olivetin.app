@@ -1,0 +1,47 @@
+== Actions 
+
+=== Containers - start/stop
+
+:systemd: Easy
+:container: 1) Pass /var/run/docker.sock as a bind mount to the container when creating it. 2) Install docker command into the container.
+include::actionHeader.adoc[]
+....
+actions:
+  - title: Stop Plex
+    shell: docker stop plex
+
+  - title: Start plex
+    shell: docker start plex
+....
+
+=== Restart a systemd service
+
+:systemd: Easy
+:container: Not really possible to do.
+include::actionHeader.adoc[]
+
+....
+actions:
+  - title: Start httpd
+    shell: systemctl start httpd
+
+  - title: Stop httpd
+    shell: systemctl stop httpd
+
+  - title: Restart httpd
+    shell: systemctl restart httpd
+....
+
+=== Ping an address
+
+:systemd: Easy
+:container: Easy
+include::actionHeader.adoc[]
+....
+actions:
+    # This sends 1 ping to google.com.
+  - title: ping google.com
+    shell: ping google.com -c 1
+    icon: ping
+    timeout: 3
+....

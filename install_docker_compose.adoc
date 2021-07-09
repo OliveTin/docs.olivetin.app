@@ -1,0 +1,23 @@
+=== Installation using Docker Compose
+
+Docker compose is a popular way to define multi-container applications using a 
+infrastructure as code approach. 
+
+If you personally prefer to use `docker compose`, then here is a sample to get
+you started;
+
+.`docker-compose.yml`
+----
+version: "3.8"
+services:
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    volumes:
+      - /docker/olivetin:/config # replace host path or volume as needed
+    ports: 
+      - "1337:1337"
+    restart: unless-stopped
+----
+
+

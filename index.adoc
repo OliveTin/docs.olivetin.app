@@ -1,0 +1,75 @@
+= OliveTin 
+:docinfo: shared
+:doctype: book
+:title: OliveTin documentation
+:toc: left
+:toclevels: 2
+:sectanchors:
+:sectlinks:
+:sectnums:
+:multipage-level: 2
+:favicon: images/icons/OliveTinLogo.png
+
+toc::[]
+
+image::images/icons/OliveTinLogo.png[float="right",width = "160px"]
+
+**link:https://github.com/jamesread/OliveTin[OliveTin]** is simple web interface for running Linux shell commands.
+
+image:images/icons/GitHub.png[inline] link:https://github.com/jamesread/OliveTin[OliveTin on GitHub]
+
+image:images/icons/Discord.png[inline] link:https://discord.gg/jhYWWpNJ3v[Chat on Discord]
+
+'''
+
+**Use cases**;
+
+1. Give controlled access to run shell commands to less technical folks who cannot be trusted with SSH. I use this so my family can `podman restart plex` without asking me, and without giving them shell access!
+2. Great for home automation tablets stuck on walls around your house - I use this to turn Hue lights on and off for example. 
+3. Sometimes SSH access isn't possible to a server, or you are feeling too lazy to type a long command you run regularly! I use this to send Wake on Lan commands to servers around my house.
+
+**Demo**
+
+video::Ej6NM9rmZtk[youtube,width=100%]
+
+**Features**
+
+* **Responsive, touch-friendly UI** - great for tablets and mobile
+* **Super simple config in YAML** - because if it's not YAML now-a-days, it's not "cloud native" :-) 
+* **Dark mode** - for those of you that roll that way.
+* **Accessible** - passes all the accessibility checks in Firefox, and issues with accessibility are taken seriously.  
+* **Container** - available for quickly testing and getting it up and running, great for the selfhosted community. 
+* **Integrate with anything** - OliveTin just runs Linux shell commands, so theoretially you could integrate with a bunch of stuff just by using curl, ping, etc. However, writing your own shell scripts is a great way to extend OliveTin.
+* **Lightweight on resources** - uses only a few MB of RAM and barely any CPU. Written in Go, with a web interface written as a modern, responsive, Single Page App that uses the REST/gRPC API.
+* **Good amount of unit tests and style checks** - helps potential contributors be consistent, and helps with maintainability.
+
+**Read more;**
+
+include::download.adoc[]
+
+== Installation
+
+include::install_systemd.adoc[]
+
+include::install_container.adoc[]
+
+include::install_docker_compose.adoc[]
+
+include::install_helm.adoc[]
+
+include::install_k8s.adoc[]
+
+
+include::config.adoc[]
+
+include::actions.adoc[]
+
+include::actionCustomization.adoc[]
+
+== Reference
+
+include::ports.adoc[]
+
+include::security.adoc[]
+
+include::exitCodes.adoc[]

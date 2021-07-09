@@ -1,0 +1,104 @@
+== Action customisation
+
+=== Icons
+
+You can specify any HTML for an icon. It's a popular choice to use Unicode
+icons because they are extremely fast to load and there are a lot of them.
+
+.Examples of icons in OliveTin
+image::images/exampleIcons.png[]
+
+==== Unicode icons ("emoji")
+
+For example on the link:https://unicode-table.com/en/emoji/[here is a list of
+"Eomji" in unicode]. If you find "link:https://unicode-table.com/en/1F60E/[Smiling face with sunglasses]" you can click 
+on it to see it's "HTML-code". In OliveTin, you'd setup the icon like this;
+
+----
+actions:
+  - title: Unicode (emoji) icon
+    icon: "&#128526;"
+    shell: echo "You are awesome"
+----
+
+==== Full HTML icons (`<img src ...`)
+You can also specify the full HTML for an image, like;
+
+----
+actions:
+    - title: HTML (jpg/png/etc) icon
+      icon: '<img src = "https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width = "48px"/>'
+      shell: docker ps
+----
+
+NOTE: This full HTML thing is very customizable, but easier options will
+probably be added in the future as well. 
+
+////
+=== CSS styles
+
+OliveTin allows you to write any CSS style rules directly on a single action.
+This is both pretty powerful if you want an action to have a particular style,
+but it does require understanding that you are writing your code - and can
+break things! Be careful!
+
+A tutorial on how to use CSS can easily be found online, but here are some
+examples;
+
+==== Example: Bold & Purple action
+
+----
+- actions:
+    - title: My special action
+      css:
+        background-color: purple
+        font-weight: bold
+      shell: echo "I like purple"
+----
+////
+
+=== Timeouts
+
+By default, actions in OliveTin have a 3 second timeout. This means that
+OliveTin will kill the action if it is running for too long. 
+
+You can set your own timeouts like this;
+
+----
+- actions:
+  - title: My special action
+    shell: sleep 5
+    timeout: 10
+----
+
+NOTE: Allowing commands to run for infinity just doesn't seem to make sense, or
+at least is probably a bad case for OliveTin. Therefore, if you set a timeout
+*less than 3 seconds*, OliveTin will overwrite your Timeout and default to 3
+seconds. If you think you have a use case where a shorter (or infinite) timeout
+makes sense, please open an issue and let's discuss.
+
+=== Run as different users
+
+OliveTin does not *need* to run as root. It does not request any special
+permissions from the operating system that require root (as long as you run on
+ports above 1024, and it can read/write it's configuration). So, you can run as
+any non-root user if you wish.
+
+However, it is very convenient to run as root, as many users will need to run 
+actions and jobs that do require root permissions. 
+
+There are no ways in OliveTin to specify which user runs an action, because the
+Linux OS has several great ways to do this already, and adding support for it
+in OliveTin just adds bloat when there are perfectly good ways that already
+exist.
+
+==== EG: Using sudo;
+
+----
+actions:
+  - title: Run echo as a different user
+    shell: sudo -u bob echo "I am Bob."
+----
+
+If you are worried about security, you could run OliveTin as a non-privileged
+user, and use sudo rules to control what it can and cannot do. 

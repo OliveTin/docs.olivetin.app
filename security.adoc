@@ -1,0 +1,16 @@
+=== Security
+
+OliveTin should be reasonably secure. Here are some security considerations in
+the design of the app; 
+
+1. Admins have full control over what commands can by run using `config.yaml`. 
+2. OliveTin does not accept any action (command) arguments by design at the
+moment, as this has huge potential for exploitation and needs to be handled
+carefully.
+3. OliveTin listens on just 1 open public port by default (1337). The rest of
+the ports only listen on `localhost` so you don't have to worry about them in
+your firewall.
+4. Standard Linux controls can be used to run OliveTin as non-root, with `sudo`
+permissions if needed. See the action customization section of these docs for
+more details.
+

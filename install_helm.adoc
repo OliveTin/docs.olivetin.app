@@ -1,0 +1,11 @@
+=== Installation on Kubernetes with Helm
+
+Helm makes installing OliveTin on Kubernetes very easy. 
+
+----
+user@host: helm repo add olivetin https://olivetin.github.io/OliveTin-HelmChart/
+user@host: helm install olivetin olivetin/olivetin
+----
+
+You will probably want to `kubectl expose ...` your service afterwards.
+
