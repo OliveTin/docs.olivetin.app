@@ -6,7 +6,7 @@ Kubernetes `ConfigMap`, `Deployment`, `Service` and finally `Ingress`. Like so;
 .ConfigMap
 [source]
 ----
-kubectl apply -f http://www.olivetin.app/etc/k8s_configmap.yml
+kubectl apply -f http://docs.olivetin.app/etc/k8s_configmap.yml
 ----
 
 The main application config.yml for OliveTin is specified in the `ConfigMap`
@@ -17,7 +17,7 @@ Next, we need a deployment;
 .Deployment
 [source]
 ----
-kubectl apply -f http://www.olivetin.app/etc/k8s_deployment.yml
+kubectl apply -f http://docs.olivetin.app/etc/k8s_deployment.yml
 ----
 
 That should deploy OliveTin. Then expose it as a service;
@@ -33,6 +33,6 @@ Then lastly, create a Ingress rule for for that service;
 .Ingress
 [source]
 ----
-kubectl apply -f http://www.olivetin.app/etc/k8s_ingress.yml
+kubectl apply -f http://docs.olivetin.app/etc/k8s_ingress.yml
 ----
 
