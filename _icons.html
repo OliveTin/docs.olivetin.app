@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.15">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-areas: "nav content" "nav footer";
+	grid-template-columns: 20em auto;
+	grid-template-rows: auto min-content;
+	height: 100vh;
+	align-items: stretch;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	background-color: #444;
+	grid-area: nav;
+}
+
+#footer {
+	grid-area: footer;
+}
+
+#toc {
+	padding: 1em;
+}
+
+#toc a {
+	color: white;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: white;
+}
+
+h1 {
+	font-size: 1.4em;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	color: white;
+}
+
+#toc a:hover {
+	background-color: maroon;
+}
+
+#content {
+	background-color: white;
+	grid-area: content;
+	max-width: 1000px;
+	padding: 1em;
+}
+
+#content img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+.imageblock.right {
+	float: right;
+}
+
+hr {
+	clear: both;
+	border: 0;
+	border-bottom: 1px solid #efefef;
+	margin: 1em;
+}
+
+div.admonitionblock td:not(:first-child) {
+	border: 0;
+}
+
+.listingblock .title {
+	background-color: #efefef;
+	margin-bottom: -1em;
+	padding: 1em;
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="_icons" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="_download.html">1. Download</a>
+</li>
+<li><a href="_installation.html">2. Installation</a>
+</li>
+<li><a href="_configuration.html">3. Configuration</a>
+</li>
+<li><a href="_actions.html">4. Actions</a>
+</li>
+<li><a href="_action_customisation.html">5. Action customisation</a>
+<ul class="sectlevel2">
+<li><a href="_icons.html"><span class="toc-current">5.1. Icons</span></a>
+</li>
+<li><a href="_timeouts.html">5.2. Timeouts</a>
+</li>
+<li><a href="_run_as_different_users.html">5.3. Run as different users</a>
+</li>
+</ul>
+</li>
+<li><a href="_reference.html">6. Reference</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_icons"><a class="anchor" href="#_icons"></a><a class="link" href="#_icons">5.1. Icons</a></h3>
+<div class="paragraph">
+<p>You can specify any HTML for an icon. It&#8217;s a popular choice to use Unicode
+icons because they are extremely fast to load and there are a lot of them.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/exampleIcons.png" alt="exampleIcons">
+</div>
+<div class="title">Figure 1. Examples of icons in OliveTin</div>
+</div>
+<div class="sect3">
+<h4 id="_unicode_icons_emoji"><a class="anchor" href="#_unicode_icons_emoji"></a><a class="link" href="#_unicode_icons_emoji">5.1.1. Unicode icons ("emoji")</a></h4>
+<div class="paragraph">
+<p>For example on the <a href="https://unicode-table.com/en/emoji/">here is a list of
+"Eomji" in unicode</a>. If you find "<a href="https://unicode-table.com/en/1F60E/">Smiling face with sunglasses</a>" you can click
+on it to see it&#8217;s "HTML-code". In OliveTin, you&#8217;d setup the icon like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+  - title: Unicode (emoji) icon
+    icon: "&amp;#128526;"
+    shell: echo "You are awesome"</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_full_html_icons_img_src"><a class="anchor" href="#_full_html_icons_img_src"></a><a class="link" href="#_full_html_icons_img_src">5.1.2. Full HTML icons (<code>&lt;img src &#8230;&#8203;</code>)</a></h4>
+<div class="paragraph">
+<p>You can also specify the full HTML for an image, like;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+    - title: HTML (jpg/png/etc) icon
+      icon: '&lt;img src = "https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png" width = "48px"/&gt;'
+      shell: docker ps</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This full HTML thing is very customizable, but easier options will
+probably be added in the future as well.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>↑ Up: <a href="_action_customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_timeouts.html">Timeouts</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-07-09 20:24:07 UTC
+</div>
+</div>
+</body>
+</html>

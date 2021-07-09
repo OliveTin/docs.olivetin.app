@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.15">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-areas: "nav content" "nav footer";
+	grid-template-columns: 20em auto;
+	grid-template-rows: auto min-content;
+	height: 100vh;
+	align-items: stretch;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	background-color: #444;
+	grid-area: nav;
+}
+
+#footer {
+	grid-area: footer;
+}
+
+#toc {
+	padding: 1em;
+}
+
+#toc a {
+	color: white;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: white;
+}
+
+h1 {
+	font-size: 1.4em;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	color: white;
+}
+
+#toc a:hover {
+	background-color: maroon;
+}
+
+#content {
+	background-color: white;
+	grid-area: content;
+	max-width: 1000px;
+	padding: 1em;
+}
+
+#content img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+.imageblock.right {
+	float: right;
+}
+
+hr {
+	clear: both;
+	border: 0;
+	border-bottom: 1px solid #efefef;
+	margin: 1em;
+}
+
+div.admonitionblock td:not(:first-child) {
+	border: 0;
+}
+
+.listingblock .title {
+	background-color: #efefef;
+	margin-bottom: -1em;
+	padding: 1em;
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="index" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root toc-current"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="_download.html">1. Download</a>
+</li>
+<li><a href="_installation.html">2. Installation</a>
+</li>
+<li><a href="_configuration.html">3. Configuration</a>
+</li>
+<li><a href="_actions.html">4. Actions</a>
+</li>
+<li><a href="_action_customisation.html">5. Action customisation</a>
+</li>
+<li><a href="_reference.html">6. Reference</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<!-- toc disabled -->
+<div class="imageblock right">
+<div class="content">
+<img src="images/icons/OliveTinLogo.png" alt="OliveTinLogo" width="160px">
+</div>
+</div>
+<div class="paragraph">
+<p><strong><a href="https://github.com/jamesread/OliveTin">OliveTin</a></strong> is simple web interface for running Linux shell commands.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/icons/GitHub.png" alt="inline"></span> <a href="https://github.com/jamesread/OliveTin">OliveTin on GitHub</a></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/icons/Discord.png" alt="inline"></span> <a href="https://discord.gg/jhYWWpNJ3v">Chat on Discord</a></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Use cases</strong>;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Give controlled access to run shell commands to less technical folks who cannot be trusted with SSH. I use this so my family can <code>podman restart plex</code> without asking me, and without giving them shell access!</p>
+</li>
+<li>
+<p>Great for home automation tablets stuck on walls around your house - I use this to turn Hue lights on and off for example.</p>
+</li>
+<li>
+<p>Sometimes SSH access isn&#8217;t possible to a server, or you are feeling too lazy to type a long command you run regularly! I use this to send Wake on Lan commands to servers around my house.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Demo</strong></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="100%" src="https://www.youtube.com/embed/Ej6NM9rmZtk?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Features</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Responsive, touch-friendly UI</strong> - great for tablets and mobile</p>
+</li>
+<li>
+<p><strong>Super simple config in YAML</strong> - because if it&#8217;s not YAML now-a-days, it&#8217;s not "cloud native" :-)</p>
+</li>
+<li>
+<p><strong>Dark mode</strong> - for those of you that roll that way.</p>
+</li>
+<li>
+<p><strong>Accessible</strong> - passes all the accessibility checks in Firefox, and issues with accessibility are taken seriously.</p>
+</li>
+<li>
+<p><strong>Container</strong> - available for quickly testing and getting it up and running, great for the selfhosted community.</p>
+</li>
+<li>
+<p><strong>Integrate with anything</strong> - OliveTin just runs Linux shell commands, so theoretially you could integrate with a bunch of stuff just by using curl, ping, etc. However, writing your own shell scripts is a great way to extend OliveTin.</p>
+</li>
+<li>
+<p><strong>Lightweight on resources</strong> - uses only a few MB of RAM and barely any CPU. Written in Go, with a web interface written as a modern, responsive, Single Page App that uses the REST/gRPC API.</p>
+</li>
+<li>
+<p><strong>Good amount of unit tests and style checks</strong> - helps potential contributors be consistent, and helps with maintainability.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Read more;</strong></p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="_download.html">Download</a></p>
+</li>
+<li>
+<p><a href="_installation.html">Installation</a></p>
+</li>
+<li>
+<p><a href="_configuration.html">Configuration</a></p>
+</li>
+<li>
+<p><a href="_actions.html">Actions</a></p>
+</li>
+<li>
+<p><a href="_action_customisation.html">Action customisation</a></p>
+</li>
+<li>
+<p><a href="_reference.html">Reference</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph nav-footer">
+<p>Next: <a href="_download.html">Download</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-07-09 20:24:07 UTC
+</div>
+</div>
+</body>
+</html>
