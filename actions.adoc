@@ -4,7 +4,7 @@
 === Containers - start/stop
 
 :systemd: Easy
-:container: 1) Pass /var/run/docker.sock as a bind mount to the container when creating it. 2) Install docker command into the container.
+:container: Setup needed - see below
 include::actionHeader.adoc[]
 ....
 actions:
@@ -14,6 +14,26 @@ actions:
   - title: Start plex
     shell: docker start plex
 ....
+
+==== Setup if running inside a container
+
+You can control other containers, when running OliveTin inside a container
+itself, however you need to do some extra setup when creating the OliveTin
+container.
+
+1) Pass /var/run/docker.sock as a bind mount to the container when creating it,
+eg:
+
+----
+docker create -v /var/run/docker.sock:/container/path/docker.sock ...additional args here...
+----
+
+2) Install docker command into the container.
+
+----
+docker exec -it olivetin dnf install -y docker
+----
+
 
 [#action-service]
 === Restart a systemd service
