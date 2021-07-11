@@ -133,7 +133,7 @@ div.admonitionblock td:not(:first-child) {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_containers_startstop" class="book toc2 toc-left">
+<body id="action-ping" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -147,11 +147,13 @@ div.admonitionblock td:not(:first-child) {
 </li>
 <li><a href="_actions.html">4. Actions</a>
 <ul class="sectlevel2">
-<li><a href="_containers_startstop.html"><span class="toc-current">4.1. Containers - start/stop</span></a>
+<li><a href="action-container-control.html">4.1. Containers - start/stop</a>
 </li>
-<li><a href="_restart_a_systemd_service.html">4.2. Restart a systemd service</a>
+<li><a href="action-service.html">4.2. Restart a systemd service</a>
 </li>
-<li><a href="_ping_an_address.html">4.3. Ping an address</a>
+<li><a href="action-ping.html"><span class="toc-current">4.3. Ping an address</span></a>
+</li>
+<li><a href="action-ssh.html">4.4. SSH into another machine and run a command</a>
 </li>
 </ul>
 </li>
@@ -164,7 +166,7 @@ div.admonitionblock td:not(:first-child) {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_containers_startstop"><a class="anchor" href="#_containers_startstop"></a><a class="link" href="#_containers_startstop">4.1. Containers - start/stop</a></h3>
+<h3 id="action-ping"><a class="anchor" href="#action-ping"></a><a class="link" href="#action-ping">4.3. Ping an address</a></h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -183,31 +185,31 @@ div.admonitionblock td:not(:first-child) {
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1) Pass /var/run/docker.sock as a bind mount to the container when creating it. 2) Install docker command into the container.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="_example_config_yaml"><a class="anchor" href="#_example_config_yaml"></a><a class="link" href="#_example_config_yaml">4.1.1. Example config.yaml</a></h4>
+<h4 id="_example_config_yaml_3"><a class="anchor" href="#_example_config_yaml_3"></a><a class="link" href="#_example_config_yaml_3">4.3.1. Example config.yaml</a></h4>
 <div class="literalblock">
 <div class="content">
 <pre>actions:
-  - title: Stop Plex
-    shell: docker stop plex
-
-  - title: Start plex
-    shell: docker start plex</pre>
+    # This sends 1 ping to google.com.
+  - title: ping google.com
+    shell: ping google.com -c 1
+    icon: ping
+    timeout: 3</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="_actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_restart_a_systemd_service.html">Restart a systemd service</a> →</p>
+<p>← Previous: <a href="action-service.html">Restart a systemd service</a> | ↑ Up: <a href="_actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-ssh.html">SSH into another machine and run a command</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-09 21:07:01 UTC
+Last updated 2021-07-11 10:45:57 UTC
 </div>
 </div>
 </body>

@@ -133,7 +133,7 @@ div.admonitionblock td:not(:first-child) {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_security" class="book toc2 toc-left">
+<body id="action-container-control" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -146,54 +146,65 @@ div.admonitionblock td:not(:first-child) {
 <li><a href="_configuration.html">3. Configuration</a>
 </li>
 <li><a href="_actions.html">4. Actions</a>
+<ul class="sectlevel2">
+<li><a href="action-container-control.html"><span class="toc-current">4.1. Containers - start/stop</span></a>
+</li>
+<li><a href="action-service.html">4.2. Restart a systemd service</a>
+</li>
+<li><a href="action-ping.html">4.3. Ping an address</a>
+</li>
+<li><a href="action-ssh.html">4.4. SSH into another machine and run a command</a>
+</li>
+</ul>
 </li>
 <li><a href="_action_customisation.html">5. Action customisation</a>
 </li>
 <li><a href="_reference.html">6. Reference</a>
-<ul class="sectlevel2">
-<li><a href="_ports.html">6.1. Ports</a>
-</li>
-<li><a href="_security.html"><span class="toc-current">6.2. Security</span></a>
-</li>
-<li><a href="_understanding_exit_codes.html">6.3. Understanding exit codes</a>
-</li>
-</ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_security"><a class="anchor" href="#_security"></a><a class="link" href="#_security">6.2. Security</a></h3>
-<div class="paragraph">
-<p>OliveTin should be reasonably secure. Here are some security considerations in
-the design of the app;</p>
+<h3 id="action-container-control"><a class="anchor" href="#action-container-control"></a><a class="link" href="#action-container-control">4.1. Containers - start/stop</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Installation type</th>
+<th class="tableblock halign-left valign-top">Difficulty to do this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running as a <strong>Systemd service</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1) Pass /var/run/docker.sock as a bind mount to the container when creating it. 2) Install docker command into the container.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_example_config_yaml"><a class="anchor" href="#_example_config_yaml"></a><a class="link" href="#_example_config_yaml">4.1.1. Example config.yaml</a></h4>
+<div class="literalblock">
+<div class="content">
+<pre>actions:
+  - title: Stop Plex
+    shell: docker stop plex
+
+  - title: Start plex
+    shell: docker start plex</pre>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Admins have full control over what commands can by run using <code>config.yaml</code>.</p>
-</li>
-<li>
-<p>OliveTin does not accept any action (command) arguments by design at the
-moment, as this has huge potential for exploitation and needs to be handled
-carefully.</p>
-</li>
-<li>
-<p>OliveTin listens on just 1 open public port by default (1337). The rest of
-the ports only listen on <code>localhost</code> so you don&#8217;t have to worry about them in
-your firewall.</p>
-</li>
-<li>
-<p>Standard Linux controls can be used to run OliveTin as non-root, with <code>sudo</code>
-permissions if needed. See the action customization section of these docs for
-more details.</p>
-</li>
-</ol>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_ports.html">Ports</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_understanding_exit_codes.html">Understanding exit codes</a> →</p>
+<p>↑ Up: <a href="_actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-service.html">Restart a systemd service</a> →</p>
 </div>
 </div>
 <div id="footer">
