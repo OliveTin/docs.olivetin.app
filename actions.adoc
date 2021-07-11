@@ -1,5 +1,6 @@
 == Actions 
 
+[#action-container-control]
 === Containers - start/stop
 
 :systemd: Easy
@@ -14,6 +15,7 @@ actions:
     shell: docker start plex
 ....
 
+[#action-service]
 === Restart a systemd service
 
 :systemd: Easy
@@ -32,6 +34,7 @@ actions:
     shell: systemctl restart httpd
 ....
 
+[#action-ping]
 === Ping an address
 
 :systemd: Easy
@@ -45,3 +48,26 @@ actions:
     icon: ping
     timeout: 3
 ....
+
+[#action-ssh]
+=== SSH into another machine and run a command
+
+:systemd: Easy
+:container: Needs some setting up - if you are using the default container image you will need to run the command `dnf install openssh-clients` first.
+include::actionHeader.adoc[]
+
+....
+actions:
+    # This will SSH into a server an run the command 'service httpd restart'
+   - title: Restart httpd on Server 1
+     shell: ssh server1 'service httpd restart'
+     icon: ping
+     timeout: 5
+....
+
+*Note about SSH keys*: You should make sure that the user that OliveTin is running as has access
+to a SSH key. There are lots of good articles on the internet that explain how
+to setup password-less login with a SSH key. This applies to container images
+as well.
+
+
