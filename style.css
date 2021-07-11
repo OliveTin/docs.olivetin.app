@@ -16,7 +16,7 @@ a {
 }
 
 #header {
-	background-color: #444;
+	background-color: #efefef;
 	grid-area: nav;
 }
 
@@ -29,7 +29,7 @@ a {
 }
 
 #toc a {
-	color: white;
+	color: black;
 }
 
 #toc li {
@@ -48,11 +48,12 @@ a {
 
 #toctitle {
 	font-weight: bold;
-	color: white;
+	color: black;
 }
 
 h1 {
 	font-size: 1.4em;
+	font-weight: lighter;
 	background-color: black;
 	padding: .6em;
 	margin: 0;
@@ -60,7 +61,7 @@ h1 {
 }
 
 #toc a:hover {
-	background-color: maroon;
+	text-decoration: underline;
 }
 
 #content {
@@ -107,12 +108,22 @@ hr {
 	margin: 1em;
 }
 
-div.admonitionblock td:not(:first-child) {
+div.admonitionblock td {
 	border: 0;
+}
+
+div.admonitionblock td:first-child {
+	font-weight: bold;
 }
 
 .listingblock .title {
 	background-color: #efefef;
 	margin-bottom: -1em;
 	padding: 1em;
+}
+
+@media (max-width: 700px) {
+	body {
+		display: block;
+	}
 }
