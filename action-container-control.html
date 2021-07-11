@@ -185,7 +185,7 @@ div.admonitionblock td:not(:first-child) {
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1) Pass /var/run/docker.sock as a bind mount to the container when creating it. 2) Install docker command into the container.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Setup needed - see below</p></td>
 </tr>
 </tbody>
 </table>
@@ -202,6 +202,31 @@ div.admonitionblock td:not(:first-child) {
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_setup_if_running_inside_a_container"><a class="anchor" href="#_setup_if_running_inside_a_container"></a><a class="link" href="#_setup_if_running_inside_a_container">4.1.2. Setup if running inside a container</a></h4>
+<div class="paragraph">
+<p>You can control other containers, when running OliveTin inside a container
+itself, however you need to do some extra setup when creating the OliveTin
+container.</p>
+</div>
+<div class="paragraph">
+<p>1) Pass /var/run/docker.sock as a bind mount to the container when creating it,
+eg:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker create -v /var/run/docker.sock:/container/path/docker.sock ...additional args here...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2) Install docker command into the container.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker exec -it olivetin dnf install -y docker</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>↑ Up: <a href="_actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-service.html">Restart a systemd service</a> →</p>
@@ -209,7 +234,7 @@ div.admonitionblock td:not(:first-child) {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-11 10:45:57 UTC
+Last updated 2021-07-11 20:21:47 UTC
 </div>
 </div>
 </body>
