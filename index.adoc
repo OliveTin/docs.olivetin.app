@@ -14,11 +14,13 @@ toc::[]
 
 image::images/icons/OliveTinLogo.png[float="right",width = "160px"]
 
-**link:https://github.com/jamesread/OliveTin[OliveTin]** is simple web interface for running Linux shell commands.
+**link:https://www.olivetin.app[OliveTin]** is an app to run your Linux shell commands from a web interface.
 
 image:images/icons/GitHub.png[inline] link:https://github.com/jamesread/OliveTin[OliveTin on GitHub]
 
 image:images/icons/Discord.png[inline] link:https://discord.gg/jhYWWpNJ3v[Chat on Discord]
+
+The link:https://www.olivetin.app[OliveTin Homepage is here]. This site that you are viewing is the documentation for OliveTin.
 
 '''
 
