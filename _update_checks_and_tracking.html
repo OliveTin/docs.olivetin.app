@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.15">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-areas: "nav content" "nav footer";
+	grid-template-columns: 20em auto;
+	grid-template-rows: auto min-content;
+	height: 100vh;
+	align-items: stretch;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	background-color: #efefef;
+	grid-area: nav;
+}
+
+#footer {
+	grid-area: footer;
+}
+
+#toc {
+	padding: 1em;
+}
+
+#toc a {
+	color: black;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: black;
+}
+
+h1 {
+	font-size: 1.4em;
+	font-weight: lighter;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	color: white;
+}
+
+#toc a:hover {
+	text-decoration: underline;
+}
+
+#content {
+	background-color: white;
+	grid-area: content;
+	max-width: 1000px;
+	padding: 1em;
+}
+
+#content img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+.imageblock.right {
+	float: right;
+}
+
+hr {
+	clear: both;
+	border: 0;
+	border-bottom: 1px solid #efefef;
+	margin: 1em;
+}
+
+div.admonitionblock td {
+	border: 0;
+}
+
+div.admonitionblock td:first-child {
+	font-weight: bold;
+}
+
+.listingblock .title {
+	background-color: #efefef;
+	margin-bottom: -1em;
+	padding: 1em;
+}
+
+@media (max-width: 700px) {
+	body {
+		display: block;
+	}
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="_update_checks_and_tracking" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="_installation.html">1. Installation</a>
+</li>
+<li><a href="_configuration.html">2. Configuration</a>
+</li>
+<li><a href="_actions.html">3. Actions</a>
+</li>
+<li><a href="_action_customisation.html">4. Action customisation</a>
+</li>
+<li><a href="_reference.html">5. Reference</a>
+<ul class="sectlevel2">
+<li><a href="_ports.html">5.1. Ports</a>
+</li>
+<li><a href="_security.html">5.2. Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">5.3. Understanding exit codes</a>
+</li>
+<li><a href="_update_checks_and_tracking.html"><span class="toc-current">5.4. Update Checks (and tracking)</span></a>
+</li>
+</ul>
+</li>
+<li><a href="troubleshooting.html">6. Troubleshooting</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_update_checks_and_tracking"><a class="anchor" href="#_update_checks_and_tracking"></a><a class="link" href="#_update_checks_and_tracking">5.4. Update Checks (and tracking)</a></h3>
+<div class="paragraph">
+<p>The OliveTin server will now check for updates on startup, and every 7 days after that. It will report those updates as a log message in the console. It does not apply any updates, because this is the choice and responsibility of whoever is running OliveTin to decide if, when, and how to apply any updates.</p>
+</div>
+<div class="paragraph">
+<p>The information OliveTin sends to the update server is stored/saved., and this could be considered a form of tracking - that is tracking installations, not tracking people. This page hopefully helps explain what, how and why that information is used so you can be informed (and make changes if you wish).</p>
+</div>
+<div class="sect3">
+<h4 id="_design_considerations"><a class="anchor" href="#_design_considerations"></a><a class="link" href="#_design_considerations">5.4.1. Design considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>The source code for the update check (client), and the update service are open and on GitHub, freely auditable.</p>
+</li>
+<li>
+<p>A hashed form of the machine ID is used to differentiate between installations, but being hashed means we do not know your actual machine ID.</p>
+</li>
+<li>
+<p>The update request is sent and stored in plain text - easy to check/audit.</p>
+</li>
+<li>
+<p>The update request goes to an obvious domain name - update-check.olivetin.app</p>
+</li>
+<li>
+<p>The checkins can be freely viewed by anyone in the public log.</p>
+</li>
+<li>
+<p>The update check can be disabled.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_what_is_sent_and_tracked"><a class="anchor" href="#_what_is_sent_and_tracked"></a><a class="link" href="#_what_is_sent_and_tracked">5.4.2. What is sent (and tracked)</a></h4>
+<div class="paragraph">
+<p>When OliveTin checks for updates, it will send the following;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CurrentVersion - eg: 1.0.0</p>
+</li>
+<li>
+<p>CurrentCommit - the Git commit used to build this version</p>
+</li>
+<li>
+<p>OS - The update check wants to know your OS, because it’s possible in the future that some versions and updates might not be available for all OSes at the same time.</p>
+</li>
+<li>
+<p>Architecture (x86_64, ARM, etc)</p>
+</li>
+<li>
+<p>MachineID - See below</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you would like to audit the update code, look at the following directory; <a href="https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck" class="bare">https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_why_do_you_need_my_machine_id"><a class="anchor" href="#_why_do_you_need_my_machine_id"></a><a class="link" href="#_why_do_you_need_my_machine_id">5.4.3. Why do you need my machine ID?</a></h4>
+<div class="paragraph">
+<p>First of all, OliveTin only sends a hashed version of a unique identifier for your machine. OliveTin does not use your actual machine ID, because this is private, and potentially sensitive information in it’s original form. Thi hashed version of this ID is used, which should be considered safe - because it’s a hash, it’s not possible to get back to the original sensitive machine ID.</p>
+</div>
+<div class="paragraph">
+<p>This is necessary so we can tell the differences between installations.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_why_do_you_need_to_store_any_information_at_all"><a class="anchor" href="#_why_do_you_need_to_store_any_information_at_all"></a><a class="link" href="#_why_do_you_need_to_store_any_information_at_all">5.4.4. Why do you need to store any information at all?</a></h4>
+<div class="paragraph">
+<p>This is incredibly useful information for project developers to know, because;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It helps the project developers know how long it takes for updates to be applied by users of OliveTin (ie, should updates be released more often / less often) - the machine ID helps track this.</p>
+</li>
+<li>
+<p>This helps the project better understand what are the most popular operating systems and architectures (ie, so more testing can be done).</p>
+</li>
+<li>
+<p>How many old versions of the project to support?</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_what_is_stored"><a class="anchor" href="#_what_is_stored"></a><a class="link" href="#_what_is_stored">5.4.5. What is stored?</a></h4>
+<div class="paragraph">
+<p>The update service only stores the information that is sent - explained above. You can audit the update service code here; <a href="https://github.com/OliveTin/update-check.olivetin.app" class="bare">https://github.com/OliveTin/update-check.olivetin.app</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_what_is_not_sentstored"><a class="anchor" href="#_what_is_not_sentstored"></a><a class="link" href="#_what_is_not_sentstored">5.4.6. What is not sent/stored</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>No information about you, users of your system, no files, nothing else apart from what is mentioned above.</p>
+</li>
+<li>
+<p>Not your public IP address, or any information about your network</p>
+</li>
+<li>
+<p>Not any information about how you have configured OliveTin, or any actions.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_where_is_the_information_sent"><a class="anchor" href="#_where_is_the_information_sent"></a><a class="link" href="#_where_is_the_information_sent">5.4.7. Where is the information sent</a></h4>
+<div class="paragraph">
+<p>To <a href="http://update-check.olivetin.app" class="bare">http://update-check.olivetin.app</a> . This is a virtual machine which stores the logs on the machine filesystem. The data is accessible to all who which to view it, in the interest of transparency.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_why_isnt_this_opt_in"><a class="anchor" href="#_why_isnt_this_opt_in"></a><a class="link" href="#_why_isnt_this_opt_in">5.4.8. Why isn’t this opt-in?</a></h4>
+<div class="paragraph">
+<p>It seems the majority of software does perform update checks by default like this - Chrome, Firefox, most modern Operating Systems, etc. Because no information about people, or your data is being used, apart from your machine ID, this seems like a safe default.</p>
+</div>
+<div class="paragraph">
+<p>Also, if this were to default off, many people probably would not think about turning it on.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_do_i_disable_this"><a class="anchor" href="#_how_do_i_disable_this"></a><a class="link" href="#_how_do_i_disable_this">5.4.9. How do I disable this?</a></h4>
+<div class="paragraph">
+<p>If you are worried about privacy, or similar, please do make your concerns known. This is best if this is an open discussion.</p>
+</div>
+<div class="paragraph">
+<p>But, simply, to disable this feature, add to your config file;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>checkForUpdates: false</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="_understanding_exit_codes.html">Understanding exit codes</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="troubleshooting.html">Troubleshooting</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-07-12 09:26:25 UTC
+</div>
+</div>
+</body>
+</html>

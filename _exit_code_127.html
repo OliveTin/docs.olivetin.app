@@ -144,25 +144,13 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_installation_as_a_container_podmandocker" class="book toc2 toc-left">
+<body id="_exit_code_127" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="_installation.html">1. Installation</a>
-<ul class="sectlevel2">
-<li><a href="_installation_as_a_systemd_service_recommended.html">1.1. Installation as a systemd service (recommended)</a>
-</li>
-<li><a href="_installation_as_a_container_podmandocker.html"><span class="toc-current">1.2. Installation as a container (podman/docker)</span></a>
-</li>
-<li><a href="_installation_using_docker_compose.html">1.3. Installation using Docker Compose</a>
-</li>
-<li><a href="_installation_on_kubernetes_with_helm.html">1.4. Installation on Kubernetes with Helm</a>
-</li>
-<li><a href="_installation_on_kubernetes_manually.html">1.5. Installation on Kubernetes (manually)</a>
-</li>
-</ul>
 </li>
 <li><a href="_configuration.html">2. Configuration</a>
 </li>
@@ -173,33 +161,26 @@ div.admonitionblock td:first-child {
 <li><a href="_reference.html">5. Reference</a>
 </li>
 <li><a href="troubleshooting.html">6. Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="_where_to_find_help.html">6.1. Where to find help</a>
+</li>
+<li><a href="_exit_code_127.html"><span class="toc-current">6.2. Exit code 127</span></a>
+</li>
+</ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_installation_as_a_container_podmandocker"><a class="anchor" href="#_installation_as_a_container_podmandocker"></a><a class="link" href="#_installation_as_a_container_podmandocker">1.2. Installation as a container (podman/docker)</a></h3>
+<h3 id="_exit_code_127"><a class="anchor" href="#_exit_code_127"></a><a class="link" href="#_exit_code_127">6.2. Exit code 127</a></h3>
 <div class="paragraph">
-<p>Containers are published on DockerHub.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://hub.docker.com/r/jamesread/olivetin" class="bare">https://hub.docker.com/r/jamesread/olivetin</a></p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>user@host: mkdir /etc/OliveTin/
-user@host: # create your config.yaml file
-user@host: docker pull jamesread/olivetin
-user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then visit <a href="http://localhost:1337" class="bare">http://localhost:1337</a></p>
+<p>Exit code 127 on Linux typically means "command not found". This can be the
+case when you need to install command in a container image for example.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_installation_as_a_systemd_service_recommended.html">Installation as a systemd service (recommended)</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_installation_using_docker_compose.html">Installation using Docker Compose</a> →</p>
+<p>← Previous: <a href="_where_to_find_help.html">Where to find help</a> | ↑ Up: <a href="troubleshooting.html">Troubleshooting</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a></p>
 </div>
 </div>
 <div id="footer">
