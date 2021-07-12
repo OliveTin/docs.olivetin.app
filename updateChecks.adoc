@@ -1,0 +1,70 @@
+=== Update Checks (and tracking)
+
+The OliveTin server will now check for updates on startup, and every 7 days after that. It will report those updates as a log message in the console. It does not apply any updates, because this is the choice and responsibility of whoever is running OliveTin to decide if, when, and how to apply any updates.
+
+The information OliveTin sends to the update server is stored/saved., and this could be considered a form of tracking - that is tracking installations, not tracking people. This page hopefully helps explain what, how and why that information is used so you can be informed (and make changes if you wish).
+
+==== Design considerations
+
+* The source code for the update check (client), and the update service are open and on GitHub, freely auditable.
+* A hashed form of the machine ID is used to differentiate between installations, but being hashed means we do not know your actual machine ID.
+* The update request is sent and stored in plain text - easy to check/audit.
+* The update request goes to an obvious domain name - update-check.olivetin.app
+* The checkins can be freely viewed by anyone in the public log.
+* The update check can be disabled.
+
+==== What is sent (and tracked)
+
+When OliveTin checks for updates, it will send the following;
+
+* CurrentVersion - eg: 1.0.0
+* CurrentCommit - the Git commit used to build this version
+* OS - The update check wants to know your OS, because it’s possible in the future that some versions and updates might not be available for all OSes at the same time.
+* Architecture (x86_64, ARM, etc)
+* MachineID - See below
+
+If you would like to audit the update code, look at the following directory; https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck
+
+==== Why do you need my machine ID?
+
+First of all, OliveTin only sends a hashed version of a unique identifier for your machine. OliveTin does not use your actual machine ID, because this is private, and potentially sensitive information in it’s original form. Thi hashed version of this ID is used, which should be considered safe - because it’s a hash, it’s not possible to get back to the original sensitive machine ID.
+
+This is necessary so we can tell the differences between installations.
+
+==== Why do you need to store any information at all?
+
+This is incredibly useful information for project developers to know, because;
+
+1. It helps the project developers know how long it takes for updates to be applied by users of OliveTin (ie, should updates be released more often / less often) - the machine ID helps track this.
+2. This helps the project better understand what are the most popular operating systems and architectures (ie, so more testing can be done).
+3. How many old versions of the project to support?
+
+==== What is stored?
+
+The update service only stores the information that is sent - explained above. You can audit the update service code here; https://github.com/OliveTin/update-check.olivetin.app
+
+==== What is not sent/stored
+
+* No information about you, users of your system, no files, nothing else apart from what is mentioned above.
+* Not your public IP address, or any information about your network
+* Not any information about how you have configured OliveTin, or any actions.
+
+==== Where is the information sent
+
+To http://update-check.olivetin.app . This is a virtual machine which stores the logs on the machine filesystem. The data is accessible to all who which to view it, in the interest of transparency.
+
+==== Why isn’t this opt-in?
+
+It seems the majority of software does perform update checks by default like this - Chrome, Firefox, most modern Operating Systems, etc. Because no information about people, or your data is being used, apart from your machine ID, this seems like a safe default.
+
+Also, if this were to default off, many people probably would not think about turning it on.
+
+==== How do I disable this?
+
+If you are worried about privacy, or similar, please do make your concerns known. This is best if this is an open discussion.
+
+But, simply, to disable this feature, add to your config file;
+
+	checkForUpdates: false
+
+
