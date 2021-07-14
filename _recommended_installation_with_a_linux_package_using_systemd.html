@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.15">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-areas: "nav content" "nav footer";
+	grid-template-columns: 20em auto;
+	grid-template-rows: auto min-content;
+	height: 100vh;
+	align-items: stretch;
+}
+
+a {
+	text-decoration: none;
+}
+
+#header {
+	background-color: #efefef;
+	grid-area: nav;
+}
+
+#footer {
+	grid-area: footer;
+}
+
+#toc {
+	padding: 1em;
+}
+
+#toc a {
+	color: black;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: black;
+}
+
+h1 {
+	font-size: 1.4em;
+	font-weight: lighter;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	color: white;
+}
+
+#toc a:hover {
+	text-decoration: underline;
+}
+
+#content {
+	background-color: white;
+	grid-area: content;
+	max-width: 1000px;
+	padding: 1em;
+}
+
+#content img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+.imageblock.right {
+	float: right;
+}
+
+hr {
+	clear: both;
+	border: 0;
+	border-bottom: 1px solid #efefef;
+	margin: 1em;
+}
+
+div.admonitionblock td {
+	border: 0;
+}
+
+div.admonitionblock td:first-child {
+	font-weight: bold;
+}
+
+.listingblock .title {
+	background-color: #efefef;
+	margin-bottom: -1em;
+	padding: 1em;
+}
+
+@media (max-width: 700px) {
+	body {
+		display: block;
+	}
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="_recommended_installation_with_a_linux_package_using_systemd" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="_installation.html">1. Installation</a>
+<ul class="sectlevel2">
+<li><a href="_recommended_installation_with_a_linux_package_using_systemd.html"><span class="toc-current">1.1. Recommended: Installation with a Linux package, using systemd</span></a>
+</li>
+<li><a href="_installation_from_a_tar_gz_manually_using_systemd.html">1.2. Installation from a .tar.gz manually, using systemd</a>
+</li>
+<li><a href="_installation_as_a_container_podmandocker.html">1.3. Installation as a container (podman/docker)</a>
+</li>
+<li><a href="_installation_using_docker_compose.html">1.4. Installation using Docker Compose</a>
+</li>
+<li><a href="_installation_on_kubernetes_with_helm.html">1.5. Installation on Kubernetes with Helm</a>
+</li>
+<li><a href="_installation_on_kubernetes_manually.html">1.6. Installation on Kubernetes (manually)</a>
+</li>
+</ul>
+</li>
+<li><a href="config.html">2. Configuration</a>
+</li>
+<li><a href="_actions.html">3. Actions</a>
+</li>
+<li><a href="_action_customisation.html">4. Action customisation</a>
+</li>
+<li><a href="_reference.html">5. Reference</a>
+</li>
+<li><a href="troubleshooting.html">6. Troubleshooting</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_recommended_installation_with_a_linux_package_using_systemd"><a class="anchor" href="#_recommended_installation_with_a_linux_package_using_systemd"></a><a class="link" href="#_recommended_installation_with_a_linux_package_using_systemd">1.1. Recommended: Installation with a Linux package, using systemd</a></h3>
+<div class="paragraph">
+<p>Running OliveTin as a systemd service on a Linux machine means it can use any program installed on your machine (you don&#8217;t have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.</p>
+</div>
+<div class="sect3">
+<h4 id="_choosing_the_right_linux_package"><a class="anchor" href="#_choosing_the_right_linux_package"></a><a class="link" href="#_choosing_the_right_linux_package">1.1.1. Choosing the right Linux package</a></h4>
+<div class="paragraph">
+<p>There are .deb, .rpm, and similar packages published for OliveTin on each
+release page. Pick a package most relevant to the Linux distribution you are
+using from the <a href="https://github.com/jamesread/OliveTin/releases">downloads page</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Platform</th>
+<th class="tableblock halign-left valign-top">Recommend <a href="https://github.com/jamesread/OliveTin/releases">download package</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Raspbian on a Raspberry Pi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin-&#8230;&#8203;-linux_armv6.deb</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debian, Ubuntu on x86_64 (Intel/AMD)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin-&#8230;&#8203;-linux-amd64.deb</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fedora on Raspberry Pi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin-&#8230;&#8203;-linux_armv6.rpm</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fedora, CentOS, Red Hat on x86_64 (Intel/AMD)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin-&#8230;&#8203;-linux_amd64.rpm</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can install these packages with your Linux package manager (eg,
+<code>dpkg -i OliveTin&#8230;&#8203;deb</code> or <code>rpm -U OliveTin&#8230;&#8203;rpm</code>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_post_installation"><a class="anchor" href="#_post_installation"></a><a class="link" href="#_post_installation">1.1.2. Post installation</a></h4>
+<div class="paragraph">
+<p>You will need to write a basic configuration file before OliveTin will startup.</p>
+</div>
+<div class="paragraph">
+<p>Create the following basic config file at <code>/etc/OliveTin/config.yaml</code> with the
+following contents;</p>
+</div>
+<div class="listingblock">
+<div class="title">The most simple <code>config.yaml</code> file.</div>
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">actions:
+  - title: "Hello world!"
+    shell: echo 'Hello World!'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now that you have a configuration file, and OliveTin is installed, start it;</p>
+</div>
+<div class="listingblock">
+<div class="title">Start the service (only needed once)</div>
+<div class="content">
+<pre>user@host: systemctl enable --now OliveTin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are running a firewall on your server, like firewalld, you will need to
+open port 1337;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: firewall-cmd --add-port 1337/tcp --permanent
+user@host: firewall-cmd --reload</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> to get to the web
+interface.</p>
+</div>
+<div class="paragraph">
+<p>If you are having problems, you can check if OliveTin is running like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: systemctl status OliveTin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the service has filed, scroll through the logs;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: journelctl -eu OliveTin</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_installation_from_a_tar_gz_manually_using_systemd.html">Installation from a .tar.gz manually, using systemd</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-07-14 11:08:02 UTC
+</div>
+</div>
+</body>
+</html>

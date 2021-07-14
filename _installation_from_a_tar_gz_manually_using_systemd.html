@@ -144,7 +144,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_installation_as_a_systemd_service_recommended" class="book toc2 toc-left">
+<body id="_installation_from_a_tar_gz_manually_using_systemd" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -152,19 +152,21 @@ div.admonitionblock td:first-child {
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="_installation.html">1. Installation</a>
 <ul class="sectlevel2">
-<li><a href="_installation_as_a_systemd_service_recommended.html"><span class="toc-current">1.1. Installation as a systemd service (recommended)</span></a>
+<li><a href="_recommended_installation_with_a_linux_package_using_systemd.html">1.1. Recommended: Installation with a Linux package, using systemd</a>
 </li>
-<li><a href="_installation_as_a_container_podmandocker.html">1.2. Installation as a container (podman/docker)</a>
+<li><a href="_installation_from_a_tar_gz_manually_using_systemd.html"><span class="toc-current">1.2. Installation from a .tar.gz manually, using systemd</span></a>
 </li>
-<li><a href="_installation_using_docker_compose.html">1.3. Installation using Docker Compose</a>
+<li><a href="_installation_as_a_container_podmandocker.html">1.3. Installation as a container (podman/docker)</a>
 </li>
-<li><a href="_installation_on_kubernetes_with_helm.html">1.4. Installation on Kubernetes with Helm</a>
+<li><a href="_installation_using_docker_compose.html">1.4. Installation using Docker Compose</a>
 </li>
-<li><a href="_installation_on_kubernetes_manually.html">1.5. Installation on Kubernetes (manually)</a>
+<li><a href="_installation_on_kubernetes_with_helm.html">1.5. Installation on Kubernetes with Helm</a>
+</li>
+<li><a href="_installation_on_kubernetes_manually.html">1.6. Installation on Kubernetes (manually)</a>
 </li>
 </ul>
 </li>
-<li><a href="_configuration.html">2. Configuration</a>
+<li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="_actions.html">3. Actions</a>
 </li>
@@ -179,20 +181,12 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_installation_as_a_systemd_service_recommended"><a class="anchor" href="#_installation_as_a_systemd_service_recommended"></a><a class="link" href="#_installation_as_a_systemd_service_recommended">1.1. Installation as a systemd service (recommended)</a></h3>
+<h3 id="_installation_from_a_tar_gz_manually_using_systemd"><a class="anchor" href="#_installation_from_a_tar_gz_manually_using_systemd"></a><a class="link" href="#_installation_from_a_tar_gz_manually_using_systemd">1.2. Installation from a .tar.gz manually, using systemd</a></h3>
 <div class="paragraph">
-<p>Running OliveTin as a systemd service on a Linux machine means it can use any program installed on your machine (you don&#8217;t have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.</p>
+<p>This is an option for an advanced setup, for users who cannot user the .deb or .rpm packages.</p>
 </div>
 <div class="sect3">
-<h4 id="_using_a_linux_package_rpm_deb_etc"><a class="anchor" href="#_using_a_linux_package_rpm_deb_etc"></a><a class="link" href="#_using_a_linux_package_rpm_deb_etc">1.1.1. Using a Linux package (.rpm, .deb, etc)</a></h4>
-<div class="paragraph">
-<p>There are .deb, .rpm, and similar packages published for OliveTin on each
-release page. Pick a package most relevant to the Linux distribution you are
-using from the downloads page.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_manual_setup_tar_gz"><a class="anchor" href="#_manual_setup_tar_gz"></a><a class="link" href="#_manual_setup_tar_gz">1.1.2. Manual setup (.tar.gz)</a></h4>
+<h4 id="_manual_setup_tar_gz"><a class="anchor" href="#_manual_setup_tar_gz"></a><a class="link" href="#_manual_setup_tar_gz">1.2.1. Manual setup (.tar.gz)</a></h4>
 <div class="paragraph">
 <p>A .tar.gz file is provided for people who are using other Linux distributions or want to set things up manually.</p>
 </div>
@@ -212,18 +206,72 @@ using from the downloads page.</p>
 </li>
 </ol>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_post_installation_2"><a class="anchor" href="#_post_installation_2"></a><a class="link" href="#_post_installation_2">1.2.2. Post installation</a></h4>
 <div class="paragraph">
-<p>Run <code>systemctl restart OliveTin</code> and check <code>systemctl status OliveTin</code>.</p>
+<p>You will need to write a basic configuration file before OliveTin will startup.</p>
+</div>
+<div class="paragraph">
+<p>Create the following basic config file at <code>/etc/OliveTin/config.yaml</code> with the
+following contents;</p>
+</div>
+<div class="listingblock">
+<div class="title">The most simple <code>config.yaml</code> file.</div>
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">actions:
+  - title: "Hello world!"
+    shell: echo 'Hello World!'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now that you have a configuration file, and OliveTin is installed, start it;</p>
+</div>
+<div class="listingblock">
+<div class="title">Start the service (only needed once)</div>
+<div class="content">
+<pre>user@host: systemctl enable --now OliveTin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are running a firewall on your server, like firewalld, you will need to
+open port 1337;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: firewall-cmd --add-port 1337/tcp --permanent
+user@host: firewall-cmd --reload</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> to get to the web
+interface.</p>
+</div>
+<div class="paragraph">
+<p>If you are having problems, you can check if OliveTin is running like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: systemctl status OliveTin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the service has filed, scroll through the logs;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: journelctl -eu OliveTin</pre>
+</div>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_installation_as_a_container_podmandocker.html">Installation as a container (podman/docker)</a> →</p>
+<p>← Previous: <a href="_recommended_installation_with_a_linux_package_using_systemd.html">Recommended: Installation with a Linux package, using systemd</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_installation_as_a_container_podmandocker.html">Installation as a container (podman/docker)</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-12 21:01:24 UTC
+Last updated 2021-07-14 11:08:02 UTC
 </div>
 </div>
 </body>
