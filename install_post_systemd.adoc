@@ -31,6 +31,10 @@ user@host: firewall-cmd --reload
 You should be able to browse to http://yourserver:1337 to get to the web
 interface.
 
+If you see this page, you can jump to the <<config,configuration section>>.
+
+==== Troubleshooting systemd installations
+
 If you are having problems, you can check if OliveTin is running like this; 
 
 ----
@@ -43,4 +47,5 @@ If the service has filed, scroll through the logs;
 user@host: journelctl -eu OliveTin
 ----
 
-
+If you cannot understand the logs, or otherwise need help, see the <<support>>
+page.
