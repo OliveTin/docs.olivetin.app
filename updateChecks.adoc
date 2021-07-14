@@ -1,3 +1,4 @@
+[#update-tracking]
 === Update Checks (and tracking)
 
 The OliveTin server will now check for updates on startup, and every 7 days after that. It will report those updates as a log message in the console. It does not apply any updates, because this is the choice and responsibility of whoever is running OliveTin to decide if, when, and how to apply any updates.
