@@ -1,3 +1,4 @@
+[#config]
 == Configuration
 
 OliveTin is controlled by a `config.yaml` file. On startup, it looks for this
