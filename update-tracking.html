@@ -234,6 +234,20 @@ div.admonitionblock td:first-child {
 </ul>
 </div>
 <div class="paragraph">
+<p>Here is an example of a log entry that is sent/stored;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{"CurrentVersion":"dev","CurrentCommit":"nocommit","OS":"linux","Arch":"amd64","MachineID":"651ea7449ddb1af8b6d173e99fd198b0ebadac720d0512603566621f155b13bb"}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>OliveTin uses the golang package <code>machineid</code> to get as hashed version of your
+MachineId - which makes it so that we cannot reverse your (confidential)
+MachineId. For more information about how this is determined, see;
+<a href="https://github.com/denisbrodbeck/machineid#security-considerations" class="bare">https://github.com/denisbrodbeck/machineid#security-considerations</a></p>
+</div>
+<div class="paragraph">
 <p>If you would like to audit the update code, look at the following directory; <a href="https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck" class="bare">https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck</a></p>
 </div>
 </div>
@@ -323,7 +337,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-14 11:39:23 UTC
+Last updated 2021-07-14 11:42:52 UTC
 </div>
 </div>
 </body>
