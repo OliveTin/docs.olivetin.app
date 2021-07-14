@@ -24,6 +24,17 @@ When OliveTin checks for updates, it will send the following;
 * Architecture (x86_64, ARM, etc)
 * MachineID - See below
 
+Here is an example of a log entry that is sent/stored;
+
+----
+{"CurrentVersion":"dev","CurrentCommit":"nocommit","OS":"linux","Arch":"amd64","MachineID":"651ea7449ddb1af8b6d173e99fd198b0ebadac720d0512603566621f155b13bb"}
+----
+
+OliveTin uses the golang package `machineid` to get as hashed version of your
+MachineId - which makes it so that we cannot reverse your (confidential)
+MachineId. For more information about how this is determined, see;
+https://github.com/denisbrodbeck/machineid#security-considerations 
+
 If you would like to audit the update code, look at the following directory; https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck
 
 ==== Why do you need my machine ID?
