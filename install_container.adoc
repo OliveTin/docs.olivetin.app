@@ -11,4 +11,4 @@ user@host: docker pull jamesread/olivetin
 user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin
 ....
 
-Then visit http://localhost:1337
+include::install_to_config.adoc[]

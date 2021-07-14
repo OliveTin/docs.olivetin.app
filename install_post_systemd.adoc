@@ -28,10 +28,7 @@ user@host: firewall-cmd --add-port 1337/tcp --permanent
 user@host: firewall-cmd --reload
 ----
 
-You should be able to browse to http://yourserver:1337 to get to the web
-interface.
-
-If you see this page, you can jump to the <<config,configuration section>>.
+include::install_to_config.adoc[]
 
 ==== Troubleshooting systemd installations
 

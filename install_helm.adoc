@@ -9,3 +9,5 @@ user@host: helm install olivetin olivetin/olivetin
 
 You will probably want to `kubectl expose ...` your service afterwards.
 
+include::install_to_config.adoc[]
+

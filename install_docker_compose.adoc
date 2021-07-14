@@ -20,4 +20,4 @@ services:
     restart: unless-stopped
 ----
 
-
+include::install_to_config.adoc[]

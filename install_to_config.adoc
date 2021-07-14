@@ -1,0 +1,6 @@
+You should be able to browse to http://yourserver:1337 (or similar) to get to 
+the web interface.
+
+If you see the OliveTin page popup in your browser, you can jump to the 
+<<config,configuration section>> as the next step.
+
