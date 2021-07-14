@@ -8,7 +8,7 @@ The information OliveTin sends to the update server is stored/saved., and this c
 ==== Design considerations
 
 * The source code for the update check (client), and the update service are open and on GitHub, freely auditable.
-* A hashed form of the machine ID is used to differentiate between installations, but being hashed means we do not know your actual machine ID.
+* A hashed form of the machine ID is used to differentiate between installations but being hashed means we do not know your actual machine ID <<machine-id,more info>>.
 * The update request is sent and stored in plain text - easy to check/audit.
 * The update request goes to an obvious domain name - update-check.olivetin.app
 * The checkins can be freely viewed by anyone in the public log.
@@ -30,18 +30,20 @@ Here is an example of a log entry that is sent/stored;
 {"CurrentVersion":"dev","CurrentCommit":"nocommit","OS":"linux","Arch":"amd64","MachineID":"651ea7449ddb1af8b6d173e99fd198b0ebadac720d0512603566621f155b13bb"}
 ----
 
-OliveTin uses the golang package `machineid` to get as hashed version of your
-MachineId - which makes it so that we cannot reverse your (confidential)
-MachineId. For more information about how this is determined, see;
-https://github.com/denisbrodbeck/machineid#security-considerations 
-
 If you would like to audit the update code, look at the following directory; https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck
 
+[#machine-id]
 ==== Why do you need my machine ID?
 
 First of all, OliveTin only sends a hashed version of a unique identifier for your machine. OliveTin does not use your actual machine ID, because this is private, and potentially sensitive information in it’s original form. Thi hashed version of this ID is used, which should be considered safe - because it’s a hash, it’s not possible to get back to the original sensitive machine ID.
 
-This is necessary so we can tell the differences between installations.
+From a technical perspective, OliveTin uses the golang package `machineiid` to 
+get as hashed version of your MachineId. OliveTin follows the security
+recommendations of that project by using the hashed MachineId; https://github.com/denisbrodbeck/machineid#security-considerations 
+
+The reason for getting the machine ID is to tell the differences between installations -
+without this identifier, we would not know if 10 instances, or 1 instances of
+OliveTin are running a specific version. 
 
 ==== Why do you need to store any information at all?
 
