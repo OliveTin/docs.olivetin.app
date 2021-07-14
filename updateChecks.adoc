@@ -14,6 +14,7 @@ The information OliveTin sends to the update server is stored/saved., and this c
 * The checkins can be freely viewed by anyone in the public log.
 * The update check can be disabled.
 
+[#update-sent]
 ==== What is sent (and tracked)
 
 When OliveTin checks for updates, it will send the following;
@@ -55,7 +56,9 @@ This is incredibly useful information for project developers to know, because;
 
 ==== What is stored?
 
-The update service only stores the information that is sent - explained above. You can audit the update service code here; https://github.com/OliveTin/update-check.olivetin.app
+The update service only stores the information that is sent - <<update-sent,explained with an example above>>. 
+
+You can audit the update service code here; https://github.com/OliveTin/update-check.olivetin.app
 
 ==== What is not sent/stored
 
