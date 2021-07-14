@@ -192,7 +192,7 @@ div.admonitionblock td:first-child {
 <p>The source code for the update check (client), and the update service are open and on GitHub, freely auditable.</p>
 </li>
 <li>
-<p>A hashed form of the machine ID is used to differentiate between installations, but being hashed means we do not know your actual machine ID.</p>
+<p>A hashed form of the machine ID is used to differentiate between installations but being hashed means we do not know your actual machine ID <a href="update-tracking.html#machine-id">more info</a>.</p>
 </li>
 <li>
 <p>The update request is sent and stored in plain text - easy to check/audit.</p>
@@ -242,22 +242,23 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="paragraph">
-<p>OliveTin uses the golang package <code>machineid</code> to get as hashed version of your
-MachineId - which makes it so that we cannot reverse your (confidential)
-MachineId. For more information about how this is determined, see;
-<a href="https://github.com/denisbrodbeck/machineid#security-considerations" class="bare">https://github.com/denisbrodbeck/machineid#security-considerations</a></p>
-</div>
-<div class="paragraph">
 <p>If you would like to audit the update code, look at the following directory; <a href="https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck" class="bare">https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck</a></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_why_do_you_need_my_machine_id"><a class="anchor" href="#_why_do_you_need_my_machine_id"></a><a class="link" href="#_why_do_you_need_my_machine_id">5.4.3. Why do you need my machine ID?</a></h4>
+<h4 id="machine-id"><a class="anchor" href="#machine-id"></a><a class="link" href="#machine-id">5.4.3. Why do you need my machine ID?</a></h4>
 <div class="paragraph">
 <p>First of all, OliveTin only sends a hashed version of a unique identifier for your machine. OliveTin does not use your actual machine ID, because this is private, and potentially sensitive information in it’s original form. Thi hashed version of this ID is used, which should be considered safe - because it’s a hash, it’s not possible to get back to the original sensitive machine ID.</p>
 </div>
 <div class="paragraph">
-<p>This is necessary so we can tell the differences between installations.</p>
+<p>From a technical perspective, OliveTin uses the golang package <code>machineiid</code> to
+get as hashed version of your MachineId. OliveTin follows the security
+recommendations of that project by using the hashed MachineId; <a href="https://github.com/denisbrodbeck/machineid#security-considerations" class="bare">https://github.com/denisbrodbeck/machineid#security-considerations</a></p>
+</div>
+<div class="paragraph">
+<p>The reason for getting the machine ID is to tell the differences between installations -
+without this identifier, we would not know if 10 instances, or 1 instances of
+OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
@@ -337,7 +338,7 @@ MachineId. For more information about how this is determined, see;
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-14 11:42:52 UTC
+Last updated 2021-07-14 11:49:20 UTC
 </div>
 </div>
 </body>
