@@ -18,6 +18,26 @@ services:
     ports: 
       - "1337:1337"
     restart: unless-stopped
+
+networks:
+  web: # should match the network defined under the container's networks
+  section
+      external: true
 ----
 
 include::install_to_config.adoc[]
+
+==== Using Traefik with Docker Compose (and HTTPS)
+
+Traefik is a popular reverse proxy that seems to be used a lot in people's
+Docker compose setups.  
+
+Adjust the `docker-compose.yml` example above to include the following labels;
+
+----
+...
+    labels:
+      - traefik.http.routers.olivetin.rule=Host(`run.your.domain`)
+      - traefik.http.routers.olivetin.tls.certresolver=lets-encrypt
+...
+----
