@@ -206,7 +206,12 @@ services:
       - /docker/olivetin:/config # replace host path or volume as needed
     ports:
       - "1337:1337"
-    restart: unless-stopped</pre>
+    restart: unless-stopped
+
+networks:
+  web: # should match the network defined under the container's networks
+  section
+      external: true</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -217,6 +222,25 @@ the web interface.</p>
 <p>If you see the OliveTin page popup in your browser, you can jump to the
 <a href="config.html">configuration section</a> as the next step.</p>
 </div>
+<div class="sect3">
+<h4 id="_using_traefik_with_docker_compose_and_https"><a class="anchor" href="#_using_traefik_with_docker_compose_and_https"></a><a class="link" href="#_using_traefik_with_docker_compose_and_https">1.4.1. Using Traefik with Docker Compose (and HTTPS)</a></h4>
+<div class="paragraph">
+<p>Traefik is a popular reverse proxy that seems to be used a lot in people&#8217;s
+Docker compose setups.</p>
+</div>
+<div class="paragraph">
+<p>Adjust the <code>docker-compose.yml</code> example above to include the following labels;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>...
+    labels:
+      - traefik.http.routers.olivetin.rule=Host(`run.your.domain`)
+      - traefik.http.routers.olivetin.tls.certresolver=lets-encrypt
+...</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="_installation_as_a_container_podmandocker.html">Installation as a container (podman/docker)</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_installation_on_kubernetes_with_helm.html">Installation on Kubernetes with Helm</a> →</p>
@@ -224,7 +248,7 @@ the web interface.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-14 18:29:48 UTC
+Last updated 2021-07-16 19:48:45 UTC
 </div>
 </div>
 </body>
