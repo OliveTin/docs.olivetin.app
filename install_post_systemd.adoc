@@ -41,7 +41,7 @@ user@host: systemctl status OliveTin
 If the service has filed, scroll through the logs;
 
 ----
-user@host: journelctl -eu OliveTin
+user@host: journalctl -eu OliveTin
 ----
 
 If you cannot understand the logs, or otherwise need help, see the <<support>>
