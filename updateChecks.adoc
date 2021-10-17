@@ -85,6 +85,7 @@ But, simply, to disable this feature, add to your config file;
 	checkForUpdates: false
 
 
+[#hsts]
 ==== Why can't I visit update-check.olivetin.app in my browser?
 
 The root domain for OliveTin (OliveTin.app) has HSTS turned on - this forces your browser to use SSL (HTTPS - the little encryption padlock) for all subdomains - including www.olivetin.app and docs.olivetin.app. Although both of those websites don't transmit anything that really needs encrypion, the web is certainly moving to having SSL turned on everywhere. It even has a positive impact on search engine rankings!
