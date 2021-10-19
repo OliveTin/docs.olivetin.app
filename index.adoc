@@ -78,6 +78,8 @@ include::exitCodes.adoc[]
 
 include::updateChecks.adoc[]
 
+include::releasePipeline.adoc[]
+
 [#troubleshooting]
 == Troubleshooting
 

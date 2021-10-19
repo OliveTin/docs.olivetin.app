@@ -1,3 +1,4 @@
+[#actions]
 == Actions 
 
 [#action-container-control]

@@ -1,3 +1,4 @@
+[#action-customisation]
 == Action customisation
 
 === Icons
