@@ -1,3 +1,4 @@
+[#install-container]
 === Installation as a container (podman/docker)
 
 Containers are published on DockerHub.

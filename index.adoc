@@ -51,6 +51,8 @@ video::Ej6NM9rmZtk[youtube,width=100%]
 
 **Downloads** and links to container images can be found on the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
 
+include::choose_package.adoc[]
+
 include::install_systemd.adoc[]
 
 include::install_container.adoc[]
@@ -77,8 +79,6 @@ include::security.adoc[]
 include::exitCodes.adoc[]
 
 include::updateChecks.adoc[]
-
-include::releasePipeline.adoc[]
 
 [#troubleshooting]
 == Troubleshooting

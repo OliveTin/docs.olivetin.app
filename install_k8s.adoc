@@ -1,3 +1,4 @@
+[#install-k8s]
 === Installation on Kubernetes (manually)
 
 OliveTin works just fine on Kubernetes. The easiest way to deploy it is with a

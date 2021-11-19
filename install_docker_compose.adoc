@@ -1,3 +1,4 @@
+[#install-compose]
 === Installation using Docker Compose
 
 Docker compose is a popular way to define multi-container applications using a 
