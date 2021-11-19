@@ -84,6 +84,14 @@ But, simply, to disable this feature, add to your config file;
 
 	checkForUpdates: false
 
+[#hide-news-versions]
+==== How can I hide version upgrades in the OliveTin web interface?
+
+Set the following in your configuration file;
+
+    showNewVersions: false
+
+OliveTin will need to be restarted for this change to have affect.
 
 [#hsts]
 ==== Why can't I visit update-check.olivetin.app in my browser?
