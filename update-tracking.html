@@ -339,7 +339,21 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="hsts"><a class="anchor" href="#hsts"></a><a class="link" href="#hsts">5.4.10. Why can&#8217;t I visit update-check.olivetin.app in my browser?</a></h4>
+<h4 id="hide-news-versions"><a class="anchor" href="#hide-news-versions"></a><a class="link" href="#hide-news-versions">5.4.10. How can I hide version upgrades in the OliveTin web interface?</a></h4>
+<div class="paragraph">
+<p>Set the following in your configuration file;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>showNewVersions: false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>OliveTin will need to be restarted for this change to have affect.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="hsts"><a class="anchor" href="#hsts"></a><a class="link" href="#hsts">5.4.11. Why can&#8217;t I visit update-check.olivetin.app in my browser?</a></h4>
 <div class="paragraph">
 <p>The root domain for OliveTin (OliveTin.app) has HSTS turned on - this forces your browser to use SSL (HTTPS - the little encryption padlock) for all subdomains - including www.olivetin.app and docs.olivetin.app. Although both of those websites don&#8217;t transmit anything that really needs encrypion, the web is certainly moving to having SSL turned on everywhere. It even has a positive impact on search engine rankings!</p>
 </div>
@@ -363,7 +377,7 @@ OliveTin are running a specific version.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-19 13:10:00 UTC
+Last updated 2021-11-19 15:41:58 UTC
 </div>
 </div>
 </body>
