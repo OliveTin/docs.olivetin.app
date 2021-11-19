@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_recommended_installation_with_a_linux_package_using_systemd" class="book toc2 toc-left">
+<body id="install-linuxpackage" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -156,17 +156,19 @@ div.admonitionblock td:first-child {
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="_installation.html">1. Installation</a>
 <ul class="sectlevel2">
-<li><a href="_recommended_installation_with_a_linux_package_using_systemd.html"><span class="toc-current">1.1. Recommended: Installation with a Linux package, using systemd</span></a>
+<li><a href="choose-package.html">1.1. Which download do I need?</a>
 </li>
-<li><a href="_installation_from_a_tar_gz_manually_using_systemd.html">1.2. Installation from a .tar.gz manually, using systemd</a>
+<li><a href="install-linuxpackage.html"><span class="toc-current">1.2. Recommended: Installation with a Linux package, using systemd</span></a>
 </li>
-<li><a href="_installation_as_a_container_podmandocker.html">1.3. Installation as a container (podman/docker)</a>
+<li><a href="install-targz.html">1.3. Installation from a .tar.gz manually, using systemd</a>
 </li>
-<li><a href="_installation_using_docker_compose.html">1.4. Installation using Docker Compose</a>
+<li><a href="install-container.html">1.4. Installation as a container (podman/docker)</a>
 </li>
-<li><a href="_installation_on_kubernetes_with_helm.html">1.5. Installation on Kubernetes with Helm</a>
+<li><a href="install-compose.html">1.5. Installation using Docker Compose</a>
 </li>
-<li><a href="_installation_on_kubernetes_manually.html">1.6. Installation on Kubernetes (manually)</a>
+<li><a href="install-helm.html">1.6. Installation on Kubernetes with Helm</a>
+</li>
+<li><a href="install-k8s.html">1.7. Installation on Kubernetes (manually)</a>
 </li>
 </ul>
 </li>
@@ -185,54 +187,27 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_recommended_installation_with_a_linux_package_using_systemd"><a class="anchor" href="#_recommended_installation_with_a_linux_package_using_systemd"></a><a class="link" href="#_recommended_installation_with_a_linux_package_using_systemd">1.1. Recommended: Installation with a Linux package, using systemd</a></h3>
+<h3 id="install-linuxpackage"><a class="anchor" href="#install-linuxpackage"></a><a class="link" href="#install-linuxpackage">1.2. Recommended: Installation with a Linux package, using systemd</a></h3>
 <div class="paragraph">
 <p>Running OliveTin as a systemd service on a Linux machine means it can use any program installed on your machine (you don&#8217;t have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.</p>
 </div>
 <div class="sect3">
-<h4 id="_choosing_the_right_linux_package"><a class="anchor" href="#_choosing_the_right_linux_package"></a><a class="link" href="#_choosing_the_right_linux_package">1.1.1. Choosing the right Linux package</a></h4>
+<h4 id="_choosing_the_right_linux_package"><a class="anchor" href="#_choosing_the_right_linux_package"></a><a class="link" href="#_choosing_the_right_linux_package">1.2.1. Choosing the right Linux package</a></h4>
 <div class="paragraph">
 <p>There are .deb, .rpm, and similar packages published for OliveTin on each
 release page. Pick a package most relevant to the Linux distribution you are
 using from the <a href="https://github.com/jamesread/OliveTin/releases">downloads page</a>.</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Platform</th>
-<th class="tableblock halign-left valign-top">Recommend <a href="https://github.com/jamesread/OliveTin/releases">download package</a></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Raspbian on a Raspberry Pi</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin-&#8230;&#8203;-linux_armv6.deb</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Debian, Ubuntu on x86_64 (Intel/AMD)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin-&#8230;&#8203;-linux-amd64.deb</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fedora on Raspberry Pi</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin-&#8230;&#8203;-linux_armv6.rpm</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Fedora, CentOS, Red Hat on x86_64 (Intel/AMD)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin-&#8230;&#8203;-linux_amd64.rpm</code></p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>If you&#8217;re not sure which package to use, see <a href="choose-package.html">which download do I need?</a></p>
+</div>
 <div class="paragraph">
 <p>You can install these packages with your Linux package manager (eg,
 <code>dpkg -i OliveTin&#8230;&#8203;deb</code> or <code>rpm -U OliveTin&#8230;&#8203;rpm</code>).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_post_installation"><a class="anchor" href="#_post_installation"></a><a class="link" href="#_post_installation">1.1.2. Post installation</a></h4>
+<h4 id="_post_installation"><a class="anchor" href="#_post_installation"></a><a class="link" href="#_post_installation">1.2.2. Post installation</a></h4>
 <div class="paragraph">
 <p>You will need to write a basic configuration file before OliveTin will startup.</p>
 </div>
@@ -277,7 +252,7 @@ the web interface.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_troubleshooting_systemd_installations"><a class="anchor" href="#_troubleshooting_systemd_installations"></a><a class="link" href="#_troubleshooting_systemd_installations">1.1.3. Troubleshooting systemd installations</a></h4>
+<h4 id="_troubleshooting_systemd_installations"><a class="anchor" href="#_troubleshooting_systemd_installations"></a><a class="link" href="#_troubleshooting_systemd_installations">1.2.3. Troubleshooting systemd installations</a></h4>
 <div class="paragraph">
 <p>If you are having problems, you can check if OliveTin is running like this;</p>
 </div>
@@ -301,12 +276,12 @@ page.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_installation_from_a_tar_gz_manually_using_systemd.html">Installation from a .tar.gz manually, using systemd</a> →</p>
+<p>← Previous: <a href="choose-package.html">Which download do I need?</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-targz.html">Installation from a .tar.gz manually, using systemd</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-19 15:41:58 UTC
+Last updated 2021-11-19 17:12:58 UTC
 </div>
 </div>
 </body>

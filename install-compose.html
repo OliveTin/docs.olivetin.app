@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_installation_on_kubernetes_manually" class="book toc2 toc-left">
+<body id="install-compose" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -156,17 +156,19 @@ div.admonitionblock td:first-child {
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="_installation.html">1. Installation</a>
 <ul class="sectlevel2">
-<li><a href="_recommended_installation_with_a_linux_package_using_systemd.html">1.1. Recommended: Installation with a Linux package, using systemd</a>
+<li><a href="choose-package.html">1.1. Which download do I need?</a>
 </li>
-<li><a href="_installation_from_a_tar_gz_manually_using_systemd.html">1.2. Installation from a .tar.gz manually, using systemd</a>
+<li><a href="install-linuxpackage.html">1.2. Recommended: Installation with a Linux package, using systemd</a>
 </li>
-<li><a href="_installation_as_a_container_podmandocker.html">1.3. Installation as a container (podman/docker)</a>
+<li><a href="install-targz.html">1.3. Installation from a .tar.gz manually, using systemd</a>
 </li>
-<li><a href="_installation_using_docker_compose.html">1.4. Installation using Docker Compose</a>
+<li><a href="install-container.html">1.4. Installation as a container (podman/docker)</a>
 </li>
-<li><a href="_installation_on_kubernetes_with_helm.html">1.5. Installation on Kubernetes with Helm</a>
+<li><a href="install-compose.html"><span class="toc-current">1.5. Installation using Docker Compose</span></a>
 </li>
-<li><a href="_installation_on_kubernetes_manually.html"><span class="toc-current">1.6. Installation on Kubernetes (manually)</span></a>
+<li><a href="install-helm.html">1.6. Installation on Kubernetes with Helm</a>
+</li>
+<li><a href="install-k8s.html">1.7. Installation on Kubernetes (manually)</a>
 </li>
 </ul>
 </li>
@@ -185,46 +187,33 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_installation_on_kubernetes_manually"><a class="anchor" href="#_installation_on_kubernetes_manually"></a><a class="link" href="#_installation_on_kubernetes_manually">1.6. Installation on Kubernetes (manually)</a></h3>
+<h3 id="install-compose"><a class="anchor" href="#install-compose"></a><a class="link" href="#install-compose">1.5. Installation using Docker Compose</a></h3>
 <div class="paragraph">
-<p>OliveTin works just fine on Kubernetes. The easiest way to deploy it is with a
-Kubernetes <code>ConfigMap</code>, <code>Deployment</code>, <code>Service</code> and finally <code>Ingress</code>. Like so;</p>
+<p>Docker compose is a popular way to define multi-container applications using a
+infrastructure as code approach.</p>
+</div>
+<div class="paragraph">
+<p>If you personally prefer to use <code>docker compose</code>, then here is a sample to get
+you started;</p>
 </div>
 <div class="listingblock">
-<div class="title">ConfigMap</div>
+<div class="title"><code>docker-compose.yml</code></div>
 <div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_configmap.yml</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The main application config.yml for OliveTin is specified in the <code>ConfigMap</code>
-above. You will want to edit this later - see the "Configuration" section.</p>
-</div>
-<div class="paragraph">
-<p>Next, we need a deployment;</p>
-</div>
-<div class="listingblock">
-<div class="title">Deployment</div>
-<div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_deployment.yml</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>That should deploy OliveTin. Then expose it as a service;</p>
-</div>
-<div class="listingblock">
-<div class="title">Service</div>
-<div class="content">
-<pre class="highlight"><code>user@host: kubectl expose deployment/olivetin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then lastly, create a Ingress rule for for that service;</p>
-</div>
-<div class="listingblock">
-<div class="title">Ingress</div>
-<div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_ingress.yml</code></pre>
+<pre>version: "3.8"
+services:
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    volumes:
+      - /docker/olivetin:/config # replace host path or volume as needed
+    ports:
+      - "1337:1337"
+    restart: unless-stopped
+
+networks:
+  web: # should match the network defined under the container's networks
+  section
+      external: true</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -235,14 +224,33 @@ the web interface.</p>
 <p>If you see the OliveTin page popup in your browser, you can jump to the
 <a href="config.html">configuration section</a> as the next step.</p>
 </div>
+<div class="sect3">
+<h4 id="_using_traefik_with_docker_compose_and_https"><a class="anchor" href="#_using_traefik_with_docker_compose_and_https"></a><a class="link" href="#_using_traefik_with_docker_compose_and_https">1.5.1. Using Traefik with Docker Compose (and HTTPS)</a></h4>
+<div class="paragraph">
+<p>Traefik is a popular reverse proxy that seems to be used a lot in people&#8217;s
+Docker compose setups.</p>
+</div>
+<div class="paragraph">
+<p>Adjust the <code>docker-compose.yml</code> example above to include the following labels;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>...
+    labels:
+      - traefik.http.routers.olivetin.rule=Host(`run.your.domain`)
+      - traefik.http.routers.olivetin.tls.certresolver=lets-encrypt
+...</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_installation_on_kubernetes_with_helm.html">Installation on Kubernetes with Helm</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="config.html">Configuration</a> →</p>
+<p>← Previous: <a href="install-container.html">Installation as a container (podman/docker)</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-helm.html">Installation on Kubernetes with Helm</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-19 15:41:58 UTC
+Last updated 2021-11-19 17:12:58 UTC
 </div>
 </div>
 </body>
