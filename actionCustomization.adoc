@@ -1,6 +1,75 @@
 [#action-customisation]
 == Action customisation
 
+=== Arguments 
+
+Many times you need to customize how an action/shell command is run, with arguments. For example;
+
+----
+echo "Hello world"
+----
+
+In the example above, `Hello world` is an argument passed to the `echo` command. OliveTin allows you to add pre-defined, and free-text arguments to commands in this way. Below is the OliveTin version of the `echo` command shown above;
+
+----
+actions:
+  - title: echo a message
+    icon: smile
+    shell: echo {{ message }}
+    arguments:
+      - name: message
+        type: ascii_sentence
+----
+
+This will give you a normal button, like this;
+
+image::images/args1.png[]
+
+However, when you click on it, you'll get a prompt to enter arguments, like this;
+
+image::images/args2.png[]
+
+You'll see that the type is set to `ascii_identifier`. This applies fairly safe
+input validation to arguments, so that only a-z, 0-9, spaces and .'s are allowed. 
+
+When you start the action, and it's finished, go to the "logs" view to view the output of the command we've just run.
+
+image::images/args3.png[]
+
+==== Predefined choices
+
+Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify. 
+
+----
+actions:
+  - title: echo a message
+    icon: smile
+    shell: echo "{{ message }}"
+    arguments:
+      - name: message
+        choices:
+          - title: Hello
+            value: Hello there!
+
+          - title: Goodbye
+            value: Aww, goodbye. :-( 
+----
+
+Note that when predefined choices are used, the argument type is ignored.
+
+==== Argument types
+
+A full list of argument types are below;
+
+|===
+| Type                        | Allowed values
+| very_dangerous_raw_string   | Any thing. This is incredibly dangerous, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
+| int                         | Any number, made up of the characters 0 to 9. Negative numbers are not supported.
+| ascii                       | a-z (case insensitive), 0-9, but no spaces or punctuation
+| ascii_identifier            | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 
+| ascii_sentence              | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
+|===
+
 === Icons
 
 You can specify any HTML for an icon. It's a popular choice to use Unicode
