@@ -178,8 +178,9 @@ div.admonitionblock td:first-child {
 <img src="images/icons/OliveTinLogo.png" alt="OliveTinLogo" width="160px">
 </div>
 </div>
+<h2 id="_olivetin_introduction" class="discrete">OliveTin Introduction</h2>
 <div class="paragraph">
-<p><strong><a href="https://www.olivetin.app">OliveTin</a></strong> is an app to run your Linux shell commands from a web interface.</p>
+<p><strong><a href="https://www.olivetin.app">OliveTin</a></strong> gives <strong>safe</strong> and <strong>simple</strong> access to predefined shell commands from a web interface.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="images/icons/GitHub.png" alt="inline"></span> <a href="https://github.com/jamesread/OliveTin">OliveTin on GitHub</a></p>
@@ -191,33 +192,46 @@ div.admonitionblock td:first-child {
 <p>The <a href="https://www.olivetin.app">OliveTin Homepage is here</a>. This site that you are viewing is the documentation for OliveTin.</p>
 </div>
 <hr>
+<h3 id="_use_cases" class="discrete">Use cases</h3>
 <div class="paragraph">
-<p><strong>Use cases</strong>;</p>
+<p><strong>Safely</strong> give access to commands, for less technical people;</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>Give controlled access to run shell commands to less technical folks who cannot be trusted with SSH. I use this so my family can <code>podman restart plex</code> without asking me, and without giving them shell access!</p>
+<p>eg: Give your family a button to <code>podman restart plex</code></p>
 </li>
 <li>
-<p>Great for home automation tablets stuck on walls around your house - I use this to turn Hue lights on and off for example.</p>
+<p>eg: Give junior admins a simple web form with dropdowns, to start your custom script. <code>backupScript.sh --folder {{ customerName }}</code></p>
 </li>
 <li>
-<p>Sometimes SSH access isn&#8217;t possible to a server, or you are feeling too lazy to type a long command you run regularly! I use this to send Wake on Lan commands to servers around my house.</p>
+<p>eg: Enable SSH access to the server for the next 20 mins <code>firewall-cmd --add-service ssh --timeout 20m</code></p>
 </li>
-</ol>
+</ul>
 </div>
 <div class="paragraph">
-<p><strong>Demo</strong></p>
+<p><strong>Simplify</strong> complex commands, make them accessible and repeatable;</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>eg: Expose complex commands on touchscreen tablets stuck on walls around your house. <code>wake-on-lan aa:bb:cc:11:22:33</code></p>
+</li>
+<li>
+<p>eg: Run long running on your servers from your cell phone. <code>dnf update -y</code></p>
+</li>
+<li>
+<p>eg: Define complex commands with lots of preset arguments, and turn a few arguments into dropdown select boxes. <code>docker rm {{ container }} &amp;&amp; docker create {{ container }} &amp;&amp; docker start {{ container }}</code></p>
+</li>
+</ul>
+</div>
+<h3 id="_demo" class="discrete">Demo</h3>
 <div class="videoblock">
 <div class="content">
 <iframe width="100%" src="https://www.youtube.com/embed/Ej6NM9rmZtk?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
-<div class="paragraph">
-<p><strong>Features</strong></p>
-</div>
+<h3 id="_features" class="discrete">Features</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -246,9 +260,7 @@ div.admonitionblock td:first-child {
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>Read more;</strong></p>
-</div>
+<h3 id="_read_more" class="discrete">Read more</h3>
 </div>
 </div>
 <div class="ulist">
@@ -279,7 +291,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-19 20:38:56 UTC
+Last updated 2021-11-20 00:55:30 UTC
 </div>
 </div>
 </body>
