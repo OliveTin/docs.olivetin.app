@@ -3,32 +3,22 @@
 
 === Arguments 
 
+==== Introduction to Arguments
+
+Actions/commands that OliveTin runs, without arguments, are generally quite safe - only that command can be run, without modifications. However, many users need the flexibility to set options on that command - normally called command line arguments. In OliveTin, arguments defined in a shell commands like `echo {{ message }}`, with a bit of extra configuration.
+
 ==== Important Safety Warning
 
-Actions/commands that OliveTin runs, without arguments, are generally quite safe - only that command can be run, without modifications. However, many users need the flexibility to set options on that command - normally called command line arguments. 
+Before you continue, it's important to read through this safety warning. 
 
-OliveTin now supports this feature, but there is a element of risk. For example, if your command is `echo {{ message }}`, and you allow your users to set `{{ message }}` to the value `"" && rm -rf /` , then you've got real problems. For this reason, OliveTin tries to give you useful ways to restrict what users are allowed to enter - with **argument types**. 
+OliveTin supports customization of command line arguments, but there is a element of risk. For example, if your command is `echo {{ message }}`, and you allow your users to set `{{ message }}` to the value `"" && rm -rf /` , then you've got real problems. For this reason, OliveTin tries to give you useful ways to restrict what users are allowed to enter - with **argument types**. 
 
 However, here are some important rules to try and follow with argument types;
 
 * Use the most restrictive argument types when possible - `ascii` and `int`. This will stop users entering argument values that might be used dangerously, but it's not foolproof. For example, if you have a command like `createSnapshot.sh --count {{ snapshotCount }}`, and set `snapshotCount` to `int`, then at least users will only be able to enter integer numbers. However, nothing stops them entering crazy values like 9999. 
 * Don't give access to actions with arguments to people you don't trust. Please don't ever put your OliveTin install on the public internet! 
 
-==== Argument types
-
-A full list of argument types are below;
-
-|===
-| Type                        | Allowed values
-| very_dangerous_raw_string   | Any thing. This is incredibly dangerous, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
-| int                         | Any number, made up of the characters 0 to 9. Negative numbers are not supported.
-| ascii                       | a-z (case insensitive), 0-9, but no spaces or punctuation
-| ascii_identifier            | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 
-| ascii_sentence              | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
-|===
-
-
-=== Hello World - Your first command with arguments
+==== Your first command with arguments
 
 Many times you need to customize how an action/shell command is run, with arguments. For example;
 
@@ -63,7 +53,7 @@ When you start the action, and it's finished, go to the "logs" view to view the 
 
 image::images/args3.png[]
 
-==== Hello or goodbye? Restricting choices
+==== Restricting choices
 
 Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify. 
 
@@ -83,6 +73,26 @@ actions:
 ----
 
 Note that when predefined choices are used, the argument type is ignored.
+
+This is what it looks like in the web interface;
+
+image::images/args4.png[]
+
+==== Argument types
+
+A full list of argument types are below;
+
+.Argument types reference table
+[%header,cols="1,2"]
+|===
+| Type                        | Allowed values
+| very_dangerous_raw_string   | Any thing. This is incredibly dangerous, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
+| int                         | Any number, made up of the characters 0 to 9. Negative numbers are not supported.
+| ascii                       | a-z (case insensitive), 0-9, but no spaces or punctuation
+| ascii_identifier            | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 
+| ascii_sentence              | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
+|===
+
 
 === Icons
 
