@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_timeouts" class="book toc2 toc-left">
+<body id="_hello_world_your_first_command_with_arguments" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -164,11 +164,11 @@ div.admonitionblock td:first-child {
 <ul class="sectlevel2">
 <li><a href="_arguments.html">4.1. Arguments</a>
 </li>
-<li><a href="_hello_world_your_first_command_with_arguments.html">4.2. Hello World - Your first command with arguments</a>
+<li><a href="_hello_world_your_first_command_with_arguments.html"><span class="toc-current">4.2. Hello World - Your first command with arguments</span></a>
 </li>
 <li><a href="_icons.html">4.3. Icons</a>
 </li>
-<li><a href="_timeouts.html"><span class="toc-current">4.4. Timeouts</span></a>
+<li><a href="_timeouts.html">4.4. Timeouts</a>
 </li>
 <li><a href="_run_as_different_users.html">4.5. Run as different users</a>
 </li>
@@ -183,41 +183,85 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_timeouts"><a class="anchor" href="#_timeouts"></a><a class="link" href="#_timeouts">4.4. Timeouts</a></h3>
+<h3 id="_hello_world_your_first_command_with_arguments"><a class="anchor" href="#_hello_world_your_first_command_with_arguments"></a><a class="link" href="#_hello_world_your_first_command_with_arguments">4.2. Hello World - Your first command with arguments</a></h3>
 <div class="paragraph">
-<p>By default, actions in OliveTin have a 3 second timeout. This means that
-OliveTin will kill the action if it is running for too long.</p>
-</div>
-<div class="paragraph">
-<p>You can set your own timeouts like this;</p>
+<p>Many times you need to customize how an action/shell command is run, with arguments. For example;</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>- actions:
-  - title: My special action
-    shell: sleep 5
-    timeout: 10</pre>
+<pre>echo "Hello world"</pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Allowing commands to run for infinity just doesn&#8217;t seem to make sense, or
-at least is probably a bad case for OliveTin. Therefore, if you set a timeout
-<strong>less than 3 seconds</strong>, OliveTin will overwrite your Timeout and default to 3
-seconds. If you think you have a use case where a shorter (or infinite) timeout
-makes sense, please open an issue and let&#8217;s discuss.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>In the example above, <code>Hello world</code> is an argument passed to the <code>echo</code> command. OliveTin allows you to add pre-defined, and free-text arguments to commands in this way. Below is the OliveTin version of the <code>echo</code> command shown above;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+  - title: echo a message
+    icon: smile
+    shell: echo {{ message }}
+    arguments:
+      - name: message
+        type: ascii_sentence</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will give you a normal button, like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/args1.png" alt="args1">
+</div>
+</div>
+<div class="paragraph">
+<p>However, when you click on it, you&#8217;ll get a prompt to enter arguments, like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/args2.png" alt="args2">
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll see that the type is set to <code>ascii_identifier</code>. This applies fairly safe
+input validation to arguments, so that only a-z, 0-9, spaces and .'s are allowed.</p>
+</div>
+<div class="paragraph">
+<p>When you start the action, and it&#8217;s finished, go to the "logs" view to view the output of the command we&#8217;ve just run.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/args3.png" alt="args3">
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hello_or_goodbye_restricting_choices"><a class="anchor" href="#_hello_or_goodbye_restricting_choices"></a><a class="link" href="#_hello_or_goodbye_restricting_choices">4.2.1. Hello or goodbye? Restricting choices</a></h4>
+<div class="paragraph">
+<p>Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+  - title: echo a message
+    icon: smile
+    shell: echo "{{ message }}"
+    arguments:
+      - name: message
+        choices:
+          - title: Hello
+            value: Hello there!
+
+          - title: Goodbye
+            value: Aww, goodbye. :-(</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that when predefined choices are used, the argument type is ignored.</p>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_icons.html">Icons</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_run_as_different_users.html">Run as different users</a> →</p>
+<p>← Previous: <a href="_arguments.html">Arguments</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_icons.html">Icons</a> →</p>
 </div>
 </div>
 <div id="footer">
