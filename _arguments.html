@@ -164,13 +164,11 @@ div.admonitionblock td:first-child {
 <ul class="sectlevel2">
 <li><a href="_arguments.html"><span class="toc-current">4.1. Arguments</span></a>
 </li>
-<li><a href="_hello_world_your_first_command_with_arguments.html">4.2. Hello World - Your first command with arguments</a>
+<li><a href="_icons.html">4.2. Icons</a>
 </li>
-<li><a href="_icons.html">4.3. Icons</a>
+<li><a href="_timeouts.html">4.3. Timeouts</a>
 </li>
-<li><a href="_timeouts.html">4.4. Timeouts</a>
-</li>
-<li><a href="_run_as_different_users.html">4.5. Run as different users</a>
+<li><a href="_run_as_different_users.html">4.4. Run as different users</a>
 </li>
 </ul>
 </li>
@@ -185,12 +183,18 @@ div.admonitionblock td:first-child {
 <div class="sect2">
 <h3 id="_arguments"><a class="anchor" href="#_arguments"></a><a class="link" href="#_arguments">4.1. Arguments</a></h3>
 <div class="sect3">
-<h4 id="_important_safety_warning"><a class="anchor" href="#_important_safety_warning"></a><a class="link" href="#_important_safety_warning">4.1.1. Important Safety Warning</a></h4>
+<h4 id="_introduction_to_arguments"><a class="anchor" href="#_introduction_to_arguments"></a><a class="link" href="#_introduction_to_arguments">4.1.1. Introduction to Arguments</a></h4>
 <div class="paragraph">
-<p>Actions/commands that OliveTin runs, without arguments, are generally quite safe - only that command can be run, without modifications. However, many users need the flexibility to set options on that command - normally called command line arguments.</p>
+<p>Actions/commands that OliveTin runs, without arguments, are generally quite safe - only that command can be run, without modifications. However, many users need the flexibility to set options on that command - normally called command line arguments. In OliveTin, arguments defined in a shell commands like <code>echo {{ message }}</code>, with a bit of extra configuration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_important_safety_warning"><a class="anchor" href="#_important_safety_warning"></a><a class="link" href="#_important_safety_warning">4.1.2. Important Safety Warning</a></h4>
+<div class="paragraph">
+<p>Before you continue, it&#8217;s important to read through this safety warning.</p>
 </div>
 <div class="paragraph">
-<p>OliveTin now supports this feature, but there is a element of risk. For example, if your command is <code>echo {{ message }}</code>, and you allow your users to set <code>{{ message }}</code> to the value <code>"" &amp;&amp; rm -rf /</code> , then you&#8217;ve got real problems. For this reason, OliveTin tries to give you useful ways to restrict what users are allowed to enter - with <strong>argument types</strong>.</p>
+<p>OliveTin supports customization of command line arguments, but there is a element of risk. For example, if your command is <code>echo {{ message }}</code>, and you allow your users to set <code>{{ message }}</code> to the value <code>"" &amp;&amp; rm -rf /</code> , then you&#8217;ve got real problems. For this reason, OliveTin tries to give you useful ways to restrict what users are allowed to enter - with <strong>argument types</strong>.</p>
 </div>
 <div class="paragraph">
 <p>However, here are some important rules to try and follow with argument types;</p>
@@ -207,20 +211,109 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_argument_types"><a class="anchor" href="#_argument_types"></a><a class="link" href="#_argument_types">4.1.2. Argument types</a></h4>
+<h4 id="_your_first_command_with_arguments"><a class="anchor" href="#_your_first_command_with_arguments"></a><a class="link" href="#_your_first_command_with_arguments">4.1.3. Your first command with arguments</a></h4>
+<div class="paragraph">
+<p>Many times you need to customize how an action/shell command is run, with arguments. For example;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>echo "Hello world"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example above, <code>Hello world</code> is an argument passed to the <code>echo</code> command. OliveTin allows you to add pre-defined, and free-text arguments to commands in this way. Below is the OliveTin version of the <code>echo</code> command shown above;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+  - title: echo a message
+    icon: smile
+    shell: echo {{ message }}
+    arguments:
+      - name: message
+        type: ascii_sentence</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will give you a normal button, like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/args1.png" alt="args1">
+</div>
+</div>
+<div class="paragraph">
+<p>However, when you click on it, you&#8217;ll get a prompt to enter arguments, like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/args2.png" alt="args2">
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll see that the type is set to <code>ascii_identifier</code>. This applies fairly safe
+input validation to arguments, so that only a-z, 0-9, spaces and .'s are allowed.</p>
+</div>
+<div class="paragraph">
+<p>When you start the action, and it&#8217;s finished, go to the "logs" view to view the output of the command we&#8217;ve just run.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/args3.png" alt="args3">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_restricting_choices"><a class="anchor" href="#_restricting_choices"></a><a class="link" href="#_restricting_choices">4.1.4. Restricting choices</a></h4>
+<div class="paragraph">
+<p>Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+  - title: echo a message
+    icon: smile
+    shell: echo "{{ message }}"
+    arguments:
+      - name: message
+        choices:
+          - title: Hello
+            value: Hello there!
+
+          - title: Goodbye
+            value: Aww, goodbye. :-(</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that when predefined choices are used, the argument type is ignored.</p>
+</div>
+<div class="paragraph">
+<p>This is what it looks like in the web interface;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/args4.png" alt="args4">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_argument_types"><a class="anchor" href="#_argument_types"></a><a class="link" href="#_argument_types">4.1.5. Argument types</a></h4>
 <div class="paragraph">
 <p>A full list of argument types are below;</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Argument types reference table</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allowed values</p></td>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Allowed values</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">very_dangerous_raw_string</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Any thing. This is incredibly dangerous, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.</p></td>
@@ -246,12 +339,12 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_hello_world_your_first_command_with_arguments.html">Hello World - Your first command with arguments</a> →</p>
+<p>↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_icons.html">Icons</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-20 21:46:21 UTC
+Last updated 2021-11-20 22:05:27 UTC
 </div>
 </div>
 </body>
