@@ -1,7 +1,7 @@
 [#choose-package]
 === Which download do I need?
 
-**Downloads** can be found on the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
+**Packages** can be downloaded from the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
 
 Some folks need extra help understanding which package/download is needed. This table below should help;
 
@@ -30,7 +30,7 @@ Running OliveTin as a <<install-systemd,systemd service>> on a Linux machine mea
 
 ==== Container images 
 
-Official container images can be found for OliveTin link:https://hub.docker.com/r/jamesread/olivetin/tags?page=1&ordering=last_updated[on DockerHub].
+Container images can be found for OliveTin link:https://hub.docker.com/r/jamesread/olivetin/tags?page=1&ordering=last_updated[on DockerHub].
 
 * <<install-container,Installation as a conatiner (podman/docker)>>
 * <<install-compose,Installation with Docker Compose>>

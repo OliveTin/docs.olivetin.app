@@ -14,7 +14,10 @@ toc::[]
 
 image::images/icons/OliveTinLogo.png[float="right",width = "160px"]
 
-**link:https://www.olivetin.app[OliveTin]** is an app to run your Linux shell commands from a web interface.
+[discrete]
+== OliveTin Introduction
+
+**link:https://www.olivetin.app[OliveTin]** gives **safe** and **simple** access to predefined shell commands from a web interface.
 
 image:images/icons/GitHub.png[inline] link:https://github.com/jamesread/OliveTin[OliveTin on GitHub]
 
@@ -24,17 +27,28 @@ The link:https://www.olivetin.app[OliveTin Homepage is here]. This site that you
 
 '''
 
-**Use cases**;
+[discrete]
+=== Use cases
 
-1. Give controlled access to run shell commands to less technical folks who cannot be trusted with SSH. I use this so my family can `podman restart plex` without asking me, and without giving them shell access!
-2. Great for home automation tablets stuck on walls around your house - I use this to turn Hue lights on and off for example. 
-3. Sometimes SSH access isn't possible to a server, or you are feeling too lazy to type a long command you run regularly! I use this to send Wake on Lan commands to servers around my house.
+**Safely** give access to commands, for less technical people;
 
-**Demo**
+* eg: Give your family a button to `podman restart plex`
+* eg: Give junior admins a simple web form with dropdowns, to start your custom script. `backupScript.sh --folder {{ customerName }}`
+* eg: Enable SSH access to the server for the next 20 mins `firewall-cmd --add-service ssh --timeout 20m`
+
+**Simplify** complex commands, make them accessible and repeatable;
+
+* eg: Expose complex commands on touchscreen tablets stuck on walls around your house. `wake-on-lan aa:bb:cc:11:22:33`
+* eg: Run long running on your servers from your cell phone. `dnf update -y`
+* eg: Define complex commands with lots of preset arguments, and turn a few arguments into dropdown select boxes. `docker rm {{ container }} && docker create {{ container }} && docker start {{ container }}`
+
+[discrete]
+=== Demo
 
 video::Ej6NM9rmZtk[youtube,width=100%]
 
-**Features**
+[discrete]
+=== Features
 
 * **Responsive, touch-friendly UI** - great for tablets and mobile
 * **Super simple config in YAML** - because if it's not YAML now-a-days, it's not "cloud native" :-) 
@@ -45,11 +59,14 @@ video::Ej6NM9rmZtk[youtube,width=100%]
 * **Lightweight on resources** - uses only a few MB of RAM and barely any CPU. Written in Go, with a web interface written as a modern, responsive, Single Page App that uses the REST/gRPC API.
 * **Good amount of unit tests and style checks** - helps potential contributors be consistent, and helps with maintainability.
 
-**Read more;**
+[discrete]
+=== Read more
 
 == Installation
 
-**Downloads** and links to container images can be found on the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
+**Packages (recommended)** can be downloaded from the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
+
+**Container images** can be found for OliveTin link:https://hub.docker.com/r/jamesread/olivetin/tags?page=1&ordering=last_updated[on DockerHub].
 
 include::choose_package.adoc[]
 
