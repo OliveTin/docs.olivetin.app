@@ -1,4 +1,5 @@
-=== Ports
+[#network-ports]
+=== Network ports
 
 OliveTin might suprise some people when they see it is listening on several
 ports when it starts up. Most of these ports are internal and localhost-only by

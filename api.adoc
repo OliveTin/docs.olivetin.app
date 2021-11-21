@@ -5,7 +5,7 @@ This section of the documentation is intended for developers, and those who want
 
 Short version: http://olivetinServer:1337/api for the REST API.
 
-Longer version: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. The REST gateway is used by the WebUI, and you can use it too by default. The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<ports, the network ports documentation>> for a better description of how the APIs are exposed. 
+Longer version: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. The REST gateway is used by the WebUI, and you can use it too by default. The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. 
 
 ==== Example API calls
 
