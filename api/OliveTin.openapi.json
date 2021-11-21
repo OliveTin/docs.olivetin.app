@@ -1,0 +1,353 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "OliveTin.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "OliveTinApi"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/GetDashboardComponents": {
+      "get": {
+        "operationId": "OliveTinApi_GetDashboardComponents",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetDashboardComponentsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "OliveTinApi"
+        ]
+      }
+    },
+    "/api/GetLogs": {
+      "get": {
+        "operationId": "OliveTinApi_GetLogs",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetLogsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "OliveTinApi"
+        ]
+      }
+    },
+    "/api/StartAction": {
+      "post": {
+        "operationId": "OliveTinApi_StartAction",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/StartActionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StartActionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OliveTinApi"
+        ]
+      }
+    },
+    "/api/ValidateArgumentType": {
+      "post": {
+        "operationId": "OliveTinApi_ValidateArgumentType",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ValidateArgumentTypeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValidateArgumentTypeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OliveTinApi"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "canExec": {
+          "type": "boolean"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActionArgument"
+          }
+        }
+      }
+    },
+    "ActionArgument": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActionArgumentChoice"
+          }
+        }
+      }
+    },
+    "ActionArgumentChoice": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "Entity": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Action"
+          }
+        }
+      }
+    },
+    "GetDashboardComponentsResponse": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Action"
+          }
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Entity"
+          }
+        }
+      }
+    },
+    "GetLogsResponse": {
+      "type": "object",
+      "properties": {
+        "logs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LogEntry"
+          }
+        }
+      }
+    },
+    "LogEntry": {
+      "type": "object",
+      "properties": {
+        "datetime": {
+          "type": "string"
+        },
+        "actionTitle": {
+          "type": "string"
+        },
+        "stdout": {
+          "type": "string"
+        },
+        "stderr": {
+          "type": "string"
+        },
+        "timedOut": {
+          "type": "boolean"
+        },
+        "exitCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userClass": {
+          "type": "string"
+        },
+        "actionIcon": {
+          "type": "string"
+        }
+      }
+    },
+    "StartActionArgument": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "StartActionRequest": {
+      "type": "object",
+      "properties": {
+        "actionName": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StartActionArgument"
+          }
+        }
+      }
+    },
+    "StartActionResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/LogEntry"
+        }
+      }
+    },
+    "ValidateArgumentTypeRequest": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ValidateArgumentTypeResponse": {
+      "type": "object",
+      "properties": {
+        "valid": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

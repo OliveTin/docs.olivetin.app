@@ -102,5 +102,4 @@ include::updateChecks.adoc[]
 
 include::troubleshooting.adoc[]
 
-
-
+include::api.adoc[]
