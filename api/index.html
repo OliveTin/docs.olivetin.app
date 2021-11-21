@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>OliveTin API</title>
+    <link rel="stylesheet" type="text/css" href="swagger-ui.css">
+</head>
+
+<body>
+<div id="swagger-ui"></div>
+
+<script src="swagger-ui-bundle.js"></script>
+<script src="swagger-ui-standalone-preset.js"></script>
+
+<script>
+window.onload = function() {
+  const ui = SwaggerUIBundle({
+    url: "//docs.olivetin.ap/api/OliveTin.openapi.json",
+    dom_id: '#swagger-ui',
+	supportedSubmitMethods: [],
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ]
+  })
+
+  window.ui = ui
+}
+</script>
+</body>
+</html>
