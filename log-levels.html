@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_olivetin_api_overview" class="book toc2 toc-left">
+<body id="log-levels" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -157,6 +157,12 @@ div.admonitionblock td:first-child {
 <li><a href="_installation.html">1. Installation</a>
 </li>
 <li><a href="config.html">2. Configuration</a>
+<ul class="sectlevel2">
+<li><a href="hide-nav.html">2.1. Hide Navigation</a>
+</li>
+<li><a href="log-levels.html"><span class="toc-current">2.2. Log Levels</span></a>
+</li>
+</ul>
 </li>
 <li><a href="actions.html">3. Actions</a>
 </li>
@@ -169,54 +175,57 @@ div.admonitionblock td:first-child {
 <li><a href="troubleshooting.html">7. Troubleshooting</a>
 </li>
 <li><a href="_api.html">8. API</a>
-<ul class="sectlevel2">
-<li><a href="_olivetin_api_overview.html"><span class="toc-current">8.1. OliveTin API Overview</span></a>
-</li>
-</ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_olivetin_api_overview"><a class="anchor" href="#_olivetin_api_overview"></a><a class="link" href="#_olivetin_api_overview">8.1. OliveTin API Overview</a></h3>
+<h3 id="log-levels"><a class="anchor" href="#log-levels"></a><a class="link" href="#log-levels">2.2. Log Levels</a></h3>
 <div class="paragraph">
-<p>This section of the documentation is intended for developers, and those who want to hack around with OliveTin and extend it. This page provides a few pointers to get started.</p>
-</div>
-<div class="paragraph">
-<p>Short version: <a href="http://olivetinServer:1337/api" class="bare">http://olivetinServer:1337/api</a> for the REST API.</p>
+<p>OliveTin supports a few different log levels. The default logLevel is <code>INFO</code>.</p>
 </div>
 <div class="paragraph">
-<p>Longer version: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. The REST gateway is used by the WebUI, and you can use it too by default. The gRPC API only listens on localhost default, but it can be set to listen publicly. See <a href="network-ports.html">the network ports documentation</a> for a better description of how the APIs are exposed.</p>
+<p>You can set a <code>logLevel</code> in config.yaml like this;</p>
 </div>
-<div class="sect3">
-<h4 id="_example_api_calls"><a class="anchor" href="#_example_api_calls"></a><a class="link" href="#_example_api_calls">8.1.1. Example API calls</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre>logLevel: "INFO"
+
+actions:
+    ....</pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Example GetDashboardComponents: <a href="http://olivetinServer:1337/api/GetDashboardComponents" class="bare">http://olivetinServer:1337/api/GetDashboardComponents</a></p>
+<p>The supported log levels are;</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_links"><a class="anchor" href="#_links"></a><a class="link" href="#_links">8.1.2. Links</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://docs.olivetin.app/api/">Swagger UI for OliveTin API</a></p>
+<p><code>DEBUG</code> - Every possible log message will be shown. This will use a lot of disk space and is not recommended unless you are a developer / like reading code.</p>
 </li>
 <li>
-<p><a href="http://docs.olivetin.app/api/OliveTin.openapi.json">OpenAPI JSON</a></p>
+<p><code>ERROR</code> - OliveTin rarely uses the <code>ERROR</code> log level.</p>
 </li>
 <li>
-<p><a href="https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto">The OliveTin Protobuf file</a>.</p>
+<p><code>WARN</code> - Very few messages, only warnings are shown.</p>
+</li>
+<li>
+<p><code>INFO</code> - The defualt log level.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Please do talk to the developers on Discord if you&#8217;d like help using the API, or you&#8217;re thinking about building something interesting using the API!</p>
+<p>You can change the <code>logLevel</code> while OliveTin is running, and it should update as soon as you save your config.yaml.You will always get a log message like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>INFO[0787] Setting log level to warning</pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="_api.html">API</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a></p>
+<p>← Previous: <a href="hide-nav.html">Hide Navigation</a> | ↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="actions.html">Actions</a> →</p>
 </div>
 </div>
 <div id="footer">
