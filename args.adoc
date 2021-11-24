@@ -59,7 +59,7 @@ A full list of argument types are below;
 [%header,cols="1,2"]
 |===
 | Type                        | Allowed values
-| very_dangerous_raw_string   | Any thing. This is incredibly dangerous, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
+| very_dangerous_raw_string   | Anything. This is **incredibly dangerous**, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
 | int                         | Any number, made up of the characters 0 to 9. Negative numbers are not supported.
 | ascii                       | a-z (case insensitive), 0-9, but no spaces or punctuation
 | ascii_identifier            | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 

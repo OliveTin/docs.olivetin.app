@@ -28,3 +28,53 @@ For building up from here, look at the following resources;
 * See the <<action-customisation,action cutomisation>> documentation to customize how those actions work.
 
 * Example config.yaml files in the OliveTin repository - link:https://github.com/OliveTin/OliveTin/tree/main/configs[OliveTin config.yaml examples]
+
+[#hide-nav]
+=== Hide Navigation 
+
+You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.
+
+.The default user interface with the "Actions" and "Settings" buttons shown.
+image::images/defaultUiWithNav.png[]
+
+To have OliveTin hide these buttons, add `hideNavigation` to your config.yaml;
+
+----
+logLevel: "INFO"
+hideNavigation: true
+
+actions:
+    ....
+----
+
+.The same user interface, but with the "Actions" and "Settings" buttons hidden (`hideNavigation: true`)
+image::images/defaultUiHideNav.png[]
+
+[#log-levels]
+=== Log Levels
+OliveTin supports a few different log levels. The default logLevel is `INFO`. 
+
+You can set a `logLevel` in config.yaml like this;
+
+----
+logLevel: "INFO"
+
+actions:
+    ....
+----
+
+The supported log levels are;
+
+* `DEBUG` - Every possible log message will be shown. This will use a lot of disk space and is not recommended unless you are a developer / like reading code.
+* `ERROR` - OliveTin rarely uses the `ERROR` log level.
+* `WARN` - Very few messages, only warnings are shown.
+* `INFO` - The defualt log level.
+
+You can change the `logLevel` while OliveTin is running, and it should update as soon as you save your config.yaml.You will always get a log message like this;
+
+----
+INFO[0787] Setting log level to warning
+----
+
+
+
