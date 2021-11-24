@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="action-container-control" class="book toc2 toc-left">
+<body id="_important_safety_warning" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -159,20 +159,20 @@ div.admonitionblock td:first-child {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="actions.html">3. Actions</a>
-<ul class="sectlevel2">
-<li><a href="action-container-control.html"><span class="toc-current">3.1. Containers - start/stop</span></a>
-</li>
-<li><a href="action-service.html">3.2. Restart a systemd service</a>
-</li>
-<li><a href="action-ping.html">3.3. Ping an address</a>
-</li>
-<li><a href="action-ssh.html">3.4. SSH into another machine and run a command</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">4. Action customisation</a>
 </li>
 <li><a href="args.html">5. Arguments</a>
+<ul class="sectlevel2">
+<li><a href="_introduction_to_arguments.html">5.1. Introduction to Arguments</a>
+</li>
+<li><a href="_important_safety_warning.html"><span class="toc-current">5.2. Important Safety Warning</span></a>
+</li>
+<li><a href="_textbox_arguments.html">5.3. Textbox arguments</a>
+</li>
+<li><a href="_dropdown_choice_arguments.html">5.4. Dropdown choice arguments</a>
+</li>
+</ul>
 </li>
 <li><a href="_reference.html">6. Reference</a>
 </li>
@@ -185,70 +185,29 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="action-container-control"><a class="anchor" href="#action-container-control"></a><a class="link" href="#action-container-control">3.1. Containers - start/stop</a></h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Installation type</th>
-<th class="tableblock halign-left valign-top">Difficulty to do this</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running as a <strong>Systemd service</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Easy</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Setup needed - see below</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect3">
-<h4 id="_example_config_yaml"><a class="anchor" href="#_example_config_yaml"></a><a class="link" href="#_example_config_yaml">3.1.1. Example config.yaml</a></h4>
-<div class="literalblock">
-<div class="content">
-<pre>actions:
-  - title: Stop Plex
-    shell: docker stop plex
-
-  - title: Start plex
-    shell: docker start plex</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_setup_if_running_inside_a_container"><a class="anchor" href="#_setup_if_running_inside_a_container"></a><a class="link" href="#_setup_if_running_inside_a_container">3.1.2. Setup if running inside a container</a></h4>
+<h3 id="_important_safety_warning"><a class="anchor" href="#_important_safety_warning"></a><a class="link" href="#_important_safety_warning">5.2. Important Safety Warning</a></h3>
 <div class="paragraph">
-<p>You can control other containers, when running OliveTin inside a container
-itself, however you need to do some extra setup when creating the OliveTin
-container.</p>
+<p>Before you continue, it&#8217;s important to read through this safety warning.</p>
 </div>
 <div class="paragraph">
-<p>1) Pass /var/run/docker.sock as a bind mount to the container when creating it,
-eg:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>docker create -v /var/run/docker.sock:/container/path/docker.sock ...additional args here...</pre>
-</div>
+<p>OliveTin supports customization of command line arguments, but there is a element of risk. For example, if your command is <code>echo {{ message }}</code>, and you allow your users to set <code>{{ message }}</code> to the value <code>"" &amp;&amp; rm -rf /</code> , then you&#8217;ve got real problems. For this reason, OliveTin tries to give you useful ways to restrict what users are allowed to enter - with <strong>argument types</strong>.</p>
 </div>
 <div class="paragraph">
-<p>2) Install docker command into the container.</p>
+<p>However, here are some important rules to try and follow with argument types;</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>docker exec -it olivetin dnf install -y docker</pre>
-</div>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the most restrictive argument types when possible - <code>ascii</code> and <code>int</code>. This will stop users entering argument values that might be used dangerously, but it&#8217;s not foolproof. For example, if you have a command like <code>createSnapshot.sh --count {{ snapshotCount }}</code>, and set <code>snapshotCount</code> to <code>int</code>, then at least users will only be able to enter integer numbers. However, nothing stops them entering crazy values like 9999.</p>
+</li>
+<li>
+<p>Don&#8217;t give access to actions with arguments to people you don&#8217;t trust. Please don&#8217;t ever put your OliveTin install on the public internet!</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-service.html">Restart a systemd service</a> →</p>
+<p>← Previous: <a href="_introduction_to_arguments.html">Introduction to Arguments</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_textbox_arguments.html">Textbox arguments</a> →</p>
 </div>
 </div>
 <div id="footer">

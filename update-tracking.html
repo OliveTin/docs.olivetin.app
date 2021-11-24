@@ -162,28 +162,30 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="action-customisation.html">4. Action customisation</a>
 </li>
-<li><a href="_reference.html">5. Reference</a>
+<li><a href="args.html">5. Arguments</a>
+</li>
+<li><a href="_reference.html">6. Reference</a>
 <ul class="sectlevel2">
-<li><a href="network-ports.html">5.1. Network ports</a>
+<li><a href="network-ports.html">6.1. Network ports</a>
 </li>
-<li><a href="_security.html">5.2. Security</a>
+<li><a href="_security.html">6.2. Security</a>
 </li>
-<li><a href="_understanding_exit_codes.html">5.3. Understanding exit codes</a>
+<li><a href="_understanding_exit_codes.html">6.3. Understanding exit codes</a>
 </li>
-<li><a href="update-tracking.html"><span class="toc-current">5.4. Update Checks (and tracking)</span></a>
+<li><a href="update-tracking.html"><span class="toc-current">6.4. Update Checks (and tracking)</span></a>
 </li>
 </ul>
 </li>
-<li><a href="troubleshooting.html">6. Troubleshooting</a>
+<li><a href="troubleshooting.html">7. Troubleshooting</a>
 </li>
-<li><a href="_api.html">7. API</a>
+<li><a href="_api.html">8. API</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="update-tracking"><a class="anchor" href="#update-tracking"></a><a class="link" href="#update-tracking">5.4. Update Checks (and tracking)</a></h3>
+<h3 id="update-tracking"><a class="anchor" href="#update-tracking"></a><a class="link" href="#update-tracking">6.4. Update Checks (and tracking)</a></h3>
 <div class="paragraph">
 <p>The OliveTin server will now check for updates on startup, and every 7 days after that. It will report those updates as a log message in the console. It does not apply any updates, because this is the choice and responsibility of whoever is running OliveTin to decide if, when, and how to apply any updates.</p>
 </div>
@@ -191,7 +193,7 @@ div.admonitionblock td:first-child {
 <p>The information OliveTin sends to the update server is stored/saved., and this could be considered a form of tracking - that is tracking installations, not tracking people. This page hopefully helps explain what, how and why that information is used so you can be informed (and make changes if you wish).</p>
 </div>
 <div class="sect3">
-<h4 id="_design_considerations"><a class="anchor" href="#_design_considerations"></a><a class="link" href="#_design_considerations">5.4.1. Design considerations</a></h4>
+<h4 id="_design_considerations"><a class="anchor" href="#_design_considerations"></a><a class="link" href="#_design_considerations">6.4.1. Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -216,7 +218,7 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-sent"><a class="anchor" href="#update-sent"></a><a class="link" href="#update-sent">5.4.2. What is sent (and tracked)</a></h4>
+<h4 id="update-sent"><a class="anchor" href="#update-sent"></a><a class="link" href="#update-sent">6.4.2. What is sent (and tracked)</a></h4>
 <div class="paragraph">
 <p>When OliveTin checks for updates, it will send the following;</p>
 </div>
@@ -252,7 +254,7 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="sect3">
-<h4 id="machine-id"><a class="anchor" href="#machine-id"></a><a class="link" href="#machine-id">5.4.3. Why do you need my machine ID?</a></h4>
+<h4 id="machine-id"><a class="anchor" href="#machine-id"></a><a class="link" href="#machine-id">6.4.3. Why do you need my machine ID?</a></h4>
 <div class="paragraph">
 <p>First of all, OliveTin only sends a hashed version of a unique identifier for your machine. OliveTin does not use your actual machine ID, because this is private, and potentially sensitive information in it’s original form. Thi hashed version of this ID is used, which should be considered safe - because it’s a hash, it’s not possible to get back to the original sensitive machine ID.</p>
 </div>
@@ -268,7 +270,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_why_do_you_need_to_store_any_information_at_all"><a class="anchor" href="#_why_do_you_need_to_store_any_information_at_all"></a><a class="link" href="#_why_do_you_need_to_store_any_information_at_all">5.4.4. Why do you need to store any information at all?</a></h4>
+<h4 id="_why_do_you_need_to_store_any_information_at_all"><a class="anchor" href="#_why_do_you_need_to_store_any_information_at_all"></a><a class="link" href="#_why_do_you_need_to_store_any_information_at_all">6.4.4. Why do you need to store any information at all?</a></h4>
 <div class="paragraph">
 <p>This is incredibly useful information for project developers to know, because;</p>
 </div>
@@ -287,7 +289,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_what_is_stored"><a class="anchor" href="#_what_is_stored"></a><a class="link" href="#_what_is_stored">5.4.5. What is stored?</a></h4>
+<h4 id="_what_is_stored"><a class="anchor" href="#_what_is_stored"></a><a class="link" href="#_what_is_stored">6.4.5. What is stored?</a></h4>
 <div class="paragraph">
 <p>The update service only stores the information that is sent - <a href="update-tracking.html#update-sent">explained with an example above</a>.</p>
 </div>
@@ -296,7 +298,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_what_is_not_sentstored"><a class="anchor" href="#_what_is_not_sentstored"></a><a class="link" href="#_what_is_not_sentstored">5.4.6. What is not sent/stored</a></h4>
+<h4 id="_what_is_not_sentstored"><a class="anchor" href="#_what_is_not_sentstored"></a><a class="link" href="#_what_is_not_sentstored">6.4.6. What is not sent/stored</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -312,13 +314,13 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_where_is_the_information_sent"><a class="anchor" href="#_where_is_the_information_sent"></a><a class="link" href="#_where_is_the_information_sent">5.4.7. Where is the information sent</a></h4>
+<h4 id="_where_is_the_information_sent"><a class="anchor" href="#_where_is_the_information_sent"></a><a class="link" href="#_where_is_the_information_sent">6.4.7. Where is the information sent</a></h4>
 <div class="paragraph">
 <p>To <a href="http://update-check.olivetin.app" class="bare">http://update-check.olivetin.app</a> . This is a virtual machine which stores the logs on the machine filesystem. The data is accessible to all who which to view it, in the interest of transparency.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_why_isnt_this_opt_in"><a class="anchor" href="#_why_isnt_this_opt_in"></a><a class="link" href="#_why_isnt_this_opt_in">5.4.8. Why isn’t this opt-in?</a></h4>
+<h4 id="_why_isnt_this_opt_in"><a class="anchor" href="#_why_isnt_this_opt_in"></a><a class="link" href="#_why_isnt_this_opt_in">6.4.8. Why isn’t this opt-in?</a></h4>
 <div class="paragraph">
 <p>It seems the majority of software does perform update checks by default like this - Chrome, Firefox, most modern Operating Systems, etc. Because no information about people, or your data is being used, apart from your machine ID, this seems like a safe default.</p>
 </div>
@@ -327,7 +329,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_how_do_i_disable_this"><a class="anchor" href="#_how_do_i_disable_this"></a><a class="link" href="#_how_do_i_disable_this">5.4.9. How do I disable this?</a></h4>
+<h4 id="_how_do_i_disable_this"><a class="anchor" href="#_how_do_i_disable_this"></a><a class="link" href="#_how_do_i_disable_this">6.4.9. How do I disable this?</a></h4>
 <div class="paragraph">
 <p>If you are worried about privacy, or similar, please do make your concerns known. This is best if this is an open discussion.</p>
 </div>
@@ -341,7 +343,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="hide-news-versions"><a class="anchor" href="#hide-news-versions"></a><a class="link" href="#hide-news-versions">5.4.10. How can I hide version upgrades in the OliveTin web interface?</a></h4>
+<h4 id="hide-news-versions"><a class="anchor" href="#hide-news-versions"></a><a class="link" href="#hide-news-versions">6.4.10. How can I hide version upgrades in the OliveTin web interface?</a></h4>
 <div class="paragraph">
 <p>Set the following in your configuration file;</p>
 </div>
@@ -355,7 +357,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="hsts"><a class="anchor" href="#hsts"></a><a class="link" href="#hsts">5.4.11. Why can&#8217;t I visit update-check.olivetin.app in my browser?</a></h4>
+<h4 id="hsts"><a class="anchor" href="#hsts"></a><a class="link" href="#hsts">6.4.11. Why can&#8217;t I visit update-check.olivetin.app in my browser?</a></h4>
 <div class="paragraph">
 <p>The root domain for OliveTin (OliveTin.app) has HSTS turned on - this forces your browser to use SSL (HTTPS - the little encryption padlock) for all subdomains - including www.olivetin.app and docs.olivetin.app. Although both of those websites don&#8217;t transmit anything that really needs encrypion, the web is certainly moving to having SSL turned on everywhere. It even has a positive impact on search engine rankings!</p>
 </div>
@@ -376,7 +378,7 @@ OliveTin are running a specific version.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-21 00:35:08 UTC
+Last updated 2021-11-24 19:02:08 UTC
 </div>
 </div>
 </body>

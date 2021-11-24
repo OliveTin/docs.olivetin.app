@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="action-container-control" class="book toc2 toc-left">
+<body id="_dropdown_choice_arguments" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -159,20 +159,20 @@ div.admonitionblock td:first-child {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="actions.html">3. Actions</a>
-<ul class="sectlevel2">
-<li><a href="action-container-control.html"><span class="toc-current">3.1. Containers - start/stop</span></a>
-</li>
-<li><a href="action-service.html">3.2. Restart a systemd service</a>
-</li>
-<li><a href="action-ping.html">3.3. Ping an address</a>
-</li>
-<li><a href="action-ssh.html">3.4. SSH into another machine and run a command</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">4. Action customisation</a>
 </li>
 <li><a href="args.html">5. Arguments</a>
+<ul class="sectlevel2">
+<li><a href="_introduction_to_arguments.html">5.1. Introduction to Arguments</a>
+</li>
+<li><a href="_important_safety_warning.html">5.2. Important Safety Warning</a>
+</li>
+<li><a href="_textbox_arguments.html">5.3. Textbox arguments</a>
+</li>
+<li><a href="_dropdown_choice_arguments.html"><span class="toc-current">5.4. Dropdown choice arguments</span></a>
+</li>
+</ul>
 </li>
 <li><a href="_reference.html">6. Reference</a>
 </li>
@@ -185,70 +185,48 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="action-container-control"><a class="anchor" href="#action-container-control"></a><a class="link" href="#action-container-control">3.1. Containers - start/stop</a></h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Installation type</th>
-<th class="tableblock halign-left valign-top">Difficulty to do this</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running as a <strong>Systemd service</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Easy</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Setup needed - see below</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect3">
-<h4 id="_example_config_yaml"><a class="anchor" href="#_example_config_yaml"></a><a class="link" href="#_example_config_yaml">3.1.1. Example config.yaml</a></h4>
-<div class="literalblock">
+<h3 id="_dropdown_choice_arguments"><a class="anchor" href="#_dropdown_choice_arguments"></a><a class="link" href="#_dropdown_choice_arguments">5.4. Dropdown choice arguments</a></h3>
+<div class="paragraph">
+<p>Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify.</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre>actions:
-  - title: Stop Plex
-    shell: docker stop plex
+  - title: echo a message
+    icon: smile
+    shell: echo "{{ message }}"
+    arguments:
+      - name: message
+        choices:
+          - title: Hello
+            value: Hello there!
 
-  - title: Start plex
-    shell: docker start plex</pre>
+          - title: Goodbye
+            value: Aww, goodbye. :-(</pre>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_setup_if_running_inside_a_container"><a class="anchor" href="#_setup_if_running_inside_a_container"></a><a class="link" href="#_setup_if_running_inside_a_container">3.1.2. Setup if running inside a container</a></h4>
-<div class="paragraph">
-<p>You can control other containers, when running OliveTin inside a container
-itself, however you need to do some extra setup when creating the OliveTin
-container.</p>
 </div>
 <div class="paragraph">
-<p>1) Pass /var/run/docker.sock as a bind mount to the container when creating it,
-eg:</p>
+<p>Note that when predefined choices are used, the argument type is ignored.</p>
 </div>
-<div class="listingblock">
+<div class="paragraph">
+<p>This is what it looks like in the web interface;</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre>docker create -v /var/run/docker.sock:/container/path/docker.sock ...additional args here...</pre>
+<img src="images/args4.png" alt="args4">
 </div>
 </div>
 <div class="paragraph">
-<p>2) Install docker command into the container.</p>
+<p>Then finally, when you execute this command, it would look something like this (remember that this is just a basic "echo" command).</p>
 </div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre>docker exec -it olivetin dnf install -y docker</pre>
-</div>
+<img src="images/args-choices-exec.png" alt="args choices exec">
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-service.html">Restart a systemd service</a> →</p>
+<p>← Previous: <a href="_textbox_arguments.html">Textbox arguments</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_reference.html">Reference</a> →</p>
 </div>
 </div>
 <div id="footer">

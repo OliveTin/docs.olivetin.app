@@ -162,28 +162,28 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="action-customisation.html">4. Action customisation</a>
 <ul class="sectlevel2">
-<li><a href="_arguments.html">4.1. Arguments</a>
+<li><a href="_icons.html"><span class="toc-current">4.1. Icons</span></a>
 </li>
-<li><a href="_icons.html"><span class="toc-current">4.2. Icons</span></a>
+<li><a href="_timeouts.html">4.2. Timeouts</a>
 </li>
-<li><a href="_timeouts.html">4.3. Timeouts</a>
-</li>
-<li><a href="_run_as_different_users.html">4.4. Run as different users</a>
+<li><a href="_run_as_different_users.html">4.3. Run as different users</a>
 </li>
 </ul>
 </li>
-<li><a href="_reference.html">5. Reference</a>
+<li><a href="args.html">5. Arguments</a>
 </li>
-<li><a href="troubleshooting.html">6. Troubleshooting</a>
+<li><a href="_reference.html">6. Reference</a>
 </li>
-<li><a href="_api.html">7. API</a>
+<li><a href="troubleshooting.html">7. Troubleshooting</a>
+</li>
+<li><a href="_api.html">8. API</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_icons"><a class="anchor" href="#_icons"></a><a class="link" href="#_icons">4.2. Icons</a></h3>
+<h3 id="_icons"><a class="anchor" href="#_icons"></a><a class="link" href="#_icons">4.1. Icons</a></h3>
 <div class="paragraph">
 <p>You can specify any HTML for an icon. It&#8217;s a popular choice to use Unicode
 icons because they are extremely fast to load and there are a lot of them.</p>
@@ -195,7 +195,7 @@ icons because they are extremely fast to load and there are a lot of them.</p>
 <div class="title">Figure 1. Examples of icons in OliveTin</div>
 </div>
 <div class="sect3">
-<h4 id="_unicode_icons_emoji"><a class="anchor" href="#_unicode_icons_emoji"></a><a class="link" href="#_unicode_icons_emoji">4.2.1. Unicode icons ("emoji")</a></h4>
+<h4 id="_unicode_icons_emoji"><a class="anchor" href="#_unicode_icons_emoji"></a><a class="link" href="#_unicode_icons_emoji">4.1.1. Unicode icons ("emoji")</a></h4>
 <div class="paragraph">
 <p>For example on the <a href="https://unicode-table.com/en/emoji/">here is a list of
 "Eomji" in unicode</a>. If you find "<a href="https://unicode-table.com/en/1F60E/">Smiling face with sunglasses</a>" you can click
@@ -211,7 +211,7 @@ on it to see it&#8217;s "HTML-code". In OliveTin, you&#8217;d setup the icon lik
 </div>
 </div>
 <div class="sect3">
-<h4 id="_full_html_icons_img_src"><a class="anchor" href="#_full_html_icons_img_src"></a><a class="link" href="#_full_html_icons_img_src">4.2.2. Full HTML icons (<code>&lt;img src &#8230;&#8203;</code>)</a></h4>
+<h4 id="_full_html_icons_img_src"><a class="anchor" href="#_full_html_icons_img_src"></a><a class="link" href="#_full_html_icons_img_src">4.1.2. Full HTML icons (<code>&lt;img src &#8230;&#8203;</code>)</a></h4>
 <div class="paragraph">
 <p>You can also specify the full HTML for an image, like;</p>
 </div>
@@ -237,14 +237,66 @@ probably be added in the future as well.
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_saving_and_serving_icons_for_offline_use"><a class="anchor" href="#_saving_and_serving_icons_for_offline_use"></a><a class="link" href="#_saving_and_serving_icons_for_offline_use">4.1.3. Saving and serving icons for "offline" use</a></h4>
+<div class="paragraph">
+<p>Sometimes you might want to store images to use as icons, with your installation of OliveTin. This can be useful when your installation is meant to be offline, or disconnected from the internet. This is easily done.</p>
+</div>
+<div class="paragraph">
+<p>You should put icons in a new <code>customIcons</code> directory, inside the standard webui directory. The webui directory could be in a few different locations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you installed OliveTin with a package, this directory is normally <code>/var/www/olivetin</code> on Linux. Create the directory <code>/var/www/olivetin/customIcons/</code>.</p>
+</li>
+<li>
+<p>If you installed OliveTin with a Linux Container, it&#8217;s probably best to bind mount a new volume into the container.</p>
+<div class="literalblock">
+<div class="content">
+<pre>`docker create jamesread/OliveTin --name OliveTin -v /opt/OliveTinIcons:/var/www/olivetin/customIcons ...`</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve created this <code>customIcons</code> directory. Place your icon, for example <code>mrgreen.gif</code> into this custom icon directory. Below is a picture of Mr Green. Feel free to save his likeness and awesomeness for yourself, for future awesome offline usage.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mrgreen.gif" alt="Mr Green">
+</div>
+<div class="title">Figure 2. Mr Green, the original awesome smily.</div>
+</div>
+<div class="paragraph">
+<p>In your OliveTin config, customize your command again using HTML, like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+    - title: Mr Green
+      icon: '&lt;img src = "customIcons/mrgreen.gif" /&gt;'
+      shell: echo "I don't like the word 'emoji' "</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will result in a locally hosted icon that will work offline, that looks like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mrGreenAction.png" alt="mrGreenAction">
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_arguments.html">Arguments</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_timeouts.html">Timeouts</a> →</p>
+<p>↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_timeouts.html">Timeouts</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-21 00:35:08 UTC
+Last updated 2021-11-24 19:02:08 UTC
 </div>
 </div>
 </body>
