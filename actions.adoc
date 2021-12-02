@@ -101,4 +101,14 @@ to a SSH key. There are lots of good articles on the internet that explain how
 to setup password-less login with a SSH key. This applies to container images
 as well.
 
+==== Setup if running inside a container
 
+SSH is pre-installed in all OliveTin container images.
+
+You should bind-mount your SSH keys directory into the OliveTin user's home directory;
+
+----
+docker run -v /opt/mySshKeys/:/home/OliveTin/.ssh/ --name OliveTin jamesread/olivetin
+----
+
+This also works for things like SSH configuration files, if you want to use them.
