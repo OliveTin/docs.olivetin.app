@@ -229,21 +229,44 @@ itself, however you need to do some extra setup when creating the OliveTin
 container.</p>
 </div>
 <div class="paragraph">
-<p>1) Pass /var/run/docker.sock as a bind mount to the container when creating it,
+<p>1) Pass <code>/var/run/docker.sock</code> as a bind mount to the container when creating it,
 eg:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>docker create -v /var/run/docker.sock:/container/path/docker.sock ...additional args here...</pre>
+<pre>docker create -v /var/run/docker.sock:/var/run/docker.sock ...additional args here...</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>2) Install docker command into the container.</p>
+<p>Or, using the <code>docker run</code> syntax;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker run -v /var/run/docker.sock:/var/run/docker.sock --name OliveTin jamesread/olivetin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2) The official x86_64 docker container comes with the <code>docker</code> client pre-installed. If you are using <code>arm</code> or and <code>arm64</code> container, you will need to add Docker yourself.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>docker exec -it olivetin dnf install -y docker</pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The reason that the <code>arm</code> and <code>arm64</code> containers do not container docker, is that when these images are cross-compiled at build time, it takes FOREVER because we have to emulate arm.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>After that, you should be able to setup docker actions like it&#8217;s shown in the example above.</p>
 </div>
 </div>
 </div>
@@ -253,7 +276,7 @@ eg:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-24 20:06:53 UTC
+Last updated 2021-12-02 16:44:07 UTC
 </div>
 </div>
 </body>
