@@ -227,6 +227,23 @@ to setup password-less login with a SSH key. This applies to container images
 as well.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_setup_if_running_inside_a_container_2"><a class="anchor" href="#_setup_if_running_inside_a_container_2"></a><a class="link" href="#_setup_if_running_inside_a_container_2">3.4.2. Setup if running inside a container</a></h4>
+<div class="paragraph">
+<p>SSH is pre-installed in all OliveTin container images.</p>
+</div>
+<div class="paragraph">
+<p>You should bind-mount your SSH keys directory into the OliveTin user&#8217;s home directory;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker run -v /opt/mySshKeys/:/home/OliveTin/.ssh/ --name OliveTin jamesread/olivetin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This also works for things like SSH configuration files, if you want to use them.</p>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="action-ping.html">Ping an address</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-customisation.html">Action customisation</a> →</p>
@@ -234,7 +251,7 @@ as well.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-02 16:44:07 UTC
+Last updated 2021-12-02 16:48:40 UTC
 </div>
 </div>
 </body>
