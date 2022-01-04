@@ -229,7 +229,66 @@ the web interface.</p>
 <a href="config.html">configuration section</a> as the next step.</p>
 </div>
 <div class="sect3">
-<h4 id="_using_traefik_with_docker_compose_and_https"><a class="anchor" href="#_using_traefik_with_docker_compose_and_https"></a><a class="link" href="#_using_traefik_with_docker_compose_and_https">1.5.1. Using Traefik with Docker Compose (and HTTPS)</a></h4>
+<h4 id="_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"><a class="anchor" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"></a><a class="link" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin">1.5.1. Controlling other docker containers from a Docker Compose install of OliveTin</a></h4>
+<div class="paragraph">
+<p>If you want to use OliveTin running in a container to control other Docker containers, you will need to pass through the Docker sock in your compose file.</p>
+</div>
+<div class="paragraph">
+<p>You will need to adjust your docker-compose file to include the docker socket, like this;</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>`docker-compose.yml` including docker socket</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>version: "3.8"
+services:
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    volumes:
+      - /docker/olivetin:/config # replace host path or volume as needed
+      - /var/run/docker.sock:/var/run/docker.sock
+    ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will probably need to tell this container to run as root as well, to control docker (see below).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_controlling_the_docker_user_with_docker_compose"><a class="anchor" href="#_controlling_the_docker_user_with_docker_compose"></a><a class="link" href="#_controlling_the_docker_user_with_docker_compose">1.5.2. Controlling the docker user with Docker Compose</a></h4>
+<div class="paragraph">
+<p>This is the correct way to tell the OliveTin container to run as root (or any other user);</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>version: "3.8"
+services:
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    user: root
+    ...</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<a href="no-puid-pgid.html">PUID and PGID are not used</a> by the official OliveTin container image.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_using_traefik_with_docker_compose_and_https"><a class="anchor" href="#_using_traefik_with_docker_compose_and_https"></a><a class="link" href="#_using_traefik_with_docker_compose_and_https">1.5.3. Using Traefik with Docker Compose (and HTTPS)</a></h4>
 <div class="paragraph">
 <p>Traefik is a popular reverse proxy that seems to be used a lot in people&#8217;s
 Docker compose setups.</p>
@@ -254,7 +313,7 @@ Docker compose setups.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-04 16:43:09 UTC
+Last updated 2022-01-04 21:16:25 UTC
 </div>
 </div>
 </body>
