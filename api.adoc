@@ -1,3 +1,4 @@
+[#api]
 == API 
 
 === OliveTin API Overview 
@@ -7,9 +8,24 @@ Short version: http://olivetinServer:1337/api for the REST API.
 
 Longer version: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. The REST gateway is used by the WebUI, and you can use it too by default. The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. 
 
-==== Example API calls
+==== Example API call: Start action via the API
 
-Example GetDashboardComponents: http://olivetinServer:1337/api/GetDashboardComponents 
+===== Curl
+
+----
+user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionName": "Nuclear reactor shutdown"}'
+----
+
+===== Powershell
+
+----
+PS C:\Users\xcons> $json = '{"actionName": "Deploy attack Gnomes"}'
+PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
+----
+
+==== Example API calls - Get the dashboard buttons
+
+GetDashboardComponents: http://olivetinServer:1337/api/GetDashboardComponents 
 
 ==== Links 
 
