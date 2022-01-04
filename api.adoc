@@ -4,11 +4,15 @@
 === OliveTin API Overview 
 This section of the documentation is intended for developers, and those who want to hack around with OliveTin and extend it. This page provides a few pointers to get started. 
 
-Short version: http://olivetinServer:1337/api for the REST API.
+**Short version**: http://olivetinServer:1337/api for the REST API. link:http://docs.olivetin.app/api/[Swagger] documents the API.
 
-Longer version: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. The REST gateway is used by the WebUI, and you can use it too by default. The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. 
+**Longer version**: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. 
 
-==== Example API call: Start action via the API
+The REST API gateway is used by the WebUI, and you can use it too by default - it is exposed at "/api" by default.
+
+The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. Most people do not need to use the gRPC API.
+
+==== Example API call: Start an action
 
 ===== Curl
 
@@ -23,14 +27,14 @@ PS C:\Users\xcons> $json = '{"actionName": "Deploy attack Gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
 ----
 
-==== Example API calls - Get the dashboard buttons
+==== Example API call: Get the dashboard buttons ("components")
 
 GetDashboardComponents: http://olivetinServer:1337/api/GetDashboardComponents 
 
 ==== Links 
 
 * link:http://docs.olivetin.app/api/[Swagger UI for OliveTin API]
-* link:http://docs.olivetin.app/api/OliveTin.openapi.json[OpenAPI JSON]
+* link:http://docs.olivetin.app/api/OliveTin.openapi.json[OpenAPI JSON Definition]
 * link:https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[The OliveTin Protobuf file]. 
 
 Please do talk to the developers on Discord if you'd like help using the API, or you're thinking about building something interesting using the API!
