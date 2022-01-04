@@ -184,13 +184,19 @@ div.admonitionblock td:first-child {
 <p>This section of the documentation is intended for developers, and those who want to hack around with OliveTin and extend it. This page provides a few pointers to get started.</p>
 </div>
 <div class="paragraph">
-<p>Short version: <a href="http://olivetinServer:1337/api" class="bare">http://olivetinServer:1337/api</a> for the REST API.</p>
+<p><strong>Short version</strong>: <a href="http://olivetinServer:1337/api" class="bare">http://olivetinServer:1337/api</a> for the REST API. <a href="http://docs.olivetin.app/api/">Swagger</a> documents the API.</p>
 </div>
 <div class="paragraph">
-<p>Longer version: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. The REST gateway is used by the WebUI, and you can use it too by default. The gRPC API only listens on localhost default, but it can be set to listen publicly. See <a href="network-ports.html">the network ports documentation</a> for a better description of how the APIs are exposed.</p>
+<p><strong>Longer version</strong>: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway.</p>
+</div>
+<div class="paragraph">
+<p>The REST API gateway is used by the WebUI, and you can use it too by default - it is exposed at "/api" by default.</p>
+</div>
+<div class="paragraph">
+<p>The gRPC API only listens on localhost default, but it can be set to listen publicly. See <a href="network-ports.html">the network ports documentation</a> for a better description of how the APIs are exposed. Most people do not need to use the gRPC API.</p>
 </div>
 <div class="sect3">
-<h4 id="_example_api_call_start_action_via_the_api"><a class="anchor" href="#_example_api_call_start_action_via_the_api"></a><a class="link" href="#_example_api_call_start_action_via_the_api">8.1.1. Example API call: Start action via the API</a></h4>
+<h4 id="_example_api_call_start_an_action"><a class="anchor" href="#_example_api_call_start_an_action"></a><a class="link" href="#_example_api_call_start_an_action">8.1.1. Example API call: Start an action</a></h4>
 <div class="sect4">
 <h5 id="_curl"><a class="anchor" href="#_curl"></a><a class="link" href="#_curl">Curl</a></h5>
 <div class="listingblock">
@@ -210,7 +216,7 @@ PS C:\Users\xcons&gt; Invoke-RestMethod -Method "Post" -Uri "http://olivetinServ
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_api_calls_get_the_dashboard_buttons"><a class="anchor" href="#_example_api_calls_get_the_dashboard_buttons"></a><a class="link" href="#_example_api_calls_get_the_dashboard_buttons">8.1.2. Example API calls - Get the dashboard buttons</a></h4>
+<h4 id="_example_api_call_get_the_dashboard_buttons_components"><a class="anchor" href="#_example_api_call_get_the_dashboard_buttons_components"></a><a class="link" href="#_example_api_call_get_the_dashboard_buttons_components">8.1.2. Example API call: Get the dashboard buttons ("components")</a></h4>
 <div class="paragraph">
 <p>GetDashboardComponents: <a href="http://olivetinServer:1337/api/GetDashboardComponents" class="bare">http://olivetinServer:1337/api/GetDashboardComponents</a></p>
 </div>
@@ -223,7 +229,7 @@ PS C:\Users\xcons&gt; Invoke-RestMethod -Method "Post" -Uri "http://olivetinServ
 <p><a href="http://docs.olivetin.app/api/">Swagger UI for OliveTin API</a></p>
 </li>
 <li>
-<p><a href="http://docs.olivetin.app/api/OliveTin.openapi.json">OpenAPI JSON</a></p>
+<p><a href="http://docs.olivetin.app/api/OliveTin.openapi.json">OpenAPI JSON Definition</a></p>
 </li>
 <li>
 <p><a href="https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto">The OliveTin Protobuf file</a>.</p>
@@ -241,7 +247,7 @@ PS C:\Users\xcons&gt; Invoke-RestMethod -Method "Post" -Uri "http://olivetinServ
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-04 16:32:21 UTC
+Last updated 2022-01-04 16:43:09 UTC
 </div>
 </div>
 </body>
