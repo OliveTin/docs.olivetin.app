@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+	font-family: sans-serif;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-areas: "nav content" "nav footer";
+	grid-template-columns: 20em auto;
+	grid-template-rows: auto min-content;
+	height: 100vh;
+	align-items: stretch;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:focus {
+	background-color: yellow;
+}
+
+#header {
+	background-color: #efefef;
+	grid-area: nav;
+}
+
+#footer {
+	grid-area: footer;
+}
+
+#toc {
+	padding: 1em;
+}
+
+#toc a {
+	color: black;
+}
+
+#toc li {
+	padding-bottom: .6em;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#toc ul ul {
+	padding-left: 1.4em;
+}
+
+#toctitle {
+	font-weight: bold;
+	color: black;
+}
+
+h1 {
+	font-size: 1.4em;
+	font-weight: lighter;
+	background-color: black;
+	padding: .6em;
+	margin: 0;
+	color: white;
+}
+
+#toc a:hover {
+	text-decoration: underline;
+}
+
+#content {
+	background-color: white;
+	grid-area: content;
+	max-width: 1000px;
+	padding: 1em;
+}
+
+#content img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+pre {
+	background-color: #f7f7f8;
+	padding: 1em;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: .4em;
+}
+
+th {
+	background-color: #f9f9f9;
+	text-align: left;
+}
+
+.imageblock.right {
+	float: right;
+}
+
+hr {
+	clear: both;
+	border: 0;
+	border-bottom: 1px solid #efefef;
+	margin: 1em;
+}
+
+div.admonitionblock td {
+	border: 0;
+}
+
+div.admonitionblock td:first-child {
+	font-weight: bold;
+}
+
+.listingblock .title {
+	background-color: #efefef;
+	margin-bottom: -1em;
+	padding: 1em;
+}
+
+@media (max-width: 700px) {
+	body {
+		display: block;
+	}
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="multi-inst" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="installation.html">1. Installation</a>
+</li>
+<li><a href="config.html">2. Configuration</a>
+</li>
+<li><a href="actions.html">3. Actions</a>
+</li>
+<li><a href="action-customisation.html">4. Action customisation</a>
+</li>
+<li><a href="args.html">5. Arguments</a>
+</li>
+<li><a href="_reference.html">6. Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">6.1. Network ports</a>
+</li>
+<li><a href="_security.html">6.2. Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">6.3. Understanding exit codes</a>
+</li>
+<li><a href="update-tracking.html">6.4. Update Checks (and tracking)</a>
+</li>
+<li><a href="container-dnf.html">6.5. Installing extra container packages</a>
+</li>
+<li><a href="multi-inst.html"><span class="toc-current">6.6. Multiple instances on a server</span></a>
+</li>
+</ul>
+</li>
+<li><a href="troubleshooting.html">7. Troubleshooting</a>
+</li>
+<li><a href="api.html">8. API</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="multi-inst"><a class="anchor" href="#multi-inst"></a><a class="link" href="#multi-inst">6.6. Multiple instances on a server</a></h3>
+<div class="paragraph">
+<p>Several users will find themselves wanting to run multiple instances of OliveTin. Depending on how you&#8217;ve setup OliveTin depends on how easy it is to configure that. This page includes instructions for OliveTin installed as a container, and as a package (.tar.gz).</p>
+</div>
+<div class="sect3">
+<h4 id="_with_containers"><a class="anchor" href="#_with_containers"></a><a class="link" href="#_with_containers">6.6.1. With Containers</a></h4>
+<div class="paragraph">
+<p>The two things to think about when running multiple containers;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a config file for each instance of OliveTin (instances cannot share the same config)</p>
+</li>
+<li>
+<p>Set a new external port for OliveTin (by default that is <code>1337</code>).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Set it in the the config file</p>
+</li>
+<li>
+<p>Set it when creating the container (if in using containers, eg: <code>3000:1337</code> - 3000 is the external port)</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This is the easiest way to run multiple OliveTin instances. Follow the <a href="install-container.html">Container Installation instructions</a>, or similar for <a href="install-compose.html">Docker Compose</a>, <a href="install-helm.html">Helm</a> or similar.</p>
+</div>
+<div class="paragraph">
+<p>However, when you come to specify the external port - by default that is <code>1337</code>, simply change it to another port.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_without_containers_using_a_package_tar_gz"><a class="anchor" href="#_without_containers_using_a_package_tar_gz"></a><a class="link" href="#_without_containers_using_a_package_tar_gz">6.6.2. Without containers - using a package (.tar.gz)</a></h4>
+<div class="paragraph">
+<p>If you are not using containers, then it is probably best not to use a <code>.deb/.rpm</code> installation, as those packages can only be installed for one instance.</p>
+</div>
+<div class="paragraph">
+<p>Instead, follow the instructions for <a href="install-targz.html">installing from a .tar.gz</a> archive.</p>
+</div>
+<div class="paragraph">
+<p>When you come to create the config.yaml file, OliveTin will look for this in it&#8217;s own startup directory. Therefore it is probably best to extract the .tar.gz file like this and change the paths;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/opt/OliveTin_one/</code></p>
+</li>
+<li>
+<p><code>/opt/OliveTin_two/</code></p>
+</li>
+<li>
+<p><code>/opt/OliveTin_three/</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Because you are running outside of a container, you will also need to change the "internal" ports used by OliveTin so they are separate for all instances. OliveTin listens on 4 addresses (1 external, 3 internal) and needs 4 ports. You can read about these in the <a href="network-ports.html">network ports documentation</a>.</p>
+</div>
+<div class="paragraph">
+<p>You could end up with a setup that looks like this;</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Instance Name</th>
+<th class="tableblock halign-left valign-top">Install path</th>
+<th class="tableblock halign-left valign-top">Config file path</th>
+<th class="tableblock halign-left valign-top">Single frontend point (<code>listenAddressSingleHTTPFrontend</code>)</th>
+<th class="tableblock halign-left valign-top">REST Actions port (<code>listenAddressRestActions</code>)</th>
+<th class="tableblock halign-left valign-top">gRPC Actions port (<code>listenAddressGrpcActions</code>)</th>
+<th class="tableblock halign-left valign-top">WebUI Port (<code>listenAddressWebUI</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OliveTin_one</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/opt/OliveTin_one</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/opt/OliveTin_one/config.yaml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0.0.0.0:1337</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:1338</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:1339</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:1340</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OliveTin_two</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/opt/OliveTin_two</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/opt/OliveTin_two/config.yaml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0.0.0.0:2337</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:2338</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:2339</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:2340</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OliveTin_three</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/opt/OliveTin_three</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/opt/OliveTin_three/config.yaml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0.0.0.0:3337</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:3338</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:3339</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost:3340</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note that you will also need to adjust the default systemd service file to point to your install directory, if using that. Here is an example for <code>OliveTin_two</code>;</p>
+</div>
+<div class="listingblock">
+<div class="title">A modified systemd service file for a 2nd instance</div>
+<div class="content">
+<pre>[Unit]
+Description=OliveTin2
+
+[Service]
+WorkingDirectory=/opt/OliveTin_two/OliveTin
+ExecStart=/opt/OliveTin_two/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="container-dnf.html">Installing extra container packages</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="troubleshooting.html">Troubleshooting</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-01-20 13:23:36 UTC
+</div>
+</div>
+</body>
+</html>
