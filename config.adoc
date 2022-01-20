@@ -27,8 +27,6 @@ For building up from here, look at the following resources;
 
 * See the <<action-customisation,action cutomisation>> documentation to customize how those actions work.
 
-* Example config.yaml files in the OliveTin repository - link:https://github.com/OliveTin/OliveTin/tree/main/configs[OliveTin config.yaml examples]
-
 [#hide-nav]
 === Hide Navigation 
 
