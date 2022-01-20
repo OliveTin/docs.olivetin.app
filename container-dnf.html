@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_understanding_exit_codes" class="book toc2 toc-left">
+<body id="container-dnf" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -170,11 +170,11 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="_security.html">6.2. Security</a>
 </li>
-<li><a href="_understanding_exit_codes.html"><span class="toc-current">6.3. Understanding exit codes</span></a>
+<li><a href="_understanding_exit_codes.html">6.3. Understanding exit codes</a>
 </li>
 <li><a href="update-tracking.html">6.4. Update Checks (and tracking)</a>
 </li>
-<li><a href="container-dnf.html">6.5. Installing extra container packages</a>
+<li><a href="container-dnf.html"><span class="toc-current">6.5. Installing extra container packages</span></a>
 </li>
 </ul>
 </li>
@@ -187,36 +187,70 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_understanding_exit_codes"><a class="anchor" href="#_understanding_exit_codes"></a><a class="link" href="#_understanding_exit_codes">6.3. Understanding exit codes</a></h3>
+<h3 id="container-dnf"><a class="anchor" href="#container-dnf"></a><a class="link" href="#container-dnf">6.5. Installing extra container packages</a></h3>
 <div class="paragraph">
-<p>OliveTin just runs commands. If the command exits with an unusual exit code
-(something other than 0), OliveTin will tell you. Many Linux commands will exit
-with code 1, 2, 3, etc to indicate different types of errors.</p>
-</div>
-<div class="paragraph">
-<p>It&#8217;s important to understand that OliveTin is just reporting back what the
-command exited with, it&#8217;s very unusual for OliveTin to cause new types of
-errors!</p>
-</div>
-<div class="paragraph">
-<p>For example, if <code>ping</code> exits with code 1 or 2, the documentation for ping says
-that this indicates either a name not found, timeout, or other similar error.
-The best thing you can do is <code>man ping</code> to read the ping manual page to find
-out more.</p>
+<p>The official OliveTin container image is based on Fedora Linux. Fedora has shown to offer a great mix of stability and support over two decades. The base container image for OliveTin is relatively lightweight, with not many tools installed by default. This keeps the download size small, but you may want to add additional packages.</p>
 </div>
 <div class="sect3">
-<h4 id="_common_error_codes"><a class="anchor" href="#_common_error_codes"></a><a class="link" href="#_common_error_codes">6.3.1. Common error codes</a></h4>
+<h4 id="_quickstart_using_dnf_to_install_additional_packages"><a class="anchor" href="#_quickstart_using_dnf_to_install_additional_packages"></a><a class="link" href="#_quickstart_using_dnf_to_install_additional_packages">6.5.1. Quickstart - using DNF to install additional packages</a></h4>
+<div class="paragraph">
+<p>You can of course create your own container image, but this is probably a lot of work for new users, or people who just want a few extra packages/commands. Instead of creating a whole new container image, you can simply run <code>dnf</code> (the Fodora package manager) to install more commands.</p>
+</div>
+<div class="paragraph">
+<p>Start the OliveTin container using one of the methods shown in the <a href="installation.html">installation instructions</a>.</p>
+</div>
+<div class="paragraph">
+<p>Then, on the same host that is running the container, spawn a root shell inside the OliveTin container, like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: docker exec -it olivetin -u root /bin/bash
+[root@019d08ef95bd /]#</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The important thing here is passing <code>-u root</code>. By default, OliveTin does not run as root.</p>
+</div>
+<div class="paragraph">
+<p>Once you have a root shell in OliveTin, you can use the Fedora package manager - <code>dnf</code> to install things that you might need. If you are used to Debian&#8217;s <code>apt-get</code> tool, it works in a very similar way;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[root@019d08ef95bd /]# dnf install -y nc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that if you upgrade the OliveTin container image, you will need to reinstall these packages.</p>
+</div>
+<div class="paragraph">
+<p>Once you have finished installing these packages, just exit the root shell using <code>exit</code>. You don&#8217;t need to restart the container - and OliveTin does not need to run as root to use most commands.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also"><a class="anchor" href="#_see_also"></a><a class="link" href="#_see_also">6.5.2. See also</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Exit code 127</strong> is used by the Linux shell to indicate "Command not found". Most often this means you need to install the command (often in the linux container image).</p>
+<p><a href="https://hub.docker.com/r/jamesread/olivetin">OliveTin container on Docker Hub</a></p>
+</li>
+<li>
+<p><a href="install-container.html">Installing using a container</a></p>
+</li>
+<li>
+<p><a href="install-compose.html">Installing using docker compose</a></p>
+</li>
+<li>
+<p><a href="install-helm.html">Installing on Kubernetes with Helm</a></p>
+</li>
+<li>
+<p><a href="install-k8s.html">Installing on Kubernetes (manually)</a></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_security.html">Security</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="update-tracking.html">Update Checks (and tracking)</a> →</p>
+<p>← Previous: <a href="update-tracking.html">Update Checks (and tracking)</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="troubleshooting.html">Troubleshooting</a> →</p>
 </div>
 </div>
 <div id="footer">

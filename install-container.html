@@ -154,21 +154,21 @@ div.admonitionblock td:first-child {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
-<li><a href="_installation.html">1. Installation</a>
+<li><a href="installation.html">1. Installation</a>
 <ul class="sectlevel2">
 <li><a href="choose-package.html">1.1. Which download do I need?</a>
 </li>
-<li><a href="install-linuxpackage.html">1.2. Recommended: Installation with a Linux package, using systemd</a>
+<li><a href="install-linuxpackage.html">1.2. Recommended: Linux package install (.rpm/.deb)</a>
 </li>
-<li><a href="install-targz.html">1.3. Installation from a .tar.gz manually, using systemd</a>
+<li><a href="install-container.html"><span class="toc-current">1.3. Container install (podman/docker)</span></a>
 </li>
-<li><a href="install-container.html"><span class="toc-current">1.4. Installation as a container (podman/docker)</span></a>
+<li><a href="install-compose.html">1.4. Docker Compose install</a>
 </li>
-<li><a href="install-compose.html">1.5. Installation using Docker Compose</a>
+<li><a href="install-helm.html">1.5. Helm on Kubernetes Install</a>
 </li>
-<li><a href="install-helm.html">1.6. Installation on Kubernetes with Helm</a>
+<li><a href="install-k8s.html">1.6. Kubernetes install (manually)</a>
 </li>
-<li><a href="install-k8s.html">1.7. Installation on Kubernetes (manually)</a>
+<li><a href="install-targz.html">1.7. .tar.gz Install (manual)</a>
 </li>
 </ul>
 </li>
@@ -191,7 +191,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-container"><a class="anchor" href="#install-container"></a><a class="link" href="#install-container">1.4. Installation as a container (podman/docker)</a></h3>
+<h3 id="install-container"><a class="anchor" href="#install-container"></a><a class="link" href="#install-container">1.3. Container install (podman/docker)</a></h3>
 <div class="paragraph">
 <p>Containers are published on DockerHub.</p>
 </div>
@@ -203,7 +203,8 @@ div.admonitionblock td:first-child {
 <pre>user@host: mkdir /etc/OliveTin/
 user@host: # create your config.yaml file
 user@host: docker pull jamesread/olivetin
-user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin</pre>
+user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin
+user@host: docker start olivetin</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -216,12 +217,12 @@ the web interface.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="install-targz.html">Installation from a .tar.gz manually, using systemd</a> | ↑ Up: <a href="_installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-compose.html">Installation using Docker Compose</a> →</p>
+<p>← Previous: <a href="install-linuxpackage.html">Recommended: Linux package install (.rpm/.deb)</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-compose.html">Docker Compose install</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-20 10:53:04 UTC
+Last updated 2022-01-20 12:25:59 UTC
 </div>
 </div>
 </body>
