@@ -5,17 +5,14 @@ Several users will find themselves wanting to run multiple instances of OliveTin
 
 ==== With Containers
 
-The two things to think about when running multiple containers;
+This is the easiest way to run multiple OliveTin instances. Follow the <<install-container,Container Installation instructions>>, or similar for <<install-compose,Docker Compose>>, <<install-helm,Helm>> or similar to get started.
 
-1. Create a config file for each instance of OliveTin (instances cannot share the same config)
-2. Set a new external port for OliveTin (by default that is `1337`).
-** Set it in the the config file 
-** Set it when creating the container (if in using containers, eg: `3000:1337` - 3000 is the external port)
+1. Create a `config.yaml` file for each instance of OliveTin (instances cannot share the same config).
+2. Choose a new external port for OliveTin and set it in the config file (by default that is `1337` is used). For example, set `listenAddressSingleHTTPFrontend: 0.0.0.0:2337` for your 2nd container's config.
+3. When creating the container, pass in the 2nd instance's config, eg; `-v /opt/OliveTin_two/:/config/`
+4. When creating the container, set the external port, eg: `2337:1337` - 2337 is the external port)
 
-
-This is the easiest way to run multiple OliveTin instances. Follow the <<install-container,Container Installation instructions>>, or similar for <<install-compose,Docker Compose>>, <<install-helm,Helm>> or similar.
-
-However, when you come to specify the external port - by default that is `1337`, simply change it to another port. 
+You do not need to change the listenAddresses / ports for the other 3 ports that OliveTin uses, when you are running inside a container. 
 
 ==== Without containers - using a package (.tar.gz)
 
