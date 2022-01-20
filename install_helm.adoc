@@ -1,5 +1,5 @@
 [#install-helm]
-=== Installation on Kubernetes with Helm
+=== Helm on Kubernetes Install
 
 Helm makes installing OliveTin on Kubernetes very easy. 
 
