@@ -107,6 +107,12 @@ at least is probably a bad case for OliveTin. Therefore, if you set a timeout
 seconds. If you think you have a use case where a shorter (or infinite) timeout
 makes sense, please open an issue and let's discuss.
 
+==== Check the logs
+
+If a action really does "time out", it will show in the logs with "(timed out)" next to the exist code;
+
+image:images/timeoutLogs.png[]
+
 === Run as different users
 
 OliveTin does not *need* to run as root. It does not request any special
