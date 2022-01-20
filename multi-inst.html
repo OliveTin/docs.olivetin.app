@@ -196,33 +196,26 @@ div.admonitionblock td:first-child {
 <div class="sect3">
 <h4 id="_with_containers"><a class="anchor" href="#_with_containers"></a><a class="link" href="#_with_containers">6.6.1. With Containers</a></h4>
 <div class="paragraph">
-<p>The two things to think about when running multiple containers;</p>
+<p>This is the easiest way to run multiple OliveTin instances. Follow the <a href="install-container.html">Container Installation instructions</a>, or similar for <a href="install-compose.html">Docker Compose</a>, <a href="install-helm.html">Helm</a> or similar to get started.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Create a config file for each instance of OliveTin (instances cannot share the same config)</p>
+<p>Create a <code>config.yaml</code> file for each instance of OliveTin (instances cannot share the same config).</p>
 </li>
 <li>
-<p>Set a new external port for OliveTin (by default that is <code>1337</code>).</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Set it in the the config file</p>
+<p>Choose a new external port for OliveTin and set it in the config file (by default that is <code>1337</code> is used). For example, set <code>listenAddressSingleHTTPFrontend: 0.0.0.0:2337</code> for your 2nd container&#8217;s config.</p>
 </li>
 <li>
-<p>Set it when creating the container (if in using containers, eg: <code>3000:1337</code> - 3000 is the external port)</p>
+<p>When creating the container, pass in the 2nd instance&#8217;s config, eg; <code>-v /opt/OliveTin_two/:/config/</code></p>
 </li>
-</ul>
-</div>
+<li>
+<p>When creating the container, set the external port, eg: <code>2337:1337</code> - 2337 is the external port)</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>This is the easiest way to run multiple OliveTin instances. Follow the <a href="install-container.html">Container Installation instructions</a>, or similar for <a href="install-compose.html">Docker Compose</a>, <a href="install-helm.html">Helm</a> or similar.</p>
-</div>
-<div class="paragraph">
-<p>However, when you come to specify the external port - by default that is <code>1337</code>, simply change it to another port.</p>
+<p>You do not need to change the listenAddresses / ports for the other 3 ports that OliveTin uses, when you are running inside a container.</p>
 </div>
 </div>
 <div class="sect3">
@@ -332,7 +325,7 @@ WantedBy=multi-user.target</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-20 13:23:36 UTC
+Last updated 2022-01-20 13:30:12 UTC
 </div>
 </div>
 </body>
