@@ -75,4 +75,9 @@ INFO[0787] Setting log level to warning
 ----
 
 
+[#ports]
+=== Ports
+
+See <<network-ports,the network ports>> documentation in the reference section.
+
 

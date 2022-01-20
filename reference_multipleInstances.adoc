@@ -1,0 +1,60 @@
+[#multi-inst]
+=== Multiple instances on a server
+
+Several users will find themselves wanting to run multiple instances of OliveTin. Depending on how you've setup OliveTin depends on how easy it is to configure that. This page includes instructions for OliveTin installed as a container, and as a package (.tar.gz).
+
+==== With Containers
+
+The two things to think about when running multiple containers;
+
+1. Create a config file for each instance of OliveTin (instances cannot share the same config)
+2. Set a new external port for OliveTin (by default that is `1337`).
+** Set it in the the config file 
+** Set it when creating the container (if in using containers, eg: `3000:1337` - 3000 is the external port)
+
+
+This is the easiest way to run multiple OliveTin instances. Follow the <<install-container,Container Installation instructions>>, or similar for <<install-compose,Docker Compose>>, <<install-helm,Helm>> or similar.
+
+However, when you come to specify the external port - by default that is `1337`, simply change it to another port. 
+
+==== Without containers - using a package (.tar.gz)
+
+If you are not using containers, then it is probably best not to use a `.deb/.rpm` installation, as those packages can only be installed for one instance.
+
+Instead, follow the instructions for <<install-targz,installing from a .tar.gz>> archive. 
+
+When you come to create the config.yaml file, OliveTin will look for this in it's own startup directory. Therefore it is probably best to extract the .tar.gz file like this and change the paths;
+
+* `/opt/OliveTin_one/`
+* `/opt/OliveTin_two/`
+* `/opt/OliveTin_three/`
+
+Because you are running outside of a container, you will also need to change the "internal" ports used by OliveTin so they are separate for all instances. OliveTin listens on 4 addresses (1 external, 3 internal) and needs 4 ports. You can read about these in the <<network-ports,network ports documentation>>.
+
+You could end up with a setup that looks like this;
+
+[%header]
+|===
+| Instance Name          | Install path          | Config file path                  | Single frontend point (`listenAddressSingleHTTPFrontend`)   | REST Actions port (`listenAddressRestActions`)  | gRPC Actions port (`listenAddressGrpcActions`)   | WebUI Port (`listenAddressWebUI`)
+| OliveTin_one           | `/opt/OliveTin_one`   | `/opt/OliveTin_one/config.yaml`   | `0.0.0.0:1337`           | `localhost:1338`    | `localhost:1339`      | `localhost:1340`
+| OliveTin_two           | `/opt/OliveTin_two`   | `/opt/OliveTin_two/config.yaml`   | `0.0.0.0:2337`           | `localhost:2338`    | `localhost:2339`      | `localhost:2340`
+| OliveTin_three         | `/opt/OliveTin_three` | `/opt/OliveTin_three/config.yaml` | `0.0.0.0:3337`           | `localhost:3338`    | `localhost:3339`      | `localhost:3340`
+|===
+
+Note that you will also need to adjust the default systemd service file to point to your install directory, if using that. Here is an example for `OliveTin_two`; 
+
+.A modified systemd service file for a 2nd instance
+----
+[Unit]
+Description=OliveTin2
+
+[Service]
+WorkingDirectory=/opt/OliveTin_two/OliveTin
+ExecStart=/opt/OliveTin_two/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+----
+
+

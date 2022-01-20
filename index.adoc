@@ -104,6 +104,8 @@ include::updateChecks.adoc[]
 
 include::containerInstallPackages.adoc[]
 
+include::reference_multipleInstances.adoc[]
+
 [#troubleshooting]
 == Troubleshooting
 

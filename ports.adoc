@@ -25,10 +25,13 @@ Below is a detailed reference table.
 .Port reference table
 [%header,cols="1,2"]
 |===
-| Default Address:Port                             | Purpose                   
-| 0.0.0.0:1337 (listen on all available addresses) | This is a "micro reverse proxy" built into OliveTin. It's only purpose is to serve /ui and / (the web interface) from a single endpoint. This means that problems like CORSs and setting "external addresses" is not necessary. It does not do any caching or anything else. It can be disabled, but it makes life a lot easier for you. It's common to put your own reverse proxy like haproxy, traefik, etc in front of this single micro reverse proxy.
-| localhost:1338                                   | REST - the protocol used by web pages to talk to web APIs. In the case of OliveTin, the API is used to get actions, and start actions.
-| localhost:1339                                   | gRPC - a very popular method of service-to-service API communication. This provides the "real" API for OliveTin.
-| localhost:1340                                   | Hosts a simple static web server with some HTML, stylesheets, Javascript etc for the web interface.
+| Config file reference (and Default Address:Port) | Purpose                   
+| `listenAddressSingleHTTPFrontend: 0.0.0.0:1337` (listen on all available addresses) | This is a "micro reverse proxy" built into OliveTin. It's only purpose is to serve /ui and / (the web interface) from a single endpoint. This means that problems like CORSs and setting "external addresses" is not necessary. It does not do any caching or anything else. It can be disabled, but it makes life a lot easier for you. It's common to put your own reverse proxy like haproxy, traefik, etc in front of this single micro reverse proxy.
+| `listenAddressRestActions: localhost:1338`       | REST - the protocol used by web pages to talk to web APIs. In the case of OliveTin, the API is used to get actions, and start actions.
+| `listenAddressGrpcActions:localhost:1339`        | gRPC - a very popular method of service-to-service API communication. This provides the "real" API for OliveTin.
+| `listenAddressWebUI: localhost:1340`             | Hosts a simple static web server with some HTML, stylesheets, Javascript etc for the web interface.
 |=== 
 
+==== See also
+
+* <<multi-inst,Running Multiple instances of OliveTin on the same server>>
