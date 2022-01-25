@@ -193,16 +193,18 @@ div.admonitionblock td:first-child {
 <div class="sect2">
 <h3 id="install-helm"><a class="anchor" href="#install-helm"></a><a class="link" href="#install-helm">1.5. Helm on Kubernetes Install</a></h3>
 <div class="paragraph">
-<p>Helm makes installing OliveTin on Kubernetes very easy.</p>
+<p>Helm makes installing OliveTin on Kubernetes very easy, the official chart is hosted on Artifact Hub.</p>
 </div>
+<div class="paragraph">
+<p><a href="https://artifacthub.io/packages/search?repo=olivetin"><span class="image"><img src="https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/olivetin" alt="Artifact Hub"></span></a></p>
+</div>
+<div class="sect3">
+<h4 id="_quickstart"><a class="anchor" href="#_quickstart"></a><a class="link" href="#_quickstart">1.5.1. Quickstart</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre>user@host: helm repo add olivetin https://olivetin.github.io/OliveTin-HelmChart/
 user@host: helm install olivetin olivetin/olivetin</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>You will probably want to <code>kubectl expose &#8230;&#8203;</code> your service afterwards.</p>
 </div>
 <div class="paragraph">
 <p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
@@ -213,13 +215,36 @@ the web interface.</p>
 <a href="config.html">configuration section</a> as the next step.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_included_templates"><a class="anchor" href="#_included_templates"></a><a class="link" href="#_included_templates">1.5.2. Included templates</a></h4>
+<div class="paragraph">
+<p>You can view the raw templates here: <a href="https://github.com/OliveTin/OliveTin-HelmChart/tree/main/templates" class="bare">https://github.com/OliveTin/OliveTin-HelmChart/tree/main/templates</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deployment</p>
+</li>
+<li>
+<p>ConfigMap</p>
+</li>
+<li>
+<p>Service</p>
+</li>
+<li>
+<p>Ingress (optional)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="install-compose.html">Docker Compose install</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-k8s.html">Kubernetes install (manually)</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-20 13:30:12 UTC
+Last updated 2022-01-25 09:57:27 UTC
 </div>
 </div>
 </body>
