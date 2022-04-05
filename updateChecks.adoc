@@ -8,7 +8,7 @@ The information OliveTin sends to the update server is stored/saved., and this c
 ==== Design considerations
 
 * The source code for the update check (client), and the update service are open and on GitHub, freely auditable.
-* A hashed form of the machine ID is used to differentiate between installations but being hashed means we do not know your actual machine ID <<machine-id,more info>>.
+* A generated installation ID (which is just a UUID), that is used to differentiate between installations <<installation-id,more info>>.
 * The update request is sent and stored in plain text - easy to check/audit.
 * The update request goes to an obvious domain name - update-check.olivetin.app
 * The checkins can be freely viewed by anyone in the public log.
@@ -23,20 +23,31 @@ When OliveTin checks for updates, it will send the following;
 * CurrentCommit - the Git commit used to build this version
 * OS - The update check wants to know your OS, because it’s possible in the future that some versions and updates might not be available for all OSes at the same time.
 * Architecture (x86_64, ARM, etc)
-* MachineID - See below
+* InstallationID - See below
 
 Here is an example of a log entry that is sent/stored;
 
 ----
-{"CurrentVersion":"dev","CurrentCommit":"nocommit","OS":"linux","Arch":"amd64","MachineID":"651ea7449ddb1af8b6d173e99fd198b0ebadac720d0512603566621f155b13bb"}
+{"CurrentVersion":"dev","CurrentCommit":"nocommit","OS":"linux","Arch":"amd64","InstallationID":"f232d115-255c-4728-ba7f-a8f8b2b10a1f"}
 ----
 
 If you would like to audit the update code, look at the following directory; https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck
 
+[#installation-id]
+==== What is the OliveTin installation ID?
+
+This is a randomly generated link:https://en.wikipedia.org/wiki/Universally_unique_identifier[UUID] - that is not based on your operating system, not on any of your data. OliveTin tries to create a random installation-id.txt in your config directory when it starts up. 
+
+The reason for creating a installation ID is to tell the differences between installations - without this identifier, we would not know if 10 instances, or 1 instances of OliveTin are running a specific version. 
+
+In older versions of OliveTin, the MachineID was used instead of InstallationID (see below). 
+
 [#machine-id]
 ==== Why do you need my machine ID?
 
-First of all, OliveTin only sends a hashed version of a unique identifier for your machine. OliveTin does not use your actual machine ID, because this is private, and potentially sensitive information in it’s original form. Thi hashed version of this ID is used, which should be considered safe - because it’s a hash, it’s not possible to get back to the original sensitive machine ID.
+This was changed in OliveTin - the MachineID is no longer collected, and the project moved to InstallationID instead. The answer is kept here for old versions.
+
+First of all, OliveTin only sends a hashed version of a unique identifier for your machine. OliveTin does not use your actual machine ID, because this is private, and potentially sensitive information in it’s original form. This hashed version of this ID is used, which should be considered safe - because it’s a hash, it’s not possible to get back to the original sensitive machine ID.
 
 From a technical perspective, OliveTin uses the golang package `machineiid` to 
 get as hashed version of your MachineId. OliveTin follows the security
@@ -50,7 +61,7 @@ OliveTin are running a specific version.
 
 This is incredibly useful information for project developers to know, because;
 
-1. It helps the project developers know how long it takes for updates to be applied by users of OliveTin (ie, should updates be released more often / less often) - the machine ID helps track this.
+1. It helps the project developers know how long it takes for updates to be applied by users of OliveTin (ie, should updates be released more often / less often) - the installation ID helps track this.
 2. This helps the project better understand what are the most popular operating systems and architectures (ie, so more testing can be done).
 3. How many old versions of the project to support?
 
@@ -72,11 +83,12 @@ To http://update-check.olivetin.app . This is a virtual machine which stores the
 
 ==== Why isn’t this opt-in?
 
-It seems the majority of software does perform update checks by default like this - Chrome, Firefox, most modern Operating Systems, etc. Because no information about people, or your data is being used, apart from your machine ID, this seems like a safe default.
+It seems the majority of software does perform update checks by default like this - Chrome, Firefox, most modern Operating Systems, etc. Because no information about people, or your data is being used, apart from your installation ID, this seems like a safe default.
 
 Also, if this were to default off, many people probably would not think about turning it on.
 
-==== How do I disable this?
+[#disable-update-checks]
+==== How do I disable update checking?
 
 If you are worried about privacy, or similar, please do make your concerns known. This is best if this is an open discussion.
 

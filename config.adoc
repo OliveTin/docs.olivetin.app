@@ -4,10 +4,9 @@
 OliveTin is controlled by a `config.yaml` file. On startup, it looks for this
 file in the following locations; 
 
-1. The current working directory (`./`)
+1. The value specified by the `--configdir` argument, which defaults to the current working directory (`./`)
 2. `/config/` - Mostly used for containers
-3. `/etc/OliveTin/` - this is the recommended directory on Linux for your
-`config.yaml`. 
+3. `/etc/OliveTin/` - this is the recommended directory on Linux for your `config.yaml`. 
 
 The most simple `config.yaml` would be something like this;
 
@@ -27,8 +26,12 @@ For building up from here, look at the following resources;
 
 * See the <<action-customisation,action cutomisation>> documentation to customize how those actions work.
 
-[#hide-nav]
-=== Hide Navigation 
+=== Show/Hide web UI elements
+
+The OliveTin web UI is reasonably customizable - parts of the page that you don't need can be hidden when they're not needed. 
+
+[#show-nav]
+==== Show Navigation 
 
 You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.
 
@@ -37,9 +40,10 @@ image::images/defaultUiWithNav.png[]
 
 To have OliveTin hide these buttons, add `hideNavigation` to your config.yaml;
 
+.`config.yaml`
 ----
 logLevel: "INFO"
-hideNavigation: true
+showNavigation: false
 
 actions:
     ....
@@ -47,6 +51,32 @@ actions:
 
 .The same user interface, but with the "Actions" and "Settings" buttons hidden (`hideNavigation: true`)
 image::images/defaultUiHideNav.png[]
+
+[#show-new-versions]
+==== Show new versions
+
+You can disable the "new version" information in the footer - the default for `showNewVersions` is `true`; 
+
+.`config.yaml`
+----
+logLevel: "INFO"
+showNewVersions: false
+----
+
+If disabled, OliveTin will still check for new versions in the background, but will not display them on the page. If you want to disable update checking completely, see <<disable-update-checks,disable update checking>>.
+
+[#show-footer]
+==== Show the footer 
+
+You can disable the entire footer, if you would like a really minimal interface. The default for `showFooter` is `true`.
+
+.`config.yaml`
+----
+logLevel: "INFO"
+showFooter: false
+----
+
+This means the <<show-new-versions,`showNewVersions`>> configuration option will automatically be `false` as well.
 
 [#log-levels]
 === Log Levels
