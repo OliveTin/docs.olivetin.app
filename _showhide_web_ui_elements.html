@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="hide-nav" class="book toc2 toc-left">
+<body id="_showhide_web_ui_elements" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -158,7 +158,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="config.html">2. Configuration</a>
 <ul class="sectlevel2">
-<li><a href="hide-nav.html"><span class="toc-current">2.1. Hide Navigation</span></a>
+<li><a href="_showhide_web_ui_elements.html"><span class="toc-current">2.1. Show/Hide web UI elements</span></a>
 </li>
 <li><a href="log-levels.html">2.2. Log Levels</a>
 </li>
@@ -183,7 +183,12 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="hide-nav"><a class="anchor" href="#hide-nav"></a><a class="link" href="#hide-nav">2.1. Hide Navigation</a></h3>
+<h3 id="_showhide_web_ui_elements"><a class="anchor" href="#_showhide_web_ui_elements"></a><a class="link" href="#_showhide_web_ui_elements">2.1. Show/Hide web UI elements</a></h3>
+<div class="paragraph">
+<p>The OliveTin web UI is reasonably customizable - parts of the page that you don&#8217;t need can be hidden when they&#8217;re not needed.</p>
+</div>
+<div class="sect3">
+<h4 id="show-nav"><a class="anchor" href="#show-nav"></a><a class="link" href="#show-nav">2.1.1. Show Navigation</a></h4>
 <div class="paragraph">
 <p>You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.</p>
 </div>
@@ -197,9 +202,10 @@ div.admonitionblock td:first-child {
 <p>To have OliveTin hide these buttons, add <code>hideNavigation</code> to your config.yaml;</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
 <pre>logLevel: "INFO"
-hideNavigation: true
+showNavigation: false
 
 actions:
     ....</pre>
@@ -212,13 +218,46 @@ actions:
 <div class="title">Figure 2. The same user interface, but with the "Actions" and "Settings" buttons hidden (<code>hideNavigation: true</code>)</div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="show-new-versions"><a class="anchor" href="#show-new-versions"></a><a class="link" href="#show-new-versions">2.1.2. Show new versions</a></h4>
+<div class="paragraph">
+<p>You can disable the "new version" information in the footer - the default for <code>showNewVersions</code> is <code>true</code>;</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre>logLevel: "INFO"
+showNewVersions: false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If disabled, OliveTin will still check for new versions in the background, but will not display them on the page. If you want to disable update checking completely, see <a href="update-tracking.html#disable-update-checks">disable update checking</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-footer"><a class="anchor" href="#show-footer"></a><a class="link" href="#show-footer">2.1.3. Show the footer</a></h4>
+<div class="paragraph">
+<p>You can disable the entire footer, if you would like a really minimal interface. The default for <code>showFooter</code> is <code>true</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre>logLevel: "INFO"
+showFooter: false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This means the <a href="_showhide_web_ui_elements.html#show-new-versions"><code>showNewVersions</code></a> configuration option will automatically be <code>false</code> as well.</p>
+</div>
+</div>
+</div>
 <div class="paragraph nav-footer">
 <p>↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="log-levels.html">Log Levels</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-25 09:57:27 UTC
+Last updated 2022-04-05 16:25:57 UTC
 </div>
 </div>
 </body>
