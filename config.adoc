@@ -26,6 +26,7 @@ For building up from here, look at the following resources;
 
 * See the <<action-customisation,action cutomisation>> documentation to customize how those actions work.
 
+[#toggle-webui]
 === Show/Hide web UI elements
 
 The OliveTin web UI is reasonably customizable - parts of the page that you don't need can be hidden when they're not needed. 
