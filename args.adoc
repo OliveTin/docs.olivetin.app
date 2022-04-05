@@ -3,7 +3,14 @@
 
 === Introduction to Arguments
 
-Actions/commands that OliveTin runs, without arguments, are generally quite safe - only that command can be run, without modifications. However, many users need the flexibility to set options on that command - normally called command line arguments. In OliveTin, arguments defined in a shell commands like `echo {{ message }}`, with a bit of extra configuration.
+Actions and commands that OliveTin runs, without arguments, are generally quite safe - only that command can be run, without modifications. However, many users need the flexibility to set options on that command - normally called command line arguments. In OliveTin, arguments are defined in a shell commands like `echo {{ message }}`, with a bit of extra configuration.
+
+Examples of valid argument names are `{{ personName }}`, `{{ customer_number }}` and `{{ ISBN11_code }}`. 
+
+* a-z (case insensitive)
+* _ is allowed
+* numbers are allowed (argument names can also start with numbers)
+* all other characters are invalid for argument names.
 
 === Important Safety Warning
 
