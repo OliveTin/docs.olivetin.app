@@ -22,18 +22,28 @@ You can control other containers, when running OliveTin inside a container
 itself, however you need to do some extra setup when creating the OliveTin
 container.
 
-1) Pass /var/run/docker.sock as a bind mount to the container when creating it,
+1) Pass `/var/run/docker.sock` as a bind mount to the container when creating it,
 eg:
 
 ----
-docker create -v /var/run/docker.sock:/container/path/docker.sock ...additional args here...
+docker create -v /var/run/docker.sock:/var/run/docker.sock ...additional args here...
 ----
 
-2) Install docker command into the container.
+Or, using the `docker run` syntax;
+
+----
+docker run -v /var/run/docker.sock:/var/run/docker.sock --name OliveTin jamesread/olivetin
+----
+
+2) The official x86_64 docker container comes with the `docker` client pre-installed. If you are using `arm` or and `arm64` container, you will need to add Docker yourself.
 
 ----
 docker exec -it olivetin dnf install -y docker
 ----
+
+NOTE: The reason that the `arm` and `arm64` containers do not container docker, is that when these images are cross-compiled at build time, it takes FOREVER because we have to emulate arm. 
+
+After that, you should be able to setup docker actions like it's shown in the example above.
 
 
 [#action-service]
@@ -91,4 +101,14 @@ to a SSH key. There are lots of good articles on the internet that explain how
 to setup password-less login with a SSH key. This applies to container images
 as well.
 
+==== Setup if running inside a container
 
+SSH is pre-installed in all OliveTin container images.
+
+You should bind-mount your SSH keys directory into the OliveTin user's home directory;
+
+----
+docker run -v /opt/mySshKeys/:/home/OliveTin/.ssh/ --name OliveTin jamesread/olivetin
+----
+
+This also works for things like SSH configuration files, if you want to use them.

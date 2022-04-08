@@ -62,6 +62,7 @@ video::Ej6NM9rmZtk[youtube,width=100%]
 [discrete]
 === Read more
 
+[#installation]
 == Installation
 
 **Packages (recommended)** can be downloaded from the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
@@ -80,12 +81,16 @@ include::install_helm.adoc[]
 
 include::install_k8s.adoc[]
 
+include::install_targz.adoc[]
+
 
 include::config.adoc[]
 
 include::actions.adoc[]
 
 include::actionCustomization.adoc[]
+
+include::args.adoc[]
 
 include::reverseProxies.adoc[]
 
@@ -98,6 +103,10 @@ include::security.adoc[]
 include::exitCodes.adoc[]
 
 include::updateChecks.adoc[]
+
+include::containerInstallPackages.adoc[]
+
+include::reference_multipleInstances.adoc[]
 
 [#troubleshooting]
 == Troubleshooting

@@ -1,5 +1,5 @@
 [#install-container]
-=== Installation as a container (podman/docker)
+=== Container install (podman/docker)
 
 Containers are published on DockerHub.
 
@@ -10,6 +10,7 @@ user@host: mkdir /etc/OliveTin/
 user@host: # create your config.yaml file
 user@host: docker pull jamesread/olivetin
 user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin
+user@host: docker start olivetin
 ....
 
 include::install_to_config.adoc[]

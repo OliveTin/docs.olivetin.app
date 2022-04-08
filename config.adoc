@@ -4,10 +4,9 @@
 OliveTin is controlled by a `config.yaml` file. On startup, it looks for this
 file in the following locations; 
 
-1. The current working directory (`./`)
+1. The value specified by the `--configdir` argument, which defaults to the current working directory (`./`)
 2. `/config/` - Mostly used for containers
-3. `/etc/OliveTin/` - this is the recommended directory on Linux for your
-`config.yaml`. 
+3. `/etc/OliveTin/` - this is the recommended directory on Linux for your `config.yaml`. 
 
 The most simple `config.yaml` would be something like this;
 
@@ -27,4 +26,89 @@ For building up from here, look at the following resources;
 
 * See the <<action-customisation,action cutomisation>> documentation to customize how those actions work.
 
-* Example config.yaml files in the OliveTin repository - link:https://github.com/OliveTin/OliveTin/tree/main/configs[OliveTin config.yaml examples]
+[#toggle-webui]
+=== Show/Hide web UI elements
+
+The OliveTin web UI is reasonably customizable - parts of the page that you don't need can be hidden when they're not needed. 
+
+[#show-nav]
+==== Show Navigation 
+
+You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.
+
+.The default user interface with the "Actions" and "Settings" buttons shown.
+image::images/defaultUiWithNav.png[]
+
+To have OliveTin hide these buttons, add `hideNavigation` to your config.yaml;
+
+.`config.yaml`
+----
+logLevel: "INFO"
+showNavigation: false
+
+actions:
+    ....
+----
+
+.The same user interface, but with the "Actions" and "Settings" buttons hidden (`hideNavigation: true`)
+image::images/defaultUiHideNav.png[]
+
+[#show-new-versions]
+==== Show new versions
+
+You can disable the "new version" information in the footer - the default for `showNewVersions` is `true`; 
+
+.`config.yaml`
+----
+logLevel: "INFO"
+showNewVersions: false
+----
+
+If disabled, OliveTin will still check for new versions in the background, but will not display them on the page. If you want to disable update checking completely, see <<disable-update-checks,disable update checking>>.
+
+[#show-footer]
+==== Show the footer 
+
+You can disable the entire footer, if you would like a really minimal interface. The default for `showFooter` is `true`.
+
+.`config.yaml`
+----
+logLevel: "INFO"
+showFooter: false
+----
+
+This means the <<show-new-versions,`showNewVersions`>> configuration option will automatically be `false` as well.
+
+[#log-levels]
+=== Log Levels
+OliveTin supports a few different log levels. The default logLevel is `INFO`. 
+
+You can set a `logLevel` in config.yaml like this;
+
+----
+logLevel: "INFO"
+
+actions:
+    ....
+----
+
+The supported log levels are;
+
+* `DEBUG` - Every possible log message will be shown. This will use a lot of disk space and is not recommended unless you are a developer / like reading code.
+* `ERROR` - OliveTin rarely uses the `ERROR` log level.
+* `WARN` - Very few messages, only warnings are shown.
+* `INFO` - The defualt log level.
+
+You can change the `logLevel` while OliveTin is running, and it should update as soon as you save your config.yaml.You will always get a log message like this;
+
+----
+INFO[0787] Setting log level to warning
+----
+
+
+[#ports]
+=== Ports
+
+See <<network-ports,the network ports>> documentation in the reference section.
+
+
