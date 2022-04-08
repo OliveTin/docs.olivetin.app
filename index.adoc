@@ -87,6 +87,8 @@ include::actions.adoc[]
 
 include::actionCustomization.adoc[]
 
+include::reverseProxies.adoc[]
+
 == Reference
 
 include::ports.adoc[]
