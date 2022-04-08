@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_security" class="book toc2 toc-left">
+<body id="_nginx_path_based" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -165,22 +165,14 @@ div.admonitionblock td:first-child {
 <li><a href="args.html">5. Arguments</a>
 </li>
 <li><a href="_reverse_proxies.html">6. Reverse Proxies</a>
-</li>
-<li><a href="_reference.html">7. Reference</a>
 <ul class="sectlevel2">
-<li><a href="network-ports.html">7.1. Network ports</a>
+<li><a href="_haproxy_dns_based.html">6.1. Haproxy - DNS based</a>
 </li>
-<li><a href="_security.html"><span class="toc-current">7.2. Security</span></a>
-</li>
-<li><a href="_understanding_exit_codes.html">7.3. Understanding exit codes</a>
-</li>
-<li><a href="update-tracking.html">7.4. Update Checks (and tracking)</a>
-</li>
-<li><a href="container-dnf.html">7.5. Installing extra container packages</a>
-</li>
-<li><a href="multi-inst.html">7.6. Multiple instances on a server</a>
+<li><a href="_nginx_path_based.html"><span class="toc-current">6.2. Nginx - Path based</span></a>
 </li>
 </ul>
+</li>
+<li><a href="_reference.html">7. Reference</a>
 </li>
 <li><a href="troubleshooting.html">8. Troubleshooting</a>
 </li>
@@ -191,36 +183,13 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_security"><a class="anchor" href="#_security"></a><a class="link" href="#_security">7.2. Security</a></h3>
+<h3 id="_nginx_path_based"><a class="anchor" href="#_nginx_path_based"></a><a class="link" href="#_nginx_path_based">6.2. Nginx - Path based</a></h3>
 <div class="paragraph">
-<p>OliveTin should be reasonably secure. Here are some security considerations in
-the design of the app;</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Admins have full control over what commands can by run using <code>config.yaml</code>.</p>
-</li>
-<li>
-<p>OliveTin does not accept any action (command) arguments by design at the
-moment, as this has huge potential for exploitation and needs to be handled
-carefully.</p>
-</li>
-<li>
-<p>OliveTin listens on just 1 open public port by default (1337). The rest of
-the ports only listen on <code>localhost</code> so you don&#8217;t have to worry about them in
-your firewall.</p>
-</li>
-<li>
-<p>Standard Linux controls can be used to run OliveTin as non-root, with <code>sudo</code>
-permissions if needed. See the action customization section of these docs for
-more details.</p>
-</li>
-</ol>
+<p>TODO</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="network-ports.html">Network ports</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_understanding_exit_codes.html">Understanding exit codes</a> →</p>
+<p>← Previous: <a href="_haproxy_dns_based.html">Haproxy - DNS based</a> | ↑ Up: <a href="_reverse_proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_reference.html">Reference</a> →</p>
 </div>
 </div>
 <div id="footer">
