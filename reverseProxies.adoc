@@ -1,3 +1,4 @@
+[#reverse-proxies]
 == Reverse Proxies
 
 This section of the documentation has a few examples of reverse proxy configurations for popular reverse proxy servers.
