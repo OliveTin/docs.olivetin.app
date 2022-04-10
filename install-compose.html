@@ -160,15 +160,17 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="install-linuxpackage.html">1.2. Recommended: Linux package install (.rpm/.deb)</a>
 </li>
-<li><a href="install-container.html">1.3. Container install (podman/docker)</a>
+<li><a href="install-archbtw.html">1.3. Arch Linux (AUR)</a>
 </li>
-<li><a href="install-compose.html"><span class="toc-current">1.4. Docker Compose install</span></a>
+<li><a href="install-container.html">1.4. Container install (podman/docker)</a>
 </li>
-<li><a href="install-helm.html">1.5. Helm on Kubernetes Install</a>
+<li><a href="install-compose.html"><span class="toc-current">1.5. Docker Compose install</span></a>
 </li>
-<li><a href="install-k8s.html">1.6. Kubernetes install (manually)</a>
+<li><a href="install-helm.html">1.6. Helm on Kubernetes Install</a>
 </li>
-<li><a href="install-targz.html">1.7. .tar.gz Install (manual)</a>
+<li><a href="install-k8s.html">1.7. Kubernetes install (manually)</a>
+</li>
+<li><a href="install-targz.html">1.8. .tar.gz Install (manual)</a>
 </li>
 </ul>
 </li>
@@ -193,7 +195,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-compose"><a class="anchor" href="#install-compose"></a><a class="link" href="#install-compose">1.4. Docker Compose install</a></h3>
+<h3 id="install-compose"><a class="anchor" href="#install-compose"></a><a class="link" href="#install-compose">1.5. Docker Compose install</a></h3>
 <div class="paragraph">
 <p>Docker compose is a popular way to define multi-container applications using a
 infrastructure as code approach.</p>
@@ -231,7 +233,7 @@ the web interface.</p>
 <a href="config.html">configuration section</a> as the next step.</p>
 </div>
 <div class="sect3">
-<h4 id="_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"><a class="anchor" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"></a><a class="link" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin">1.4.1. Controlling other docker containers from a Docker Compose install of OliveTin</a></h4>
+<h4 id="_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"><a class="anchor" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"></a><a class="link" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin">1.5.1. Controlling other docker containers from a Docker Compose install of OliveTin</a></h4>
 <div class="paragraph">
 <p>If you want to use OliveTin running in a container to control other Docker containers, you will need to pass through the Docker sock in your compose file.</p>
 </div>
@@ -261,7 +263,7 @@ services:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_controlling_the_docker_user_with_docker_compose"><a class="anchor" href="#_controlling_the_docker_user_with_docker_compose"></a><a class="link" href="#_controlling_the_docker_user_with_docker_compose">1.4.2. Controlling the docker user with Docker Compose</a></h4>
+<h4 id="_controlling_the_docker_user_with_docker_compose"><a class="anchor" href="#_controlling_the_docker_user_with_docker_compose"></a><a class="link" href="#_controlling_the_docker_user_with_docker_compose">1.5.2. Controlling the docker user with Docker Compose</a></h4>
 <div class="paragraph">
 <p>This is the correct way to tell the OliveTin container to run as root (or any other user);</p>
 </div>
@@ -290,7 +292,7 @@ services:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_using_traefik_with_docker_compose_and_https"><a class="anchor" href="#_using_traefik_with_docker_compose_and_https"></a><a class="link" href="#_using_traefik_with_docker_compose_and_https">1.4.3. Using Traefik with Docker Compose (and HTTPS)</a></h4>
+<h4 id="_using_traefik_with_docker_compose_and_https"><a class="anchor" href="#_using_traefik_with_docker_compose_and_https"></a><a class="link" href="#_using_traefik_with_docker_compose_and_https">1.5.3. Using Traefik with Docker Compose (and HTTPS)</a></h4>
 <div class="paragraph">
 <p>Traefik is a popular reverse proxy that seems to be used a lot in people&#8217;s
 Docker compose setups.</p>
@@ -315,7 +317,7 @@ Docker compose setups.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-08 08:27:31 UTC
+Last updated 2022-04-10 20:55:24 UTC
 </div>
 </div>
 </body>

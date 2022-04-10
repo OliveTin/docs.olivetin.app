@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="install-k8s" class="book toc2 toc-left">
+<body id="install-archbtw" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -160,7 +160,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="install-linuxpackage.html">1.2. Recommended: Linux package install (.rpm/.deb)</a>
 </li>
-<li><a href="install-archbtw.html">1.3. Arch Linux (AUR)</a>
+<li><a href="install-archbtw.html"><span class="toc-current">1.3. Arch Linux (AUR)</span></a>
 </li>
 <li><a href="install-container.html">1.4. Container install (podman/docker)</a>
 </li>
@@ -168,7 +168,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="install-helm.html">1.6. Helm on Kubernetes Install</a>
 </li>
-<li><a href="install-k8s.html"><span class="toc-current">1.7. Kubernetes install (manually)</span></a>
+<li><a href="install-k8s.html">1.7. Kubernetes install (manually)</a>
 </li>
 <li><a href="install-targz.html">1.8. .tar.gz Install (manual)</a>
 </li>
@@ -195,46 +195,65 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-k8s"><a class="anchor" href="#install-k8s"></a><a class="link" href="#install-k8s">1.7. Kubernetes install (manually)</a></h3>
+<h3 id="install-archbtw"><a class="anchor" href="#install-archbtw"></a><a class="link" href="#install-archbtw">1.3. Arch Linux (AUR)</a></h3>
 <div class="paragraph">
-<p>OliveTin works just fine on Kubernetes. The easiest way to deploy it is with a
-Kubernetes <code>ConfigMap</code>, <code>Deployment</code>, <code>Service</code> and finally <code>Ingress</code>. Like so;</p>
+<p>There are two packages available for Arch Linux;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://aur.archlinux.org/packages/olivetin"><code>olivetin</code></a> - This builds from source, using a release Git tag.This is officially maintained by the authors of the OliveTin project.</p>
+</li>
+<li>
+<p><a href="https://aur.archlinux.org/packages/olivetin-bin"><code>olivetin-bin</code></a> - This re-packages the binaries built by the official binaries. This is not officially maintained by the authors of the OliveTin project, and might be a bit older - but it should work just fine.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_installation"><a class="anchor" href="#_installation"></a><a class="link" href="#_installation">1.3.1. Installation</a></h4>
+<div class="paragraph">
+<p>Install using <code>yay</code>;</p>
 </div>
 <div class="listingblock">
-<div class="title">ConfigMap</div>
 <div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_configmap.yml</code></pre>
+<pre>user:host: yay -Syu olivetin</pre>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_post_installation_2"><a class="anchor" href="#_post_installation_2"></a><a class="link" href="#_post_installation_2">1.3.2. Post installation</a></h4>
+<div class="paragraph">
+<p>You will need to write a basic configuration file before OliveTin will startup.</p>
 </div>
 <div class="paragraph">
-<p>The main application config.yml for OliveTin is specified in the <code>ConfigMap</code>
-above. You will want to edit this later - see the "Configuration" section.</p>
-</div>
-<div class="paragraph">
-<p>Next, we need a deployment;</p>
+<p>Create the following basic config file at <code>/etc/OliveTin/config.yaml</code> with the
+following contents;</p>
 </div>
 <div class="listingblock">
-<div class="title">Deployment</div>
+<div class="title">The most simple <code>config.yaml</code> file.</div>
 <div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_deployment.yml</code></pre>
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">actions:
+  - title: "Hello world!"
+    shell: echo 'Hello World!'</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>That should deploy OliveTin. Then expose it as a service;</p>
+<p>Now that you have a configuration file, and OliveTin is installed, start it;</p>
 </div>
 <div class="listingblock">
-<div class="title">Service</div>
+<div class="title">Start the service (only needed once)</div>
 <div class="content">
-<pre class="highlight"><code>user@host: kubectl expose deployment/olivetin</code></pre>
+<pre>user@host: systemctl enable --now OliveTin</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then lastly, create a Ingress rule for for that service;</p>
+<p>If you are running a firewall on your server, like firewalld, you will need to
+open port 1337;</p>
 </div>
 <div class="listingblock">
-<div class="title">Ingress</div>
 <div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_ingress.yml</code></pre>
+<pre>user@host: firewall-cmd --add-port 1337/tcp --permanent
+user@host: firewall-cmd --reload</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -246,8 +265,32 @@ the web interface.</p>
 <a href="config.html">configuration section</a> as the next step.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_troubleshooting_systemd_installations_2"><a class="anchor" href="#_troubleshooting_systemd_installations_2"></a><a class="link" href="#_troubleshooting_systemd_installations_2">1.3.3. Troubleshooting systemd installations</a></h4>
+<div class="paragraph">
+<p>If you are having problems, you can check if OliveTin is running like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: systemctl status OliveTin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the service has filed, scroll through the logs;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: journalctl -eu OliveTin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">Where to find help</a>
+page.</p>
+</div>
+</div>
+</div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="install-helm.html">Helm on Kubernetes Install</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-targz.html">.tar.gz Install (manual)</a> →</p>
+<p>← Previous: <a href="install-linuxpackage.html">Recommended: Linux package install (.rpm/.deb)</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-container.html">Container install (podman/docker)</a> →</p>
 </div>
 </div>
 <div id="footer">
