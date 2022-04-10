@@ -73,6 +73,8 @@ include::choose_package.adoc[]
 
 include::install_systemd.adoc[]
 
+include::install_linux_arch.adoc[]
+
 include::install_container.adoc[]
 
 include::install_docker_compose.adoc[]
