@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_haproxy_dns_based" class="book toc2 toc-left">
+<body id="nginx-path" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -166,9 +166,9 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="reverse-proxies.html">6. Reverse Proxies</a>
 <ul class="sectlevel2">
-<li><a href="_haproxy_dns_based.html"><span class="toc-current">6.1. Haproxy - DNS based</span></a>
+<li><a href="haproxy-dns.html">6.1. Haproxy - DNS based</a>
 </li>
-<li><a href="_nginx_path_based.html">6.2. Nginx - Path based</a>
+<li><a href="nginx-path.html"><span class="toc-current">6.2. Nginx - Path based</span></a>
 </li>
 </ul>
 </li>
@@ -183,32 +183,42 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_haproxy_dns_based"><a class="anchor" href="#_haproxy_dns_based"></a><a class="link" href="#_haproxy_dns_based">6.1. Haproxy - DNS based</a></h3>
+<h3 id="nginx-path"><a class="anchor" href="#nginx-path"></a><a class="link" href="#nginx-path">6.2. Nginx - Path based</a></h3>
 <div class="paragraph">
-<p>This is a straightforward example of how to setup a DNS name based HAProxy setup for OliveTin.</p>
+<p>nginx.conf</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>frontend cleartext_frontend
-    mode http
-    bind 0.0.0.0:80
-
-    option httplog
-
-    use_backend be_olivetin if { hdr(Host) -i olivetin.example.com }
-
-backend be_olivetin
-    server olivetinServer 192.168.0.1:1337 check</pre>
+<pre>....
+        location /OliveTin/ {
+                proxy_pass http://localhost:1337/;
+                proxy_redirect http://localhost:1337/ http://localhost/OliveTin/;
+        }
+....</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note, because you are changing the default path (from <code>/</code> to <code>/OliveTin/</code>), you will need to tell the OliveTin webUI where to find the API.</p>
+</div>
+<div class="paragraph">
+<p>You need to also set <code>externalRestAddress</code> in your config.yaml like this;</p>
+</div>
+<div class="listingblock">
+<div class="title">OliveTin config.yaml</div>
+<div class="content">
+<pre>externalRestAddress: http://myserver/OliveTin
+actions:
+....</pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_nginx_path_based.html">Nginx - Path based</a> →</p>
+<p>← Previous: <a href="haproxy-dns.html">Haproxy - DNS based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_reference.html">Reference</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-13 21:34:28 UTC
+Last updated 2022-04-13 21:35:01 UTC
 </div>
 </div>
 </body>
