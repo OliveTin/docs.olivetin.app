@@ -23,6 +23,27 @@ backend be_olivetin
 
 === Nginx - Path based
 
-TODO
+nginx.conf
+----
+....
+        location /OliveTin/ {
+                proxy_pass http://localhost:1337/;
+                proxy_redirect http://localhost:1337/ http://localhost/OliveTin/;
+        }
+....
+----
+
+Note, because you are changing the default path (from `/` to `/OliveTin/`), you will need to tell the OliveTin webUI where to find the API. 
+
+You need to also set `externalRestAddress` in your config.yaml like this;
+
+.OliveTin config.yaml
+----
+externalRestAddress: http://myserver/OliveTin
+actions:
+....
+----
+
+
 
 
