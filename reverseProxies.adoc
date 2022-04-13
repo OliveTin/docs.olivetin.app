@@ -22,6 +22,11 @@ backend be_olivetin
 
 ----
 
+[#traefik-docker-compose]
+=== Traefik + Docker Compose
+
+Please see the <<docker-compose-traefik,traefik section, in the docker compose installation instructions>> for details.
+
 [#nginx-path]
 === Nginx - Path based
 
