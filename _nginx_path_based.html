@@ -185,7 +185,31 @@ div.admonitionblock td:first-child {
 <div class="sect2">
 <h3 id="_nginx_path_based"><a class="anchor" href="#_nginx_path_based"></a><a class="link" href="#_nginx_path_based">6.2. Nginx - Path based</a></h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>nginx.conf</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>....
+        location /OliveTin/ {
+                proxy_pass http://localhost:1337/;
+                proxy_redirect http://localhost:1337/ http://localhost/OliveTin/;
+        }
+....</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note, because you are changing the default path (from <code>/</code> to <code>/OliveTin/</code>), you will need to tell the OliveTin webUI where to find the API.</p>
+</div>
+<div class="paragraph">
+<p>You need to also set <code>externalRestAddress</code> in your config.yaml like this;</p>
+</div>
+<div class="listingblock">
+<div class="title">OliveTin config.yaml</div>
+<div class="content">
+<pre>externalRestAddress: http://myserver/OliveTin
+actions:
+....</pre>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -194,7 +218,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-04-10 21:00:12 UTC
+Last updated 2022-04-13 21:34:28 UTC
 </div>
 </div>
 </body>
