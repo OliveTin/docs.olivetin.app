@@ -65,6 +65,7 @@ services:
 
 NOTE: <<no-puid-pgid,PUID and PGID are not used>> by the official OliveTin container image.
 
+[#docker-compose-traefik]
 ==== Using Traefik with Docker Compose (and HTTPS)
 
 Traefik is a popular reverse proxy that seems to be used a lot in people's
