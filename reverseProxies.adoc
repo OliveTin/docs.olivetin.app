@@ -3,6 +3,7 @@
 
 This section of the documentation has a few examples of reverse proxy configurations for popular reverse proxy servers.
 
+[#haproxy-dns]
 === Haproxy - DNS based
 
 This is a straightforward example of how to setup a DNS name based HAProxy setup for OliveTin.
@@ -21,6 +22,7 @@ backend be_olivetin
 
 ----
 
+[#nginx-path]
 === Nginx - Path based
 
 nginx.conf
