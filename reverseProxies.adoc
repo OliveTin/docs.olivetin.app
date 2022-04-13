@@ -25,7 +25,7 @@ backend be_olivetin
 [#nginx-path]
 === Nginx - Path based
 
-nginx.conf
+.nginx.conf
 ----
 ....
         location /OliveTin/ {
