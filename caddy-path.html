@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="traefik-docker-compose" class="book toc2 toc-left">
+<body id="caddy-path" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -162,11 +162,11 @@ div.admonitionblock td:first-child {
 <ul class="sectlevel2">
 <li><a href="haproxy-dns.html">3.1. Haproxy - DNS based</a>
 </li>
-<li><a href="traefik-docker-compose.html"><span class="toc-current">3.2. Traefik + Docker Compose</span></a>
+<li><a href="traefik-docker-compose.html">3.2. Traefik + Docker Compose</a>
 </li>
 <li><a href="nginx-path.html">3.3. Nginx - Path based</a>
 </li>
-<li><a href="caddy-path.html">3.4. Caddy - Path based</a>
+<li><a href="caddy-path.html"><span class="toc-current">3.4. Caddy - Path based</span></a>
 </li>
 </ul>
 </li>
@@ -187,13 +187,39 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="traefik-docker-compose"><a class="anchor" href="#traefik-docker-compose"></a><a class="link" href="#traefik-docker-compose">3.2. Traefik + Docker Compose</a></h3>
+<h3 id="caddy-path"><a class="anchor" href="#caddy-path"></a><a class="link" href="#caddy-path">3.4. Caddy - Path based</a></h3>
+<div class="listingblock">
+<div class="title">Caddyfile</div>
+<div class="content">
+<pre>....
+	handle {$GLOBAL_PORTAL_PATH}/olivetin* {
+			redir {$GLOBAL_PORTAL_PATH}/olivetin {$GLOBAL_PORTAL_PATH}/olivetin/
+			uri strip_prefix {$GLOBAL_PORTAL_PATH}/olivetin
+			basicauth {
+					{$GLOBAL_USER} HASH
+			}
+			reverse_proxy * localhost:1337
+	}
+....</pre>
+</div>
+</div>
 <div class="paragraph">
-<p>Please see the <a href="install-compose.html#docker-compose-traefik">traefik section, in the docker compose installation instructions</a> for details.</p>
+<p>Note, because you are changing the default path (from <code>/</code> to <code>/OliveTin/</code>), you will need to tell the OliveTin webUI where to find the API.</p>
+</div>
+<div class="paragraph">
+<p>You need to also set <code>externalRestAddress</code> in your config.yaml like this;</p>
+</div>
+<div class="listingblock">
+<div class="title">OliveTin config.yaml</div>
+<div class="content">
+<pre>externalRestAddress: http://myserver/OliveTin
+actions:
+....</pre>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="haproxy-dns.html">Haproxy - DNS based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="nginx-path.html">Nginx - Path based</a> →</p>
+<p>← Previous: <a href="nginx-path.html">Nginx - Path based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="actions.html">Actions</a> →</p>
 </div>
 </div>
 <div id="footer">
