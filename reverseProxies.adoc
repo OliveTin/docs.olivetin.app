@@ -3,6 +3,8 @@
 
 This section of the documentation has a few examples of reverse proxy configurations for popular reverse proxy servers.
 
+Configuring a reverse proxy server for OliveTin is entirely optional. If you don't want to use a reverse proxy, you can skip this section.
+
 [#haproxy-dns]
 === Haproxy - DNS based
 
@@ -40,17 +42,25 @@ Please see the <<docker-compose-traefik,traefik section, in the docker compose i
 ....
 ----
 
-Note, because you are changing the default path (from `/` to `/OliveTin/`), you will need to tell the OliveTin webUI where to find the API. 
+include::fragment-external-rest.adoc[]
 
-You need to also set `externalRestAddress` in your config.yaml like this;
+[#caddy-path]
+=== Caddy - Path based
 
-.OliveTin config.yaml
+.Caddyfile
 ----
-externalRestAddress: http://myserver/OliveTin
-actions:
+....
+	handle {$GLOBAL_PORTAL_PATH}/olivetin* {
+			redir {$GLOBAL_PORTAL_PATH}/olivetin {$GLOBAL_PORTAL_PATH}/olivetin/
+			uri strip_prefix {$GLOBAL_PORTAL_PATH}/olivetin       
+			basicauth {              
+					{$GLOBAL_USER} HASH
+			}     
+			reverse_proxy * localhost:1337
+	}
 ....
 ----
 
-
+include::fragment-external-rest.adoc[]
 
 
