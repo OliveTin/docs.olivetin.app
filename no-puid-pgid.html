@@ -189,6 +189,23 @@ div.admonitionblock td:first-child {
 <div class="paragraph">
 <p>The OliveTin container image does not use the PUID and PGID convention to specify which user the container should run as - this is a convention that was popularized by linuxserver.io, because their container images use supervisord. Instead, simply use the <code>--user</code> argument when defining the container, to change the user OliveTin runs as.</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.linuxserver.io/general/understanding-puid-and-pgid">LSIO documentation for PUID and PGID, that says that <code>--user</code> is the same thing</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example is shown below;</p>
+</div>
+<div class="listingblock">
+<div class="title">Using --user</div>
+<div class="content">
+<pre>user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin --user container:container
+user@host: docker start olivetin</pre>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="_exit_code_127.html">Exit code 127</a> | ↑ Up: <a href="troubleshooting.html">Troubleshooting</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="api.html">API</a> →</p>
@@ -196,7 +213,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-05-01 09:01:36 UTC
+Last updated 2022-05-14 09:01:22 UTC
 </div>
 </div>
 </body>
