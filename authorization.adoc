@@ -1,0 +1,89 @@
+[#auth]
+== Authentication & Authorization
+
+=== Concepts
+
+OliveTin does not have any built-in code for doing **Authentication** (eg: entering a username and password), however it can do **Authorization** by relying on another system like a reverse proxy or "homepage" tool to first login users. OliveTin is often deployed alongside tools like Traefik and Organizr, which pass a special "token" to OliveTin, so OliveTin knows when a user has been authenticated.
+
+1. User browses to a website like Organizr and logs in, which sets a JWT Cookie for apps.example.com.
+2. User browses to OliveTin.apps.example.com, and the cookie is sent to OliveTin.
+3. OliveTin verifies the JWT token given the signing secret, and picks up on the `name` and `group` fields from the JWT claim.
+4. OliveTin matches any relevant ACLs based on the claims.
+6. If any ACLs are not matched, then the defaultPermissions are used.
+
+=== Setting up JWT Authorization
+
+You need to know your JWT **Cookie Name** and **Hash Secret**. Whatever tool you are using to authenticate users will probably have instructions on how to find this.
+
+* link:https://docs.organizr.app/features/server-authentication#validating-the-token[Organizr - Under "Validating the token"]
+
+==== Adding JWT details to OliveTin config.yaml
+
+Setup your config file so it has something like this;
+
+----
+# It's often useful to turn logging to DEBUG when trying to work out authentication problems
+logLevel: "INFO"
+
+authJwtCookieName: "Organizr_token_1234..."
+authJwtSecret: "3l4jh23v_123!"
+----
+
+Note that your `authJwtCookieName` and `authJwtSecret` will need to be set exactly as they appear in your Authentication software.
+
+==== Usable claims
+
+OliveTin currently can match Access Control Lists based on a **username** or **primary user group**. These must be called `name` and `group` respectively. You can see if these are being used properly turning on `DEBUG` logging and looking at the jwt claims.
+
+==== Setup default permissions
+
+OliveTin will assume that guests are able to View and Execute every action by default. When you are setting up authorization you probably want to limit this. You can do that by setting `defaultPermissions` like this;
+
+----
+logLevel: "INFO"
+
+defaultPermissions:
+    view: false
+    exec: false
+----
+
+====  Setup OliveTin Access Control Lists 
+
+Access Control Lists are a way to override the default permissions.
+
+----
+logLevel: "INFO"
+
+defaultPermissions:
+    view: false
+    exec: false
+
+accessControlLists:
+    - name: Admins
+      addToEveryAction: true
+      matchUsergroups: 
+      - Admins
+      permissions:
+        view: true
+        exec: true
+
+    - name: "Web Admins"
+      matchUsergroups:
+      - "webadmin"
+      permissions:
+        view: true
+        exec: false
+
+actions:
+    - name: Only visible to admins
+      shell: echo "I am a secret command only visible to admins"
+
+    - name: Restart database
+      shell: reboot
+      acls:
+        - "webadmin"
+----
+
+In the example above, the `admins` ACL is automatically added to every action, because `addToEveryAction` is true. 
+
+

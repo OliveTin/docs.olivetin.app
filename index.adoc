@@ -96,22 +96,10 @@ include::actionCustomization.adoc[]
 
 include::args.adoc[]
 
-== Reference
+include::authorization.adoc[]
 
-include::ports.adoc[]
+include::reference.adoc[]
 
-include::security.adoc[]
-
-include::exitCodes.adoc[]
-
-include::updateChecks.adoc[]
-
-include::containerInstallPackages.adoc[]
-
-include::reference_multipleInstances.adoc[]
-
-[#troubleshooting]
-== Troubleshooting
 
 include::troubleshooting.adoc[]
 
