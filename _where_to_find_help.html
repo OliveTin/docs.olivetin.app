@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="action-service" class="book toc2 toc-left">
+<body id="_where_to_find_help" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -161,16 +161,6 @@ div.admonitionblock td:first-child {
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
 </li>
 <li><a href="actions.html">4. Actions</a>
-<ul class="sectlevel2">
-<li><a href="action-container-control.html">4.1. Containers - start/stop</a>
-</li>
-<li><a href="action-service.html"><span class="toc-current">4.2. Restart a systemd service</span></a>
-</li>
-<li><a href="action-ping.html">4.3. Ping an address</a>
-</li>
-<li><a href="action-ssh.html">4.4. SSH into another machine and run a command</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
 </li>
@@ -181,6 +171,14 @@ div.admonitionblock td:first-child {
 <li><a href="_reference.html">8. Reference</a>
 </li>
 <li><a href="support.html">9. Support &amp; Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="_where_to_find_help.html"><span class="toc-current">9.1. Where to find help</span></a>
+</li>
+<li><a href="_exit_code_127.html">9.2. Exit code 127</a>
+</li>
+<li><a href="no-puid-pgid.html">9.3. PUID and PGID support</a>
+</li>
+</ul>
 </li>
 <li><a href="api.html">10. API</a>
 </li>
@@ -189,48 +187,20 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="action-service"><a class="anchor" href="#action-service"></a><a class="link" href="#action-service">4.2. Restart a systemd service</a></h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Installation type</th>
-<th class="tableblock halign-left valign-top">Difficulty to do this</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running as a <strong>Systemd service</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Easy</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not really possible to do.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect3">
-<h4 id="_example_config_yaml_2"><a class="anchor" href="#_example_config_yaml_2"></a><a class="link" href="#_example_config_yaml_2">4.2.1. Example config.yaml</a></h4>
-<div class="literalblock">
-<div class="content">
-<pre>actions:
-  - title: Start httpd
-    shell: systemctl start httpd
-
-  - title: Stop httpd
-    shell: systemctl stop httpd
-
-  - title: Restart httpd
-    shell: systemctl restart httpd</pre>
+<h3 id="_where_to_find_help"><a class="anchor" href="#_where_to_find_help"></a><a class="link" href="#_where_to_find_help">9.1. Where to find help</a></h3>
+<div class="paragraph">
+<p>Please feel free to open a support request issue on GitHub to ask for help with
+troubleshooting, or come and chat with us.</p>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="images/icons/GitHub.png" alt="inline"></span> <a href="https://github.com/OliveTin/OliveTin/issues/new?assignees=&amp;labels=support&amp;template=support_request.md&amp;title=">Open a support request</a></p>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="images/icons/Discord.png" alt="inline"></span> <a href="https://discord.gg/jhYWWpNJ3v">Chat on Discord</a></p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="action-container-control.html">Containers - start/stop</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-ping.html">Ping an address</a> →</p>
+<p>↑ Up: <a href="support.html">Support &amp; Troubleshooting</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_exit_code_127.html">Exit code 127</a> →</p>
 </div>
 </div>
 <div id="footer">

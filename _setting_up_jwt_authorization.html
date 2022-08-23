@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="toggle-webui" class="book toc2 toc-left">
+<body id="_setting_up_jwt_authorization" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -157,14 +157,6 @@ div.admonitionblock td:first-child {
 <li><a href="installation.html">1. Installation</a>
 </li>
 <li><a href="config.html">2. Configuration</a>
-<ul class="sectlevel2">
-<li><a href="toggle-webui.html"><span class="toc-current">2.1. Show/Hide web UI elements</span></a>
-</li>
-<li><a href="log-levels.html">2.2. Log Levels</a>
-</li>
-<li><a href="ports.html">2.3. Ports</a>
-</li>
-</ul>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
 </li>
@@ -175,6 +167,12 @@ div.admonitionblock td:first-child {
 <li><a href="args.html">6. Arguments</a>
 </li>
 <li><a href="auth.html">7. Authentication &amp; Authorization</a>
+<ul class="sectlevel2">
+<li><a href="_concepts.html">7.1. Concepts</a>
+</li>
+<li><a href="_setting_up_jwt_authorization.html"><span class="toc-current">7.2. Setting up JWT Authorization</span></a>
+</li>
+</ul>
 </li>
 <li><a href="_reference.html">8. Reference</a>
 </li>
@@ -187,76 +185,102 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="toggle-webui"><a class="anchor" href="#toggle-webui"></a><a class="link" href="#toggle-webui">2.1. Show/Hide web UI elements</a></h3>
+<h3 id="_setting_up_jwt_authorization"><a class="anchor" href="#_setting_up_jwt_authorization"></a><a class="link" href="#_setting_up_jwt_authorization">7.2. Setting up JWT Authorization</a></h3>
 <div class="paragraph">
-<p>The OliveTin web UI is reasonably customizable - parts of the page that you don&#8217;t need can be hidden when they&#8217;re not needed.</p>
+<p>You need to know your JWT <strong>Cookie Name</strong> and <strong>Hash Secret</strong>. Whatever tool you are using to authenticate users will probably have instructions on how to find this.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.organizr.app/features/server-authentication#validating-the-token">Organizr - Under "Validating the token"</a></p>
+</li>
+</ul>
 </div>
 <div class="sect3">
-<h4 id="show-nav"><a class="anchor" href="#show-nav"></a><a class="link" href="#show-nav">2.1.1. Show Navigation</a></h4>
+<h4 id="_adding_jwt_details_to_olivetin_config_yaml"><a class="anchor" href="#_adding_jwt_details_to_olivetin_config_yaml"></a><a class="link" href="#_adding_jwt_details_to_olivetin_config_yaml">7.2.1. Adding JWT details to OliveTin config.yaml</a></h4>
 <div class="paragraph">
-<p>You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/defaultUiWithNav.png" alt="defaultUiWithNav">
-</div>
-<div class="title">Figure 1. The default user interface with the "Actions" and "Settings" buttons shown.</div>
-</div>
-<div class="paragraph">
-<p>To have OliveTin hide these buttons, add <code>hideNavigation</code> to your config.yaml;</p>
+<p>Setup your config file so it has something like this;</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre># It's often useful to turn logging to DEBUG when trying to work out authentication problems
+logLevel: "INFO"
+
+authJwtCookieName: "Organizr_token_1234..."
+authJwtSecret: "3l4jh23v_123!"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that your <code>authJwtCookieName</code> and <code>authJwtSecret</code> will need to be set exactly as they appear in your Authentication software.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usable_claims"><a class="anchor" href="#_usable_claims"></a><a class="link" href="#_usable_claims">7.2.2. Usable claims</a></h4>
+<div class="paragraph">
+<p>OliveTin currently can match Access Control Lists based on a <strong>username</strong> or <strong>primary user group</strong>. These must be called <code>name</code> and <code>group</code> respectively. You can see if these are being used properly turning on <code>DEBUG</code> logging and looking at the jwt claims.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setup_default_permissions"><a class="anchor" href="#_setup_default_permissions"></a><a class="link" href="#_setup_default_permissions">7.2.3. Setup default permissions</a></h4>
+<div class="paragraph">
+<p>OliveTin will assume that guests are able to View and Execute every action by default. When you are setting up authorization you probably want to limit this. You can do that by setting <code>defaultPermissions</code> like this;</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre>logLevel: "INFO"
-showNavigation: false
+
+defaultPermissions:
+    view: false
+    exec: false</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setup_olivetin_access_control_lists"><a class="anchor" href="#_setup_olivetin_access_control_lists"></a><a class="link" href="#_setup_olivetin_access_control_lists">7.2.4. Setup OliveTin Access Control Lists</a></h4>
+<div class="paragraph">
+<p>Access Control Lists are a way to override the default permissions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>logLevel: "INFO"
+
+defaultPermissions:
+    view: false
+    exec: false
+
+accessControlLists:
+    - name: Admins
+      addToEveryAction: true
+      matchUsergroups:
+      - Admins
+      permissions:
+        view: true
+        exec: true
+
+    - name: "Web Admins"
+      matchUsergroups:
+      - "webadmin"
+      permissions:
+        view: true
+        exec: false
 
 actions:
-    ....</pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/defaultUiHideNav.png" alt="defaultUiHideNav">
-</div>
-<div class="title">Figure 2. The same user interface, but with the "Actions" and "Settings" buttons hidden (<code>hideNavigation: true</code>)</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="show-new-versions"><a class="anchor" href="#show-new-versions"></a><a class="link" href="#show-new-versions">2.1.2. Show new versions</a></h4>
-<div class="paragraph">
-<p>You can disable the "new version" information in the footer - the default for <code>showNewVersions</code> is <code>true</code>;</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
-<div class="content">
-<pre>logLevel: "INFO"
-showNewVersions: false</pre>
+    - name: Only visible to admins
+      shell: echo "I am a secret command only visible to admins"
+
+    - name: Restart database
+      shell: reboot
+      acls:
+        - "webadmin"</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If disabled, OliveTin will still check for new versions in the background, but will not display them on the page. If you want to disable update checking completely, see <a href="update-tracking.html#disable-update-checks">disable update checking</a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="show-footer"><a class="anchor" href="#show-footer"></a><a class="link" href="#show-footer">2.1.3. Show the footer</a></h4>
-<div class="paragraph">
-<p>You can disable the entire footer, if you would like a really minimal interface. The default for <code>showFooter</code> is <code>true</code>.</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
-<div class="content">
-<pre>logLevel: "INFO"
-showFooter: false</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This means the <a href="toggle-webui.html#show-new-versions"><code>showNewVersions</code></a> configuration option will automatically be <code>false</code> as well.</p>
+<p>In the example above, the <code>admins</code> ACL is automatically added to every action, because <code>addToEveryAction</code> is true.</p>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="log-levels.html">Log Levels</a> →</p>
+<p>← Previous: <a href="_concepts.html">Concepts</a> | ↑ Up: <a href="auth.html">Authentication &amp; Authorization</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_reference.html">Reference</a> →</p>
 </div>
 </div>
 <div id="footer">
