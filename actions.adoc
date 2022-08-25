@@ -108,7 +108,7 @@ SSH is pre-installed in all OliveTin container images.
 You should bind-mount your SSH keys directory into the OliveTin user's home directory;
 
 ----
-docker run -v /opt/mySshKeys/:/home/OliveTin/.ssh/ --name OliveTin jamesread/olivetin
+docker run -v /opt/mySshKeys/:/home/olivetin/.ssh/ --name OliveTin jamesread/olivetin
 ----
 
 This also works for things like SSH configuration files, if you want to use them.
