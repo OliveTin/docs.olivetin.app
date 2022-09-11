@@ -3,10 +3,6 @@
 
 **Packages** can be downloaded from the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
 
-++++
-<script>window.alert("I like waffles");</script>
-++++
-
 Some folks need extra help understanding which package/download is needed. This table below should help;
 
 |===
