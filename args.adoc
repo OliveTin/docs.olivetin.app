@@ -71,6 +71,7 @@ A full list of argument types are below;
 | ascii                       | a-z (case insensitive), 0-9, but no spaces or punctuation
 | ascii_identifier            | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 
 | ascii_sentence              | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
+| url                         | A url, e.g. https://github.com/OliveTin
 |===
 
 === Dropdown choice arguments
