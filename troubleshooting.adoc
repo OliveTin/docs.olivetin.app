@@ -1,6 +1,7 @@
-[#support]
+[#troubleshooting]
 == Support & Troubleshooting
 
+[#support]
 === Where to find help
 
 Please feel free to open a support request issue on GitHub to ask for help with
@@ -30,4 +31,17 @@ user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:
 user@host: docker start olivetin
 ----
 
+The following are common errors;
 
+[#err-fetch-buttons]
+=== Error Getting Buttons
+
+This is most often caused by not being able to get to /api/ properly - normally due to a bad proxy config, or your network was disconnected.
+
+[#err-fetch-webiu-settings]
+
+TODO.
+
+[#err-js-modules-not-supported]
+
+TODO.
