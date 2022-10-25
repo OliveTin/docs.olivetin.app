@@ -46,8 +46,8 @@ Note that you will also need to adjust the default systemd service file to point
 Description=OliveTin2
 
 [Service]
-WorkingDirectory=/opt/OliveTin_two/OliveTin
-ExecStart=/opt/OliveTin_two/
+WorkingDirectory=/opt/OliveTin_two/
+ExecStart=/opt/OliveTin_two/OliveTin
 Restart=always
 
 [Install]
