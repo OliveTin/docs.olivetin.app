@@ -148,7 +148,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_timeouts" class="book toc2 toc-left">
+<body id="apache-path" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -159,18 +159,24 @@ div.admonitionblock td:first-child {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+<ul class="sectlevel2">
+<li><a href="proxy-guide.html">3.1. Reverse Proxy general guide</a>
+</li>
+<li><a href="apache-path.html"><span class="toc-current">3.2. Apache HTTPD - DNS based</span></a>
+</li>
+<li><a href="haproxy-dns.html">3.3. Haproxy - DNS based</a>
+</li>
+<li><a href="traefik-docker-compose.html">3.4. Traefik + Docker Compose</a>
+</li>
+<li><a href="nginx-path.html">3.5. Nginx - Path based</a>
+</li>
+<li><a href="caddy-path.html">3.6. Caddy - Path based</a>
+</li>
+</ul>
 </li>
 <li><a href="actions.html">4. Actions</a>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
-<ul class="sectlevel2">
-<li><a href="_icons.html">5.1. Icons</a>
-</li>
-<li><a href="_timeouts.html"><span class="toc-current">5.2. Timeouts</span></a>
-</li>
-<li><a href="_run_as_different_users.html">5.3. Run as different users</a>
-</li>
-</ul>
 </li>
 <li><a href="args.html">6. Arguments</a>
 </li>
@@ -187,50 +193,25 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_timeouts"><a class="anchor" href="#_timeouts"></a><a class="link" href="#_timeouts">5.2. Timeouts</a></h3>
+<h3 id="apache-path"><a class="anchor" href="#apache-path"></a><a class="link" href="#apache-path">3.2. Apache HTTPD - DNS based</a></h3>
 <div class="paragraph">
-<p>By default, actions in OliveTin have a 3 second timeout. This means that
-OliveTin will kill the action if it is running for too long.</p>
-</div>
-<div class="paragraph">
-<p>You can set your own timeouts like this;</p>
+<p>This is a an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>- actions:
-  - title: My special action
-    shell: sleep 5
-    timeout: 10</pre>
+<pre>&lt;VirtualHost *:80&gt;
+ServerName olivetin.example.com
+ProxyPass /utilities/OliveTin/ http://localhost:1337/
+ProxyPassReverse /utilities/OliveTin/ http://localhost:1337/
+&lt;/VirtualHost&gt;</pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Allowing commands to run for infinity just doesn&#8217;t seem to make sense, or
-at least is probably a bad case for OliveTin. Therefore, if you set a timeout
-<strong>less than 3 seconds</strong>, OliveTin will overwrite your Timeout and default to 3
-seconds. If you think you have a use case where a shorter (or infinite) timeout
-makes sense, please open an issue and let&#8217;s discuss.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_check_the_logs"><a class="anchor" href="#_check_the_logs"></a><a class="link" href="#_check_the_logs">5.2.1. Check the logs</a></h4>
-<div class="paragraph">
-<p>If a action really does "time out", it will show in the logs with "(timed out)" next to the exist code;</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/timeoutLogs.png" alt="timeoutLogs"></span></p>
-</div>
+<p>Note, you virtual host should <strong>not</strong> include a DocumentRoot directive - httpd is just proxying OliveTin, not serving it&#8217;s actual pages.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_icons.html">Icons</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_run_as_different_users.html">Run as different users</a> →</p>
+<p>← Previous: <a href="proxy-guide.html">Reverse Proxy general guide</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="haproxy-dns.html">Haproxy - DNS based</a> →</p>
 </div>
 </div>
 <div id="footer">
