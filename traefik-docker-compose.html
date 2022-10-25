@@ -195,7 +195,41 @@ div.admonitionblock td:first-child {
 <div class="sect2">
 <h3 id="traefik-docker-compose"><a class="anchor" href="#traefik-docker-compose"></a><a class="link" href="#traefik-docker-compose">3.4. Traefik + Docker Compose</a></h3>
 <div class="paragraph">
-<p>Please see the <a href="install-compose.html#docker-compose-traefik">traefik section, in the docker compose installation instructions</a> for details.</p>
+<p>The following example is known to work well with Traefik and docker-compose.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>version: "3.8"
+services:
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    volumes:
+      - /docker/olivetin:/config # replace host path or volume as needed
+    ports:
+      - "1337:1337"
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.olivetin.entrypoints=web"
+      - "traefik.http.routers.olivetin.rule=Host(`olivetin.example.com`)"
+
+  traefik:
+    image: "traefik:v2.9"
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"</pre>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -204,7 +238,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-10-25 20:45:48 UTC
+Last updated 2022-10-25 21:25:34 UTC
 </div>
 </div>
 </body>

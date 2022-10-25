@@ -294,22 +294,10 @@ services:
 </div>
 </div>
 <div class="sect3">
-<h4 id="docker-compose-traefik"><a class="anchor" href="#docker-compose-traefik"></a><a class="link" href="#docker-compose-traefik">1.5.3. Using Traefik with Docker Compose (and HTTPS)</a></h4>
+<h4 id="docker-compose-traefik"><a class="anchor" href="#docker-compose-traefik"></a><a class="link" href="#docker-compose-traefik">1.5.3. Using Traefik with Docker Compose</a></h4>
 <div class="paragraph">
 <p>Traefik is a popular reverse proxy that seems to be used a lot in people&#8217;s
-Docker compose setups.</p>
-</div>
-<div class="paragraph">
-<p>Adjust the <code>docker-compose.yml</code> example above to include the following labels;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>...
-    labels:
-      - traefik.http.routers.olivetin.rule=Host(`run.your.domain`)
-      - traefik.http.routers.olivetin.tls.certresolver=lets-encrypt
-...</pre>
-</div>
+Docker compose setups. See the <a href="traefik-docker-compose.html">Traefik + Docker Compose</a> page for more details.</p>
 </div>
 </div>
 </div>
@@ -319,7 +307,7 @@ Docker compose setups.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-10-25 20:45:48 UTC
+Last updated 2022-10-25 21:25:34 UTC
 </div>
 </div>
 </body>
