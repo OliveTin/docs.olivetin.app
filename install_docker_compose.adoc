@@ -66,17 +66,9 @@ services:
 NOTE: <<no-puid-pgid,PUID and PGID are not used>> by the official OliveTin container image.
 
 [#docker-compose-traefik]
-==== Using Traefik with Docker Compose (and HTTPS)
+==== Using Traefik with Docker Compose 
 
 Traefik is a popular reverse proxy that seems to be used a lot in people's
-Docker compose setups.  
+Docker compose setups. See the <<traefik-docker-compose,Traefik + Docker Compose>> page for more details.
 
-Adjust the `docker-compose.yml` example above to include the following labels;
 
-----
-...
-    labels:
-      - traefik.http.routers.olivetin.rule=Host(`run.your.domain`)
-      - traefik.http.routers.olivetin.tls.certresolver=lets-encrypt
-...
-----
