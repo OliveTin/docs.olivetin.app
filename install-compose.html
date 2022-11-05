@@ -226,6 +226,35 @@ networks:
       external: true</pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_post_installation_container_2"><a class="anchor" href="#_post_installation_container_2"></a><a class="link" href="#_post_installation_container_2">1.5.1. Post installation (container)</a></h4>
+<div class="paragraph">
+<p>You will need to write a basic configuration file before OliveTin will startup.</p>
+</div>
+<div class="paragraph">
+<p>Create a basic config file at somewhere like <code>/docker/OliveTin/config.yaml</code> - the exact path depends on what directory you specified in the bind mount container creation. Note that OliveTin containers expect the config to be in <code>/config/</code> inside the container, but it doesn&#8217;t really matter where this directory is mounted from on the host. The file contents should look something like this;</p>
+</div>
+<div class="listingblock">
+<div class="title">The most simple <code>config.yaml</code> file.</div>
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">actions:
+  - title: "Hello world!"
+    shell: echo 'Hello World!'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now that you have a configuration file, and the OliveTin container created, you should be able to start the container like normal.</p>
+</div>
+<div class="paragraph">
+<p>If you are running a firewall on your server, like firewalld, you will need to
+open port 1337;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: firewall-cmd --add-port 1337/tcp --permanent
+user@host: firewall-cmd --reload</pre>
+</div>
+</div>
 <div class="paragraph">
 <p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
 the web interface.</p>
@@ -234,8 +263,23 @@ the web interface.</p>
 <p>If you see the OliveTin page popup in your browser, you can jump to the
 <a href="config.html">configuration section</a> as the next step.</p>
 </div>
+</div>
 <div class="sect3">
-<h4 id="_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"><a class="anchor" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"></a><a class="link" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin">1.5.1. Controlling other docker containers from a Docker Compose install of OliveTin</a></h4>
+<h4 id="_troubleshooting_podmandocker_installations_2"><a class="anchor" href="#_troubleshooting_podmandocker_installations_2"></a><a class="link" href="#_troubleshooting_podmandocker_installations_2">1.5.2. Troubleshooting podman/docker installations</a></h4>
+<div class="paragraph">
+<p>If you are having problems in starting OliveTin, or OliveTin is crashing on startup, then check the logs like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: docker logs OliveTin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">Where to find help</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"><a class="anchor" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin"></a><a class="link" href="#_controlling_other_docker_containers_from_a_docker_compose_install_of_olivetin">1.5.3. Controlling other docker containers from a Docker Compose install of OliveTin</a></h4>
 <div class="paragraph">
 <p>If you want to use OliveTin running in a container to control other Docker containers, you will need to pass through the Docker sock in your compose file.</p>
 </div>
@@ -265,7 +309,7 @@ services:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_controlling_the_docker_user_with_docker_compose"><a class="anchor" href="#_controlling_the_docker_user_with_docker_compose"></a><a class="link" href="#_controlling_the_docker_user_with_docker_compose">1.5.2. Controlling the docker user with Docker Compose</a></h4>
+<h4 id="_controlling_the_docker_user_with_docker_compose"><a class="anchor" href="#_controlling_the_docker_user_with_docker_compose"></a><a class="link" href="#_controlling_the_docker_user_with_docker_compose">1.5.4. Controlling the docker user with Docker Compose</a></h4>
 <div class="paragraph">
 <p>This is the correct way to tell the OliveTin container to run as root (or any other user);</p>
 </div>
@@ -294,7 +338,7 @@ services:
 </div>
 </div>
 <div class="sect3">
-<h4 id="docker-compose-traefik"><a class="anchor" href="#docker-compose-traefik"></a><a class="link" href="#docker-compose-traefik">1.5.3. Using Traefik with Docker Compose</a></h4>
+<h4 id="docker-compose-traefik"><a class="anchor" href="#docker-compose-traefik"></a><a class="link" href="#docker-compose-traefik">1.5.5. Using Traefik with Docker Compose</a></h4>
 <div class="paragraph">
 <p>Traefik is a popular reverse proxy that seems to be used a lot in people&#8217;s
 Docker compose setups. See the <a href="traefik-docker-compose.html">Traefik + Docker Compose</a> page for more details.</p>
@@ -307,7 +351,7 @@ Docker compose setups. See the <a href="traefik-docker-compose.html">Traefik + D
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-10-26 10:31:42 UTC
+Last updated 2022-11-05 08:35:42 UTC
 </div>
 </div>
 </body>

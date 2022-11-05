@@ -199,7 +199,7 @@ div.admonitionblock td:first-child {
 <div class="sect2">
 <h3 id="install-container"><a class="anchor" href="#install-container"></a><a class="link" href="#install-container">1.4. Container install (podman/docker)</a></h3>
 <div class="paragraph">
-<p>Containers are published on DockerHub.</p>
+<p>Container images are published on DockerHub.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://hub.docker.com/r/jamesread/olivetin" class="bare">https://hub.docker.com/r/jamesread/olivetin</a></p>
@@ -213,6 +213,35 @@ user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:
 user@host: docker start olivetin</pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_post_installation_container"><a class="anchor" href="#_post_installation_container"></a><a class="link" href="#_post_installation_container">1.4.1. Post installation (container)</a></h4>
+<div class="paragraph">
+<p>You will need to write a basic configuration file before OliveTin will startup.</p>
+</div>
+<div class="paragraph">
+<p>Create a basic config file at somewhere like <code>/docker/OliveTin/config.yaml</code> - the exact path depends on what directory you specified in the bind mount container creation. Note that OliveTin containers expect the config to be in <code>/config/</code> inside the container, but it doesn&#8217;t really matter where this directory is mounted from on the host. The file contents should look something like this;</p>
+</div>
+<div class="listingblock">
+<div class="title">The most simple <code>config.yaml</code> file.</div>
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">actions:
+  - title: "Hello world!"
+    shell: echo 'Hello World!'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now that you have a configuration file, and the OliveTin container created, you should be able to start the container like normal.</p>
+</div>
+<div class="paragraph">
+<p>If you are running a firewall on your server, like firewalld, you will need to
+open port 1337;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: firewall-cmd --add-port 1337/tcp --permanent
+user@host: firewall-cmd --reload</pre>
+</div>
+</div>
 <div class="paragraph">
 <p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
 the web interface.</p>
@@ -222,13 +251,28 @@ the web interface.</p>
 <a href="config.html">configuration section</a> as the next step.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_troubleshooting_podmandocker_installations"><a class="anchor" href="#_troubleshooting_podmandocker_installations"></a><a class="link" href="#_troubleshooting_podmandocker_installations">1.4.2. Troubleshooting podman/docker installations</a></h4>
+<div class="paragraph">
+<p>If you are having problems in starting OliveTin, or OliveTin is crashing on startup, then check the logs like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: docker logs OliveTin</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">Where to find help</a>.</p>
+</div>
+</div>
+</div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="install-archbtw.html">Arch Linux (AUR)</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-compose.html">Docker Compose install</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-10-26 10:31:42 UTC
+Last updated 2022-11-05 08:35:42 UTC
 </div>
 </div>
 </body>
