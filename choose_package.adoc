@@ -6,21 +6,23 @@
 Some folks need extra help understanding which package/download is needed. This table below should help;
 
 |===
-   | Processor Type                                        | Operating System  | Distribution                      | File on release page; 
+   | Processor Type                                        | Operating System  | Distribution                      | File on link:https://github.com/OliveTin/OliveTin/releases/latest[latest release page] 
 
-.6+| AMD / Intel -> `amd64`                             .4+| Linux             | Other -> `.tar.gz`                | `OliveTin-date-linux-amd64.tar.gz` <<install-targz,installation instructions>>
-                                                                               | Red Hat, Fedora, etc -> `.rpm`    | `OliveTin_linux_amd64.rpm`    <<install-linuxpackage,installation instructions>>
-                                                                               | Debian, Ubuntu -> `.deb`          | `OliveTin_linux_amd64.deb`    <<install-linuxpackage,installation instructions>>
-                                                         2+| Windows                                               | `OliveTin-date-windows-amd64.zip`  
-                                                         2+| macOS                                                 | `OliveTin-date-macOS-amd64.tar.gz`                                                
-.4+| Raspberry Pi 1, 2, or similar -> `arm`             .4+| Linux             | Other -> `.tar.gz`                | `OliveTin-date-linux-arm.tar.gz`   <<install-targz,installation instructions>>
-                                                                               | Red Hat, Fedora, etc -> `.rpm`    | `OliveTin_linux_armv7.rpm`    <<install-linuxpackage,installation instructions>>
-                                                                               | Debian, Ubuntu -> `.deb`          | `OliveTin_linux_armv7.deb`    <<install-linuxpackage,installation instructions>>
-.5+| Apple M1, Raspberry Pi 3, 4, or similar -> `arm64` .4+| Linux             | Other -> `.tar.gz`                | `OliveTin-date-linux-amd64.tar.gz` <<install-targz,installation instructions>>
-                                                                               | Red Hat, Fedora, etc -> `.rpm`    | `OliveTin_linux_arm64.rpm`    <<install-linuxpackage,installation instructions>>
-                                                                               | Debian, Ubuntu -> `.deb`     `    | `OliveTin_linux_arm64.deb`    <<install-linuxpackage,installation instructions>>
-                                                         2+| macOS                                                 | `OliveTin-date-macOS-arm64.tar.gz` <<install-targz,installation instructions>>
+.5+| AMD / Intel -> `amd64`                             .3+| Linux             | Other -> `.tar.gz`                | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-linux-amd64.tar.gz[`OliveTin-linux-amd64.tar.gz`] <<install-targz,installation instructions>>
+                                                                               | Red Hat, Fedora, etc -> `.rpm`    | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.rpm[`OliveTin_linux_amd64.rpm`]    <<install-linuxpackage,installation instructions>>
+                                                                               | Debian, Ubuntu -> `.deb`          | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.deb[`OliveTin_linux_amd64.deb`]    <<install-linuxpackage,installation instructions>>
+                                                         2+| Windows                                               | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-windows-amd64.zip[`OliveTin-windows-amd64.zip`]
+                                                         2+| macOS                                                 | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-macOS-amd64.tar.gz[`OliveTin-macOS-amd64.tar.gz`]
+.3+| 32bit ARM (Raspberry Pi 1, 2, or similar) -> `arm`             .3+| Linux             | Other -> `.tar.gz`                | link:https://github.com/OliveTin/OliveTin/releases/latest[One of the `OliveTin-linux-arm....tar.gz` files]  <<install-targz,installation instructions>>
+                                                                               | Red Hat, Fedora, etc -> `.rpm`    | link:https://github.com/OliveTin/OliveTin/releases/latest[One of the `OliveTin_linux_arm.....rpm` files]   <<install-linuxpackage,installation instructions>>
+                                                                               | Debian, Ubuntu -> `.deb`          | link:https://github.com/OliveTin/OliveTin/releases/latest[One of the `OliveTin_linux_arm....deb` files]   <<install-linuxpackage,installation instructions>>
+.4+| 64bit ARM (Apple M1, Raspberry Pi 3, 4, or similar) -> `arm64` +
 
+**Note**: If you are running 32bit Raspberry Pi OS, choose the 32bit ARM download option instead. 
+                                                        .3+| Linux             | Other -> `.tar.gz`                | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-linux-arm64.tar.gz[`OliveTin-linux-arm64.tar.gz`] <<install-targz,installation instructions>>
+                                                                               | Red Hat, Fedora, etc -> `.rpm`    | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_arm64.rpm[`OliveTin_linux_arm64.rpm`]    <<install-linuxpackage,installation instructions>>
+                                                                               | Debian, Ubuntu -> `.deb`     `    | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_arm64.deb[`OliveTin_linux_arm64.deb`]    <<install-linuxpackage,installation instructions>>
+                                                         2+| macOS                                                 | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-macOS-amd64.tar.gz[`OliveTin-macOS-arm64.tar.gz`] <<install-targz,installation instructions>>
 |===
 
 Running OliveTin as a <<install-systemd,systemd service>> on a Linux machine means it can use any program installed on your machine (you don't have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.
