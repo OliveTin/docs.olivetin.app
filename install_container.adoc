@@ -1,7 +1,7 @@
 [#install-container]
 === Container install (podman/docker)
 
-Containers are published on DockerHub.
+Container images are published on DockerHub.
 
 https://hub.docker.com/r/jamesread/olivetin 
 
@@ -13,4 +13,4 @@ user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:
 user@host: docker start olivetin
 ....
 
-include::install_to_config.adoc[]
+include::install_post_container.adoc[]

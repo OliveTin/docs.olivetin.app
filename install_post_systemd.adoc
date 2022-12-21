@@ -38,7 +38,7 @@ If you are having problems, you can check if OliveTin is running like this;
 user@host: systemctl status OliveTin
 ----
 
-If the service has filed, scroll through the logs;
+If the service has failed, scroll through the logs;
 
 ----
 user@host: journalctl -eu OliveTin

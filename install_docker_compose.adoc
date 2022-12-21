@@ -26,7 +26,7 @@ networks:
       external: true
 ----
 
-include::install_to_config.adoc[]
+include::install_post_container.adoc[]
 
 ==== Controlling other docker containers from a Docker Compose install of OliveTin
 

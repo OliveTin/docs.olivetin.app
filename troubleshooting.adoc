@@ -38,10 +38,22 @@ The following are common errors;
 
 This is most often caused by not being able to get to /api/ properly - normally due to a bad proxy config, or your network was disconnected.
 
-[#err-fetch-webiu-settings]
+[#err-fetch-webui-settings]
+=== Error Fetching WebUI Settings
 
-TODO.
+This is a less common issue, but it means that the main web HTML has loaded, but it could not get http://yourserver:1337/webUiSettings.json - most likely because of a 404 (Not Found) or JSON parse issue. You can see the exact reason if your browser as Web Developer Tools - look in the console. Firefox and Chrome both have great web developer tools, that can normally be opened with the F12 key, or from the developer tools menu.
+
+The most common cause of this issue is a broken reverse proxy configuration. To debug this, browse to http://yourserver:1337/webUiSettings.json and adjust your reverse proxy configuration until the file loads properly. See <<reverse-proxies>> for common configuration instructions.
+
+An uncommon cause of this issue is if you are self-hosting the HTML outside of OliveTin. This is supported, but it means you will need to write the webUiSettings.json file manually. This is currently not documented as very very few people really need or want to do this. It's very uncommon at the moment to self host the HTML outside of the OliveTin main server. Jump on the discord to discuss this if you want to do this, see <<support>>. 
+
+The 
 
 [#err-js-modules-not-supported]
+=== Error: JS Modules not supported
 
-TODO.
+This is most likely because you are using a very old browser, or have some Javascript disabled.
+
+This page describes the compatible browsers for Javascript modules; https://caniuse.com/es6-module .
+
+There is no workaround for this apart from updating your browser / using a better browser, as OliveTin wants to be a progressive web app and doesn't intend to support browsers without module support.

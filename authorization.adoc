@@ -9,7 +9,7 @@ OliveTin does not have any built-in code for doing **Authentication** (eg: enter
 2. User browses to OliveTin.apps.example.com, and the cookie is sent to OliveTin.
 3. OliveTin verifies the JWT token given the signing secret, and picks up on the `name` and `group` fields from the JWT claim.
 4. OliveTin matches any relevant ACLs based on the claims.
-6. If any ACLs are not matched, then the defaultPermissions are used.
+5. If any ACLs are not matched, then the defaultPermissions are used.
 
 === Setting up JWT Authorization
 
