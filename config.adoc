@@ -39,7 +39,7 @@ You can choose to hide the navigation elements in OliveTin, to present a simplif
 .The default user interface with the "Actions" and "Settings" buttons shown.
 image::images/defaultUiWithNav.png[]
 
-To have OliveTin hide these buttons, add `hideNavigation` to your config.yaml;
+To have OliveTin hide these buttons, add `showNavigation: false` to your config.yaml;
 
 .`config.yaml`
 ----
@@ -50,7 +50,7 @@ actions:
     ....
 ----
 
-.The same user interface, but with the "Actions" and "Settings" buttons hidden (`hideNavigation: true`)
+.The same user interface, but with the "Actions" and "Settings" buttons hidden (`showNavigation: false`)
 image::images/defaultUiHideNav.png[]
 
 [#show-new-versions]
