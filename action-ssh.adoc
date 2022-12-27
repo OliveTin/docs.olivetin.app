@@ -31,9 +31,13 @@ image:images/ssh-diagram.png[]
 
 ===== Setup instructions
 
-On `server1`, run `ssh-keygen` to generate a SSH key (if you haven't already got one) and store it in somewhere like `/opt/OliveTinSshKeys` when prompted.
+On `server1`, run `mkdir /opt/OliveTinSshKeys` to create a shared directory for your SSH key file. This will later be used as a "volume mount" when you create a docker container. 
+
+On `server1`, run `ssh-keygen` to generate a SSH key (if you haven't already got one) and store it in somewhere like `/opt/OliveTinSshKeys` when prompted. 
 
 Importantly, when you are asked for a password, just press ENTER (don't type a password). This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file! 
+
+Lastly, if you get a "permission denied" error when creating files, you could run `chmod 0777 /opt/OliveTinSshKeys` to fix it.
 
 ----
 root@server1: ssh-keygen
