@@ -250,10 +250,16 @@ div.admonitionblock td:first-child {
 <div class="sect4">
 <h5 id="_setup_instructions"><a class="anchor" href="#_setup_instructions"></a><a class="link" href="#_setup_instructions">Setup instructions</a></h5>
 <div class="paragraph">
+<p>On <code>server1</code>, run <code>mkdir /opt/OliveTinSshKeys</code> to create a shared directory for your SSH key file. This will later be used as a "volume mount" when you create a docker container.</p>
+</div>
+<div class="paragraph">
 <p>On <code>server1</code>, run <code>ssh-keygen</code> to generate a SSH key (if you haven&#8217;t already got one) and store it in somewhere like <code>/opt/OliveTinSshKeys</code> when prompted.</p>
 </div>
 <div class="paragraph">
 <p>Importantly, when you are asked for a password, just press ENTER (don&#8217;t type a password). This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file!</p>
+</div>
+<div class="paragraph">
+<p>Lastly, if you get a "permission denied" error when creating files, you could run <code>chmod 0777 /opt/OliveTinSshKeys</code> to fix it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -343,7 +349,7 @@ root@server2: ssh-copy-id root@server2
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-27 10:49:42 UTC
+Last updated 2022-12-27 10:53:03 UTC
 </div>
 </div>
 </body>
