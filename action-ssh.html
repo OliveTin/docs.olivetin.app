@@ -234,10 +234,79 @@ as well.</p>
 <div class="sect3">
 <h4 id="_setup_if_running_inside_a_container_2"><a class="anchor" href="#_setup_if_running_inside_a_container_2"></a><a class="link" href="#_setup_if_running_inside_a_container_2">4.4.2. Setup if running inside a container</a></h4>
 <div class="paragraph">
-<p>SSH is pre-installed in all OliveTin container images.</p>
+<p><span class="image"><img src="images/ssh-diagram.png" alt="ssh diagram"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The OliveTin container is created with <code>.ssh</code> as a volume mount, that contains a SSH Key.</p>
+</li>
+<li>
+<p>OliveTin uses the SSH key to connect back to server1 or across to server2.</p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="_setup_instructions"><a class="anchor" href="#_setup_instructions"></a><a class="link" href="#_setup_instructions">Setup instructions</a></h5>
+<div class="paragraph">
+<p>On <code>server</code>, run generate a SSH key (if you haven&#8217;t already got one) <code>ssh-keygen</code>, and store it in somewhere like <code>/opt/mySshKeys</code>;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root@server1: ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): /opt/mySshKeys/id_rsa
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /opt/mySshKeys/id_rsa
+Your public key has been saved in /opt/mySshKeys/id_rsa.pub
+The key fingerprint is:
+SHA256:t+vGUn+MTeOtRDpxKanO3Cg63+gvAHslZCe3YVNnfWU root@server1
+The key's randomart image is:
++---[RSA 3072]----+
+|         .. o.  E|
+|      + *  o  ...|
+|     o = +     . |
+|    . . o    . . |
+|     o oS . + +  |
+|    . o  ..o *o  |
+|     . . oo.o*.o |
+|      . +*o+oo= .|
+|      .=+BX .... |
++----[SHA256------+</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>You should bind-mount your SSH keys directory into the OliveTin user&#8217;s home directory;</p>
+<p>This will create two files, <code>/opt/mySshKeys/id_rsa</code> (your private key) and <code>/opt/mySshKeys/id_rsa.pub</code> (your public key).</p>
+</div>
+<div class="paragraph">
+<p>For every server that you want to use this key on, you need to copy your public key;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root@server1: ssh-copy-id root@server1
+(enter password)
+root@server2: ssh-copy-id root@server2
+(enter password)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will be asked to login with a password for each server.</p>
+</div>
+<div class="paragraph">
+<p>After you have done that, you will then be able to login with the ssh key instead;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root@server1: ssh -i /opt/mySshKeys/id_rsa root@server2
+(you should login without a password)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, we need to give the OliveTin container access to use this key, by passing it into the container with a "volume mount". When you create the container, you use "-v" to specify a volume.</p>
+</div>
+<div class="paragraph">
+<p>You should mount your SSH keys directory into the OliveTin user&#8217;s home directory by creating the container like this;</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -247,6 +316,10 @@ as well.</p>
 <div class="paragraph">
 <p>This also works for things like SSH configuration files, if you want to use them.</p>
 </div>
+<div class="paragraph">
+<p>After that, <code>ssh</code> commands in your OliveTin <code>config.yaml</code> should work without a password!, and allow OliveTin to access services, files, and other stuff outside of the OliveTin container.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -255,7 +328,7 @@ as well.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-24 17:36:43 UTC
+Last updated 2022-12-27 10:12:58 UTC
 </div>
 </div>
 </body>
