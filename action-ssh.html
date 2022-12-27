@@ -214,14 +214,15 @@ div.admonitionblock td:first-child {
 </table>
 <div class="sect3">
 <h4 id="_example_config_yaml_4"><a class="anchor" href="#_example_config_yaml_4"></a><a class="link" href="#_example_config_yaml_4">4.4.1. Example config.yaml</a></h4>
-<div class="literalblock">
+<div class="listingblock">
+<div class="title">OliveTin <code>config.yaml</code></div>
 <div class="content">
-<pre>actions:
+<pre class="highlight"><code class="language-shell" data-lang="shell">actions:
     # This will SSH into a server an run the command 'service httpd restart'
    - title: Restart httpd on Server 1
-     shell: ssh server1 'service httpd restart'
+     shell: ssh root@server1 'service httpd restart'
      icon: ping
-     timeout: 5</pre>
+     timeout: 5</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -314,10 +315,21 @@ root@server2: ssh-copy-id root@server2
 </div>
 </div>
 <div class="paragraph">
-<p>This also works for things like SSH configuration files, if you want to use them.</p>
+<p>This also works for things like SSH configuration files, if you want to use them. This is step 1 complete from the diagram above.</p>
 </div>
 <div class="paragraph">
-<p>After that, <code>ssh</code> commands in your OliveTin <code>config.yaml</code> should work without a password!, and allow OliveTin to access services, files, and other stuff outside of the OliveTin container.</p>
+<p>Thankfully, step 2 is very simple! <code>ssh</code> commands in your OliveTin <code>config.yaml</code> should work without a password!, and allow OliveTin to access services, files, and other stuff outside of the OliveTin container.</p>
+</div>
+<div class="listingblock">
+<div class="title">OliveTin <code>config.yaml</code></div>
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">actions:
+    # This will SSH into a server an run the command 'service httpd restart'
+   - title: Restart httpd on Server 1
+     shell: ssh root@server1 'service httpd restart'
+     icon: ping
+     timeout: 5</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -328,7 +340,7 @@ root@server2: ssh-copy-id root@server2
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-27 10:12:58 UTC
+Last updated 2022-12-27 10:23:14 UTC
 </div>
 </div>
 </body>
