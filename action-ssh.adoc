@@ -2,6 +2,8 @@
 [#action-ssh]
 === SSH into another machine and run a command
 
+This is probably one of the most useful things OliveTin is used for - just plain old SSH, which allows it to easily connect from a container to any server running on your network to run commands. This is also the preferred method of running commands on the server that is hosting the OliveTin container image as well.
+
 :systemd: Easy
 :container: Needs some setting up - if you are using the default container image you will need to run the command `dnf install openssh-clients` first.
 include::actionHeader.adoc[]
@@ -17,10 +19,7 @@ actions:
      timeout: 5
 ....
 
-*Note about SSH keys*: You should make sure that the user that OliveTin is running as has access
-to a SSH key. There are lots of good articles on the internet that explain how
-to setup password-less login with a SSH key. This applies to container images
-as well.
+*Note about SSH keys*: You should make sure that the user that OliveTin is running as has access to a SSH key. This applies to container images as well. The setup instructions below briefly explain how to generate a SSH key and make it accessible to OliveTin which is running inside a container.
 
 ==== Setup if running inside a container
 
@@ -31,7 +30,7 @@ image:images/ssh-diagram.png[]
 
 ===== Setup instructions
 
-On `server`, run generate a SSH key (if you haven't already got one) `ssh-keygen`, and store it in somewhere like `/opt/mySshKeys`; 
+On `server1`, run `ssh-keygen` to generate a SSH key (if you haven't already got one) and store it in somewhere like `/opt/mySshKeys`; 
 
 ----
 root@server1: ssh-keygen
