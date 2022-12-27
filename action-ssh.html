@@ -250,17 +250,20 @@ div.admonitionblock td:first-child {
 <div class="sect4">
 <h5 id="_setup_instructions"><a class="anchor" href="#_setup_instructions"></a><a class="link" href="#_setup_instructions">Setup instructions</a></h5>
 <div class="paragraph">
-<p>On <code>server1</code>, run <code>ssh-keygen</code> to generate a SSH key (if you haven&#8217;t already got one) and store it in somewhere like <code>/opt/mySshKeys</code>;</p>
+<p>On <code>server1</code>, run <code>ssh-keygen</code> to generate a SSH key (if you haven&#8217;t already got one) and store it in somewhere like <code>/opt/OliveTinSshKeys</code> when prompted.</p>
+</div>
+<div class="paragraph">
+<p>Importantly, when you are asked for a password, just press ENTER (don&#8217;t type a password). This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file!</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>root@server1: ssh-keygen
 Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa): /opt/mySshKeys/id_rsa
+Enter file in which to save the key (/root/.ssh/id_rsa): /opt/OliveTinSshKeys/id_rsa
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /opt/mySshKeys/id_rsa
-Your public key has been saved in /opt/mySshKeys/id_rsa.pub
+Your identification has been saved in /opt/OliveTinSshKeys/id_rsa
+Your public key has been saved in /opt/OliveTinSshKeys/id_rsa.pub
 The key fingerprint is:
 SHA256:t+vGUn+MTeOtRDpxKanO3Cg63+gvAHslZCe3YVNnfWU root@server1
 The key's randomart image is:
@@ -278,7 +281,7 @@ The key's randomart image is:
 </div>
 </div>
 <div class="paragraph">
-<p>This will create two files, <code>/opt/mySshKeys/id_rsa</code> (your private key) and <code>/opt/mySshKeys/id_rsa.pub</code> (your public key).</p>
+<p>This will create two files, <code>/opt/OliveTinSshKeys/id_rsa</code> (your private key) and <code>/opt/OliveTinSshKeys/id_rsa.pub</code> (your public key).</p>
 </div>
 <div class="paragraph">
 <p>For every server that you want to use this key on, you need to copy your public key;</p>
@@ -299,7 +302,7 @@ root@server2: ssh-copy-id root@server2
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root@server1: ssh -i /opt/mySshKeys/id_rsa root@server2
+<pre>root@server1: ssh -i /opt/OliveTinSshKeys/id_rsa root@server2
 (you should login without a password)</pre>
 </div>
 </div>
@@ -311,7 +314,7 @@ root@server2: ssh-copy-id root@server2
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>docker run -v /opt/mySshKeys/:/home/olivetin/.ssh/ --name OliveTin jamesread/olivetin</pre>
+<pre>docker run -v /opt/OliveTinSshKeys/:/home/olivetin/.ssh/ --name OliveTin jamesread/olivetin</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -340,7 +343,7 @@ root@server2: ssh-copy-id root@server2
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-27 10:43:47 UTC
+Last updated 2022-12-27 10:49:42 UTC
 </div>
 </div>
 </body>
