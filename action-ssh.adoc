@@ -1,0 +1,90 @@
+
+[#action-ssh]
+=== SSH into another machine and run a command
+
+:systemd: Easy
+:container: Needs some setting up - if you are using the default container image you will need to run the command `dnf install openssh-clients` first.
+include::actionHeader.adoc[]
+
+....
+actions:
+    # This will SSH into a server an run the command 'service httpd restart'
+   - title: Restart httpd on Server 1
+     shell: ssh server1 'service httpd restart'
+     icon: ping
+     timeout: 5
+....
+
+*Note about SSH keys*: You should make sure that the user that OliveTin is running as has access
+to a SSH key. There are lots of good articles on the internet that explain how
+to setup password-less login with a SSH key. This applies to container images
+as well.
+
+==== Setup if running inside a container
+
+image:images/ssh-diagram.png[]
+
+1. The OliveTin container is created with `.ssh` as a volume mount, that contains a SSH Key.
+2. OliveTin uses the SSH key to connect back to server1 or across to server2.
+
+===== Setup instructions
+
+On `server`, run generate a SSH key (if you haven't already got one) `ssh-keygen`, and store it in somewhere like `/opt/mySshKeys`; 
+
+----
+root@server1: ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): /opt/mySshKeys/id_rsa
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /opt/mySshKeys/id_rsa
+Your public key has been saved in /opt/mySshKeys/id_rsa.pub
+The key fingerprint is:
+SHA256:t+vGUn+MTeOtRDpxKanO3Cg63+gvAHslZCe3YVNnfWU root@server1
+The key's randomart image is:
++---[RSA 3072]----+
+|         .. o.  E|
+|      + *  o  ...|
+|     o = +     . |
+|    . . o    . . |
+|     o oS . + +  |
+|    . o  ..o *o  |
+|     . . oo.o*.o |
+|      . +*o+oo= .|
+|      .=+BX .... |
++----[SHA256------+
+----
+
+This will create two files, `/opt/mySshKeys/id_rsa` (your private key) and `/opt/mySshKeys/id_rsa.pub` (your public key). 
+
+For every server that you want to use this key on, you need to copy your public key;
+
+----
+root@server1: ssh-copy-id root@server1 
+(enter password)
+root@server2: ssh-copy-id root@server2
+(enter password)
+----
+
+You will be asked to login with a password for each server.
+
+After you have done that, you will then be able to login with the ssh key instead;
+
+----
+root@server1: ssh -i /opt/mySshKeys/id_rsa root@server2
+(you should login without a password)
+----
+
+Now, we need to give the OliveTin container access to use this key, by passing it into the container with a "volume mount". When you create the container, you use "-v" to specify a volume.
+
+You should mount your SSH keys directory into the OliveTin user's home directory by creating the container like this;
+
+----
+docker run -v /opt/mySshKeys/:/home/olivetin/.ssh/ --name OliveTin jamesread/olivetin
+----
+
+This also works for things like SSH configuration files, if you want to use them.
+
+After that, `ssh` commands in your OliveTin `config.yaml` should work without a password!, and allow OliveTin to access services, files, and other stuff outside of the OliveTin container.
+
+

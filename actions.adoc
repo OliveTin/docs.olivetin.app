@@ -82,35 +82,6 @@ actions:
     timeout: 3
 ....
 
-[#action-ssh]
-=== SSH into another machine and run a command
+include::action-ssh.adoc[]
 
-:systemd: Easy
-:container: Needs some setting up - if you are using the default container image you will need to run the command `dnf install openssh-clients` first.
-include::actionHeader.adoc[]
 
-....
-actions:
-    # This will SSH into a server an run the command 'service httpd restart'
-   - title: Restart httpd on Server 1
-     shell: ssh server1 'service httpd restart'
-     icon: ping
-     timeout: 5
-....
-
-*Note about SSH keys*: You should make sure that the user that OliveTin is running as has access
-to a SSH key. There are lots of good articles on the internet that explain how
-to setup password-less login with a SSH key. This applies to container images
-as well.
-
-==== Setup if running inside a container
-
-SSH is pre-installed in all OliveTin container images.
-
-You should bind-mount your SSH keys directory into the OliveTin user's home directory;
-
-----
-docker run -v /opt/mySshKeys/:/home/olivetin/.ssh/ --name OliveTin jamesread/olivetin
-----
-
-This also works for things like SSH configuration files, if you want to use them.
