@@ -6,11 +6,13 @@
 :container: Needs some setting up - if you are using the default container image you will need to run the command `dnf install openssh-clients` first.
 include::actionHeader.adoc[]
 
+.OliveTin `config.yaml`
+[source,shell]
 ....
 actions:
     # This will SSH into a server an run the command 'service httpd restart'
    - title: Restart httpd on Server 1
-     shell: ssh server1 'service httpd restart'
+     shell: ssh root@server1 'service httpd restart'
      icon: ping
      timeout: 5
 ....
@@ -83,8 +85,18 @@ You should mount your SSH keys directory into the OliveTin user's home directory
 docker run -v /opt/mySshKeys/:/home/olivetin/.ssh/ --name OliveTin jamesread/olivetin
 ----
 
-This also works for things like SSH configuration files, if you want to use them.
+This also works for things like SSH configuration files, if you want to use them. This is step 1 complete from the diagram above.
 
-After that, `ssh` commands in your OliveTin `config.yaml` should work without a password!, and allow OliveTin to access services, files, and other stuff outside of the OliveTin container.
+Thankfully, step 2 is very simple! `ssh` commands in your OliveTin `config.yaml` should work without a password!, and allow OliveTin to access services, files, and other stuff outside of the OliveTin container.
 
+.OliveTin `config.yaml`
+[source,shell]
+....
+actions:
+    # This will SSH into a server an run the command 'service httpd restart'
+   - title: Restart httpd on Server 1
+     shell: ssh root@server1 'service httpd restart'
+     icon: ping
+     timeout: 5
+....
 
