@@ -9,137 +9,141 @@
 <title>OliveTin documentation</title>
 <style>
 body {
-	font-family: sans-serif;
-	line-height: 1.5;
-	padding: 0;
-	margin: 0;
-	display: grid;
-	grid-template-areas: "nav content" "nav footer";
-	grid-template-columns: 20em auto;
-	grid-template-rows: auto min-content;
-	height: 100vh;
-	align-items: stretch;
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "nav content" "nav footer";
+  grid-template-columns: 20em auto;
+  grid-template-rows: auto min-content;
+  height: 100vh;
+  align-items: stretch;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 a:focus {
-	background-color: #bdb76b;
+  background-color: #bdb76b;
 }
 
 #header {
-	background-color: #efefef;
-	grid-area: nav;
+  background-color: #efefef;
+  grid-area: nav;
 }
 
 #footer {
-	grid-area: footer;
+  grid-area: footer;
+  justify-self: center;
+  align-self: end;
+  padding: 1em;
 }
 
 #toc {
-	padding: 1em;
+  padding: 1em;
 }
 
 #toc a {
-	color: black;
+  color: black;
 }
 
 #toc li {
-	padding-bottom: .6em;
+  padding-bottom: .6em;
 }
 
 #toc ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 #toc ul ul {
-	padding-left: 1.4em;
+  padding-left: 1.4em;
 }
 
 #toctitle {
-	font-weight: bold;
-	color: black;
+  font-weight: bold;
+  color: black;
 }
 
 h1 {
-	font-size: 1.4em;
-	font-weight: lighter;
-	background-color: black;
-	padding: .6em;
-	margin: 0;
-	color: white;
+  font-size: 1.4em;
+  font-weight: lighter;
+  background-color: black;
+  padding: .6em;
+  margin: 0;
+  color: white;
 }
 
 #toc a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 #content {
-	background-color: white;
-	grid-area: content;
-	max-width: 1000px;
-	padding: 1em;
+  background-color: white;
+  grid-area: content;
+  max-width: 1000px;
+  padding: 1em;
+  justify-self: center;
 }
 
 #content img {
-	max-width: 100%;
-	vertical-align: middle;
+  max-width: 100%;
+  vertical-align: middle;
 }
 
 pre {
-	background-color: #f7f7f8;
-	padding: 1em;
-	word-wrap: break-word;
-	white-space: pre-wrap;
+  background-color: #f7f7f8;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 table {
-	border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 td, th {
-	border: 1px solid gray;
-	padding: .4em;
+  border: 1px solid gray;
+  padding: .4em;
 }
 
 th {
-	background-color: #f9f9f9;
-	text-align: left;
+  background-color: #f9f9f9;
+  text-align: left;
 }
 
 .imageblock.right {
-	float: right;
+  float: right;
 }
 
 hr {
-	clear: both;
-	border: 0;
-	border-bottom: 1px solid #efefef;
-	margin: 1em;
+  clear: both;
+  border: 0;
+  border-bottom: 1px solid #efefef;
+  margin: 1em;
 }
 
 div.admonitionblock td {
-	border: 0;
+  border: 0;
 }
 
 div.admonitionblock td:first-child {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .listingblock .title {
-	background-color: #efefef;
-	margin-bottom: -1em;
-	padding: 1em;
+  background-color: #efefef;
+  margin-bottom: -1em;
+  padding: 1em;
 }
 
 @media (max-width: 700px) {
-	body {
-		display: block;
-	}
+  body {
+    display: block;
+  }
 }
 
 </style>
@@ -230,7 +234,7 @@ user@host: apk add --allow-untrusted OliveTin_linux_amd64.apk</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-31 10:14:38 UTC
+Last updated 2022-12-31 10:31:09 UTC
 </div>
 </div>
 </body>
