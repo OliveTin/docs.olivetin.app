@@ -148,13 +148,35 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="err-js-modules-not-supported" class="book toc2 toc-left">
+<body id="install-alpine" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">1. Installation</a>
+<ul class="sectlevel2">
+<li><a href="choose-package.html">1.1. Which download do I need?</a>
+</li>
+<li><a href="install-linuxpackage.html">1.2. Recommended: Linux package install (.rpm/.deb)</a>
+</li>
+<li><a href="install-fedora.html">1.3. Fedora Linux (dnf)</a>
+</li>
+<li><a href="install-alpine.html"><span class="toc-current">1.4. Alpine Linux</span></a>
+</li>
+<li><a href="install-archbtw.html">1.5. Arch Linux (AUR)</a>
+</li>
+<li><a href="install-container.html">1.6. Container install (podman/docker)</a>
+</li>
+<li><a href="install-compose.html">1.7. Docker Compose install</a>
+</li>
+<li><a href="install-helm.html">1.8. Helm on Kubernetes Install</a>
+</li>
+<li><a href="install-k8s.html">1.9. Kubernetes install (manually)</a>
+</li>
+<li><a href="install-targz.html">1.10. .tar.gz Install (manual)</a>
+</li>
+</ul>
 </li>
 <li><a href="config.html">2. Configuration</a>
 </li>
@@ -171,20 +193,6 @@ div.admonitionblock td:first-child {
 <li><a href="_reference.html">8. Reference</a>
 </li>
 <li><a href="troubleshooting.html">9. Support &amp; Troubleshooting</a>
-<ul class="sectlevel2">
-<li><a href="support.html">9.1. Where to find help</a>
-</li>
-<li><a href="_exit_code_127.html">9.2. Exit code 127</a>
-</li>
-<li><a href="no-puid-pgid.html">9.3. PUID and PGID support</a>
-</li>
-<li><a href="err-fetch-buttons.html">9.4. Error Getting Buttons</a>
-</li>
-<li><a href="err-fetch-webui-settings.html">9.5. Error Fetching WebUI Settings</a>
-</li>
-<li><a href="err-js-modules-not-supported.html"><span class="toc-current">9.6. Error: JS Modules not supported</span></a>
-</li>
-</ul>
 </li>
 <li><a href="api.html">10. API</a>
 </li>
@@ -193,19 +201,31 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="err-js-modules-not-supported"><a class="anchor" href="#err-js-modules-not-supported"></a><a class="link" href="#err-js-modules-not-supported">9.6. Error: JS Modules not supported</a></h3>
+<h3 id="install-alpine"><a class="anchor" href="#install-alpine"></a><a class="link" href="#install-alpine">1.4. Alpine Linux</a></h3>
 <div class="paragraph">
-<p>This is most likely because you are using a very old browser, or have some Javascript disabled.</p>
+<p>Alpine Linux is supported by an upstream .apk package, or a manual .tar.gz install, or by <a href="install-container.html">a container</a>.</p>
 </div>
 <div class="paragraph">
-<p>This page describes the compatible browsers for Javascript modules; <a href="https://caniuse.com/es6-module" class="bare">https://caniuse.com/es6-module</a> .</p>
+<p>These instructions on this page are quite basic, because not many people have tried to use OliveTin on Alpine, or other OpenRC distributions. If you can help suggest improvements to these docs, or Alpine Linux support, it would be great to <a href="support.html">hear from you</a>!</p>
 </div>
+<div class="sect3">
+<h4 id="_installing_the_upstream_apk"><a class="anchor" href="#_installing_the_upstream_apk"></a><a class="link" href="#_installing_the_upstream_apk">1.4.1. Installing the upstream <code>.apk</code></a></h4>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: wget https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.apk
+user@host: apk add --allow-untrusted OliveTin_linux_amd64.apk</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_installing_the_tar_gz"><a class="anchor" href="#_installing_the_tar_gz"></a><a class="link" href="#_installing_the_tar_gz">1.4.2. Installing the <code>.tar.gz</code></a></h4>
 <div class="paragraph">
-<p>There is no workaround for this apart from updating your browser / using a better browser, as OliveTin wants to be a progressive web app and doesn&#8217;t intend to support browsers without module support.</p>
+<p>The standard <a href="install-targz.html"><code>.tar.gz</code> instructions</a> should work just fine, replacing systemd for the OpenRC file.</p>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="err-fetch-webui-settings.html">Error Fetching WebUI Settings</a> | ↑ Up: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="api.html">API</a> →</p>
+<p>← Previous: <a href="install-fedora.html">Fedora Linux (dnf)</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-archbtw.html">Arch Linux (AUR)</a> →</p>
 </div>
 </div>
 <div id="footer">
