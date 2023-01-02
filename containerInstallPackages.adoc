@@ -28,6 +28,31 @@ Note that if you upgrade the OliveTin container image, you will need to reinstal
 
 Once you have finished installing these packages, just exit the root shell using `exit`. You don't need to restart the container - and OliveTin does not need to run as root to use most commands.
 
+==== Installing packages non-interactively
+
+If your Docker container is rebuilt, you'll need to perform these steps again. To make this easier, here's an example of a script that installs Docker Compose after your container is rebuilt:
+
+----
+#!/bin/bash
+
+docker="/usr/bin/docker"
+echo="/usr/bin/echo"
+grep="/usr/bin/grep"
+
+# Install Docker Compose in olivetin
+container_name="olivetin"
+if ${docker} ps --format '{{.Names}}' | ${grep} -Eq "^${container_name}\$"; then
+  # ${docker} exec -i "${container_name}" /bin/bash -c "/bin/microdnf install -y yum-utils && /bin/dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo && /bin/dnf install -y docker-compose-plugin"
+  ${docker} exec -i "${container_name}" /bin/bash -c "/bin/mkdir -p /usr/local/lib/docker/cli-plugins && /bin/curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose && /bin/chmod +x /usr/local/lib/docker/cli-plugins/docker-compose"
+else
+  ${echo} "${container_name}" not running
+fi
+
+exit
+----
+
+Just change the `container_name` variable to whatever you've named your Docker container for OliveTin.
+
 ==== See also
 
 * link:https://hub.docker.com/r/jamesread/olivetin[OliveTin container on Docker Hub]
