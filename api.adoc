@@ -27,9 +27,21 @@ PS C:\Users\xcons> $json = '{"actionName": "Deploy attack Gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
 ----
 
+==== Example API call: Start an action with arguments
+
+===== Curl
+
+----
+user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
+----
+
 ==== Example API call: Get the dashboard buttons ("components")
 
-GetDashboardComponents: http://olivetinServer:1337/api/GetDashboardComponents 
+===== Curl
+
+----
+user@host: curl http://olivetinServer:1337/api/GetDashboardComponents 
+----
 
 ==== Links 
 
