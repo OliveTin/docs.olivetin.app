@@ -224,13 +224,29 @@ PS C:\Users\xcons&gt; Invoke-RestMethod -Method "Post" -Uri "http://olivetinServ
 </div>
 </div>
 <div class="sect3">
-<h4 id="_example_api_call_get_the_dashboard_buttons_components"><a class="anchor" href="#_example_api_call_get_the_dashboard_buttons_components"></a><a class="link" href="#_example_api_call_get_the_dashboard_buttons_components">10.1.2. Example API call: Get the dashboard buttons ("components")</a></h4>
-<div class="paragraph">
-<p>GetDashboardComponents: <a href="http://olivetinServer:1337/api/GetDashboardComponents" class="bare">http://olivetinServer:1337/api/GetDashboardComponents</a></p>
+<h4 id="_example_api_call_start_an_action_with_arguments"><a class="anchor" href="#_example_api_call_start_an_action_with_arguments"></a><a class="link" href="#_example_api_call_start_an_action_with_arguments">10.1.2. Example API call: Start an action with arguments</a></h4>
+<div class="sect4">
+<h5 id="_curl_2"><a class="anchor" href="#_curl_2"></a><a class="link" href="#_curl_2">Curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre>user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_links"><a class="anchor" href="#_links"></a><a class="link" href="#_links">10.1.3. Links</a></h4>
+<h4 id="_example_api_call_get_the_dashboard_buttons_components"><a class="anchor" href="#_example_api_call_get_the_dashboard_buttons_components"></a><a class="link" href="#_example_api_call_get_the_dashboard_buttons_components">10.1.3. Example API call: Get the dashboard buttons ("components")</a></h4>
+<div class="sect4">
+<h5 id="_curl_3"><a class="anchor" href="#_curl_3"></a><a class="link" href="#_curl_3">Curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: curl http://olivetinServer:1337/api/GetDashboardComponents</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_links"><a class="anchor" href="#_links"></a><a class="link" href="#_links">10.1.4. Links</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -255,7 +271,7 @@ PS C:\Users\xcons&gt; Invoke-RestMethod -Method "Post" -Uri "http://olivetinServ
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-31 10:31:09 UTC
+Last updated 2023-01-03 15:36:50 UTC
 </div>
 </div>
 </body>
