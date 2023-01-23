@@ -15,7 +15,7 @@ services:
     container_name: olivetin
     image: jamesread/olivetin
     volumes:
-      - /docker/olivetin:/config # replace host path or volume as needed
+      - /docker/OliveTin:/config # replace host path or volume as needed
     ports: 
       - "1337:1337"
     restart: unless-stopped
@@ -42,7 +42,7 @@ services:
     container_name: olivetin
     image: jamesread/olivetin
     volumes:
-      - /docker/olivetin:/config # replace host path or volume as needed
+      - /docker/OliveTin:/config # replace host path or volume as needed
       - /var/run/docker.sock:/var/run/docker.sock 
     ...
 ----
