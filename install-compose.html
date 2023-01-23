@@ -223,7 +223,7 @@ services:
     container_name: olivetin
     image: jamesread/olivetin
     volumes:
-      - /docker/olivetin:/config # replace host path or volume as needed
+      - /docker/OliveTin:/config # replace host path or volume as needed
     ports:
       - "1337:1337"
     restart: unless-stopped
@@ -307,7 +307,7 @@ services:
     container_name: olivetin
     image: jamesread/olivetin
     volumes:
-      - /docker/olivetin:/config # replace host path or volume as needed
+      - /docker/OliveTin:/config # replace host path or volume as needed
       - /var/run/docker.sock:/var/run/docker.sock
     ...</pre>
 </div>
@@ -359,7 +359,7 @@ Docker compose setups. See the <a href="traefik-docker-compose.html">Traefik + D
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-23 21:33:49 UTC
+Last updated 2023-01-23 21:53:45 UTC
 </div>
 </div>
 </body>
