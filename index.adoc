@@ -75,6 +75,8 @@ include::install_systemd.adoc[]
 
 include::install_linux_fedora.adoc[]
 
+include::install_linux_alpine.adoc[]
+
 include::install_linux_arch.adoc[]
 
 include::install_container.adoc[]
