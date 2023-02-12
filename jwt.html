@@ -152,7 +152,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_setting_up_jwt_authorization" class="book toc2 toc-left">
+<body id="jwt" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -174,7 +174,7 @@ div.admonitionblock td:first-child {
 <ul class="sectlevel2">
 <li><a href="_concepts.html">7.1. Concepts</a>
 </li>
-<li><a href="_setting_up_jwt_authorization.html"><span class="toc-current">7.2. Setting up JWT Authorization</span></a>
+<li><a href="jwt.html"><span class="toc-current">7.2. Setting up JWT Authorization</span></a>
 </li>
 </ul>
 </li>
@@ -189,7 +189,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_setting_up_jwt_authorization"><a class="anchor" href="#_setting_up_jwt_authorization"></a><a class="link" href="#_setting_up_jwt_authorization">7.2. Setting up JWT Authorization</a></h3>
+<h3 id="jwt"><a class="anchor" href="#jwt"></a><a class="link" href="#jwt">7.2. Setting up JWT Authorization</a></h3>
 <div class="paragraph">
 <p>You need to know your JWT <strong>Cookie Name</strong> and <strong>Hash Secret</strong>. Whatever tool you are using to authenticate users will probably have instructions on how to find this.</p>
 </div>
@@ -211,7 +211,9 @@ div.admonitionblock td:first-child {
 logLevel: "INFO"
 
 authJwtCookieName: "Organizr_token_1234..."
-authJwtSecret: "3l4jh23v_123!"</pre>
+authJwtSecret: "3l4jh23v_123!"
+authJwtClaimUsername: "username"
+authJwtClaimUsergroup: "usergroup"</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -282,6 +284,18 @@ actions:
 <p>In the example above, the <code>admins</code> ACL is automatically added to every action, because <code>addToEveryAction</code> is true.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_customizing_field_names"><a class="anchor" href="#_customizing_field_names"></a><a class="link" href="#_customizing_field_names">7.2.5. Customizing field names</a></h4>
+<div class="paragraph">
+<p>You may need to customize the field names for your JWT authentication.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>authJwtClaimUsername: "username"
+authJwtClaimUsergroup: "usergroup"</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="_concepts.html">Concepts</a> | ↑ Up: <a href="auth.html">Authentication &amp; Authorization</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_reference.html">Reference</a> →</p>
@@ -289,7 +303,7 @@ actions:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-23 21:53:45 UTC
+Last updated 2023-02-12 22:45:30 UTC
 </div>
 </div>
 </body>
