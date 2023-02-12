@@ -11,6 +11,7 @@ OliveTin does not have any built-in code for doing **Authentication** (eg: enter
 4. OliveTin matches any relevant ACLs based on the claims.
 5. If any ACLs are not matched, then the defaultPermissions are used.
 
+[#jwt]
 === Setting up JWT Authorization
 
 You need to know your JWT **Cookie Name** and **Hash Secret**. Whatever tool you are using to authenticate users will probably have instructions on how to find this.
@@ -27,6 +28,8 @@ logLevel: "INFO"
 
 authJwtCookieName: "Organizr_token_1234..."
 authJwtSecret: "3l4jh23v_123!"
+authJwtClaimUsername: "username"
+authJwtClaimUsergroup: "usergroup"
 ----
 
 Note that your `authJwtCookieName` and `authJwtSecret` will need to be set exactly as they appear in your Authentication software.
@@ -85,5 +88,15 @@ actions:
 ----
 
 In the example above, the `admins` ACL is automatically added to every action, because `addToEveryAction` is true. 
+
+==== Customizing field names
+
+You may need to customize the field names for your JWT authentication. 
+
+----
+authJwtClaimUsername: "username"
+authJwtClaimUsergroup: "usergroup"
+----
+
 
 
