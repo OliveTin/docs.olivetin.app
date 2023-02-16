@@ -152,7 +152,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="apache-path" class="book toc2 toc-left">
+<body id="powershell" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -163,22 +163,20 @@ div.admonitionblock td:first-child {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">3.1. Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-path.html"><span class="toc-current">3.2. Apache HTTPD - DNS based</span></a>
-</li>
-<li><a href="haproxy-dns.html">3.3. Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html">3.4. Traefik + Docker Compose</a>
-</li>
-<li><a href="nginx-path.html">3.5. Nginx - Path based</a>
-</li>
-<li><a href="caddy-path.html">3.6. Caddy - Path based</a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">4. Actions</a>
+<ul class="sectlevel2">
+<li><a href="action-container-control.html">4.1. Containers - start/stop</a>
+</li>
+<li><a href="action-service.html">4.2. Restart a systemd service</a>
+</li>
+<li><a href="action-ping.html">4.3. Ping an address</a>
+</li>
+<li><a href="action-ssh.html">4.4. SSH into another machine and run a command</a>
+</li>
+<li><a href="powershell.html"><span class="toc-current">4.5. Powershell</span></a>
+</li>
+</ul>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
 </li>
@@ -197,25 +195,45 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="apache-path"><a class="anchor" href="#apache-path"></a><a class="link" href="#apache-path">3.2. Apache HTTPD - DNS based</a></h3>
+<h3 id="powershell"><a class="anchor" href="#powershell"></a><a class="link" href="#powershell">4.5. Powershell</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Installation type</th>
+<th class="tableblock halign-left valign-top">Difficulty to do this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running as a <strong>Systemd service</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not possible</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_example_config_yaml_5"><a class="anchor" href="#_example_config_yaml_5"></a><a class="link" href="#_example_config_yaml_5">4.5.1. Example config.yaml</a></h4>
 <div class="paragraph">
-<p>This is a an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337.</p>
+<p>Powershell requires <code>pwsh</code> to execute commands.</p>
 </div>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
-<pre>&lt;VirtualHost *:80&gt;
-ServerName olivetin.example.com
-ProxyPass /utilities/OliveTin/ http://localhost:1337/
-ProxyPassReverse /utilities/OliveTin/ http://localhost:1337/
-&lt;/VirtualHost&gt;</pre>
+<pre>actions:
+  - title: Run Powershell Script:
+    shell: pwsh C:/Scripts/MyScript.ps1</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Note, you virtual host should <strong>not</strong> include a DocumentRoot directive - httpd is just proxying OliveTin, not serving it&#8217;s actual pages.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="proxy-guide.html">Reverse Proxy general guide</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="haproxy-dns.html">Haproxy - DNS based</a> →</p>
+<p>← Previous: <a href="action-ssh.html">SSH into another machine and run a command</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-customisation.html">Action customisation</a> →</p>
 </div>
 </div>
 <div id="footer">
