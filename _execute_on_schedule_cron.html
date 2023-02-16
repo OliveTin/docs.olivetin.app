@@ -152,7 +152,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_timeouts" class="book toc2 toc-left">
+<body id="_execute_on_schedule_cron" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -161,20 +161,24 @@ div.admonitionblock td:first-child {
 <li><a href="installation.html">1. Installation</a>
 </li>
 <li><a href="config.html">2. Configuration</a>
+<ul class="sectlevel2">
+<li><a href="toggle-webui.html">2.1. Show/Hide web UI elements</a>
+</li>
+<li><a href="log-levels.html">2.2. Log Levels</a>
+</li>
+<li><a href="ports.html">2.3. Ports</a>
+</li>
+<li><a href="_execute_on_schedule_cron.html"><span class="toc-current">2.4. Execute on schedule (cron)</span></a>
+</li>
+<li><a href="_execute_on_startup.html">2.5. Execute on startup</a>
+</li>
+</ul>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
 </li>
 <li><a href="actions.html">4. Actions</a>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
-<ul class="sectlevel2">
-<li><a href="_icons.html">5.1. Icons</a>
-</li>
-<li><a href="_timeouts.html"><span class="toc-current">5.2. Timeouts</span></a>
-</li>
-<li><a href="_run_as_different_users.html">5.3. Run as different users</a>
-</li>
-</ul>
 </li>
 <li><a href="args.html">6. Arguments</a>
 </li>
@@ -191,50 +195,30 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_timeouts"><a class="anchor" href="#_timeouts"></a><a class="link" href="#_timeouts">5.2. Timeouts</a></h3>
+<h3 id="_execute_on_schedule_cron"><a class="anchor" href="#_execute_on_schedule_cron"></a><a class="link" href="#_execute_on_schedule_cron">2.4. Execute on schedule (cron)</a></h3>
 <div class="paragraph">
-<p>By default, actions in OliveTin have a 3 second timeout. This means that
-OliveTin will kill the action if it is running for too long.</p>
-</div>
-<div class="paragraph">
-<p>You can set your own timeouts like this;</p>
+<p>OliveTin can execute actions on a schedule, and uses a cron format for configuration.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>- actions:
-  - title: My special action
-    shell: sleep 5
-    timeout: 10</pre>
+<pre>actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    execOnCron:
+      - "@hourly"
+
+  - title: Say goodbye
+    shell: echo "Say Goodbye"
+    execOnCron:
+      - "*/5 * * * *" # Every 5 minutes</pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Allowing commands to run for infinity just doesn&#8217;t seem to make sense, or
-at least is probably a bad case for OliveTin. Therefore, if you set a timeout
-<strong>less than 3 seconds</strong>, OliveTin will overwrite your Timeout and default to 3
-seconds. If you think you have a use case where a shorter (or infinite) timeout
-makes sense, please open an issue and let&#8217;s discuss.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_check_the_logs"><a class="anchor" href="#_check_the_logs"></a><a class="link" href="#_check_the_logs">5.2.1. Check the logs</a></h4>
-<div class="paragraph">
-<p>If a action really does "time out", it will show in the logs with "(timed out)" next to the exist code;</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/timeoutLogs.png" alt="timeoutLogs"></span></p>
-</div>
+<p>This is a fantastic website: <a href="https://cron.help/" class="bare">https://cron.help/</a></p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_icons.html">Icons</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_run_as_different_users.html">Run as different users</a> →</p>
+<p>← Previous: <a href="ports.html">Ports</a> | ↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_execute_on_startup.html">Execute on startup</a> →</p>
 </div>
 </div>
 <div id="footer">
