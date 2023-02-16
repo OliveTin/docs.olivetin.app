@@ -84,4 +84,20 @@ actions:
 
 include::action-ssh.adoc[]
 
+[#powershell]
+=== Powershell
+
+:systemd: Easy
+:container: Not possible
+include::actionHeader.adoc[]
+
+Powershell requires `pwsh` to execute commands.
+
+....
+actions:
+  - title: Run Powershell Script:
+    shell: pwsh C:/Scripts/MyScript.ps1
+....
+
+
 
