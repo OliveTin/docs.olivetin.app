@@ -111,4 +111,46 @@ INFO[0787] Setting log level to warning
 
 See <<network-ports,the network ports>> documentation in the reference section.
 
+=== Execute on schedule (cron)
+
+OliveTin can execute actions on a schedule, and uses a cron format for configuration.
+
+----
+actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    execOnCron: 
+      - "@hourly"
+
+  - title: Say goodbye
+    shell: echo "Say Goodbye"
+    execOnCron:
+      - "*/5 * * * *" # Every 5 minutes
+----
+
+This is a fantastic website: https://cron.help/
+
+=== Execute on startup
+
+OliveTin can execute actions on a startup. 
+
+----
+actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    execOnStartup: true 
+----
+
+[#dnf-startup]
+==== Example: Install additional commands into OliveTin
+
+This functionality to execute actions on startup is a very easy way to install additional commands in OliveTin;
+
+----
+actions:
+  - title: Install dnsmasq
+    shell: microdnf install bind-utils
+    execOnStartup: true
+----
+
 
