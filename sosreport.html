@@ -152,35 +152,13 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="install-k8s" class="book toc2 toc-left">
+<body id="sosreport" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">1. Installation</a>
-<ul class="sectlevel2">
-<li><a href="choose-package.html">1.1. Which download do I need?</a>
-</li>
-<li><a href="install-linuxpackage.html">1.2. Recommended: Linux package install (.rpm/.deb)</a>
-</li>
-<li><a href="install-fedora.html">1.3. Fedora Linux (dnf)</a>
-</li>
-<li><a href="install-alpine.html">1.4. Alpine Linux</a>
-</li>
-<li><a href="install-archbtw.html">1.5. Arch Linux (AUR)</a>
-</li>
-<li><a href="install-container.html">1.6. Container install (podman/docker)</a>
-</li>
-<li><a href="install-compose.html">1.7. Docker Compose install</a>
-</li>
-<li><a href="install-helm.html">1.8. Helm on Kubernetes Install</a>
-</li>
-<li><a href="install-k8s.html"><span class="toc-current">1.9. Kubernetes install (manually)</span></a>
-</li>
-<li><a href="install-targz.html">1.10. .tar.gz Install (manual)</a>
-</li>
-</ul>
 </li>
 <li><a href="config.html">2. Configuration</a>
 </li>
@@ -197,6 +175,22 @@ div.admonitionblock td:first-child {
 <li><a href="_reference.html">8. Reference</a>
 </li>
 <li><a href="troubleshooting.html">9. Support &amp; Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="support.html">9.1. Where to find help</a>
+</li>
+<li><a href="sosreport.html"><span class="toc-current">9.2. sosreport</span></a>
+</li>
+<li><a href="_exit_code_127.html">9.3. Exit code 127</a>
+</li>
+<li><a href="no-puid-pgid.html">9.4. PUID and PGID support</a>
+</li>
+<li><a href="err-fetch-buttons.html">9.5. Error Getting Buttons</a>
+</li>
+<li><a href="err-fetch-webui-settings.html">9.6. Error Fetching WebUI Settings</a>
+</li>
+<li><a href="err-js-modules-not-supported.html">9.7. Error: JS Modules not supported</a>
+</li>
+</ul>
 </li>
 <li><a href="api.html">10. API</a>
 </li>
@@ -205,59 +199,67 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-k8s"><a class="anchor" href="#install-k8s"></a><a class="link" href="#install-k8s">1.9. Kubernetes install (manually)</a></h3>
+<h3 id="sosreport"><a class="anchor" href="#sosreport"></a><a class="link" href="#sosreport">9.2. sosreport</a></h3>
 <div class="paragraph">
-<p>OliveTin works just fine on Kubernetes. The easiest way to deploy it is with a
-Kubernetes <code>ConfigMap</code>, <code>Deployment</code>, <code>Service</code> and finally <code>Ingress</code>. Like so;</p>
+<p>OliveTin has a useful feature to gather information about your installation that is useful when you&#8217;re asking for help - when you have a support request. If you are able to provide sosreport, this generally helps others help you a lot. The <strong>sosreport</strong> feature does NOT send any information to the developers or anybody else, it&#8217;s simply text - <strong>copy and paste it</strong> to where someone is trying to help you!</p>
+</div>
+<div class="paragraph">
+<p>An example sosreport is here;</p>
 </div>
 <div class="listingblock">
-<div class="title">ConfigMap</div>
 <div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_configmap.yml</code></pre>
+<pre>### SOSREPORT START (copy all text to SOSREPORT END)
+# Build:
+commit: nocommit
+version: dev
+date: nodate
+
+# Runtime:
+os: linux
+osreleaseprettyname: PRETTY_NAME="Fedora Linux 37 (Workstation Edition)"
+arch: amd64
+incontainer: false
+lastbrowseruseragent: ""
+
+# Config:
+countofactions: 7
+loglevel: INFO
+
+### SOSREPORT END  (copy all text from SOSREPORT START)</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The main application config.yml for OliveTin is specified in the <code>ConfigMap</code>
-above. You will want to edit this later - see the "Configuration" section.</p>
+<p>You can then copy and paste this text into a GitHub issue, discussion, Discord chat, or wherever else someone might be helping you.</p>
+</div>
+<div class="sect3">
+<h4 id="_how_do_i_generate_a_sosreport"><a class="anchor" href="#_how_do_i_generate_a_sosreport"></a><a class="link" href="#_how_do_i_generate_a_sosreport">9.2.1. How do I generate a sosreport?</a></h4>
+<div class="paragraph">
+<p>OliveTin needs to be able to startup and it&#8217;s API needs to be functional. Once OliveTin is started, simply browse to: <a href="http://myserver:1337/api/sosreport" class="bare">http://myserver:1337/api/sosreport</a></p>
 </div>
 <div class="paragraph">
-<p>Next, we need a deployment;</p>
+<p>You should get a simple JSON message saying something like;</p>
 </div>
 <div class="listingblock">
-<div class="title">Deployment</div>
 <div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_deployment.yml</code></pre>
+<pre>alert: "Your SOS Report has been logged to OliveTin logs."</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>That should deploy OliveTin. Then expose it as a service;</p>
-</div>
-<div class="listingblock">
-<div class="title">Service</div>
-<div class="content">
-<pre class="highlight"><code>user@host: kubectl expose deployment/olivetin</code></pre>
-</div>
+<p>If you see this, great! The actual contents of the sosreport are not returned to your browser for security reasons (guests could get info about your installation, etc).</p>
 </div>
 <div class="paragraph">
-<p>Then lastly, create a Ingress rule for for that service;</p>
-</div>
-<div class="listingblock">
-<div class="title">Ingress</div>
-<div class="content">
-<pre class="highlight"><code>kubectl apply -f http://docs.olivetin.app/etc/k8s_ingress.yml</code></pre>
+<p>To find the sosreport depends on how you are running OliveTin, if you are running in a container, then try <code>docker logs olivetin</code> (where "olivetin" is your container name). If you are running using systemd, then try <code>journalctl -eu OliveTin</code>.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_what_if_i_cannot_even_get_to_the_olivetin_api"><a class="anchor" href="#_what_if_i_cannot_even_get_to_the_olivetin_api"></a><a class="link" href="#_what_if_i_cannot_even_get_to_the_olivetin_api">9.2.2. What if I cannot even get to the OliveTin API?</a></h4>
 <div class="paragraph">
-<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
-the web interface.</p>
+<p>OliveTin&#8217;s web interface doesn&#8217;t need to be working to get a sosreport (as the web interface and the API are separate). However, if OliveTin won&#8217;t even startup, or you cannot seem to get to the API, then sadly a sosreport can&#8217;t help you. Please do specify that when you ask for help.</p>
 </div>
-<div class="paragraph">
-<p>If you see the OliveTin page popup in your browser, you can jump to the
-<a href="config.html">configuration section</a> as the next step.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="install-helm.html">Helm on Kubernetes Install</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-targz.html">.tar.gz Install (manual)</a> →</p>
+<p>← Previous: <a href="support.html">Where to find help</a> | ↑ Up: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_exit_code_127.html">Exit code 127</a> →</p>
 </div>
 </div>
 <div id="footer">
