@@ -31,13 +31,18 @@ image:images/ssh-diagram.png[]
 
 ===== Setup instructions
 
-. On `server-with-olivetin`, run `mkdir /opt/OliveTinSshKeys` to create a shared directory for your SSH key file. This will later be used as a "volume mount" when you create a docker container. 
-
-. On `server-with-olivetin`, run `ssh-keygen` to generate a SSH key (if you haven't already got one) and store it in somewhere like `/opt/OliveTinSshKeys` when prompted. 
-
-. Importantly, when you are asked for a password, just press ENTER (don't type a password). This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file!
+. On `server-with-olivetin`, run `mkdir /opt/OliveTinSshKeys` to create a shared directory for your SSH key file. 
 +
-Lastly, if you get a "permission denied" error when creating files, you could run `chmod 0777 /opt/OliveTinSshKeys` to fix it.
+This will later be used as a "volume mount" when you create a docker container. 
+
+. On `server-with-olivetin`, run `ssh-keygen` to generate a SSH key (if you haven't already got one).
++
+.. Enter the file in which to save the key: `/opt/OliveTinSshKeys/id_rsa`
+.. Enter passphrase (empty for no passphrase): `<enter>`
++
+This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file!
++
+You should get something that looks like this. If you get a "permission denied" error when creating files, you could run `chmod 0777 /opt/OliveTinSshKeys` and try again.
 +
 ----
 root@server-with-olivetin: ssh-keygen
@@ -65,13 +70,15 @@ The key's randomart image is:
 +
 This will create two files, `/opt/OliveTinSshKeys/id_rsa` (your private key) and `/opt/OliveTinSshKeys/id_rsa.pub` (your public key). 
 
-. For every server that you want to use this key on, you need to copy your public key;
+. Copy your public key to every server you want to connect to.
++
+`ssh-copy-id` is a really quick and safe way to do this.
 +
 ----
 root@server-with-olivetin: ssh-copy-id root@server-with-olivetin 
-(enter password)
+(enter your SSH password)
 root@server2: ssh-copy-id root@server2
-(enter password)
+(enter your SSH password)
 ----
 +
 You will be asked to login with a password for each server.
@@ -83,7 +90,9 @@ root@server-with-olivetin: ssh -i /opt/OliveTinSshKeys/id_rsa root@server2
 (you should login without a password)
 ----
 
-. Now, we need to give the OliveTin container access to use this key, by passing it into the container with a "volume mount". When you create the container, you use "-v" to specify a volume.
+. Give the SSH key to the OliveTin container. 
++
+The way to do this is via a "volume mount". When you create the container, you use "-v" to specify a volume.
 +
 You should mount your SSH keys directory into the OliveTin user's home directory by creating the container like this;
 +
