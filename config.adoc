@@ -111,6 +111,7 @@ INFO[0787] Setting log level to warning
 
 See <<network-ports,the network ports>> documentation in the reference section.
 
+[#exec-cron]
 === Execute on schedule (cron)
 
 OliveTin can execute actions on a schedule, and uses a cron format for configuration.
@@ -130,6 +131,7 @@ actions:
 
 This is a fantastic website: https://cron.help/
 
+[#exec-startup]
 === Execute on startup
 
 OliveTin can execute actions on a startup. 
