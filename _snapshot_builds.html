@@ -152,35 +152,13 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="install-helm" class="book toc2 toc-left">
+<body id="_snapshot_builds" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">1. Installation</a>
-<ul class="sectlevel2">
-<li><a href="choose-package.html">1.1. Which download do I need?</a>
-</li>
-<li><a href="install-linuxpackage.html">1.2. Recommended: Linux package install (.rpm/.deb)</a>
-</li>
-<li><a href="install-fedora.html">1.3. Fedora Linux (dnf)</a>
-</li>
-<li><a href="install-alpine.html">1.4. Alpine Linux</a>
-</li>
-<li><a href="install-archbtw.html">1.5. Arch Linux (AUR)</a>
-</li>
-<li><a href="install-container.html">1.6. Container install (podman/docker)</a>
-</li>
-<li><a href="install-compose.html">1.7. Docker Compose install</a>
-</li>
-<li><a href="install-helm.html"><span class="toc-current">1.8. Helm on Kubernetes Install</span></a>
-</li>
-<li><a href="install-k8s.html">1.9. Kubernetes install (manually)</a>
-</li>
-<li><a href="install-targz.html">1.10. .tar.gz Install (manual)</a>
-</li>
-</ul>
 </li>
 <li><a href="config.html">2. Configuration</a>
 </li>
@@ -195,6 +173,22 @@ div.admonitionblock td:first-child {
 <li><a href="auth.html">7. Authentication &amp; Authorization</a>
 </li>
 <li><a href="_reference.html">8. Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">8.1. Network ports</a>
+</li>
+<li><a href="_security.html">8.2. Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">8.3. Understanding exit codes</a>
+</li>
+<li><a href="update-tracking.html">8.4. Update Checks (and tracking)</a>
+</li>
+<li><a href="container-dnf.html">8.5. Installing extra container packages</a>
+</li>
+<li><a href="multi-inst.html">8.6. Multiple instances on a server</a>
+</li>
+<li><a href="_snapshot_builds.html"><span class="toc-current">8.7. Snapshot builds</span></a>
+</li>
+</ul>
 </li>
 <li><a href="troubleshooting.html">9. Support &amp; Troubleshooting</a>
 </li>
@@ -205,55 +199,53 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-helm"><a class="anchor" href="#install-helm"></a><a class="link" href="#install-helm">1.8. Helm on Kubernetes Install</a></h3>
+<h3 id="_snapshot_builds"><a class="anchor" href="#_snapshot_builds"></a><a class="link" href="#_snapshot_builds">8.7. Snapshot builds</a></h3>
 <div class="paragraph">
-<p>Helm makes installing OliveTin on Kubernetes very easy, the official chart is hosted on Artifact Hub.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://artifacthub.io/packages/search?repo=olivetin"><span class="image"><img src="https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/olivetin" alt="Artifact Hub"></span></a></p>
-</div>
-<div class="sect3">
-<h4 id="_quickstart"><a class="anchor" href="#_quickstart"></a><a class="link" href="#_quickstart">1.8.1. Quickstart</a></h4>
-<div class="listingblock">
-<div class="content">
-<pre>user@host: helm repo add olivetin https://olivetin.github.io/OliveTin-HelmChart/
-user@host: helm install olivetin olivetin/olivetin</pre>
-</div>
+<p>It&#8217;s sometimes useful to test code changes in OliveTin that are still in development - and have not yet made it into an official version, yet. Thankfully, all code changes are automatically compiled into a "snapshot" builds and are saved in GitHub actions.</p>
 </div>
 <div class="paragraph">
-<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
-the web interface.</p>
-</div>
-<div class="paragraph">
-<p>If you see the OliveTin page popup in your browser, you can jump to the
-<a href="config.html">configuration section</a> as the next step.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_included_templates"><a class="anchor" href="#_included_templates"></a><a class="link" href="#_included_templates">1.8.2. Included templates</a></h4>
-<div class="paragraph">
-<p>You can view the raw templates here: <a href="https://github.com/OliveTin/OliveTin-HelmChart/tree/main/templates" class="bare">https://github.com/OliveTin/OliveTin-HelmChart/tree/main/templates</a></p>
+<p>If you browse to GitHub actions page for OliveTin, you&#8217;ll find the "Build Snapshot" job, with a list of recent builds.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Deployment</p>
-</li>
-<li>
-<p>ConfigMap</p>
-</li>
-<li>
-<p>Service</p>
-</li>
-<li>
-<p>Ingress (optional)</p>
+<p><a href="https://github.com/OliveTin/OliveTin/actions/workflows/build-snapshot.yml">OliveTin&#8217;s Build Snapshot page</a></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/snapshots.png" alt="snapshots">
+</div>
+</div>
+<div class="paragraph">
+<p>Most of the time you will want to select the top build, unless you&#8217;ve specifically been given a build link to use.</p>
+</div>
+<div class="sect3">
+<h4 id="_download_the_snapshot_archive"><a class="anchor" href="#_download_the_snapshot_archive"></a><a class="link" href="#_download_the_snapshot_archive">8.7.1. Download the snapshot archive</a></h4>
+<div class="paragraph">
+<p>On the job page, you will have a single "snapshot" file listed. In this screenshot, it is 109 MB.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/snapshot-download.png" alt="snapshot download">
+</div>
+</div>
+<div class="paragraph">
+<p>Once downloaded, you can open the archive using any tool that you use to open .zip files. The contents should read something like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/snapshot-archive.png" alt="snapshot archive">
+</div>
+</div>
+<div class="paragraph">
+<p>Extract the file you need, and off you go!</p>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="install-compose.html">Docker Compose install</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-k8s.html">Kubernetes install (manually)</a> →</p>
+<p>← Previous: <a href="multi-inst.html">Multiple instances on a server</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> →</p>
 </div>
 </div>
 <div id="footer">
