@@ -204,14 +204,15 @@ div.admonitionblock td:first-child {
 <div class="sect3">
 <h4 id="_quickstart_using_dnf_to_install_additional_packages"><a class="anchor" href="#_quickstart_using_dnf_to_install_additional_packages"></a><a class="link" href="#_quickstart_using_dnf_to_install_additional_packages">8.5.1. Quickstart - using DNF to install additional packages</a></h4>
 <div class="paragraph">
-<p>You can of course create your own container image, but this is probably a lot of work for new users, or people who just want a few extra packages/commands. Instead of creating a whole new container image, you can simply run <code>dnf</code> (the Fodora package manager) to install more commands.</p>
+<p>You can of course create your own container image, but this is probably a lot of work for new users, or people who just want a few extra packages/commands. Instead of creating a whole new container image, you can simply run <code>microdnf</code> (the Fodora package manager) to install more commands.</p>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Start the OliveTin container using one of the methods shown in the <a href="installation.html">installation instructions</a>.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Then, on the same host that is running the container, spawn a root shell inside the OliveTin container, like this;</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>user@host: docker exec -it olivetin -u root /bin/bash
@@ -221,12 +222,12 @@ div.admonitionblock td:first-child {
 <div class="paragraph">
 <p>The important thing here is passing <code>-u root</code>. By default, OliveTin does not run as root.</p>
 </div>
-<div class="paragraph">
-<p>Once you have a root shell in OliveTin, you can use the Fedora package manager - <code>dnf</code> to install things that you might need. If you are used to Debian&#8217;s <code>apt-get</code> tool, it works in a very similar way;</p>
-</div>
+</li>
+<li>
+<p>Once you have a root shell in OliveTin, you can use the Fedora package manager - <code>microdnf</code> to install things that you might need. If you are used to Debian&#8217;s <code>apt-get</code> tool, it works in a very similar way;</p>
 <div class="listingblock">
 <div class="content">
-<pre>[root@019d08ef95bd /]# dnf install -y nc</pre>
+<pre>[root@019d08ef95bd /]# microdnf install -y nc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -234,6 +235,9 @@ div.admonitionblock td:first-child {
 </div>
 <div class="paragraph">
 <p>Once you have finished installing these packages, just exit the root shell using <code>exit</code>. You don&#8217;t need to restart the container - and OliveTin does not need to run as root to use most commands.</p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
@@ -265,7 +269,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-20 12:45:52 UTC
+Last updated 2023-03-20 13:19:33 UTC
 </div>
 </div>
 </body>

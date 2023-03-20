@@ -258,15 +258,25 @@ div.admonitionblock td:first-child {
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>On <code>server-with-olivetin</code>, run <code>mkdir /opt/OliveTinSshKeys</code> to create a shared directory for your SSH key file. This will later be used as a "volume mount" when you create a docker container.</p>
-</li>
-<li>
-<p>On <code>server-with-olivetin</code>, run <code>ssh-keygen</code> to generate a SSH key (if you haven&#8217;t already got one) and store it in somewhere like <code>/opt/OliveTinSshKeys</code> when prompted.</p>
-</li>
-<li>
-<p>Importantly, when you are asked for a password, just press ENTER (don&#8217;t type a password). This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file!</p>
+<p>On <code>server-with-olivetin</code>, run <code>mkdir /opt/OliveTinSshKeys</code> to create a shared directory for your SSH key file.</p>
 <div class="paragraph">
-<p>Lastly, if you get a "permission denied" error when creating files, you could run <code>chmod 0777 /opt/OliveTinSshKeys</code> to fix it.</p>
+<p>This will later be used as a "volume mount" when you create a docker container.</p>
+</div>
+</li>
+<li>
+<p>On <code>server-with-olivetin</code>, run <code>ssh-keygen</code> to generate a SSH key (if you haven&#8217;t already got one).</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter the file in which to save the key: <code>/opt/OliveTinSshKeys/id_rsa</code></p>
+</li>
+<li>
+<p>Enter passphrase (empty for no passphrase): <code>&lt;enter&gt;</code></p>
+<div class="paragraph">
+<p>This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file!</p>
+</div>
+<div class="paragraph">
+<p>You should get something that looks like this. If you get a "permission denied" error when creating files, you could run <code>chmod 0777 /opt/OliveTinSshKeys</code> and try again.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -297,14 +307,20 @@ The key's randomart image is:
 <p>This will create two files, <code>/opt/OliveTinSshKeys/id_rsa</code> (your private key) and <code>/opt/OliveTinSshKeys/id_rsa.pub</code> (your public key).</p>
 </div>
 </li>
+</ol>
+</div>
+</li>
 <li>
-<p>For every server that you want to use this key on, you need to copy your public key;</p>
+<p>Copy your public key to every server you want to connect to.</p>
+<div class="paragraph">
+<p><code>ssh-copy-id</code> is a really quick and safe way to do this.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>root@server-with-olivetin: ssh-copy-id root@server-with-olivetin
-(enter password)
+(enter your SSH password)
 root@server2: ssh-copy-id root@server2
-(enter password)</pre>
+(enter your SSH password)</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -321,7 +337,10 @@ root@server2: ssh-copy-id root@server2
 </div>
 </li>
 <li>
-<p>Now, we need to give the OliveTin container access to use this key, by passing it into the container with a "volume mount". When you create the container, you use "-v" to specify a volume.</p>
+<p>Give the SSH key to the OliveTin container.</p>
+<div class="paragraph">
+<p>The way to do this is via a "volume mount". When you create the container, you use "-v" to specify a volume.</p>
+</div>
 <div class="paragraph">
 <p>You should mount your SSH keys directory into the OliveTin user&#8217;s home directory by creating the container like this;</p>
 </div>
@@ -359,7 +378,7 @@ root@server2: ssh-copy-id root@server2
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-20 12:45:52 UTC
+Last updated 2023-03-20 13:19:33 UTC
 </div>
 </div>
 </body>
