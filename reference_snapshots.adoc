@@ -1,3 +1,4 @@
+[#snapsnots]
 === Snapshot builds
 
 It's sometimes useful to test code changes in OliveTin that are still in development - and have not yet made it into an official version, yet. Thankfully, all code changes are automatically compiled into a "snapshot" builds and are saved in GitHub actions.
