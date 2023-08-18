@@ -12,4 +12,6 @@ include::containerInstallPackages.adoc[]
 
 include::reference_multipleInstances.adoc[]
 
+include::reference_snapshots.adoc[]
+
 
