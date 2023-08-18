@@ -21,8 +21,7 @@ services:
     restart: unless-stopped
 
 networks:
-  web: # should match the network defined under the container's networks
-  section
+  web: # should match the network defined under the container's networks section
       external: true
 ----
 
