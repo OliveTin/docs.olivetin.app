@@ -152,7 +152,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="exec-cron" class="book toc2 toc-left">
+<body id="examples" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -163,36 +163,22 @@ div.admonitionblock td:first-child {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">3.1. Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-path.html">3.2. Apache HTTPD - DNS based</a>
-</li>
-<li><a href="haproxy-dns.html">3.3. Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html">3.4. Traefik + Docker Compose</a>
-</li>
-<li><a href="nginx-path.html">3.5. Nginx - Path based</a>
-</li>
-<li><a href="caddy-path.html">3.6. Caddy - Path based</a>
-</li>
-<li><a href="actions.html">3.7. Actions</a>
-</li>
-<li><a href="exec-on-demand.html">3.8. Execute on demand</a>
-</li>
-<li><a href="exec-cron.html"><span class="toc-current">3.9. Execute on schedule (cron)</span></a>
-</li>
-<li><a href="exec-startup.html">3.10. Execute on startup</a>
-</li>
-<li><a href="exec-file-created.html">3.11. Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">3.12. Execute on file changed</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">4. Action customisation</a>
 </li>
-<li><a href="examples.html">5. Action examples</a>
+<li><a href="examples.html"><span class="toc-current">5. Action examples</span></a>
+<ul class="sectlevel2">
+<li><a href="action-container-control.html">5.1. Containers - start/stop</a>
+</li>
+<li><a href="action-service.html">5.2. Restart a systemd service</a>
+</li>
+<li><a href="action-ping.html">5.3. Ping an address</a>
+</li>
+<li><a href="action-ssh.html">5.4. SSH into another machine and run a command</a>
+</li>
+<li><a href="powershell.html">5.5. Powershell</a>
+</li>
+</ul>
 </li>
 <li><a href="args.html">6. Arguments</a>
 </li>
@@ -208,31 +194,32 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="exec-cron"><a class="anchor" href="#exec-cron"></a><a class="link" href="#exec-cron">3.9. Execute on schedule (cron)</a></h3>
-<div class="paragraph">
-<p>OliveTin can execute actions on a schedule, and uses a cron format for configuration.</p>
+<div class="sect1">
+<h2 id="examples"><a class="anchor" href="#examples"></a><a class="link" href="#examples">5. Action examples</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="action-container-control.html">Containers - start/stop</a></p>
+</li>
+<li>
+<p><a href="action-service.html">Restart a systemd service</a></p>
+</li>
+<li>
+<p><a href="action-ping.html">Ping an address</a></p>
+</li>
+<li>
+<p><a href="action-ssh.html">SSH into another machine and run a command</a></p>
+</li>
+<li>
+<p><a href="powershell.html">Powershell</a></p>
+</li>
+</ul>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>actions:
-  - title: Say hello
-    shell: echo "Hello!"
-    execOnCron:
-      - "@hourly"
-
-  - title: Say goodbye
-    shell: echo "Say Goodbye"
-    execOnCron:
-      - "*/5 * * * *" # Every 5 minutes</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This is a fantastic website: <a href="https://cron.help/" class="bare">https://cron.help/</a></p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="exec-on-demand.html">Execute on demand</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-startup.html">Execute on startup</a> →</p>
+<p>← Previous: <a href="_run_as_different_users.html">Run as different users</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-container-control.html">Containers - start/stop</a> →</p>
 </div>
 </div>
 <div id="footer">
