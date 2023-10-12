@@ -156,3 +156,31 @@ actions:
 ----
 
 To learn more about how to install additional packages into the container, see <<container-dnf,installing extra container packages>>.
+
+[#exec-file-created]
+=== Execute on file created
+
+You can execute an action when a file is created in a directory. The argument `filename` is pre-populated for you.
+
+----
+actions:
+  - title: Print names of new files
+    shell: echo {{ filename }}
+    execOnCreatedInDir:
+      - /home/user/Downloads/
+----
+
+[#exec-file-changed]
+=== Execute on file changed
+
+You can execute an action when a file is changed in a directory. The argument `filename` is pre-populated for you.
+
+----
+actions:
+  - title: Print names of new files
+    shell: echo {{ filename }}
+    execOnFileChangedInDir:
+      - /home/user/Downloads/
+----
+
+
