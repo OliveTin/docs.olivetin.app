@@ -1,6 +1,33 @@
 [#actions]
 == Actions
 
+[#create-your-first-action]
+=== Create your first action
+
+This is an example of your very first action. First of all, edit your config.yaml, and enter this YAML markup;
+
+----
+actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    icon: smile
+----
+
+If OliveTin is running, it should popup on your dashboard like this; 
+
+image::images/hello-world.png[]
+
+Simply click on the button to execute the shell command. You can expand the executions to view the logs.
+
+==== What do I try next?
+
+* See a list of <<examples,example actions>>.
+* <<action-customisation,Customize>> the action icon, timeout, etc.
+* <<exec-cron,Execute on a schedule (cron)>>
+* <<exec-startup,Execute on startup>>
+* <<exec-file-created,Execute on file created>>
+* <<exec-file-changed,Execute on file changed>>
+
 [#exec-on-demand]
 === Execute on demand
 
