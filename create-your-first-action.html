@@ -152,7 +152,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="examples" class="book toc2 toc-left">
+<body id="create-your-first-action" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -165,22 +165,24 @@ div.admonitionblock td:first-child {
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
 </li>
 <li><a href="actions.html">4. Actions</a>
+<ul class="sectlevel2">
+<li><a href="create-your-first-action.html"><span class="toc-current">4.1. Create your first action</span></a>
+</li>
+<li><a href="exec-on-demand.html">4.2. Execute on demand</a>
+</li>
+<li><a href="exec-cron.html">4.3. Execute on schedule (cron)</a>
+</li>
+<li><a href="exec-startup.html">4.4. Execute on startup</a>
+</li>
+<li><a href="exec-file-created.html">4.5. Execute on file created</a>
+</li>
+<li><a href="exec-file-changed.html">4.6. Execute on file changed</a>
+</li>
+</ul>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
 </li>
-<li><a href="examples.html"><span class="toc-current">6. Action examples</span></a>
-<ul class="sectlevel2">
-<li><a href="action-container-control.html">6.1. Containers - start/stop</a>
-</li>
-<li><a href="action-service.html">6.2. Restart a systemd service</a>
-</li>
-<li><a href="action-ping.html">6.3. Ping an address</a>
-</li>
-<li><a href="action-ssh.html">6.4. SSH into another machine and run a command</a>
-</li>
-<li><a href="powershell.html">6.5. Powershell</a>
-</li>
-</ul>
+<li><a href="examples.html">6. Action examples</a>
 </li>
 <li><a href="args.html">7. Arguments</a>
 </li>
@@ -196,32 +198,58 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="examples"><a class="anchor" href="#examples"></a><a class="link" href="#examples">6. Action examples</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="create-your-first-action"><a class="anchor" href="#create-your-first-action"></a><a class="link" href="#create-your-first-action">4.1. Create your first action</a></h3>
+<div class="paragraph">
+<p>This is an example of your very first action. First of all, edit your config.yaml, and enter this YAML markup;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    icon: smile</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If OliveTin is running, it should popup on your dashboard like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/hello-world.png" alt="hello world">
+</div>
+</div>
+<div class="paragraph">
+<p>Simply click on the button to execute the shell command. You can expand the executions to view the logs.</p>
+</div>
+<div class="sect3">
+<h4 id="_what_do_i_try_next"><a class="anchor" href="#_what_do_i_try_next"></a><a class="link" href="#_what_do_i_try_next">4.1.1. What do I try next?</a></h4>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="action-container-control.html">Containers - start/stop</a></p>
+<p>See a list of <a href="examples.html">example actions</a>.</p>
 </li>
 <li>
-<p><a href="action-service.html">Restart a systemd service</a></p>
+<p><a href="action-customisation.html">Customize</a> the action icon, timeout, etc.</p>
 </li>
 <li>
-<p><a href="action-ping.html">Ping an address</a></p>
+<p><a href="exec-cron.html">Execute on a schedule (cron)</a></p>
 </li>
 <li>
-<p><a href="action-ssh.html">SSH into another machine and run a command</a></p>
+<p><a href="exec-startup.html">Execute on startup</a></p>
 </li>
 <li>
-<p><a href="powershell.html">Powershell</a></p>
+<p><a href="exec-file-created.html">Execute on file created</a></p>
+</li>
+<li>
+<p><a href="exec-file-changed.html">Execute on file changed</a></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_run_as_different_users.html">Run as different users</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-container-control.html">Containers - start/stop</a> →</p>
+<p>↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-on-demand.html">Execute on demand</a> →</p>
 </div>
 </div>
 <div id="footer">
