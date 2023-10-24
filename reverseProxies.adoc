@@ -34,6 +34,7 @@ OliveTin versions after 2023-08 use websockets instead of polling for updates. T
 * `olivetin.example.com/websocket` should be a websocket connection upgrade.
 
 [#apache-path]
+[#apache-dns]
 === Apache HTTPD - DNS based
 
 This is a an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337. 
@@ -106,7 +107,7 @@ services:
 ----
 
 [#nginx-dns]
-=== Nginx - DNS
+=== Nginx - DNS based
 
 ./etc/nginx/cond.d/OliveTin.conf
 ----
