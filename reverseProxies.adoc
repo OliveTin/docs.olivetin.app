@@ -109,6 +109,8 @@ services:
 [#nginx-dns]
 === Nginx - DNS based
 
+This is an example of DNS based proxying with Nginx.
+
 ./etc/nginx/cond.d/OliveTin.conf
 ----
 include::etc/reverse_proxy_nginx_dns.conf[]
