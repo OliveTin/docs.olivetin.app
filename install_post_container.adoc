@@ -17,6 +17,7 @@ Now that you have a configuration file, and the OliveTin container created, you 
 If you are running a firewall on your server, like firewalld, you will need to
 open port 1337;
 
+[source, shell]
 ----
 user@host: firewall-cmd --add-port 1337/tcp --permanent
 user@host: firewall-cmd --reload
