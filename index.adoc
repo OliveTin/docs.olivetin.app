@@ -94,9 +94,11 @@ include::config.adoc[]
 
 include::reverseProxies.adoc[]
 
-include::actions.adoc[]
+include::action_setup.adoc[]
 
 include::actionCustomization.adoc[]
+
+include::action_examples.adoc[]
 
 include::args.adoc[]
 

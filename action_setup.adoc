@@ -1,0 +1,108 @@
+[#actions]
+== Actions
+
+[#create-your-first-action]
+=== Create your first action
+
+This is an example of your very first action. First of all, edit your config.yaml, and enter this YAML markup;
+
+----
+actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    icon: smile
+----
+
+If OliveTin is running, it should popup on your dashboard like this; 
+
+image::images/hello-world.png[]
+
+Simply click on the button to execute the shell command. You can expand the executions to view the logs.
+
+==== What do I try next?
+
+* See a list of <<examples,example actions>>.
+* <<action-customisation,Customize>> the action icon, timeout, etc.
+* <<exec-cron,Execute on a schedule (cron)>>
+* <<exec-startup,Execute on startup>>
+* <<exec-file-created,Execute on file created>>
+* <<exec-file-changed,Execute on file changed>>
+
+[#exec-on-demand]
+=== Execute on demand
+
+This is the default, meaning that the action shows up on a dashboard, and at the moment cannot be changed.
+
+[#exec-cron]
+=== Execute on schedule (cron)
+
+OliveTin can execute actions on a schedule, and uses a cron format for configuration.
+
+----
+actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    execOnCron: 
+      - "@hourly"
+
+  - title: Say goodbye
+    shell: echo "Say Goodbye"
+    execOnCron:
+      - "*/5 * * * *" # Every 5 minutes
+----
+
+This is a fantastic website: https://cron.help/
+
+[#exec-startup]
+=== Execute on startup
+
+OliveTin can execute actions on a startup. 
+
+----
+actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    execOnStartup: true 
+----
+
+[#dnf-startup]
+==== Example: Install additional commands into OliveTin
+
+This functionality to execute actions on startup is a very easy way to install additional commands in OliveTin;
+
+----
+actions:
+  - title: Install dnsmasq
+    shell: microdnf install bind-utils
+    execOnStartup: true
+----
+
+To learn more about how to install additional packages into the container, see <<container-dnf,installing extra container packages>>.
+
+[#exec-file-created]
+=== Execute on file created
+
+You can execute an action when a file is created in a directory. The argument `filename` is pre-populated for you.
+
+----
+actions:
+  - title: Print names of new files
+    shell: echo {{ filename }}
+    execOnCreatedInDir:
+      - /home/user/Downloads/
+----
+
+[#exec-file-changed]
+=== Execute on file changed
+
+You can execute an action when a file is changed in a directory. The argument `filename` is pre-populated for you.
+
+----
+actions:
+  - title: Print names of new files
+    shell: echo {{ filename }}
+    execOnFileChangedInDir:
+      - /home/user/Downloads/
+----
+
+
