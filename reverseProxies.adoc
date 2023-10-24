@@ -91,6 +91,15 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 ----
 
+[#nginx-dns]
+=== Nginx - DNS
+
+./etc/nginx/cond.d/OliveTin.conf
+----
+include::etc/reverse_proxy_nginx_dns.conf[]
+----
+
+
 [#nginx-path]
 === Nginx - Path based
 
