@@ -117,3 +117,7 @@ actions:
     shell: /opt/backupScript.sh
     shellAfterCompleted: "apprise -t 'Notification: Backup script completed' -b 'The backup script completed with code {{ exitCode}}. The log is: \n {{ stdout }} '"
 ----
+
+When running shellAfterCompleted, you *cannot* use argument values - they are not passed to the command. However two special arguments are defined as shown above - `exitCode` and `stdout` from the previous `shell` command. 
+
+You can only use a single `shellAfterCompleted`, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.
