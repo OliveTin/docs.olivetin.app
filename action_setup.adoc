@@ -105,4 +105,15 @@ actions:
       - /home/user/Downloads/
 ----
 
+[#after-completion]
+=== Execute after completion
 
+Sometimes you want to execute another command after the main command executes, this is often the case when you want to check the status of the main command, or if you want to send a notification.
+
+----
+actions:
+  - title: Print names of new files
+    icon: backup
+    shell: /opt/backupScript.sh
+    shellAfterCompleted: "apprise -t 'Notification: Backup script completed' -b 'The backup script completed with code {{ exitCode}}. The log is: \n {{ stdout }} '"
+----
