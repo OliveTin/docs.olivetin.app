@@ -266,35 +266,13 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="install-linuxpackage" class="book toc2 toc-left">
+<body id="concurrency" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">1. Installation</a>
-<ul class="sectlevel2">
-<li><a href="choose-package.html">1.1. Which download do I need?</a>
-</li>
-<li><a href="install-linuxpackage.html"><span class="toc-current">1.2. Recommended: Linux package install (.rpm/.deb)</span></a>
-</li>
-<li><a href="install-fedora.html">1.3. Fedora Linux (dnf)</a>
-</li>
-<li><a href="install-alpine.html">1.4. Alpine Linux</a>
-</li>
-<li><a href="install-archbtw.html">1.5. Arch Linux (AUR)</a>
-</li>
-<li><a href="install-container.html">1.6. Container install (podman/docker)</a>
-</li>
-<li><a href="install-compose.html">1.7. Docker Compose install</a>
-</li>
-<li><a href="install-helm.html">1.8. Helm on Kubernetes Install</a>
-</li>
-<li><a href="install-k8s.html">1.9. Kubernetes install (manually)</a>
-</li>
-<li><a href="install-targz.html">1.10. .tar.gz Install (manual)</a>
-</li>
-</ul>
 </li>
 <li><a href="config.html">2. Configuration</a>
 </li>
@@ -303,6 +281,16 @@ pre.rouge .gs {
 <li><a href="actions.html">4. Actions</a>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
+<ul class="sectlevel2">
+<li><a href="_icons.html">5.1. Icons</a>
+</li>
+<li><a href="_timeouts.html">5.2. Timeouts</a>
+</li>
+<li><a href="_run_as_different_users.html">5.3. Run as different users</a>
+</li>
+<li><a href="concurrency.html"><span class="toc-current">5.4. Concurrency</span></a>
+</li>
+</ul>
 </li>
 <li><a href="examples.html">6. Action examples</a>
 </li>
@@ -321,96 +309,46 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-linuxpackage"><a class="anchor" href="#install-linuxpackage"></a><a class="link" href="#install-linuxpackage">1.2. Recommended: Linux package install (.rpm/.deb)</a></h3>
+<h3 id="concurrency"><a class="anchor" href="#concurrency"></a><a class="link" href="#concurrency">5.4. Concurrency</a></h3>
 <div class="paragraph">
-<p>Running OliveTin as a systemd service on a Linux machine means it can use any program installed on your machine (you don&#8217;t have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.</p>
-</div>
-<div class="sect3">
-<h4 id="_choosing_the_right_linux_package"><a class="anchor" href="#_choosing_the_right_linux_package"></a><a class="link" href="#_choosing_the_right_linux_package">1.2.1. Choosing the right Linux package</a></h4>
-<div class="paragraph">
-<p>There are .deb, .rpm, and similar packages published for OliveTin on each
-release page. Pick a package most relevant to the Linux distribution you are
-using from the <a href="https://github.com/jamesread/OliveTin/releases">downloads page</a>.</p>
+<p>By default, OliveTin will allow you to run several instances of an action at the same time. For example, an action might take 20 seconds, and if you click the button 3 times, for a time there will be 3 actions running at the same time.</p>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re not sure which package to use, see <a href="choose-package.html">which download do I need?</a></p>
-</div>
-<div class="paragraph">
-<p>You can install these packages with your Linux package manager (eg,
-<code>dpkg -i OliveTin&#8230;&#8203;deb</code> or <code>rpm -U OliveTin&#8230;&#8203;rpm</code>).</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_post_installation"><a class="anchor" href="#_post_installation"></a><a class="link" href="#_post_installation">1.2.2. Post installation</a></h4>
-<div class="paragraph">
-<p>You will need to write a basic configuration file before OliveTin will startup.</p>
-</div>
-<div class="paragraph">
-<p>Create the following basic config file at <code>/etc/OliveTin/config.yaml</code> with the
-following contents;</p>
+<p>Sometimes you don&#8217;t want to allow this - an example case where it would not make sense is in the case of a backup script. To stop this, we can set <code>maxConcurrent</code> to <code>1</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">The most simple <code>config.yaml</code> file.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Hello</span><span class="nv"> </span><span class="s">world!"</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo 'Hello World!'</span></code></pre>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Run Backup Script</span>
+    <span class="na">icon</span><span class="pi">:</span> <span class="s">backup</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">/opt/backupScript.sh</span>
+    <span class="na">maxConcurrent</span><span class="pi">:</span> <span class="s">1</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now that you have a configuration file, and OliveTin is installed, start it;</p>
+<p>If you try and run a 2nd instance of this action while the first is currently running, you&#8217;ll get a "blocked" message that looks like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/blocked.png" alt="blocked">
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, OliveTin will log a message that looks like this;</p>
 </div>
 <div class="listingblock">
-<div class="title">Start the service (only needed once)</div>
+<div class="title">OliveTin log showing an action being blocked rom running.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: systemctl <span class="nb">enable</span> <span class="nt">--now</span> OliveTin</code></pre>
+<pre class="rouge highlight"><code data-lang="log">INFO Action requested                              actionTitle="Run backup script"
+WARN Blocked from executing. This would mean this action is running 2 times concurrently, but this action has maxExecutions set to 1.  actionTitle="Run backup script"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If you are running a firewall on your server, like firewalld, you will need to
-open port 1337;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: firewall-cmd <span class="nt">--add-port</span> 1337/tcp <span class="nt">--permanent</span>
-user@host: firewall-cmd <span class="nt">--reload</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
-the web interface.</p>
-</div>
-<div class="paragraph">
-<p>If you see the OliveTin page popup in your browser, you can jump to the
-<a href="config.html">configuration section</a> as the next step.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_troubleshooting_systemd_installations"><a class="anchor" href="#_troubleshooting_systemd_installations"></a><a class="link" href="#_troubleshooting_systemd_installations">1.2.3. Troubleshooting systemd installations</a></h4>
-<div class="paragraph">
-<p>If you are having problems, you can check if OliveTin is running like this;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: systemctl status OliveTin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the service has failed, scroll through the logs;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: journalctl <span class="nt">-eu</span> OliveTin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">Where to find help</a>
-page.</p>
-</div>
+<p>Naturally, you can set <code>maxConcurrent</code> to <code>3</code> or some other number, to limit the amount of times the action executes at once.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="choose-package.html">Which download do I need?</a> | ↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-fedora.html">Fedora Linux (dnf)</a> →</p>
+<p>← Previous: <a href="_run_as_different_users.html">Run as different users</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="examples.html">Action examples</a> →</p>
 </div>
 </div>
 <div id="footer">
