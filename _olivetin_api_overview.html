@@ -182,6 +182,8 @@ div.admonitionblock td:first-child {
 <ul class="sectlevel2">
 <li><a href="_olivetin_api_overview.html"><span class="toc-current">11.1. OliveTin API Overview</span></a>
 </li>
+<li><a href="api-start-action.html">11.2. Starting Actions from the API</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -205,75 +207,14 @@ div.admonitionblock td:first-child {
 <div class="paragraph">
 <p>The gRPC API only listens on localhost default, but it can be set to listen publicly. See <a href="network-ports.html">the network ports documentation</a> for a better description of how the APIs are exposed. Most people do not need to use the gRPC API.</p>
 </div>
-<div class="sect3">
-<h4 id="_example_api_call_start_an_action"><a class="anchor" href="#_example_api_call_start_an_action"></a><a class="link" href="#_example_api_call_start_an_action">11.1.1. Example API call: Start an action</a></h4>
-<div class="sect4">
-<h5 id="_curl"><a class="anchor" href="#_curl"></a><a class="link" href="#_curl">Curl</a></h5>
-<div class="listingblock">
-<div class="content">
-<pre>user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionName": "Nuclear reactor shutdown"}'</pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_powershell"><a class="anchor" href="#_powershell"></a><a class="link" href="#_powershell">Powershell</a></h5>
-<div class="listingblock">
-<div class="content">
-<pre>PS C:\Users\xcons&gt; $json = '{"actionName": "Deploy attack Gnomes"}'
-PS C:\Users\xcons&gt; Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_example_api_call_start_an_action_with_arguments"><a class="anchor" href="#_example_api_call_start_an_action_with_arguments"></a><a class="link" href="#_example_api_call_start_an_action_with_arguments">11.1.2. Example API call: Start an action with arguments</a></h4>
-<div class="sect4">
-<h5 id="_curl_2"><a class="anchor" href="#_curl_2"></a><a class="link" href="#_curl_2">Curl</a></h5>
-<div class="listingblock">
-<div class="content">
-<pre>user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_example_api_call_get_the_dashboard_buttons_components"><a class="anchor" href="#_example_api_call_get_the_dashboard_buttons_components"></a><a class="link" href="#_example_api_call_get_the_dashboard_buttons_components">11.1.3. Example API call: Get the dashboard buttons ("components")</a></h4>
-<div class="sect4">
-<h5 id="_curl_3"><a class="anchor" href="#_curl_3"></a><a class="link" href="#_curl_3">Curl</a></h5>
-<div class="listingblock">
-<div class="content">
-<pre>user@host: curl http://olivetinServer:1337/api/GetDashboardComponents</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_links"><a class="anchor" href="#_links"></a><a class="link" href="#_links">11.1.4. Links</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://docs.olivetin.app/api/">Swagger UI for OliveTin API</a></p>
-</li>
-<li>
-<p><a href="http://docs.olivetin.app/api/OliveTin.openapi.json">OpenAPI JSON Definition</a></p>
-</li>
-<li>
-<p><a href="https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto">The OliveTin Protobuf file</a>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Please do talk to the developers on Discord if you&#8217;d like help using the API, or you&#8217;re thinking about building something interesting using the API!</p>
-</div>
-</div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="api.html">API</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a></p>
+<p>↑ Up: <a href="api.html">API</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="api-start-action.html">Starting Actions from the API</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-10-31 15:30:55 UTC
+Last updated 2023-10-31 16:27:51 UTC
 </div>
 </div>
 </body>
