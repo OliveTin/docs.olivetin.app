@@ -42,6 +42,7 @@ image::images/defaultUiWithNav.png[]
 To have OliveTin hide these buttons, add `showNavigation: false` to your config.yaml;
 
 .`config.yaml`
+[source,yaml]
 ----
 logLevel: "INFO"
 showNavigation: false
@@ -59,6 +60,7 @@ image::images/defaultUiHideNav.png[]
 You can disable the "new version" information in the footer - the default for `showNewVersions` is `true`; 
 
 .`config.yaml`
+[source,yaml]
 ----
 logLevel: "INFO"
 showNewVersions: false
@@ -72,6 +74,7 @@ If disabled, OliveTin will still check for new versions in the background, but w
 You can disable the entire footer, if you would like a really minimal interface. The default for `showFooter` is `true`.
 
 .`config.yaml`
+[source,yaml]
 ----
 logLevel: "INFO"
 showFooter: false
@@ -85,6 +88,8 @@ OliveTin supports a few different log levels. The default logLevel is `INFO`.
 
 You can set a `logLevel` in config.yaml like this;
 
+.`config.yaml`
+[source,yaml]
 ----
 logLevel: "INFO"
 
@@ -99,10 +104,11 @@ The supported log levels are;
 * `WARN` - Very few messages, only warnings are shown.
 * `INFO` - The defualt log level.
 
-You can change the `logLevel` while OliveTin is running, and it should update as soon as you save your config.yaml.You will always get a log message like this;
+You can change the `logLevel` while OliveTin is running, and it should update as soon as you save your config.yaml. You will always get a log message like this;
 
+[source,bash]
 ----
-INFO[0787] Setting log level to warning
+INFO Setting log level to warning
 ----
 
 

@@ -6,6 +6,8 @@
 
 This is an example of your very first action. First of all, edit your config.yaml, and enter this YAML markup;
 
+.config.yaml
+[source,yaml]
 ----
 actions:
   - title: Say hello
@@ -95,6 +97,7 @@ For examples of how to use all of these functions, check out the <<api-start-act
 
 You can execute an action when a file is created in a directory. The argument `filename` is pre-populated for you.
 
+[source,yaml]
 ----
 actions:
   - title: Print names of new files
@@ -108,6 +111,7 @@ actions:
 
 You can execute an action when a file is changed in a directory. The argument `filename` is pre-populated for you.
 
+[source,yaml]
 ----
 actions:
   - title: Print names of new files
@@ -121,6 +125,7 @@ actions:
 
 Sometimes you want to execute another command after the main command executes, this is often the case when you want to check the status of the main command, or if you want to send a notification.
 
+[source,yaml]
 ----
 actions:
   - title: Print names of new files
