@@ -5,6 +5,7 @@ Container images are published on DockerHub.
 
 https://hub.docker.com/r/jamesread/olivetin 
 
+[source, shell]
 ....
 user@host: mkdir /etc/OliveTin/
 user@host: # create your config.yaml file

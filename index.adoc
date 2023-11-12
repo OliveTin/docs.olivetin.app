@@ -9,6 +9,7 @@
 :sectnums:
 :multipage-level: 2
 :favicon: images/icons/OliveTinLogo.png
+:source-highlighter: rouge
 
 toc::[]
 

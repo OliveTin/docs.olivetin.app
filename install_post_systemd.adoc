@@ -16,6 +16,7 @@ actions:
 Now that you have a configuration file, and OliveTin is installed, start it;
 
 .Start the service (only needed once)
+[source,shell]
 ----
 user@host: systemctl enable --now OliveTin 
 ----
@@ -23,6 +24,7 @@ user@host: systemctl enable --now OliveTin
 If you are running a firewall on your server, like firewalld, you will need to
 open port 1337;
 
+[source,shell]
 ----
 user@host: firewall-cmd --add-port 1337/tcp --permanent
 user@host: firewall-cmd --reload
@@ -34,12 +36,14 @@ include::install_to_config.adoc[]
 
 If you are having problems, you can check if OliveTin is running like this; 
 
+[source,shell]
 ----
 user@host: systemctl status OliveTin
 ----
 
 If the service has failed, scroll through the logs;
 
+[source,shell]
 ----
 user@host: journalctl -eu OliveTin
 ----

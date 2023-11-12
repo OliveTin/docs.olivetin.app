@@ -12,16 +12,82 @@ The REST API gateway is used by the WebUI, and you can use it too by default - i
 
 The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. Most people do not need to use the gRPC API. The .proto file for the gRPC API is located at the root of the OliveTin Git repository; https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[OliveTin.proto].
 
+[#api-start-action]
+=== Starting Actions from the API
+
+include::api_start_action_overview.adoc[]
+
+==== Request type: Alias
+
+Used by:
+
+* `StartActionByAlias`
+* `StartActionByAliasAndWait`
+
+If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an alias directly in the URL, like this;
+
+----
+http://olivetin.example.com/api/StartActionByAlias/pingGithub
+----
+
+The corresponding config.yaml would look like this;
+
+[source,yaml]
+----
+actions:
+  - title: Ping GitHub.com
+    titleAlias: pingGithub
+    shell: ping github.com -c 1
+----
+
+titleAliases are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
+
+==== Request type: OliveTin request object
+
+Used by:
+
+* `StartAction`
+* `StartActionAndWait`
+
+If you need more control over the execution, then the only other option is to submit a `OliveTin reqjest object`, which is just a very simple JSON structure like this;
+
+[source,json]
+----
+{
+    "actionName": "Generate cryptocurrency",
+    "arguments": [],
+    "uuid": "my-tracking-id",
+}
+----
+
+More detailed examples can be seen below.
+
+==== Response type: Execution UUID
+
+Used by:
+
+* `StartAction`
+* `StartActionByAlias`
+
+==== Response type: LogEntry
+
+Used by:
+
+* `StartActionAndWait`
+* `StartActionByAliasAndWait`
+
 ==== Example API call: Start an action
 
 ===== Curl
 
+[source,bash]
 ----
 user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionName": "Nuclear reactor shutdown"}'
 ----
 
 ===== Powershell
 
+[source,powershell]
 ----
 PS C:\Users\xcons> $json = '{"actionName": "Deploy attack Gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 

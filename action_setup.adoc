@@ -25,6 +25,7 @@ Simply click on the button to execute the shell command. You can expand the exec
 * <<action-customisation,Customize>> the action icon, timeout, etc.
 * <<exec-cron,Execute on a schedule (cron)>>
 * <<exec-startup,Execute on startup>>
+* <<exec-webhook,Execute on webhook>>
 * <<exec-file-created,Execute on file created>>
 * <<exec-file-changed,Execute on file changed>>
 
@@ -79,6 +80,16 @@ actions:
 
 To learn more about how to install additional packages into the container, see <<container-dnf,installing extra container packages>>.
 
+
+[#exec-webhook]
+=== Execute on webhook
+
+"Webhooks" are nothing more and a name for a type of REST API call, typically using the HTTP POST method. This is already what OliveTin uses to drive it's web interface - specifically the `StartAction` API call.
+
+include::api_start_action_overview.adoc[]
+
+For examples of how to use all of these functions, check out the <<api-start-action,Start Action API reference>>.
+
 [#exec-file-created]
 === Execute on file created
 
@@ -105,4 +116,19 @@ actions:
       - /home/user/Downloads/
 ----
 
+[#after-completion]
+=== Execute after completion
 
+Sometimes you want to execute another command after the main command executes, this is often the case when you want to check the status of the main command, or if you want to send a notification.
+
+----
+actions:
+  - title: Print names of new files
+    icon: backup
+    shell: /opt/backupScript.sh
+    shellAfterCompleted: "apprise -t 'Notification: Backup script completed' -b 'The backup script completed with code {{ exitCode}}. The log is: \n {{ stdout }} '"
+----
+
+When running shellAfterCompleted, you *cannot* use argument values - they are not passed to the command. However two special arguments are defined as shown above - `exitCode` and `stdout` from the previous `shell` command. 
+
+You can only use a single `shellAfterCompleted`, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.

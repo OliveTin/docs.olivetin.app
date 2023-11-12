@@ -11,8 +11,18 @@ OliveTin does not have any built-in code for doing **Authentication** (eg: enter
 4. OliveTin matches any relevant ACLs based on the claims.
 5. If any ACLs are not matched, then the defaultPermissions are used.
 
+[#trusted-header]
+=== Trusted Header Authorization
+
+This method is not yet well documented, sorry!
+
+----
+AuthHttpHeaderUsername "X-Username"
+AuthHttpHeaderUsergrou "X-Usergroup"
+----
+
 [#jwt]
-=== Setting up JWT Authorization
+=== JWT Authorization
 
 You need to know your JWT **Cookie Name** and **Hash Secret**. Whatever tool you are using to authenticate users will probably have instructions on how to find this.
 

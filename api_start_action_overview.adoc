@@ -1,0 +1,13 @@
+
+There are several variants of this API call available which might be easier for scripts (or humans) to work with!
+
+.Webhook/API reference table
+[%header]
+|======================================================
+| Function                     | Request Type            | Return Type 
+| `StartAction`                | OliveTin request object | Execution UUID
+| `StartActionByAlias`         | Alias                   | Log Entry (waits for the action to finish)
+| `StartActionAndWait`         | OliveTin request object | Execution UUID
+| `StartActionByAliasAndWait`  | Alias                   | Log Entry (waits for the action to finish)
+|======================================================
+
