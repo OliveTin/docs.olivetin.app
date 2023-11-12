@@ -10,7 +10,7 @@ This section of the documentation is intended for developers, and those who want
 
 The REST API gateway is used by the WebUI, and you can use it too by default - it is exposed at "/api" by default.
 
-The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. Most people do not need to use the gRPC API.
+The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. Most people do not need to use the gRPC API. The .proto file for the gRPC API is located at the root of the OliveTin Git repository; https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[OliveTin.proto].
 
 ==== Example API call: Start an action
 
