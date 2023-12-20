@@ -153,7 +153,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="log-levels" class="book toc2 toc-left">
+<body id="timezone" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -165,11 +165,11 @@ div.admonitionblock td:first-child {
 <ul class="sectlevel2">
 <li><a href="toggle-webui.html">2.1. Show/Hide web UI elements</a>
 </li>
-<li><a href="log-levels.html"><span class="toc-current">2.2. Log Levels</span></a>
+<li><a href="log-levels.html">2.2. Log Levels</a>
 </li>
 <li><a href="ports.html">2.3. Ports</a>
 </li>
-<li><a href="timezone.html">2.4. Timezone</a>
+<li><a href="timezone.html"><span class="toc-current">2.4. Timezone</span></a>
 </li>
 </ul>
 </li>
@@ -196,51 +196,43 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="log-levels"><a class="anchor" href="#log-levels"></a><a class="link" href="#log-levels">2.2. Log Levels</a></h3>
+<h3 id="timezone"><a class="anchor" href="#timezone"></a><a class="link" href="#timezone">2.4. Timezone</a></h3>
 <div class="paragraph">
-<p>OliveTin supports a few different log levels. The default logLevel is <code>INFO</code>.</p>
+<p>OliveTin will obviously use the system time just like all other programs, but when running in a container, time works in a slightly unusual way.</p>
 </div>
 <div class="paragraph">
-<p>You can set a <code>logLevel</code> in config.yaml like this;</p>
+<p>You may be used to using a TZ or TIMEZONE environment variable in your Linux container inages, but this is not a standard that works for all Linux distributions - it&#8217;s mostly zupported by Debain based cotnsienrs. OliveTin&#8217;s base container image is fedora-minimal, whicj deliberately does not include timezone data, to reduce storage space.</p>
+</div>
+<div class="paragraph">
+<p>To chbage the time in the OliveTin container, simply binf-mount the correct zone file;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Same as the container host</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>logLevel: "INFO"
-
-actions:
-    ....</pre>
+<pre>docker create -v /etc/localtime:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The supported log levels are;</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p><code>DEBUG</code> - Every possible log message will be shown. This will use a lot of disk space and is not recommended unless you are a developer / like reading code.</p>
+<p>Choose a different country</p>
 </li>
-<li>
-<p><code>ERROR</code> - OliveTin rarely uses the <code>ERROR</code> log level.</p>
-</li>
-<li>
-<p><code>WARN</code> - Very few messages, only warnings are shown.</p>
-</li>
-<li>
-<p><code>INFO</code> - The defualt log level.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>You can change the <code>logLevel</code> while OliveTin is running, and it should update as soon as you save your config.yaml.You will always get a log message like this;</p>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>INFO[0787] Setting log level to warning</pre>
+<pre>docker create -v /usr/share/zoneinfo/Japan:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin</pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="toggle-webui.html">Show/Hide web UI elements</a> | ↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="ports.html">Ports</a> →</p>
+<p>← Previous: <a href="ports.html">Ports</a> | ↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="reverse-proxies.html">Reverse Proxies</a> →</p>
 </div>
 </div>
 <div id="footer">
