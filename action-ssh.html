@@ -127,6 +127,10 @@ hr {
   margin: 1em;
 }
 
+div.admonitionblock.note {
+  background-color: beige;
+}
+
 div.admonitionblock td {
   border: 0;
 }
@@ -356,34 +360,45 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect3">
-<h4 id="ssh-container"><a class="anchor" href="#ssh-container"></a><a class="link" href="#ssh-container">6.4.2. Setup if running inside a container</a></h4>
+<h4 id="ssh-container"><a class="anchor" href="#ssh-container"></a><a class="link" href="#ssh-container">6.4.2. SSH from inside a Container - setup instructions</a></h4>
 <div class="paragraph">
-<p><span class="image"><img src="images/ssh-diagram.png" alt="ssh diagram"></span></p>
+<p>This is a two step process;</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The OliveTin container is created with <code>.ssh</code> as a volume mount, that contains a SSH Key.</p>
+<p>Setup a volume mount for the <code>~/.ssh/</code> directory, that contains a SSH Key.</p>
 </li>
 <li>
 <p>OliveTin uses the SSH key to connect back to server-with-olivetin or across to server2.</p>
 </li>
 </ol>
 </div>
-<div class="sect4">
-<h5 id="_setup_instructions"><a class="anchor" href="#_setup_instructions"></a><a class="link" href="#_setup_instructions">Setup instructions</a></h5>
+<div class="paragraph">
+<p>Visually, this is what it looks like;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/ssh-diagram.png" alt="ssh diagram"></span></p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
+<li>
+<p>Setup a volume mount for the <code>~/.ssh/</code> directory, that contains a SSH Key.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
 <li>
 <p>On <code>server-with-olivetin</code>, run <code>mkdir /opt/OliveTinSshKeys</code> to create a shared directory for your SSH key file.</p>
 <div class="paragraph">
 <p>This will later be used as a "volume mount" when you create a docker container.</p>
 </div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>On <code>server-with-olivetin</code>, run <code>ssh-keygen</code> to generate a SSH key (if you haven&#8217;t already got one).</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p>Enter the file in which to save the key: <code>/opt/OliveTinSshKeys/id_rsa</code></p>
 </li>
@@ -423,10 +438,8 @@ The key's randomart image is:
 <div class="paragraph">
 <p>This will create two files, <code>/opt/OliveTinSshKeys/id_rsa</code> (your private key) and <code>/opt/OliveTinSshKeys/id_rsa.pub</code> (your public key).</p>
 </div>
-</li>
-</ol>
-</div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Copy your public key to every server you want to connect to.</p>
 <div class="paragraph">
@@ -486,6 +499,11 @@ root@server2: ssh-copy-id root@server2
 </li>
 </ol>
 </div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -495,7 +513,7 @@ root@server2: ssh-copy-id root@server2
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-12-20 05:53:26 UTC
+Last updated 2023-12-20 21:38:12 UTC
 </div>
 </div>
 </body>

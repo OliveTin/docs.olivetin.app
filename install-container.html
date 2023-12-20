@@ -127,6 +127,10 @@ hr {
   margin: 1em;
 }
 
+div.admonitionblock.note {
+  background-color: beige;
+}
+
 div.admonitionblock td {
   border: 0;
 }
@@ -324,19 +328,44 @@ pre.rouge .gs {
 <div class="sect2">
 <h3 id="install-container"><a class="anchor" href="#install-container"></a><a class="link" href="#install-container">1.6. Container install (podman/docker)</a></h3>
 <div class="paragraph">
-<p>Container images are published on DockerHub.</p>
+<p>The image is pushed to the following registries, pick the one that you prefer - the container images are identical so you only need one;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Dockerhub container image: <a href="https://hub.docker.com/r/jamesread/olivetin/">docker.io/jamesread/olivetin</a></p>
+</li>
+<li>
+<p>GitHub container image: <a href="https://ghcr.io/olivetin/olivetin">ghcr.io/jamesread/olivetin</a></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p><a href="https://hub.docker.com/r/jamesread/olivetin" class="bare">https://hub.docker.com/r/jamesread/olivetin</a></p>
+<p>If you prefer to use docker-compose, then follow the <a href="install-compose.html">docker-compose installation instructions</a>.</p>
+</div>
+<div class="paragraph">
+<p>The standard container setup just needs <strong>port 1337</strong> forwarded for web traffic, and a volume <strong>to store the configuration file</strong>. Note that OliveTin containers expect the config to be in <code>/config/</code> inside the container, but it doesn&#8217;t really matter where this directory is mounted from on the host. This documention uses the convention of <code>/etc/OliveTin</code> on the host, but <code>/dockerStuff/OliveTin/</code> or similar would be fine.</p>
 </div>
 <div class="listingblock">
+<div class="title">Create the container (but don&#8217;t start it yet)</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="shell">user@host: <span class="nb">mkdir</span> /etc/OliveTin/
-user@host: <span class="c"># create your config.yaml file</span>
+user@host: <span class="c"># ie: Your config file is /etc/OliveTin/config.yaml on the host machine. We'll create this in the post-installation step.</span>
 user@host: docker pull jamesread/olivetin
-user@host: docker create <span class="nt">--name</span> olivetin <span class="nt">-p</span> 1337:1337 <span class="nt">-v</span> /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin
-user@host: docker start olivetin</code></pre>
+user@host: docker create <span class="nt">--name</span> olivetin <span class="nt">-p</span> 1337:1337 <span class="nt">-v</span> /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin</code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The OliveTin container is built using fedora-minimal, which doesn&#8217;t use customizations that some people may be familiar with from popular projects like LSIO, or debian-based containers. The two top misunderstandings are <a href="no-puid-pgid.html">PUID and PGID are ignored</a> and <a href="timezone.html">changing the timezone requires a bound-mount</a> from the host.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_post_installation_container"><a class="anchor" href="#_post_installation_container"></a><a class="link" href="#_post_installation_container">1.6.1. Post installation (container)</a></h4>
@@ -344,7 +373,17 @@ user@host: docker start olivetin</code></pre>
 <p>You will need to write a basic configuration file before OliveTin will startup.</p>
 </div>
 <div class="paragraph">
-<p>Create a basic config file at somewhere like <code>/docker/OliveTin/config.yaml</code> - the exact path depends on what directory you specified in the bind mount container creation. Note that OliveTin containers expect the config to be in <code>/config/</code> inside the container, but it doesn&#8217;t really matter where this directory is mounted from on the host. The file contents should look something like this;</p>
+<p>Create a basic config file at <code>/etc/OliveTin/config.yaml</code> - the exact path depends on what directory you specified in the bind mount container creation in the last step. Note that the file must be called <code>config.yaml</code>, and <code>config.yml</code> or <code>mystuff.yaml</code> would not work. You can download a sample configuration file like this if you like;</p>
+</div>
+<div class="listingblock">
+<div class="title">Download the sample config.yaml file to get you started.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="shell">user@host: <span class="nb">cd</span> /etc/OliveTin/
+user@host: curl <span class="nt">-O</span> https://raw.githubusercontent.com/OliveTin/OliveTin/main/config.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The file contents should look something like this;</p>
 </div>
 <div class="listingblock">
 <div class="title">The most simple <code>config.yaml</code> file.</div>
@@ -355,9 +394,6 @@ user@host: docker start olivetin</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now that you have a configuration file, and the OliveTin container created, you should be able to start the container like normal.</p>
-</div>
-<div class="paragraph">
 <p>If you are running a firewall on your server, like firewalld, you will need to
 open port 1337;</p>
 </div>
@@ -365,6 +401,14 @@ open port 1337;</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="shell">user@host: firewall-cmd <span class="nt">--add-port</span> 1337/tcp <span class="nt">--permanent</span>
 user@host: firewall-cmd <span class="nt">--reload</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now that you have a configuration file, and the OliveTin container created, you are now ready to start OliveTin!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: docker start olivetin</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -387,7 +431,7 @@ the web interface.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">Where to find help</a>.</p>
+<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">support page</a>.</p>
 </div>
 </div>
 </div>
@@ -397,7 +441,7 @@ the web interface.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-12-20 05:53:26 UTC
+Last updated 2023-12-20 21:38:12 UTC
 </div>
 </div>
 </body>
