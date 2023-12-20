@@ -77,6 +77,7 @@ backend be_olivetin
 
 The following example is known to work well with Traefik and docker-compose.
 
+[source,yaml]
 ----
 version: "3.8"
 services:

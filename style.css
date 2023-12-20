@@ -88,7 +88,8 @@ pre {
   background-color: #f7f7f8;
   padding: 1em;
   word-wrap: break-word;
-  white-space: pre-wrap;
+  white-space: no-wrap;
+  overflow: auto;
 }
 
 table {

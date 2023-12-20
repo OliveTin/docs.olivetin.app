@@ -11,8 +11,8 @@ image::images/exampleIcons.png[]
 
 ==== Unicode icons ("emoji")
 
-For example on the link:https://unicode-table.com/en/emoji/[here is a list of
-"Eomji" in unicode]. If you find "link:https://unicode-table.com/en/1F60E/[Smiling face with sunglasses]" you can click 
+For example on the link:https://symbl.cc/en/emoji/[here is a list of
+"Emoji" in unicode]. If you find "link:https://symbl.cc/en/1F60E/[Smiling face with sunglasses]" you can click 
 on it to see it's "HTML-code". In OliveTin, you'd setup the icon like this;
 
 ----

@@ -6,7 +6,7 @@
   },
   "tags": [
     {
-      "name": "OliveTinApi"
+      "name": "OliveTinApiService"
     }
   ],
   "consumes": [
@@ -16,9 +16,41 @@
     "application/json"
   ],
   "paths": {
+    "/api/ExecutionStatus": {
+      "post": {
+        "operationId": "OliveTinApiService_ExecutionStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ExecutionStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExecutionStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OliveTinApiService"
+        ]
+      }
+    },
     "/api/GetDashboardComponents": {
       "get": {
-        "operationId": "OliveTinApi_GetDashboardComponents",
+        "operationId": "OliveTinApiService_GetDashboardComponents",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -34,13 +66,13 @@
           }
         },
         "tags": [
-          "OliveTinApi"
+          "OliveTinApiService"
         ]
       }
     },
     "/api/GetLogs": {
       "get": {
-        "operationId": "OliveTinApi_GetLogs",
+        "operationId": "OliveTinApiService_GetLogs",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -56,13 +88,13 @@
           }
         },
         "tags": [
-          "OliveTinApi"
+          "OliveTinApiService"
         ]
       }
     },
     "/api/StartAction": {
       "post": {
-        "operationId": "OliveTinApi_StartAction",
+        "operationId": "OliveTinApiService_StartAction",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -88,13 +120,121 @@
           }
         ],
         "tags": [
-          "OliveTinApi"
+          "OliveTinApiService"
+        ]
+      }
+    },
+    "/api/StartActionAndWait": {
+      "post": {
+        "operationId": "OliveTinApiService_StartActionAndWait",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/StartActionAndWaitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StartActionAndWaitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OliveTinApiService"
+        ]
+      }
+    },
+    "/api/StartActionByAlias/{actionAlias}": {
+      "post": {
+        "operationId": "OliveTinApiService_StartActionByAlias",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/StartActionByAliasResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "actionAlias",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "tags": [
+          "OliveTinApiService"
+        ]
+      }
+    },
+    "/api/StartActionByAliasAndWait/{actionAlias}": {
+      "post": {
+        "operationId": "OliveTinApiService_StartActionByAliasAndWait",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/StartActionByAliasAndWaitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "actionAlias",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "tags": [
+          "OliveTinApiService"
         ]
       }
     },
     "/api/ValidateArgumentType": {
       "post": {
-        "operationId": "OliveTinApi_ValidateArgumentType",
+        "operationId": "OliveTinApiService_ValidateArgumentType",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -120,7 +260,51 @@
           }
         ],
         "tags": [
-          "OliveTinApi"
+          "OliveTinApiService"
+        ]
+      }
+    },
+    "/api/WhoAmI": {
+      "get": {
+        "operationId": "OliveTinApiService_WhoAmI",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WhoAmIResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "OliveTinApiService"
+        ]
+      }
+    },
+    "/api/sosreport": {
+      "get": {
+        "operationId": "OliveTinApiService_SosReport",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SosReportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "OliveTinApiService"
         ]
       }
     }
@@ -146,6 +330,9 @@
           "items": {
             "$ref": "#/definitions/ActionArgument"
           }
+        },
+        "popupOnStart": {
+          "type": "boolean"
         }
       }
     },
@@ -169,6 +356,9 @@
           "items": {
             "$ref": "#/definitions/ActionArgumentChoice"
           }
+        },
+        "description": {
+          "type": "string"
         }
       }
     },
@@ -197,6 +387,22 @@
           "items": {
             "$ref": "#/definitions/Action"
           }
+        }
+      }
+    },
+    "ExecutionStatusRequest": {
+      "type": "object",
+      "properties": {
+        "executionUuid": {
+          "type": "string"
+        }
+      }
+    },
+    "ExecutionStatusResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/LogEntry"
         }
       }
     },
@@ -234,7 +440,7 @@
     "LogEntry": {
       "type": "object",
       "properties": {
-        "datetime": {
+        "datetimeStarted": {
           "type": "string"
         },
         "actionTitle": {
@@ -261,6 +467,54 @@
         },
         "actionIcon": {
           "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "executionUuid": {
+          "type": "string"
+        },
+        "datetimeFinished": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string"
+        },
+        "executionStarted": {
+          "type": "boolean"
+        },
+        "executionFinished": {
+          "type": "boolean"
+        },
+        "blocked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SosReportResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "type": "string"
+        }
+      }
+    },
+    "StartActionAndWaitRequest": {
+      "type": "object",
+      "properties": {
+        "actionName": {
+          "type": "string"
+        }
+      }
+    },
+    "StartActionAndWaitResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/LogEntry"
         }
       }
     },
@@ -271,6 +525,22 @@
           "type": "string"
         },
         "value": {
+          "type": "string"
+        }
+      }
+    },
+    "StartActionByAliasAndWaitResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/LogEntry"
+        }
+      }
+    },
+    "StartActionByAliasResponse": {
+      "type": "object",
+      "properties": {
+        "executionUuid": {
           "type": "string"
         }
       }
@@ -286,14 +556,17 @@
           "items": {
             "$ref": "#/definitions/StartActionArgument"
           }
+        },
+        "uuid": {
+          "type": "string"
         }
       }
     },
     "StartActionResponse": {
       "type": "object",
       "properties": {
-        "logEntry": {
-          "$ref": "#/definitions/LogEntry"
+        "executionUuid": {
+          "type": "string"
         }
       }
     },
@@ -319,17 +592,22 @@
         }
       }
     },
+    "WhoAmIResponse": {
+      "type": "object",
+      "properties": {
+        "authenticatedUser": {
+          "type": "string"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
