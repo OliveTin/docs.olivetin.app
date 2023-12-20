@@ -116,16 +116,16 @@ See <<network-ports,the network ports>> documentation in the reference section.
 
 OliveTin will obviously use the system time just like all other programs, but when running in a container, time works in a slightly unusual way. 
 
-You may be used to using a TZ or TIMEZONE environment variable in your Linux container inages, but this is not a standard that works for all Linux distributions - it's mostly zupported by Debain based cotnsienrs. OliveTin's base container image is fedora-minimal, whicj deliberately does not include timezone data, to reduce storage space. 
+You may be used to using a TZ or TIMEZONE environment variable in your Linux container inages, but this is not a standard that works for all Linux distributions - it's mostly supported by Debain based containers. OliveTin's base container image is fedora-minimal, which deliberately does not include timezone data, to reduce storage space. 
 
-To chbage the time in the OliveTin container, simply binf-mount the correct zone file; 
+To change the time in the OliveTin container, simply bind-mount the correct zone file; 
 
-. Same as the container host
+.Same as the container host
 ----
 docker create -v /etc/localtime:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin
 ----
 
-. Choose a different country 
+.Choose a different country 
 ----
 docker create -v /usr/share/zoneinfo/Japan:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin
 ----
