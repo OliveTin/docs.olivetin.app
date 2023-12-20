@@ -1,17 +1,24 @@
 [#install-container]
 === Container install (podman/docker)
 
-Container images are published on DockerHub.
+The image is pushed to the following registries, pick the one that you prefer - the container images are identical so you only need one;
 
-https://hub.docker.com/r/jamesread/olivetin 
+* Dockerhub container image: link:https://hub.docker.com/r/jamesread/olivetin/[docker.io/jamesread/olivetin]
+* GitHub container image: link:https://ghcr.io/olivetin/olivetin[ghcr.io/jamesread/olivetin]
+
+If you prefer to use docker-compose, then follow the <<install-compose,docker-compose installation instructions>>.
+
+The standard container setup just needs **port 1337** forwarded for web traffic, and a volume **to store the configuration file**. Note that OliveTin containers expect the config to be in `/config/` inside the container, but it doesn't really matter where this directory is mounted from on the host. This documention uses the convention of `/etc/OliveTin` on the host, but `/dockerStuff/OliveTin/` or similar would be fine.
 
 [source, shell]
+.Create the container (but don't start it yet)
 ....
 user@host: mkdir /etc/OliveTin/
-user@host: # create your config.yaml file
+user@host: # ie: Your config file is /etc/OliveTin/config.yaml on the host machine. We'll create this in the post-installation step.
 user@host: docker pull jamesread/olivetin
 user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin
-user@host: docker start olivetin
 ....
+
+NOTE: The OliveTin container is built using fedora-minimal, which doesn't use customizations that some people may be familiar with from popular projects like LSIO, or debian-based containers. The two top misunderstandings are <<no-puid-pgid,PUID and PGID are ignored>> and <<timezone,changing the timezone requires a bound-mount>> from the host.
 
 include::install_post_container.adoc[]

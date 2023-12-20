@@ -7,6 +7,7 @@ infrastructure as code approach.
 If you personally prefer to use `docker compose`, then here is a sample to get
 you started;
 
+[source,yaml]
 .`docker-compose.yml`
 ----
 version: "3.8"

@@ -131,7 +131,7 @@ To change the time in the OliveTin container, simply bind-mount the correct zone
 docker create -v /etc/localtime:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin
 ----
 
-.Choose a different country 
+.Different timezone to the container host
 ----
 docker create -v /usr/share/zoneinfo/Japan:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin
 ----

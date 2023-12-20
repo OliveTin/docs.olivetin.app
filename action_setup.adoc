@@ -1,6 +1,8 @@
 [#actions]
 == Actions
 
+An action is a shell command, with an associated icon, and various details that describe how the command can be executed. Actions are the fundamental unit of work in OliveTin.
+
 [#create-your-first-action]
 === Create your first action
 
@@ -41,6 +43,8 @@ This is the default, meaning that the action shows up on a dashboard, and at the
 
 OliveTin can execute actions on a schedule, and uses a cron format for configuration.
 
+[source,yaml]
+.`config.yaml`
 ----
 actions:
   - title: Say hello

@@ -22,16 +22,20 @@ actions:
 *Note about SSH keys*: You should make sure that the user that OliveTin is running as has access to a SSH key. This applies to container images as well. The setup instructions below briefly explain how to generate a SSH key and make it accessible to OliveTin which is running inside a container.
 
 [[ssh-container]]
-==== Setup if running inside a container
+==== SSH from inside a Container - setup instructions
+
+This is a two step process;
+
+1. Setup a volume mount for the `~/.ssh/` directory, that contains a SSH Key.
+2. OliveTin uses the SSH key to connect back to server-with-olivetin or across to server2.
+
+Visually, this is what it looks like;
 
 image:images/ssh-diagram.png[]
 
-1. The OliveTin container is created with `.ssh` as a volume mount, that contains a SSH Key.
-2. OliveTin uses the SSH key to connect back to server-with-olivetin or across to server2.
+1. Setup a volume mount for the `~/.ssh/` directory, that contains a SSH Key.
 
-===== Setup instructions
-
-. On `server-with-olivetin`, run `mkdir /opt/OliveTinSshKeys` to create a shared directory for your SSH key file. 
+.. On `server-with-olivetin`, run `mkdir /opt/OliveTinSshKeys` to create a shared directory for your SSH key file. 
 +
 This will later be used as a "volume mount" when you create a docker container. 
 

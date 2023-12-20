@@ -117,6 +117,10 @@ hr {
   margin: 1em;
 }
 
+div.admonitionblock.note {
+  background-color: beige;
+}
+
 div.admonitionblock td {
   border: 0;
 }
