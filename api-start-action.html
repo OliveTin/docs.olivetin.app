@@ -334,31 +334,31 @@ pre.rouge .gs {
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartAction</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OliveTin request object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-request-obj">OliveTin request object</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Execution UUID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartActionByAlias</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Action title alias in URL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-request-alias">Action title alias in URL</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Log Entry (waits for the action to finish)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartActionAndWait</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OliveTin request object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-request-obj">OliveTin request object</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Execution UUID</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartActionByAliasAndWait</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alias in URL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-request-alias">Action title alias in URL</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Log Entry (waits for the action to finish)</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="_request_type_alias"><a class="anchor" href="#_request_type_alias"></a><a class="link" href="#_request_type_alias">11.2.1. Request type: Alias</a></h4>
+<h4 id="api-request-alias"><a class="anchor" href="#api-request-alias"></a><a class="link" href="#api-request-alias">11.2.1. Request type: Alias</a></h4>
 <div class="paragraph">
 <p>Used by:</p>
 </div>
@@ -396,7 +396,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_type_olivetin_request_object"><a class="anchor" href="#_request_type_olivetin_request_object"></a><a class="link" href="#_request_type_olivetin_request_object">11.2.2. Request type: OliveTin request object</a></h4>
+<h4 id="api-request-obj"><a class="anchor" href="#api-request-obj"></a><a class="link" href="#api-request-obj">11.2.2. Request type: OliveTin request object</a></h4>
 <div class="paragraph">
 <p>Used by:</p>
 </div>
@@ -460,43 +460,35 @@ pre.rouge .gs {
 </div>
 <div class="sect3">
 <h4 id="_example_api_call_start_an_action"><a class="anchor" href="#_example_api_call_start_an_action"></a><a class="link" href="#_example_api_call_start_an_action">11.2.5. Example API call: Start an action</a></h4>
-<div class="sect4">
-<h5 id="_curl"><a class="anchor" href="#_curl"></a><a class="link" href="#_curl">Curl</a></h5>
 <div class="listingblock">
+<div class="title">curl</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="bash">user@host: curl <span class="nt">-X</span> POST <span class="s2">"http://olivetin.webapps.teratan.lan/api/StartAction"</span> <span class="nt">-d</span> <span class="s1">'{"actionName": "Nuclear reactor shutdown"}'</span></code></pre>
 </div>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_powershell"><a class="anchor" href="#_powershell"></a><a class="link" href="#_powershell">Powershell</a></h5>
 <div class="listingblock">
+<div class="title">Powershell</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="powershell"><span class="n">PS</span><span class="w"> </span><span class="nx">C:\Users\xcons</span><span class="err">&gt;</span><span class="w"> </span><span class="nv">$json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"actionName": "Deploy attack Gnomes"}'</span><span class="w">
 </span><span class="n">PS</span><span class="w"> </span><span class="nx">C:\Users\xcons</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">Invoke-RestMethod</span><span class="w"> </span><span class="nt">-Method</span><span class="w"> </span><span class="s2">"Post"</span><span class="w"> </span><span class="nt">-Uri</span><span class="w"> </span><span class="s2">"http://olivetinServer:1337/api/StartAction"</span><span class="w"> </span><span class="nt">-Body</span><span class="w"> </span><span class="nv">$json</span></code></pre>
 </div>
 </div>
 </div>
-</div>
 <div class="sect3">
 <h4 id="_example_api_call_start_an_action_with_arguments"><a class="anchor" href="#_example_api_call_start_an_action_with_arguments"></a><a class="link" href="#_example_api_call_start_an_action_with_arguments">11.2.6. Example API call: Start an action with arguments</a></h4>
-<div class="sect4">
-<h5 id="_curl_2"><a class="anchor" href="#_curl_2"></a><a class="link" href="#_curl_2">Curl</a></h5>
 <div class="listingblock">
+<div class="title">curl</div>
 <div class="content">
-<pre>user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'</pre>
-</div>
+<pre class="rouge highlight"><code data-lang="bash">user:host: curl <span class="nt">-X</span> POST <span class="s1">'http://olivetin.example.com/api/StartAction'</span> <span class="nt">-d</span> <span class="s1">'{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_example_api_call_get_the_dashboard_buttons_components"><a class="anchor" href="#_example_api_call_get_the_dashboard_buttons_components"></a><a class="link" href="#_example_api_call_get_the_dashboard_buttons_components">11.2.7. Example API call: Get the dashboard buttons ("components")</a></h4>
-<div class="sect4">
-<h5 id="_curl_3"><a class="anchor" href="#_curl_3"></a><a class="link" href="#_curl_3">Curl</a></h5>
 <div class="listingblock">
+<div class="title">curl</div>
 <div class="content">
 <pre>user@host: curl http://olivetinServer:1337/api/GetDashboardComponents</pre>
-</div>
 </div>
 </div>
 </div>
@@ -526,7 +518,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-12-21 15:27:52 UTC
+Last updated 2023-12-21 18:16:17 UTC
 </div>
 </div>
 </body>
