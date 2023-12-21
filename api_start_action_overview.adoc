@@ -4,10 +4,10 @@ There are several variants of this API call available which might be easier for 
 .Webhook/API reference table
 [%header]
 |======================================================
-| Function                     | Request Type            | Return Type 
-| `StartAction`                | OliveTin request object | Execution UUID
-| `StartActionByAlias`         | Alias                   | Log Entry (waits for the action to finish)
-| `StartActionAndWait`         | OliveTin request object | Execution UUID
-| `StartActionByAliasAndWait`  | Alias                   | Log Entry (waits for the action to finish)
+| Function                     | HTTP Method | Request Type (How to select an action)   | Return Type 
+| `StartAction`                | POST        | OliveTin request object                  | Execution UUID
+| `StartActionByAlias`         | GET         | Action title alias in URL                | Log Entry (waits for the action to finish)
+| `StartActionAndWait`         | POST        | OliveTin request object                  | Execution UUID
+| `StartActionByAliasAndWait`  | GET         | Alias in URL                             | Log Entry (waits for the action to finish)
 |======================================================
 
