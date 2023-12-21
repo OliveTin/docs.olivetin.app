@@ -200,13 +200,25 @@ div.admonitionblock td:first-child {
 <div class="sect2">
 <h3 id="trusted-header"><a class="anchor" href="#trusted-header"></a><a class="link" href="#trusted-header">8.2. Trusted Header Authorization</a></h3>
 <div class="paragraph">
-<p>This method is not yet well documented, sorry!</p>
+<p>This method is not yet well documented, sorry! Ask on Discord - we need more people to test this feature.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>AuthHttpHeaderUsername "X-Username"
 AuthHttpHeaderUsergrou "X-Usergroup"</pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You <strong>must</strong> set <code>AuthHttpHeaderUsername</code> to some value, even if you only intend to use <code>AuthHttpHeaderUsergroup</code>, otherwise usergroups will be ignored.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -215,7 +227,7 @@ AuthHttpHeaderUsergrou "X-Usergroup"</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-12-20 21:38:12 UTC
+Last updated 2023-12-21 00:16:14 UTC
 </div>
 </div>
 </body>
