@@ -17,6 +17,7 @@ The gRPC API only listens on localhost default, but it can be set to listen publ
 
 include::api_start_action_overview.adoc[]
 
+[#api-request-alias]
 ==== Request type: Alias
 
 Used by:
@@ -42,6 +43,7 @@ actions:
 
 titleAliases are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
 
+[#api-request-obj]
 ==== Request type: OliveTin request object
 
 Used by:
@@ -78,16 +80,14 @@ Used by:
 
 ==== Example API call: Start an action
 
-===== Curl
-
 [source,bash]
+.curl
 ----
 user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionName": "Nuclear reactor shutdown"}'
 ----
 
-===== Powershell
-
 [source,powershell]
+.Powershell
 ----
 PS C:\Users\xcons> $json = '{"actionName": "Deploy attack Gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
@@ -95,16 +95,15 @@ PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:
 
 ==== Example API call: Start an action with arguments
 
-===== Curl
-
+[source,bash]
+.curl
 ----
 user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
 ----
 
 ==== Example API call: Get the dashboard buttons ("components")
 
-===== Curl
-
+.curl
 ----
 user@host: curl http://olivetinServer:1337/api/GetDashboardComponents 
 ----
