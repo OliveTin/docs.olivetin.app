@@ -157,7 +157,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="err-fetch-webui-settings" class="book toc2 toc-left">
+<body id="_misc_api_calls" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -182,43 +182,35 @@ div.admonitionblock td:first-child {
 <li><a href="_reference.html">9. Reference</a>
 </li>
 <li><a href="troubleshooting.html">10. Support &amp; Troubleshooting</a>
-<ul class="sectlevel2">
-<li><a href="support.html">10.1. Where to find help</a>
-</li>
-<li><a href="sosreport.html">10.2. sosreport</a>
-</li>
-<li><a href="_exit_code_127.html">10.3. Exit code 127</a>
-</li>
-<li><a href="no-puid-pgid.html">10.4. PUID and PGID support</a>
-</li>
-<li><a href="err-fetch-buttons.html">10.5. Error Getting Buttons</a>
-</li>
-<li><a href="err-fetch-webui-settings.html"><span class="toc-current">10.6. Error Fetching WebUI Settings</span></a>
-</li>
-<li><a href="err-js-modules-not-supported.html">10.7. Error: JS Modules not supported</a>
-</li>
-</ul>
 </li>
 <li><a href="api.html">11. API</a>
+<ul class="sectlevel2">
+<li><a href="_olivetin_api_overview.html">11.1. OliveTin API Overview</a>
+</li>
+<li><a href="api-start-action.html">11.2. Starting Actions from the API</a>
+</li>
+<li><a href="_misc_api_calls.html"><span class="toc-current">11.3. Misc API calls</span></a>
+</li>
+</ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="err-fetch-webui-settings"><a class="anchor" href="#err-fetch-webui-settings"></a><a class="link" href="#err-fetch-webui-settings">10.6. Error Fetching WebUI Settings</a></h3>
-<div class="paragraph">
-<p>This is a less common issue, but it means that the main web HTML has loaded, but it could not get <a href="http://yourserver:1337/webUiSettings.json" class="bare">http://yourserver:1337/webUiSettings.json</a> - most likely because of a 404 (Not Found) or JSON parse issue. You can see the exact reason if your browser as Web Developer Tools - look in the console. Firefox and Chrome both have great web developer tools, that can normally be opened with the F12 key, or from the developer tools menu.</p>
+<h3 id="_misc_api_calls"><a class="anchor" href="#_misc_api_calls"></a><a class="link" href="#_misc_api_calls">11.3. Misc API calls</a></h3>
+<div class="sect3">
+<h4 id="_example_api_call_get_the_dashboard_buttons_components"><a class="anchor" href="#_example_api_call_get_the_dashboard_buttons_components"></a><a class="link" href="#_example_api_call_get_the_dashboard_buttons_components">11.3.1. Example API call: Get the dashboard buttons ("components")</a></h4>
+<div class="listingblock">
+<div class="title">curl</div>
+<div class="content">
+<pre>user@host: curl http://olivetinServer:1337/api/GetDashboardComponents</pre>
 </div>
-<div class="paragraph">
-<p>The most common cause of this issue is a broken reverse proxy configuration. To debug this, browse to <a href="http://yourserver:1337/webUiSettings.json" class="bare">http://yourserver:1337/webUiSettings.json</a> and adjust your reverse proxy configuration until the file loads properly. See <a href="reverse-proxies.html">Reverse Proxies</a> for common configuration instructions.</p>
 </div>
-<div class="paragraph">
-<p>An uncommon cause of this issue is if you are self-hosting the HTML outside of OliveTin. This is supported, but it means you will need to write the webUiSettings.json file manually. This is currently not documented as very very few people really need or want to do this. It&#8217;s very uncommon at the moment to self host the HTML outside of the OliveTin main server. Jump on the discord to discuss this if you want to do this, see <a href="support.html">Where to find help</a>.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="err-fetch-buttons.html">Error Getting Buttons</a> | ↑ Up: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="err-js-modules-not-supported.html">Error: JS Modules not supported</a> →</p>
+<p>← Previous: <a href="api-start-action.html">Starting Actions from the API</a> | ↑ Up: <a href="api.html">API</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a></p>
 </div>
 </div>
 <div id="footer">
