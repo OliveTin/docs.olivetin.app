@@ -33,23 +33,7 @@ Used by:
 * `StartActionByAlias`
 * `StartActionByAliasAndWait`
 
-If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an alias directly in the URL, like this;
-
-----
-user@host: curl http://olivetin.example.com/api/StartActionByAlias/pingGithub
-----
-
-The corresponding config.yaml would look like this;
-
-[source,yaml]
-----
-actions:
-  - title: Ping GitHub.com
-    titleAlias: pingGithub
-    shell: ping github.com -c 1
-----
-
-titleAliases are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
+If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an alias directly in the URL, <<api-eg-startAlias,see the example>>.
 
 [#api-request-obj]
 ==== Request type: OliveTin request object
@@ -85,6 +69,26 @@ Used by:
 
 * `StartActionAndWait`
 * `StartActionByAliasAndWait`
+
+[#api-eg-startAlias]
+==== Example API call; Start an action by Alias
+
+.curl
+----
+user@host: curl http://olivetin.example.com/api/StartActionByAlias/pingGithub
+----
+
+The corresponding config.yaml would look like this;
+
+[source,yaml]
+----
+actions:
+  - title: Ping GitHub.com
+    titleAlias: pingGithub
+    shell: ping github.com -c 1
+----
+
+titleAliases are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
 
 ==== Example API call: Start an action using `StartAction`
 
