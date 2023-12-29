@@ -12,6 +12,14 @@ The REST API gateway is used by the WebUI, and you can use it too by default - i
 
 The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. Most people do not need to use the gRPC API. The .proto file for the gRPC API is located at the root of the OliveTin Git repository; https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[OliveTin.proto].
 
+==== Links 
+
+* link:http://docs.olivetin.app/api/[Swagger UI for OliveTin API]
+* link:http://docs.olivetin.app/api/OliveTin.openapi.json[OpenAPI JSON Definition]
+* link:https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[The OliveTin Protobuf file]. 
+
+Please do talk to the developers on Discord if you'd like help using the API, or you're thinking about building something interesting using the API!
+
 [#api-start-action]
 === Starting Actions from the API
 
@@ -28,7 +36,7 @@ Used by:
 If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an alias directly in the URL, like this;
 
 ----
-http://olivetin.example.com/api/StartActionByAlias/pingGithub
+user@host: curl http://olivetin.example.com/api/StartActionByAlias/pingGithub
 ----
 
 The corresponding config.yaml would look like this;
@@ -78,7 +86,7 @@ Used by:
 * `StartActionAndWait`
 * `StartActionByAliasAndWait`
 
-==== Example API call: Start an action
+==== Example API call: Start an action using `StartAction`
 
 [source,bash]
 .curl
@@ -93,13 +101,15 @@ PS C:\Users\xcons> $json = '{"actionName": "Deploy attack Gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
 ----
 
-==== Example API call: Start an action with arguments
+==== Example API call: Start an action using `StartAction` with arguments
 
 [source,bash]
 .curl
 ----
 user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
 ----
+
+=== Misc API calls
 
 ==== Example API call: Get the dashboard buttons ("components")
 
@@ -108,10 +118,4 @@ user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"acti
 user@host: curl http://olivetinServer:1337/api/GetDashboardComponents 
 ----
 
-==== Links 
 
-* link:http://docs.olivetin.app/api/[Swagger UI for OliveTin API]
-* link:http://docs.olivetin.app/api/OliveTin.openapi.json[OpenAPI JSON Definition]
-* link:https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[The OliveTin Protobuf file]. 
-
-Please do talk to the developers on Discord if you'd like help using the API, or you're thinking about building something interesting using the API!
