@@ -1,5 +1,5 @@
 [#install-linuxpackage]
-=== Recommended: Linux package install (.rpm/.deb)
+=== Linux package install (.rpm/.deb)
 
 Running OliveTin as a systemd service on a Linux machine means it can use any program installed on your machine (you don't have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.
 
