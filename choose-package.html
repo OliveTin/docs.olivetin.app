@@ -163,27 +163,29 @@ div.admonitionblock td:first-child {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
-<li><a href="installation.html">1. Installation</a>
+<li><a href="installation.html">1. Installation Guide</a>
 <ul class="sectlevel2">
-<li><a href="choose-package.html"><span class="toc-current">1.1. Which download do I need?</span></a>
+<li><a href="install-container-vs-service.html">1.1. Containers vs Services</a>
 </li>
-<li><a href="install-linuxpackage.html">1.2. Recommended: Linux package install (.rpm/.deb)</a>
+<li><a href="choose-package.html"><span class="toc-current">1.2. Which download do I need?</span></a>
 </li>
-<li><a href="install-fedora.html">1.3. Fedora Linux (dnf)</a>
+<li><a href="install-linuxpackage.html">1.3. Linux package install (.rpm/.deb)</a>
 </li>
-<li><a href="install-alpine.html">1.4. Alpine Linux</a>
+<li><a href="install-fedora.html">1.4. Fedora Linux (dnf)</a>
 </li>
-<li><a href="install-archbtw.html">1.5. Arch Linux (AUR)</a>
+<li><a href="install-alpine.html">1.5. Alpine Linux</a>
 </li>
-<li><a href="install-container.html">1.6. Container install (podman/docker)</a>
+<li><a href="install-archbtw.html">1.6. Arch Linux (AUR)</a>
 </li>
-<li><a href="install-compose.html">1.7. Docker Compose install</a>
+<li><a href="install-container.html">1.7. Container install (podman/docker)</a>
 </li>
-<li><a href="install-helm.html">1.8. Helm on Kubernetes Install</a>
+<li><a href="install-compose.html">1.8. Docker Compose install</a>
 </li>
-<li><a href="install-k8s.html">1.9. Kubernetes install (manually)</a>
+<li><a href="install-helm.html">1.9. Helm on Kubernetes Install</a>
 </li>
-<li><a href="install-targz.html">1.10. .tar.gz Install (manual)</a>
+<li><a href="install-k8s.html">1.10. Kubernetes install (manually)</a>
+</li>
+<li><a href="install-targz.html">1.11. .tar.gz Install (manual)</a>
 </li>
 </ul>
 </li>
@@ -212,12 +214,14 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="choose-package"><a class="anchor" href="#choose-package"></a><a class="link" href="#choose-package">1.1. Which download do I need?</a></h3>
+<h3 id="choose-package"><a class="anchor" href="#choose-package"></a><a class="link" href="#choose-package">1.2. Which download do I need?</a></h3>
 <div class="paragraph">
-<p><strong>Packages</strong> can be downloaded from the <a href="https://github.com/jamesread/OliveTin/releases">GitHub project releases</a> page.</p>
+<p>OliveTin can be run as a <a href="choose-package.html#package">service</a> or a <a href="#container-image">container</a>. If you are not sure which is best for you, read <a href="install-container-vs-service.html">containers vs services</a>.</p>
 </div>
+<div class="sect3">
+<h4 id="package"><a class="anchor" href="#package"></a><a class="link" href="#package">1.2.1. Packages (run OliveTin as a service)</a></h4>
 <div class="paragraph">
-<p>Some folks need extra help understanding which package/download is needed. This table below should help;</p>
+<p>This is a table that explains which package/download is best for each environment;</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -254,7 +258,7 @@ div.admonitionblock td:first-child {
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-windows-amd64.zip"><code>OliveTin-windows-amd64.zip</code></a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">macOS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><a href="#macOS">macOS</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-macOS-amd64.tar.gz"><code>OliveTin-macOS-amd64.tar.gz</code></a></p></td>
 </tr>
 <tr>
@@ -293,17 +297,48 @@ div.admonitionblock td:first-child {
 </tbody>
 </table>
 <div class="paragraph">
-<p>Running OliveTin as a <a href="#install-systemd">systemd service</a> on a Linux machine means it can use any program installed on your machine (you don&#8217;t have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.</p>
+<p>A full list of <strong>packages</strong> can be downloaded from the <a href="https://github.com/jamesread/OliveTin/releases">GitHub project releases</a> page.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_container_images"><a class="anchor" href="#_container_images"></a><a class="link" href="#_container_images">1.1.1. Container images</a></h4>
+<h4 id="container-images"><a class="anchor" href="#container-images"></a><a class="link" href="#container-images">1.2.2. Container images</a></h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Container images can be found for OliveTin <a href="https://hub.docker.com/r/jamesread/olivetin/tags?page=1&amp;ordering=last_updated">on DockerHub</a>.</p>
+<p>OliveTin is supported when run as a Linux Container in many different ways, and lot of OliveTin users will assume that a Linux Container is the best way to install OliveTin because Linux Containers are really popular&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>However, it is very common that some OliveTin use cases become overcomplicated when a container is used, compared to running as a native service. Read the <a href="install-container-vs-service.html">Containers vs Services</a> document to understand if a container or a service is right for your use case.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The image is pushed to the following registries, pick the one that you prefer - the container images are identical so you only need one;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="install-container.html">Installation as a conatiner (podman/docker)</a></p>
+<p>Dockerhub container image: <a href="https://hub.docker.com/r/jamesread/olivetin/">docker.io/jamesread/olivetin</a></p>
+</li>
+<li>
+<p>GitHub container image: <a href="https://ghcr.io/olivetin/olivetin">ghcr.io/jamesread/olivetin</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following methods can be used to install the container;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="install-container.html">Installation as a standalone container (podman/docker)</a></p>
 </li>
 <li>
 <p><a href="install-compose.html">Installation with Docker Compose</a></p>
@@ -319,12 +354,12 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="installation.html">Installation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-linuxpackage.html">Recommended: Linux package install (.rpm/.deb)</a> →</p>
+<p>← Previous: <a href="install-container-vs-service.html">Containers vs Services</a> | ↑ Up: <a href="installation.html">Installation Guide</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-linuxpackage.html">Linux package install (.rpm/.deb)</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-12-29 00:20:41 UTC
+Last updated 2024-01-03 16:30:23 UTC
 </div>
 </div>
 </body>

@@ -157,7 +157,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="install-alpine" class="book toc2 toc-left">
+<body id="install-container-vs-service" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -165,7 +165,7 @@ div.admonitionblock td:first-child {
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">1. Installation Guide</a>
 <ul class="sectlevel2">
-<li><a href="install-container-vs-service.html">1.1. Containers vs Services</a>
+<li><a href="install-container-vs-service.html"><span class="toc-current">1.1. Containers vs Services</span></a>
 </li>
 <li><a href="choose-package.html">1.2. Which download do I need?</a>
 </li>
@@ -173,7 +173,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="install-fedora.html">1.4. Fedora Linux (dnf)</a>
 </li>
-<li><a href="install-alpine.html"><span class="toc-current">1.5. Alpine Linux</span></a>
+<li><a href="install-alpine.html">1.5. Alpine Linux</a>
 </li>
 <li><a href="install-archbtw.html">1.6. Arch Linux (AUR)</a>
 </li>
@@ -214,31 +214,51 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-alpine"><a class="anchor" href="#install-alpine"></a><a class="link" href="#install-alpine">1.5. Alpine Linux</a></h3>
+<h3 id="install-container-vs-service"><a class="anchor" href="#install-container-vs-service"></a><a class="link" href="#install-container-vs-service">1.1. Containers vs Services</a></h3>
 <div class="paragraph">
-<p>Alpine Linux is supported by an upstream .apk package, or a manual .tar.gz install, or by <a href="install-container.html">a container</a>.</p>
+<p>Linux Containers have become an incredibly popular method for running software. OliveTin supports every way of running Linux containers - spanning from homelabs up to enterprise environments. As a container, it can be used <a href="install-container.html">standalone using Podman/Docker</a>, through to <a href="install-compose.html">using docker-compose</a> or even on <a href="#install-kubernetes">Kubernetes</a>.</p>
 </div>
 <div class="paragraph">
-<p>These instructions on this page are quite basic, because not many people have tried to use OliveTin on Alpine, or other OpenRC distributions. If you can help suggest improvements to these docs, or Alpine Linux support, it would be great to <a href="support.html">hear from you</a>!</p>
+<p><strong>However</strong>, a lot of OliveTin use cases, such as providing an interface to run scripts, rely on files on their local Linux filesystem - containers, by definition, have their own separate filesystem. It is of course possible to "bind mount" parts of your local filesystem into OliveTin, but sometimes this requires more effort, or introduces subtle problems that are more complicated to solve. If you have a good amount of experience with Linux containers, then this approach is absolutely fine - but if you are new to these types of problems - not seeing files you expect, file permissions errors, etc, then it might just be easier to <a href="choose-package.html">install using a Linux package</a> instead.</p>
 </div>
 <div class="sect3">
-<h4 id="_installing_the_upstream_apk"><a class="anchor" href="#_installing_the_upstream_apk"></a><a class="link" href="#_installing_the_upstream_apk">1.5.1. Installing the upstream <code>.apk</code></a></h4>
-<div class="listingblock">
-<div class="content">
-<pre>user@host: wget https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.apk
-user@host: apk add --allow-untrusted OliveTin_linux_amd64.apk</pre>
-</div>
+<h4 id="_dont_overcomplicate_your_containers_use_ssh"><a class="anchor" href="#_dont_overcomplicate_your_containers_use_ssh"></a><a class="link" href="#_dont_overcomplicate_your_containers_use_ssh">1.1.1. Don&#8217;t overcomplicate your containers - use SSH!</a></h4>
+<div class="paragraph">
+<p>Sometimes you just want to (or have to) use containers, but also want to use these local resources as well. Instead of bind-mounting lots of stuff into the Linux container and creating a really complicated container definition (which is hard to scale), consider a simple alternative: <a href="action-ssh.html">SSH with OliveTin</a>. This allows you to easily SSH back into the container host and keep your container definition really simple. This approach works great and is popular for a lot of users.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_installing_the_tar_gz"><a class="anchor" href="#_installing_the_tar_gz"></a><a class="link" href="#_installing_the_tar_gz">1.5.2. Installing the <code>.tar.gz</code></a></h4>
-<div class="paragraph">
-<p>The standard <a href="install-targz.html"><code>.tar.gz</code> instructions</a> should work just fine, replacing systemd for the OpenRC file.</p>
-</div>
+<h4 id="_which_should_i_choose"><a class="anchor" href="#_which_should_i_choose"></a><a class="link" href="#_which_should_i_choose">1.1.2. Which should I choose?</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Use Case</th>
+<th class="tableblock halign-left valign-top">Recommended Option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You&#8217;re new to Linux containers, or not very comfortable with them</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="choose-package.html">Linux service</a>, or <a href="install-container.html">Linux container with &lt;&lt;action-ssh,SSH action</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Needs to use lots of different file paths on the host filesystem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Linux containerii</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Needs to control processes, like systemd services</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="install-fedora.html">Fedora Linux (dnf)</a> | ↑ Up: <a href="installation.html">Installation Guide</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-archbtw.html">Arch Linux (AUR)</a> →</p>
+<p>↑ Up: <a href="installation.html">Installation Guide</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="choose-package.html">Which download do I need?</a> →</p>
 </div>
 </div>
 <div id="footer">
