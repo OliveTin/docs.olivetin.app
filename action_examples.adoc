@@ -24,18 +24,18 @@ You can control other containers, when running OliveTin inside a container
 itself, however you need to do some extra setup when creating the OliveTin
 container.
 
-NOTE: If you want to control Docker from inside a Docker container, you will need to also create the container with `--privileged`. Podman does not have this requirement.
+NOTE: If you want to control Docker from inside a Docker container, you will need to also create the container with `--privileged`. Podman does not have this requirement. If you sre getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 bu default, which is not allowed by your docker host. Simply run OliveTin with `--user root` as a simple workround. Note that <<PUID and PGID variables will not work,no-puid-pgid>>.
 
 . Pass `/var/run/docker.sock` as a bind mount to the container when creating it, eg:
 +
 ----
-docker create --privileged -v /var/run/docker.sock:/var/run/docker.sock ...additional args here...
+docker create --privileged --user root -v /var/run/docker.sock:/var/run/docker.sock ...additional args here...
 ----
 +
 Or, using the `docker run` syntax;
 +
 ----
-docker run --privileged -v /var/run/docker.sock:/var/run/docker.sock --name OliveTin jamesread/olivetin
+docker run --privileged --user root -v /var/run/docker.sock:/var/run/docker.sock --name OliveTin jamesread/olivetin
 ----
 +
 . The official x86_64 docker container comes with the `docker` client pre-installed. If you are using `arm` or and `arm64` container, you will need to add Docker yourself.
