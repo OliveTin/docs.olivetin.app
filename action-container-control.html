@@ -252,7 +252,7 @@ container.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-If you want to control Docker from inside a Docker container, you will need to also create the container with <code>--privileged</code>. Podman does not have this requirement. If you sre getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 bu default, which is not allowed by your docker host. Simply run OliveTin with <code>--user root</code> as a simple workround. Note that <a href="#PUID and PGID variables will not work">no-puid-pgid</a>.
+If you want to control Docker from inside a Docker container, you will need to also create the container with <code>--privileged</code>. Podman does not have this requirement. If you are getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 by default, which is not allowed by your docker host. Simply run OliveTin with <code>--user root</code> as a simple workround. Note that <a href="no-puid-pgid.html">PUID and PGID variables will not work</a>.
 </td>
 </tr>
 </table>
@@ -306,7 +306,7 @@ The reason that the <code>arm</code> and <code>arm64</code> containers do not co
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-01-23 23:13:31 UTC
+Last updated 2024-01-23 23:21:50 UTC
 </div>
 </div>
 </body>
