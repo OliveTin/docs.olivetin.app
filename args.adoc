@@ -72,6 +72,7 @@ A full list of argument types are below;
 | ascii_identifier            | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 
 | ascii_sentence              | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
 | url                         | A url, e.g. https://github.com/OliveTin
+| confirmation                | A "hidden" argument that makes the action require a confirmation before launching.
 |===
 
 === Dropdown choice arguments
