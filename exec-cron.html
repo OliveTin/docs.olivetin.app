@@ -353,26 +353,22 @@ pre.rouge .gs {
 <p>If you need per-second resolution for your actions, this can be enabled in your config;</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="s">. config.yaml</span>
-<span class="s">----</span>
-<span class="na">cronSupportForSeconds</span><span class="pi">:</span> <span class="kc">true</span>
-<span class="s">----</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">cronSupportForSeconds</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>This will allow you to write cronlines with 6 columns - the first column is seconds. For example, to execute <code>date</code> every 5 seconds;</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="s">. config.yaml</span>
-<span class="s">----</span>
-<span class="na">actions</span><span class="pi">:</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
   <span class="na">title</span><span class="pi">:</span> <span class="s">Execute every 5 seconds</span>
   <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
   <span class="na">execOnCron</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s2">"</span><span class="s">*/5</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
-<span class="s">----</span></code></pre>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">*/5</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span></code></pre>
 </div>
 </div>
 </div>
@@ -383,7 +379,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-02 21:48:23 UTC
+Last updated 2024-02-02 21:50:56 UTC
 </div>
 </div>
 </body>
