@@ -344,6 +344,38 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>This is a fantastic website: <a href="https://cron.help/" class="bare">https://cron.help/</a></p>
 </div>
+<div class="sect3">
+<h4 id="_support_for_seconds_in_cron"><a class="anchor" href="#_support_for_seconds_in_cron"></a><a class="link" href="#_support_for_seconds_in_cron">4.3.1. Support for seconds in cron</a></h4>
+<div class="paragraph">
+<p>The default cron format for OliveTin supports the Unix/Linux format - 5 fields, with no support for seconds. This is by far the most popular format that most people are used to.</p>
+</div>
+<div class="paragraph">
+<p>If you need per-second resolution for your actions, this can be enabled in your config;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="s">. config.yaml</span>
+<span class="s">----</span>
+<span class="na">cronSupportForSeconds</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="s">----</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will allow you to write cronlines with 6 columns - the first column is seconds. For example, to execute <code>date</code> every 5 seconds;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="s">. config.yaml</span>
+<span class="s">----</span>
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s">Execute every 5 seconds</span>
+  <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
+  <span class="na">execOnCron</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">*/5</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+<span class="s">----</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="exec-on-demand.html">Execute on demand</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-startup.html">Execute on startup</a> →</p>
@@ -351,7 +383,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-01-27 16:27:54 UTC
+Last updated 2024-02-02 21:48:23 UTC
 </div>
 </div>
 </body>
