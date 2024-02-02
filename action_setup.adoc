@@ -60,6 +60,30 @@ actions:
 
 This is a fantastic website: https://cron.help/
 
+==== Support for seconds in cron
+
+The default cron format for OliveTin supports the Unix/Linux format - 5 fields, with no support for seconds. This is by far the most popular format that most people are used to.
+
+If you need per-second resolution for your actions, this can be enabled in your config;
+
+[source,yaml]
+. config.yaml
+----
+cronSupportForSeconds: true
+----
+
+This will allow you to write cronlines with 6 columns - the first column is seconds. For example, to execute `date` every 5 seconds;
+
+[source,yaml]
+. config.yaml
+----
+actions:
+  title: Execute every 5 seconds
+  shell: date
+  execOnCron:
+    - "*/5 * * * * *"
+----
+
 [#exec-startup]
 === Execute on startup
 
