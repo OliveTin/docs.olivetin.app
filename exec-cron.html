@@ -350,21 +350,14 @@ pre.rouge .gs {
 <p>The default cron format for OliveTin supports the Unix/Linux format - 5 fields, with no support for seconds. This is by far the most popular format that most people are used to.</p>
 </div>
 <div class="paragraph">
-<p>If you need per-second resolution for your actions, this can be enabled in your config;</p>
+<p>If you need per-second resolution for your actions, this can be enabled in your config - meaning that your cronlines will support 6 columns. The first "new" column is seconds. For example, to execute <code>date</code> every 5 seconds;</p>
 </div>
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">cronSupportForSeconds</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will allow you to write cronlines with 6 columns - the first column is seconds. For example, to execute <code>date</code> every 5 seconds;</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">cronSupportForSeconds</span><span class="pi">:</span> <span class="kc">true</span>
+
+<span class="na">actions</span><span class="pi">:</span>
   <span class="na">title</span><span class="pi">:</span> <span class="s">Execute every 5 seconds</span>
   <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
   <span class="na">execOnCron</span><span class="pi">:</span>
@@ -379,7 +372,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-02 21:50:56 UTC
+Last updated 2024-02-02 21:52:58 UTC
 </div>
 </div>
 </body>
