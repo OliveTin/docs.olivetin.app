@@ -64,19 +64,13 @@ This is a fantastic website: https://cron.help/
 
 The default cron format for OliveTin supports the Unix/Linux format - 5 fields, with no support for seconds. This is by far the most popular format that most people are used to.
 
-If you need per-second resolution for your actions, this can be enabled in your config;
+If you need per-second resolution for your actions, this can be enabled in your config - meaning that your cronlines will support 6 columns. The first "new" column is seconds. For example, to execute `date` every 5 seconds;
 
 [source,yaml]
 .`config.yaml`
 ----
 cronSupportForSeconds: true
-----
 
-This will allow you to write cronlines with 6 columns - the first column is seconds. For example, to execute `date` every 5 seconds;
-
-[source,yaml]
-.`config.yaml`
-----
 actions:
   title: Execute every 5 seconds
   shell: date
