@@ -37,19 +37,23 @@ OliveTin versions after 2023-08 use websockets instead of polling for updates. T
 [#apache-dns]
 === Apache HTTPD - DNS based
 
-This is a an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337. 
+This is an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337.
 
 ./etc/httpd/conf.d/OliveTin.conf
 [source,apache]
 ----
 <VirtualHost *:80>
 ServerName olivetin.example.com
-ProxyPass /utilities/OliveTin/ http://localhost:1337/
-ProxyPassReverse /utilities/OliveTin/ http://localhost:1337/
+ProxyPass / http://localhost:1337/
+ProxyPassReverse / http://localhost:1337/
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/websocket
+RewriteRule /(.) ws://localhost:1337/websocket [P,L]
 </VirtualHost>
 ----
 
-Note, you virtual host should *not* include a DocumentRoot directive - httpd is just proxying OliveTin, not serving it's actual pages. 
+Note, you virtual host should *not* include a DocumentRoot directive - httpd is just proxying OliveTin, not serving it's actual pages.
 
 [#haproxy-dns]
 === Haproxy - DNS based
@@ -127,6 +131,7 @@ include::etc/reverse_proxy_nginx_dns.conf[]
 === Nginx - Path based
 
 .nginx.conf
+[source,nginx]
 ----
 ....
         location /OliveTin/ {

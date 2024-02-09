@@ -3,9 +3,8 @@ Note, because you are changing the default path (from `/` to `/OliveTin/`), you 
 You need to also set `externalRestAddress` in your config.yaml like this;
 
 .OliveTin config.yaml
+[source,yaml]
 ----
 externalRestAddress: http://myserver/OliveTin
-actions:
-....
 ----
 
