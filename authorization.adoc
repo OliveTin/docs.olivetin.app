@@ -24,8 +24,8 @@ The flow generally goes like this;
 This method is not yet well documented, sorry! Ask on Discord - we need more people to test this feature.
 
 ----
-AuthHttpHeaderUsername "X-Username"
-AuthHttpHeaderUsergroup "X-Usergroup"
+authHttpHeaderUsername: "X-Username"
+authHttpHeaderUsergroup: "X-Usergroup"
 ----
 
 NOTE: You *must* set `AuthHttpHeaderUsername` to some value, even if you only intend to use `AuthHttpHeaderUsergroup`, otherwise usergroups will be ignored.
