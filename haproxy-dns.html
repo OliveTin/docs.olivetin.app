@@ -329,16 +329,21 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="title">/etc/haproxy/haproxy.conf</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="n">frontend</span> <span class="n">cleartext_frontend</span>
-    <span class="n">mode</span> <span class="n">http</span>
+<pre class="rouge highlight"><code data-lang="python"><span class="n">rontend</span> <span class="n">cleartext_frontend</span>
     <span class="n">bind</span> <span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">80</span>
 
     <span class="n">option</span> <span class="n">httplog</span>
 
-    <span class="n">use_backend</span> <span class="n">be_olivetin</span> <span class="k">if</span> <span class="p">{</span> <span class="nf">hdr</span><span class="p">(</span><span class="n">Host</span><span class="p">)</span> <span class="o">-</span><span class="n">i</span> <span class="n">olivetin</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="p">}</span>
+    <span class="n">use_backend</span> <span class="n">be_olivetin_webs</span> <span class="k">if</span> <span class="p">{</span> <span class="nf">hdr</span><span class="p">(</span><span class="n">Host</span><span class="p">)</span> <span class="o">-</span><span class="n">i</span> <span class="n">olivetin</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="o">&amp;&amp;</span> <span class="n">path_beg</span> <span class="o">/</span><span class="n">websocket</span> <span class="p">}</span>
+    <span class="n">use_backend</span> <span class="n">be_olivetin_http</span> <span class="k">if</span> <span class="p">{</span> <span class="nf">hdr</span><span class="p">(</span><span class="n">Host</span><span class="p">)</span> <span class="o">-</span><span class="n">i</span> <span class="n">olivetin</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="p">}</span>
 
-<span class="n">backend</span> <span class="n">be_olivetin</span>
-    <span class="n">server</span> <span class="n">olivetinServer</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">1337</span> <span class="n">check</span></code></pre>
+<span class="n">backend</span> <span class="n">be_olivetin_http</span>
+    <span class="n">server</span> <span class="n">olivetinServer</span> <span class="mf">127.0</span><span class="p">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">1337</span> <span class="n">check</span>
+
+<span class="n">backend</span> <span class="n">be_olivetin_webs</span>
+    <span class="n">timeout</span> <span class="n">tunnel</span> <span class="mi">1</span><span class="n">h</span>
+    <span class="n">option</span> <span class="n">http</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">close</span>
+    <span class="n">server</span> <span class="n">olivetinServer</span> <span class="mf">127.0</span><span class="p">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">1337</span></code></pre>
 </div>
 </div>
 </div>
@@ -348,7 +353,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-09 14:06:31 UTC
+Last updated 2024-02-09 14:25:58 UTC
 </div>
 </div>
 </body>
