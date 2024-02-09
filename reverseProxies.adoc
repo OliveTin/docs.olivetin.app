@@ -138,6 +138,19 @@ include::etc/reverse_proxy_nginx_dns.conf[]
 
 include::fragment-external-rest.adoc[]
 
+[#caddy-dns]
+=== Caddy - DNS Based
+
+Caddy seems to work without any special configuration, so a simple `Caddyfile` works like this;
+
+.Caddyfile
+[source,nginx]
+----
+http://olivetin.example.com {
+        reverse_proxy * http://localhost:1337
+}
+----
+
 [#caddy-path]
 === Caddy - Path based
 
