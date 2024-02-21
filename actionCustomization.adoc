@@ -88,6 +88,7 @@ examples;
 ----
 ////
 
+[#timeout]
 === Timeouts
 
 By default, actions in OliveTin have a 3 second timeout. This means that

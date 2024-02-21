@@ -99,4 +99,24 @@ actions:
 ....
 
 
+[#ansible-playbook]
+=== Ansible Playbooks
+
+:systemd: Easy
+:container: Install the `ansible` package in your <<container-dnf,OliveTin container>>.
+include::actionHeader.adoc[]
+
+Many users use OliveTin to easily execute Ansible playbooks, somtimes as a simple alternative to AWX.
+
+. Run an Ansible Playbook
+[source,yaml]
+----
+actions:
+  - title: Run Ansible Playbook
+    icon: "&#x1F1E6;"
+    shell: ansible-playbook -i /etc/hosts /root/myRepo/myPlaybook.yaml
+    timeout: 120
+----
+
+You probably want to set the <<timeout>> to more than the default 3 seconds.
 
