@@ -1,6 +1,7 @@
 [#action-customisation]
 == Action customisation
 
+[#icons]
 === Icons
 
 You can specify any HTML for an icon. It's a popular choice to use Unicode
