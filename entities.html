@@ -271,7 +271,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="caddy-dns" class="book toc2 toc-left">
+<body id="entities" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -282,24 +282,6 @@ pre.rouge .gs {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">3.1. Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-dns.html">3.2. Apache HTTPD - DNS based</a>
-</li>
-<li><a href="haproxy-dns.html">3.3. Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html">3.4. Traefik + Docker Compose</a>
-</li>
-<li><a href="nginx-dns.html">3.5. Nginx - DNS based</a>
-</li>
-<li><a href="nginx-path.html">3.6. Nginx - Path based</a>
-</li>
-<li><a href="caddy-dns.html"><span class="toc-current">3.7. Caddy - DNS Based</span></a>
-</li>
-<li><a href="caddy-path.html">3.8. Caddy - Path based</a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">4. Actions</a>
 </li>
@@ -308,6 +290,22 @@ pre.rouge .gs {
 <li><a href="examples.html">6. Action examples</a>
 </li>
 <li><a href="args.html">7. Arguments</a>
+<ul class="sectlevel2">
+<li><a href="_introduction_to_arguments.html">7.1. Introduction to Arguments</a>
+</li>
+<li><a href="_important_safety_warning.html">7.2. Important Safety Warning</a>
+</li>
+<li><a href="_textbox_arguments.html">7.3. Textbox arguments</a>
+</li>
+<li><a href="_dropdown_choice_arguments.html">7.4. Dropdown choice arguments</a>
+</li>
+<li><a href="confirmation.html">7.5. Confirmation argument</a>
+</li>
+<li><a href="entities.html"><span class="toc-current">7.6. Entities</span></a>
+</li>
+<li><a href="dashboards.html">7.7. Dashboards</a>
+</li>
+</ul>
 </li>
 <li><a href="auth.html">8. Authentication &amp; Authorization</a>
 </li>
@@ -322,21 +320,38 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="caddy-dns"><a class="anchor" href="#caddy-dns"></a><a class="link" href="#caddy-dns">3.7. Caddy - DNS Based</a></h3>
+<h3 id="entities"><a class="anchor" href="#entities"></a><a class="link" href="#entities">7.6. Entities</a></h3>
 <div class="paragraph">
-<p>Caddy seems to work without any special configuration, so a simple <code>Caddyfile</code> works like this;</p>
+<p>An entity is something that exists - a "thing", like a VM, or a Container is an entity. OliveTin allows you to then dynamically generate actions based around these entities.</p>
+</div>
+<div class="paragraph">
+<p>This is really useful if you want to generate wake on lan or poweroff actions for <code>server</code> entities, for example.</p>
+</div>
+<div class="paragraph">
+<p>A very popular use case that entities were designed for was for <code>container</code> entities - in a similar way you could generate <code>start</code>, <code>stop</code>, and <code>restart</code> container actions.</p>
+</div>
+<div class="paragraph">
+<p>Entities are just loaded fome files on disk, OliveTin will also watch these files for updates while OliveTin is running, and update entities.</p>
+</div>
+<div class="paragraph">
+<p>Entities can have properties defined in those files, and those can be used in your configuration as variables. For example; <code>container.status</code>, or <code>vm.hostname</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Caddyfile</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="nginx"><span class="k">http://olivetin.example.com</span> <span class="p">{</span>
-        <span class="kn">reverse_proxy</span> <span class="s">*</span> <span class="s">http://localhost:1337</span>
-<span class="err">}</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">entities</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/containers.yaml</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">container</span>
+
+  <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/servers.yaml</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">server</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Entity Actions can only be used on <a href="dashboards.html">Dashboards</a>.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="nginx-path.html">Nginx - Path based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="caddy-path.html">Caddy - Path based</a> →</p>
+<p>← Previous: <a href="confirmation.html">Confirmation argument</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="dashboards.html">Dashboards</a> →</p>
 </div>
 </div>
 <div id="footer">

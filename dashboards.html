@@ -157,7 +157,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="exec-on-demand" class="book toc2 toc-left">
+<body id="dashboards" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -170,30 +170,28 @@ div.admonitionblock td:first-child {
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
 </li>
 <li><a href="actions.html">4. Actions</a>
-<ul class="sectlevel2">
-<li><a href="create-your-first-action.html">4.1. Create your first action</a>
-</li>
-<li><a href="exec-on-demand.html"><span class="toc-current">4.2. Execute on demand</span></a>
-</li>
-<li><a href="exec-cron.html">4.3. Execute on schedule (cron)</a>
-</li>
-<li><a href="exec-startup.html">4.4. Execute on startup</a>
-</li>
-<li><a href="exec-webhook.html">4.5. Execute on webhook</a>
-</li>
-<li><a href="exec-file-created.html">4.6. Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">4.7. Execute on file changed</a>
-</li>
-<li><a href="after-completion.html">4.8. Execute after completion</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
 </li>
 <li><a href="examples.html">6. Action examples</a>
 </li>
 <li><a href="args.html">7. Arguments</a>
+<ul class="sectlevel2">
+<li><a href="_introduction_to_arguments.html">7.1. Introduction to Arguments</a>
+</li>
+<li><a href="_important_safety_warning.html">7.2. Important Safety Warning</a>
+</li>
+<li><a href="_textbox_arguments.html">7.3. Textbox arguments</a>
+</li>
+<li><a href="_dropdown_choice_arguments.html">7.4. Dropdown choice arguments</a>
+</li>
+<li><a href="confirmation.html">7.5. Confirmation argument</a>
+</li>
+<li><a href="entities.html">7.6. Entities</a>
+</li>
+<li><a href="dashboards.html"><span class="toc-current">7.7. Dashboards</span></a>
+</li>
+</ul>
 </li>
 <li><a href="auth.html">8. Authentication &amp; Authorization</a>
 </li>
@@ -208,13 +206,23 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="exec-on-demand"><a class="anchor" href="#exec-on-demand"></a><a class="link" href="#exec-on-demand">4.2. Execute on demand</a></h3>
+<h3 id="dashboards"><a class="anchor" href="#dashboards"></a><a class="link" href="#dashboards">7.7. Dashboards</a></h3>
 <div class="paragraph">
-<p>This is the default, meaning that the action shows up on a dashboard, and at the moment cannot be changed.</p>
+<p>OliveTin generates a default view of actions which is useful for simple OliveTin use cases - this is always called "Actions" and cannot be renamed. The Actions view also does not support entities, fieldsets or folders.</p>
+</div>
+<div class="paragraph">
+<p>If you want to start organizing OliveTin actions more effectively, then <strong>Dashboards</strong> are for you!</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre>dashboards:
+ - title: My Servers</pre>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="create-your-first-action.html">Create your first action</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-cron.html">Execute on schedule (cron)</a> →</p>
+<p>← Previous: <a href="entities.html">Entities</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="auth.html">Authentication &amp; Authorization</a> →</p>
 </div>
 </div>
 <div id="footer">
