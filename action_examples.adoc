@@ -54,6 +54,7 @@ After you have passed the socket into the container (and optionally installed do
 :container: Not really possible to do.
 include::actionHeader.adoc[]
 
+[source,yaml]
 ....
 actions:
   - title: Start httpd
@@ -64,6 +65,10 @@ actions:
 
   - title: Restart httpd
     shell: systemctl restart httpd
+
+  # https://docs.olivetin.app/action-ssh.html
+  - title: Restart httpd on server 1
+    shell: ssh root@server1 'service httpd restart'
 ....
 
 [#action-ping]
@@ -108,7 +113,7 @@ include::actionHeader.adoc[]
 
 Many users use OliveTin to easily execute Ansible playbooks, somtimes as a simple alternative to AWX.
 
-. Run an Ansible Playbook
+.Run an Ansible Playbook
 [source,yaml]
 ----
 actions:
