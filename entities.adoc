@@ -1,0 +1,25 @@
+[#entities]
+=== Entities
+
+An entity is something that exists - a "thing", like a VM, or a Container is an entity. OliveTin allows you to then dynamically generate actions based around these entities.
+
+This is really useful if you want to generate wake on lan or poweroff actions for `server` entities, for example.
+
+A very popular use case that entities were designed for was for `container` entities - in a similar way you could generate `start`, `stop`, and `restart` container actions.
+
+Entities are just loaded fome files on disk, OliveTin will also watch these files for updates while OliveTin is running, and update entities.
+
+Entities can have properties defined in those files, and those can be used in your configuration as variables. For example; `container.status`, or `vm.hostname`.
+
+[source,yaml]
+----
+entities:
+  - file: /etc/OliveTin/containers.yaml
+    name: container
+
+  - file: /etc/OliveTin/servers.yaml
+    name: server
+----
+
+Entity Actions can only be used on <<dashboards,Dashboards>>.
+

@@ -104,6 +104,10 @@ include::action_examples.adoc[]
 
 include::args.adoc[]
 
+include::entities.adoc[]
+
+include::dashboards.adoc[]
+
 include::authorization.adoc[]
 
 include::reference.adoc[]

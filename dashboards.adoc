@@ -1,0 +1,13 @@
+[#dashboards]
+=== Dashboards
+
+OliveTin generates a default view of actions which is useful for simple OliveTin use cases - this is always called "Actions" and cannot be renamed. The Actions view also does not support entities, fieldsets or folders.
+
+If you want to start organizing OliveTin actions more effectively, then **Dashboards** are for you!
+
+.`config.yaml`
+----
+dashboards:
+ - title: My Servers
+
+----
