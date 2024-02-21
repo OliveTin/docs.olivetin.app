@@ -1,5 +1,5 @@
 [#dashboards]
-=== Dashboards
+== Dashboards
 
 OliveTin generates a default view of actions which is useful for simple OliveTin use cases - this is always called "Actions" and cannot be renamed. The Actions view also does not support entities, fieldsets or folders.
 
