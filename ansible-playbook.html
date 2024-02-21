@@ -157,7 +157,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="auth-concepts" class="book toc2 toc-left">
+<body id="ansible-playbook" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -174,18 +174,24 @@ div.admonitionblock td:first-child {
 <li><a href="action-customisation.html">5. Action customisation</a>
 </li>
 <li><a href="examples.html">6. Action examples</a>
+<ul class="sectlevel2">
+<li><a href="action-container-control.html">6.1. Containers - start/stop</a>
+</li>
+<li><a href="action-service.html">6.2. Restart a systemd service</a>
+</li>
+<li><a href="action-ping.html">6.3. Ping an address</a>
+</li>
+<li><a href="action-ssh.html">6.4. SSH into another machine and run a command</a>
+</li>
+<li><a href="powershell.html">6.5. Powershell</a>
+</li>
+<li><a href="ansible-playbook.html"><span class="toc-current">6.6. Ansible Playbooks</span></a>
+</li>
+</ul>
 </li>
 <li><a href="args.html">7. Arguments</a>
 </li>
 <li><a href="auth.html">8. Authentication &amp; Authorization</a>
-<ul class="sectlevel2">
-<li><a href="auth-concepts.html"><span class="toc-current">8.1. Concepts</span></a>
-</li>
-<li><a href="trusted-header.html">8.2. Trusted Header Authorization</a>
-</li>
-<li><a href="jwt.html">8.3. JWT Authorization</a>
-</li>
-</ul>
 </li>
 <li><a href="_reference.html">9. Reference</a>
 </li>
@@ -198,38 +204,57 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="auth-concepts"><a class="anchor" href="#auth-concepts"></a><a class="link" href="#auth-concepts">8.1. Concepts</a></h3>
+<h3 id="ansible-playbook"><a class="anchor" href="#ansible-playbook"></a><a class="link" href="#ansible-playbook">6.6. Ansible Playbooks</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Installation type</th>
+<th class="tableblock halign-left valign-top">Difficulty to do this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running as a <strong>Systemd service</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install the `ansible` package in your <a href="container-dnf.html">OliveTin container</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_example_config_yaml_6"><a class="anchor" href="#_example_config_yaml_6"></a><a class="link" href="#_example_config_yaml_6">6.6.1. Example config.yaml</a></h4>
 <div class="paragraph">
-<p>OliveTin does not have any built-in code for doing <strong>Authentication</strong> (ie: entering a username and password), however it can do <strong>Authorization</strong> (ie: checking permissions of a user who logged in via another system, like single sign on).</p>
-</div>
-<div class="paragraph">
-<p>A popular way of deploying OliveTin is by users accessing it via another system, like a <a href="reverse-proxies.html">reverse proxy</a> (eg: Traefik) or a "homepage" app (eg: Organizr). Both of these are used to handle user authentication first, before users then access OliveTin. Permissions can then be applied inside OliveTin depending on who has logged in.</p>
-</div>
-<div class="paragraph">
-<p>The flow generally goes like this;</p>
+<p>Many users use OliveTin to easily execute Ansible playbooks, somtimes as a simple alternative to AWX.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User browses to a website like Organizr and logs in, which sets a JWT Cookie for apps.example.com.</p>
-</li>
-<li>
-<p>User browses to OliveTin.apps.example.com, and the cookie is sent to OliveTin.</p>
-</li>
-<li>
-<p>OliveTin verifies the JWT token given the signing secret, and picks up on the <code>name</code> and <code>group</code> fields from the JWT claim.</p>
-</li>
-<li>
-<p>OliveTin matches any relevant ACLs based on the claims.</p>
-</li>
-<li>
-<p>If any ACLs are not matched, then the defaultPermissions are used.</p>
+<p>Run an Ansible Playbook</p>
 </li>
 </ol>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre>actions:
+  - title: Run Ansible Playbook
+    icon: "&amp;#x1F1E6;"
+    shell: ansible-playbook -i /etc/hosts /root/myRepo/myPlaybook.yaml
+    timeout: 120</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You probably want to set the <a href="timeout.html">Timeouts</a> to more than the default 3 seconds.</p>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="auth.html">Authentication &amp; Authorization</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="trusted-header.html">Trusted Header Authorization</a> →</p>
+<p>← Previous: <a href="powershell.html">Powershell</a> | ↑ Up: <a href="examples.html">Action examples</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="args.html">Arguments</a> →</p>
 </div>
 </div>
 <div id="footer">
