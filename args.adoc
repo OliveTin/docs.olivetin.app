@@ -103,6 +103,7 @@ Then finally, when you execute this command, it would look something like this (
 
 image::images/args-choices-exec.png[]
 
+[#confirmation]
 === Confirmation argument
 
 The `confirmation` type argument is a special argument type, which simply disables the "Start" button until a checkbox is ticked. This can be useful if you have an action with no other arguments, but you want to prevent accidental button-clicks starting the action.
