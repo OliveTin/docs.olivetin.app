@@ -339,7 +339,7 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">entities</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/containers.yaml</span>
+  <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/containers.json</span>
     <span class="na">name</span><span class="pi">:</span> <span class="s">container</span>
 
   <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/servers.yaml</span>
@@ -349,6 +349,55 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>Entity Actions can only be used on <a href="dashboards.html">Dashboards</a>.</p>
 </div>
+<div class="sect3">
+<h4 id="_yaml_entity_files"><a class="anchor" href="#_yaml_entity_files"></a><a class="link" href="#_yaml_entity_files">7.6.1. YAML entity files</a></h4>
+<div class="paragraph">
+<p>YAML files are the default expected format, so you can use .yml, .yaml, or even .txt - as long as the file contains a valid yaml LIST, then it will be loaded.</p>
+</div>
+<div id="entities-yaml" class="listingblock">
+<div class="title"><code>/etc/OliveTin/servers.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="source"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+</pre></td><td class="code"><pre>server1:
+  state: started
+  hostname: server1.example.com
+  ip: 192.168.0.1
+server2:
+  state: started
+  hostname: server2.example.com
+  ip: 192.168.0.2
+server3:
+  state: stopped
+  hostname: server3.example.com
+  ip: 192.168.0.3
+</pre></td></tr></tbody></table></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="entities-json"><a class="anchor" href="#entities-json"></a><a class="link" href="#entities-json">7.6.2. JSON entity files</a></h4>
+<div class="paragraph">
+<p>JSON files are parsed as if each line is a single JSON object. This can be super helpful for getting a list of containers, for example; <code>docker ps -a --format=json &gt; /etc/OliveTin/containers.json</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>/etc/OliveTin/containers.json</code></div>
+<div class="content">
+<pre>{"Command":"\"/opt/entrypoint.sh\"","CreatedAt":"2024-02-08 15:27:42 +0000 GMT","ID":"4bafe6f9f956","Image":"fedora","Labels":"?","LocalVolumes":"0","Mounts":"","Names":"media-indexing-container","Networks":"bridge","Ports":"","RunningFor":"13 days ago","Size":"0B","State":"exited","Status":"Exited (128) 13 days ago"}
+{"Command":"\"/opt/entrypoint.sh\"","CreatedAt":"2023-12-17 20:58:03 +0000 GMT","ID":"d25f37c49c35","Image":"fedora","Labels":"?","LocalVolumes":"0","Mounts":"","Names":"media-playback-container","Networks":"bridge","Ports":"","RunningFor":"27 days ago","Size":"0B","State":"exited","Status":"Exited (137) 27 days ago"}</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="confirmation.html">Confirmation argument</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="dashboards.html">Dashboards</a> →</p>
@@ -356,7 +405,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-21 17:01:01 UTC
+Last updated 2024-02-21 17:12:29 UTC
 </div>
 </div>
 </body>
