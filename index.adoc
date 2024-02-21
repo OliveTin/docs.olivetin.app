@@ -110,8 +110,9 @@ include::dashboards.adoc[]
 
 include::authorization.adoc[]
 
-include::reference.adoc[]
+include::solutions.adoc[]
 
+include::reference.adoc[]
 
 include::troubleshooting.adoc[]
 
