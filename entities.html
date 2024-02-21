@@ -290,37 +290,32 @@ pre.rouge .gs {
 <li><a href="examples.html">6. Action examples</a>
 </li>
 <li><a href="args.html">7. Arguments</a>
+</li>
+<li><a href="entities.html"><span class="toc-current">8. Entities</span></a>
 <ul class="sectlevel2">
-<li><a href="_introduction_to_arguments.html">7.1. Introduction to Arguments</a>
+<li><a href="_yaml_entity_files.html">8.1. YAML entity files</a>
 </li>
-<li><a href="_important_safety_warning.html">7.2. Important Safety Warning</a>
-</li>
-<li><a href="_textbox_arguments.html">7.3. Textbox arguments</a>
-</li>
-<li><a href="_dropdown_choice_arguments.html">7.4. Dropdown choice arguments</a>
-</li>
-<li><a href="confirmation.html">7.5. Confirmation argument</a>
-</li>
-<li><a href="entities.html"><span class="toc-current">7.6. Entities</span></a>
-</li>
-<li><a href="dashboards.html">7.7. Dashboards</a>
+<li><a href="entities-json.html">8.2. JSON entity files</a>
 </li>
 </ul>
 </li>
-<li><a href="auth.html">8. Authentication &amp; Authorization</a>
+<li><a href="dashboards.html">9. Dashboards</a>
 </li>
-<li><a href="_reference.html">9. Reference</a>
+<li><a href="auth.html">10. Authentication &amp; Authorization</a>
 </li>
-<li><a href="troubleshooting.html">10. Support &amp; Troubleshooting</a>
+<li><a href="_reference.html">11. Reference</a>
 </li>
-<li><a href="api.html">11. API</a>
+<li><a href="troubleshooting.html">12. Support &amp; Troubleshooting</a>
+</li>
+<li><a href="api.html">13. API</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="entities"><a class="anchor" href="#entities"></a><a class="link" href="#entities">7.6. Entities</a></h3>
+<div class="sect1">
+<h2 id="entities"><a class="anchor" href="#entities"></a><a class="link" href="#entities">8. Entities</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>An entity is something that exists - a "thing", like a VM, or a Container is an entity. OliveTin allows you to then dynamically generate actions based around these entities.</p>
 </div>
@@ -349,63 +344,25 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>Entity Actions can only be used on <a href="dashboards.html">Dashboards</a>.</p>
 </div>
-<div class="sect3">
-<h4 id="_yaml_entity_files"><a class="anchor" href="#_yaml_entity_files"></a><a class="link" href="#_yaml_entity_files">7.6.1. YAML entity files</a></h4>
-<div class="paragraph">
-<p>YAML files are the default expected format, so you can use .yml, .yaml, or even .txt - as long as the file contains a valid yaml LIST, then it will be loaded.</p>
-</div>
-<div id="entities-yaml" class="listingblock">
-<div class="title"><code>/etc/OliveTin/servers.yaml</code></div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="source"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-</pre></td><td class="code"><pre>server1:
-  state: started
-  hostname: server1.example.com
-  ip: 192.168.0.1
-server2:
-  state: started
-  hostname: server2.example.com
-  ip: 192.168.0.2
-server3:
-  state: stopped
-  hostname: server3.example.com
-  ip: 192.168.0.3
-</pre></td></tr></tbody></table></code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="entities-json"><a class="anchor" href="#entities-json"></a><a class="link" href="#entities-json">7.6.2. JSON entity files</a></h4>
-<div class="paragraph">
-<p>JSON files are parsed as if each line is a single JSON object. This can be super helpful for getting a list of containers, for example; <code>docker ps -a --format=json &gt; /etc/OliveTin/containers.json</code>.</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>/etc/OliveTin/containers.json</code></div>
-<div class="content">
-<pre>{"Command":"\"/opt/entrypoint.sh\"","CreatedAt":"2024-02-08 15:27:42 +0000 GMT","ID":"4bafe6f9f956","Image":"fedora","Labels":"?","LocalVolumes":"0","Mounts":"","Names":"media-indexing-container","Networks":"bridge","Ports":"","RunningFor":"13 days ago","Size":"0B","State":"exited","Status":"Exited (128) 13 days ago"}
-{"Command":"\"/opt/entrypoint.sh\"","CreatedAt":"2023-12-17 20:58:03 +0000 GMT","ID":"d25f37c49c35","Image":"fedora","Labels":"?","LocalVolumes":"0","Mounts":"","Names":"media-playback-container","Networks":"bridge","Ports":"","RunningFor":"27 days ago","Size":"0B","State":"exited","Status":"Exited (137) 27 days ago"}</pre>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="_yaml_entity_files.html">YAML entity files</a></p>
+</li>
+<li>
+<p><a href="entities-json.html">JSON entity files</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="confirmation.html">Confirmation argument</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="dashboards.html">Dashboards</a> →</p>
+<p>← Previous: <a href="confirmation.html">Confirmation argument</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="_yaml_entity_files.html">YAML entity files</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-21 17:12:29 UTC
+Last updated 2024-02-21 17:20:06 UTC
 </div>
 </div>
 </body>

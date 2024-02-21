@@ -271,7 +271,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="apache-dns" class="book toc2 toc-left">
+<body id="_yaml_entity_files" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -282,24 +282,6 @@ pre.rouge .gs {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">3.1. Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-dns.html"><span class="toc-current">3.2. Apache HTTPD - DNS based</span></a>
-</li>
-<li><a href="haproxy-dns.html">3.3. Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html">3.4. Traefik + Docker Compose</a>
-</li>
-<li><a href="nginx-dns.html">3.5. Nginx - DNS based</a>
-</li>
-<li><a href="nginx-path.html">3.6. Nginx - Path based</a>
-</li>
-<li><a href="caddy-dns.html">3.7. Caddy - DNS Based</a>
-</li>
-<li><a href="caddy-path.html">3.8. Caddy - Path based</a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">4. Actions</a>
 </li>
@@ -310,6 +292,12 @@ pre.rouge .gs {
 <li><a href="args.html">7. Arguments</a>
 </li>
 <li><a href="entities.html">8. Entities</a>
+<ul class="sectlevel2">
+<li><a href="_yaml_entity_files.html"><span class="toc-current">8.1. YAML entity files</span></a>
+</li>
+<li><a href="entities-json.html">8.2. JSON entity files</a>
+</li>
+</ul>
 </li>
 <li><a href="dashboards.html">9. Dashboards</a>
 </li>
@@ -326,30 +314,43 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="apache-dns"><a class="anchor" href="#apache-dns"></a><a class="link" href="#apache-dns">3.2. Apache HTTPD - DNS based</a></h3>
+<h3 id="_yaml_entity_files"><a class="anchor" href="#_yaml_entity_files"></a><a class="link" href="#_yaml_entity_files">8.1. YAML entity files</a></h3>
 <div class="paragraph">
-<p>This is an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337.</p>
+<p>YAML files are the default expected format, so you can use .yml, .yaml, or even .txt - as long as the file contains a valid yaml LIST, then it will be loaded.</p>
 </div>
-<div class="listingblock">
-<div class="title">/etc/httpd/conf.d/OliveTin.conf</div>
+<div id="entities-yaml" class="listingblock">
+<div class="title"><code>/etc/OliveTin/servers.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="apache"><span class="p">&lt;</span><span class="nl">VirtualHost</span><span class="sr"> *:80</span><span class="p">&gt;
-</span><span class="nc">ServerName</span> olivetin.example.com
-<span class="nc">ProxyPass</span> / http://localhost:1337/
-<span class="nc">ProxyPassReverse</span> / http://localhost:1337/
-
-<span class="nc">RewriteEngine</span> <span class="ss">On</span>
-<span class="nc">RewriteCond</span> %{REQUEST_URI} ^/websocket
-<span class="nc">RewriteRule</span> /(.) ws://localhost:1337/websocket [P,L]
-<span class="p">&lt;/</span><span class="nl">VirtualHost</span><span class="p">&gt;</span></code></pre>
+<pre class="rouge highlight"><code data-lang="source"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+</pre></td><td class="code"><pre>server1:
+  state: started
+  hostname: server1.example.com
+  ip: 192.168.0.1
+server2:
+  state: started
+  hostname: server2.example.com
+  ip: 192.168.0.2
+server3:
+  state: stopped
+  hostname: server3.example.com
+  ip: 192.168.0.3
+</pre></td></tr></tbody></table></code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Note, you virtual host should <strong>not</strong> include a DocumentRoot directive - httpd is just proxying OliveTin, not serving it&#8217;s actual pages.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="proxy-guide.html">Reverse Proxy general guide</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="haproxy-dns.html">Haproxy - DNS based</a> →</p>
+<p>↑ Up: <a href="entities.html">Entities</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="entities-json.html">JSON entity files</a> →</p>
 </div>
 </div>
 <div id="footer">
