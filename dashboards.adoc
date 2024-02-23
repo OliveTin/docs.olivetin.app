@@ -5,6 +5,8 @@ OliveTin generates a default view of actions which is useful for simple OliveTin
 
 If you want to start organizing OliveTin actions more effectively, then **Dashboards** are for you!
 
+image::images/dashboard.png[]
+
 .`config.yaml`
 ----
 dashboards:
