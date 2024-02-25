@@ -161,6 +161,7 @@ When running shellAfterCompleted, you *cannot* use argument values - they are no
 You can only use a single `shellAfterCompleted`, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.
 
 [#triggers]
+=== Triggers
 
 Sometimes you want to trigger another action after the first one completes. This is mostly useful for updating hidden actions that update entity files, without having to run those updates on a cron job every 10 seconds!
 
