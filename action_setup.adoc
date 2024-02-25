@@ -159,3 +159,25 @@ actions:
 When running shellAfterCompleted, you *cannot* use argument values - they are not passed to the command. However two special arguments are defined as shown above - `exitCode` and `stdout` from the previous `shell` command. 
 
 You can only use a single `shellAfterCompleted`, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.
+
+[#triggers]
+
+Sometimes you want to trigger another action after the first one completes. This is mostly useful for updating hidden actions that update entity files, without having to run those updates on a cron job every 10 seconds!
+
+[source,yaml]
+----
+entities:
+  - file: /etc/OliveTin/entities/containers.json
+    name: container
+
+actions:
+  - title: stop {{ container.Names }}
+    shell: docker stop {{ container.Names}}
+    entity: container
+    trigger: update containers
+
+  - title: update containers
+    shell: docker ps -a --format=json > /etc/OliveTin/entities/containers.json
+    hidden: true
+----
+
