@@ -271,7 +271,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="exec-cron" class="book toc2 toc-left">
+<body id="triggers" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -289,7 +289,7 @@ pre.rouge .gs {
 </li>
 <li><a href="exec-on-demand.html">4.2. Execute on demand</a>
 </li>
-<li><a href="exec-cron.html"><span class="toc-current">4.3. Execute on schedule (cron)</span></a>
+<li><a href="exec-cron.html">4.3. Execute on schedule (cron)</a>
 </li>
 <li><a href="exec-startup.html">4.4. Execute on startup</a>
 </li>
@@ -301,7 +301,7 @@ pre.rouge .gs {
 </li>
 <li><a href="after-completion.html">4.8. Execute after completion</a>
 </li>
-<li><a href="triggers.html">4.9. Triggers</a>
+<li><a href="triggers.html"><span class="toc-current">4.9. Triggers</span></a>
 </li>
 </ul>
 </li>
@@ -330,52 +330,30 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="exec-cron"><a class="anchor" href="#exec-cron"></a><a class="link" href="#exec-cron">4.3. Execute on schedule (cron)</a></h3>
+<h3 id="triggers"><a class="anchor" href="#triggers"></a><a class="link" href="#triggers">4.9. Triggers</a></h3>
 <div class="paragraph">
-<p>OliveTin can execute actions on a schedule, and uses a cron format for configuration.</p>
+<p>Sometimes you want to trigger another action after the first one completes. This is mostly useful for updating hidden actions that update entity files, without having to run those updates on a cron job every 10 seconds!</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Say hello</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Hello!"</span>
-    <span class="na">execOnCron</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">@hourly"</span>
-
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Say goodbye</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Say Goodbye"</span>
-    <span class="na">execOnCron</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">*/5</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span> <span class="c1"># Every 5 minutes</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This is a fantastic website: <a href="https://cron.help/" class="bare">https://cron.help/</a></p>
-</div>
-<div class="sect3">
-<h4 id="_support_for_seconds_in_cron"><a class="anchor" href="#_support_for_seconds_in_cron"></a><a class="link" href="#_support_for_seconds_in_cron">4.3.1. Support for seconds in cron</a></h4>
-<div class="paragraph">
-<p>The default cron format for OliveTin supports the Unix/Linux format - 5 fields, with no support for seconds. This is by far the most popular format that most people are used to.</p>
-</div>
-<div class="paragraph">
-<p>If you need per-second resolution for your actions, this can be enabled in your config - meaning that your cronlines will support 6 columns. The first "new" column is seconds. For example, to execute <code>date</code> every 5 seconds;</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">cronSupportForSeconds</span><span class="pi">:</span> <span class="kc">true</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">entities</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/entities/containers.json</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">container</span>
 
 <span class="na">actions</span><span class="pi">:</span>
-  <span class="na">title</span><span class="pi">:</span> <span class="s">Execute every 5 seconds</span>
-  <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
-  <span class="na">execOnCron</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s2">"</span><span class="s">*/5</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span></code></pre>
-</div>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">stop {{ container.Names }}</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">docker stop {{ container.Names}}</span>
+    <span class="na">entity</span><span class="pi">:</span> <span class="s">container</span>
+    <span class="na">trigger</span><span class="pi">:</span> <span class="s">update containers</span>
+
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">update containers</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">docker ps -a --format=json &gt; /etc/OliveTin/entities/containers.json</span>
+    <span class="na">hidden</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="exec-on-demand.html">Execute on demand</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-startup.html">Execute on startup</a> →</p>
+<p>← Previous: <a href="after-completion.html">Execute after completion</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-customisation.html">Action customisation</a> →</p>
 </div>
 </div>
 <div id="footer">

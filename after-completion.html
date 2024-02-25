@@ -301,6 +301,8 @@ pre.rouge .gs {
 </li>
 <li><a href="after-completion.html"><span class="toc-current">4.8. Execute after completion</span></a>
 </li>
+<li><a href="triggers.html">4.9. Triggers</a>
+</li>
 </ul>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
@@ -347,34 +349,14 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>You can only use a single <code>shellAfterCompleted</code>, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.</p>
 </div>
-<div id="triggers" class="paragraph">
-<p>Sometimes you want to trigger another action after the first one completes. This is mostly useful for updating hidden actions that update entity files, without having to run those updates on a cron job every 10 seconds!</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">entities</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/entities/containers.json</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">container</span>
-
-<span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">stop {{ container.Names }}</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">docker stop {{ container.Names}}</span>
-    <span class="na">entity</span><span class="pi">:</span> <span class="s">container</span>
-    <span class="na">trigger</span><span class="pi">:</span> <span class="s">update containers</span>
-
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">update containers</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">docker ps -a --format=json &gt; /etc/OliveTin/entities/containers.json</span>
-    <span class="na">hidden</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
-</div>
-</div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="exec-file-changed.html">Execute on file changed</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-customisation.html">Action customisation</a> →</p>
+<p>← Previous: <a href="exec-file-changed.html">Execute on file changed</a> | ↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="triggers.html">Triggers</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-25 00:37:47 UTC
+Last updated 2024-02-25 00:40:10 UTC
 </div>
 </div>
 </body>
