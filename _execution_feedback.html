@@ -271,7 +271,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_yaml_entity_files" class="book toc2 toc-left">
+<body id="_execution_feedback" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -286,6 +286,18 @@ pre.rouge .gs {
 <li><a href="actions.html">4. Actions</a>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
+<ul class="sectlevel2">
+<li><a href="_execution_feedback.html"><span class="toc-current">5.1. Execution Feedback</span></a>
+</li>
+<li><a href="icons.html">5.2. Icons</a>
+</li>
+<li><a href="timeout.html">5.3. Timeouts</a>
+</li>
+<li><a href="_run_as_different_users.html">5.4. Run as different users</a>
+</li>
+<li><a href="concurrency.html">5.5. Concurrency</a>
+</li>
+</ul>
 </li>
 <li><a href="examples.html">6. Action examples</a>
 </li>
@@ -294,12 +306,6 @@ pre.rouge .gs {
 <li><a href="dashboards.html">8. Dashboards</a>
 </li>
 <li><a href="entities.html">9. Entities</a>
-<ul class="sectlevel2">
-<li><a href="_yaml_entity_files.html"><span class="toc-current">9.1. YAML entity files</span></a>
-</li>
-<li><a href="entities-json.html">9.2. JSON entity files</a>
-</li>
-</ul>
 </li>
 <li><a href="auth.html">10. Authentication &amp; Authorization</a>
 </li>
@@ -316,48 +322,87 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_yaml_entity_files"><a class="anchor" href="#_yaml_entity_files"></a><a class="link" href="#_yaml_entity_files">9.1. YAML entity files</a></h3>
+<h3 id="_execution_feedback"><a class="anchor" href="#_execution_feedback"></a><a class="link" href="#_execution_feedback">5.1. Execution Feedback</a></h3>
 <div class="paragraph">
-<p>YAML files are the default expected format, so you can use .yml, .yaml, or even .txt - as long as the file contains a valid yaml LIST, then it will be loaded.</p>
+<p>OliveTin now has several options to control "feedback" when actions are started. This can be controlled on
+a per-action basis, using the <code>popupOnStart</code> configuration option.</p>
 </div>
-<div id="entities-yaml" class="listingblock">
-<div class="title"><code>/etc/OliveTin/servers.yaml</code></div>
+<div class="sect3">
+<h4 id="_big_flashy_buttons"><a class="anchor" href="#_big_flashy_buttons"></a><a class="link" href="#_big_flashy_buttons">5.1.1. Big Flashy Buttons</a></h4>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="source"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-</pre></td><td class="code"><pre>server1:
-  state: started
-  hostname: server1.example.com
-  ip: 192.168.0.1
-server2:
-  state: started
-  hostname: server2.example.com
-  ip: 192.168.0.2
-server3:
-  state: stopped
-  hostname: server3.example.com
-  ip: 192.168.0.3
-</pre></td></tr></tbody></table></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Ping the Internet</span>
+    <span class="na">popupOnStart</span><span class="pi">:</span> <span class="s">default</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will also be the option that is used if no other values match.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/flashyButton.png" alt="flashyButton">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_execution_dialog_output_only"><a class="anchor" href="#_execution_dialog_output_only"></a><a class="link" href="#_execution_dialog_output_only">5.1.2. Execution Dialog (Output Only)</a></h4>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Check disk space</span>
+    <span class="na">popupOnStart</span><span class="pi">:</span> <span class="s">execution-dialog-output-only</span></code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/popupOutputOnly.png" alt="popupOutputOnly">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_execution_dialog"><a class="anchor" href="#_execution_dialog"></a><a class="link" href="#_execution_dialog">5.1.3. Execution Dialog</a></h4>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Check dmesg logs</span>
+    <span class="na">popupOnStart</span><span class="pi">:</span> <span class="s">execution-dialog</span></code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/executionDialog.png" alt="executionDialog">
+</div>
+<div class="title">Figure 3. Example of <code>popupOnStart: execution-dialog</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_execution_buttons"><a class="anchor" href="#_execution_buttons"></a><a class="link" href="#_execution_buttons">5.1.4. Execution Buttons</a></h4>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">date</span>
+    <span class="na">popupOnStart</span><span class="pi">:</span> <span class="s">execution-buttons</span></code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/executionButtons.png" alt="executionButtons">
+</div>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="entities.html">Entities</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="entities-json.html">JSON entity files</a> →</p>
+<p>↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="icons.html">Icons</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-25 00:40:10 UTC
+Last updated 2024-02-26 10:21:51 UTC
 </div>
 </div>
 </body>

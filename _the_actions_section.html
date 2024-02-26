@@ -157,37 +157,13 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="install-helm" class="book toc2 toc-left">
+<body id="_the_actions_section" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">1. Installation Guide</a>
-<ul class="sectlevel2">
-<li><a href="install-container-vs-service.html">1.1. Containers vs Services</a>
-</li>
-<li><a href="choose-package.html">1.2. Which download do I need?</a>
-</li>
-<li><a href="install-linuxpackage.html">1.3. Linux package install (.rpm/.deb)</a>
-</li>
-<li><a href="install-fedora.html">1.4. Fedora Linux (dnf)</a>
-</li>
-<li><a href="install-alpine.html">1.5. Alpine Linux</a>
-</li>
-<li><a href="install-archbtw.html">1.6. Arch Linux (AUR)</a>
-</li>
-<li><a href="install-container.html">1.7. Container install (podman/docker)</a>
-</li>
-<li><a href="install-compose.html">1.8. Docker Compose install</a>
-</li>
-<li><a href="install-helm.html"><span class="toc-current">1.9. Helm on Kubernetes Install</span></a>
-</li>
-<li><a href="install-k8s.html">1.10. Kubernetes install (manually)</a>
-</li>
-<li><a href="install-targz.html">1.11. .tar.gz Install (manual)</a>
-</li>
-</ul>
 </li>
 <li><a href="config.html">2. Configuration</a>
 </li>
@@ -202,6 +178,10 @@ div.admonitionblock td:first-child {
 <li><a href="args.html">7. Arguments</a>
 </li>
 <li><a href="dashboards.html">8. Dashboards</a>
+<ul class="sectlevel2">
+<li><a href="_the_actions_section.html"><span class="toc-current">8.1. The "actions" section</span></a>
+</li>
+</ul>
 </li>
 <li><a href="entities.html">9. Entities</a>
 </li>
@@ -220,55 +200,19 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-helm"><a class="anchor" href="#install-helm"></a><a class="link" href="#install-helm">1.9. Helm on Kubernetes Install</a></h3>
+<h3 id="_the_actions_section"><a class="anchor" href="#_the_actions_section"></a><a class="link" href="#_the_actions_section">8.1. The "actions" section</a></h3>
 <div class="paragraph">
-<p>Helm makes installing OliveTin on Kubernetes very easy, the official chart is hosted on Artifact Hub.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://artifacthub.io/packages/search?repo=olivetin"><span class="image"><img src="https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/olivetin" alt="Artifact Hub"></span></a></p>
-</div>
-<div class="sect3">
-<h4 id="_quickstart"><a class="anchor" href="#_quickstart"></a><a class="link" href="#_quickstart">1.9.1. Quickstart</a></h4>
-<div class="listingblock">
-<div class="content">
-<pre>user@host: helm repo add olivetin https://olivetin.github.io/OliveTin-HelmChart/
-user@host: helm install olivetin olivetin/olivetin</pre>
-</div>
+<p>To make Olivetin easy to use, it generates a default "Actions" section for you, as many
+people don&#8217;t want the hassle of having to configure dashboards. This is fine, you absolutely
+do not need a <code>dashboards:</code> section in your <code>config.yaml</code> at all if you don&#8217;t want it.</p>
 </div>
 <div class="paragraph">
-<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
-the web interface.</p>
-</div>
-<div class="paragraph">
-<p>If you see the OliveTin page popup in your browser, you can jump to the
-<a href="config.html">configuration section</a> as the next step.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_included_templates"><a class="anchor" href="#_included_templates"></a><a class="link" href="#_included_templates">1.9.2. Included templates</a></h4>
-<div class="paragraph">
-<p>You can view the raw templates here: <a href="https://github.com/OliveTin/OliveTin-HelmChart/tree/main/templates" class="bare">https://github.com/OliveTin/OliveTin-HelmChart/tree/main/templates</a></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Deployment</p>
-</li>
-<li>
-<p>ConfigMap</p>
-</li>
-<li>
-<p>Service</p>
-</li>
-<li>
-<p>Ingress (optional)</p>
-</li>
-</ul>
-</div>
+<p>However, some people prefer to put every action onto a Dashboard. If you so this, OliveTin
+will hide the <code>Actions</code> view for you on the sidebar.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="install-compose.html">Docker Compose install</a> | ↑ Up: <a href="installation.html">Installation Guide</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-k8s.html">Kubernetes install (manually)</a> →</p>
+<p>↑ Up: <a href="dashboards.html">Dashboards</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="entities.html">Entities</a> →</p>
 </div>
 </div>
 <div id="footer">

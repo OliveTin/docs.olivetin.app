@@ -271,7 +271,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="log-levels" class="book toc2 toc-left">
+<body id="entities-yaml" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -280,16 +280,6 @@ pre.rouge .gs {
 <li><a href="installation.html">1. Installation Guide</a>
 </li>
 <li><a href="config.html">2. Configuration</a>
-<ul class="sectlevel2">
-<li><a href="toggle-webui.html">2.1. Show/Hide web UI elements</a>
-</li>
-<li><a href="log-levels.html"><span class="toc-current">2.2. Log Levels</span></a>
-</li>
-<li><a href="ports.html">2.3. Ports</a>
-</li>
-<li><a href="timezone.html">2.4. Timezone</a>
-</li>
-</ul>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
 </li>
@@ -304,6 +294,12 @@ pre.rouge .gs {
 <li><a href="dashboards.html">8. Dashboards</a>
 </li>
 <li><a href="entities.html">9. Entities</a>
+<ul class="sectlevel2">
+<li><a href="entities-yaml.html"><span class="toc-current">9.1. YAML entity files</span></a>
+</li>
+<li><a href="entities-json.html">9.2. JSON entity files</a>
+</li>
+</ul>
 </li>
 <li><a href="auth.html">10. Authentication &amp; Authorization</a>
 </li>
@@ -320,52 +316,30 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="log-levels"><a class="anchor" href="#log-levels"></a><a class="link" href="#log-levels">2.2. Log Levels</a></h3>
+<h3 id="entities-yaml"><a class="anchor" href="#entities-yaml"></a><a class="link" href="#entities-yaml">9.1. YAML entity files</a></h3>
 <div class="paragraph">
-<p>OliveTin supports a few different log levels. The default logLevel is <code>INFO</code>.</p>
-</div>
-<div class="paragraph">
-<p>You can set a <code>logLevel</code> in config.yaml like this;</p>
+<p>YAML files are the default expected format, so you can use .yml, .yaml, or even .txt - as long as the file contains a valid yaml LIST, then it will be loaded.</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
+<div class="title"><code>/etc/OliveTin/servers.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">logLevel</span><span class="pi">:</span> <span class="s2">"</span><span class="s">INFO"</span>
-
-<span class="na">actions</span><span class="pi">:</span>
-    <span class="s">....</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The supported log levels are;</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>DEBUG</code> - Every possible log message will be shown. This will use a lot of disk space and is not recommended unless you are a developer / like reading code.</p>
-</li>
-<li>
-<p><code>ERROR</code> - OliveTin rarely uses the <code>ERROR</code> log level.</p>
-</li>
-<li>
-<p><code>WARN</code> - Very few messages, only warnings are shown.</p>
-</li>
-<li>
-<p><code>INFO</code> - The defualt log level.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>You can change the <code>logLevel</code> while OliveTin is running, and it should update as soon as you save your config.yaml. You will always get a log message like this;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">INFO Setting log level to warning</code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">server1</span><span class="pi">:</span>
+  <span class="na">state</span><span class="pi">:</span> <span class="s">started</span>
+  <span class="na">hostname</span><span class="pi">:</span> <span class="s">server1.example.com</span>
+  <span class="na">ip</span><span class="pi">:</span> <span class="s">192.168.0.1</span>
+<span class="na">server2</span><span class="pi">:</span>
+  <span class="na">state</span><span class="pi">:</span> <span class="s">started</span>
+  <span class="na">hostname</span><span class="pi">:</span> <span class="s">server2.example.com</span>
+  <span class="na">ip</span><span class="pi">:</span> <span class="s">192.168.0.2</span>
+<span class="na">server3</span><span class="pi">:</span>
+  <span class="na">state</span><span class="pi">:</span> <span class="s">stopped</span>
+  <span class="na">hostname</span><span class="pi">:</span> <span class="s">server3.example.com</span>
+  <span class="na">ip</span><span class="pi">:</span> <span class="s">192.168.0.3</span></code></pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="toggle-webui.html">Show/Hide web UI elements</a> | ↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="ports.html">Ports</a> →</p>
+<p>↑ Up: <a href="entities.html">Entities</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="entities-json.html">JSON entity files</a> →</p>
 </div>
 </div>
 <div id="footer">
