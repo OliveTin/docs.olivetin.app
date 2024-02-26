@@ -23,12 +23,13 @@ entities:
 
 Entity Actions can only be used on <<dashboards,Dashboards>>.
 
+[#entities-yaml]
 === YAML entity files
 
 YAML files are the default expected format, so you can use .yml, .yaml, or even .txt - as long as the file contains a valid yaml LIST, then it will be loaded. 
 
 .`/etc/OliveTin/servers.yaml`
-[#entities-yaml,source,yaml]
+[source,yaml]
 ----
 server1:
   state: started
@@ -49,6 +50,7 @@ server3:
 
 JSON files are parsed as if each line is a single JSON object. This can be super helpful for getting a list of containers, for example; `docker ps -a --format=json > /etc/OliveTin/containers.json`.
 
+[source,json]
 .`/etc/OliveTin/containers.json`
 ----
 {"Command":"\"/opt/entrypoint.sh\"","CreatedAt":"2024-02-08 15:27:42 +0000 GMT","ID":"4bafe6f9f956","Image":"fedora","Labels":"?","LocalVolumes":"0","Mounts":"","Names":"media-indexing-container","Networks":"bridge","Ports":"","RunningFor":"13 days ago","Size":"0B","State":"exited","Status":"Exited (128) 13 days ago"}

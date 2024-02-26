@@ -7,9 +7,67 @@ If you want to start organizing OliveTin actions more effectively, then **Dashbo
 
 image::images/dashboard.png[]
 
+Example configuration
+
+[source,yaml]
 .`config.yaml`
 ----
 dashboards:
  - title: My Servers
 
+
+# Dashboards are a way of taking actions from the default "actions" view, and
+# organizing them into groups - either into folders, or fieldsets.
+#
+# The only way to properly use entities, are to use them with a `fieldset` on
+# a dashboard.
+dashboards:
+  # Top level items are dsahboards.
+  - title: My Servers
+    contents:
+      # On dashboards, all items need to be in a "fieldset". If you don't 
+      # specify a fieldset, actions will be assigned to a fieldset with a title
+      # called "default".
+      - title: All Servers
+        type: fieldset
+        contents:
+        # The contents of a dashboard will try to look for an action with a
+        # matching title IF the `contents: ` property is empty.
+        - title: Ping All Servers
+
+        # If you create an item with some "contents:", OliveTin will show that as
+        # directory.
+        - title: Hypervisors
+          contents:
+            - title: Ping hypervisor1
+            - title: Ping hypervisor2
+
+      # If you specify `type: fieldset` and some `contents`, it will show your
+      # actions grouped together without a folder.
+      - type: fieldset
+        entity: server
+        title: 'Server: {{ server.hostname }}'
+        contents:
+          # By default OliveTin will look for an action with a matching title
+          # and put it on the dashboard.
+          #
+          # Fieldsets  also support `type: display`, which can display arbitary
+          # text. This is useful for displaying things like a container's state.
+          - type: display
+            title: |
+              Hostname: <strong>{{ server.name }}</strong>
+              IP Address: <strong>{{ server.ip }}</strong>
+
+          # These are the actions (defined above) that we want on the dashboard.
+          - title: '{{ server.name }} Wake on Lan'
+          - title: '{{ server.name }} Power Off'
 ----
+
+=== The "actions" section
+
+To make Olivetin easy to use, it generates a default "Actions" section for you, as many 
+people don't want the hassle of having to configure dashboards. This is fine, you absolutely
+do not need a `dashboards:` section in your `config.yaml` at all if you don't want it.
+
+However, some people prefer to put every action onto a Dashboard. If you so this, OliveTin
+will hide the `Actions` view for you on the sidebar.
