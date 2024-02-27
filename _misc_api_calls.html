@@ -214,6 +214,22 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_example_api_call_readyz_healthcheck"><a class="anchor" href="#_example_api_call_readyz_healthcheck"></a><a class="link" href="#_example_api_call_readyz_healthcheck">14.3.2. Example API call: readyz Healthcheck</a></h4>
+<div class="paragraph">
+<p>This is useful for configuring healthchecks in docker containers, or on Kubernetes.</p>
+</div>
+<div class="listingblock">
+<div class="title">curl</div>
+<div class="content">
+<pre>user@host: curl http://olivetinServer:1337/api/readyz
+{"status": "ok"}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The response will always be "status: ok" to indicate that the API is up, or it will timeout.</p>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="api-start-action.html">Starting Actions from the API</a> | ↑ Up: <a href="api.html">API</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a></p>
@@ -221,7 +237,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-27 11:01:42 UTC
+Last updated 2024-02-27 11:06:24 UTC
 </div>
 </div>
 </body>
