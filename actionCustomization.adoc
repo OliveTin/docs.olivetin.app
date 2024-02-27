@@ -51,7 +51,7 @@ image::images/executionDialog.png[]
 ----
 actions:
   - title: date
-    popupOnStart: execution-buttons
+    popupOnStart: execution-button
 ----
 
 image::images/executionButtons.png[]
