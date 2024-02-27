@@ -271,7 +271,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="nginx-dns" class="book toc2 toc-left">
+<body id="action-ids" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -282,28 +282,24 @@ pre.rouge .gs {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">3.1. Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-dns.html">3.2. Apache HTTPD - DNS based</a>
-</li>
-<li><a href="haproxy-dns.html">3.3. Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html">3.4. Traefik + Docker Compose</a>
-</li>
-<li><a href="nginx-dns.html"><span class="toc-current">3.5. Nginx - DNS based</span></a>
-</li>
-<li><a href="nginx-path.html">3.6. Nginx - Path based</a>
-</li>
-<li><a href="caddy-dns.html">3.7. Caddy - DNS Based</a>
-</li>
-<li><a href="caddy-path.html">3.8. Caddy - Path based</a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">4. Actions</a>
 </li>
 <li><a href="action-customisation.html">5. Action customisation</a>
+<ul class="sectlevel2">
+<li><a href="_execution_feedback.html">5.1. Execution Feedback</a>
+</li>
+<li><a href="icons.html">5.2. Icons</a>
+</li>
+<li><a href="timeout.html">5.3. Timeouts</a>
+</li>
+<li><a href="_run_as_different_users.html">5.4. Run as different users</a>
+</li>
+<li><a href="concurrency.html">5.5. Concurrency</a>
+</li>
+<li><a href="action-ids.html"><span class="toc-current">5.6. IDs</span></a>
+</li>
+</ul>
 </li>
 <li><a href="examples.html">6. Action examples</a>
 </li>
@@ -328,40 +324,33 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="nginx-dns"><a class="anchor" href="#nginx-dns"></a><a class="link" href="#nginx-dns">3.5. Nginx - DNS based</a></h3>
+<h3 id="action-ids"><a class="anchor" href="#action-ids"></a><a class="link" href="#action-ids">5.6. IDs</a></h3>
 <div class="paragraph">
-<p>This is an example of DNS based proxying with Nginx.</p>
+<p>OliveTin actions do not require IDs to be specified in the <code>config.yaml</code>, as most users of OliveTin start off with the Web Interface. However, if you want to use OliveTin actions via the <a href="api.html">API</a>, then you will need to set your action IDs manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+OliveTin will automatically generate a new ID for actions every time it starts up, for actions that don&#8217;t have an <code>id:</code> property set.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
-<div class="title">/etc/nginx/cond.d/OliveTin.conf</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
-
-    <span class="kn">ssl_certificate</span> <span class="s">"/etc/nginx/conf.d/server.crt"</span><span class="p">;</span>
-    <span class="kn">ssl_certificate_key</span> <span class="s">"/etc/nginx/conf.d/server.key"</span><span class="p">;</span>
-
-    <span class="kn">access_log</span>  <span class="n">/var/log/nginx/ot.access.log</span>  <span class="s">main</span><span class="p">;</span>
-    <span class="kn">error_log</span> <span class="n">/var/log/nginx/ot.error.log</span> <span class="s">notice</span><span class="p">;</span>
-
-    <span class="kn">server_name</span> <span class="s">olivetin.example.com</span><span class="p">;</span>
-
-    <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
-        <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/</span><span class="p">;</span>
-        <span class="kn">proxy_redirect</span> <span class="s">http://localhost:1337/</span> <span class="s">http://localhost/OliveTin/</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kn">location</span> <span class="n">/websocket</span> <span class="p">{</span>
-        <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="s">"websocket"</span><span class="p">;</span>
-        <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">"upgrade"</span><span class="p">;</span>
-        <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/websocket</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Start the reactor</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="s">start_reactor</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">/bin/startReactor.sh</span></code></pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="traefik-docker-compose.html">Traefik + Docker Compose</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="nginx-path.html">Nginx - Path based</a> →</p>
+<p>← Previous: <a href="concurrency.html">Concurrency</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="examples.html">Action examples</a> →</p>
 </div>
 </div>
 <div id="footer">

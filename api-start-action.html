@@ -366,7 +366,7 @@ pre.rouge .gs {
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="api-request-idurl"><a class="anchor" href="#api-request-idurl"></a><a class="link" href="#api-request-idurl">14.2.1. Request type: ID in the URL</a></h4>
+<h4 id="api-request-idurl"><a class="anchor" href="#api-request-idurl"></a><a class="link" href="#api-request-idurl">14.2.1. Request type: Action ID in the URL</a></h4>
 <div class="paragraph">
 <p>Used by:</p>
 </div>
@@ -398,6 +398,24 @@ pre.rouge .gs {
 <p><code>StartActionAndWait</code></p>
 </li>
 </ul>
+</div>
+<div class="listingblock">
+<div class="title">OliveTin request object structure</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"actionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"uniqueTrackingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To find your Action ID, and understand how Action IDs work, see the <a href="#action-id">Action ID</a> documentation</p>
 </div>
 <div class="paragraph">
 <p>If you need more control over the execution, then the only other option is to submit a <code>OliveTin reqjest object</code>, which is just a very simple JSON structure like this;</p>
@@ -502,7 +520,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-27 11:06:24 UTC
+Last updated 2024-02-27 11:13:06 UTC
 </div>
 </div>
 </body>
