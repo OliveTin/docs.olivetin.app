@@ -81,6 +81,12 @@ Used by:
 * `StartAction`
 * `StartActionByGet`
 
+.Example Execution Tracking ID response
+[source,json]
+----
+{"executionTrackingId":"5bb4860c-bbd0-4bc9-a7d6-42240551500c"}
+----
+
 [#api-response-logentry]
 ==== Response type: LogEntry
 
@@ -88,6 +94,33 @@ Used by:
 
 * `StartActionAndWait`
 * `StartActionByGetAndWait`
+
+.Example log entry
+[source,json]
+----
+{
+    "logEntry": {
+        "datetimeStarted": "2024-02-27 14:14:49",
+        "actionTitle": "Restart httpd on server1",
+        "stdout": "",
+        "stderr": "",
+        "timedOut": true,
+        "exitCode": -1,
+        "user": "",
+        "userClass": "",
+        "actionIcon": "&#128260;",
+        "tags": [
+
+        ],
+        "executionTrackingId": "b04b1e90-d457-4158-b7dc-da9e81f21568",
+        "datetimeFinished": "2024-02-27 14:14:52",
+        "actionId": "restart_httpd",
+        "executionStarted": true,
+        "executionFinished": true,
+        "blocked": false
+    }
+}
+----
 
 [#api-eg-startIdUrl]
 ==== Example API call; Start an action by ID in the URL
