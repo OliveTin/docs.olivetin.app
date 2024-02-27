@@ -679,7 +679,8 @@
           }
         },
         "uniqueTrackingId": {
-          "type": "string"
+          "type": "string",
+          "description": "This is a unique random string that you get to specify. Popular choices are a UUID, or a unix timestamp. OliveTin may silently reject your tracking ID if it's a duplicate, and replace it with it's own generated UUID. It is useful so you can poll OliveTin with the ExecutionStatus call, or, so you can setup the UI to be ready to receive a notification that your action is done."
         }
       }
     },
