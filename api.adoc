@@ -65,9 +65,9 @@ If you need more control over the execution, then the only other option is to su
 [source,json]
 ----
 {
-    "actionName": "Generate cryptocurrency",
+    "actionId": "Generate cryptocurrency",
     "arguments": [],
-    "uuid": "my-tracking-id",
+    "uniqueTrackingId": "my-tracking-id",
 }
 ----
 
@@ -114,13 +114,13 @@ IDs are used by these API calls, as you probably want the interface to display a
 [source,bash]
 .curl
 ----
-user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionName": "Nuclear reactor shutdown"}'
+user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionId": "nuclear_reactor_shutdown"}'
 ----
 
 [source,powershell]
 .Powershell
 ----
-PS C:\Users\xcons> $json = '{"actionName": "Deploy attack Gnomes"}'
+PS C:\Users\xcons> $json = '{"actionId": "deploy_attack_gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
 ----
 
@@ -129,7 +129,7 @@ PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:
 [source,bash]
 .curl
 ----
-user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
+user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
 ----
 
 === Misc API calls
