@@ -6,8 +6,8 @@ There are several variants of this API call available which might be easier for 
 |======================================================
 | Function                     | HTTP Method | Request Type (How to select an action)             | Return Type 
 | `StartAction`                | POST        | <<api-request-obj,OliveTin request object>>        | Execution UUID
-| `StartActionByAlias`         | GET         | <<api-request-alias,Action title alias in URL>>    | Log Entry (waits for the action to finish)
+| `StartActionByGet`           | GET         | <<api-request-idurl,Action title alias in URL>>    | Log Entry (waits for the action to finish)
 | `StartActionAndWait`         | POST        | <<api-request-obj,OliveTin request object>>        | Execution UUID
-| `StartActionByAliasAndWait`  | GET         | <<api-request-alias,Action title alias in URL>>    | Log Entry (waits for the action to finish)
+| `StartActionByGetAndWait`    | GET         | <<api-request-idurl,Action title alias in URL>>    | Log Entry (waits for the action to finish)
 |======================================================
 
