@@ -56,7 +56,7 @@ If you need more control over the execution, then the only other option is to su
 
 More detailed examples can be seen below.
 
-==== Response type: Execution UUID
+==== Response type: Execution Tracking ID
 
 Used by:
 
