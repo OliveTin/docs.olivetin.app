@@ -16,6 +16,50 @@
     "application/json"
   ],
   "paths": {
+    "/api/DumpPublicActionMap": {
+      "get": {
+        "operationId": "OliveTinApiService_DumpPublicIdActionMap",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DumpPublicIdActionMapResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "OliveTinApiService"
+        ]
+      }
+    },
+    "/api/DumpVars": {
+      "get": {
+        "operationId": "OliveTinApiService_DumpVars",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DumpVarsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "OliveTinApiService"
+        ]
+      }
+    },
     "/api/ExecutionStatus": {
       "post": {
         "operationId": "OliveTinApiService_ExecutionStatus",
@@ -156,14 +200,14 @@
         ]
       }
     },
-    "/api/StartActionByAlias/{actionAlias}": {
-      "post": {
-        "operationId": "OliveTinApiService_StartActionByAlias",
+    "/api/StartActionByGet/{actionId}": {
+      "get": {
+        "operationId": "OliveTinApiService_StartActionByGet",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/StartActionByAliasResponse"
+              "$ref": "#/definitions/StartActionByGetResponse"
             }
           },
           "default": {
@@ -175,18 +219,10 @@
         },
         "parameters": [
           {
-            "name": "actionAlias",
+            "name": "actionId",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object"
-            }
           }
         ],
         "tags": [
@@ -194,14 +230,14 @@
         ]
       }
     },
-    "/api/StartActionByAliasAndWait/{actionAlias}": {
-      "post": {
-        "operationId": "OliveTinApiService_StartActionByAliasAndWait",
+    "/api/StartActionByGetAndWait/{actionId}": {
+      "get": {
+        "operationId": "OliveTinApiService_StartActionByGetAndWait",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/StartActionByAliasAndWaitResponse"
+              "$ref": "#/definitions/StartActionByGetAndWaitResponse"
             }
           },
           "default": {
@@ -213,18 +249,10 @@
         },
         "parameters": [
           {
-            "name": "actionAlias",
+            "name": "actionId",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object"
-            }
           }
         ],
         "tags": [
@@ -286,6 +314,28 @@
         ]
       }
     },
+    "/api/readyz": {
+      "get": {
+        "operationId": "OliveTinApiService_GetReadyz",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetReadyzResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "OliveTinApiService"
+        ]
+      }
+    },
     "/api/sosreport": {
       "get": {
         "operationId": "OliveTinApiService_SosReport",
@@ -293,7 +343,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SosReportResponse"
+              "$ref": "#/definitions/apiHttpBody"
             }
           },
           "default": {
@@ -328,11 +378,12 @@
         "arguments": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/ActionArgument"
           }
         },
         "popupOnStart": {
-          "type": "boolean"
+          "type": "string"
         }
       }
     },
@@ -354,6 +405,7 @@
         "choices": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/ActionArgumentChoice"
           }
         },
@@ -373,6 +425,63 @@
         }
       }
     },
+    "ActionEntityPair": {
+      "type": "object",
+      "properties": {
+        "actionTitle": {
+          "type": "string"
+        },
+        "entityPrefix": {
+          "type": "string"
+        }
+      }
+    },
+    "DashboardComponent": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/DashboardComponent"
+          }
+        }
+      }
+    },
+    "DumpPublicIdActionMapResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ActionEntityPair"
+          }
+        }
+      }
+    },
+    "DumpVarsResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "Entity": {
       "type": "object",
       "properties": {
@@ -385,6 +494,7 @@
         "actions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/Action"
           }
         }
@@ -393,7 +503,7 @@
     "ExecutionStatusRequest": {
       "type": "object",
       "properties": {
-        "executionUuid": {
+        "executionTrackingId": {
           "type": "string"
         }
       }
@@ -415,13 +525,22 @@
         "actions": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/Action"
           }
         },
         "entities": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/Entity"
+          }
+        },
+        "dashboards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/DashboardComponent"
           }
         }
       }
@@ -432,8 +551,17 @@
         "logs": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/LogEntry"
           }
+        }
+      }
+    },
+    "GetReadyzResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
         }
       }
     },
@@ -474,13 +602,13 @@
             "type": "string"
           }
         },
-        "executionUuid": {
+        "executionTrackingId": {
           "type": "string"
         },
         "datetimeFinished": {
           "type": "string"
         },
-        "uuid": {
+        "actionId": {
           "type": "string"
         },
         "executionStarted": {
@@ -494,18 +622,10 @@
         }
       }
     },
-    "SosReportResponse": {
-      "type": "object",
-      "properties": {
-        "alert": {
-          "type": "string"
-        }
-      }
-    },
     "StartActionAndWaitRequest": {
       "type": "object",
       "properties": {
-        "actionName": {
+        "actionId": {
           "type": "string"
         }
       }
@@ -529,7 +649,7 @@
         }
       }
     },
-    "StartActionByAliasAndWaitResponse": {
+    "StartActionByGetAndWaitResponse": {
       "type": "object",
       "properties": {
         "logEntry": {
@@ -537,10 +657,10 @@
         }
       }
     },
-    "StartActionByAliasResponse": {
+    "StartActionByGetResponse": {
       "type": "object",
       "properties": {
-        "executionUuid": {
+        "executionTrackingId": {
           "type": "string"
         }
       }
@@ -548,16 +668,17 @@
     "StartActionRequest": {
       "type": "object",
       "properties": {
-        "actionName": {
+        "actionId": {
           "type": "string"
         },
         "arguments": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/StartActionArgument"
           }
         },
-        "uuid": {
+        "uniqueTrackingId": {
           "type": "string"
         }
       }
@@ -565,7 +686,7 @@
     "StartActionResponse": {
       "type": "object",
       "properties": {
-        "executionUuid": {
+        "executionTrackingId": {
           "type": "string"
         }
       }
@@ -600,14 +721,39 @@
         }
       }
     },
+    "apiHttpBody": {
+      "type": "object",
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "description": "The HTTP Content-Type header value specifying the content type of the body."
+        },
+        "data": {
+          "type": "string",
+          "format": "byte",
+          "description": "The HTTP request/response body as raw binary."
+        },
+        "extensions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          },
+          "description": "Application specific response metadata. Must be set in the first response\nfor streaming APIs."
+        }
+      },
+      "description": "Message that represents an arbitrary HTTP body. It should only be used for\npayload formats that can't be represented as JSON, such as raw binary or\nan HTML page.\n\n\nThis message can be used both in streaming and non-streaming API methods in\nthe request as well as the response.\n\nIt can be used as a top-level request field, which is convenient if one\nwants to extract parameters from either the URL or HTTP template into the\nrequest fields and also want access to the raw HTTP body.\n\nExample:\n\n    message GetResourceRequest {\n      // A unique request id.\n      string request_id = 1;\n\n      // The raw HTTP body is bound to this field.\n      google.api.HttpBody http_body = 2;\n\n    }\n\n    service ResourceService {\n      rpc GetResource(GetResourceRequest)\n        returns (google.api.HttpBody);\n      rpc UpdateResource(google.api.HttpBody)\n        returns (google.protobuf.Empty);\n\n    }\n\nExample with streaming methods:\n\n    service CaldavService {\n      rpc GetCalendar(stream google.api.HttpBody)\n        returns (stream google.api.HttpBody);\n      rpc UpdateCalendar(stream google.api.HttpBody)\n        returns (stream google.api.HttpBody);\n\n    }\n\nUse of this type only changes how the request and response bodies are\nhandled, all other features will continue to work unchanged."
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
         "@type": {
-          "type": "string"
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
         }
       },
-      "additionalProperties": {}
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n    // or ...\n    if (any.isSameTypeAs(Foo.getDefaultInstance())) {\n      foo = any.unpack(Foo.getDefaultInstance());\n    }\n\nExample 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\nExample 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\nJSON\n\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "rpcStatus": {
       "type": "object",
@@ -622,6 +768,7 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
