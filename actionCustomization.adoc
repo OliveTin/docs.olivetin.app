@@ -26,7 +26,7 @@ image::images/flashyButton.png[]
 ----
 actions:
   - title: Check disk space
-    popupOnStart: execution-dialog-output-only
+    popupOnStart: execution-dialog-stdout-only
 ----
 
 image::images/popupOutputOnly.png[]
