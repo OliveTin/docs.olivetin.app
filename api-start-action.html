@@ -448,6 +448,12 @@ pre.rouge .gs {
 </li>
 </ul>
 </div>
+<div class="listingblock">
+<div class="title">Example Execution Tracking ID response</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="nl">"executionTrackingId"</span><span class="p">:</span><span class="s2">"5bb4860c-bbd0-4bc9-a7d6-42240551500c"</span><span class="p">}</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="api-response-logentry"><a class="anchor" href="#api-response-logentry"></a><a class="link" href="#api-response-logentry">14.2.4. Response type: LogEntry</a></h4>
@@ -463,6 +469,33 @@ pre.rouge .gs {
 <p><code>StartActionByGetAndWait</code></p>
 </li>
 </ul>
+</div>
+<div class="listingblock">
+<div class="title">Example log entry</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nl">"logEntry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"datetimeStarted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27 14:14:49"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actionTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Restart httpd on server1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stdout"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stderr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timedOut"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"exitCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actionIcon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&amp;#128260;"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"executionTrackingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b04b1e90-d457-4158-b7dc-da9e81f21568"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"datetimeFinished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27 14:14:52"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"restart_httpd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"executionStarted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"executionFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -520,7 +553,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-27 13:53:09 UTC
+Last updated 2024-02-27 14:16:16 UTC
 </div>
 </div>
 </body>
