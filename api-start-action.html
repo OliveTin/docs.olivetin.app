@@ -423,9 +423,9 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nl">"actionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generate cryptocurrency"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"actionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generate cryptocurrency"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-    </span><span class="nl">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-tracking-id"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uniqueTrackingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-tracking-id"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span></code></pre>
 </div>
 </div>
@@ -493,13 +493,13 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="title">curl</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash">user@host: curl <span class="nt">-X</span> POST <span class="s2">"http://olivetin.webapps.teratan.lan/api/StartAction"</span> <span class="nt">-d</span> <span class="s1">'{"actionName": "Nuclear reactor shutdown"}'</span></code></pre>
+<pre class="rouge highlight"><code data-lang="bash">user@host: curl <span class="nt">-X</span> POST <span class="s2">"http://olivetin.webapps.teratan.lan/api/StartAction"</span> <span class="nt">-d</span> <span class="s1">'{"actionId": "nuclear_reactor_shutdown"}'</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Powershell</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="n">PS</span><span class="w"> </span><span class="nx">C:\Users\xcons</span><span class="err">&gt;</span><span class="w"> </span><span class="nv">$json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"actionName": "Deploy attack Gnomes"}'</span><span class="w">
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">PS</span><span class="w"> </span><span class="nx">C:\Users\xcons</span><span class="err">&gt;</span><span class="w"> </span><span class="nv">$json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"actionId": "deploy_attack_gnomes"}'</span><span class="w">
 </span><span class="n">PS</span><span class="w"> </span><span class="nx">C:\Users\xcons</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">Invoke-RestMethod</span><span class="w"> </span><span class="nt">-Method</span><span class="w"> </span><span class="s2">"Post"</span><span class="w"> </span><span class="nt">-Uri</span><span class="w"> </span><span class="s2">"http://olivetinServer:1337/api/StartAction"</span><span class="w"> </span><span class="nt">-Body</span><span class="w"> </span><span class="nv">$json</span></code></pre>
 </div>
 </div>
@@ -509,7 +509,7 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="title">curl</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash">user:host: curl <span class="nt">-X</span> POST <span class="s1">'http://olivetin.example.com/api/StartAction'</span> <span class="nt">-d</span> <span class="s1">'{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'</span></code></pre>
+<pre class="rouge highlight"><code data-lang="bash">user:host: curl <span class="nt">-X</span> POST <span class="s1">'http://olivetin.example.com/api/StartAction'</span> <span class="nt">-d</span> <span class="s1">'{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'</span></code></pre>
 </div>
 </div>
 </div>
@@ -520,7 +520,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-27 11:22:07 UTC
+Last updated 2024-02-27 13:53:09 UTC
 </div>
 </div>
 </body>
