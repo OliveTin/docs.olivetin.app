@@ -26,7 +26,7 @@ Please do talk to the developers on Discord if you'd like help using the API, or
 include::api_start_action_overview.adoc[]
 
 [#api-request-idurl]
-==== Request type: ID in the URL
+==== Request type: Action ID in the URL
 
 Used by:
 
@@ -42,6 +42,23 @@ Used by:
 
 * `StartAction`
 * `StartActionAndWait`
+
+[source,json]
+.OliveTin request object structure
+----
+{
+  "actionId": "string",
+  "arguments": [
+    {
+      "name": "string",
+      "value": "string"
+    }
+  ],
+  "uniqueTrackingId": "string"
+}
+----
+
+To find your Action ID, and understand how Action IDs work, see the <<action-id,Action ID>> documentation
 
 If you need more control over the execution, then the only other option is to submit a `OliveTin reqjest object`, which is just a very simple JSON structure like this;
 

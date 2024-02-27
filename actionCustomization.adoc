@@ -227,4 +227,18 @@ WARN Blocked from executing. This would mean this action is running 2 times conc
 
 Naturally, you can set `maxConcurrent` to `3` or some other number, to limit the amount of times the action executes at once.
 
+[#action-ids]
+=== IDs
+
+OliveTin actions do not require IDs to be specified in the `config.yaml`, as most users of OliveTin start off with the Web Interface. However, if you want to use OliveTin actions via the <<api,API>>, then you will need to set your action IDs manually.
+
+NOTE: OliveTin will automatically generate a new ID for actions every time it starts up, for actions that don't have an `id:` property set.
+
+[source,yaml]
+----
+actions:
+  - title: Start the reactor
+    id: start_reactor
+    shell: /bin/startReactor.sh
+----
 
