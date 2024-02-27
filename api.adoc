@@ -56,6 +56,7 @@ If you need more control over the execution, then the only other option is to su
 
 More detailed examples can be seen below.
 
+[#api-response-trackingid]
 ==== Response type: Execution Tracking ID
 
 Used by:
@@ -63,6 +64,7 @@ Used by:
 * `StartAction`
 * `StartActionByGet`
 
+[#api-response-logentry]
 ==== Response type: LogEntry
 
 Used by:

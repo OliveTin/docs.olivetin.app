@@ -4,10 +4,10 @@ There are several variants of this API call available which might be easier for 
 .Webhook/API reference table
 [%header]
 |======================================================
-| Function                     | HTTP Method | Request Type (How to select an action)             | Return Type
-| `StartAction`                | POST        | <<api-request-obj,OliveTin request object>>        | Execution Tracking ID
-| `StartActionByGet`           | GET         | <<api-request-idurl,Action ID in the URL>>         | Execution Tracking ID
-| `StartActionAndWait`         | POST        | <<api-request-obj,OliveTin request object>>        | Log Entry (waits for the action to finish)
-| `StartActionByGetAndWait`    | GET         | <<api-request-idurl,Action ID in the URL>>         | Log Entry (waits for the action to finish)
+| Function                     | HTTP Method | Request Type (How to select an action)             | Response Type
+| `StartAction`                | POST        | <<api-request-obj,OliveTin request object>>        | <<api-response-trackingid,Execution Tracking ID>>
+| `StartActionByGet`           | GET         | <<api-request-idurl,Action ID in the URL>>         | <<api-response-trackingid,Execution Tracking ID>>
+| `StartActionAndWait`         | POST        | <<api-request-obj,OliveTin request object>>        | <<api-response-logentry,Log Entry (waits for the action to finish)>>
+| `StartActionByGetAndWait`    | GET         | <<api-request-idurl,Action ID in the URL>>         | <<api-response-logentry,Log Entry (waits for the action to finish)>>
 |======================================================
 
