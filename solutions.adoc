@@ -13,4 +13,5 @@ TODO :-)
 
 TODO :-)
 
+include::solution_container_control_panel.adoc[]
 include::solution_heating_control_panel.adoc[]

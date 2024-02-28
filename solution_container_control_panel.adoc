@@ -1,0 +1,28 @@
+[#container-control-panel]
+=== Container Control Panel
+
+OliveTin is frequently used to create simple container control panels, this is one of the default examples that ships with the standard OliveTin config.yaml.
+
+image::images/solution-container-control-panel.png[]
+
+==== Entity file
+
+To build this, we use an <<entities,entity>> file that stores and updates produced by `docker ps --format json > /etc/OliveTin/entities/containers.json`
+
+[source,yaml]
+.`/etc/OliveTin/entities/containers.json`
+----
+include::configs/container-control-panel/containers.json[]
+----
+
+==== Configuration
+
+Then use the following configuration file;
+
+[source,yaml]
+.`config.yaml`
+----
+include::configs/container-control-panel/config.yaml[]
+----
+
+
