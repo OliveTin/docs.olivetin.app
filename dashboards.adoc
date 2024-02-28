@@ -163,3 +163,29 @@ dashboards:
               - title: Action 4
 
 ----
+
+[#displays]
+=== Displays
+
+Displays are most commonly used with entities, but they can contain any HTML, including variables as well.
+
+image::images/dashboard-display.png[]
+
+[source,yaml]
+.`config.yaml`
+----
+dashboards:
+  # This is the second dashboard.
+  - title: My Containers
+    contents:
+      - title: Container {{ container.Names }}
+        entity: container
+        type: fieldset
+        contents:
+          - type: display
+            title: |
+              {{ container.Names }} <br /><br /><strong>{{ container.State }}</strong>
+          - title: 'Start {{ container.Names }}'
+          - title: 'Stop {{ container.Names }}'
+----
+
