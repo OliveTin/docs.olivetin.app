@@ -350,20 +350,10 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="c1"># There is a built-in micro proxy that will host the webui and REST API all on</span>
-<span class="c1"># one port (this is called the "Single HTTP Frontend") and means you just need</span>
-<span class="c1"># one open port in the container/firewalls/etc.</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="c1"># This config has two actions which are applied to all "container" entities </span>
+<span class="c1"># found in the entity file.</span>
 <span class="c1">#</span>
-<span class="c1"># Listen on all addresses available, port 1337</span>
-<span class="na">listenAddressSingleHTTPFrontend</span><span class="pi">:</span> <span class="s">0.0.0.0:1337</span>
-
-<span class="c1"># Choose from INFO (default), WARN and DEBUG</span>
-<span class="na">logLevel</span><span class="pi">:</span> <span class="s2">"</span><span class="s">INFO"</span>
-
-<span class="c1"># Actions are commands that are executed by OliveTin, and normally show up as</span>
-<span class="c1"># buttons on the WebUI.</span>
-<span class="c1">#</span>
-<span class="c1"># Docs: https://docs.olivetin.app/create-your-first-action.html</span>
+<span class="c1"># Docs: http://localhost/docs.olivetin.app/docs/entities.html</span>
 <span class="na">actions</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Start {{ container.Names }}</span>
     <span class="na">icon</span><span class="pi">:</span> <span class="s">box</span>
@@ -416,7 +406,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-28 22:45:33 UTC
+Last updated 2024-02-28 22:50:01 UTC
 </div>
 </div>
 </body>
