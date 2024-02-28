@@ -271,37 +271,13 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="install-fedora" class="book toc2 toc-left">
+<body id="folders" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">1. Installation Guide</a>
-<ul class="sectlevel2">
-<li><a href="install-container-vs-service.html">1.1. Containers vs Services</a>
-</li>
-<li><a href="choose-package.html">1.2. Which download do I need?</a>
-</li>
-<li><a href="install-linuxpackage.html">1.3. Linux package install (.rpm/.deb)</a>
-</li>
-<li><a href="install-fedora.html"><span class="toc-current">1.4. Fedora Linux (dnf)</span></a>
-</li>
-<li><a href="install-alpine.html">1.5. Alpine Linux</a>
-</li>
-<li><a href="install-archbtw.html">1.6. Arch Linux (AUR)</a>
-</li>
-<li><a href="install-container.html">1.7. Container install (podman/docker)</a>
-</li>
-<li><a href="install-compose.html">1.8. Docker Compose install</a>
-</li>
-<li><a href="install-helm.html">1.9. Helm on Kubernetes Install</a>
-</li>
-<li><a href="install-k8s.html">1.10. Kubernetes install (manually)</a>
-</li>
-<li><a href="install-targz.html">1.11. .tar.gz Install (manual)</a>
-</li>
-</ul>
 </li>
 <li><a href="config.html">2. Configuration</a>
 </li>
@@ -316,6 +292,14 @@ pre.rouge .gs {
 <li><a href="args.html">7. Arguments</a>
 </li>
 <li><a href="dashboards.html">8. Dashboards</a>
+<ul class="sectlevel2">
+<li><a href="_the_actions_section.html">8.1. The "actions" section</a>
+</li>
+<li><a href="fieldsets.html">8.2. Fieldsets</a>
+</li>
+<li><a href="folders.html"><span class="toc-current">8.3. Folders (Directories)</span></a>
+</li>
+</ul>
 </li>
 <li><a href="entities.html">9. Entities</a>
 </li>
@@ -334,95 +318,63 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-fedora"><a class="anchor" href="#install-fedora"></a><a class="link" href="#install-fedora">1.4. Fedora Linux (dnf)</a></h3>
+<h3 id="folders"><a class="anchor" href="#folders"></a><a class="link" href="#folders">8.3. Folders (Directories)</a></h3>
 <div class="paragraph">
-<p>Fedora is included in the Fedora Project official repositories. For an overview of versions, see the Package Sources page;</p>
+<p>Folders (Directories) are a good way to group up actions in the same way that you would
+organize files on your computer into directories.</p>
 </div>
-<div class="paragraph">
-<p><a href="https://src.fedoraproject.org/rpms/OliveTin" class="bare">https://src.fedoraproject.org/rpms/OliveTin</a></p>
-</div>
-<div class="sect3">
-<h4 id="_installation"><a class="anchor" href="#_installation"></a><a class="link" href="#_installation">1.4.1. Installation</a></h4>
-<div class="paragraph">
-<p>Install using <code>dnf</code> (or yum, on older versions of Fedora);</p>
-</div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre>user@host: dnf install -y OliveTin</pre>
+<img src="images/folders.png" alt="folders">
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_post_installation_2"><a class="anchor" href="#_post_installation_2"></a><a class="link" href="#_post_installation_2">1.4.2. Post installation</a></h4>
-<div class="paragraph">
-<p>You will need to write a basic configuration file before OliveTin will startup.</p>
 </div>
 <div class="paragraph">
-<p>Create the following basic config file at <code>/etc/OliveTin/config.yaml</code> with the
-following contents;</p>
+<p>You must first create a dashboard to use a directory, and then you "reference" actions that you
+want in that folder based on the action name. Anything without a "contents" property is treated
+as an action.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at the example below with 4 actions, 2 top level folders and 1 subfolder.</p>
 </div>
 <div class="listingblock">
-<div class="title">The most simple <code>config.yaml</code> file.</div>
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Hello</span><span class="nv"> </span><span class="s">world!"</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo 'Hello World!'</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now that you have a configuration file, and OliveTin is installed, start it;</p>
-</div>
-<div class="listingblock">
-<div class="title">Start the service (only needed once)</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: systemctl <span class="nb">enable</span> <span class="nt">--now</span> OliveTin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you are running a firewall on your server, like firewalld, you will need to
-open port 1337;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: firewall-cmd <span class="nt">--add-port</span> 1337/tcp <span class="nt">--permanent</span>
-user@host: firewall-cmd <span class="nt">--reload</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
-the web interface.</p>
-</div>
-<div class="paragraph">
-<p>If you see the OliveTin page popup in your browser, you can jump to the
-<a href="config.html">configuration section</a> as the next step.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_troubleshooting_systemd_installations_2"><a class="anchor" href="#_troubleshooting_systemd_installations_2"></a><a class="link" href="#_troubleshooting_systemd_installations_2">1.4.3. Troubleshooting systemd installations</a></h4>
-<div class="paragraph">
-<p>If you are having problems, you can check if OliveTin is running like this;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: systemctl status OliveTin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the service has failed, scroll through the logs;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: journalctl <span class="nt">-eu</span> OliveTin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">Where to find help</a>
-page.</p>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Action </span><span class="m">1</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "action1"</span>
+
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Action </span><span class="m">2</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "action2"</span>
+
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Action </span><span class="m">3</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "action3"</span>
+
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Action </span><span class="m">4</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "action4"</span>
+
+<span class="na">dashboards</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">My First Dashboard</span>
+    <span class="na">contents</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Fieldset </span><span class="m">1</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">fieldset</span>
+        <span class="na">contents</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Folder </span><span class="m">1</span>
+            <span class="na">contents</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Action </span><span class="m">1</span>
+              <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Action </span><span class="m">2</span>
+
+              <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Subfolder </span><span class="m">2</span>
+                <span class="na">contents</span><span class="pi">:</span>
+                  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Action </span><span class="m">3</span>
+
+          <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Folder </span><span class="m">2</span>
+            <span class="na">contents</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Action </span><span class="m">4</span></code></pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="install-linuxpackage.html">Linux package install (.rpm/.deb)</a> | ↑ Up: <a href="installation.html">Installation Guide</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-alpine.html">Alpine Linux</a> →</p>
+<p>← Previous: <a href="fieldsets.html">Fieldsets</a> | ↑ Up: <a href="dashboards.html">Dashboards</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="entities.html">Entities</a> →</p>
 </div>
 </div>
 <div id="footer">
