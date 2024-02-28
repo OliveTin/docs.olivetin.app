@@ -3,15 +3,12 @@
 
 OliveTin was designed to be very simple, but sometimes OliveTin can get complex - especially if you are trying to do something where you need to jump between lots of different parts of the documentation!
 
-This section of the docs is designed to bring everything into one place and present a scenario, with a single-page solution. 
+This section of the docs is designed to bring everything into one place and present a scenario, with a single-page solution.
 
-=== Homelab Container Control Panel (Traefik, Docker)
-
-TODO :-)
+include::solution_container_control_panel.adoc[]
+include::solution_heating_control_panel.adoc[]
 
 === GPIO Control on Raspberry Pi
 
 TODO :-)
 
-include::solution_container_control_panel.adoc[]
-include::solution_heating_control_panel.adoc[]
