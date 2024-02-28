@@ -74,6 +74,7 @@ A full list of argument types are below;
 | url                         | A url, e.g. https://github.com/OliveTin
 |===
 
+[#args-dropdowns]
 === Dropdown choice arguments
 
 Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify. 
