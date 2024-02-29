@@ -16,7 +16,7 @@ image::images/page-title.png[]
 .`config.yaml`
 [source,yaml]
 ----
-pageTitle: foobar
+pageTitle: My OliveTin Instance
 ----
 
 [#show-nav]
