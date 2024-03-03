@@ -13,7 +13,7 @@ Example configuration
 .`config.yaml`
 ----
 # Actions MUST be defined in the actions section, not in the dashboards
-# section. The dashboards only "link" to actions.
+# section. The dashboards only "link" to actions by their title.
 actions:
  - title: Ping All Servers
    shell: echo "ping all..."
