@@ -12,8 +12,19 @@ Example configuration
 [source,yaml]
 .`config.yaml`
 ----
-dashboards:
- - title: My Servers
+# Actions MUST be defined in the actions section, not in the dashboards
+# section. The dashboards only "link" to actions.
+actions:
+ - title: Ping All Servers
+   shell: echo "ping all..."
+
+ - title: '{{ server.name }} Wake on Lan'
+   shell: 'wol {{ server.name }}'
+   timeout: 10
+
+ - title: '{{ server.name }} Power Off'
+   shell: 'ssh root@{{ server.name}} "poweroff"'
+   timeout: 10
 
 
 # Dashboards are a way of taking actions from the default "actions" view, and
