@@ -341,8 +341,19 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">dashboards</span><span class="pi">:</span>
- <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">My Servers</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="c1"># Actions MUST be defined in the actions section, not in the dashboards</span>
+<span class="c1"># section. The dashboards only "link" to actions.</span>
+<span class="na">actions</span><span class="pi">:</span>
+ <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Ping All Servers</span>
+   <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "ping all..."</span>
+
+ <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">server.name</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">Wake</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Lan'</span>
+   <span class="na">shell</span><span class="pi">:</span> <span class="s1">'</span><span class="s">wol</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">server.name</span><span class="nv"> </span><span class="s">}}'</span>
+   <span class="na">timeout</span><span class="pi">:</span> <span class="m">10</span>
+
+ <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">server.name</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">Power</span><span class="nv"> </span><span class="s">Off'</span>
+   <span class="na">shell</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ssh</span><span class="nv"> </span><span class="s">root@{{</span><span class="nv"> </span><span class="s">server.name}}</span><span class="nv"> </span><span class="s">"poweroff"'</span>
+   <span class="na">timeout</span><span class="pi">:</span> <span class="m">10</span>
 
 
 <span class="c1"># Dashboards are a way of taking actions from the default "actions" view, and</span>
@@ -416,7 +427,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-29 22:19:14 UTC
+Last updated 2024-03-03 23:38:44 UTC
 </div>
 </div>
 </body>
