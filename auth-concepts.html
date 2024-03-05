@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.21">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "nav content" "nav footer";
+  grid-template-columns: 20em auto;
+  grid-template-rows: auto min-content;
+  height: 100vh;
+  align-items: stretch;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  background-color: #bdb76b;
+}
+
+#header {
+  background-color: #efefef;
+  grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
+  justify-self: center;
+  align-self: end;
+  padding: 1em;
+}
+
+#toc {
+  padding: 1em;
+}
+
+#toc a {
+  color: black;
+}
+
+#toc li {
+  padding-bottom: .6em;
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc ul ul {
+  padding-left: 1.4em;
+}
+
+#toctitle {
+  font-weight: bold;
+  color: black;
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: lighter;
+  background-color: black;
+  padding: .6em;
+  margin: 0;
+  color: white;
+}
+
+#toc a:hover {
+  text-decoration: underline;
+}
+
+#content {
+  background-color: white;
+  grid-area: content;
+  max-width: 1000px;
+  padding: 1em;
+  justify-self: center;
+}
+
+#content img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+pre {
+  background-color: #f7f7f8;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: no-wrap;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid gray;
+  padding: .4em;
+}
+
+th {
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.imageblock.right {
+  float: right;
+}
+
+hr {
+  clear: both;
+  border: 0;
+  border-bottom: 1px solid #efefef;
+  margin: 1em;
+}
+
+div.admonitionblock.note {
+  background-color: beige;
+}
+
+div.admonitionblock td {
+  border: 0;
+}
+
+div.admonitionblock td:first-child {
+  font-weight: bold;
+}
+
+.listingblock .title {
+  background-color: #efefef;
+  margin-bottom: -1em;
+  padding: 1em;
+}
+
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="auth-concepts" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="installation.html">1. Installation Guide</a>
+</li>
+<li><a href="config.html">2. Configuration</a>
+</li>
+<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+</li>
+<li><a href="actions.html">4. Actions</a>
+</li>
+<li><a href="action-customisation.html">5. Action customisation</a>
+</li>
+<li><a href="examples.html">6. Action examples</a>
+</li>
+<li><a href="args.html">7. Arguments</a>
+</li>
+<li><a href="dashboards.html">8. Dashboards</a>
+</li>
+<li><a href="entities.html">9. Entities</a>
+</li>
+<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+</li>
+<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+<ul class="sectlevel2">
+<li><a href="auth-concepts.html"><span class="toc-current">11.1. Concepts</span></a>
+</li>
+<li><a href="trusted-header.html">11.2. Trusted Header Authorization</a>
+</li>
+<li><a href="jwt.html">11.3. JWT Authorization</a>
+</li>
+</ul>
+</li>
+<li><a href="solutions.html">12. Solutions</a>
+</li>
+<li><a href="_reference.html">13. Reference</a>
+</li>
+<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+</li>
+<li><a href="api.html">15. API</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="auth-concepts"><a class="anchor" href="#auth-concepts"></a><a class="link" href="#auth-concepts">11.1. Concepts</a></h3>
+<div class="paragraph">
+<p>OliveTin does not have any built-in code for doing <strong>Authentication</strong> (ie: entering a username and password), however it can do <strong>Authorization</strong> (ie: checking permissions of a user who logged in via another system, like single sign on).</p>
+</div>
+<div class="paragraph">
+<p>A popular way of deploying OliveTin is by users accessing it via another system, like a <a href="reverse-proxies.html">reverse proxy</a> (eg: Traefik) or a "homepage" app (eg: Organizr). Both of these are used to handle user authentication first, before users then access OliveTin. Permissions can then be applied inside OliveTin depending on who has logged in.</p>
+</div>
+<div class="paragraph">
+<p>The flow generally goes like this;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User browses to a website like Organizr and logs in, which sets a JWT Cookie for apps.example.com.</p>
+</li>
+<li>
+<p>User browses to OliveTin.apps.example.com, and the cookie is sent to OliveTin.</p>
+</li>
+<li>
+<p>OliveTin verifies the JWT token given the signing secret, and picks up on the <code>name</code> and <code>group</code> fields from the JWT claim.</p>
+</li>
+<li>
+<p>OliveTin matches any relevant ACLs based on the claims.</p>
+</li>
+<li>
+<p>If any ACLs are not matched, then the defaultPermissions are used.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>↑ Up: <a href="auth.html">Authentication &amp; Authorization</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="trusted-header.html">Trusted Header Authorization</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-03-05 22:57:31 UTC
+</div>
+</div>
+</body>
+</html>

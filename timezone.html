@@ -157,7 +157,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_config" class="book toc2 toc-left">
+<body id="timezone" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -179,55 +179,65 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="dashboards.html">8. Dashboards</a>
 </li>
-<li><a href="_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems.html">It&#8217;s often useful to turn logging to DEBUG when trying to work out authentication problems</a>
+<li><a href="entities.html">9. Entities</a>
 </li>
-<li><a href="_this_config_has_two_actions_which_are_applied_to_all_container_entities.html">This config has two actions which are applied to all "container" entities </a>
-</li>
-<li><a href="_found_in_the_entity_file.html">found in the entity file.</a>
-</li>
-<li><a href="_docs_httpdocs_olivetin_appentities_html.html">Docs: http://docs.olivetin.app/entities.html</a>
-</li>
-<li><a href="_the_only_way_to_properly_use_entities_are_to_use_them_with_a_fieldset_on.html">The only way to properly use entities, are to use them with a <code>fieldset</code> on</a>
-</li>
-<li><a href="_a_dashboard.html">a dashboard.</a>
-</li>
-<li><a href="_build.html">Build:</a>
-</li>
-<li><a href="_runtime.html">Runtime:</a>
-</li>
-<li><a href="_config.html"><span class="toc-current">Config:</span></a>
+<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
 <ul class="sectlevel2">
-<li><a href="_sosreport_end_copy_all_text_from_sosreport_start.html">.1. SOSREPORT END  (copy all text from SOSREPORT START)</a>
+<li><a href="customize-webui.html">10.1. Customize the web UI</a>
+</li>
+<li><a href="log-levels.html">10.2. Log Levels</a>
+</li>
+<li><a href="ports.html">10.3. Ports</a>
+</li>
+<li><a href="timezone.html"><span class="toc-current">10.4. Timezone</span></a>
 </li>
 </ul>
+</li>
+<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+</li>
+<li><a href="solutions.html">12. Solutions</a>
+</li>
+<li><a href="_reference.html">13. Reference</a>
+</li>
+<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+</li>
+<li><a href="api.html">15. API</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<h1 id="_config" class="sect0"><a class="anchor" href="#_config"></a><a class="link" href="#_config">Config:</a></h1>
-<div class="openblock partintro">
-<div class="content">
+<div class="sect2">
+<h3 id="timezone"><a class="anchor" href="#timezone"></a><a class="link" href="#timezone">10.4. Timezone</a></h3>
 <div class="paragraph">
-<p>countofactions: 7
-loglevel: INFO</p>
+<p>OliveTin will obviously use the system time just like all other programs, but when running in a container, time works in a slightly unusual way.</p>
+</div>
+<div class="paragraph">
+<p>You may be used to using a TZ or TIMEZONE environment variable in your Linux container inages, but this is not a standard that works for all Linux distributions - it&#8217;s mostly supported by Debain based containers. OliveTin&#8217;s base container image is fedora-minimal, which deliberately does not include timezone data, to reduce storage space.</p>
+</div>
+<div class="paragraph">
+<p>To change the time in the OliveTin container, simply bind-mount the correct zone file;</p>
+</div>
+<div class="listingblock">
+<div class="title">Same as the container host</div>
+<div class="content">
+<pre>docker create -v /etc/localtime:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Different timezone to the container host</div>
+<div class="content">
+<pre>docker create -v /usr/share/zoneinfo/Japan:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin</pre>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="_sosreport_end_copy_all_text_from_sosreport_start.html">SOSREPORT END  (copy all text from SOSREPORT START)</a></p>
-</li>
-</ul>
+</div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_runtime.html">Runtime:</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="_sosreport_end_copy_all_text_from_sosreport_start.html">SOSREPORT END  (copy all text from SOSREPORT START)</a> →</p>
+<p>← Previous: <a href="ports.html">Ports</a> | ↑ Up: <a href="_advanced_configuration.html">Advanced Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="auth.html">Authentication &amp; Authorization</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-05 22:54:39 UTC
+Last updated 2024-03-05 22:57:31 UTC
 </div>
 </div>
 </body>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.21">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "nav content" "nav footer";
+  grid-template-columns: 20em auto;
+  grid-template-rows: auto min-content;
+  height: 100vh;
+  align-items: stretch;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  background-color: #bdb76b;
+}
+
+#header {
+  background-color: #efefef;
+  grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
+  justify-self: center;
+  align-self: end;
+  padding: 1em;
+}
+
+#toc {
+  padding: 1em;
+}
+
+#toc a {
+  color: black;
+}
+
+#toc li {
+  padding-bottom: .6em;
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc ul ul {
+  padding-left: 1.4em;
+}
+
+#toctitle {
+  font-weight: bold;
+  color: black;
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: lighter;
+  background-color: black;
+  padding: .6em;
+  margin: 0;
+  color: white;
+}
+
+#toc a:hover {
+  text-decoration: underline;
+}
+
+#content {
+  background-color: white;
+  grid-area: content;
+  max-width: 1000px;
+  padding: 1em;
+  justify-self: center;
+}
+
+#content img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+pre {
+  background-color: #f7f7f8;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: no-wrap;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid gray;
+  padding: .4em;
+}
+
+th {
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.imageblock.right {
+  float: right;
+}
+
+hr {
+  clear: both;
+  border: 0;
+  border-bottom: 1px solid #efefef;
+  margin: 1em;
+}
+
+div.admonitionblock.note {
+  background-color: beige;
+}
+
+div.admonitionblock td {
+  border: 0;
+}
+
+div.admonitionblock td:first-child {
+  font-weight: bold;
+}
+
+.listingblock .title {
+  background-color: #efefef;
+  margin-bottom: -1em;
+  padding: 1em;
+}
+
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="jwt" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="installation.html">1. Installation Guide</a>
+</li>
+<li><a href="config.html">2. Configuration</a>
+</li>
+<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+</li>
+<li><a href="actions.html">4. Actions</a>
+</li>
+<li><a href="action-customisation.html">5. Action customisation</a>
+</li>
+<li><a href="examples.html">6. Action examples</a>
+</li>
+<li><a href="args.html">7. Arguments</a>
+</li>
+<li><a href="dashboards.html">8. Dashboards</a>
+</li>
+<li><a href="entities.html">9. Entities</a>
+</li>
+<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+</li>
+<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+<ul class="sectlevel2">
+<li><a href="auth-concepts.html">11.1. Concepts</a>
+</li>
+<li><a href="trusted-header.html">11.2. Trusted Header Authorization</a>
+</li>
+<li><a href="jwt.html"><span class="toc-current">11.3. JWT Authorization</span></a>
+</li>
+</ul>
+</li>
+<li><a href="solutions.html">12. Solutions</a>
+</li>
+<li><a href="_reference.html">13. Reference</a>
+</li>
+<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+</li>
+<li><a href="api.html">15. API</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="jwt"><a class="anchor" href="#jwt"></a><a class="link" href="#jwt">11.3. JWT Authorization</a></h3>
+<div class="paragraph">
+<p>You need to know your JWT <strong>Cookie Name</strong> and <strong>Hash Secret</strong>. Whatever tool you are using to authenticate users will probably have instructions on how to find this.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.organizr.app/features/server-authentication#validating-the-token">Organizr - Under "Validating the token"</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_adding_jwt_details_to_olivetin_config_yaml"><a class="anchor" href="#_adding_jwt_details_to_olivetin_config_yaml"></a><a class="link" href="#_adding_jwt_details_to_olivetin_config_yaml">11.3.1. Adding JWT details to OliveTin config.yaml</a></h4>
+<div class="paragraph">
+<p>Setup your config file so it has something like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># It's often useful to turn logging to DEBUG when trying to work out authentication problems
+logLevel: "INFO"
+
+authJwtCookieName: "Organizr_token_1234..."
+authJwtSecret: "3l4jh23v_123!"
+authJwtClaimUsername: "username"
+authJwtClaimUsergroup: "usergroup"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that your <code>authJwtCookieName</code> and <code>authJwtSecret</code> will need to be set exactly as they appear in your Authentication software.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_usable_claims"><a class="anchor" href="#_usable_claims"></a><a class="link" href="#_usable_claims">11.3.2. Usable claims</a></h4>
+<div class="paragraph">
+<p>OliveTin currently can match Access Control Lists based on a <strong>username</strong> or <strong>primary user group</strong>. These must be called <code>name</code> and <code>group</code> respectively. You can see if these are being used properly turning on <code>DEBUG</code> logging and looking at the jwt claims.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setup_default_permissions"><a class="anchor" href="#_setup_default_permissions"></a><a class="link" href="#_setup_default_permissions">11.3.3. Setup default permissions</a></h4>
+<div class="paragraph">
+<p>OliveTin will assume that guests are able to View and Execute every action by default. When you are setting up authorization you probably want to limit this. You can do that by setting <code>defaultPermissions</code> like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>logLevel: "INFO"
+
+defaultPermissions:
+    view: false
+    exec: false</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setup_olivetin_access_control_lists"><a class="anchor" href="#_setup_olivetin_access_control_lists"></a><a class="link" href="#_setup_olivetin_access_control_lists">11.3.4. Setup OliveTin Access Control Lists</a></h4>
+<div class="paragraph">
+<p>Access Control Lists are a way to override the default permissions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>logLevel: "INFO"
+
+defaultPermissions:
+    view: false
+    exec: false
+
+accessControlLists:
+    - name: Admins
+      addToEveryAction: true
+      matchUsergroups:
+      - Admins
+      permissions:
+        view: true
+        exec: true
+
+    - name: "Web Admins"
+      matchUsergroups:
+      - "webadmin"
+      permissions:
+        view: true
+        exec: false
+
+actions:
+    - name: Only visible to admins
+      shell: echo "I am a secret command only visible to admins"
+
+    - name: Restart database
+      shell: reboot
+      acls:
+        - "webadmin"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example above, the <code>admins</code> ACL is automatically added to every action, because <code>addToEveryAction</code> is true.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_customizing_field_names"><a class="anchor" href="#_customizing_field_names"></a><a class="link" href="#_customizing_field_names">11.3.5. Customizing field names</a></h4>
+<div class="paragraph">
+<p>You may need to customize the field names for your JWT authentication.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>authJwtClaimUsername: "username"
+authJwtClaimUsergroup: "usergroup"</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="trusted-header.html">Trusted Header Authorization</a> | ↑ Up: <a href="auth.html">Authentication &amp; Authorization</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="solutions.html">Solutions</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-03-05 22:57:31 UTC
+</div>
+</div>
+</body>
+</html>

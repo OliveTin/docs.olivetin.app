@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.21">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "nav content" "nav footer";
+  grid-template-columns: 20em auto;
+  grid-template-rows: auto min-content;
+  height: 100vh;
+  align-items: stretch;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  background-color: #bdb76b;
+}
+
+#header {
+  background-color: #efefef;
+  grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
+  justify-self: center;
+  align-self: end;
+  padding: 1em;
+}
+
+#toc {
+  padding: 1em;
+}
+
+#toc a {
+  color: black;
+}
+
+#toc li {
+  padding-bottom: .6em;
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc ul ul {
+  padding-left: 1.4em;
+}
+
+#toctitle {
+  font-weight: bold;
+  color: black;
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: lighter;
+  background-color: black;
+  padding: .6em;
+  margin: 0;
+  color: white;
+}
+
+#toc a:hover {
+  text-decoration: underline;
+}
+
+#content {
+  background-color: white;
+  grid-area: content;
+  max-width: 1000px;
+  padding: 1em;
+  justify-self: center;
+}
+
+#content img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+pre {
+  background-color: #f7f7f8;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: no-wrap;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid gray;
+  padding: .4em;
+}
+
+th {
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.imageblock.right {
+  float: right;
+}
+
+hr {
+  clear: both;
+  border: 0;
+  border-bottom: 1px solid #efefef;
+  margin: 1em;
+}
+
+div.admonitionblock.note {
+  background-color: beige;
+}
+
+div.admonitionblock td {
+  border: 0;
+}
+
+div.admonitionblock td:first-child {
+  font-weight: bold;
+}
+
+.listingblock .title {
+  background-color: #efefef;
+  margin-bottom: -1em;
+  padding: 1em;
+}
+
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
+}
+
+</style>
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="api-start-action" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="installation.html">1. Installation Guide</a>
+</li>
+<li><a href="config.html">2. Configuration</a>
+</li>
+<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+</li>
+<li><a href="actions.html">4. Actions</a>
+</li>
+<li><a href="action-customisation.html">5. Action customisation</a>
+</li>
+<li><a href="examples.html">6. Action examples</a>
+</li>
+<li><a href="args.html">7. Arguments</a>
+</li>
+<li><a href="dashboards.html">8. Dashboards</a>
+</li>
+<li><a href="entities.html">9. Entities</a>
+</li>
+<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+</li>
+<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+</li>
+<li><a href="solutions.html">12. Solutions</a>
+</li>
+<li><a href="_reference.html">13. Reference</a>
+</li>
+<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+</li>
+<li><a href="api.html">15. API</a>
+<ul class="sectlevel2">
+<li><a href="_olivetin_api_overview.html">15.1. OliveTin API Overview</a>
+</li>
+<li><a href="api-start-action.html"><span class="toc-current">15.2. Starting Actions from the API</span></a>
+</li>
+<li><a href="_misc_api_calls.html">15.3. Misc API calls</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="api-start-action"><a class="anchor" href="#api-start-action"></a><a class="link" href="#api-start-action">15.2. Starting Actions from the API</a></h3>
+<div class="paragraph">
+<p>There are several variants of this API call available which might be easier for scripts (or humans) to work with!</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Webhook/API reference table</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">HTTP Method</th>
+<th class="tableblock halign-left valign-top">Request Type (How to select an action)</th>
+<th class="tableblock halign-left valign-top">Response Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartAction</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-request-obj">OliveTin request object</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-response-trackingid">Execution Tracking ID</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartActionByGet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-request-idurl">Action ID in the URL</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-response-trackingid">Execution Tracking ID</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartActionAndWait</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-request-obj">OliveTin request object</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-response-logentry">Log Entry (waits for the action to finish)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>StartActionByGetAndWait</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-request-idurl">Action ID in the URL</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="api-start-action.html#api-response-logentry">Log Entry (waits for the action to finish)</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="api-request-idurl"><a class="anchor" href="#api-request-idurl"></a><a class="link" href="#api-request-idurl">15.2.1. Request type: Action ID in the URL</a></h4>
+<div class="paragraph">
+<p>Used by:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>StartActionByGet</code></p>
+</li>
+<li>
+<p><code>StartActionByGetAndWait</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you are trying to integrate OliveTin with your own scripts or processes, it&#8217;s probably easiest to start actions by using an ID directly in the URL, <a href="api-start-action.html#api-eg-startIdUrl">see the example</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="api-request-obj"><a class="anchor" href="#api-request-obj"></a><a class="link" href="#api-request-obj">15.2.2. Request type: OliveTin request object</a></h4>
+<div class="paragraph">
+<p>Used by:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>StartAction</code></p>
+</li>
+<li>
+<p><code>StartActionAndWait</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">OliveTin request object structure</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"actionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"uniqueTrackingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To find your Action ID, and understand how Action IDs work, see the <a href="#action-id">Action ID</a> documentation</p>
+</div>
+<div class="paragraph">
+<p>If you need more control over the execution, then the only other option is to submit a <code>OliveTin reqjest object</code>, which is just a very simple JSON structure like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nl">"actionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generate cryptocurrency"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"uniqueTrackingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-tracking-id"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More detailed examples can be seen below.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="api-response-trackingid"><a class="anchor" href="#api-response-trackingid"></a><a class="link" href="#api-response-trackingid">15.2.3. Response type: Execution Tracking ID</a></h4>
+<div class="paragraph">
+<p>Used by:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>StartAction</code></p>
+</li>
+<li>
+<p><code>StartActionByGet</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Example Execution Tracking ID response</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="nl">"executionTrackingId"</span><span class="p">:</span><span class="s2">"5bb4860c-bbd0-4bc9-a7d6-42240551500c"</span><span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="api-response-logentry"><a class="anchor" href="#api-response-logentry"></a><a class="link" href="#api-response-logentry">15.2.4. Response type: LogEntry</a></h4>
+<div class="paragraph">
+<p>Used by:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>StartActionAndWait</code></p>
+</li>
+<li>
+<p><code>StartActionByGetAndWait</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Example log entry</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nl">"logEntry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"datetimeStarted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27 14:14:49"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actionTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Restart httpd on server1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stdout"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stderr"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timedOut"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"exitCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actionIcon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&amp;#128260;"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"executionTrackingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b04b1e90-d457-4158-b7dc-da9e81f21568"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"datetimeFinished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-27 14:14:52"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"actionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"restart_httpd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"executionStarted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"executionFinished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"blocked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="api-eg-startIdUrl"><a class="anchor" href="#api-eg-startIdUrl"></a><a class="link" href="#api-eg-startIdUrl">15.2.5. Example API call; Start an action by ID in the URL</a></h4>
+<div class="listingblock">
+<div class="title">curl</div>
+<div class="content">
+<pre>user@host: curl http://olivetin.example.com/api/StartActionByGet/pingGithub</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The corresponding config.yaml would look like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Ping GitHub.com</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="s">pingGithub</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">ping github.com -c 1</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>IDs are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn&#8217;t want to have spaces or punctuation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_api_call_start_an_action_using_startaction"><a class="anchor" href="#_example_api_call_start_an_action_using_startaction"></a><a class="link" href="#_example_api_call_start_an_action_using_startaction">15.2.6. Example API call: Start an action using <code>StartAction</code></a></h4>
+<div class="listingblock">
+<div class="title">curl</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">user@host: curl <span class="nt">-X</span> POST <span class="s2">"http://olivetin.webapps.teratan.lan/api/StartAction"</span> <span class="nt">-d</span> <span class="s1">'{"actionId": "nuclear_reactor_shutdown"}'</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Powershell</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">PS</span><span class="w"> </span><span class="nx">C:\Users\xcons</span><span class="err">&gt;</span><span class="w"> </span><span class="nv">$json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"actionId": "deploy_attack_gnomes"}'</span><span class="w">
+</span><span class="n">PS</span><span class="w"> </span><span class="nx">C:\Users\xcons</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">Invoke-RestMethod</span><span class="w"> </span><span class="nt">-Method</span><span class="w"> </span><span class="s2">"Post"</span><span class="w"> </span><span class="nt">-Uri</span><span class="w"> </span><span class="s2">"http://olivetinServer:1337/api/StartAction"</span><span class="w"> </span><span class="nt">-Body</span><span class="w"> </span><span class="nv">$json</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_api_call_start_an_action_using_startaction_with_arguments"><a class="anchor" href="#_example_api_call_start_an_action_using_startaction_with_arguments"></a><a class="link" href="#_example_api_call_start_an_action_using_startaction_with_arguments">15.2.7. Example API call: Start an action using <code>StartAction</code> with arguments</a></h4>
+<div class="listingblock">
+<div class="title">curl</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">user:host: curl <span class="nt">-X</span> POST <span class="s1">'http://olivetin.example.com/api/StartAction'</span> <span class="nt">-d</span> <span class="s1">'{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="_olivetin_api_overview.html">OliveTin API Overview</a> | ↑ Up: <a href="api.html">API</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_misc_api_calls.html">Misc API calls</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-03-05 22:57:31 UTC
+</div>
+</div>
+</body>
+</html>

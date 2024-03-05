@@ -157,7 +157,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_build" class="book toc2 toc-left">
+<body id="_misc_api_calls" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -179,49 +179,67 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="dashboards.html">8. Dashboards</a>
 </li>
-<li><a href="_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems.html">It&#8217;s often useful to turn logging to DEBUG when trying to work out authentication problems</a>
+<li><a href="entities.html">9. Entities</a>
 </li>
-<li><a href="_this_config_has_two_actions_which_are_applied_to_all_container_entities.html">This config has two actions which are applied to all "container" entities </a>
+<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
 </li>
-<li><a href="_found_in_the_entity_file.html">found in the entity file.</a>
+<li><a href="auth.html">11. Authentication &amp; Authorization</a>
 </li>
-<li><a href="_docs_httpdocs_olivetin_appentities_html.html">Docs: http://docs.olivetin.app/entities.html</a>
+<li><a href="solutions.html">12. Solutions</a>
 </li>
-<li><a href="_the_only_way_to_properly_use_entities_are_to_use_them_with_a_fieldset_on.html">The only way to properly use entities, are to use them with a <code>fieldset</code> on</a>
+<li><a href="_reference.html">13. Reference</a>
 </li>
-<li><a href="_a_dashboard.html">a dashboard.</a>
+<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
 </li>
-<li><a href="_build.html"><span class="toc-current">Build:</span></a>
+<li><a href="api.html">15. API</a>
+<ul class="sectlevel2">
+<li><a href="_olivetin_api_overview.html">15.1. OliveTin API Overview</a>
 </li>
-<li><a href="_runtime.html">Runtime:</a>
+<li><a href="api-start-action.html">15.2. Starting Actions from the API</a>
 </li>
-<li><a href="_config.html">Config:</a>
+<li><a href="_misc_api_calls.html"><span class="toc-current">15.3. Misc API calls</span></a>
+</li>
+</ul>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<h1 id="_build" class="sect0"><a class="anchor" href="#_build"></a><a class="link" href="#_build">Build:</a></h1>
-<div class="openblock partintro">
+<div class="sect2">
+<h3 id="_misc_api_calls"><a class="anchor" href="#_misc_api_calls"></a><a class="link" href="#_misc_api_calls">15.3. Misc API calls</a></h3>
+<div class="sect3">
+<h4 id="_example_api_call_get_the_dashboard_buttons_components"><a class="anchor" href="#_example_api_call_get_the_dashboard_buttons_components"></a><a class="link" href="#_example_api_call_get_the_dashboard_buttons_components">15.3.1. Example API call: Get the dashboard buttons ("components")</a></h4>
+<div class="listingblock">
+<div class="title">curl</div>
 <div class="content">
+<pre>user@host: curl http://olivetinServer:1337/api/GetDashboardComponents</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_api_call_readyz_healthcheck"><a class="anchor" href="#_example_api_call_readyz_healthcheck"></a><a class="link" href="#_example_api_call_readyz_healthcheck">15.3.2. Example API call: readyz Healthcheck</a></h4>
 <div class="paragraph">
-<p>commit: nocommit
-version: dev
-date: nodate</p>
+<p>This is useful for configuring healthchecks in docker containers, or on Kubernetes.</p>
+</div>
+<div class="listingblock">
+<div class="title">curl</div>
+<div class="content">
+<pre>user@host: curl http://olivetinServer:1337/api/readyz
+{"status": "ok"}</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The response will always be "status: ok" to indicate that the API is up, or it will timeout.</p>
 </div>
-<div class="ulist">
-<ul>
-</ul>
+</div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_sosreport_start_copy_all_text_to_sosreport_end.html">SOSREPORT START (copy all text to SOSREPORT END)</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="_runtime.html">Runtime:</a> →</p>
+<p>← Previous: <a href="api-start-action.html">Starting Actions from the API</a> | ↑ Up: <a href="api.html">API</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a></p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-05 22:54:39 UTC
+Last updated 2024-03-05 22:57:31 UTC
 </div>
 </div>
 </body>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.21">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "nav content" "nav footer";
+  grid-template-columns: 20em auto;
+  grid-template-rows: auto min-content;
+  height: 100vh;
+  align-items: stretch;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  background-color: #bdb76b;
+}
+
+#header {
+  background-color: #efefef;
+  grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
+  justify-self: center;
+  align-self: end;
+  padding: 1em;
+}
+
+#toc {
+  padding: 1em;
+}
+
+#toc a {
+  color: black;
+}
+
+#toc li {
+  padding-bottom: .6em;
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc ul ul {
+  padding-left: 1.4em;
+}
+
+#toctitle {
+  font-weight: bold;
+  color: black;
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: lighter;
+  background-color: black;
+  padding: .6em;
+  margin: 0;
+  color: white;
+}
+
+#toc a:hover {
+  text-decoration: underline;
+}
+
+#content {
+  background-color: white;
+  grid-area: content;
+  max-width: 1000px;
+  padding: 1em;
+  justify-self: center;
+}
+
+#content img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+pre {
+  background-color: #f7f7f8;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: no-wrap;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid gray;
+  padding: .4em;
+}
+
+th {
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.imageblock.right {
+  float: right;
+}
+
+hr {
+  clear: both;
+  border: 0;
+  border-bottom: 1px solid #efefef;
+  margin: 1em;
+}
+
+div.admonitionblock.note {
+  background-color: beige;
+}
+
+div.admonitionblock td {
+  border: 0;
+}
+
+div.admonitionblock td:first-child {
+  font-weight: bold;
+}
+
+.listingblock .title {
+  background-color: #efefef;
+  margin-bottom: -1em;
+  padding: 1em;
+}
+
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="container-dnf" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="installation.html">1. Installation Guide</a>
+</li>
+<li><a href="config.html">2. Configuration</a>
+</li>
+<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+</li>
+<li><a href="actions.html">4. Actions</a>
+</li>
+<li><a href="action-customisation.html">5. Action customisation</a>
+</li>
+<li><a href="examples.html">6. Action examples</a>
+</li>
+<li><a href="args.html">7. Arguments</a>
+</li>
+<li><a href="dashboards.html">8. Dashboards</a>
+</li>
+<li><a href="entities.html">9. Entities</a>
+</li>
+<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+</li>
+<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+</li>
+<li><a href="solutions.html">12. Solutions</a>
+</li>
+<li><a href="_reference.html">13. Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">13.1. Network ports</a>
+</li>
+<li><a href="_security.html">13.2. Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">13.3. Understanding exit codes</a>
+</li>
+<li><a href="update-tracking.html">13.4. Update Checks (and tracking)</a>
+</li>
+<li><a href="container-dnf.html"><span class="toc-current">13.5. Installing extra container packages</span></a>
+</li>
+<li><a href="multi-inst.html">13.6. Multiple instances on a server</a>
+</li>
+<li><a href="snapsnots.html">13.7. Snapshot builds</a>
+</li>
+<li><a href="themes.html">13.8. Themes</a>
+</li>
+</ul>
+</li>
+<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+</li>
+<li><a href="api.html">15. API</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="container-dnf"><a class="anchor" href="#container-dnf"></a><a class="link" href="#container-dnf">13.5. Installing extra container packages</a></h3>
+<div class="paragraph">
+<p>The official OliveTin container image is based on Fedora Linux. Fedora has shown to offer a great mix of stability and support over two decades. The base container image for OliveTin is relatively lightweight, with not many tools installed by default. This keeps the download size small, but you may want to add additional packages.</p>
+</div>
+<div class="sect3">
+<h4 id="_quickstart_using_dnf_to_install_additional_packages"><a class="anchor" href="#_quickstart_using_dnf_to_install_additional_packages"></a><a class="link" href="#_quickstart_using_dnf_to_install_additional_packages">13.5.1. Quickstart - using DNF to install additional packages</a></h4>
+<div class="paragraph">
+<p>You can of course create your own container image, but this is probably a lot of work for new users, or people who just want a few extra packages/commands. Instead of creating a whole new container image, you can simply run <code>microdnf</code> (the Fodora package manager) to install more commands.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start the OliveTin container using one of the methods shown in the <a href="installation.html">installation instructions</a>.</p>
+</li>
+<li>
+<p>Then, on the same host that is running the container, spawn a root shell inside the OliveTin container, like this;</p>
+<div class="listingblock">
+<div class="content">
+<pre>user@host: docker exec -it olivetin -u root /bin/bash
+[root@019d08ef95bd /]#</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The important thing here is passing <code>-u root</code>. By default, OliveTin does not run as root.</p>
+</div>
+</li>
+<li>
+<p>Once you have a root shell in OliveTin, you can use the Fedora package manager - <code>microdnf</code> to install things that you might need. If you are used to Debian&#8217;s <code>apt-get</code> tool, it works in a very similar way;</p>
+<div class="listingblock">
+<div class="content">
+<pre>[root@019d08ef95bd /]# microdnf install -y nc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that if you upgrade the OliveTin container image, you will need to reinstall these packages.</p>
+</div>
+<div class="paragraph">
+<p>Once you have finished installing these packages, just exit the root shell using <code>exit</code>. You don&#8217;t need to restart the container - and OliveTin does not need to run as root to use most commands.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_see_also_2"><a class="anchor" href="#_see_also_2"></a><a class="link" href="#_see_also_2">13.5.2. See also</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://hub.docker.com/r/jamesread/olivetin">OliveTin container on Docker Hub</a></p>
+</li>
+<li>
+<p><a href="install-container.html">Installing using a container</a></p>
+</li>
+<li>
+<p><a href="install-compose.html">Installing using docker compose</a></p>
+</li>
+<li>
+<p><a href="install-helm.html">Installing on Kubernetes with Helm</a></p>
+</li>
+<li>
+<p><a href="install-k8s.html">Installing on Kubernetes (manually)</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="update-tracking.html">Update Checks (and tracking)</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="multi-inst.html">Multiple instances on a server</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-03-05 22:57:31 UTC
+</div>
+</div>
+</body>
+</html>
