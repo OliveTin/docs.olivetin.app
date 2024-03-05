@@ -271,7 +271,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="traefik-docker-compose" class="book toc2 toc-left">
+<body id="themes" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -282,24 +282,6 @@ pre.rouge .gs {
 <li><a href="config.html">2. Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">3. Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">3.1. Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-dns.html">3.2. Apache HTTPD - DNS based</a>
-</li>
-<li><a href="haproxy-dns.html">3.3. Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html"><span class="toc-current">3.4. Traefik + Docker Compose</span></a>
-</li>
-<li><a href="nginx-dns.html">3.5. Nginx - DNS based</a>
-</li>
-<li><a href="nginx-path.html">3.6. Nginx - Path based</a>
-</li>
-<li><a href="caddy-dns.html">3.7. Caddy - DNS Based</a>
-</li>
-<li><a href="caddy-path.html">3.8. Caddy - Path based</a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">4. Actions</a>
 </li>
@@ -320,6 +302,24 @@ pre.rouge .gs {
 <li><a href="solutions.html">12. Solutions</a>
 </li>
 <li><a href="_reference.html">13. Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">13.1. Network ports</a>
+</li>
+<li><a href="_security.html">13.2. Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">13.3. Understanding exit codes</a>
+</li>
+<li><a href="update-tracking.html">13.4. Update Checks (and tracking)</a>
+</li>
+<li><a href="container-dnf.html">13.5. Installing extra container packages</a>
+</li>
+<li><a href="multi-inst.html">13.6. Multiple instances on a server</a>
+</li>
+<li><a href="snapsnots.html">13.7. Snapshot builds</a>
+</li>
+<li><a href="themes.html"><span class="toc-current">13.8. Themes</span></a>
+</li>
+</ul>
 </li>
 <li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
 </li>
@@ -330,47 +330,50 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="traefik-docker-compose"><a class="anchor" href="#traefik-docker-compose"></a><a class="link" href="#traefik-docker-compose">3.4. Traefik + Docker Compose</a></h3>
+<h3 id="themes"><a class="anchor" href="#themes"></a><a class="link" href="#themes">13.8. Themes</a></h3>
 <div class="paragraph">
-<p>The following example is known to work well with Traefik and docker-compose.</p>
+<p>Temporary docs until I write something better.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re using a container, bind mount a "themes" directory from your host into /var/www/olivetin/themes/</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re using a Linux package create a directory /var/www/olivetin/themes/</p>
+</div>
+<div class="paragraph">
+<p>Create a directory called "mytheme"</p>
+</div>
+<div class="paragraph">
+<p>Set your theme in your config</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">themeName</span><span class="pi">:</span> <span class="s">myTheme</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add your css into /var/www/olivetin/themes/mytheme/theme.css</p>
+</div>
+<div class="paragraph">
+<p>Your theme css will be loaded "on top" of the existing stylesheet.</p>
+</div>
+<div class="paragraph">
+<p>To test it is working, set your theme CSS to something ridiculous like;</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.8"</span>
-<span class="na">services</span><span class="pi">:</span>
-  <span class="na">olivetin</span><span class="pi">:</span>
-    <span class="na">container_name</span><span class="pi">:</span> <span class="s">olivetin</span>
-    <span class="na">image</span><span class="pi">:</span> <span class="s">jamesread/olivetin</span>
-    <span class="na">volumes</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">/docker/olivetin:/config</span> <span class="c1"># replace host path or volume as needed</span>
-    <span class="na">ports</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">1337:1337"</span>
-    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
-    <span class="na">labels</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.enable=true"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.olivetin.entrypoints=web"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.olivetin.rule=Host(`olivetin.example.com`)"</span>
-
-  <span class="na">traefik</span><span class="pi">:</span>
-    <span class="na">image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">traefik:v2.9"</span>
-    <span class="na">container_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">traefik"</span>
-    <span class="na">command</span><span class="pi">:</span>
-      <span class="c1">#- "--log.level=DEBUG"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--api.insecure=true"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--api.dashboard=true"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--providers.docker=true"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--providers.docker.exposedbydefault=false"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--entrypoints.web.address=:80"</span>
-    <span class="na">ports</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">80:80"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">8080:8080"</span>
-    <span class="na">volumes</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">/var/run/docker.sock:/var/run/docker.sock:ro"</span></code></pre>
+<pre>body {
+    background-color: red !important;
+}</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Profit.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="haproxy-dns.html">Haproxy - DNS based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="nginx-dns.html">Nginx - DNS based</a> →</p>
+<p>← Previous: <a href="snapsnots.html">Snapshot builds</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> →</p>
 </div>
 </div>
 <div id="footer">

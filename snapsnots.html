@@ -152,120 +152,6 @@ div.admonitionblock td:first-child {
 }
 
 </style>
-<style>
-pre.rouge table td { padding: 5px; }
-pre.rouge table pre { margin: 0; }
-pre.rouge, pre.rouge .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
-  color: #cf222e;
-}
-pre.rouge .gr {
-  color: #f6f8fa;
-}
-pre.rouge .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-pre.rouge .nb {
-  color: #953800;
-}
-pre.rouge .nc {
-  color: #953800;
-}
-pre.rouge .no {
-  color: #953800;
-}
-pre.rouge .nn {
-  color: #953800;
-}
-pre.rouge .sr {
-  color: #116329;
-}
-pre.rouge .na {
-  color: #116329;
-}
-pre.rouge .nt {
-  color: #116329;
-}
-pre.rouge .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-pre.rouge .kc {
-  color: #0550ae;
-}
-pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
-  color: #0550ae;
-}
-pre.rouge .sb {
-  color: #0550ae;
-}
-pre.rouge .bp {
-  color: #0550ae;
-}
-pre.rouge .ne {
-  color: #0550ae;
-}
-pre.rouge .nl {
-  color: #0550ae;
-}
-pre.rouge .py {
-  color: #0550ae;
-}
-pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
-  color: #0550ae;
-}
-pre.rouge .o, pre.rouge .ow {
-  color: #0550ae;
-}
-pre.rouge .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
-  color: #0a3069;
-}
-pre.rouge .nd {
-  color: #8250df;
-}
-pre.rouge .nf, pre.rouge .fm {
-  color: #8250df;
-}
-pre.rouge .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
-  color: #6e7781;
-}
-pre.rouge .gl {
-  color: #6e7781;
-}
-pre.rouge .gt {
-  color: #6e7781;
-}
-pre.rouge .ni {
-  color: #24292f;
-}
-pre.rouge .si {
-  color: #24292f;
-}
-pre.rouge .ge {
-  color: #24292f;
-  font-style: italic;
-}
-pre.rouge .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-</style>
 <style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
                        font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
              .nav-footer{text-align: center; margin-top: auto;}
@@ -317,7 +203,7 @@ pre.rouge .gs {
 </li>
 <li><a href="snapsnots.html"><span class="toc-current">13.7. Snapshot builds</span></a>
 </li>
-<li><a href="snapsnots.html"><span class="toc-current">13.8. Snapshot builds</span></a>
+<li><a href="themes.html">13.8. Themes</a>
 </li>
 </ul>
 </li>
@@ -330,55 +216,58 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="snapsnots"><a class="anchor" href="#snapsnots"></a><a class="link" href="#snapsnots">13.8. Snapshot builds</a></h3>
+<h3 id="snapsnots"><a class="anchor" href="#snapsnots"></a><a class="link" href="#snapsnots">13.7. Snapshot builds</a></h3>
 <div class="paragraph">
-<p>Temporary docs until I write something better.</p>
+<p>It&#8217;s sometimes useful to test code changes in OliveTin that are still in development - and have not yet made it into an official version, yet. Thankfully, all code changes are automatically compiled into a "snapshot" builds and are saved in GitHub actions.</p>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re using a container, bind mount a "themes" directory from your host into /var/www/olivetin/themes/</p>
+<p>If you browse to GitHub actions page for OliveTin, you&#8217;ll find the "Build Snapshot" job, with a list of recent builds.</p>
 </div>
-<div class="paragraph">
-<p>If you&#8217;re using a Linux package create a directory /var/www/olivetin/themes/</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/OliveTin/OliveTin/actions/workflows/build-snapshot.yml">OliveTin&#8217;s Build Snapshot page</a></p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Create a directory called "mytheme"</p>
-</div>
-<div class="paragraph">
-<p>Set your theme in your config</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
+<div class="imageblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">themeName</span><span class="pi">:</span> <span class="s">myTheme</span></code></pre>
+<img src="images/snapshots.png" alt="snapshots">
 </div>
 </div>
 <div class="paragraph">
-<p>Add your css into /var/www/olivetin/themes/mytheme/theme.css</p>
+<p>Most of the time you will want to select the top build, unless you&#8217;ve specifically been given a build link to use.</p>
 </div>
+<div class="sect3">
+<h4 id="_download_the_snapshot_archive"><a class="anchor" href="#_download_the_snapshot_archive"></a><a class="link" href="#_download_the_snapshot_archive">13.7.1. Download the snapshot archive</a></h4>
 <div class="paragraph">
-<p>Your theme css will be loaded "on top" of the existing stylesheet.</p>
+<p>On the job page, you will have a single "snapshot" file listed. In this screenshot, it is 109 MB.</p>
 </div>
-<div class="paragraph">
-<p>To test it is working, set your theme CSS to something ridiculous like;</p>
-</div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre>body {
-    background-color: red !important;
-}</pre>
+<img src="images/snapshot-download.png" alt="snapshot download">
 </div>
 </div>
 <div class="paragraph">
-<p>Profit.</p>
+<p>Once downloaded, you can open the archive using any tool that you use to open .zip files. The contents should read something like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/snapshot-archive.png" alt="snapshot archive">
+</div>
+</div>
+<div class="paragraph">
+<p>Extract the file you need, and off you go!</p>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="snapsnots.html">Snapshot builds</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> →</p>
+<p>← Previous: <a href="multi-inst.html">Multiple instances on a server</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="themes.html">Themes</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-05 00:32:55 UTC
+Last updated 2024-03-05 00:44:16 UTC
 </div>
 </div>
 </body>
