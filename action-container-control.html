@@ -193,19 +193,23 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="dashboards.html">8. Dashboards</a>
 </li>
-<li><a href="entities.html">9. Entities</a>
+<li><a href="_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems.html">It&#8217;s often useful to turn logging to DEBUG when trying to work out authentication problems</a>
 </li>
-<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+<li><a href="_this_config_has_two_actions_which_are_applied_to_all_container_entities.html">This config has two actions which are applied to all "container" entities </a>
 </li>
-<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+<li><a href="_found_in_the_entity_file.html">found in the entity file.</a>
 </li>
-<li><a href="solutions.html">12. Solutions</a>
+<li><a href="_docs_httpdocs_olivetin_appentities_html.html">Docs: http://docs.olivetin.app/entities.html</a>
 </li>
-<li><a href="_reference.html">13. Reference</a>
+<li><a href="_the_only_way_to_properly_use_entities_are_to_use_them_with_a_fieldset_on.html">The only way to properly use entities, are to use them with a <code>fieldset</code> on</a>
 </li>
-<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+<li><a href="_a_dashboard.html">a dashboard.</a>
 </li>
-<li><a href="api.html">15. API</a>
+<li><a href="_build.html">Build:</a>
+</li>
+<li><a href="_runtime.html">Runtime:</a>
+</li>
+<li><a href="_config.html">Config:</a>
 </li>
 </ul>
 </div>
@@ -262,7 +266,7 @@ container.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-If you want to control Docker from inside a Docker container, you will need to also create the container with <code>--privileged</code>. Podman does not have this requirement. If you are getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 by default, which is not allowed by your docker host. Simply run OliveTin with <code>--user root</code> as a simple workround. Note that <a href="no-puid-pgid.html">PUID and PGID variables will not work</a>.
+If you want to control Docker from inside a Docker container, you will need to also create the container with <code>--privileged</code>. Podman does not have this requirement. If you are getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 by default, which is not allowed by your docker host. Simply run OliveTin with <code>--user root</code> as a simple workround. Note that <a href="#no-puid-pgid">PUID and PGID variables will not work</a>.
 </td>
 </tr>
 </table>
@@ -288,7 +292,7 @@ If you want to control Docker from inside a Docker container, you will need to a
 <li>
 <p>The official x86_64 docker container comes with the <code>docker</code> client pre-installed. If you are using <code>arm</code> or and <code>arm64</code> container, you will need to add Docker yourself.</p>
 <div class="paragraph">
-<p><a href="container-dnf.html">How to install additional packages in the container</a></p>
+<p><a href="#container-dnf">How to install additional packages in the container</a></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -316,7 +320,7 @@ The reason that the <code>arm</code> and <code>arm64</code> containers do not co
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-05 22:33:58 UTC
+Last updated 2024-03-05 22:54:39 UTC
 </div>
 </div>
 </body>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.21">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "nav content" "nav footer";
+  grid-template-columns: 20em auto;
+  grid-template-rows: auto min-content;
+  height: 100vh;
+  align-items: stretch;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  background-color: #bdb76b;
+}
+
+#header {
+  background-color: #efefef;
+  grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
+  justify-self: center;
+  align-self: end;
+  padding: 1em;
+}
+
+#toc {
+  padding: 1em;
+}
+
+#toc a {
+  color: black;
+}
+
+#toc li {
+  padding-bottom: .6em;
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc ul ul {
+  padding-left: 1.4em;
+}
+
+#toctitle {
+  font-weight: bold;
+  color: black;
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: lighter;
+  background-color: black;
+  padding: .6em;
+  margin: 0;
+  color: white;
+}
+
+#toc a:hover {
+  text-decoration: underline;
+}
+
+#content {
+  background-color: white;
+  grid-area: content;
+  max-width: 1000px;
+  padding: 1em;
+  justify-self: center;
+}
+
+#content img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+pre {
+  background-color: #f7f7f8;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: no-wrap;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid gray;
+  padding: .4em;
+}
+
+th {
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.imageblock.right {
+  float: right;
+}
+
+hr {
+  clear: both;
+  border: 0;
+  border-bottom: 1px solid #efefef;
+  margin: 1em;
+}
+
+div.admonitionblock.note {
+  background-color: beige;
+}
+
+div.admonitionblock td {
+  border: 0;
+}
+
+div.admonitionblock td:first-child {
+  font-weight: bold;
+}
+
+.listingblock .title {
+  background-color: #efefef;
+  margin-bottom: -1em;
+  padding: 1em;
+}
+
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="_a_dashboard" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="installation.html">1. Installation Guide</a>
+</li>
+<li><a href="config.html">2. Configuration</a>
+</li>
+<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+</li>
+<li><a href="actions.html">4. Actions</a>
+</li>
+<li><a href="action-customisation.html">5. Action customisation</a>
+</li>
+<li><a href="examples.html">6. Action examples</a>
+</li>
+<li><a href="args.html">7. Arguments</a>
+</li>
+<li><a href="dashboards.html">8. Dashboards</a>
+</li>
+<li><a href="_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems.html">It&#8217;s often useful to turn logging to DEBUG when trying to work out authentication problems</a>
+</li>
+<li><a href="_this_config_has_two_actions_which_are_applied_to_all_container_entities.html">This config has two actions which are applied to all "container" entities </a>
+</li>
+<li><a href="_found_in_the_entity_file.html">found in the entity file.</a>
+</li>
+<li><a href="_docs_httpdocs_olivetin_appentities_html.html">Docs: http://docs.olivetin.app/entities.html</a>
+</li>
+<li><a href="_the_only_way_to_properly_use_entities_are_to_use_them_with_a_fieldset_on.html">The only way to properly use entities, are to use them with a <code>fieldset</code> on</a>
+</li>
+<li><a href="_a_dashboard.html"><span class="toc-current">a dashboard.</span></a>
+<ul class="sectlevel2">
+<li><a href="_sosreport_start_copy_all_text_to_sosreport_end.html">.1. SOSREPORT START (copy all text to SOSREPORT END)</a>
+</li>
+</ul>
+</li>
+<li><a href="_build.html">Build:</a>
+</li>
+<li><a href="_runtime.html">Runtime:</a>
+</li>
+<li><a href="_config.html">Config:</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 id="_a_dashboard" class="sect0"><a class="anchor" href="#_a_dashboard"></a><a class="link" href="#_a_dashboard">a dashboard.</a></h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>dashboards:
+  # This is the second dashboard.
+  - title: My Containers
+    contents:
+      - title: 'Container {{ container.Names }} ({{ container.Image }})'
+        entity: container
+        type: fieldset
+        contents:
+          - type: display
+            title: |
+              {{ container.RunningFor }} &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;{{ container.State }}&lt;/strong&gt;
+          - title: 'Start {{ container.Names }}'
+          - title: 'Stop {{ container.Names }}'</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[#heating-control-panel]
+=== Heating Control Panel
+
+This was inspired by a GitHub issue to control heating; https://github.com/OliveTin/OliveTin/issues/73
+
+image::images/dashboard-heating-control-panel.png[]
+
+==== Entity file
+
+To build this, we use an &lt;&lt;entities,entity&gt;&gt; file that stores and updates the status of a heater outside of OliveTin.
+
+[source,yaml]
+.`/etc/OliveTin/heating.yaml`</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>title: Main heater
+temperature: 20 degrees</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>==== Configuration
+
+Then use the following configuration file;
+
+[source,yaml]
+.`config.yaml`</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>logLevel: "INFO"</p>
+</div>
+<div class="paragraph">
+<p>actions:
+  - title: Turn heating up
+    icon: '&#128316;'
+    shell: /opt/heating.sh up</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>title: Turn heating down
+icon: '&#128317;'
+shell: /opt/heating.sh down</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>entities:
+  - file: /etc/OliveTin/entities/heating.yaml
+    name: heating</p>
+</div>
+<div class="paragraph">
+<p>dashboards:
+  - title: Heating Control Panel
+    contents:
+      - title: "{{ heater.title }}"
+        entity: heating
+        type: fieldset
+        contents:
+          - type: display
+            title: |
+              &lt;span class = "icon"&gt;&#127777;&lt;/span&gt; &lt;br /&gt;{{ heating.temperature }}</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>title: Turn heating up</p>
+</li>
+<li>
+<p>title: Turn heating down</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>=== GPIO Control on Raspberry Pi
+
+TODO :-)
+
+
+== Reference
+
+[#network-ports]
+=== Network ports
+
+OliveTin might suprise some people when they see it is listening on several
+ports when it starts up. Most of these ports are internal and localhost-only by
+default. It keeps the architecture of OliveTin clean and simple, and allows for
+a lot of flexibility if needed.
+
+Here is the default flow of traffic in OliveTin without any config changes.
+
+.Flow of an inbound network request
+image::images/portDiagram.png[]
+
+1. Traffic comes into OliveTin over your network and hits the only port
+listening - 1337, which listens on all interfaces. This is a micro HTTP reverse
+proxy.
+2. Traffic for `/` gets proxied to `localhost:1340` for the static web
+server.
+3. Traffic for `/api/` gets proxied to `localhost:1338` for REST actions.
+4. The REST API actually makes gRPC API calls internally, to port
+`localhost:1339`.
+
+Below is a detailed reference table.
+
+.Port reference table
+[%header,cols="1,2"]
+|===
+| Config file reference (and Default Address:Port) | Purpose
+| `listenAddressSingleHTTPFrontend: 0.0.0.0:1337` (listen on all available addresses) | This is a "micro reverse proxy" built into OliveTin. It's only purpose is to serve /ui and / (the web interface) from a single endpoint. This means that problems like CORSs and setting "external addresses" is not necessary. It does not do any caching or anything else. It can be disabled, but it makes life a lot easier for you. It's common to put your own reverse proxy like haproxy, traefik, etc in front of this single micro reverse proxy.
+| `listenAddressRestActions: localhost:1338`       | REST - the protocol used by web pages to talk to web APIs. In the case of OliveTin, the API is used to get actions, and start actions.
+| `listenAddressGrpcActions:localhost:1339`        | gRPC - a very popular method of service-to-service API communication. This provides the "real" API for OliveTin.
+| `listenAddressWebUI: localhost:1340`             | Hosts a simple static web server with some HTML, stylesheets, Javascript etc for the web interface.
+|===
+
+==== See also
+
+* &lt;&lt;multi-inst,Running Multiple instances of OliveTin on the same server&gt;&gt;
+
+=== Security
+
+OliveTin should be reasonably secure. Here are some security considerations in
+the design of the app;
+
+1. Admins have full control over what commands can by run using `config.yaml`.
+2. OliveTin does not accept any action (command) arguments by design at the
+moment, as this has huge potential for exploitation and needs to be handled
+carefully.
+3. OliveTin listens on just 1 open public port by default (1337). The rest of
+the ports only listen on `localhost` so you don't have to worry about them in
+your firewall.
+4. Standard Linux controls can be used to run OliveTin as non-root, with `sudo`
+permissions if needed. See the action customization section of these docs for
+more details.
+
+
+=== Understanding exit codes
+
+OliveTin just runs commands. If the command exits with an unusual exit code
+(something other than 0), OliveTin will tell you. Many Linux commands will exit
+with code 1, 2, 3, etc to indicate different types of errors.
+
+It's important to understand that OliveTin is just reporting back what the
+command exited with, it's very unusual for OliveTin to cause new types of
+errors!
+
+For example, if `ping` exits with code 1 or 2, the documentation for ping says
+that this indicates either a name not found, timeout, or other similar error.
+The best thing you can do is `man ping` to read the ping manual page to find
+out more.
+
+==== Common error codes
+
+* **Exit code 127** is used by the Linux shell to indicate "Command not found". Most often this means you need to install the command (often in the linux container image).
+
+
+
+[#update-tracking]
+=== Update Checks (and tracking)
+
+The OliveTin server will now check for updates on startup, and every 7 days after that. It will report those updates as a log message in the console. It does not apply any updates, because this is the choice and responsibility of whoever is running OliveTin to decide if, when, and how to apply any updates.
+
+The information OliveTin sends to the update server is stored/saved., and this could be considered a form of tracking - that is tracking installations, not tracking people. This page hopefully helps explain what, how and why that information is used so you can be informed (and make changes if you wish).
+
+==== Design considerations
+
+* The source code for the update check (client), and the update service are open and on GitHub, freely auditable.
+* A generated installation ID (which is just a UUID), that is used to differentiate between installations &lt;&lt;installation-id,more info&gt;&gt;.
+* The update request is sent and stored in plain text - easy to check/audit.
+* The update request goes to an obvious domain name - update-check.olivetin.app
+* The checkins can be freely viewed by anyone in the public log.
+* The update check can be disabled.
+
+[#update-sent]
+==== What is sent (and tracked)
+
+When OliveTin checks for updates, it will send the following;
+
+* CurrentVersion - eg: 1.0.0
+* CurrentCommit - the Git commit used to build this version
+* OS - The update check wants to know your OS, because it’s possible in the future that some versions and updates might not be available for all OSes at the same time.
+* Architecture (x86_64, ARM, etc)
+* InstallationID - See below
+
+Here is an example of a log entry that is sent/stored;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>{"CurrentVersion":"dev","CurrentCommit":"nocommit","OS":"linux","Arch":"amd64","InstallationID":"f232d115-255c-4728-ba7f-a8f8b2b10a1f"}</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>If you would like to audit the update code, look at the following directory; https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck
+
+[#installation-id]
+==== What is the OliveTin installation ID?
+
+This is a randomly generated link:https://en.wikipedia.org/wiki/Universally_unique_identifier[UUID] - that is not based on your operating system, not on any of your data. OliveTin tries to create a random installation-id.txt in your config directory when it starts up.
+
+The reason for creating a installation ID is to tell the differences between installations - without this identifier, we would not know if 10 instances, or 1 instances of OliveTin are running a specific version.
+
+In older versions of OliveTin, the MachineID was used instead of InstallationID (see below).
+
+[#machine-id]
+==== Why do you need my machine ID?
+
+This was changed in OliveTin - the MachineID is no longer collected, and the project moved to InstallationID instead. The answer is kept here for old versions.
+
+First of all, OliveTin only sends a hashed version of a unique identifier for your machine. OliveTin does not use your actual machine ID, because this is private, and potentially sensitive information in it’s original form. This hashed version of this ID is used, which should be considered safe - because it’s a hash, it’s not possible to get back to the original sensitive machine ID.
+
+From a technical perspective, OliveTin uses the golang package `machineiid` to
+get as hashed version of your MachineId. OliveTin follows the security
+recommendations of that project by using the hashed MachineId; https://github.com/denisbrodbeck/machineid#security-considerations
+
+The reason for getting the machine ID is to tell the differences between installations -
+without this identifier, we would not know if 10 instances, or 1 instances of
+OliveTin are running a specific version.
+
+==== Why do you need to store any information at all?
+
+This is incredibly useful information for project developers to know, because;
+
+1. It helps the project developers know how long it takes for updates to be applied by users of OliveTin (ie, should updates be released more often / less often) - the installation ID helps track this.
+2. This helps the project better understand what are the most popular operating systems and architectures (ie, so more testing can be done).
+3. How many old versions of the project to support?
+
+==== What is stored?
+
+The update service only stores the information that is sent - &lt;&lt;update-sent,explained with an example above&gt;&gt;.
+
+You can audit the update service code here; https://github.com/OliveTin/update-check.olivetin.app
+
+==== What is not sent/stored
+
+* No information about you, users of your system, no files, nothing else apart from what is mentioned above.
+* Not your public IP address, or any information about your network
+* Not any information about how you have configured OliveTin, or any actions.
+
+==== Where is the information sent
+
+To http://update-check.olivetin.app . This is a virtual machine which stores the logs on the machine filesystem. The data is accessible to all who which to view it, in the interest of transparency.
+
+==== Why isn’t this opt-in?
+
+It seems the majority of software does perform update checks by default like this - Chrome, Firefox, most modern Operating Systems, etc. Because no information about people, or your data is being used, apart from your installation ID, this seems like a safe default.
+
+Also, if this were to default off, many people probably would not think about turning it on.
+
+[#disable-update-checks]
+==== How do I disable update checking?
+
+If you are worried about privacy, or similar, please do make your concerns known. This is best if this is an open discussion.
+
+But, simply, to disable this feature, add to your config file;
+
+	checkForUpdates: false
+
+[#hide-news-versions]
+==== How can I hide version upgrades in the OliveTin web interface?
+
+Set the following in your configuration file;
+
+    showNewVersions: false
+
+OliveTin will need to be restarted for this change to have affect.
+
+[#hsts]
+==== Why can't I visit update-check.olivetin.app in my browser?
+
+The root domain for OliveTin (OliveTin.app) has HSTS turned on - this forces your browser to use SSL (HTTPS - the little encryption padlock) for all subdomains - including www.olivetin.app and docs.olivetin.app. Although both of those websites don't transmit anything that really needs encrypion, the web is certainly moving to having SSL turned on everywhere. It even has a positive impact on search engine rankings!
+
+The update-check service - which is accessible from update-check.olivetin.app - is designed to be only accessed via the OliveTin app. Non-web browsers, like this OliveTin app, generally ignore HSTS (and therefore don't try and access the update-check site via SSL/HTTPS.
+
+If you use a non-web browser to try to access the site over HTTP, (eg, curl), you should find it works like normal.
+
+As mentioned previously, the update-check site deliberately uses does not use SSL/HTTPS, to make it easy for people to audit what is actually being sent to the update site. Tools like tcpdump, wireshark, or others can verify that OliveTin is not sending more information than is described on this page.
+
+
+
+[#container-dnf]
+=== Installing extra container packages
+
+The official OliveTin container image is based on Fedora Linux. Fedora has shown to offer a great mix of stability and support over two decades. The base container image for OliveTin is relatively lightweight, with not many tools installed by default. This keeps the download size small, but you may want to add additional packages.
+
+==== Quickstart - using DNF to install additional packages
+
+You can of course create your own container image, but this is probably a lot of work for new users, or people who just want a few extra packages/commands. Instead of creating a whole new container image, you can simply run `microdnf` (the Fodora package manager) to install more commands.
+
+. Start the OliveTin container using one of the methods shown in the &lt;&lt;installation,installation instructions&gt;&gt;.
+
+. Then, on the same host that is running the container, spawn a root shell inside the OliveTin container, like this;
++</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>user@host: docker exec -it olivetin -u root /bin/bash
+[root@019d08ef95bd /]#</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+
+The important thing here is passing `-u root`. By default, OliveTin does not run as root.
+
+. Once you have a root shell in OliveTin, you can use the Fedora package manager - `microdnf` to install things that you might need. If you are used to Debian's `apt-get` tool, it works in a very similar way;
++</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>[root@019d08ef95bd /]# microdnf install -y nc</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+
+Note that if you upgrade the OliveTin container image, you will need to reinstall these packages.
++
+Once you have finished installing these packages, just exit the root shell using `exit`. You don't need to restart the container - and OliveTin does not need to run as root to use most commands.
+
+==== See also
+
+* link:https://hub.docker.com/r/jamesread/olivetin[OliveTin container on Docker Hub]
+* &lt;&lt;install-container,Installing using a container&gt;&gt;
+* &lt;&lt;install-compose,Installing using docker compose&gt;&gt;
+* &lt;&lt;install-helm,Installing on Kubernetes with Helm&gt;&gt;
+* &lt;&lt;install-k8s,Installing on Kubernetes (manually)&gt;&gt;
+
+[#multi-inst]
+=== Multiple instances on a server
+
+Several users will find themselves wanting to run multiple instances of OliveTin. Depending on how you've setup OliveTin depends on how easy it is to configure that. This page includes instructions for OliveTin installed as a container, and as a package (.tar.gz).
+
+==== With Containers
+
+This is the easiest way to run multiple OliveTin instances. Follow the &lt;&lt;install-container,Container Installation instructions&gt;&gt;, or similar for &lt;&lt;install-compose,Docker Compose&gt;&gt;, &lt;&lt;install-helm,Helm&gt;&gt; or similar to get started.
+
+1. Create a `config.yaml` file for each instance of OliveTin (instances cannot share the same config).
+2. Choose a new external port for OliveTin and set it in the config file (by default that is `1337` is used). For example, set `listenAddressSingleHTTPFrontend: 0.0.0.0:2337` for your 2nd container's config.
+3. When creating the container, pass in the 2nd instance's config, eg; `-v /opt/OliveTin_two/:/config/`
+4. When creating the container, set the external port, eg: `2337:1337` - 2337 is the external port)
+
+You do not need to change the listenAddresses / ports for the other 3 ports that OliveTin uses, when you are running inside a container.
+
+==== Without containers - using a package (.tar.gz)
+
+If you are not using containers, then it is probably best not to use a `.deb/.rpm` installation, as those packages can only be installed for one instance.
+
+Instead, follow the instructions for &lt;&lt;install-targz,installing from a .tar.gz&gt;&gt; archive.
+
+When you come to create the config.yaml file, OliveTin will look for this in it's own startup directory. Therefore it is probably best to extract the .tar.gz file like this and change the paths;
+
+* `/opt/OliveTin_one/`
+* `/opt/OliveTin_two/`
+* `/opt/OliveTin_three/`
+
+Because you are running outside of a container, you will also need to change the "internal" ports used by OliveTin so they are separate for all instances. OliveTin listens on 4 addresses (1 external, 3 internal) and needs 4 ports. You can read about these in the &lt;&lt;network-ports,network ports documentation&gt;&gt;.
+
+You could end up with a setup that looks like this;
+
+[%header]
+|===
+| Instance Name          | Install path          | Config file path                  | Single frontend point (`listenAddressSingleHTTPFrontend`)   | REST Actions port (`listenAddressRestActions`)  | gRPC Actions port (`listenAddressGrpcActions`)   | WebUI Port (`listenAddressWebUI`)
+| OliveTin_one           | `/opt/OliveTin_one`   | `/opt/OliveTin_one/config.yaml`   | `0.0.0.0:1337`           | `localhost:1338`    | `localhost:1339`      | `localhost:1340`
+| OliveTin_two           | `/opt/OliveTin_two`   | `/opt/OliveTin_two/config.yaml`   | `0.0.0.0:2337`           | `localhost:2338`    | `localhost:2339`      | `localhost:2340`
+| OliveTin_three         | `/opt/OliveTin_three` | `/opt/OliveTin_three/config.yaml` | `0.0.0.0:3337`           | `localhost:3338`    | `localhost:3339`      | `localhost:3340`
+|===
+
+Note that you will also need to adjust the default systemd service file to point to your install directory, if using that. Here is an example for `OliveTin_two`;
+
+.A modified systemd service file for a 2nd instance</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Description=OliveTin2</p>
+</div>
+<div class="paragraph">
+<p>WorkingDirectory=/opt/OliveTin_two/
+ExecStart=/opt/OliveTin_two/OliveTin
+Restart=always</p>
+</div>
+<div class="paragraph">
+<p>WantedBy=multi-user.target</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[#snapsnots]
+=== Snapshot builds
+
+It's sometimes useful to test code changes in OliveTin that are still in development - and have not yet made it into an official version, yet. Thankfully, all code changes are automatically compiled into a "snapshot" builds and are saved in GitHub actions.
+
+If you browse to GitHub actions page for OliveTin, you'll find the "Build Snapshot" job, with a list of recent builds.
+
+* https://github.com/OliveTin/OliveTin/actions/workflows/build-snapshot.yml[OliveTin's Build Snapshot page]
+
+image::images/snapshots.png[]
+
+Most of the time you will want to select the top build, unless you've specifically been given a build link to use.
+
+==== Download the snapshot archive
+
+On the job page, you will have a single "snapshot" file listed. In this screenshot, it is 109 MB.
+
+image::images/snapshot-download.png[]
+
+Once downloaded, you can open the archive using any tool that you use to open .zip files. The contents should read something like this;
+
+image::images/snapshot-archive.png[]
+
+Extract the file you need, and off you go!
+
+
+[#themes]
+=== Themes
+
+Temporary docs until I write something better.
+
+Very early version of a theme website: http://www.olivetin.app/themes/
+
+If you're using a container, bind mount a "themes" directory from your host into /var/www/olivetin/themes/
+
+If you're using a Linux package create a directory /var/www/olivetin/themes/
+
+==== Create your own theme (without any intention of publishing it)
+
+Create a sub-directory under your theme directory (normally /var/www/olivetin/themes) called "mytheme"
+
+Set your theme in your config
+
+[source,yaml]
+.`config.yaml`</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>themeName: myTheme</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Add your css into /var/www/olivetin/themes/mytheme/theme.css
+
+Your theme css will be loaded "on top" of the existing stylesheet.
+
+To test it is working, set your theme CSS to something ridiculous like;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>body {
+    background-color: red !important;
+}</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Profit.
+
+==== Create a theme for other people to use
+
+. Use this GitHub repository as a template to create your own theme repo: https://github.com/OliveTin/theme-template
+. Fork https://github.com/olivetin/themes
+. Create a directory under "content/posts" called something like "mytheme", and populate index.md, and cover.png.
+. Raise a pull request back to github.com/olivetin/themes/
+. Rejoice!
+
+[#troubleshooting]
+== Support &amp; Troubleshooting
+
+[#support]
+=== Where to find help
+
+Please feel free to open a support request issue on GitHub to ask for help with
+troubleshooting, or come and chat with us.
+
+image:images/icons/GitHub.png[inline] link:https://github.com/OliveTin/OliveTin/issues/new?assignees=&amp;labels=support&amp;template=support_request.md&amp;title=[Open a support request]
+
+image:images/icons/Discord.png[inline] link:https://discord.gg/jhYWWpNJ3v[Chat on Discord]
+
+[#sosreport]
+=== sosreport
+
+OliveTin has a useful feature to gather information about your installation that is useful when you're asking for help - when you have a support request. If you are able to provide sosreport, this generally helps others help you a lot. The **sosreport** feature does NOT send any information to the developers or anybody else, it's simply text - **copy and paste it** to where someone is trying to help you!
+
+An example sosreport is here;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="_sosreport_start_copy_all_text_to_sosreport_end.html">SOSREPORT START (copy all text to SOSREPORT END)</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="_the_only_way_to_properly_use_entities_are_to_use_them_with_a_fieldset_on.html">The only way to properly use entities, are to use them with a &lt;code&gt;fieldset&lt;/code&gt; on</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="_sosreport_start_copy_all_text_to_sosreport_end.html">SOSREPORT START (copy all text to SOSREPORT END)</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-03-05 22:54:39 UTC
+</div>
+</div>
+</body>
+</html>

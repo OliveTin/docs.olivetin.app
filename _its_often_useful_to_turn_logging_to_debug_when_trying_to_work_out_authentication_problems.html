@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.21">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "nav content" "nav footer";
+  grid-template-columns: 20em auto;
+  grid-template-rows: auto min-content;
+  height: 100vh;
+  align-items: stretch;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus {
+  background-color: #bdb76b;
+}
+
+#header {
+  background-color: #efefef;
+  grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
+  justify-self: center;
+  align-self: end;
+  padding: 1em;
+}
+
+#toc {
+  padding: 1em;
+}
+
+#toc a {
+  color: black;
+}
+
+#toc li {
+  padding-bottom: .6em;
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc ul ul {
+  padding-left: 1.4em;
+}
+
+#toctitle {
+  font-weight: bold;
+  color: black;
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: lighter;
+  background-color: black;
+  padding: .6em;
+  margin: 0;
+  color: white;
+}
+
+#toc a:hover {
+  text-decoration: underline;
+}
+
+#content {
+  background-color: white;
+  grid-area: content;
+  max-width: 1000px;
+  padding: 1em;
+  justify-self: center;
+}
+
+#content img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+pre {
+  background-color: #f7f7f8;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: no-wrap;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid gray;
+  padding: .4em;
+}
+
+th {
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.imageblock.right {
+  float: right;
+}
+
+hr {
+  clear: both;
+  border: 0;
+  border-bottom: 1px solid #efefef;
+  margin: 1em;
+}
+
+div.admonitionblock.note {
+  background-color: beige;
+}
+
+div.admonitionblock td {
+  border: 0;
+}
+
+div.admonitionblock td:first-child {
+  font-weight: bold;
+}
+
+.listingblock .title {
+  background-color: #efefef;
+  margin-bottom: -1em;
+  padding: 1em;
+}
+
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
+}
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="installation.html">1. Installation Guide</a>
+</li>
+<li><a href="config.html">2. Configuration</a>
+</li>
+<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+</li>
+<li><a href="actions.html">4. Actions</a>
+</li>
+<li><a href="action-customisation.html">5. Action customisation</a>
+</li>
+<li><a href="examples.html">6. Action examples</a>
+</li>
+<li><a href="args.html">7. Arguments</a>
+</li>
+<li><a href="dashboards.html">8. Dashboards</a>
+</li>
+<li><a href="_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems.html"><span class="toc-current">It&#8217;s often useful to turn logging to DEBUG when trying to work out authentication problems</span></a>
+</li>
+<li><a href="_this_config_has_two_actions_which_are_applied_to_all_container_entities.html">This config has two actions which are applied to all "container" entities </a>
+</li>
+<li><a href="_found_in_the_entity_file.html">found in the entity file.</a>
+</li>
+<li><a href="_docs_httpdocs_olivetin_appentities_html.html">Docs: http://docs.olivetin.app/entities.html</a>
+</li>
+<li><a href="_the_only_way_to_properly_use_entities_are_to_use_them_with_a_fieldset_on.html">The only way to properly use entities, are to use them with a <code>fieldset</code> on</a>
+</li>
+<li><a href="_a_dashboard.html">a dashboard.</a>
+</li>
+<li><a href="_build.html">Build:</a>
+</li>
+<li><a href="_runtime.html">Runtime:</a>
+</li>
+<li><a href="_config.html">Config:</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 id="_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems" class="sect0"><a class="anchor" href="#_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems"></a><a class="link" href="#_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems">It&#8217;s often useful to turn logging to DEBUG when trying to work out authentication problems</a></h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>logLevel: "INFO"</p>
+</div>
+<div class="paragraph">
+<p>authJwtCookieName: "Organizr_token_1234&#8230;&#8203;"
+authJwtSecret: "3l4jh23v_123!"
+authJwtClaimUsername: "username"
+authJwtClaimUsergroup: "usergroup"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Note that your `authJwtCookieName` and `authJwtSecret` will need to be set exactly as they appear in your Authentication software.
+
+==== Usable claims
+
+OliveTin currently can match Access Control Lists based on a **username** or **primary user group**. These must be called `name` and `group` respectively. You can see if these are being used properly turning on `DEBUG` logging and looking at the jwt claims.
+
+==== Setup default permissions
+
+OliveTin will assume that guests are able to View and Execute every action by default. When you are setting up authorization you probably want to limit this. You can do that by setting `defaultPermissions` like this;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>logLevel: "INFO"</p>
+</div>
+<div class="paragraph">
+<p>defaultPermissions:
+    view: false
+    exec: false</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>====  Setup OliveTin Access Control Lists
+
+Access Control Lists are a way to override the default permissions.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>logLevel: "INFO"</p>
+</div>
+<div class="paragraph">
+<p>defaultPermissions:
+    view: false
+    exec: false</p>
+</div>
+<div class="paragraph">
+<p>accessControlLists:
+    - name: Admins
+      addToEveryAction: true
+      matchUsergroups:
+      - Admins
+      permissions:
+        view: true
+        exec: true</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: "Web Admins"
+matchUsergroups:</p>
+</li>
+<li>
+<p>"webadmin"
+permissions:
+  view: true
+  exec: false</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>actions:
+    - name: Only visible to admins
+      shell: echo "I am a secret command only visible to admins"</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name: Restart database
+shell: reboot
+acls:</p>
+</li>
+<li>
+<p>"webadmin"</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>In the example above, the `admins` ACL is automatically added to every action, because `addToEveryAction` is true.
+
+==== Customizing field names
+
+You may need to customize the field names for your JWT authentication.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>authJwtClaimUsername: "username"
+authJwtClaimUsergroup: "usergroup"</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[#solutions]
+== Solutions
+
+OliveTin was designed to be very simple, but sometimes OliveTin can get complex - especially if you are trying to do something where you need to jump between lots of different parts of the documentation!
+
+This section of the docs is designed to bring everything into one place and present a scenario, with a single-page solution.
+
+[#container-control-panel]
+=== Container Control Panel
+
+OliveTin is frequently used to create simple container control panels, this is one of the default examples that ships with the standard OliveTin config.yaml.
+
+image::images/solution-container-control-panel.png[]
+
+==== Setup if running inside a container
+
+You can control other containers, when running OliveTin inside a container
+itself, however you need to do some extra setup when creating the OliveTin
+container.
+
+NOTE: If you want to control Docker from inside a Docker container, you will need to also create the container with `--privileged`. Podman does not have this requirement. If you are getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 by default, which is not allowed by your docker host. Simply run OliveTin with `--user root` as a simple workround. Note that &lt;&lt;no-puid-pgid,PUID and PGID variables will not work&gt;&gt;.
+
+. Pass `/var/run/docker.sock` as a bind mount to the container when creating it, eg:
++</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>docker create --privileged --user root -v /var/run/docker.sock:/var/run/docker.sock &#8230;&#8203;additional args here&#8230;&#8203;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+
+Or, using the `docker run` syntax;
++</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>docker run --privileged --user root -v /var/run/docker.sock:/var/run/docker.sock --name OliveTin jamesread/olivetin</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+
+. The official x86_64 docker container comes with the `docker` client pre-installed. If you are using `arm` or and `arm64` container, you will need to add Docker yourself.
++
+&lt;&lt;container-dnf,How to install additional packages in the container&gt;&gt;
++
+NOTE: The reason that the `arm` and `arm64` containers do not container docker, is that when these images are cross-compiled at build time, it takes FOREVER because we have to emulate arm.
+
+After you have passed the socket into the container (and optionally installed docker), you should be able to setup docker actions like it's shown in the example &lt;&lt;example-control-containers,above&gt;&gt;.
+
+
+
+==== Entity file
+
+To build this Container Control dashboard, we use an &lt;&lt;entities,entity&gt;&gt; file that stores and updates produced by `docker ps --format json &gt; /etc/OliveTin/entities/containers.json`
+
+[source,yaml]
+.`/etc/OliveTin/entities/containers.json`</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>{"Command":"\"/bin/bash\"","CreatedAt":"2024-02-28 22:33:35 +0000 GMT","ID":"fcf468e18a0e","Image":"fedora","Labels":"maintainer=Clement Verna u003ccverna@fedoraproject.org\u003e","LocalVolumes":"0","Mounts":"","Names":"minecraft","Networks":"bridge","Ports":"","RunningFor":"3 minutes ago","Size":"0B","State":"created","Status":"Created"}
+{"Command":"\"/bin/bash\"","CreatedAt":"2024-02-23 23:18:57 +0000 GMT","ID":"442dd6fe316a","Image":"fedora","Labels":"maintainer=Clement Verna u003ccverna@fedoraproject.org\u003e","LocalVolumes":"0","Mounts":"","Names":"brave_shirley","Networks":"bridge","Ports":"","RunningFor":"4 days ago","Size":"0B","State":"created","Status":"Created"}</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>You can generate this file yourself the first time, but the `config.yaml` below shows how OliveTin can run the `docker ps` command on startup, and on a schedule to update the file.
+
+==== Configuration
+
+Then use the following configuration file;
+
+[source,yaml]
+.`config.yaml`</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+</ul>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="output-views.html">Most recent action output</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="_this_config_has_two_actions_which_are_applied_to_all_container_entities.html">This config has two actions which are applied to all "container" entities </a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-03-05 22:54:39 UTC
+</div>
+</div>
+</body>
+</html>

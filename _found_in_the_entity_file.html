@@ -157,7 +157,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="auth" class="book toc2 toc-left">
+<body id="_found_in_the_entity_file" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -179,60 +179,78 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="dashboards.html">8. Dashboards</a>
 </li>
-<li><a href="entities.html">9. Entities</a>
+<li><a href="_its_often_useful_to_turn_logging_to_debug_when_trying_to_work_out_authentication_problems.html">It&#8217;s often useful to turn logging to DEBUG when trying to work out authentication problems</a>
 </li>
-<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+<li><a href="_this_config_has_two_actions_which_are_applied_to_all_container_entities.html">This config has two actions which are applied to all "container" entities </a>
 </li>
-<li><a href="auth.html"><span class="toc-current">11. Authentication &amp; Authorization</span></a>
-<ul class="sectlevel2">
-<li><a href="auth-concepts.html">11.1. Concepts</a>
+<li><a href="_found_in_the_entity_file.html"><span class="toc-current">found in the entity file.</span></a>
 </li>
-<li><a href="trusted-header.html">11.2. Trusted Header Authorization</a>
+<li><a href="_docs_httpdocs_olivetin_appentities_html.html">Docs: http://docs.olivetin.app/entities.html</a>
 </li>
-<li><a href="jwt.html">11.3. JWT Authorization</a>
+<li><a href="_the_only_way_to_properly_use_entities_are_to_use_them_with_a_fieldset_on.html">The only way to properly use entities, are to use them with a <code>fieldset</code> on</a>
 </li>
-</ul>
+<li><a href="_a_dashboard.html">a dashboard.</a>
 </li>
-<li><a href="solutions.html">12. Solutions</a>
+<li><a href="_build.html">Build:</a>
 </li>
-<li><a href="_reference.html">13. Reference</a>
+<li><a href="_runtime.html">Runtime:</a>
 </li>
-<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
-</li>
-<li><a href="api.html">15. API</a>
+<li><a href="_config.html">Config:</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="auth"><a class="anchor" href="#auth"></a><a class="link" href="#auth">11. Authentication &amp; Authorization</a></h2>
-<div class="sectionbody">
+<h1 id="_found_in_the_entity_file" class="sect0"><a class="anchor" href="#_found_in_the_entity_file"></a><a class="link" href="#_found_in_the_entity_file">found in the entity file.</a></h1>
+<div class="openblock partintro">
+<div class="content">
 <div class="paragraph">
-<p>See <a href="auth-concepts.html">concepts</a> for a good overview of how this works in OliveTin.</p>
+<p>#
+# Docs: <a href="http://localhost/docs.olivetin.app/docs/entities.html" class="bare">http://localhost/docs.olivetin.app/docs/entities.html</a>
+actions:
+  - title: Start {{ container.Names }}
+    icon: box
+    shell: docker start {{ container.Names }}
+    entity: container
+    trigger: Update container entity file</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="auth-concepts.html">Concepts</a></p>
+<p>title: Stop {{ container.Names }}
+icon: box
+shell: docker stop {{ container.Names }}
+entity: container
+trigger: Update container entity file</p>
+<div class="literalblock">
+<div class="content">
+<pre># This is a hidden action, that is run on startup, and every 5 minutes, and 
+# when the above start/stop commands are run (see the `trigger` property).</pre>
+</div>
+</div>
 </li>
 <li>
-<p><a href="trusted-header.html">Trusted Header Authorization</a></p>
-</li>
-<li>
-<p><a href="jwt.html">JWT Authorization</a></p>
+<p>title: Update container entity file
+shell: 'docker ps -a --format json &gt; /etc/OliveTin/entities/containers.json'
+hidden: true
+execOnStartup: true
+execOnCron: '*/5 * * * *'</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="ulist">
+<ul>
+</ul>
+</div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="timezone.html">Timezone</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="auth-concepts.html">Concepts</a> →</p>
+<p>← Previous: <a href="_this_config_has_two_actions_which_are_applied_to_all_container_entities.html">This config has two actions which are applied to all "container" entities </a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="_docs_httpdocs_olivetin_appentities_html.html">Docs: &lt;a href="http://docs.olivetin.app/entities.html" class="bare"&gt;<a href="http://docs.olivetin.app/entities.html&lt;/a</a>&gt; →" class="bare">http://docs.olivetin.app/entities.html&lt;/a&gt;&gt;&gt; →</a></p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-05 22:33:58 UTC
+Last updated 2024-03-05 22:54:39 UTC
 </div>
 </div>
 </body>
