@@ -1,0 +1,32 @@
+[#snapsnots]
+=== Snapshot builds
+
+Temporary docs until I write something better.
+
+If you're using a container, bind mount a "themes" directory from your host into /var/www/olivetin/themes/
+
+If you're using a Linux package create a directory /var/www/olivetin/themes/ 
+
+Create a directory called "mytheme"
+
+Set your theme in your config
+
+[source,yaml]
+.`config.yaml`
+----
+themeName: myTheme
+----
+
+Add your css into /var/www/olivetin/themes/mytheme/theme.css
+
+Your theme css will be loaded "on top" of the existing stylesheet.
+
+To test it is working, set your theme CSS to something ridiculous like;
+
+----
+body {
+    background-color: red !important;
+}
+----
+
+Profit.
