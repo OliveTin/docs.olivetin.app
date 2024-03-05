@@ -227,3 +227,6 @@ dashboards:
         contents:
           - type: stdout-most-recent-execution
             title: status_command
+----
+
+Please discuss on Discord if you need support.
