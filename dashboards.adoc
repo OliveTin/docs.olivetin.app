@@ -200,3 +200,30 @@ dashboards:
           - title: 'Stop {{ container.Names }}'
 ----
 
+[#output-views]
+=== Most recent action output
+
+This is considered an advanced and experimental feature at the moment. 
+
+WARNING: If you execute too frequently (like every 5-10 seconds) OliveTin is prone to crashing. This will be fixed later.
+
+WARNING: If you are running a status command, you should use `execOnStartup` and `execOnCron` to make sure it is ready for when the webui loads, or OliveTin is likely to crash.
+
+----
+
+actions:
+  - title: Get status
+    id: status_command
+    shell: date
+    execOnStartup: true
+    execOnCron:
+      - "*/1 * * * *"
+
+dashboards:
+  - title: Control Panel
+    contents:
+      - title: Status
+        type: fieldset
+        contents:
+          - type: stdout-most-recent-execution
+            title: status_command
