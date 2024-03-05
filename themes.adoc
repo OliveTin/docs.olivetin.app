@@ -1,5 +1,5 @@
-[#snapsnots]
-=== Snapshot builds
+[#themes]
+=== Themes
 
 Temporary docs until I write something better.
 
