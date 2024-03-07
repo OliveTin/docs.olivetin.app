@@ -18,7 +18,7 @@ Set your theme in your config
 [source,yaml]
 .`config.yaml`
 ----
-themeName: myTheme
+themeName: mytheme
 ----
 
 Add your css into /var/www/olivetin/themes/mytheme/theme.css
