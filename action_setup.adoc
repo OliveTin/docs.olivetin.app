@@ -160,6 +160,30 @@ When running shellAfterCompleted, you *cannot* use argument values - they are no
 
 You can only use a single `shellAfterCompleted`, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.
 
+[#exec-on-calendar]
+=== Execute on calendar file
+
+NOTE: The feature is currently experimental. 
+
+A calendar file is a list of instants (date + time) to run the action. Omce that instant is in the past, it will be ignored. 
+
+You can use an action with a datetime argunent to update the calendar file. You will have to adjust the hardcoded timezone to suit your needs.gg
+
+[source,yaml]
+----
+actions:
+  - title: Schedule server
+    shell: echo '- {{ when }}+00:00' >> start-server-calendar.yaml
+    arguments:
+      - name: when
+        title: When?
+        type: datetime
+
+  - title: start server
+    shell: echo "Starting Server!"
+    execOnCalendarFile: start-server-calendar.yaml
+----
+
 [#triggers]
 === Triggers
 
