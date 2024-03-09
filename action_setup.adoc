@@ -165,9 +165,31 @@ You can only use a single `shellAfterCompleted`, so use it for notifications, or
 
 NOTE: The feature is currently experimental. 
 
-A calendar file is a list of instants (date + time) to run the action. Omce that instant is in the past, it will be ignored. 
+Soketimes you want to schedule an action to run at a specific date and tine, lioe at 2024-02-07 at 15:30. This is technically called "an instant", and OliveTin can watch a file that contains a list of instants for new additions. 
 
-You can use an action with a datetime argunent to update the calendar file. You will have to adjust the hardcoded timezone to suit your needs.gg
+[source,yaml]
+.`start-server-calendar.yaml`
+----
+- 2024-03-08T20:11:45+00:00
+- 2024-03-08T20:12:30+00:00
+----
+
+OloveTin will watch this file, and also load it on stsrtup. If an instant is seen that is in the past, it is just ignored. If it is in the future then it is scheduled.
+
+This is how you setup an action to use the calendar file:
+
+[source,yaml]
+.`config.yaml`
+----
+actioms: 
+  - title: start server
+    shell: echo "Starting Server!"
+    execOnCalendarFile: start-server-calendar.yaml
+----
+
+You will often want an easy easy to schedule actions from the web interface as well, you can do this by creating a separate schedule action that adds an instant to the calendar file.
+
+You can use an action with a datetime argument to update the calendar file. You will have to adjust the hardcoded timezone to suit your needs, you can see below that "+00:00" is being added to "{{ when }}" to create an instant in the UTC timezone.
 
 [source,yaml]
 ----
