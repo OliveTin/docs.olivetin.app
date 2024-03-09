@@ -1,13 +1,95 @@
 [#action-customisation]
 == Action customisation
 
+=== Execution Feedback
+OliveTin now has several options to control "feedback" when actions are started. This can be controlled on
+a per-action basis, using the `popupOnStart` configuration option.
+
+==== Big Flashy Buttons
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Ping the Internet
+    popupOnStart: default
+----
+
+This will also be the option that is used if no other values match.
+
+image::images/flashyButton.png[]
+
+==== Execution Dialog (Output Only)
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Check disk space
+    popupOnStart: execution-dialog-stdout-only
+----
+
+image::images/popupOutputOnly.png[]
+
+==== Execution Dialog
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Check dmesg logs
+    popupOnStart: execution-dialog
+----
+
+.Example of `popupOnStart: execution-dialog`
+image::images/executionDialog.png[]
+
+==== Execution Buttons
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: date
+    popupOnStart: execution-button
+----
+
+image::images/executionButtons.png[]
+
+[#icons]
 === Icons
 
 You can specify any HTML for an icon. It's a popular choice to use Unicode
 icons because they are extremely fast to load and there are a lot of them.
 
+Version 2024.03.06 also introduced support for Iconify, built in to OliveTin.
+
 .Examples of icons in OliveTin
 image::images/exampleIcons.png[]
+
+==== Iconify Icons
+
+Browse over 200,000 icons that can be used with OliveTin here; https://icon-sets.iconify.design/
+
+Note, the icons are loaded from the internet, but should be cached by your browser afer the first load.
+
+On the Iconfiy website, you should select **Iconify Icon**
+
+image::images/iconify.png[]
+
+Then copy this icon code, and place it in your config;
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Iconify Icon
+    icon: <iconify-icon icon="ant-design:bug-filled"></iconify-icon>
+----
+
+And you should get something that looks like this;
+
+image::images/action-button-iconify.png[]
 
 ==== Unicode icons ("emoji")
 
@@ -87,6 +169,7 @@ examples;
 ----
 ////
 
+[#timeout]
 === Timeouts
 
 By default, actions in OliveTin have a 3 second timeout. This means that
@@ -170,4 +253,18 @@ WARN Blocked from executing. This would mean this action is running 2 times conc
 
 Naturally, you can set `maxConcurrent` to `3` or some other number, to limit the amount of times the action executes at once.
 
+[#action-ids]
+=== IDs
+
+OliveTin actions do not require IDs to be specified in the `config.yaml`, as most users of OliveTin start off with the Web Interface. However, if you want to use OliveTin actions via the <<api,API>>, then you will need to set your action IDs manually.
+
+NOTE: OliveTin will automatically generate a new ID for actions every time it starts up, for actions that don't have an `id:` property set.
+
+[source,yaml]
+----
+actions:
+  - title: Start the reactor
+    id: start_reactor
+    shell: /bin/startReactor.sh
+----
 

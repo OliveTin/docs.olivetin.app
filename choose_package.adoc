@@ -1,9 +1,12 @@
 [#choose-package]
 === Which download do I need?
 
-**Packages** can be downloaded from the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
+OliveTin can be run as a <<package,service>> or a <<container-image,container>>. If you are not sure which is best for you, read <<install-container-vs-service,containers vs services>>.
 
-Some folks need extra help understanding which package/download is needed. This table below should help;
+[#package]
+==== Packages (run OliveTin as a service)
+
+This is a table that explains which package/download is best for each environment;
 
 |===
    | Processor Type                                        | Operating System  | Distribution                      | File on link:https://github.com/OliveTin/OliveTin/releases/latest[latest release page] 
@@ -12,7 +15,7 @@ Some folks need extra help understanding which package/download is needed. This 
                                                                                | Red Hat, Fedora, etc -> `.rpm`    | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.rpm[`OliveTin_linux_amd64.rpm`]    <<install-linuxpackage,installation instructions>>
                                                                                | Debian, Ubuntu -> `.deb`          | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.deb[`OliveTin_linux_amd64.deb`]    <<install-linuxpackage,installation instructions>>
                                                          2+| Windows                                               | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-windows-amd64.zip[`OliveTin-windows-amd64.zip`]
-                                                         2+| macOS                                                 | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-macOS-amd64.tar.gz[`OliveTin-macOS-amd64.tar.gz`]
+                                                         2+| <<macOS,macOS>>                                                 | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-macOS-amd64.tar.gz[`OliveTin-macOS-amd64.tar.gz`]
 .3+| 32bit ARM (Raspberry Pi 1, 2, or similar) -> `arm`             .3+| Linux             | Other -> `.tar.gz`                | link:https://github.com/OliveTin/OliveTin/releases/latest[One of the `OliveTin-linux-arm....tar.gz` files]  <<install-targz,installation instructions>>
                                                                                | Red Hat, Fedora, etc -> `.rpm`    | link:https://github.com/OliveTin/OliveTin/releases/latest[One of the `OliveTin_linux_arm.....rpm` files]   <<install-linuxpackage,installation instructions>>
                                                                                | Debian, Ubuntu -> `.deb`          | link:https://github.com/OliveTin/OliveTin/releases/latest[One of the `OliveTin_linux_arm....deb` files]   <<install-linuxpackage,installation instructions>>
@@ -25,15 +28,19 @@ Some folks need extra help understanding which package/download is needed. This 
                                                          2+| macOS                                                 | link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-macOS-amd64.tar.gz[`OliveTin-macOS-arm64.tar.gz`] <<install-targz,installation instructions>>
 |===
 
-Running OliveTin as a <<install-systemd,systemd service>> on a Linux machine means it can use any program installed on your machine (you don't have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.
 
-==== Container images 
+A full list of **packages** can be downloaded from the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
 
-Container images can be found for OliveTin link:https://hub.docker.com/r/jamesread/olivetin/tags?page=1&ordering=last_updated[on DockerHub].
+[#container-images]
+==== Container images
 
-* <<install-container,Installation as a conatiner (podman/docker)>>
+include::note_container.adoc[]
+
+include::install_container_registries.adoc[]
+
+The following methods can be used to install the container;
+
+* <<install-container,Installation as a standalone container (podman/docker)>>
 * <<install-compose,Installation with Docker Compose>>
 * <<install-helm,Installation on Kubernetes with Helm>>
 * <<install-k8s,Installation on Kubernetes (manually)>>
-
-

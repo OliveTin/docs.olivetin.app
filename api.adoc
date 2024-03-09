@@ -12,36 +12,28 @@ The REST API gateway is used by the WebUI, and you can use it too by default - i
 
 The gRPC API only listens on localhost default, but it can be set to listen publicly. See <<network-ports, the network ports documentation>> for a better description of how the APIs are exposed. Most people do not need to use the gRPC API. The .proto file for the gRPC API is located at the root of the OliveTin Git repository; https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[OliveTin.proto].
 
+==== Links 
+
+* link:http://docs.olivetin.app/api/[Swagger UI for OliveTin API]
+* link:http://docs.olivetin.app/api/OliveTin.openapi.json[OpenAPI JSON Definition]
+* link:https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[The OliveTin Protobuf file]. 
+
+Please do talk to the developers on Discord if you'd like help using the API, or you're thinking about building something interesting using the API!
+
 [#api-start-action]
 === Starting Actions from the API
 
 include::api_start_action_overview.adoc[]
 
-[#api-request-alias]
-==== Request type: Alias
+[#api-request-idurl]
+==== Request type: Action ID in the URL
 
 Used by:
 
-* `StartActionByAlias`
-* `StartActionByAliasAndWait`
+* `StartActionByGet`
+* `StartActionByGetAndWait`
 
-If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an alias directly in the URL, like this;
-
-----
-http://olivetin.example.com/api/StartActionByAlias/pingGithub
-----
-
-The corresponding config.yaml would look like this;
-
-[source,yaml]
-----
-actions:
-  - title: Ping GitHub.com
-    titleAlias: pingGithub
-    shell: ping github.com -c 1
-----
-
-titleAliases are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
+If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an ID directly in the URL, <<api-eg-startIdUrl,see the example>>.
 
 [#api-request-obj]
 ==== Request type: OliveTin request object
@@ -51,55 +43,129 @@ Used by:
 * `StartAction`
 * `StartActionAndWait`
 
+[source,json]
+.OliveTin request object structure
+----
+{
+  "actionId": "string",
+  "arguments": [
+    {
+      "name": "string",
+      "value": "string"
+    }
+  ],
+  "uniqueTrackingId": "string"
+}
+----
+
+To find your Action ID, and understand how Action IDs work, see the <<action-id,Action ID>> documentation
+
 If you need more control over the execution, then the only other option is to submit a `OliveTin reqjest object`, which is just a very simple JSON structure like this;
 
 [source,json]
 ----
 {
-    "actionName": "Generate cryptocurrency",
+    "actionId": "Generate cryptocurrency",
     "arguments": [],
-    "uuid": "my-tracking-id",
+    "uniqueTrackingId": "my-tracking-id",
 }
 ----
 
 More detailed examples can be seen below.
 
-==== Response type: Execution UUID
+[#api-response-trackingid]
+==== Response type: Execution Tracking ID
 
 Used by:
 
 * `StartAction`
-* `StartActionByAlias`
+* `StartActionByGet`
 
+.Example Execution Tracking ID response
+[source,json]
+----
+{"executionTrackingId":"5bb4860c-bbd0-4bc9-a7d6-42240551500c"}
+----
+
+[#api-response-logentry]
 ==== Response type: LogEntry
 
 Used by:
 
 * `StartActionAndWait`
-* `StartActionByAliasAndWait`
+* `StartActionByGetAndWait`
 
-==== Example API call: Start an action
+.Example log entry
+[source,json]
+----
+{
+    "logEntry": {
+        "datetimeStarted": "2024-02-27 14:14:49",
+        "actionTitle": "Restart httpd on server1",
+        "stdout": "",
+        "stderr": "",
+        "timedOut": true,
+        "exitCode": -1,
+        "user": "",
+        "userClass": "",
+        "actionIcon": "&#128260;",
+        "tags": [
+
+        ],
+        "executionTrackingId": "b04b1e90-d457-4158-b7dc-da9e81f21568",
+        "datetimeFinished": "2024-02-27 14:14:52",
+        "actionId": "restart_httpd",
+        "executionStarted": true,
+        "executionFinished": true,
+        "blocked": false
+    }
+}
+----
+
+[#api-eg-startIdUrl]
+==== Example API call; Start an action by ID in the URL
+
+.curl
+----
+user@host: curl http://olivetin.example.com/api/StartActionByGet/pingGithub
+----
+
+The corresponding config.yaml would look like this;
+
+[source,yaml]
+----
+actions:
+  - title: Ping GitHub.com
+    id: pingGithub
+    shell: ping github.com -c 1
+----
+
+IDs are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
+
+==== Example API call: Start an action using `StartAction`
 
 [source,bash]
 .curl
 ----
-user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionName": "Nuclear reactor shutdown"}'
+user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionId": "nuclear_reactor_shutdown"}'
 ----
 
 [source,powershell]
 .Powershell
 ----
-PS C:\Users\xcons> $json = '{"actionName": "Deploy attack Gnomes"}'
+PS C:\Users\xcons> $json = '{"actionId": "deploy_attack_gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
 ----
 
-==== Example API call: Start an action with arguments
+==== Example API call: Start an action using `StartAction` with arguments
 
 [source,bash]
 .curl
 ----
-user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionName": "Ping host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
+user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
 ----
+
+=== Misc API calls
 
 ==== Example API call: Get the dashboard buttons ("components")
 
@@ -108,10 +174,15 @@ user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"acti
 user@host: curl http://olivetinServer:1337/api/GetDashboardComponents 
 ----
 
-==== Links 
+==== Example API call: readyz Healthcheck
 
-* link:http://docs.olivetin.app/api/[Swagger UI for OliveTin API]
-* link:http://docs.olivetin.app/api/OliveTin.openapi.json[OpenAPI JSON Definition]
-* link:https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[The OliveTin Protobuf file]. 
+This is useful for configuring healthchecks in docker containers, or on Kubernetes.
 
-Please do talk to the developers on Discord if you'd like help using the API, or you're thinking about building something interesting using the API!
+.curl
+----
+user@host: curl http://olivetinServer:1337/api/readyz
+{"status": "ok"}
+----
+
+The response will always be "status: ok" to indicate that the API is up, or it will timeout. 
+

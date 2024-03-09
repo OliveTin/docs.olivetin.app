@@ -75,6 +75,7 @@ A full list of argument types are below;
 | confirmation                | A "hidden" argument that makes the action require a confirmation before launching.
 |===
 
+[#args-dropdowns]
 === Dropdown choice arguments
 
 Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify. 
@@ -104,3 +105,21 @@ Then finally, when you execute this command, it would look something like this (
 
 image::images/args-choices-exec.png[]
 
+[#confirmation]
+=== Confirmation argument
+
+The `confirmation` type argument is a special argument type, which simply disables the "Start" button until a checkbox is ticked. This can be useful if you have an action with no other arguments, but you want to prevent accidental button-clicks starting the action.
+
+----
+actions:
+  - title: Delete old backups
+    icon: ashtonished
+    shell: rm -rf /opt/oldBackups/
+    arguments:
+      - type: confirmation
+        title: Are you sure?!
+----
+
+image::images/action-confirmation.png[]
+
+Notice in the webui the "start" button is disabled.

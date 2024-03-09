@@ -1,9 +1,16 @@
 [#auth]
 == Authentication & Authorization
 
+See <<auth-concepts,concepts>> for a good overview of how this works in OliveTin. 
+
+[#auth-concepts]
 === Concepts
 
-OliveTin does not have any built-in code for doing **Authentication** (eg: entering a username and password), however it can do **Authorization** by relying on another system like a reverse proxy or "homepage" tool to first login users. OliveTin is often deployed alongside tools like Traefik and Organizr, which pass a special "token" to OliveTin, so OliveTin knows when a user has been authenticated.
+OliveTin does not have any built-in code for doing **Authentication** (ie: entering a username and password), however it can do **Authorization** (ie: checking permissions of a user who logged in via another system, like single sign on).
+
+A popular way of deploying OliveTin is by users accessing it via another system, like a <<reverse-proxies,reverse proxy>> (eg: Traefik) or a "homepage" app (eg: Organizr). Both of these are used to handle user authentication first, before users then access OliveTin. Permissions can then be applied inside OliveTin depending on who has logged in.
+
+The flow generally goes like this; 
 
 1. User browses to a website like Organizr and logs in, which sets a JWT Cookie for apps.example.com.
 2. User browses to OliveTin.apps.example.com, and the cookie is sent to OliveTin.
@@ -17,8 +24,8 @@ OliveTin does not have any built-in code for doing **Authentication** (eg: enter
 This method is not yet well documented, sorry! Ask on Discord - we need more people to test this feature.
 
 ----
-AuthHttpHeaderUsername "X-Username"
-AuthHttpHeaderUsergrou "X-Usergroup"
+authHttpHeaderUsername: "X-Username"
+authHttpHeaderUsergroup: "X-Usergroup"
 ----
 
 NOTE: You *must* set `AuthHttpHeaderUsername` to some value, even if you only intend to use `AuthHttpHeaderUsergroup`, otherwise usergroups will be ignored.

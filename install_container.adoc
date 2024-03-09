@@ -1,10 +1,9 @@
 [#install-container]
 === Container install (podman/docker)
 
-The image is pushed to the following registries, pick the one that you prefer - the container images are identical so you only need one;
+include::note_container.adoc[]
 
-* Dockerhub container image: link:https://hub.docker.com/r/jamesread/olivetin/[docker.io/jamesread/olivetin]
-* GitHub container image: link:https://ghcr.io/olivetin/olivetin[ghcr.io/jamesread/olivetin]
+include::install_container_registries.adoc[]
 
 If you prefer to use docker-compose, then follow the <<install-compose,docker-compose installation instructions>>.
 

@@ -1,0 +1,127 @@
+== Advanced Configuration
+
+This section includes optional configuration options that are used less frequently by most users.
+
+[#customize-webui]
+=== Customize the web UI
+
+The OliveTin web UI is reasonably customizable - parts of the page that you don't need can be hidden when they're not needed. 
+
+==== Page Title
+
+You can customize the page title;
+
+image::images/page-title.png[]
+
+.`config.yaml`
+[source,yaml]
+----
+pageTitle: My OliveTin Instance
+----
+
+[#show-nav]
+==== Show Navigation 
+
+You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.
+
+.The default user interface with the "Actions" and "Settings" buttons shown.
+image::images/defaultUiWithNav.png[]
+
+To have OliveTin hide these buttons, add `showNavigation: false` to your config.yaml;
+
+.`config.yaml`
+[source,yaml]
+----
+logLevel: "INFO"
+showNavigation: false
+
+actions:
+    ....
+----
+
+.The same user interface, but with the "Actions" and "Settings" buttons hidden (`showNavigation: false`)
+image::images/defaultUiHideNav.png[]
+
+[#show-new-versions]
+==== Show new versions
+
+You can disable the "new version" information in the footer - the default for `showNewVersions` is `true`; 
+
+.`config.yaml`
+[source,yaml]
+----
+logLevel: "INFO"
+showNewVersions: false
+----
+
+If disabled, OliveTin will still check for new versions in the background, but will not display them on the page. If you want to disable update checking completely, see <<disable-update-checks,disable update checking>>.
+
+[#show-footer]
+==== Show the footer 
+
+You can disable the entire footer, if you would like a really minimal interface. The default for `showFooter` is `true`.
+
+.`config.yaml`
+[source,yaml]
+----
+logLevel: "INFO"
+showFooter: false
+----
+
+This means the <<show-new-versions,`showNewVersions`>> configuration option will automatically be `false` as well.
+
+[#log-levels]
+=== Log Levels
+OliveTin supports a few different log levels. The default logLevel is `INFO`. 
+
+You can set a `logLevel` in config.yaml like this;
+
+.`config.yaml`
+[source,yaml]
+----
+logLevel: "INFO"
+
+actions:
+    ....
+----
+
+The supported log levels are;
+
+* `DEBUG` - Every possible log message will be shown. This will use a lot of disk space and is not recommended unless you are a developer / like reading code.
+* `ERROR` - OliveTin rarely uses the `ERROR` log level.
+* `WARN` - Very few messages, only warnings are shown.
+* `INFO` - The defualt log level.
+
+You can change the `logLevel` while OliveTin is running, and it should update as soon as you save your config.yaml. You will always get a log message like this;
+
+[source,bash]
+----
+INFO Setting log level to warning
+----
+
+
+[#ports]
+=== Ports
+
+See <<network-ports,the network ports>> documentation in the reference section.
+
+[#timezone]
+=== Timezone
+
+OliveTin will obviously use the system time just like all other programs, but when running in a container, time works in a slightly unusual way. 
+
+You may be used to using a TZ or TIMEZONE environment variable in your Linux container inages, but this is not a standard that works for all Linux distributions - it's mostly supported by Debain based containers. OliveTin's base container image is fedora-minimal, which deliberately does not include timezone data, to reduce storage space. 
+
+To change the time in the OliveTin container, simply bind-mount the correct zone file; 
+
+.Same as the container host
+----
+docker create -v /etc/localtime:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin
+----
+
+.Different timezone to the container host
+----
+docker create -v /usr/share/zoneinfo/Japan:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin
+----
+
+

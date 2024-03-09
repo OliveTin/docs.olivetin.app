@@ -1,0 +1,28 @@
+[#heating-control-panel]
+=== Heating Control Panel
+
+This was inspired by a GitHub issue to control heating; https://github.com/OliveTin/OliveTin/issues/73
+
+image::images/dashboard-heating-control-panel.png[]
+
+==== Entity file
+
+To build this, we use an <<entities,entity>> file that stores and updates the status of a heater outside of OliveTin.
+
+[source,yaml]
+.`/etc/OliveTin/heating.yaml`
+----
+include::configs/heating-control-panel/heating.yaml[]
+----
+
+==== Configuration
+
+Then use the following configuration file;
+
+[source,yaml]
+.`config.yaml`
+----
+include::configs/heating-control-panel/config.yaml[]
+----
+
+

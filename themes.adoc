@@ -1,0 +1,44 @@
+[#themes]
+=== Themes
+
+Temporary docs until I write something better.
+
+Very early version of a theme website: http://www.olivetin.app/themes/
+
+If you're using a container, bind mount a "themes" directory from your host into /var/www/olivetin/themes/
+
+If you're using a Linux package create a directory /var/www/olivetin/themes/
+
+==== Create your own theme (without any intention of publishing it)
+
+Create a sub-directory under your theme directory (normally /var/www/olivetin/themes) called "mytheme"
+
+Set your theme in your config
+
+[source,yaml]
+.`config.yaml`
+----
+themeName: mytheme
+----
+
+Add your css into /var/www/olivetin/themes/mytheme/theme.css
+
+Your theme css will be loaded "on top" of the existing stylesheet.
+
+To test it is working, set your theme CSS to something ridiculous like;
+
+----
+body {
+    background-color: red !important;
+}
+----
+
+Profit.
+
+==== Create a theme for other people to use
+
+. Use this GitHub repository as a template to create your own theme repo: https://github.com/OliveTin/theme-template
+. Fork https://github.com/olivetin/themes
+. Create a directory under "content/posts" called something like "mytheme", and populate index.md, and cover.png. 
+. Raise a pull request back to github.com/olivetin/themes/
+. Rejoice!

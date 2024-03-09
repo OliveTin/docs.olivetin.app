@@ -64,11 +64,13 @@ video::Ej6NM9rmZtk[youtube,width=100%]
 === Read more
 
 [#installation]
-== Installation
+== Installation Guide
 
-**Packages (recommended)** can be downloaded from the link:https://github.com/jamesread/OliveTin/releases[GitHub project releases] page.
+There are many ways to install OliveTin which are listed below. 
 
-**Container images** can be found for OliveTin link:https://hub.docker.com/r/jamesread/olivetin/tags?page=1&ordering=last_updated[on DockerHub].
+include::note_container.adoc[]
+
+include::install_container_vs_service.adoc[]
 
 include::choose_package.adoc[]
 
@@ -90,7 +92,6 @@ include::install_k8s.adoc[]
 
 include::install_targz.adoc[]
 
-
 include::config.adoc[]
 
 include::reverseProxies.adoc[]
@@ -103,10 +104,17 @@ include::action_examples.adoc[]
 
 include::args.adoc[]
 
+include::dashboards.adoc[]
+
+include::entities.adoc[]
+
+include::advanced_configuration.adoc[]
+
 include::authorization.adoc[]
 
-include::reference.adoc[]
+include::solutions.adoc[]
 
+include::reference.adoc[]
 
 include::troubleshooting.adoc[]
 
