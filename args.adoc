@@ -76,7 +76,7 @@ A full list of argument types are below;
 | confirmation                | A "hidden" argument that makes the action require a confirmation before launching.
 |===
 
-[#args-regex]
+[#args-custom-regex]
 === Custom regex
 
 OliveTin version 2024.02.081 and above support custom regex patterns for argument types. Here is an example to validate against any 3 letter word;
