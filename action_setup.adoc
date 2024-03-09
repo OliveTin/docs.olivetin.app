@@ -165,7 +165,7 @@ You can only use a single `shellAfterCompleted`, so use it for notifications, or
 
 NOTE: The feature is currently experimental. 
 
-Sometimes you want to schedule an action to run at a specific date and tine, like at 2024-02-07 at 15:30. This is technically called "an instant", and OliveTin can watch a file that contains a list of instants for new additions. 
+Sometimes you want to schedule an action to run at a specific date and time, like at 2024-02-07 at 15:30. This is technically called "an instant", and OliveTin can watch a file that contains a list of instants for new additions. 
 
 [source,yaml]
 .`start-server-calendar.yaml`
