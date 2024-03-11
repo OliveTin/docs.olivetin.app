@@ -389,13 +389,25 @@ user@host: docker create <span class="nt">--name</span> olivetin <span class="nt
 <div class="title">Note</div>
 </td>
 <td class="content">
-The OliveTin container is built using fedora-minimal, which doesn&#8217;t use customizations that some people may be familiar with from popular projects like LSIO, or debian-based containers. The two top misunderstandings are <a href="no-puid-pgid.html">PUID and PGID are ignored</a> and <a href="timezone.html">changing the timezone requires a bound-mount</a> from the host.
+The OliveTin container is built using fedora-minimal, which doesn&#8217;t use customizations that some people may be familiar with from popular projects like LSIO, or debian-based containers. The two top misunderstandings are <a href="no-puid-pgid.html">PUID and PGID are ignored</a>. Please see the instructions below if you&#8217;re not familiar with changing users or timezones.
 </td>
 </tr>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_post_installation_container"><a class="anchor" href="#_post_installation_container"></a><a class="link" href="#_post_installation_container">1.7.1. Post installation (container)</a></h4>
+<h4 id="container-user"><a class="anchor" href="#container-user"></a><a class="link" href="#container-user">1.7.1. Container user</a></h4>
+<div class="paragraph">
+<p>OliveTin does not need to be run as a root, and does not need any special capabilities. If you want to change the user that OliveTin runs as, use <code>--user</code> when creating the container. OliveTin ignores <a href="no-puid-pgid.html">PUID and PGID</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="container-timezone"><a class="anchor" href="#container-timezone"></a><a class="link" href="#container-timezone">1.7.2. Container timezone</a></h4>
+<div class="paragraph">
+<p>To change the <a href="timezone.html">changing the timezone requires a bound-mount</a> from the host. Olivetin ignores the TZ variable as it is non-standard.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_post_installation_container"><a class="anchor" href="#_post_installation_container"></a><a class="link" href="#_post_installation_container">1.7.3. Post installation (container)</a></h4>
 <div class="paragraph">
 <p>You will need to write a basic configuration file before OliveTin will startup.</p>
 </div>
@@ -448,7 +460,7 @@ the web interface.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_troubleshooting_podmandocker_installations"><a class="anchor" href="#_troubleshooting_podmandocker_installations"></a><a class="link" href="#_troubleshooting_podmandocker_installations">1.7.2. Troubleshooting podman/docker installations</a></h4>
+<h4 id="_troubleshooting_podmandocker_installations"><a class="anchor" href="#_troubleshooting_podmandocker_installations"></a><a class="link" href="#_troubleshooting_podmandocker_installations">1.7.4. Troubleshooting podman/docker installations</a></h4>
 <div class="paragraph">
 <p>If you are having problems in starting OliveTin, or OliveTin is crashing on startup, then check the logs like this;</p>
 </div>
@@ -468,7 +480,7 @@ the web interface.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-11 09:42:23 UTC
+Last updated 2024-03-11 10:02:16 UTC
 </div>
 </div>
 </body>
