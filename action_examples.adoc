@@ -20,6 +20,20 @@ actions:
 
 include::snippit_container_socket.adoc[]
 
+[#action-container-proxy]
+==== Using the Docker proxy
+
+You can use a docker socket proxy as an additional security measure and as an alternative to mounting the docker socket directly. 
+
+Assuming your docker socket proxy is running as `myproxy` running on port 1028;
+
+[source,yaml]
+----
+actions:
+  - title: Stop container
+    shell: DOCKER_HOST=myproxy:1028 docker stop mycontainer
+----
+
 [#action-service]
 === Restart a systemd service
 
@@ -70,6 +84,8 @@ include::actionHeader.adoc[]
 
 Powershell requires `pwsh` to execute commands.
 
+[source,yaml]
+.`config.yaml`
 ....
 actions:
   - title: Run Powershell Script:
