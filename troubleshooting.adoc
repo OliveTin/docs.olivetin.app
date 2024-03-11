@@ -53,7 +53,7 @@ alert: "Your SOS Report has been logged to OliveTin logs."
 
 If you see this, great! The actual contents of the sosreport are not returned to your browser for security reasons (guests could get info about your installation, etc). 
 
-To find the sosreport depends on how you are running OliveTin, if you are running in a container, then try `docker logs olivetin` (where "olivetin" is your container name). If you are running using systemd, then try `journalctl -eu OliveTin`. 
+To find the sosreport depends on how you are running OliveTin, if you are running in a container, then try `docker logs olivetin` (where "olivetin" is your container name). If you are running using systemd, then try `journalctl -eu OliveTin`.
 
 ==== What if I cannot even get to the OliveTin API?
 
@@ -79,8 +79,6 @@ An example is shown below;
 user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin --user container:container
 user@host: docker start olivetin
 ----
-
-The following are common errors;
 
 [#err-fetch-buttons]
 === Error Getting Buttons
