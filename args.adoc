@@ -67,12 +67,31 @@ A full list of argument types are below;
 |===
 | Type                        | Allowed values
 | very_dangerous_raw_string   | Anything. This is **incredibly dangerous**, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
+| regex:...                   | Version 2024.03.081 and above support custom regex patterns. See <<args-custom-regex,Custom regex arguments>>. 
 | int                         | Any number, made up of the characters 0 to 9. Negative numbers are not supported.
 | ascii                       | a-z (case insensitive), 0-9, but no spaces or punctuation
 | ascii_identifier            | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 
 | ascii_sentence              | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
 | url                         | A url, e.g. https://github.com/OliveTin
+| confirmation                | A "hidden" argument that makes the action require a confirmation before launching.
 |===
+
+[#args-custom-regex]
+=== Custom regex
+
+OliveTin version 2024.02.081 and above support custom regex patterns for argument types. Here is an example to validate against any 3 letter word;
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: echo a message
+    icon: smile
+    shell: echo "{{ message }}"
+    arguments:
+      - name: message
+        type: "regex:^\w\w\w$"
+----
 
 [#args-dropdowns]
 === Dropdown choice arguments
