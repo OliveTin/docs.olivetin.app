@@ -128,6 +128,7 @@ image::images/args-choices-exec.png[]
 
 The `confirmation` type argument is a special argument type, which simply disables the "Start" button until a checkbox is ticked. This can be useful if you have an action with no other arguments, but you want to prevent accidental button-clicks starting the action.
 
+[source,yaml]
 ----
 actions:
   - title: Delete old backups
@@ -141,3 +142,44 @@ actions:
 image::images/action-confirmation.png[]
 
 Notice in the webui the "start" button is disabled.
+
+[#arg-suggestions]
+=== Suggestions
+
+Argument inputs can also have "suggested" values, which can make it quicker to type commonly used options. The way that these are displayed will vary depending on your browser, as they are implemented as a modern HTML5 browser feature called "datalist".
+
+Suggestions are configured like this;
+
+[source,yaml]
+.Configuration example of input suggestions
+----
+actions:
+  - title: Restart Docker Container
+    icon: restart
+    shell: docker restart {{ container }}
+    arguments:
+      - name: container
+        title: Container name
+        suggestions:
+          - plex:
+          - graefik:
+          - grafana:
+          - wifi-controller: WiFi Controller
+          - firewall-controller: Firewall Controller
+----
+
+In the examples above, there are 5 suggestions. The first 3 suggestions contain a suggestion with a blank title. The last 2 suggestions contain a human readable title (eg: `wifi-controller` is the suggestion, and `WiFi Controller` is the title).
+
+NOTE: `suggestions:` is a yaml **map**, not a **list**. If you leave the title empty you must still end the suggestion with a ":".
+
+==== Examples
+
+.Screenshot of input suggestions with Firefox on Linux.
+image::images/arg-suggestions-firefox.png[]
+
+.Screenshot of input suggestions with Chrome on Linux.
+image::images/arg-suggestions-chrome.png[]
+
+==== Browser Support
+
+`datalist` is widely supported now-a-days, but Firefox on Android notably lacks support; https://caniuse.com/datalist . See the upstream bug here; https://bugzilla.mozilla.org/show_bug.cgi?id=1535985 .

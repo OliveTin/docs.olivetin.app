@@ -110,6 +110,10 @@ th {
   float: right;
 }
 
+.imageblock .title {
+  margin-bottom: 2em;
+}
+
 hr {
   clear: both;
   border: 0;
