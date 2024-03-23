@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="confirmation" class="book toc2 toc-left">
+<body id="arg-suggestions" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -305,9 +305,9 @@ pre.rouge .gs {
 </li>
 <li><a href="args-dropdowns.html">7.5. Dropdown choice arguments</a>
 </li>
-<li><a href="confirmation.html"><span class="toc-current">7.6. Confirmation argument</span></a>
+<li><a href="confirmation.html">7.6. Confirmation argument</a>
 </li>
-<li><a href="arg-suggestions.html">7.7. Suggestions</a>
+<li><a href="arg-suggestions.html"><span class="toc-current">7.7. Suggestions</span></a>
 </li>
 </ul>
 </li>
@@ -332,32 +332,70 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="confirmation"><a class="anchor" href="#confirmation"></a><a class="link" href="#confirmation">7.6. Confirmation argument</a></h3>
+<h3 id="arg-suggestions"><a class="anchor" href="#arg-suggestions"></a><a class="link" href="#arg-suggestions">7.7. Suggestions</a></h3>
 <div class="paragraph">
-<p>The <code>confirmation</code> type argument is a special argument type, which simply disables the "Start" button until a checkbox is ticked. This can be useful if you have an action with no other arguments, but you want to prevent accidental button-clicks starting the action.</p>
+<p>Argument inputs can also have "suggested" values, which can make it quicker to type commonly used options. The way that these are displayed will vary depending on your browser, as they are implemented as a modern HTML5 browser feature called "datalist".</p>
+</div>
+<div class="paragraph">
+<p>Suggestions are configured like this;</p>
 </div>
 <div class="listingblock">
+<div class="title">Configuration example of input suggestions</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Delete old backups</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">ashtonished</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">rm -rf /opt/oldBackups/</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Restart Docker Container</span>
+    <span class="na">icon</span><span class="pi">:</span> <span class="s">restart</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">docker restart {{ container }}</span>
     <span class="na">arguments</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">confirmation</span>
-        <span class="na">title</span><span class="pi">:</span> <span class="s">Are you sure?!</span></code></pre>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">container</span>
+        <span class="na">title</span><span class="pi">:</span> <span class="s">Container name</span>
+        <span class="na">suggestions</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">plex</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">graefik</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">grafana</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">wifi-controller</span><span class="pi">:</span> <span class="s">WiFi Controller</span>
+          <span class="pi">-</span> <span class="na">firewall-controller</span><span class="pi">:</span> <span class="s">Firewall Controller</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In the examples above, there are 5 suggestions. The first 3 suggestions contain a suggestion with a blank title. The last 2 suggestions contain a human readable title (eg: <code>wifi-controller</code> is the suggestion, and <code>WiFi Controller</code> is the title).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<code>suggestions:</code> is a yaml <strong>map</strong>, not a <strong>list</strong>. If you leave the title empty you must still end the suggestion with a ":".
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_examples"><a class="anchor" href="#_examples"></a><a class="link" href="#_examples">7.7.1. Examples</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/arg-suggestions-firefox.png" alt="arg suggestions firefox">
+</div>
+<div class="title">Figure 4. Screenshot of input suggestions with Firefox on Linux.</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/action-confirmation.png" alt="action confirmation">
+<img src="images/arg-suggestions-chrome.png" alt="arg suggestions chrome">
+</div>
+<div class="title">Figure 5. Screenshot of input suggestions with Chrome on Linux.</div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_browser_support"><a class="anchor" href="#_browser_support"></a><a class="link" href="#_browser_support">7.7.2. Browser Support</a></h4>
 <div class="paragraph">
-<p>Notice in the webui the "start" button is disabled.</p>
+<p><code>datalist</code> is widely supported now-a-days, but Firefox on Android notably lacks support; <a href="https://caniuse.com/datalist" class="bare">https://caniuse.com/datalist</a> . See the upstream bug here; <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1535985" class="bare">https://bugzilla.mozilla.org/show_bug.cgi?id=1535985</a> .</p>
+</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="args-dropdowns.html">Dropdown choice arguments</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="arg-suggestions.html">Suggestions</a> →</p>
+<p>← Previous: <a href="confirmation.html">Confirmation argument</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="dashboards.html">Dashboards</a> →</p>
 </div>
 </div>
 <div id="footer">
