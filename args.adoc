@@ -23,7 +23,29 @@ However, here are some important rules to try and follow with argument types;
 * Use the most restrictive argument types when possible - `ascii` and `int`. This will stop users entering argument values that might be used dangerously, but it's not foolproof. For example, if you have a command like `createSnapshot.sh --count {{ snapshotCount }}`, and set `snapshotCount` to `int`, then at least users will only be able to enter integer numbers. However, nothing stops them entering crazy values like 9999. 
 * Don't give access to actions with arguments to people you don't trust. Please don't ever put your OliveTin install on the public internet! 
 
-=== Textbox arguments
+[#arg-types]
+=== Argument types
+
+A full list of argument types are below;
+
+.Argument types reference table
+[%header,cols="1,0,2"]
+|===
+| Type                        | Rendered as                       | Allowed values
+| (default)                   | <<arg-textbox,Textbox>>           | If a `type:` is not set, and `choices:` is empty, then ascii will be used, and a warning will be logged. It is recommended that you set the type explicitly, rather than relying on defaults.
+| ascii                       | <<arg-textbox,Textbox>>           | a-z (case insensitive), 0-9, but no spaces or punctuation
+| ascii_identifier            | <<arg-textbox,Textbox>>           | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 
+| ascii_sentence              | <<arg-textbox,Textbox>>           | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
+| very_dangerous_raw_string   | <<arg-textbox,Textbox>>           | Anything. This is **incredibly dangerous**, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
+| regex:...                   | <<arg-textbox,Textbox>>           | Version 2024.03.081 and above support custom regex patterns. See <<args-custom-regex,Custom regex arguments>>. 
+| int                         | <<arg-textbox,Textbox>>           | Any number, made up of the characters 0 to 9. Negative numbers are not supported.
+| url                         | <<arg-textbox,Textbox>>           | A url, e.g. https://github.com/OliveTin
+| confirmation                | <<confirmation,Confirmation>> | A "hidden" argument that makes the action require a confirmation before launching. See <<confirmation,confirmation arguments>>.
+| n/a, but `choices` used     | <<arg-dropdowns,Dropdown>>         | A "hidden" argument that makes the action require a confirmation before launching.
+|===
+
+[#arg-textbox]
+=== Input: Textbox
 
 Many times you need to customize how an action/shell command is run, with arguments. For example;
 
@@ -33,6 +55,8 @@ echo "Hello world"
 
 In the example above, `Hello world` is an argument passed to the `echo` command. OliveTin allows you to add pre-defined, and free-text arguments to commands in this way. Below is the OliveTin version of the `echo` command shown above;
 
+[source,yaml]
+.`config.yaml`
 ----
 actions:
   - title: echo a message
@@ -58,24 +82,6 @@ When you start the action, and it's finished, go to the "logs" view to view the 
 
 image::images/args3.png[]
 
-==== Argument types
-
-A full list of argument types are below;
-
-.Argument types reference table
-[%header,cols="1,2"]
-|===
-| Type                        | Allowed values
-| very_dangerous_raw_string   | Anything. This is **incredibly dangerous**, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
-| regex:...                   | Version 2024.03.081 and above support custom regex patterns. See <<args-custom-regex,Custom regex arguments>>. 
-| int                         | Any number, made up of the characters 0 to 9. Negative numbers are not supported.
-| ascii                       | a-z (case insensitive), 0-9, but no spaces or punctuation
-| ascii_identifier            | Like a DNS name, a-Z (case insensitive), 0-0, `-`, `.`, and `_`. 
-| ascii_sentence              | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
-| url                         | A url, e.g. https://github.com/OliveTin
-| confirmation                | A "hidden" argument that makes the action require a confirmation before launching.
-|===
-
 [#args-custom-regex]
 === Custom regex
 
@@ -93,55 +99,6 @@ actions:
         type: "regex:^\w\w\w$"
 ----
 
-[#args-dropdowns]
-=== Dropdown choice arguments
-
-Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify. 
-
-----
-actions:
-  - title: echo a message
-    icon: smile
-    shell: echo "{{ message }}"
-    arguments:
-      - name: message
-        choices:
-          - title: Hello
-            value: Hello there!
-
-          - title: Goodbye
-            value: Aww, goodbye. :-( 
-----
-
-Note that when predefined choices are used, the argument type is ignored.
-
-This is what it looks like in the web interface;
-
-image::images/args4.png[]
-
-Then finally, when you execute this command, it would look something like this (remember that this is just a basic "echo" command). 
-
-image::images/args-choices-exec.png[]
-
-[#confirmation]
-=== Confirmation argument
-
-The `confirmation` type argument is a special argument type, which simply disables the "Start" button until a checkbox is ticked. This can be useful if you have an action with no other arguments, but you want to prevent accidental button-clicks starting the action.
-
-[source,yaml]
-----
-actions:
-  - title: Delete old backups
-    icon: ashtonished
-    shell: rm -rf /opt/oldBackups/
-    arguments:
-      - type: confirmation
-        title: Are you sure?!
-----
-
-image::images/action-confirmation.png[]
-
-Notice in the webui the "start" button is disabled.
 
 [#arg-suggestions]
 === Suggestions
@@ -183,3 +140,80 @@ image::images/arg-suggestions-chrome.png[]
 ==== Browser Support
 
 `datalist` is widely supported now-a-days, but Firefox on Android notably lacks support; https://caniuse.com/datalist . See the upstream bug here; https://bugzilla.mozilla.org/show_bug.cgi?id=1535985 .
+
+[#arg-dropdowns]
+=== Input: Dropdowns
+
+Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify. 
+
+[source,yaml]
+----
+actions:
+  - title: echo a message
+    icon: smile
+    shell: echo "{{ message }}"
+    arguments:
+      - name: message
+        choices:
+          - title: Hello
+            value: Hello there!
+
+          - title: Goodbye
+            value: Aww, goodbye. :-( 
+----
+
+Note that when predefined choices are used, the argument type is ignored.
+
+This is what it looks like in the web interface;
+
+image::images/args4.png[]
+
+Then finally, when you execute this command, it would look something like this (remember that this is just a basic "echo" command). 
+
+image::images/args-choices-exec.png[]
+
+[#confirmation]
+=== Input: Confirmation
+
+The `confirmation` type argument is a special argument type, which simply disables the "Start" button until a checkbox is ticked. This can be useful if you have an action with no other arguments, but you want to prevent accidental button-clicks starting the action.
+
+[source,yaml]
+----
+actions:
+  - title: Delete old backups
+    icon: ashtonished
+    shell: rm -rf /opt/oldBackups/
+    arguments:
+      - type: confirmation
+        title: Are you sure?!
+----
+
+image::images/action-confirmation.png[]
+
+Notice in the webui the "start" button is disabled.
+
+[#arg-datetime]
+=== Input: DateTime
+
+OliveTin supports datetime pickers - note that these do NOT add your timezone, so it up to your scripts / commands to interpret which timezone is being used.
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Print your favourite datetime!
+    shell: echo {{ my_favourite_time }}
+    arguments:
+      - type: datetime
+        title: My Favourite DateTime
+----
+
+image::images/arg-datetime.png[]
+
+[NOTE]
+====
+The OliveTin server does try to parse and validate the date on the server side to prevent dangerous input, but there is no validation in the browser, beyond what your browser might do to prevent you from picking an invalid date. +
+
+**This is safe**, as what really matters is what the server allows to be passed to be executed - and that is checked.
+====
+
