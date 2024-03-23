@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="create-your-first-action" class="book toc2 toc-left">
+<body id="arg-dropdowns" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -288,34 +288,32 @@ pre.rouge .gs {
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
 <li><a href="actions.html">Actions</a>
-<ul class="sectlevel2">
-<li><a href="create-your-first-action.html"><span class="toc-current">Create your first action</span></a>
-</li>
-<li><a href="exec-on-demand.html">Execute on demand</a>
-</li>
-<li><a href="exec-cron.html">Execute on schedule (cron)</a>
-</li>
-<li><a href="exec-startup.html">Execute on startup</a>
-</li>
-<li><a href="exec-webhook.html">Execute on webhook</a>
-</li>
-<li><a href="exec-file-created.html">Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">Execute on file changed</a>
-</li>
-<li><a href="after-completion.html">Execute after completion</a>
-</li>
-<li><a href="exec-on-calendar.html">Execute on calendar file</a>
-</li>
-<li><a href="triggers.html">Triggers</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
 <li><a href="examples.html">Action examples</a>
 </li>
 <li><a href="args.html">Arguments</a>
+<ul class="sectlevel2">
+<li><a href="_introduction_to_arguments.html">Introduction to Arguments</a>
+</li>
+<li><a href="_important_safety_warning.html">Important Safety Warning</a>
+</li>
+<li><a href="arg-types.html">Argument types</a>
+</li>
+<li><a href="arg-textbox.html">Input: Textbox</a>
+</li>
+<li><a href="args-custom-regex.html">Custom regex</a>
+</li>
+<li><a href="arg-suggestions.html">Suggestions</a>
+</li>
+<li><a href="arg-dropdowns.html"><span class="toc-current">Input: Dropdowns</span></a>
+</li>
+<li><a href="confirmation.html">Input: Confirmation</a>
+</li>
+<li><a href="arg-datetime.html">Input: DateTime</a>
+</li>
+</ul>
 </li>
 <li><a href="dashboards.html">Dashboards</a>
 </li>
@@ -338,61 +336,48 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="create-your-first-action"><a class="anchor" href="#create-your-first-action"></a><a class="link" href="#create-your-first-action">Create your first action</a></h3>
+<h3 id="arg-dropdowns"><a class="anchor" href="#arg-dropdowns"></a><a class="link" href="#arg-dropdowns">Input: Dropdowns</a></h3>
 <div class="paragraph">
-<p>This is an example of your very first action. First of all, edit your config.yaml, and enter this YAML markup;</p>
+<p>Predefined choices are normally the safest type of arguments, because users are limited to only enter values that you specify.</p>
 </div>
 <div class="listingblock">
-<div class="title">config.yaml</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Say hello</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Hello!"</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">smile</span></code></pre>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">echo a message</span>
+    <span class="na">icon</span><span class="pi">:</span> <span class="s">smile</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "{{ message }}"</span>
+    <span class="na">arguments</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">message</span>
+        <span class="na">choices</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Hello</span>
+            <span class="na">value</span><span class="pi">:</span> <span class="s">Hello there!</span>
+
+          <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Goodbye</span>
+            <span class="na">value</span><span class="pi">:</span> <span class="s">Aww, goodbye. :-(</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If OliveTin is running, it should popup on your dashboard like this;</p>
+<p>Note that when predefined choices are used, the argument type is ignored.</p>
+</div>
+<div class="paragraph">
+<p>This is what it looks like in the web interface;</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/hello-world.png" alt="hello world">
+<img src="images/args4.png" alt="args4">
 </div>
 </div>
 <div class="paragraph">
-<p>Simply click on the button to execute the shell command. You can expand the executions to view the logs.</p>
+<p>Then finally, when you execute this command, it would look something like this (remember that this is just a basic "echo" command).</p>
 </div>
-<div class="sect3">
-<h4 id="_what_do_i_try_next"><a class="anchor" href="#_what_do_i_try_next"></a><a class="link" href="#_what_do_i_try_next">What do I try next?</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p>See a list of <a href="examples.html">example actions</a>.</p>
-</li>
-<li>
-<p><a href="action-customisation.html">Customize</a> the action icon, timeout, etc.</p>
-</li>
-<li>
-<p><a href="exec-cron.html">Execute on a schedule (cron)</a></p>
-</li>
-<li>
-<p><a href="exec-startup.html">Execute on startup</a></p>
-</li>
-<li>
-<p><a href="exec-webhook.html">Execute on webhook</a></p>
-</li>
-<li>
-<p><a href="exec-file-created.html">Execute on file created</a></p>
-</li>
-<li>
-<p><a href="exec-file-changed.html">Execute on file changed</a></p>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/args-choices-exec.png" alt="args choices exec">
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-on-demand.html">Execute on demand</a> →</p>
+<p>← Previous: <a href="arg-suggestions.html">Suggestions</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="confirmation.html">Input: Confirmation</a> →</p>
 </div>
 </div>
 <div id="footer">

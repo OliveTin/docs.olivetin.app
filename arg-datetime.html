@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="create-your-first-action" class="book toc2 toc-left">
+<body id="arg-datetime" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -288,34 +288,32 @@ pre.rouge .gs {
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
 <li><a href="actions.html">Actions</a>
-<ul class="sectlevel2">
-<li><a href="create-your-first-action.html"><span class="toc-current">Create your first action</span></a>
-</li>
-<li><a href="exec-on-demand.html">Execute on demand</a>
-</li>
-<li><a href="exec-cron.html">Execute on schedule (cron)</a>
-</li>
-<li><a href="exec-startup.html">Execute on startup</a>
-</li>
-<li><a href="exec-webhook.html">Execute on webhook</a>
-</li>
-<li><a href="exec-file-created.html">Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">Execute on file changed</a>
-</li>
-<li><a href="after-completion.html">Execute after completion</a>
-</li>
-<li><a href="exec-on-calendar.html">Execute on calendar file</a>
-</li>
-<li><a href="triggers.html">Triggers</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
 <li><a href="examples.html">Action examples</a>
 </li>
 <li><a href="args.html">Arguments</a>
+<ul class="sectlevel2">
+<li><a href="_introduction_to_arguments.html">Introduction to Arguments</a>
+</li>
+<li><a href="_important_safety_warning.html">Important Safety Warning</a>
+</li>
+<li><a href="arg-types.html">Argument types</a>
+</li>
+<li><a href="arg-textbox.html">Input: Textbox</a>
+</li>
+<li><a href="args-custom-regex.html">Custom regex</a>
+</li>
+<li><a href="arg-suggestions.html">Suggestions</a>
+</li>
+<li><a href="arg-dropdowns.html">Input: Dropdowns</a>
+</li>
+<li><a href="confirmation.html">Input: Confirmation</a>
+</li>
+<li><a href="arg-datetime.html"><span class="toc-current">Input: DateTime</span></a>
+</li>
+</ul>
 </li>
 <li><a href="dashboards.html">Dashboards</a>
 </li>
@@ -338,61 +336,46 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="create-your-first-action"><a class="anchor" href="#create-your-first-action"></a><a class="link" href="#create-your-first-action">Create your first action</a></h3>
+<h3 id="arg-datetime"><a class="anchor" href="#arg-datetime"></a><a class="link" href="#arg-datetime">Input: DateTime</a></h3>
 <div class="paragraph">
-<p>This is an example of your very first action. First of all, edit your config.yaml, and enter this YAML markup;</p>
+<p>OliveTin supports datetime pickers - note that these do NOT add your timezone, so it up to your scripts / commands to interpret which timezone is being used.</p>
 </div>
 <div class="listingblock">
-<div class="title">config.yaml</div>
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Say hello</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Hello!"</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">smile</span></code></pre>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Print your favourite datetime!</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo {{ my_favourite_time }}</span>
+    <span class="na">arguments</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">datetime</span>
+        <span class="na">title</span><span class="pi">:</span> <span class="s">My Favourite DateTime</span></code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>If OliveTin is running, it should popup on your dashboard like this;</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/hello-world.png" alt="hello world">
+<img src="images/arg-datetime.png" alt="arg datetime">
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The OliveTin server does try to parse and validate the date on the server side to prevent dangerous input, but there is no validation in the browser, beyond what your browser might do to prevent you from picking an invalid date.<br></p>
 </div>
 <div class="paragraph">
-<p>Simply click on the button to execute the shell command. You can expand the executions to view the logs.</p>
+<p><strong>This is safe</strong>, as what really matters is what the server allows to be passed to be executed - and that is checked.</p>
 </div>
-<div class="sect3">
-<h4 id="_what_do_i_try_next"><a class="anchor" href="#_what_do_i_try_next"></a><a class="link" href="#_what_do_i_try_next">What do I try next?</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p>See a list of <a href="examples.html">example actions</a>.</p>
-</li>
-<li>
-<p><a href="action-customisation.html">Customize</a> the action icon, timeout, etc.</p>
-</li>
-<li>
-<p><a href="exec-cron.html">Execute on a schedule (cron)</a></p>
-</li>
-<li>
-<p><a href="exec-startup.html">Execute on startup</a></p>
-</li>
-<li>
-<p><a href="exec-webhook.html">Execute on webhook</a></p>
-</li>
-<li>
-<p><a href="exec-file-created.html">Execute on file created</a></p>
-</li>
-<li>
-<p><a href="exec-file-changed.html">Execute on file changed</a></p>
-</li>
-</ul>
-</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="actions.html">Actions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-on-demand.html">Execute on demand</a> →</p>
+<p>← Previous: <a href="confirmation.html">Input: Confirmation</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="dashboards.html">Dashboards</a> →</p>
 </div>
 </div>
 <div id="footer">

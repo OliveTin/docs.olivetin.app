@@ -167,50 +167,50 @@ div.admonitionblock td:first-child {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
-<li><a href="installation.html">1. Installation Guide</a>
+<li><a href="installation.html">Installation Guide</a>
 </li>
-<li><a href="config.html">2. Configuration</a>
+<li><a href="config.html">Configuration</a>
 </li>
-<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+<li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
-<li><a href="actions.html">4. Actions</a>
+<li><a href="actions.html">Actions</a>
 </li>
-<li><a href="action-customisation.html">5. Action customisation</a>
+<li><a href="action-customisation.html">Action customisation</a>
 </li>
-<li><a href="examples.html">6. Action examples</a>
+<li><a href="examples.html">Action examples</a>
 </li>
-<li><a href="args.html">7. Arguments</a>
+<li><a href="args.html">Arguments</a>
 </li>
-<li><a href="dashboards.html">8. Dashboards</a>
+<li><a href="dashboards.html">Dashboards</a>
 </li>
-<li><a href="entities.html">9. Entities</a>
+<li><a href="entities.html">Entities</a>
 </li>
-<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+<li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
-<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+<li><a href="auth.html">Authentication &amp; Authorization</a>
 <ul class="sectlevel2">
-<li><a href="auth-concepts.html">11.1. Concepts</a>
+<li><a href="auth-concepts.html">Concepts</a>
 </li>
-<li><a href="trusted-header.html">11.2. Trusted Header Authorization</a>
+<li><a href="trusted-header.html">Trusted Header Authorization</a>
 </li>
-<li><a href="jwt.html"><span class="toc-current">11.3. JWT Authorization</span></a>
+<li><a href="jwt.html"><span class="toc-current">JWT Authorization</span></a>
 </li>
 </ul>
 </li>
-<li><a href="solutions.html">12. Solutions</a>
+<li><a href="solutions.html">Solutions</a>
 </li>
-<li><a href="_reference.html">13. Reference</a>
+<li><a href="_reference.html">Reference</a>
 </li>
-<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+<li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
-<li><a href="api.html">15. API</a>
+<li><a href="api.html">API</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="jwt"><a class="anchor" href="#jwt"></a><a class="link" href="#jwt">11.3. JWT Authorization</a></h3>
+<h3 id="jwt"><a class="anchor" href="#jwt"></a><a class="link" href="#jwt">JWT Authorization</a></h3>
 <div class="paragraph">
 <p>You need to know your JWT <strong>Cookie Name</strong> and <strong>Hash Secret</strong>. Whatever tool you are using to authenticate users will probably have instructions on how to find this.</p>
 </div>
@@ -222,7 +222,7 @@ div.admonitionblock td:first-child {
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_adding_jwt_details_to_olivetin_config_yaml"><a class="anchor" href="#_adding_jwt_details_to_olivetin_config_yaml"></a><a class="link" href="#_adding_jwt_details_to_olivetin_config_yaml">11.3.1. Adding JWT details to OliveTin config.yaml</a></h4>
+<h4 id="_adding_jwt_details_to_olivetin_config_yaml"><a class="anchor" href="#_adding_jwt_details_to_olivetin_config_yaml"></a><a class="link" href="#_adding_jwt_details_to_olivetin_config_yaml">Adding JWT details to OliveTin config.yaml</a></h4>
 <div class="paragraph">
 <p>Setup your config file so it has something like this;</p>
 </div>
@@ -242,13 +242,13 @@ authJwtClaimUsergroup: "usergroup"</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_usable_claims"><a class="anchor" href="#_usable_claims"></a><a class="link" href="#_usable_claims">11.3.2. Usable claims</a></h4>
+<h4 id="_usable_claims"><a class="anchor" href="#_usable_claims"></a><a class="link" href="#_usable_claims">Usable claims</a></h4>
 <div class="paragraph">
 <p>OliveTin currently can match Access Control Lists based on a <strong>username</strong> or <strong>primary user group</strong>. These must be called <code>name</code> and <code>group</code> respectively. You can see if these are being used properly turning on <code>DEBUG</code> logging and looking at the jwt claims.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_setup_default_permissions"><a class="anchor" href="#_setup_default_permissions"></a><a class="link" href="#_setup_default_permissions">11.3.3. Setup default permissions</a></h4>
+<h4 id="_setup_default_permissions"><a class="anchor" href="#_setup_default_permissions"></a><a class="link" href="#_setup_default_permissions">Setup default permissions</a></h4>
 <div class="paragraph">
 <p>OliveTin will assume that guests are able to View and Execute every action by default. When you are setting up authorization you probably want to limit this. You can do that by setting <code>defaultPermissions</code> like this;</p>
 </div>
@@ -263,7 +263,7 @@ defaultPermissions:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_setup_olivetin_access_control_lists"><a class="anchor" href="#_setup_olivetin_access_control_lists"></a><a class="link" href="#_setup_olivetin_access_control_lists">11.3.4. Setup OliveTin Access Control Lists</a></h4>
+<h4 id="_setup_olivetin_access_control_lists"><a class="anchor" href="#_setup_olivetin_access_control_lists"></a><a class="link" href="#_setup_olivetin_access_control_lists">Setup OliveTin Access Control Lists</a></h4>
 <div class="paragraph">
 <p>Access Control Lists are a way to override the default permissions.</p>
 </div>
@@ -306,7 +306,7 @@ actions:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_customizing_field_names"><a class="anchor" href="#_customizing_field_names"></a><a class="link" href="#_customizing_field_names">11.3.5. Customizing field names</a></h4>
+<h4 id="_customizing_field_names"><a class="anchor" href="#_customizing_field_names"></a><a class="link" href="#_customizing_field_names">Customizing field names</a></h4>
 <div class="paragraph">
 <p>You may need to customize the field names for your JWT authentication.</p>
 </div>
@@ -324,7 +324,7 @@ authJwtClaimUsergroup: "usergroup"</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-23 21:52:42 UTC
+Last updated 2024-03-23 23:35:43 UTC
 </div>
 </div>
 </body>

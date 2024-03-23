@@ -161,116 +161,68 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_textbox_arguments" class="book toc2 toc-left">
+<body id="arg-types" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
-<li><a href="installation.html">1. Installation Guide</a>
+<li><a href="installation.html">Installation Guide</a>
 </li>
-<li><a href="config.html">2. Configuration</a>
+<li><a href="config.html">Configuration</a>
 </li>
-<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+<li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
-<li><a href="actions.html">4. Actions</a>
+<li><a href="actions.html">Actions</a>
 </li>
-<li><a href="action-customisation.html">5. Action customisation</a>
+<li><a href="action-customisation.html">Action customisation</a>
 </li>
-<li><a href="examples.html">6. Action examples</a>
+<li><a href="examples.html">Action examples</a>
 </li>
-<li><a href="args.html">7. Arguments</a>
+<li><a href="args.html">Arguments</a>
 <ul class="sectlevel2">
-<li><a href="_introduction_to_arguments.html">7.1. Introduction to Arguments</a>
+<li><a href="_introduction_to_arguments.html">Introduction to Arguments</a>
 </li>
-<li><a href="_important_safety_warning.html">7.2. Important Safety Warning</a>
+<li><a href="_important_safety_warning.html">Important Safety Warning</a>
 </li>
-<li><a href="_textbox_arguments.html"><span class="toc-current">7.3. Textbox arguments</span></a>
+<li><a href="arg-types.html"><span class="toc-current">Argument types</span></a>
 </li>
-<li><a href="args-custom-regex.html">7.4. Custom regex</a>
+<li><a href="arg-textbox.html">Input: Textbox</a>
 </li>
-<li><a href="args-dropdowns.html">7.5. Dropdown choice arguments</a>
+<li><a href="args-custom-regex.html">Custom regex</a>
 </li>
-<li><a href="confirmation.html">7.6. Confirmation argument</a>
+<li><a href="arg-suggestions.html">Suggestions</a>
 </li>
-<li><a href="arg-suggestions.html">7.7. Suggestions</a>
+<li><a href="arg-dropdowns.html">Input: Dropdowns</a>
+</li>
+<li><a href="confirmation.html">Input: Confirmation</a>
+</li>
+<li><a href="arg-datetime.html">Input: DateTime</a>
 </li>
 </ul>
 </li>
-<li><a href="dashboards.html">8. Dashboards</a>
+<li><a href="dashboards.html">Dashboards</a>
 </li>
-<li><a href="entities.html">9. Entities</a>
+<li><a href="entities.html">Entities</a>
 </li>
-<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+<li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
-<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+<li><a href="auth.html">Authentication &amp; Authorization</a>
 </li>
-<li><a href="solutions.html">12. Solutions</a>
+<li><a href="solutions.html">Solutions</a>
 </li>
-<li><a href="_reference.html">13. Reference</a>
+<li><a href="_reference.html">Reference</a>
 </li>
-<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+<li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
-<li><a href="api.html">15. API</a>
+<li><a href="api.html">API</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_textbox_arguments"><a class="anchor" href="#_textbox_arguments"></a><a class="link" href="#_textbox_arguments">7.3. Textbox arguments</a></h3>
-<div class="paragraph">
-<p>Many times you need to customize how an action/shell command is run, with arguments. For example;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>echo "Hello world"</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In the example above, <code>Hello world</code> is an argument passed to the <code>echo</code> command. OliveTin allows you to add pre-defined, and free-text arguments to commands in this way. Below is the OliveTin version of the <code>echo</code> command shown above;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>actions:
-  - title: echo a message
-    icon: smile
-    shell: echo {{ message }}
-    arguments:
-      - name: message
-        type: ascii_sentence</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will give you a normal button, like this;</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/args1.png" alt="args1">
-</div>
-</div>
-<div class="paragraph">
-<p>However, when you click on it, you&#8217;ll get a prompt to enter arguments, like this;</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/args2.png" alt="args2">
-</div>
-</div>
-<div class="paragraph">
-<p>You&#8217;ll see that the type is set to <code>ascii_sentence</code>. This applies fairly safe
-input validation to arguments, so that only a-z, 0-9, spaces and .'s are allowed.</p>
-</div>
-<div class="paragraph">
-<p>When you start the action, and it&#8217;s finished, go to the "logs" view to view the output of the command we&#8217;ve just run.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/args3.png" alt="args3">
-</div>
-</div>
-<div class="sect3">
-<h4 id="_argument_types"><a class="anchor" href="#_argument_types"></a><a class="link" href="#_argument_types">7.3.1. Argument types</a></h4>
+<h3 id="arg-types"><a class="anchor" href="#arg-types"></a><a class="link" href="#arg-types">Argument types</a></h3>
 <div class="paragraph">
 <p>A full list of argument types are below;</p>
 </div>
@@ -278,58 +230,77 @@ input validation to arguments, so that only a-z, 0-9, spaces and .'s are allowed
 <caption class="title">Table 2. Argument types reference table</caption>
 <colgroup>
 <col style="width: 33.3333%;">
+<col style="width: 0%;">
 <col style="width: 66.6667%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Rendered as</th>
 <th class="tableblock halign-left valign-top">Allowed values</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">very_dangerous_raw_string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Anything. This is <strong>incredibly dangerous</strong>, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">regex:&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version 2024.03.081 and above support custom regex patterns. See <a href="args-custom-regex.html">Custom regex arguments</a>.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Any number, made up of the characters 0 to 9. Negative numbers are not supported.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(default)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-textbox.html">Textbox</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If a <code>type:</code> is not set, and <code>choices:</code> is empty, then ascii will be used, and a warning will be logged. It is recommended that you set the type explicitly, rather than relying on defaults.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ascii</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-textbox.html">Textbox</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">a-z (case insensitive), 0-9, but no spaces or punctuation</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ascii_identifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-textbox.html">Textbox</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Like a DNS name, a-Z (case insensitive), 0-0, <code>-</code>, <code>.</code>, and <code>_</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ascii_sentence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-textbox.html">Textbox</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">a-z (case insensitive), 0-9, with spaces, <code>.</code> and <code>,</code>.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">very_dangerous_raw_string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-textbox.html">Textbox</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anything. This is <strong>incredibly dangerous</strong>, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">regex:&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-textbox.html">Textbox</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version 2024.03.081 and above support custom regex patterns. See <a href="args-custom-regex.html">Custom regex arguments</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-textbox.html">Textbox</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any number, made up of the characters 0 to 9. Negative numbers are not supported.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">url</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-textbox.html">Textbox</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A url, e.g. <a href="https://github.com/OliveTin" class="bare">https://github.com/OliveTin</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">confirmation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="confirmation.html">Confirmation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A "hidden" argument that makes the action require a confirmation before launching. See <a href="confirmation.html">confirmation arguments</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">n/a, but <code>choices</code> used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="arg-dropdowns.html">Dropdown</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A "hidden" argument that makes the action require a confirmation before launching.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_important_safety_warning.html">Important Safety Warning</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="args-custom-regex.html">Custom regex</a> →</p>
+<p>← Previous: <a href="_important_safety_warning.html">Important Safety Warning</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="arg-textbox.html">Input: Textbox</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-23 21:52:42 UTC
+Last updated 2024-03-23 23:35:43 UTC
 </div>
 </div>
 </body>

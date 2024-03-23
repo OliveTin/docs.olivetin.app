@@ -167,66 +167,66 @@ div.admonitionblock td:first-child {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
-<li><a href="installation.html">1. Installation Guide</a>
+<li><a href="installation.html">Installation Guide</a>
 <ul class="sectlevel2">
-<li><a href="install-container-vs-service.html"><span class="toc-current">1.1. Containers vs Services</span></a>
+<li><a href="install-container-vs-service.html"><span class="toc-current">Containers vs Services</span></a>
 </li>
-<li><a href="choose-package.html">1.2. Which download do I need?</a>
+<li><a href="choose-package.html">Which download do I need?</a>
 </li>
-<li><a href="install-linuxpackage.html">1.3. Linux package install (.rpm/.deb)</a>
+<li><a href="install-linuxpackage.html">Linux package install (.rpm/.deb)</a>
 </li>
-<li><a href="install-fedora.html">1.4. Fedora Linux (dnf)</a>
+<li><a href="install-fedora.html">Fedora Linux (dnf)</a>
 </li>
-<li><a href="install-alpine.html">1.5. Alpine Linux</a>
+<li><a href="install-alpine.html">Alpine Linux</a>
 </li>
-<li><a href="install-archbtw.html">1.6. Arch Linux (AUR)</a>
+<li><a href="install-archbtw.html">Arch Linux (AUR)</a>
 </li>
-<li><a href="install-container.html">1.7. Container install (podman/docker)</a>
+<li><a href="install-container.html">Container install (podman/docker)</a>
 </li>
-<li><a href="install-compose.html">1.8. Docker Compose install</a>
+<li><a href="install-compose.html">Docker Compose install</a>
 </li>
-<li><a href="install-helm.html">1.9. Helm on Kubernetes Install</a>
+<li><a href="install-helm.html">Helm on Kubernetes Install</a>
 </li>
-<li><a href="install-k8s.html">1.10. Kubernetes install (manually)</a>
+<li><a href="install-k8s.html">Kubernetes install (manually)</a>
 </li>
-<li><a href="install-targz.html">1.11. .tar.gz Install (manual)</a>
+<li><a href="install-targz.html">.tar.gz Install (manual)</a>
 </li>
 </ul>
 </li>
-<li><a href="config.html">2. Configuration</a>
+<li><a href="config.html">Configuration</a>
 </li>
-<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+<li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
-<li><a href="actions.html">4. Actions</a>
+<li><a href="actions.html">Actions</a>
 </li>
-<li><a href="action-customisation.html">5. Action customisation</a>
+<li><a href="action-customisation.html">Action customisation</a>
 </li>
-<li><a href="examples.html">6. Action examples</a>
+<li><a href="examples.html">Action examples</a>
 </li>
-<li><a href="args.html">7. Arguments</a>
+<li><a href="args.html">Arguments</a>
 </li>
-<li><a href="dashboards.html">8. Dashboards</a>
+<li><a href="dashboards.html">Dashboards</a>
 </li>
-<li><a href="entities.html">9. Entities</a>
+<li><a href="entities.html">Entities</a>
 </li>
-<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+<li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
-<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+<li><a href="auth.html">Authentication &amp; Authorization</a>
 </li>
-<li><a href="solutions.html">12. Solutions</a>
+<li><a href="solutions.html">Solutions</a>
 </li>
-<li><a href="_reference.html">13. Reference</a>
+<li><a href="_reference.html">Reference</a>
 </li>
-<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+<li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
-<li><a href="api.html">15. API</a>
+<li><a href="api.html">API</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-container-vs-service"><a class="anchor" href="#install-container-vs-service"></a><a class="link" href="#install-container-vs-service">1.1. Containers vs Services</a></h3>
+<h3 id="install-container-vs-service"><a class="anchor" href="#install-container-vs-service"></a><a class="link" href="#install-container-vs-service">Containers vs Services</a></h3>
 <div class="paragraph">
 <p>Linux Containers have become an incredibly popular method for running software. OliveTin supports every way of running Linux containers - spanning from homelabs up to enterprise environments. As a container, it can be used <a href="install-container.html">standalone using Podman/Docker</a>, through to <a href="install-compose.html">using docker-compose</a> or even on <a href="#install-kubernetes">Kubernetes</a>.</p>
 </div>
@@ -234,13 +234,13 @@ div.admonitionblock td:first-child {
 <p><strong>However</strong>, a lot of OliveTin use cases, such as providing an interface to run scripts, rely on files on their local Linux filesystem - containers, by definition, have their own separate filesystem. It is of course possible to "bind mount" parts of your local filesystem into OliveTin, but sometimes this requires more effort, or introduces subtle problems that are more complicated to solve. If you have a good amount of experience with Linux containers, then this approach is absolutely fine - but if you are new to these types of problems - not seeing files you expect, file permissions errors, etc, then it might just be easier to <a href="choose-package.html">install using a Linux package</a> instead.</p>
 </div>
 <div class="sect3">
-<h4 id="_dont_overcomplicate_your_containers_use_ssh"><a class="anchor" href="#_dont_overcomplicate_your_containers_use_ssh"></a><a class="link" href="#_dont_overcomplicate_your_containers_use_ssh">1.1.1. Don&#8217;t overcomplicate your containers - use SSH!</a></h4>
+<h4 id="_dont_overcomplicate_your_containers_use_ssh"><a class="anchor" href="#_dont_overcomplicate_your_containers_use_ssh"></a><a class="link" href="#_dont_overcomplicate_your_containers_use_ssh">Don&#8217;t overcomplicate your containers - use SSH!</a></h4>
 <div class="paragraph">
 <p>Sometimes you just want to (or have to) use containers, but also want to use these local resources as well. Instead of bind-mounting lots of stuff into the Linux container and creating a really complicated container definition (which is hard to scale), consider a simple alternative: <a href="action-ssh.html">SSH with OliveTin</a>. This allows you to easily SSH back into the container host and keep your container definition really simple. This approach works great and is popular for a lot of users.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_which_should_i_choose"><a class="anchor" href="#_which_should_i_choose"></a><a class="link" href="#_which_should_i_choose">1.1.2. Which should I choose?</a></h4>
+<h4 id="_which_should_i_choose"><a class="anchor" href="#_which_should_i_choose"></a><a class="link" href="#_which_should_i_choose">Which should I choose?</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -279,7 +279,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-23 21:52:42 UTC
+Last updated 2024-03-23 23:35:43 UTC
 </div>
 </div>
 </body>

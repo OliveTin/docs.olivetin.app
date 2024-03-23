@@ -167,60 +167,60 @@ div.admonitionblock td:first-child {
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
-<li><a href="installation.html">1. Installation Guide</a>
+<li><a href="installation.html">Installation Guide</a>
 </li>
-<li><a href="config.html">2. Configuration</a>
+<li><a href="config.html">Configuration</a>
 </li>
-<li><a href="reverse-proxies.html">3. Reverse Proxies</a>
+<li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
-<li><a href="actions.html">4. Actions</a>
+<li><a href="actions.html">Actions</a>
 </li>
-<li><a href="action-customisation.html">5. Action customisation</a>
+<li><a href="action-customisation.html">Action customisation</a>
 </li>
-<li><a href="examples.html">6. Action examples</a>
+<li><a href="examples.html">Action examples</a>
 </li>
-<li><a href="args.html">7. Arguments</a>
+<li><a href="args.html">Arguments</a>
 </li>
-<li><a href="dashboards.html">8. Dashboards</a>
+<li><a href="dashboards.html">Dashboards</a>
 </li>
-<li><a href="entities.html">9. Entities</a>
+<li><a href="entities.html">Entities</a>
 </li>
-<li><a href="_advanced_configuration.html">10. Advanced Configuration</a>
+<li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
-<li><a href="auth.html">11. Authentication &amp; Authorization</a>
+<li><a href="auth.html">Authentication &amp; Authorization</a>
 </li>
-<li><a href="solutions.html">12. Solutions</a>
+<li><a href="solutions.html">Solutions</a>
 </li>
-<li><a href="_reference.html">13. Reference</a>
+<li><a href="_reference.html">Reference</a>
 <ul class="sectlevel2">
-<li><a href="network-ports.html">13.1. Network ports</a>
+<li><a href="network-ports.html">Network ports</a>
 </li>
-<li><a href="_security.html">13.2. Security</a>
+<li><a href="_security.html">Security</a>
 </li>
-<li><a href="_understanding_exit_codes.html">13.3. Understanding exit codes</a>
+<li><a href="_understanding_exit_codes.html">Understanding exit codes</a>
 </li>
-<li><a href="update-tracking.html"><span class="toc-current">13.4. Update Checks (and tracking)</span></a>
+<li><a href="update-tracking.html"><span class="toc-current">Update Checks (and tracking)</span></a>
 </li>
-<li><a href="container-dnf.html">13.5. Installing extra container packages</a>
+<li><a href="container-dnf.html">Installing extra container packages</a>
 </li>
-<li><a href="multi-inst.html">13.6. Multiple instances on a server</a>
+<li><a href="multi-inst.html">Multiple instances on a server</a>
 </li>
-<li><a href="snapsnots.html">13.7. Snapshot builds</a>
+<li><a href="snapsnots.html">Snapshot builds</a>
 </li>
-<li><a href="themes.html">13.8. Themes</a>
+<li><a href="themes.html">Themes</a>
 </li>
 </ul>
 </li>
-<li><a href="troubleshooting.html">14. Support &amp; Troubleshooting</a>
+<li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
-<li><a href="api.html">15. API</a>
+<li><a href="api.html">API</a>
 </li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="update-tracking"><a class="anchor" href="#update-tracking"></a><a class="link" href="#update-tracking">13.4. Update Checks (and tracking)</a></h3>
+<h3 id="update-tracking"><a class="anchor" href="#update-tracking"></a><a class="link" href="#update-tracking">Update Checks (and tracking)</a></h3>
 <div class="paragraph">
 <p>The OliveTin server will now check for updates on startup, and every 7 days after that. It will report those updates as a log message in the console. It does not apply any updates, because this is the choice and responsibility of whoever is running OliveTin to decide if, when, and how to apply any updates.</p>
 </div>
@@ -228,7 +228,7 @@ div.admonitionblock td:first-child {
 <p>The information OliveTin sends to the update server is stored/saved., and this could be considered a form of tracking - that is tracking installations, not tracking people. This page hopefully helps explain what, how and why that information is used so you can be informed (and make changes if you wish).</p>
 </div>
 <div class="sect3">
-<h4 id="_design_considerations"><a class="anchor" href="#_design_considerations"></a><a class="link" href="#_design_considerations">13.4.1. Design considerations</a></h4>
+<h4 id="_design_considerations"><a class="anchor" href="#_design_considerations"></a><a class="link" href="#_design_considerations">Design considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -253,7 +253,7 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-sent"><a class="anchor" href="#update-sent"></a><a class="link" href="#update-sent">13.4.2. What is sent (and tracked)</a></h4>
+<h4 id="update-sent"><a class="anchor" href="#update-sent"></a><a class="link" href="#update-sent">What is sent (and tracked)</a></h4>
 <div class="paragraph">
 <p>When OliveTin checks for updates, it will send the following;</p>
 </div>
@@ -289,7 +289,7 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="sect3">
-<h4 id="installation-id"><a class="anchor" href="#installation-id"></a><a class="link" href="#installation-id">13.4.3. What is the OliveTin installation ID?</a></h4>
+<h4 id="installation-id"><a class="anchor" href="#installation-id"></a><a class="link" href="#installation-id">What is the OliveTin installation ID?</a></h4>
 <div class="paragraph">
 <p>This is a randomly generated <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a> - that is not based on your operating system, not on any of your data. OliveTin tries to create a random installation-id.txt in your config directory when it starts up.</p>
 </div>
@@ -301,7 +301,7 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div class="sect3">
-<h4 id="machine-id"><a class="anchor" href="#machine-id"></a><a class="link" href="#machine-id">13.4.4. Why do you need my machine ID?</a></h4>
+<h4 id="machine-id"><a class="anchor" href="#machine-id"></a><a class="link" href="#machine-id">Why do you need my machine ID?</a></h4>
 <div class="paragraph">
 <p>This was changed in OliveTin - the MachineID is no longer collected, and the project moved to InstallationID instead. The answer is kept here for old versions.</p>
 </div>
@@ -320,7 +320,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_why_do_you_need_to_store_any_information_at_all"><a class="anchor" href="#_why_do_you_need_to_store_any_information_at_all"></a><a class="link" href="#_why_do_you_need_to_store_any_information_at_all">13.4.5. Why do you need to store any information at all?</a></h4>
+<h4 id="_why_do_you_need_to_store_any_information_at_all"><a class="anchor" href="#_why_do_you_need_to_store_any_information_at_all"></a><a class="link" href="#_why_do_you_need_to_store_any_information_at_all">Why do you need to store any information at all?</a></h4>
 <div class="paragraph">
 <p>This is incredibly useful information for project developers to know, because;</p>
 </div>
@@ -339,7 +339,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_what_is_stored"><a class="anchor" href="#_what_is_stored"></a><a class="link" href="#_what_is_stored">13.4.6. What is stored?</a></h4>
+<h4 id="_what_is_stored"><a class="anchor" href="#_what_is_stored"></a><a class="link" href="#_what_is_stored">What is stored?</a></h4>
 <div class="paragraph">
 <p>The update service only stores the information that is sent - <a href="update-tracking.html#update-sent">explained with an example above</a>.</p>
 </div>
@@ -348,7 +348,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_what_is_not_sentstored"><a class="anchor" href="#_what_is_not_sentstored"></a><a class="link" href="#_what_is_not_sentstored">13.4.7. What is not sent/stored</a></h4>
+<h4 id="_what_is_not_sentstored"><a class="anchor" href="#_what_is_not_sentstored"></a><a class="link" href="#_what_is_not_sentstored">What is not sent/stored</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -364,13 +364,13 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_where_is_the_information_sent"><a class="anchor" href="#_where_is_the_information_sent"></a><a class="link" href="#_where_is_the_information_sent">13.4.8. Where is the information sent</a></h4>
+<h4 id="_where_is_the_information_sent"><a class="anchor" href="#_where_is_the_information_sent"></a><a class="link" href="#_where_is_the_information_sent">Where is the information sent</a></h4>
 <div class="paragraph">
 <p>To <a href="http://update-check.olivetin.app" class="bare">http://update-check.olivetin.app</a> . This is a virtual machine which stores the logs on the machine filesystem. The data is accessible to all who which to view it, in the interest of transparency.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_why_isnt_this_opt_in"><a class="anchor" href="#_why_isnt_this_opt_in"></a><a class="link" href="#_why_isnt_this_opt_in">13.4.9. Why isn’t this opt-in?</a></h4>
+<h4 id="_why_isnt_this_opt_in"><a class="anchor" href="#_why_isnt_this_opt_in"></a><a class="link" href="#_why_isnt_this_opt_in">Why isn’t this opt-in?</a></h4>
 <div class="paragraph">
 <p>It seems the majority of software does perform update checks by default like this - Chrome, Firefox, most modern Operating Systems, etc. Because no information about people, or your data is being used, apart from your installation ID, this seems like a safe default.</p>
 </div>
@@ -379,7 +379,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="disable-update-checks"><a class="anchor" href="#disable-update-checks"></a><a class="link" href="#disable-update-checks">13.4.10. How do I disable update checking?</a></h4>
+<h4 id="disable-update-checks"><a class="anchor" href="#disable-update-checks"></a><a class="link" href="#disable-update-checks">How do I disable update checking?</a></h4>
 <div class="paragraph">
 <p>If you are worried about privacy, or similar, please do make your concerns known. This is best if this is an open discussion.</p>
 </div>
@@ -393,7 +393,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="hide-news-versions"><a class="anchor" href="#hide-news-versions"></a><a class="link" href="#hide-news-versions">13.4.11. How can I hide version upgrades in the OliveTin web interface?</a></h4>
+<h4 id="hide-news-versions"><a class="anchor" href="#hide-news-versions"></a><a class="link" href="#hide-news-versions">How can I hide version upgrades in the OliveTin web interface?</a></h4>
 <div class="paragraph">
 <p>Set the following in your configuration file;</p>
 </div>
@@ -407,7 +407,7 @@ OliveTin are running a specific version.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="hsts"><a class="anchor" href="#hsts"></a><a class="link" href="#hsts">13.4.12. Why can&#8217;t I visit update-check.olivetin.app in my browser?</a></h4>
+<h4 id="hsts"><a class="anchor" href="#hsts"></a><a class="link" href="#hsts">Why can&#8217;t I visit update-check.olivetin.app in my browser?</a></h4>
 <div class="paragraph">
 <p>The root domain for OliveTin (OliveTin.app) has HSTS turned on - this forces your browser to use SSL (HTTPS - the little encryption padlock) for all subdomains - including www.olivetin.app and docs.olivetin.app. Although both of those websites don&#8217;t transmit anything that really needs encrypion, the web is certainly moving to having SSL turned on everywhere. It even has a positive impact on search engine rankings!</p>
 </div>
@@ -428,7 +428,7 @@ OliveTin are running a specific version.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-23 21:52:42 UTC
+Last updated 2024-03-23 23:35:43 UTC
 </div>
 </div>
 </body>
