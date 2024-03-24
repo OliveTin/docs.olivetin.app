@@ -64,6 +64,17 @@ actions:
     shell: echo {{ message }}
     arguments:
       - name: message
+        default: Hello World
+        type: ascii_sentence
+
+actions:
+  - title: Print a message
+    shell: echo {{ message }}
+    arguments:
+      - name: message
+        description: The message you want to print out on the shell.
+        title: Your Message
+        default: Hello World
         type: ascii_sentence
 ----
 
@@ -171,6 +182,34 @@ image::images/args4.png[]
 Then finally, when you execute this command, it would look something like this (remember that this is just a basic "echo" command). 
 
 image::images/args-choices-exec.png[]
+
+[#args-dropdown-entities]
+==== Using Entities in Dropdowns
+
+Dropdowns can also be populated with a list of entities, like this;
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: restart container
+    shell: 'docker restart {{ containerToRestart }}'
+    arguments:
+      - name: containerToRestart
+        entity: container
+        title: 'Select Container'
+        choices:
+          - value: '{{ container.Names }}'
+            title: '{{ container.Names }}'
+
+entities:
+  - file: entities/containers.json
+    name: container
+----
+
+This is what it looks like in the web interface;
+
+image::images/args-choices-entities.png[]
 
 [#confirmation]
 === Input: Confirmation
