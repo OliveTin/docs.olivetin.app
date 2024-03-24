@@ -375,6 +375,39 @@ pre.rouge .gs {
 <img src="images/args-choices-exec.png" alt="args choices exec">
 </div>
 </div>
+<div class="sect3">
+<h4 id="args-dropdown-entities"><a class="anchor" href="#args-dropdown-entities"></a><a class="link" href="#args-dropdown-entities">Using Entities in Dropdowns</a></h4>
+<div class="paragraph">
+<p>Dropdowns can also be populated with a list of entities, like this;</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">restart container</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s1">'</span><span class="s">docker</span><span class="nv"> </span><span class="s">restart</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">containerToRestart</span><span class="nv"> </span><span class="s">}}'</span>
+    <span class="na">arguments</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">containerToRestart</span>
+        <span class="na">entity</span><span class="pi">:</span> <span class="s">container</span>
+        <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Select</span><span class="nv"> </span><span class="s">Container'</span>
+        <span class="na">choices</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">value</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">container.Names</span><span class="nv"> </span><span class="s">}}'</span>
+            <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">container.Names</span><span class="nv"> </span><span class="s">}}'</span>
+
+<span class="na">entities</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">entities/containers.json</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">container</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is what it looks like in the web interface;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/args-choices-entities.png" alt="args choices entities">
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="arg-suggestions.html">Suggestions</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="confirmation.html">Input: Confirmation</a> →</p>
@@ -382,7 +415,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-23 23:42:14 UTC
+Last updated 2024-03-24 21:19:15 UTC
 </div>
 </div>
 </body>

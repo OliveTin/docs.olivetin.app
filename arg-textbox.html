@@ -357,6 +357,17 @@ pre.rouge .gs {
     <span class="na">shell</span><span class="pi">:</span> <span class="s">echo {{ message }}</span>
     <span class="na">arguments</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">message</span>
+        <span class="na">default</span><span class="pi">:</span> <span class="s">Hello World</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">ascii_sentence</span>
+
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Print a message</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo {{ message }}</span>
+    <span class="na">arguments</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">message</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s">The message you want to print out on the shell.</span>
+        <span class="na">title</span><span class="pi">:</span> <span class="s">Your Message</span>
+        <span class="na">default</span><span class="pi">:</span> <span class="s">Hello World</span>
         <span class="na">type</span><span class="pi">:</span> <span class="s">ascii_sentence</span></code></pre>
 </div>
 </div>
@@ -395,7 +406,7 @@ input validation to arguments, so that only a-z, 0-9, spaces and .'s are allowed
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-23 23:42:14 UTC
+Last updated 2024-03-24 21:19:15 UTC
 </div>
 </div>
 </body>
