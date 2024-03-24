@@ -303,9 +303,9 @@ pre.rouge .gs {
 </li>
 <li><a href="exec-file-changed.html">Execute on file changed</a>
 </li>
-<li><a href="after-completion.html"><span class="toc-current">Execute after completion</span></a>
-</li>
 <li><a href="exec-on-calendar.html">Execute on calendar file</a>
+</li>
+<li><a href="after-completion.html"><span class="toc-current">Execute after completion</span></a>
 </li>
 <li><a href="triggers.html">Triggers</a>
 </li>
@@ -343,12 +343,13 @@ pre.rouge .gs {
 <p>Sometimes you want to execute another command after the main command executes, this is often the case when you want to check the status of the main command, or if you want to send a notification.</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Print names of new files</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">backup</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">/opt/backupScript.sh</span>
-    <span class="na">shellAfterCompleted</span><span class="pi">:</span> <span class="s2">"</span><span class="s">apprise</span><span class="nv"> </span><span class="s">-t</span><span class="nv"> </span><span class="s">'Notification:</span><span class="nv"> </span><span class="s">Backup</span><span class="nv"> </span><span class="s">script</span><span class="nv"> </span><span class="s">completed'</span><span class="nv"> </span><span class="s">-b</span><span class="nv"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">backup</span><span class="nv"> </span><span class="s">script</span><span class="nv"> </span><span class="s">completed</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">code</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">exitCode}}.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">log</span><span class="nv"> </span><span class="s">is:</span><span class="nv"> </span><span class="se">\n</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">stdout</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">'"</span></code></pre>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Check date and send notification via apprise</span>
+    <span class="na">icon</span><span class="pi">:</span> <span class="s">date</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
+    <span class="na">shellAfterCompleted</span><span class="pi">:</span> <span class="s2">"</span><span class="s">apprise</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">/config/apprise.yml</span><span class="nv"> </span><span class="s">-t</span><span class="nv"> </span><span class="s">'Notification:</span><span class="nv"> </span><span class="s">Backup</span><span class="nv"> </span><span class="s">script</span><span class="nv"> </span><span class="s">completed'</span><span class="nv"> </span><span class="s">-b</span><span class="nv"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">backup</span><span class="nv"> </span><span class="s">script</span><span class="nv"> </span><span class="s">completed</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">code</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">exitCode}}.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">log</span><span class="nv"> </span><span class="s">is:</span><span class="nv"> </span><span class="se">\n</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">stdout</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">'"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -357,14 +358,34 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>You can only use a single <code>shellAfterCompleted</code>, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.</p>
 </div>
+<div class="paragraph">
+<p>The official OliveTin container images from version 2024.03.24 onwards include the fantastic apprise tool, which makes chat notifications on many protocols very easy.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/caronc/apprise" class="bare">https://github.com/caronc/apprise</a></p>
+</li>
+<li>
+<p><a href="https://github.com/caronc/apprise/wiki/config" class="bare">https://github.com/caronc/apprise/wiki/config</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title"><code>/config/apprise.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">urls</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">tgram://bottoken/ChatID</span></code></pre>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="exec-file-changed.html">Execute on file changed</a> | ↑ Up: <a href="actions.html">Action execution</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-on-calendar.html">Execute on calendar file</a> →</p>
+<p>← Previous: <a href="exec-on-calendar.html">Execute on calendar file</a> | ↑ Up: <a href="actions.html">Action execution</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="triggers.html">Triggers</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-03-24 21:19:15 UTC
+Last updated 2024-03-24 23:57:52 UTC
 </div>
 </div>
 </body>
