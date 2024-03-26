@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="confirmation" class="book toc2 toc-left">
+<body id="prometheus" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -294,32 +294,24 @@ pre.rouge .gs {
 <li><a href="examples.html">Action examples</a>
 </li>
 <li><a href="args.html">Arguments</a>
-<ul class="sectlevel2">
-<li><a href="_introduction_to_arguments.html">Introduction to Arguments</a>
-</li>
-<li><a href="_important_safety_warning.html">Important Safety Warning</a>
-</li>
-<li><a href="arg-types.html">Argument types</a>
-</li>
-<li><a href="arg-textbox.html">Input: Textbox</a>
-</li>
-<li><a href="args-custom-regex.html">Custom regex</a>
-</li>
-<li><a href="arg-suggestions.html">Suggestions</a>
-</li>
-<li><a href="arg-dropdowns.html">Input: Dropdowns</a>
-</li>
-<li><a href="confirmation.html"><span class="toc-current">Input: Confirmation</span></a>
-</li>
-<li><a href="arg-datetime.html">Input: DateTime</a>
-</li>
-</ul>
 </li>
 <li><a href="dashboards.html">Dashboards</a>
 </li>
 <li><a href="entities.html">Entities</a>
 </li>
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
+<ul class="sectlevel2">
+<li><a href="customize-webui.html">Customize the web UI</a>
+</li>
+<li><a href="log-levels.html">Log Levels</a>
+</li>
+<li><a href="ports.html">Ports</a>
+</li>
+<li><a href="timezone.html">Timezone</a>
+</li>
+<li><a href="prometheus.html"><span class="toc-current">Prometheus</span></a>
+</li>
+</ul>
 </li>
 <li><a href="auth.html">Authentication &amp; Authorization</a>
 </li>
@@ -336,32 +328,45 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="confirmation"><a class="anchor" href="#confirmation"></a><a class="link" href="#confirmation">Input: Confirmation</a></h3>
+<h3 id="prometheus"><a class="anchor" href="#prometheus"></a><a class="link" href="#prometheus">Prometheus</a></h3>
 <div class="paragraph">
-<p>The <code>confirmation</code> type argument is a special argument type, which simply disables the "Start" button until a checkbox is ticked. This can be useful if you have an action with no other arguments, but you want to prevent accidental button-clicks starting the action.</p>
+<p>OliveTin supports basic Prometheus metrics, and the project is interested to hear about what more metrics people would find useful, as well!</p>
+</div>
+<div class="paragraph">
+<p>To enable Prometheus support;</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre>logLevel: INFO
+
+prometheus:
+    enabled: true
+    defaultGoMetrics: false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will give you metrics, like this;</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Delete old backups</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">ashtonished</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">rm -rf /opt/oldBackups/</span>
-    <span class="na">arguments</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">confirmation</span>
-        <span class="na">title</span><span class="pi">:</span> <span class="s">Are you sure?!</span></code></pre>
+<pre class="rouge highlight"><code># HELP olivetin_actions_requested_count The actions requested count
+# TYPE olivetin_actions_requested_count gauge
+olivetin_actions_requested_count 0
+# HELP olivetin_config_action_count Then number of actions in the config file
+# TYPE olivetin_config_action_count gauge
+olivetin_config_action_count 18
+# HELP olivetin_config_reloaded_count The number of times the config has been reloaded
+# TYPE olivetin_config_reloaded_count counter
+olivetin_config_reloaded_count 1
+# HELP olivetin_sv_count The number entries in the sv map
+# TYPE olivetin_sv_count gauge
+olivetin_sv_count 49</code></pre>
 </div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/action-confirmation.png" alt="action confirmation">
-</div>
-</div>
-<div class="paragraph">
-<p>Notice in the webui the "start" button is disabled.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="arg-dropdowns.html">Input: Dropdowns</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="arg-datetime.html">Input: DateTime</a> →</p>
+<p>← Previous: <a href="timezone.html">Timezone</a> | ↑ Up: <a href="_advanced_configuration.html">Advanced Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="auth.html">Authentication &amp; Authorization</a> →</p>
 </div>
 </div>
 <div id="footer">
