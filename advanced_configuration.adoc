@@ -124,4 +124,37 @@ docker create -v /etc/localtime:/etc/localtime -v /etc/OliveTin:/config --name O
 docker create -v /usr/share/zoneinfo/Japan:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin
 ----
 
+[#prometheus]
+=== Prometheus
+
+OliveTin supports basic Prometheus metrics, and the project is interested to hear about what more metrics people would find useful, as well!
+
+To enable Prometheus support;
+
+.`config.yaml`
+----
+logLevel: INFO
+
+prometheus:
+    enabled: true
+    defaultGoMetrics: false
+----
+
+This will give you metrics, like this;
+
+[source]
+----
+# HELP olivetin_actions_requested_count The actions requested count
+# TYPE olivetin_actions_requested_count gauge
+olivetin_actions_requested_count 0
+# HELP olivetin_config_action_count Then number of actions in the config file
+# TYPE olivetin_config_action_count gauge
+olivetin_config_action_count 18
+# HELP olivetin_config_reloaded_count The number of times the config has been reloaded
+# TYPE olivetin_config_reloaded_count counter
+olivetin_config_reloaded_count 1
+# HELP olivetin_sv_count The number entries in the sv map
+# TYPE olivetin_sv_count gauge
+olivetin_sv_count 49
+----
 
