@@ -161,7 +161,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="troubleshooting" class="book toc2 toc-left">
+<body id="advanced-troubleshooting" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -193,7 +193,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="_reference.html">Reference</a>
 </li>
-<li><a href="troubleshooting.html"><span class="toc-current">Support &amp; Troubleshooting</span></a>
+<li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 <ul class="sectlevel2">
 <li><a href="support.html">Where to find help</a>
 </li>
@@ -209,7 +209,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="err-js-modules-not-supported.html">Error: JS Modules not supported</a>
 </li>
-<li><a href="advanced-troubleshooting.html">Advanced Troubleshooting</a>
+<li><a href="advanced-troubleshooting.html"><span class="toc-current">Advanced Troubleshooting</span></a>
 </li>
 </ul>
 </li>
@@ -219,41 +219,47 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a><a class="link" href="#troubleshooting">Support &amp; Troubleshooting</a></h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="support.html">Where to find help</a></p>
-</li>
-<li>
-<p><a href="sosreport.html">sosreport</a></p>
-</li>
-<li>
-<p><a href="_exit_code_127.html">Exit code 127</a></p>
-</li>
-<li>
-<p><a href="no-puid-pgid.html">PUID and PGID support</a></p>
-</li>
-<li>
-<p><a href="err-fetch-buttons.html">Error Getting Buttons</a></p>
-</li>
-<li>
-<p><a href="err-fetch-webui-settings.html">Error Fetching WebUI Settings</a></p>
-</li>
-<li>
-<p><a href="err-js-modules-not-supported.html">Error: JS Modules not supported</a></p>
-</li>
-<li>
-<p><a href="advanced-troubleshooting.html">Advanced Troubleshooting</a></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="advanced-troubleshooting"><a class="anchor" href="#advanced-troubleshooting"></a><a class="link" href="#advanced-troubleshooting">Advanced Troubleshooting</a></h3>
+<div class="paragraph">
+<p>Sometimes you need to really see what OliveTin is doing, especially when debugging entities. OliveTin has several built-in options for advanced troubleshooting, but enabling these output options can expose sensitive information, so they can be insecure.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+OliveTin itself is not "insecure" by using these options, they would not let attackers execute different commands or anything like that. It&#8217;s just that using these options can expose data (like entity files) that maybe you don&#8217;t want an attacker to see.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="dump-sos"><a class="anchor" href="#dump-sos"></a><a class="link" href="#dump-sos">Dump SOS Reports</a></h4>
+<div class="paragraph">
+<p><code>InsecureAllowDumpSos: true</code> - will allow dumping <a href="sosreport.html">SOS Reports</a> as plain text when visiting <code><a href="http://server:1337/api/sosreport" class="bare">http://server:1337/api/sosreport</a></code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dump-action-map"><a class="anchor" href="#dump-action-map"></a><a class="link" href="#dump-action-map">Dump Action Map</a></h4>
+<div class="paragraph">
+<p><code>InsecureAllowDumpActionMap: true</code> - will allow dumping all the actions (and those generated with entities) and their public IDs, eg: <code><a href="http://server:1337/api/DumpPublicActionMap" class="bare">http://server:1337/api/DumpPublicActionMap</a></code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dump-vars"><a class="anchor" href="#dump-vars"></a><a class="link" href="#dump-vars">Dump Vars</a></h4>
+<div class="paragraph">
+<p><code>InsecureAllowDumpVars: true</code> - will allow dumping all the "string variables" from a map that is mainly used for entities, eg: <code><a href="http://server:1337/api/DumpVars" class="bare">http://server:1337/api/DumpVars</a></code></p>
+</div>
+<div class="paragraph">
+<p>All these configuration options are <code>false</code> by default, and should be deleted from the config or reset back to <code>false</code> when you are not using them.</p>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="themes.html">Themes</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="support.html">Where to find help</a> →</p>
+<p>← Previous: <a href="err-js-modules-not-supported.html">Error: JS Modules not supported</a> | ↑ Up: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="api.html">API</a> →</p>
 </div>
 </div>
 <div id="footer">
