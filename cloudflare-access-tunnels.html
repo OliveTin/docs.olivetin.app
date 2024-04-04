@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="caddy-path" class="book toc2 toc-left">
+<body id="cloudflare-access-tunnels" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -286,24 +286,6 @@ pre.rouge .gs {
 <li><a href="config.html">Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-dns.html">Apache HTTPD - DNS based</a>
-</li>
-<li><a href="haproxy-dns.html">Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html">Traefik + Docker Compose</a>
-</li>
-<li><a href="nginx-dns.html">Nginx - DNS based</a>
-</li>
-<li><a href="nginx-path.html">Nginx - Path based</a>
-</li>
-<li><a href="caddy-dns.html">Caddy - DNS Based</a>
-</li>
-<li><a href="caddy-path.html"><span class="toc-current">Caddy - Path based</span></a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">Action execution</a>
 </li>
@@ -322,6 +304,18 @@ pre.rouge .gs {
 <li><a href="auth.html">Authentication &amp; Authorization</a>
 </li>
 <li><a href="solutions.html">Solutions</a>
+<ul class="sectlevel2">
+<li><a href="container-control-panel.html">Container Control Panel</a>
+</li>
+<li><a href="systemd-control-panel.html">Systemd Control Panel</a>
+</li>
+<li><a href="heating-control-panel.html">Heating Control Panel</a>
+</li>
+<li><a href="cloudflare-access-tunnels.html"><span class="toc-current">Cloudflare Access &amp; Tunnels</span></a>
+</li>
+<li><a href="_gpio_control_on_raspberry_pi.html">GPIO Control on Raspberry Pi</a>
+</li>
+</ul>
 </li>
 <li><a href="_reference.html">Reference</a>
 </li>
@@ -334,37 +328,64 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="caddy-path"><a class="anchor" href="#caddy-path"></a><a class="link" href="#caddy-path">Caddy - Path based</a></h3>
-<div class="listingblock">
-<div class="title">Caddyfile</div>
-<div class="content">
-<pre>....
-	handle {$GLOBAL_PORTAL_PATH}/olivetin* {
-			redir {$GLOBAL_PORTAL_PATH}/olivetin {$GLOBAL_PORTAL_PATH}/olivetin/
-			uri strip_prefix {$GLOBAL_PORTAL_PATH}/olivetin
-			basicauth {
-					{$GLOBAL_USER} HASH
-			}
-			reverse_proxy * localhost:1337
-	}
-....</pre>
-</div>
+<h3 id="cloudflare-access-tunnels"><a class="anchor" href="#cloudflare-access-tunnels"></a><a class="link" href="#cloudflare-access-tunnels">Cloudflare Access &amp; Tunnels</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This page is marked as "earlydoc", which means that it more of a collection of notes and an early draft before this page turns into good documentation later on. It is hoped that this early form of documentation is useful to you, but please understand that most documentation pages are higher quality than this. If you have suggestions or comments, please do get in contact or consider contributing your suggestions to the OliveTin documentation.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Note, because you are changing the default path (from <code>/</code> to <code>/OliveTin/</code>), you will need to tell the OliveTin webUI where to find the API.</p>
+<p>Several uses use Cloudflare Access &amp; Tunnels to grant access to OliveTin. There is no special configuration needed for OliveTin to work in this way, simply setup your Cloudflare tunnel to connect to OliveTin on port 1337.</p>
 </div>
 <div class="paragraph">
-<p>You need to also set <code>externalRestAddress</code> in your config.yaml like this;</p>
+<p>If you are using Cloudflare Access, and want to use the username given by Cloudflare in OliveTin ACLs, then you can use the Cloudflare cookie like this;</p>
 </div>
 <div class="listingblock">
-<div class="title">OliveTin config.yaml</div>
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">externalRestAddress</span><span class="pi">:</span> <span class="s">http://myserver/OliveTin</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">authHttpHeaderUsername</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Cf-Access-Authenticated-User-Email"</span>
+
+<span class="na">defaultPermissions</span><span class="pi">:</span>
+    <span class="na">view</span><span class="pi">:</span> <span class="kc">false</span>
+    <span class="na">exec</span><span class="pi">:</span> <span class="kc">false</span>
+
+<span class="na">accessControlLists</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Admins</span>
+      <span class="na">addToEveryAction</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">matchUsernames</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">contact@jread.com</span>
+      <span class="na">permissions</span><span class="pi">:</span>
+        <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
+        <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
+
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">test apprise</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
+    <span class="na">shellAfterCompleted</span><span class="pi">:</span> <span class="s2">"</span><span class="s">apprise</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">/config/apprise.yml</span><span class="nv"> </span><span class="s">-t</span><span class="nv"> </span><span class="s">'notification:</span><span class="nv"> </span><span class="s">test'</span><span class="nv"> </span><span class="s">-b</span><span class="nv"> </span><span class="s">'date</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">stdout</span><span class="nv"> </span><span class="s">}}'"</span></code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+OliveTin does support JWT cookies that Cloudflare uses, which is arguably more secure. It&#8217;s just that nobody in the Discord has worked out how to get the keys needed from Cloudflare to decrypt this cookie yet! See the <a href="jwt.html">JWT Authorization</a> documentation for some starter points. If you figure this out, it would be most welcome to share your solution with the community.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="caddy-dns.html">Caddy - DNS Based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="actions.html">Action execution</a> →</p>
+<p>← Previous: <a href="heating-control-panel.html">Heating Control Panel</a> | ↑ Up: <a href="solutions.html">Solutions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_gpio_control_on_raspberry_pi.html">GPIO Control on Raspberry Pi</a> →</p>
 </div>
 </div>
 <div id="footer">
