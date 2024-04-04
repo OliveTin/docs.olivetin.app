@@ -1,7 +1,7 @@
 [#systemd-control-panel]
 === Systemd Control Panel
 
-OliveTin can be used to manage selected systemd units (services) as well. This is powered by OliveTin's powerful entity support. Here is a screenshot of what that can look like (dark theme preference enabled).
+OliveTin can be used to manage selected systemd units (services) as well. This is powered by OliveTin's powerful <<entities,entity support>>. Here is a screenshot of what that can look like (dark theme preference enabled).
 
 image::images/solution-systemd-control-panel.png[]
 
