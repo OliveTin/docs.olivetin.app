@@ -117,5 +117,48 @@ authJwtClaimUsername: "username"
 authJwtClaimUsergroup: "usergroup"
 ----
 
+[#acls]
+=== Access Control
 
+include::snippit_earlydoc.adoc[]
+
+OliveTin supports Access Control Lists.
+
+You can have one default access control list, list this;
+
+[source,yaml]
+----
+defaultPermissions:
+  view: false
+  exec: false
+
+accessControlLists:
+  - name: admins
+    addToEveryAction: true
+    permissions:
+      view: true
+      exec: true
+----
+
+Or you can specify access control lists per action:
+
+You can have one default access control list, list this;
+
+[source,yaml]
+----
+defaultPermissions:
+  view: false
+  exec: false
+
+accessControlLists:
+  - name: admins
+    permissions:
+      view: true
+      exec: true
+
+actions:
+  - title: Shutdown Reactor
+    acls:
+      - admins
+----
 
