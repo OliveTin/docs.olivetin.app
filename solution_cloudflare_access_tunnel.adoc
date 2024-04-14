@@ -18,7 +18,7 @@ Several uses use Cloudflare Access & Tunnels to grant access to OliveTin. There 
 .. Go to **Settings**
 .. Go to **Custom Pages**
 .. Your **Team Domain** is shown here
-. Get your Certs URL (`authJwtDomain`)
+. Get your Certs URL (`authJwtPubKeyJwksURL`)
 .. Simply add `cdn-cgi/access/certs` to your **Team Domain** for CloudFlare
 . CloudFlare gives you an `email` in the claim (`authJwtClaimUsername`) and the Cookie is always called `CF_Authorization` (`authJwtCookieName`)
 . Setup your OliveTin config.yaml like follows;
@@ -28,7 +28,7 @@ Several uses use Cloudflare Access & Tunnels to grant access to OliveTin. There 
 ----
 authJwtAud: "asdf1234"
 authJwtDomain: "https://mydomain.cloudflareaccess.com"
-authJwtCertsURL: "https://mydomain.cloudflareaccess.com/cdn-cgi/access/certs"
+authJwtPubKeyJwksURL: "https://mydomain.cloudflareaccess.com/cdn-cgi/access/certs"
 authJwtClaimUsername: email
 authJwtCookieName: "CF_Authorization"
 ----
