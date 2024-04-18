@@ -276,6 +276,7 @@ defaultPermissions:
 defaultPermissions:
     view: false
     exec: false
+    logs: true
 
 accessControlLists:
     - name: Admins
@@ -285,22 +286,24 @@ accessControlLists:
       permissions:
         view: true
         exec: true
+        logs: true
 
-    - name: "Web Admins"
+    - name: "Developers"
       matchUsergroups:
-      - "webadmin"
+      - "developer"
       permissions:
         view: true
         exec: false
+        logs: false
 
 actions:
     - name: Only visible to admins
       shell: echo "I am a secret command only visible to admins"
 
     - name: Restart database
-      shell: reboot
+      shell: systemctl restart mariadb
       acls:
-        - "webadmin"</pre>
+        - "developer"</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -326,7 +329,7 @@ authJwtClaimUsergroup: "usergroup"</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-18 09:45:22 UTC
+Last updated 2024-04-18 21:22:30 UTC
 </div>
 </div>
 </body>
