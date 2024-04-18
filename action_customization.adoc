@@ -253,6 +253,30 @@ WARN Blocked from executing. This would mean this action is running 2 times conc
 
 Naturally, you can set `maxConcurrent` to `3` or some other number, to limit the amount of times the action executes at once.
 
+[#ratelimits]
+=== Rate limiting
+
+By default, OliveTin allows you to execute actions as fast as you can click the button. This is fine if you are running OliveTin with trusted users in a trusted environment, but otherwise you may want to rate limit actions.
+
+Rate limiting is implemented like this;
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  # This is the most simple action, it just runs the command and flashes the
+  # button to indicate status.
+  #
+  # If you are running OliveTin in a container remember to pass through the
+  # docker socket! https://docs.olivetin.app/action-container-control.html
+  - title: date
+    shell: date
+    icon: clock
+    maxRate:
+      - limit: 3
+        duration: 5m
+----
+
 [#action-ids]
 === IDs
 
