@@ -275,37 +275,13 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="install-linuxpackage" class="book toc2 toc-left">
+<body id="upgrade-notes" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">Installation Guide</a>
-<ul class="sectlevel2">
-<li><a href="install-container-vs-service.html">Containers vs Services</a>
-</li>
-<li><a href="choose-package.html">Which download do I need?</a>
-</li>
-<li><a href="install-linuxpackage.html"><span class="toc-current">Linux package install (.rpm/.deb)</span></a>
-</li>
-<li><a href="install-fedora.html">Fedora Linux (dnf)</a>
-</li>
-<li><a href="install-alpine.html">Alpine Linux</a>
-</li>
-<li><a href="install-archbtw.html">Arch Linux (AUR)</a>
-</li>
-<li><a href="install-container.html">Container install (podman/docker)</a>
-</li>
-<li><a href="install-compose.html">Docker Compose install</a>
-</li>
-<li><a href="install-helm.html">Helm on Kubernetes Install</a>
-</li>
-<li><a href="install-k8s.html">Kubernetes install (manually)</a>
-</li>
-<li><a href="install-targz.html">.tar.gz Install (manual)</a>
-</li>
-</ul>
 </li>
 <li><a href="config.html">Configuration</a>
 </li>
@@ -330,6 +306,28 @@ pre.rouge .gs {
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
 <li><a href="_reference.html">Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">Network ports</a>
+</li>
+<li><a href="_security.html">Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">Understanding exit codes</a>
+</li>
+<li><a href="update-tracking.html">Update Checks (and tracking)</a>
+</li>
+<li><a href="container-dnf.html">Installing extra container packages</a>
+</li>
+<li><a href="multi-inst.html">Multiple instances on a server</a>
+</li>
+<li><a href="snapsnots.html">Snapshot builds</a>
+</li>
+<li><a href="themes.html">Themes (for users)</a>
+</li>
+<li><a href="themes-dev.html">Themes (for developers)</a>
+</li>
+<li><a href="upgrade-notes.html"><span class="toc-current">Upgrade Notes</span></a>
+</li>
+</ul>
 </li>
 <li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
@@ -340,96 +338,92 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="install-linuxpackage"><a class="anchor" href="#install-linuxpackage"></a><a class="link" href="#install-linuxpackage">Linux package install (.rpm/.deb)</a></h3>
+<h3 id="upgrade-notes"><a class="anchor" href="#upgrade-notes"></a><a class="link" href="#upgrade-notes">Upgrade Notes</a></h3>
 <div class="paragraph">
-<p>Running OliveTin as a systemd service on a Linux machine means it can use any program installed on your machine (you don&#8217;t have to add programs to a container). This is generally easier to use than a container, but containers can work just fine too with a bit more effort.</p>
+<p>OliveTin releases are published to GitHub, and the release notes are contained there. This page includes a summary of "Upgrade Notes" for breaking changes between releases.</p>
 </div>
 <div class="sect3">
-<h4 id="_choosing_the_right_linux_package"><a class="anchor" href="#_choosing_the_right_linux_package"></a><a class="link" href="#_choosing_the_right_linux_package">Choosing the right Linux package</a></h4>
+<h4 id="_2024_04_09"><a class="anchor" href="#_2024_04_09"></a><a class="link" href="#_2024_04_09">2024.04.09</a></h4>
+<div class="sect4">
+<h5 id="_themes_directory_for_theme_users"><a class="anchor" href="#_themes_directory_for_theme_users"></a><a class="link" href="#_themes_directory_for_theme_users">Themes Directory (for theme users)</a></h5>
+<div class="sect5">
+<h6 id="_background"><a class="anchor" href="#_background"></a><a class="link" href="#_background">Background</a></h6>
 <div class="paragraph">
-<p>There are .deb, .rpm, and similar packages published for OliveTin on each
-release page. Pick a package most relevant to the Linux distribution you are
-using from the <a href="https://github.com/jamesread/OliveTin/releases">downloads page</a>.</p>
-</div>
-<div class="paragraph">
-<p>If you&#8217;re not sure which package to use, see <a href="choose-package.html">which download do I need?</a></p>
-</div>
-<div class="paragraph">
-<p>You can install these packages with your Linux package manager (eg,
-<code>dpkg -i OliveTin&#8230;&#8203;deb</code> or <code>rpm -U OliveTin&#8230;&#8203;rpm</code>).</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_post_installation"><a class="anchor" href="#_post_installation"></a><a class="link" href="#_post_installation">Post installation</a></h4>
-<div class="paragraph">
-<p>You will need to write a basic configuration file before OliveTin will startup.</p>
+<p>Until now, OliveTin has served the themes directory from the "webui" directory, normally <code>/var/www/olivetin/themes</code> on most installations. If you wanted to install a theme, you would put the theme in to that directory.</p>
 </div>
 <div class="paragraph">
-<p>Create the following basic config file at <code>/etc/OliveTin/config.yaml</code> with the
-following contents;</p>
+<p>This was a bit cumbersome, because OliveTin treats the content of the "webui" directory as disposable / part of the system, whereas themes are much more like "user data" and "configuration". It also meant that people using Linux Containers had to bind-mount a separate directory for themes.</p>
 </div>
-<div class="listingblock">
-<div class="title">The most simple <code>config.yaml</code> file.</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Hello</span><span class="nv"> </span><span class="s">world!"</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo 'Hello World!'</span></code></pre>
 </div>
+<div class="sect5">
+<h6 id="_upgrade"><a class="anchor" href="#_upgrade"></a><a class="link" href="#_upgrade">Upgrade</a></h6>
+<div class="paragraph">
+<p>Now themes are stored in the "configdir" (wherever OliveTin finds it&#8217;s config file, eg <code>/config</code> in containers), under the subdirectory <code>custom-webui/themes</code>. OliveTin will try to create the <code>custom-webui</code> folder in your configdir if it doesn&#8217;t find it.</p>
 </div>
 <div class="paragraph">
-<p>Now that you have a configuration file, and OliveTin is installed, start it;</p>
-</div>
-<div class="listingblock">
-<div class="title">Start the service (only needed once)</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: systemctl <span class="nb">enable</span> <span class="nt">--now</span> OliveTin</code></pre>
-</div>
+<p>The advantage of this change is that themes are stored with your config, as part of your data.</p>
 </div>
 <div class="paragraph">
-<p>If you are running a firewall on your server, like firewalld, you will need to
-open port 1337;</p>
+<p>To upgrade, simply move any themes you might have into your configdir, under <code>custom-webui/themes/</code>. eg:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: firewall-cmd <span class="nt">--add-port</span> 1337/tcp <span class="nt">--permanent</span>
-user@host: firewall-cmd <span class="nt">--reload</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="s">.</span>
+<span class="s">├── config.yaml</span>
+<span class="s">├── custom-webui</span>
+<span class="s">│   └── themes</span>
+<span class="s">│       └── custom-icons</span>
+<span class="s">│           ├── icon.png</span>
+<span class="s">│           └── theme.css</span>
+<span class="s">├── entities</span>
+<span class="s">│   ├── containers.json</span>
+<span class="s">│   ├── heating.yaml</span>
+<span class="s">│   ├── servers2.yml</span>
+<span class="s">│   ├── servers.yaml</span>
+<span class="s">│   └── systemd_units.json</span>
+<span class="s">└── installation-id.txt</span></code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_theme_asset_paths_for_theme_developers"><a class="anchor" href="#_theme_asset_paths_for_theme_developers"></a><a class="link" href="#_theme_asset_paths_for_theme_developers">Theme Asset Paths (for theme developers)</a></h5>
+<div class="sect5">
+<h6 id="_background_2"><a class="anchor" href="#_background_2"></a><a class="link" href="#_background_2">Background</a></h6>
+<div class="paragraph">
+<p>OliveTin had to send the theme name to the browser, so that some javascript could then request <code><a href="http://yourServer:1337/themes/myTheme/theme.css" class="bare">http://yourServer:1337/themes/myTheme/theme.css</a></code>, and load it as a stylesheet. This had the following problems;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This was slow (could take up to a second)</p>
+</li>
+<li>
+<p>This creates a "flash" in the browser, as the new theme.css is loaded over the top of the existing stylesheet.</p>
+</li>
+<li>
+<p>Browsers could not cache this theme.css with the page load.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_upgrade_2"><a class="anchor" href="#_upgrade_2"></a><a class="link" href="#_upgrade_2">Upgrade</a></h6>
+<div class="paragraph">
+<p>The new behavior is that OliveTin will always try to load <code><a href="http://yourServer:1337/theme.css" class="bare">http://yourServer:1337/theme.css</a></code> as part of the static HTML that is sent to the browser. This means that regular caching can cache the theme.css, and this effectively elliminates the slowness and "flashing" when the browser renders the page.</p>
 </div>
 <div class="paragraph">
-<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
-the web interface.</p>
+<p>Internally, OliveTin maps <code><a href="http://yourServer:1337/theme.css" class="bare">http://yourServer:1337/theme.css</a></code> to the <code>theme.css</code> of whatever the theme is set to with <code>themeName</code>, for example, it could map to <code>themes/myTheme/theme.css</code>.</p>
 </div>
 <div class="paragraph">
-<p>If you see the OliveTin page popup in your browser, you can jump to the
-<a href="config.html">configuration section</a> as the next step.</p>
+<p>As a theme developer, normally you would reference a background image, or similar using <code>./background.png</code>, but OliveTin is loading the theme.css as the directory root, and the themes' assets from the custom-webui theme directory. Therefore you need to update paths to be like; <code>background-image: "/custom-webui/themes/myTheme/background.png</code>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_troubleshooting_systemd_installations"><a class="anchor" href="#_troubleshooting_systemd_installations"></a><a class="link" href="#_troubleshooting_systemd_installations">Troubleshooting systemd installations</a></h4>
-<div class="paragraph">
-<p>If you are having problems, you can check if OliveTin is running like this;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: systemctl status OliveTin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the service has failed, scroll through the logs;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="shell">user@host: journalctl <span class="nt">-eu</span> OliveTin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">Where to find help</a>
-page.</p>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="choose-package.html">Which download do I need?</a> | ↑ Up: <a href="installation.html">Installation Guide</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-fedora.html">Fedora Linux (dnf)</a> →</p>
+<p>← Previous: <a href="themes-dev.html">Themes (for developers)</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> →</p>
 </div>
 </div>
 <div id="footer">

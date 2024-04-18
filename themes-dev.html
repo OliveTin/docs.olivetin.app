@@ -161,7 +161,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="exec-on-demand" class="book toc2 toc-left">
+<body id="themes-dev" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -174,28 +174,6 @@ div.admonitionblock td:first-child {
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
 <li><a href="actions.html">Action execution</a>
-<ul class="sectlevel2">
-<li><a href="create-your-first-action.html">Create your first action</a>
-</li>
-<li><a href="exec-on-demand.html"><span class="toc-current">Execute on demand</span></a>
-</li>
-<li><a href="exec-cron.html">Execute on schedule (cron)</a>
-</li>
-<li><a href="exec-startup.html">Execute on startup</a>
-</li>
-<li><a href="exec-webhook.html">Execute on webhook</a>
-</li>
-<li><a href="exec-file-created.html">Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">Execute on file changed</a>
-</li>
-<li><a href="exec-on-calendar.html">Execute on calendar file</a>
-</li>
-<li><a href="after-completion.html">Execute after completion</a>
-</li>
-<li><a href="triggers.html">Triggers</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
@@ -214,6 +192,28 @@ div.admonitionblock td:first-child {
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
 <li><a href="_reference.html">Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">Network ports</a>
+</li>
+<li><a href="_security.html">Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">Understanding exit codes</a>
+</li>
+<li><a href="update-tracking.html">Update Checks (and tracking)</a>
+</li>
+<li><a href="container-dnf.html">Installing extra container packages</a>
+</li>
+<li><a href="multi-inst.html">Multiple instances on a server</a>
+</li>
+<li><a href="snapsnots.html">Snapshot builds</a>
+</li>
+<li><a href="themes.html">Themes (for users)</a>
+</li>
+<li><a href="themes-dev.html"><span class="toc-current">Themes (for developers)</span></a>
+</li>
+<li><a href="upgrade-notes.html">Upgrade Notes</a>
+</li>
+</ul>
 </li>
 <li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
@@ -224,13 +224,25 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="exec-on-demand"><a class="anchor" href="#exec-on-demand"></a><a class="link" href="#exec-on-demand">Execute on demand</a></h3>
+<h3 id="themes-dev"><a class="anchor" href="#themes-dev"></a><a class="link" href="#themes-dev">Themes (for developers)</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This page is marked as "earlydoc", which means that it more of a collection of notes and an early draft before this page turns into good documentation later on. It is hoped that this early form of documentation is useful to you, but please understand that most documentation pages are higher quality than this. If you have suggestions or comments, please do get in contact or consider contributing your suggestions to the OliveTin documentation.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>This is the default, meaning that the action shows up on a dashboard, and at the moment cannot be changed.</p>
+<p>OliveTin will load <code>/theme.css</code> depending on <code>themeName:</code> in your config file. Images and any other assets will be served at <code>/custom-webui/themes/mytheme/</code>.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="create-your-first-action.html">Create your first action</a> | ↑ Up: <a href="actions.html">Action execution</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-cron.html">Execute on schedule (cron)</a> →</p>
+<p>← Previous: <a href="themes.html">Themes (for users)</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="upgrade-notes.html">Upgrade Notes</a> →</p>
 </div>
 </div>
 <div id="footer">

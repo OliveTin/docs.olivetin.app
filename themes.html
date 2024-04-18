@@ -299,11 +299,11 @@ pre.rouge .gs {
 </li>
 <li><a href="entities.html">Entities</a>
 </li>
-<li><a href="_advanced_configuration.html">Advanced Configuration</a>
-</li>
 <li><a href="auth.html">Authentication &amp; Authorization</a>
 </li>
 <li><a href="solutions.html">Solutions</a>
+</li>
+<li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
 <li><a href="_reference.html">Reference</a>
 <ul class="sectlevel2">
@@ -321,7 +321,11 @@ pre.rouge .gs {
 </li>
 <li><a href="snapsnots.html">Snapshot builds</a>
 </li>
-<li><a href="themes.html"><span class="toc-current">Themes</span></a>
+<li><a href="themes.html"><span class="toc-current">Themes (for users)</span></a>
+</li>
+<li><a href="themes-dev.html">Themes (for developers)</a>
+</li>
+<li><a href="upgrade-notes.html">Upgrade Notes</a>
 </li>
 </ul>
 </li>
@@ -334,18 +338,50 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="themes"><a class="anchor" href="#themes"></a><a class="link" href="#themes">Themes</a></h3>
-<div class="paragraph">
-<p>Temporary docs until I write something better.</p>
+<h3 id="themes"><a class="anchor" href="#themes"></a><a class="link" href="#themes">Themes (for users)</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This page is marked as "earlydoc", which means that it more of a collection of notes and an early draft before this page turns into good documentation later on. It is hoped that this early form of documentation is useful to you, but please understand that most documentation pages are higher quality than this. If you have suggestions or comments, please do get in contact or consider contributing your suggestions to the OliveTin documentation.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Very early version of a theme website: <a href="http://www.olivetin.app/themes/" class="bare">http://www.olivetin.app/themes/</a></p>
 </div>
+<div class="sect3">
+<h4 id="_the_custom_webui_directory"><a class="anchor" href="#_the_custom_webui_directory"></a><a class="link" href="#_the_custom_webui_directory">The custom-webui directory</a></h4>
 <div class="paragraph">
-<p>If you&#8217;re using a container, bind mount a "themes" directory from your host into /var/www/olivetin/themes/</p>
+<p>OliveTin will server a directory called <code>custom-webui</code> at <code><a href="http://yourserver:1337/custom-webui/" class="bare">http://yourserver:1337/custom-webui/</a></code>, this means that all theme content should go into <code>custom-webui/themes</code>.</p>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re using a Linux package create a directory /var/www/olivetin/themes/</p>
+<p>In the past, OliveTin used to lookup the theme name and send that theme name to your browser so that it could then manually request the theme stylesheet. This approach was slow, it stopped browsers caching, and it caused an awkward "flash" whenever the new theme was loaded. Now, OliveTin internally looks up your theme.css file based on your <code>themeName</code>, and will always serve this <code>theme.css</code> file at <code><a href="http://yourServer:1337/theme.css" class="bare">http://yourServer:1337/theme.css</a></code>. If you are not using a custom theme, OliveTin will just serve an empty CSS file.</p>
+</div>
+<div class="paragraph">
+<p>Install Themes into your <strong>custom-webui</strong> directory, which should be in your config directory. If this directory does not exist, you can create it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="s">├── config.yaml</span>
+<span class="s">├── custom-webui</span>
+<span class="s">│   └── themes</span>
+<span class="s">│       └── custom-icons</span>
+<span class="s">│           ├── icon.png</span>
+<span class="s">│           └── theme.css</span>
+<span class="s">├── entities</span>
+<span class="s">│   ├── containers.json</span>
+<span class="s">│   ├── heating.yaml</span>
+<span class="s">│   ├── servers2.yml</span>
+<span class="s">│   ├── servers.yaml</span>
+<span class="s">│   └── systemd_units.json</span>
+<span class="s">└── installation-id.txt</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_create_your_own_theme_without_any_intention_of_publishing_it"><a class="anchor" href="#_create_your_own_theme_without_any_intention_of_publishing_it"></a><a class="link" href="#_create_your_own_theme_without_any_intention_of_publishing_it">Create your own theme (without any intention of publishing it)</a></h4>
@@ -405,12 +441,12 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="snapsnots.html">Snapshot builds</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> →</p>
+<p>← Previous: <a href="snapsnots.html">Snapshot builds</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="themes-dev.html">Themes (for developers)</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-14 23:28:09 UTC
+Last updated 2024-04-18 09:45:22 UTC
 </div>
 </div>
 </body>
