@@ -1,0 +1,8 @@
+[#themes-dev]
+=== Themes (for developers)
+
+include::snippit_earlydoc.adoc[]
+
+OliveTin will load `/theme.css` depending on `themeName:` in your config file. Images and any other assets will be served at `/custom-webui/themes/mytheme/`.
+
+

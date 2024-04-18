@@ -1,0 +1,65 @@
+[#themes]
+=== Themes (for users)
+
+include::snippit_earlydoc.adoc[]
+
+Very early version of a theme website: http://www.olivetin.app/themes/
+
+==== The custom-webui directory
+
+OliveTin will server a directory called `custom-webui` at `http://yourserver:1337/custom-webui/`, this means that all theme content should go into `custom-webui/themes`.
+
+In the past, OliveTin used to lookup the theme name and send that theme name to your browser so that it could then manually request the theme stylesheet. This approach was slow, it stopped browsers caching, and it caused an awkward "flash" whenever the new theme was loaded. Now, OliveTin internally looks up your theme.css file based on your `themeName`, and will always serve this `theme.css` file at `http://yourServer:1337/theme.css`. If you are not using a custom theme, OliveTin will just serve an empty CSS file.
+
+Install Themes into your **custom-webui** directory, which should be in your config directory. If this directory does not exist, you can create it.
+
+[source,yaml]
+----
+├── config.yaml
+├── custom-webui
+│   └── themes
+│       └── custom-icons
+│           ├── icon.png
+│           └── theme.css
+├── entities
+│   ├── containers.json
+│   ├── heating.yaml
+│   ├── servers2.yml
+│   ├── servers.yaml
+│   └── systemd_units.json
+└── installation-id.txt
+----
+
+==== Create your own theme (without any intention of publishing it)
+
+Create a sub-directory under your theme directory (normally /var/www/olivetin/themes) called "mytheme"
+
+Set your theme in your config
+
+[source,yaml]
+.`config.yaml`
+----
+themeName: mytheme
+----
+
+Add your css into /var/www/olivetin/themes/mytheme/theme.css
+
+Your theme css will be loaded "on top" of the existing stylesheet.
+
+To test it is working, set your theme CSS to something ridiculous like;
+
+----
+body {
+    background-color: red !important;
+}
+----
+
+Profit.
+
+==== Create a theme for other people to use
+
+. Use this GitHub repository as a template to create your own theme repo: https://github.com/OliveTin/theme-template
+. Fork https://github.com/olivetin/themes
+. Create a directory under "content/posts" called something like "mytheme", and populate index.md, and cover.png. 
+. Raise a pull request back to github.com/olivetin/themes/
+. Rejoice!

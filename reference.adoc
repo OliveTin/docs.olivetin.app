@@ -14,4 +14,8 @@ include::reference_multipleInstances.adoc[]
 
 include::reference_snapshots.adoc[]
 
-include::themes.adoc[]
+include::reference_themes_for_users.adoc[]
+
+include::reference_themes_for_developers.adoc[]
+
+include::upgrade_notes.adoc[]

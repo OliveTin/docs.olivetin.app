@@ -107,11 +107,11 @@ include::dashboards.adoc[]
 
 include::entities.adoc[]
 
-include::advanced_configuration.adoc[]
-
 include::authorization.adoc[]
 
 include::solutions.adoc[]
+
+include::advanced_configuration.adoc[]
 
 include::reference.adoc[]
 
