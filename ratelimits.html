@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="triggers" class="book toc2 toc-left">
+<body id="ratelimits" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -288,30 +288,24 @@ pre.rouge .gs {
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
 <li><a href="actions.html">Action execution</a>
-<ul class="sectlevel2">
-<li><a href="create-your-first-action.html">Create your first action</a>
-</li>
-<li><a href="exec-on-demand.html">Execute on demand</a>
-</li>
-<li><a href="exec-cron.html">Execute on schedule (cron)</a>
-</li>
-<li><a href="exec-startup.html">Execute on startup</a>
-</li>
-<li><a href="exec-webhook.html">Execute on webhook</a>
-</li>
-<li><a href="exec-file-created.html">Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">Execute on file changed</a>
-</li>
-<li><a href="exec-on-calendar.html">Execute on calendar file</a>
-</li>
-<li><a href="after-completion.html">Execute after completion</a>
-</li>
-<li><a href="triggers.html"><span class="toc-current">Triggers</span></a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
+<ul class="sectlevel2">
+<li><a href="_execution_feedback.html">Execution Feedback</a>
+</li>
+<li><a href="icons.html">Icons</a>
+</li>
+<li><a href="timeout.html">Timeouts</a>
+</li>
+<li><a href="_run_as_different_users.html">Run as different users</a>
+</li>
+<li><a href="concurrency.html">Concurrency</a>
+</li>
+<li><a href="ratelimits.html"><span class="toc-current">Rate limiting</span></a>
+</li>
+<li><a href="action-ids.html">IDs</a>
+</li>
+</ul>
 </li>
 <li><a href="examples.html">Action examples</a>
 </li>
@@ -338,30 +332,33 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="triggers"><a class="anchor" href="#triggers"></a><a class="link" href="#triggers">Triggers</a></h3>
+<h3 id="ratelimits"><a class="anchor" href="#ratelimits"></a><a class="link" href="#ratelimits">Rate limiting</a></h3>
 <div class="paragraph">
-<p>Sometimes you want to trigger another action after the first one completes. This is mostly useful for updating hidden actions that update entity files, without having to run those updates on a cron job every 10 seconds!</p>
+<p>By default, OliveTin allows you to execute actions as fast as you can click the button. This is fine if you are running OliveTin with trusted users in a trusted environment, but otherwise you may want to rate limit actions.</p>
+</div>
+<div class="paragraph">
+<p>Rate limiting is implemented like this;</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">entities</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/entities/containers.json</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">container</span>
-
-<span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">stop {{ container.Names }}</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">docker stop {{ container.Names}}</span>
-    <span class="na">entity</span><span class="pi">:</span> <span class="s">container</span>
-    <span class="na">trigger</span><span class="pi">:</span> <span class="s">update containers</span>
-
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">update containers</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">docker ps -a --format=json &gt; /etc/OliveTin/entities/containers.json</span>
-    <span class="na">hidden</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="c1"># This is the most simple action, it just runs the command and flashes the</span>
+  <span class="c1"># button to indicate status.</span>
+  <span class="c1">#</span>
+  <span class="c1"># If you are running OliveTin in a container remember to pass through the</span>
+  <span class="c1"># docker socket! https://docs.olivetin.app/action-container-control.html</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">date</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
+    <span class="na">icon</span><span class="pi">:</span> <span class="s">clock</span>
+    <span class="na">maxRate</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">limit</span><span class="pi">:</span> <span class="m">3</span>
+        <span class="na">duration</span><span class="pi">:</span> <span class="s">5m</span></code></pre>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="after-completion.html">Execute after completion</a> | ↑ Up: <a href="actions.html">Action execution</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-customisation.html">Action customisation</a> →</p>
+<p>← Previous: <a href="concurrency.html">Concurrency</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-ids.html">IDs</a> →</p>
 </div>
 </div>
 <div id="footer">
