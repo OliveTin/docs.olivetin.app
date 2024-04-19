@@ -264,17 +264,18 @@ Rate limiting is implemented like this;
 .`config.yaml`
 ----
 actions:
-  # This is the most simple action, it just runs the command and flashes the
-  # button to indicate status.
-  #
-  # If you are running OliveTin in a container remember to pass through the
-  # docker socket! https://docs.olivetin.app/action-container-control.html
   - title: date
     shell: date
     icon: clock
     maxRate:
       - limit: 3
         duration: 5m
+----
+
+If you try to execute `date` more than 3 times in 5 minutes, you will get a log message that looks like this;
+
+----
+INFO Blocked from executing. This action has run 3 out of 3 allowed times in the last 5m.  actionTitle="date"
 ----
 
 [#action-ids]
