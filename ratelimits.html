@@ -343,17 +343,20 @@ pre.rouge .gs {
 <div class="title"><code>config.yaml</code></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="c1"># This is the most simple action, it just runs the command and flashes the</span>
-  <span class="c1"># button to indicate status.</span>
-  <span class="c1">#</span>
-  <span class="c1"># If you are running OliveTin in a container remember to pass through the</span>
-  <span class="c1"># docker socket! https://docs.olivetin.app/action-container-control.html</span>
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">date</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
     <span class="na">icon</span><span class="pi">:</span> <span class="s">clock</span>
     <span class="na">maxRate</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">limit</span><span class="pi">:</span> <span class="m">3</span>
         <span class="na">duration</span><span class="pi">:</span> <span class="s">5m</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you try to execute <code>date</code> more than 3 times in 5 minutes, you will get a log message that looks like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>INFO Blocked from executing. This action has run 3 out of 3 allowed times in the last 5m.  actionTitle="date"</pre>
 </div>
 </div>
 </div>
@@ -363,7 +366,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-18 23:54:00 UTC
+Last updated 2024-04-19 00:00:56 UTC
 </div>
 </div>
 </body>
