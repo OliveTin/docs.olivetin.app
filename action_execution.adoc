@@ -125,6 +125,9 @@ You can execute an action when a file is created in a directory. The argument `f
 actions:
   - title: Print names of new files
     shell: echo {{ filename }}
+    arguments:
+      - name: filename
+        type: ascii_sentence
     execOnFileCreatedInDir:
       - /home/user/Downloads/
 ----
@@ -139,6 +142,9 @@ You can execute an action when a file is changed in a directory. The argument `f
 actions:
   - title: Print names of new files
     shell: echo {{ filename }}
+    arguments:
+      - name: filename
+        type: ascii_sentence
     execOnFileChangedInDir:
       - /home/user/Downloads/
 ----
