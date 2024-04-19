@@ -120,11 +120,12 @@ For examples of how to use all of these functions, check out the <<api-start-act
 You can execute an action when a file is created in a directory. The argument `filename` is pre-populated for you.
 
 [source,yaml]
+.`config.yaml`
 ----
 actions:
   - title: Print names of new files
     shell: echo {{ filename }}
-    execOnCreatedInDir:
+    execOnFileCreatedInDir:
       - /home/user/Downloads/
 ----
 
