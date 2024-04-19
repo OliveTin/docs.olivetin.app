@@ -79,6 +79,7 @@ logLevel: "INFO"
 defaultPermissions:
     view: false
     exec: false
+    logs: true
 
 accessControlLists:
     - name: Admins
@@ -88,22 +89,24 @@ accessControlLists:
       permissions:
         view: true
         exec: true
+        logs: true
 
-    - name: "Web Admins"
+    - name: "Developers"
       matchUsergroups:
-      - "webadmin"
+      - "developer"
       permissions:
         view: true
         exec: false
+        logs: false
 
 actions:
     - name: Only visible to admins
       shell: echo "I am a secret command only visible to admins"
 
     - name: Restart database
-      shell: reboot
+      shell: systemctl restart mariadb
       acls:
-        - "webadmin"
+        - "developer"
 ----
 
 In the example above, the `admins` ACL is automatically added to every action, because `addToEveryAction` is true. 
@@ -131,6 +134,7 @@ You can have one default access control list, list this;
 defaultPermissions:
   view: false
   exec: false
+  logs: true
 
 accessControlLists:
   - name: admins
@@ -138,6 +142,7 @@ accessControlLists:
     permissions:
       view: true
       exec: true
+      logs: true
 ----
 
 Or you can specify access control lists per action:
