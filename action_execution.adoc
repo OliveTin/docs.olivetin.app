@@ -132,6 +132,8 @@ actions:
       - /home/user/Downloads/
 ----
 
+include::action_execution_onfileindir_arguments.adoc[]
+
 [#exec-file-changed]
 === Execute on file changed
 
@@ -141,13 +143,20 @@ You can execute an action when a file is changed in a directory. The argument `f
 ----
 actions:
   - title: Print names of new files
-    shell: echo {{ filename }}
+    shell: "echo Filename: {{ filename }}  Filedir: {{ filedir }}  Filext: {{ fileext }}"
     arguments:
       - name: filename
-        type: ascii_sentence
+        type: unicode_identifier_sentence
+      - name: filedir
+        type: unicode_identifier_sentence
+      - name: fileext
+        type: unicode_identifier_sentence
+
     execOnFileChangedInDir:
       - /home/user/Downloads/
 ----
+
+include::action_execution_onfileindir_arguments.adoc[]
 
 [#exec-on-calendar]
 === Execute on calendar file

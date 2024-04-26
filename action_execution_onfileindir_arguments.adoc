@@ -1,0 +1,11 @@
+==== File in dir arguments
+
+|===
+| Predefined Argument   | Example
+
+| `filepath`            | /Downloads/txt1.txt
+| `filedir`             | /Downloads
+| `filename`            | test1.txt
+| `fileext`             | .txt
+|===
+
