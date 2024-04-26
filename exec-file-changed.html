@@ -346,13 +346,51 @@ pre.rouge .gs {
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Print names of new files</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo {{ filename }}</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s2">"</span><span class="s">echo</span><span class="nv"> </span><span class="s">Filename:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">filename</span><span class="nv"> </span><span class="s">}}</span><span class="nv">  </span><span class="s">Filedir:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">filedir</span><span class="nv"> </span><span class="s">}}</span><span class="nv">  </span><span class="s">Filext:</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">fileext</span><span class="nv"> </span><span class="s">}}"</span>
     <span class="na">arguments</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">filename</span>
-        <span class="na">type</span><span class="pi">:</span> <span class="s">ascii_sentence</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">unicode_identifier_sentence</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">filedir</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">unicode_identifier_sentence</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">fileext</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">unicode_identifier_sentence</span>
+
     <span class="na">execOnFileChangedInDir</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">/home/user/Downloads/</span></code></pre>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_file_in_dir_arguments_2"><a class="anchor" href="#_file_in_dir_arguments_2"></a><a class="link" href="#_file_in_dir_arguments_2">File in dir arguments</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Predefined Argument</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filepath</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/Downloads/txt1.txt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filedir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/Downloads</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filename</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">test1.txt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fileext</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">.txt</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -361,7 +399,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-25 13:57:52 UTC
+Last updated 2024-04-26 08:52:18 UTC
 </div>
 </div>
 </body>
