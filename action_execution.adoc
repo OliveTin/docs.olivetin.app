@@ -83,6 +83,8 @@ actions:
 
 OliveTin can execute actions on a startup. 
 
+[source,yaml]
+.`config.yaml`
 ----
 actions:
   - title: Say hello
@@ -95,6 +97,8 @@ actions:
 
 This functionality to execute actions on startup is a very easy way to install additional commands in OliveTin, however it requires running OliveTin as a root user to be able to use `microdnf`;
 
+[source,yaml]
+.`config.yaml`
 ----
 actions:
   - title: Install dnsmasq

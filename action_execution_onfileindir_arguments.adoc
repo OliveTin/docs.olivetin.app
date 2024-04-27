@@ -13,3 +13,5 @@
 | `fileisdir`           | false
 |===
 
+Like all arguments, OliveTin also passes these arguments as <<env-vars,environment variables>> if this is better for your use case.
+
