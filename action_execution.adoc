@@ -93,7 +93,7 @@ actions:
 [#dnf-startup]
 ==== Example: Install additional commands into OliveTin
 
-This functionality to execute actions on startup is a very easy way to install additional commands in OliveTin;
+This functionality to execute actions on startup is a very easy way to install additional commands in OliveTin, however it requires running OliveTin as a root user to be able to use `microdnf`;
 
 ----
 actions:
@@ -102,7 +102,7 @@ actions:
     execOnStartup: true
 ----
 
-To learn more about how to install additional packages into the container, see <<container-dnf,installing extra container packages>>.
+A more secure method than running DNF as root, is a manual command the temporarily runs as root. To learn more about how to install additional packages into the container in this more secure way, see <<container-dnf,installing extra container packages>>.
 
 
 [#exec-webhook]
@@ -127,7 +127,12 @@ actions:
     shell: echo {{ filename }}
     arguments:
       - name: filename
-        type: ascii_sentence
+        type: unicode_identifier
+      - name: filedir
+        type: unicode_identifier
+      - name: fileext
+        type: unicode_identifier
+
     execOnFileCreatedInDir:
       - /home/user/Downloads/
 ----
@@ -146,11 +151,13 @@ actions:
     shell: "echo Filename: {{ filename }}  Filedir: {{ filedir }}  Filext: {{ fileext }}"
     arguments:
       - name: filename
-        type: unicode_identifier_sentence
+        type: unicode_identifier
+
       - name: filedir
-        type: unicode_identifier_sentence
+        type: unicode_identifier
+
       - name: fileext
-        type: unicode_identifier_sentence
+        type: unicode_identifier
 
     execOnFileChangedInDir:
       - /home/user/Downloads/
