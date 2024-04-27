@@ -279,7 +279,10 @@ actions:
       - /home/user/Downloads/
 ----
 
+This is an example of a python script using the environment variables;
+
 [source,python]
+.`/opt/newfile.py`
 ----
 #!/usr/bin/env python
 
@@ -295,5 +298,6 @@ print(os.environ['FILEISDIR'])
 
 . Argument names are converted to uppercase for environment variables, `name: filename` becomes `FILENAME`.
 . OliveTin also passes an environment variable called `OLIVETIN` which is always just set to `1`, which allow for scripts to detect if they are being run within OliveTin.
+. The environment variables are passed into the execution context which uses a shell (/bin/sh on Linux), so it is also possible to use them with the $ notation in the `shell` line, like this; `shell: echo $FILENAME` for example.
 
 
