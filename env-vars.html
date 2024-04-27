@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_environment_variables" class="book toc2 toc-left">
+<body id="env-vars" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -313,7 +313,7 @@ pre.rouge .gs {
 </li>
 <li><a href="arg-datetime.html">Input: DateTime</a>
 </li>
-<li><a href="_environment_variables.html"><span class="toc-current">Environment variables</span></a>
+<li><a href="env-vars.html"><span class="toc-current">Environment variables</span></a>
 </li>
 </ul>
 </li>
@@ -338,7 +338,7 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_environment_variables"><a class="anchor" href="#_environment_variables"></a><a class="link" href="#_environment_variables">Environment variables</a></h3>
+<h3 id="env-vars"><a class="anchor" href="#env-vars"></a><a class="link" href="#env-vars">Environment variables</a></h3>
 <div class="paragraph">
 <p>All arguments are also passed as environment variables as well, which can be very useful when passing several arguments to a script, for example.</p>
 </div>
@@ -360,7 +360,11 @@ pre.rouge .gs {
       <span class="pi">-</span> <span class="s">/home/user/Downloads/</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>This is an example of a python script using the environment variables;</p>
+</div>
 <div class="listingblock">
+<div class="title"><code>/opt/newfile.py</code></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="python"><span class="c1">#!/usr/bin/env python
 </span>
@@ -382,6 +386,9 @@ pre.rouge .gs {
 <li>
 <p>OliveTin also passes an environment variable called <code>OLIVETIN</code> which is always just set to <code>1</code>, which allow for scripts to detect if they are being run within OliveTin.</p>
 </li>
+<li>
+<p>The environment variables are passed into the execution context which uses a shell (/bin/sh on Linux), so it is also possible to use them with the $ notation in the <code>shell</code> line, like this; <code>shell: echo $FILENAME</code> for example.</p>
+</li>
 </ol>
 </div>
 </div>
@@ -392,7 +399,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-27 19:35:15 UTC
+Last updated 2024-04-27 19:42:28 UTC
 </div>
 </div>
 </body>
