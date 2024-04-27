@@ -256,7 +256,7 @@ The OliveTin server does try to parse and validate the date on the server side t
 **This is safe**, as what really matters is what the server allows to be passed to be executed - and that is checked.
 ====
 
-[env-vars]
+[#env-vars]
 === Environment variables
 
 All arguments are also passed as environment variables as well, which can be very useful when passing several arguments to a script, for example.
