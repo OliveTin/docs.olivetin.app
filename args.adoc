@@ -270,9 +270,11 @@ actions:
     arguments:
       - name: filename
         type: unicode_identifier
-      - name: filedir
+
+      - name: filesizebytes
         type: unicode_identifier
-      - name: fileext
+
+      - name: fileisdir
         type: unicode_identifier
 
     execOnFileCreatedInDir:
