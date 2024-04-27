@@ -350,7 +350,12 @@ pre.rouge .gs {
     <span class="na">shell</span><span class="pi">:</span> <span class="s">echo {{ filename }}</span>
     <span class="na">arguments</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">filename</span>
-        <span class="na">type</span><span class="pi">:</span> <span class="s">ascii_sentence</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">unicode_identifier</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">filedir</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">unicode_identifier</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">fileext</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">unicode_identifier</span>
+
     <span class="na">execOnFileCreatedInDir</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">/home/user/Downloads/</span></code></pre>
 </div>
@@ -385,6 +390,22 @@ pre.rouge .gs {
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>fileext</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">.txt</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filesizebytes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filemode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0644</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filemtime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2024-04-27 20:09:42.465235047 +0100 BST</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fileisdir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -395,7 +416,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-26 08:52:18 UTC
+Last updated 2024-04-27 19:16:40 UTC
 </div>
 </div>
 </body>
