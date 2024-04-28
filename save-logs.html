@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="acls" class="book toc2 toc-left">
+<body id="save-logs" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -290,6 +290,24 @@ pre.rouge .gs {
 <li><a href="actions.html">Action execution</a>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
+<ul class="sectlevel2">
+<li><a href="_execution_feedback.html">Execution Feedback</a>
+</li>
+<li><a href="icons.html">Icons</a>
+</li>
+<li><a href="timeout.html">Timeouts</a>
+</li>
+<li><a href="_run_as_different_users.html">Run as different users</a>
+</li>
+<li><a href="concurrency.html">Concurrency</a>
+</li>
+<li><a href="ratelimits.html">Rate limiting</a>
+</li>
+<li><a href="action-ids.html">IDs</a>
+</li>
+<li><a href="save-logs.html"><span class="toc-current">Saving logs</span></a>
+</li>
+</ul>
 </li>
 <li><a href="examples.html">Action examples</a>
 </li>
@@ -300,16 +318,6 @@ pre.rouge .gs {
 <li><a href="entities.html">Entities</a>
 </li>
 <li><a href="auth.html">Authentication &amp; Authorization</a>
-<ul class="sectlevel2">
-<li><a href="auth-concepts.html">Concepts</a>
-</li>
-<li><a href="trusted-header.html">Trusted Header Authorization</a>
-</li>
-<li><a href="jwt.html">JWT Authorization</a>
-</li>
-<li><a href="acls.html"><span class="toc-current">Access Control</span></a>
-</li>
-</ul>
 </li>
 <li><a href="solutions.html">Solutions</a>
 </li>
@@ -326,68 +334,78 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="acls"><a class="anchor" href="#acls"></a><a class="link" href="#acls">Access Control</a></h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-This page is marked as "earlydoc", which means that it more of a collection of notes and an early draft before this page turns into good documentation later on. It is hoped that this early form of documentation is useful to you, but please understand that most documentation pages are higher quality than this. If you have suggestions or comments, please do get in contact or consider contributing your suggestions to the OliveTin documentation.
-</td>
-</tr>
-</table>
+<h3 id="save-logs"><a class="anchor" href="#save-logs"></a><a class="link" href="#save-logs">Saving logs</a></h3>
+<div class="paragraph">
+<p>By default, OliveTin only keeps logs in memory, meaning that if you restart OliveTin your logs will be lost. For some use cases this is acceptable, but you can configure OliveTin to save logs for you.</p>
 </div>
 <div class="paragraph">
-<p>OliveTin supports Access Control Lists.</p>
-</div>
-<div class="paragraph">
-<p>You can have one default access control list, list this;</p>
+<p>You can configure the global setting for saving logs, or override it on a per-action basis;</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">defaultPermissions</span><span class="pi">:</span>
-  <span class="na">view</span><span class="pi">:</span> <span class="kc">false</span>
-  <span class="na">exec</span><span class="pi">:</span> <span class="kc">false</span>
-  <span class="na">logs</span><span class="pi">:</span> <span class="kc">true</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">saveLogs</span><span class="pi">:</span>
+    <span class="na">resultsDirectory</span><span class="pi">:</span> <span class="s">/var/log/OliveTin/results/</span>
+    <span class="na">outputDirectory</span><span class="pi">:</span> <span class="s">/var/log/OliveTin/output/</span>
 
-<span class="na">accessControlLists</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">admins</span>
-    <span class="na">addToEveryAction</span><span class="pi">:</span> <span class="kc">true</span>
-    <span class="na">permissions</span><span class="pi">:</span>
-      <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">logs</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Or you can specify access control lists per action:</p>
-</div>
-<div class="paragraph">
-<p>You can have one default access control list, list this;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">defaultPermissions</span><span class="pi">:</span>
-  <span class="na">view</span><span class="pi">:</span> <span class="kc">false</span>
-  <span class="na">exec</span><span class="pi">:</span> <span class="kc">false</span>
-
-<span class="na">accessControlLists</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">admins</span>
-    <span class="na">permissions</span><span class="pi">:</span>
-      <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
 
 <span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Shutdown Reactor</span>
-    <span class="na">acls</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">admins</span></code></pre>
+    <span class="c1"># This will use the default `saveLogs` setting.</span>
+    <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">date</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
+
+    <span class="c1"># This will override the default `saveLogs` setting.</span>
+    <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">date2</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
+      <span class="na">saveLogs</span><span class="pi">:</span>
+        <span class="na">resultsDirectory</span><span class="pi">:</span> <span class="s">/logs/</span>
+        <span class="na">outputDirectory</span><span class="pi">:</span> <span class="s">/logs/</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>From the above example, you can see there There are two types of logs - <strong>results (.yaml)</strong> and <strong>output (.log)</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Results (.yaml)</strong> - this captures almost everything that OliveTin knows about the action and looks like this.</p>
+<div class="listingblock">
+<div class="title">Example results - date.1714333384.5e2dc9e5-b6b3-445b-bff9-c2082b0bbbb2.yaml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">datetimestarted</span><span class="pi">:</span> <span class="s">2024-04-28T20:43:04.426754136+01:00</span>
+<span class="na">datetimefinished</span><span class="pi">:</span> <span class="s">2024-04-28T20:43:04.436596926+01:00</span>
+<span class="na">stdout</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">Sun 28 Apr 20:43:04 BST 2024</span>
+<span class="na">stderr</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+<span class="na">timedout</span><span class="pi">:</span> <span class="kc">false</span>
+<span class="na">blocked</span><span class="pi">:</span> <span class="kc">false</span>
+<span class="na">exitcode</span><span class="pi">:</span> <span class="m">0</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[]</span>
+<span class="na">executionstarted</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">executionfinished</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">executiontrackingid</span><span class="pi">:</span> <span class="s">5e2dc9e5-b6b3-445b-bff9-c2082b0bbbb2</span>
+<span class="na">process</span><span class="pi">:</span>
+    <span class="na">pid</span><span class="pi">:</span> <span class="m">4168638</span>
+<span class="na">actiontitle</span><span class="pi">:</span> <span class="s">date</span>
+<span class="na">actionicon</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&amp;#x1F600;'</span>
+<span class="na">actionid</span><span class="pi">:</span> <span class="s">d3cf6e25-8bab-432d-b4f9-e6f531b2b67b</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>output (.log)</strong> - this just captures the output - stdout, stderr from an execution,</p>
+<div class="listingblock">
+<div class="title">Example output - date.1714333384.5e2dc9e5-b6b3-445b-bff9-c2082b0bbbb2.log</div>
+<div class="content">
+<pre class="rouge highlight"><code>Sun 28 Apr 20:43:04 BST 2024</code></pre>
+</div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="jwt.html">JWT Authorization</a> | ↑ Up: <a href="auth.html">Authentication &amp; Authorization</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="solutions.html">Solutions</a> →</p>
+<p>← Previous: <a href="action-ids.html">IDs</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="examples.html">Action examples</a> →</p>
 </div>
 </div>
 <div id="footer">
