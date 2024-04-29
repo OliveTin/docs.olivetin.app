@@ -299,7 +299,7 @@ pre.rouge .gs {
 </li>
 <li><a href="entities.html">Entities</a>
 </li>
-<li><a href="auth.html">Authentication &amp; Authorization</a>
+<li><a href="auth.html">Security</a>
 <ul class="sectlevel2">
 <li><a href="auth-concepts.html">Concepts</a>
 </li>
@@ -307,7 +307,11 @@ pre.rouge .gs {
 </li>
 <li><a href="jwt.html">JWT Authorization</a>
 </li>
-<li><a href="acls.html"><span class="toc-current">Access Control</span></a>
+<li><a href="jwt-keys.html">JWT with Keys</a>
+</li>
+<li><a href="jwt-hmac.html">JWT with HMAC</a>
+</li>
+<li><a href="acls.html"><span class="toc-current">Permissions &amp; Access Control</span></a>
 </li>
 </ul>
 </li>
@@ -326,7 +330,7 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="acls"><a class="anchor" href="#acls"></a><a class="link" href="#acls">Access Control</a></h3>
+<h3 id="acls"><a class="anchor" href="#acls"></a><a class="link" href="#acls">Permissions &amp; Access Control</a></h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -346,6 +350,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <p>You can have one default access control list, list this;</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">defaultPermissions</span><span class="pi">:</span>
   <span class="na">view</span><span class="pi">:</span> <span class="kc">false</span>
@@ -368,6 +373,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <p>You can have one default access control list, list this;</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">defaultPermissions</span><span class="pi">:</span>
   <span class="na">view</span><span class="pi">:</span> <span class="kc">false</span>
@@ -387,12 +393,12 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="jwt.html">JWT Authorization</a> | ↑ Up: <a href="auth.html">Authentication &amp; Authorization</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="solutions.html">Solutions</a> →</p>
+<p>← Previous: <a href="jwt-hmac.html">JWT with HMAC</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="solutions.html">Solutions</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-28 20:24:41 UTC
+Last updated 2024-04-29 16:16:41 UTC
 </div>
 </div>
 </body>

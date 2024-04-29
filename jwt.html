@@ -185,7 +185,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="entities.html">Entities</a>
 </li>
-<li><a href="auth.html">Authentication &amp; Authorization</a>
+<li><a href="auth.html">Security</a>
 <ul class="sectlevel2">
 <li><a href="auth-concepts.html">Concepts</a>
 </li>
@@ -193,7 +193,11 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="jwt.html"><span class="toc-current">JWT Authorization</span></a>
 </li>
-<li><a href="acls.html">Access Control</a>
+<li><a href="jwt-keys.html">JWT with Keys</a>
+</li>
+<li><a href="jwt-hmac.html">JWT with HMAC</a>
+</li>
+<li><a href="acls.html">Permissions &amp; Access Control</a>
 </li>
 </ul>
 </li>
@@ -214,122 +218,39 @@ div.admonitionblock td:first-child {
 <div class="sect2">
 <h3 id="jwt"><a class="anchor" href="#jwt"></a><a class="link" href="#jwt">JWT Authorization</a></h3>
 <div class="paragraph">
-<p>You need to know your JWT <strong>Cookie Name</strong> and <strong>Hash Secret</strong>. Whatever tool you are using to authenticate users will probably have instructions on how to find this.</p>
+<p>One of the best ways to do authorization with OliveTin is to pass it a <strong>JSON Web token (JWT)</strong>, after first authenticating with a popular single sign on system, like Keycloak, CloudFlare Tunnels, Authentik or Organizr.</p>
+</div>
+<div class="paragraph">
+<p>Two types of JWT mechanisms are supported;</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://docs.organizr.app/features/server-authentication#validating-the-token">Organizr - Under "Validating the token"</a></p>
+<p><strong><a href="jwt-keys.html">JWT with Keys</a></strong> (eg: CloudFlare Tunnels, Authentik)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>X509 Certs/Keys on disk are supported</p>
+</li>
+<li>
+<p><strong>JWKS</strong> is also supported</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="_adding_jwt_details_to_olivetin_config_yaml"><a class="anchor" href="#_adding_jwt_details_to_olivetin_config_yaml"></a><a class="link" href="#_adding_jwt_details_to_olivetin_config_yaml">Adding JWT details to OliveTin config.yaml</a></h4>
-<div class="paragraph">
-<p>Setup your config file so it has something like this;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre># It's often useful to turn logging to DEBUG when trying to work out authentication problems
-logLevel: "INFO"
-
-authJwtCookieName: "Organizr_token_1234..."
-authJwtSecret: "3l4jh23v_123!"
-authJwtClaimUsername: "username"
-authJwtClaimUsergroup: "usergroup"</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note that your <code>authJwtCookieName</code> and <code>authJwtSecret</code> will need to be set exactly as they appear in your Authentication software.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_usable_claims"><a class="anchor" href="#_usable_claims"></a><a class="link" href="#_usable_claims">Usable claims</a></h4>
-<div class="paragraph">
-<p>OliveTin currently can match Access Control Lists based on a <strong>username</strong> or <strong>primary user group</strong>. These must be called <code>name</code> and <code>group</code> respectively. You can see if these are being used properly turning on <code>DEBUG</code> logging and looking at the jwt claims.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_setup_default_permissions"><a class="anchor" href="#_setup_default_permissions"></a><a class="link" href="#_setup_default_permissions">Setup default permissions</a></h4>
-<div class="paragraph">
-<p>OliveTin will assume that guests are able to View and Execute every action by default. When you are setting up authorization you probably want to limit this. You can do that by setting <code>defaultPermissions</code> like this;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>logLevel: "INFO"
-
-defaultPermissions:
-    view: false
-    exec: false</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_setup_olivetin_access_control_lists"><a class="anchor" href="#_setup_olivetin_access_control_lists"></a><a class="link" href="#_setup_olivetin_access_control_lists">Setup OliveTin Access Control Lists</a></h4>
-<div class="paragraph">
-<p>Access Control Lists are a way to override the default permissions.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>logLevel: "INFO"
-
-defaultPermissions:
-    view: false
-    exec: false
-    logs: true
-
-accessControlLists:
-    - name: Admins
-      addToEveryAction: true
-      matchUsergroups:
-      - Admins
-      permissions:
-        view: true
-        exec: true
-        logs: true
-
-    - name: "Developers"
-      matchUsergroups:
-      - "developer"
-      permissions:
-        view: true
-        exec: false
-        logs: false
-
-actions:
-    - name: Only visible to admins
-      shell: echo "I am a secret command only visible to admins"
-
-    - name: Restart database
-      shell: systemctl restart mariadb
-      acls:
-        - "developer"</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In the example above, the <code>admins</code> ACL is automatically added to every action, because <code>addToEveryAction</code> is true.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_customizing_field_names"><a class="anchor" href="#_customizing_field_names"></a><a class="link" href="#_customizing_field_names">Customizing field names</a></h4>
-<div class="paragraph">
-<p>You may need to customize the field names for your JWT authentication.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>authJwtClaimUsername: "username"
-authJwtClaimUsergroup: "usergroup"</pre>
-</div>
-</div>
+</li>
+<li>
+<p><strong><a href="jwt-hmac.html">JWT with HMAC</a></strong> (eg: Organizr)</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="trusted-header.html">Trusted Header Authorization</a> | ↑ Up: <a href="auth.html">Authentication &amp; Authorization</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="acls.html">Access Control</a> →</p>
+<p>← Previous: <a href="trusted-header.html">Trusted Header Authorization</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="jwt-keys.html">JWT with Keys</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-28 20:24:41 UTC
+Last updated 2024-04-29 16:16:41 UTC
 </div>
 </div>
 </body>

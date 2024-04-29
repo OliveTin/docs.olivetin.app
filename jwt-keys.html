@@ -275,7 +275,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="action-container-control" class="book toc2 toc-left">
+<body id="jwt-keys" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -292,20 +292,6 @@ pre.rouge .gs {
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
 <li><a href="examples.html">Action examples</a>
-<ul class="sectlevel2">
-<li><a href="action-container-control.html"><span class="toc-current">Containers - start/stop</span></a>
-</li>
-<li><a href="action-service.html">Restart a systemd service</a>
-</li>
-<li><a href="action-ping.html">Ping an address</a>
-</li>
-<li><a href="action-ssh.html">SSH into another machine and run a command</a>
-</li>
-<li><a href="powershell.html">Powershell</a>
-</li>
-<li><a href="ansible-playbook.html">Ansible Playbooks</a>
-</li>
-</ul>
 </li>
 <li><a href="args.html">Arguments</a>
 </li>
@@ -314,6 +300,20 @@ pre.rouge .gs {
 <li><a href="entities.html">Entities</a>
 </li>
 <li><a href="auth.html">Security</a>
+<ul class="sectlevel2">
+<li><a href="auth-concepts.html">Concepts</a>
+</li>
+<li><a href="trusted-header.html">Trusted Header Authorization</a>
+</li>
+<li><a href="jwt.html">JWT Authorization</a>
+</li>
+<li><a href="jwt-keys.html"><span class="toc-current">JWT with Keys</span></a>
+</li>
+<li><a href="jwt-hmac.html">JWT with HMAC</a>
+</li>
+<li><a href="acls.html">Permissions &amp; Access Control</a>
+</li>
+</ul>
 </li>
 <li><a href="solutions.html">Solutions</a>
 </li>
@@ -330,49 +330,7 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="action-container-control"><a class="anchor" href="#action-container-control"></a><a class="link" href="#action-container-control">Containers - start/stop</a></h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Installation type</th>
-<th class="tableblock halign-left valign-top">Difficulty to do this</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running as a <strong>Systemd service</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Easy</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Running in a <strong>container</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Setup needed - see below</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect3">
-<h4 id="_example_config_yaml"><a class="anchor" href="#_example_config_yaml"></a><a class="link" href="#_example_config_yaml">Example config.yaml</a></h4>
-<div id="example-control-containers" class="literalblock">
-<div class="content">
-<pre>actions:
-  - title: Stop Plex
-    shell: docker stop plex
-
-  - title: Start plex
-    shell: docker start plex</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_setup_if_running_inside_a_container"><a class="anchor" href="#_setup_if_running_inside_a_container"></a><a class="link" href="#_setup_if_running_inside_a_container">Setup if running inside a container</a></h4>
-<div class="paragraph">
-<p>You can control other containers, when running OliveTin inside a container
-itself, however you need to do some extra setup when creating the OliveTin
-container.</p>
-</div>
+<h3 id="jwt-keys"><a class="anchor" href="#jwt-keys"></a><a class="link" href="#jwt-keys">JWT with Keys</a></h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -380,72 +338,47 @@ container.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-If you want to control Docker from inside a Docker container, you will need to also create the container with <code>--privileged</code>. Podman does not have this requirement. If you are getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 by default, which is not allowed by your docker host. Simply run OliveTin with <code>--user root</code> as a simple workround. Note that <a href="no-puid-pgid.html">PUID and PGID variables will not work</a>.
+This page is marked as "earlydoc", which means that it more of a collection of notes and an early draft before this page turns into good documentation later on. It is hoped that this early form of documentation is useful to you, but please understand that most documentation pages are higher quality than this. If you have suggestions or comments, please do get in contact or consider contributing your suggestions to the OliveTin documentation.
 </td>
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Pass <code>/var/run/docker.sock</code> as a bind mount to the container when creating it, eg:</p>
-<div class="listingblock">
-<div class="content">
-<pre>docker create --privileged --user root -v /var/run/docker.sock:/var/run/docker.sock ...additional args here...</pre>
-</div>
-</div>
+<div class="sect3">
+<h4 id="_using_public_keys_via_jwks"><a class="anchor" href="#_using_public_keys_via_jwks"></a><a class="link" href="#_using_public_keys_via_jwks">Using Public Keys via JWKS</a></h4>
 <div class="paragraph">
-<p>Or, using the <code>docker run</code> syntax;</p>
+<p>OliveTin Supports <strong>JSON Web Key Sets (JWKS)</strong>. This approach is often used with services like CloudFlare.</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre>docker run --privileged --user root -v /var/run/docker.sock:/var/run/docker.sock --name OliveTin jamesread/olivetin</pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">authJwtAud</span><span class="pi">:</span> <span class="s2">"</span><span class="s">asdf1234"</span>
+<span class="na">authJwtCertsURL</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://mydomain.cloudflareaccess.com/cdn-cgi/access/certs"</span>
+<span class="na">authJwtClaimUsername</span><span class="pi">:</span> <span class="s">email</span>
+<span class="na">authJwtCookieName</span><span class="pi">:</span> <span class="s2">"</span><span class="s">CF_Authorization"</span></code></pre>
 </div>
-</div>
-</li>
-<li>
-<p>The official x86_64 docker container comes with the <code>docker</code> client pre-installed. If you are using <code>arm</code> or and <code>arm64</code> container, you will need to add Docker yourself.</p>
-<div class="paragraph">
-<p><a href="container-dnf.html">How to install additional packages in the container</a></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The reason that the <code>arm</code> and <code>arm64</code> containers do not container docker, is that when these images are cross-compiled at build time, it takes FOREVER because we have to emulate arm.
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
 </div>
 <div class="paragraph">
-<p>After you have passed the socket into the container (and optionally installed docker), you should be able to setup docker actions like it&#8217;s shown in the example <a href="action-container-control.html#example-control-containers">above</a>.</p>
+<p>You may well want to set <code>logLevel: DEBUG</code> and <code>insecureAllowDumpJwtClaims: true</code> in your config when testing JWT for the first time.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="action-container-proxy"><a class="anchor" href="#action-container-proxy"></a><a class="link" href="#action-container-proxy">Using the Docker proxy</a></h4>
+<h4 id="_using_public_keys_on_disk"><a class="anchor" href="#_using_public_keys_on_disk"></a><a class="link" href="#_using_public_keys_on_disk">Using Public Keys on Disk</a></h4>
 <div class="paragraph">
-<p>You can use a docker socket proxy as an additional security measure and as an alternative to mounting the docker socket directly.</p>
-</div>
-<div class="paragraph">
-<p>Assuming your docker socket proxy is running as <code>myproxy</code> running on port 1028;</p>
+<p>This approach can be useful if your Authentication service does not support JWKS, or if you don&#8217;t want to use it. Public Keys should be available on disk in a file - which can have any filename or extension you like. The files need to be RSA keys in PEM format to be used by OliveTin, though. P12 is not supported.</p>
 </div>
 <div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Stop container</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">DOCKER_HOST=myproxy:1028 docker stop mycontainer</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">authJwtAud</span><span class="pi">:</span> <span class="s2">"</span><span class="s">asdf1234"</span>
+<span class="na">authPubKeyPath</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/opt/mykey.crt"</span>
+<span class="na">authJwtClaimUsername</span><span class="pi">:</span> <span class="s">email</span>
+<span class="na">authJwtCookieName</span><span class="pi">:</span> <span class="s2">"</span><span class="s">CF_Authorization"</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="examples.html">Action examples</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-service.html">Restart a systemd service</a> →</p>
+<p>← Previous: <a href="jwt.html">JWT Authorization</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="jwt-hmac.html">JWT with HMAC</a> →</p>
 </div>
 </div>
 <div id="footer">
