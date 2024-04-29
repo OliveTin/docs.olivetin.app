@@ -123,6 +123,8 @@ Sometimes you need to really see what OliveTin is doing, especially when debuggi
 
 NOTE: OliveTin itself is not "insecure" by using these options, they would not let attackers execute different commands or anything like that. It's just that using these options can expose data (like entity files) that maybe you don't want an attacker to see.
 
+All these configuration options are `false` by default, and should be deleted from the config or reset back to `false` when you are not using them.
+
 [#dump-sos]
 ==== Dump SOS Reports
 `InsecureAllowDumpSos: true` - will allow dumping <<sosreport,SOS Reports>> as plain text when visiting `http://server:1337/api/sosreport`
@@ -135,4 +137,20 @@ NOTE: OliveTin itself is not "insecure" by using these options, they would not l
 ==== Dump Vars
 `InsecureAllowDumpVars: true` - will allow dumping all the "string variables" from a map that is mainly used for entities, eg: `http://server:1337/api/DumpVars`
 
-All these configuration options are `false` by default, and should be deleted from the config or reset back to `false` when you are not using them.
+[#dump-jwt]
+==== Dump JWT Claims
+
+`InsecureAllowDumpJwtClaims: true` - will dump all the claims from a successfully parsed JWT token. This can be useful when trying to see how OliveTin is parsing the token, and what key fields are available.
+
+[#log-debug-options]
+==== Debug Log Options
+
+[source,yaml]
+----
+logDebugOptions:
+    singleFrontendRequests: true
+    singleFrontendRequestHeaders: true
+    aclMatched: true
+    aclNotMatched: true
+----
+

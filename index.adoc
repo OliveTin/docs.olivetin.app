@@ -107,7 +107,7 @@ include::dashboards.adoc[]
 
 include::entities.adoc[]
 
-include::authorization.adoc[]
+include::source/security/index.adoc[]
 
 include::solutions.adoc[]
 

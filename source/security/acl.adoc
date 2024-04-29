@@ -1,0 +1,49 @@
+[#acls]
+=== Permissions & Access Control
+
+include::../../snippit_earlydoc.adoc[]
+
+OliveTin supports Access Control Lists.
+
+You can have one default access control list, list this;
+
+[source,yaml]
+.`config.yaml`
+----
+defaultPermissions:
+  view: false
+  exec: false
+  logs: true
+
+accessControlLists:
+  - name: admins
+    addToEveryAction: true
+    permissions:
+      view: true
+      exec: true
+      logs: true
+----
+
+Or you can specify access control lists per action:
+
+You can have one default access control list, list this;
+
+[source,yaml]
+.`config.yaml`
+----
+defaultPermissions:
+  view: false
+  exec: false
+
+accessControlLists:
+  - name: admins
+    permissions:
+      view: true
+      exec: true
+
+actions:
+  - title: Shutdown Reactor
+    acls:
+      - admins
+----
+
