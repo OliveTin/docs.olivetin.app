@@ -15,7 +15,7 @@ Sometimes you just want to (or have to) use containers, but also want to use the
 | Use Case                                                                     | Recommended Option
 
 | You're experienced with Linux containers, and know how to bind mount volumes | <<install-container,Linux Container>>
-| You're new to Linux containers, or not very comfortable with them            | <<choose-package,Linux service>>, or <<install-container,Linux container with <<action-ssh,SSH action>>
+| You're new to Linux containers, or not very comfortable with them            | <<choose-package,Linux service>>, or <<install-container,Linux container>> with <<action-ssh,SSH action>>
 | Needs to use lots of different file paths on the host filesystem             | Run as a systemd service, or bind-mount the filesystem into the container.
 | Needs to control processes, like systemd services                            | Run as a systemd service.
 |===
