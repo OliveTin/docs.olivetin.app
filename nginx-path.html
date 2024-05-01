@@ -297,11 +297,11 @@ pre.rouge .gs {
 </li>
 <li><a href="nginx-dns.html">Nginx - DNS based</a>
 </li>
-<li><a href="nginx-path.html"><span class="toc-current">Nginx - Path based</span></a>
+<li><a href="nginx-path.html"><span class="toc-current">Nginx - Custom path</span></a>
 </li>
 <li><a href="caddy-dns.html">Caddy - DNS Based</a>
 </li>
-<li><a href="caddy-path.html">Caddy - Path based</a>
+<li><a href="caddy-path.html">Caddy - Custom path</a>
 </li>
 </ul>
 </li>
@@ -334,14 +334,23 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="nginx-path"><a class="anchor" href="#nginx-path"></a><a class="link" href="#nginx-path">Nginx - Path based</a></h3>
+<h3 id="nginx-path"><a class="anchor" href="#nginx-path"></a><a class="link" href="#nginx-path">Nginx - Custom path</a></h3>
+<div class="paragraph">
+<p>These "custom path" instructions are for when you want to use OliveTin with a custom path like "apps.example.com/olivetin" instead of the root path + DNS name - eg: "olivetin.example.com". Generally it is <strong>not recommended</strong> to use a custom path for OliveTin. Instructions are provided below though, and it mostly-works.</p>
+</div>
 <div class="listingblock">
 <div class="title">nginx.conf</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="nginx"><span class="k">....</span>
         <span class="s">location</span> <span class="n">/OliveTin/</span> <span class="p">{</span>
-                <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/</span><span class="p">;</span>
-                <span class="kn">proxy_redirect</span> <span class="s">http://localhost:1337/</span> <span class="s">http://localhost/OliveTin/</span><span class="p">;</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/</span><span class="p">;</span>
+            <span class="kn">proxy_redirect</span> <span class="s">http://localhost:1337/</span> <span class="s">http://localhost/OliveTin/</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">location</span> <span class="n">/OliveTin/websocket</span> <span class="p">{</span>
+            <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="s">"websocket"</span><span class="p">;</span>
+            <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">"upgrade"</span><span class="p">;</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/websocket</span><span class="p">;</span>
         <span class="p">}</span>
 <span class="k">....</span></code></pre>
 </div>
@@ -365,7 +374,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-30 09:41:13 UTC
+Last updated 2024-05-01 12:03:33 UTC
 </div>
 </div>
 </body>
