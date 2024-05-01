@@ -93,7 +93,7 @@ include::install_targz.adoc[]
 
 include::config.adoc[]
 
-include::reverseProxies.adoc[]
+include::source/reverse-proxies/index.adoc[]
 
 include::action_execution.adoc[]
 
