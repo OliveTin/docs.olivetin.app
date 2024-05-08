@@ -7,7 +7,7 @@ This section of the docs is designed to bring everything into one place and pres
 
 include::solution_container_control_panel.adoc[]
 include::solution_systemd_control_panel.adoc[]
-include::solution_heating_control_panel.adoc[]
+include::source/solutions/heating-control-panel/index.adoc[]
 include::solution_cloudflare_access_tunnel.adoc[]
 
 === GPIO Control on Raspberry Pi

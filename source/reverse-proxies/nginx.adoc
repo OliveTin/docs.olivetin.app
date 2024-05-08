@@ -6,7 +6,7 @@ This is an example of DNS based proxying with Nginx.
 ./etc/nginx/cond.d/OliveTin.conf
 [source,nginx]
 ----
-include::../../etc/reverse_proxy_nginx_dns.conf[]
+include::etc/reverse_proxy_nginx_dns.conf[]
 ----
 
 

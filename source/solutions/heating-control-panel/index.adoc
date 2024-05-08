@@ -10,9 +10,9 @@ image::images/dashboard-heating-control-panel.png[]
 To build this, we use an <<entities,entity>> file that stores and updates the status of a heater outside of OliveTin.
 
 [source,yaml]
-.`/etc/OliveTin/heating.yaml`
+.`/etc/OliveTin/entities/heating.yaml`
 ----
-include::configs/heating-control-panel/heating.yaml[]
+include::configs/heating.yaml[]
 ----
 
 ==== Configuration
@@ -22,7 +22,7 @@ Then use the following configuration file;
 [source,yaml]
 .`config.yaml`
 ----
-include::configs/heating-control-panel/config.yaml[]
+include::configs/config.yaml[]
 ----
 
 
