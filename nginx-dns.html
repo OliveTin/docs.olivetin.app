@@ -341,7 +341,28 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="title">/etc/nginx/cond.d/OliveTin.conf</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="nginx"><span class="k">Unresolved</span> <span class="s">directive</span> <span class="s">in</span> <span class="nc">source/reverse-proxies</span><span class="n">/nginx.adoc</span> <span class="s">-</span> <span class="s">include::../../etc/reverse_proxy_nginx_dns.conf[]</span></code></pre>
+<pre class="rouge highlight"><code data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
+
+    <span class="kn">ssl_certificate</span> <span class="s">"/etc/nginx/conf.d/server.crt"</span><span class="p">;</span>
+    <span class="kn">ssl_certificate_key</span> <span class="s">"/etc/nginx/conf.d/server.key"</span><span class="p">;</span>
+
+    <span class="kn">access_log</span>  <span class="n">/var/log/nginx/ot.access.log</span>  <span class="s">main</span><span class="p">;</span>
+    <span class="kn">error_log</span> <span class="n">/var/log/nginx/ot.error.log</span> <span class="s">notice</span><span class="p">;</span>
+
+    <span class="kn">server_name</span> <span class="s">olivetin.example.com</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/</span><span class="p">;</span>
+        <span class="kn">proxy_redirect</span> <span class="s">http://localhost:1337/</span> <span class="s">http://localhost/OliveTin/</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="n">/websocket</span> <span class="p">{</span>
+        <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="s">"websocket"</span><span class="p">;</span>
+        <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">"upgrade"</span><span class="p">;</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/websocket</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -351,7 +372,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-01 12:03:33 UTC
+Last updated 2024-05-08 19:03:51 UTC
 </div>
 </div>
 </body>
