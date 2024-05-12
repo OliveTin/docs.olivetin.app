@@ -94,6 +94,10 @@ h1 {
   vertical-align: middle;
 }
 
+code {
+  background-color: #f7f7f8;
+}
+
 pre {
   background-color: #f7f7f8;
   padding: 1em;
@@ -149,11 +153,24 @@ div.admonitionblock td:first-child {
   padding: 1em;
 }
 
+.red {
+  color: white;
+  border: 1px solid black;
+  padding: .2em;
+  font-weight: bold;
+  background-color: #cc0000;
+}
+
+.red a {
+  color: white;
+}
+
 @media (max-width: 700px) {
   body {
     display: block;
   }
 }
+
 
 </style>
 <style>
@@ -378,55 +395,60 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>This is a two step process;</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>Setup a volume mount for the <code>~/.ssh/</code> directory, that contains a SSH Key.</p>
+<p><span class="red"><a href="action-ssh.html#ssh-step-1">Step 1</a></span> Give OliveTin a SSH key</p>
 </li>
 <li>
-<p>OliveTin uses the SSH key to connect back to server-with-olivetin or across to server2.</p>
+<p><span class="red"><a href="action-ssh.html#ssh-step-2">Step 2</a></span> Setup actions that use SSH with this key</p>
 </li>
-</ol>
+</ul>
 </div>
 <div class="paragraph">
-<p>Visually, this is what it looks like;</p>
+<p>Visually, this is what it looks like - OliveTin is running in the (orange) container, and then can either connect back to <em>server-with-olivetin</em> or <em>server2</em>.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="images/ssh-diagram.png" alt="ssh diagram"></span></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Setup a volume mount for the <code>~/.ssh/</code> directory, that contains a SSH Key.</p>
+<div class="paragraph">
+<p>The steps in detail are below;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ssh-step-1"><a class="anchor" href="#ssh-step-1"></a><a class="link" href="#ssh-step-1"><span class="red">Step 1</span>: Give OliveTin a SSH key</a></h4>
+<div class="paragraph">
+<p>Open a terminal window on <em>server-with-olivetin</em>.</p>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>On <code>server-with-olivetin</code>, run <code>mkdir /opt/OliveTinSshKeys</code> to create a shared directory for your SSH key file.</p>
+<p>Run <code>mkdir /opt/OliveTinSshKeys</code> to create a shared directory for your SSH key file.</p>
 <div class="paragraph">
 <p>This will later be used as a "volume mount" when you create a docker container.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
-<p>On <code>server-with-olivetin</code>, run <code>ssh-keygen</code> to generate a SSH key (if you haven&#8217;t already got one).</p>
-</li>
-</ol>
-</div>
-</li>
+<p>Run <code>ssh-keygen</code> to generate a SSH key just for OliveTin.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
 <li>
 <p>Enter the file in which to save the key: <code>/opt/OliveTinSshKeys/id_rsa</code></p>
 </li>
 <li>
 <p>Enter passphrase (empty for no passphrase): <code>&lt;enter&gt;</code></p>
 <div class="paragraph">
-<p>This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file!</p>
+<p>This will create a passwordless SSH key that OliveTin can use. It is safe as long as nobody steals your SSH key file! OliveTin cannot enter passwords into SSH keys, so you have to leave the password blank.</p>
 </div>
-<div class="paragraph">
-<p>You should get something that looks like this. If you get a "permission denied" error when creating files, you could run <code>chmod 0777 /opt/OliveTinSshKeys</code> and try again.</p>
+</li>
+</ol>
 </div>
+</li>
+<li>
+<p>You should get something that looks like this. If you get a "permission denied" error when creating files, try running <code>chmod 0777 /opt/OliveTinSshKeys</code> and try again.</p>
 <div class="listingblock">
 <div class="content">
-<pre>root@server-with-olivetin: ssh-keygen
+<pre class="rouge highlight"><code>root@server-with-olivetin: ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/root/.ssh/id_rsa): /opt/OliveTinSshKeys/id_rsa
 Enter passphrase (empty for no passphrase):
@@ -446,24 +468,24 @@ The key's randomart image is:
 |     . . oo.o*.o |
 |      . +*o+oo= .|
 |      .=+BX .... |
-+----[SHA256------+</pre>
++----[SHA256------+</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>This will create two files, <code>/opt/OliveTinSshKeys/id_rsa</code> (your private key) and <code>/opt/OliveTinSshKeys/id_rsa.pub</code> (your public key).</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Copy your public key to every server you want to connect to.</p>
 <div class="paragraph">
-<p><code>ssh-copy-id</code> is a really quick and safe way to do this.</p>
+<p>Using the <code>ssh-copy-id</code> command is a really quick and safe way to do this.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>root@server-with-olivetin: ssh-copy-id root@server-with-olivetin
+<pre>root@server-with-olivetin: ssh-copy-id -i /opt/OliveTinSshKeys/id_rsa.pub root@localhost
 (enter your SSH password)
-root@server2: ssh-copy-id root@server2
+
+root@server2: ssh-copy-id ssh-copy-id -i /opt/OliveTinSshKeys/id_rsa.pub root@server2
 (enter your SSH password)</pre>
 </div>
 </div>
@@ -471,7 +493,7 @@ root@server2: ssh-copy-id root@server2
 <p>You will be asked to login with a password for each server.</p>
 </div>
 <div class="paragraph">
-<p>After you have done that, you will then be able to login with the ssh key instead;</p>
+<p>After you have done that, you will then be able to login with the ssh key instead. Here is a quick way that you can test your SSH key manually;</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -489,16 +511,38 @@ root@server2: ssh-copy-id root@server2
 <p>You should mount your SSH keys directory into the OliveTin user&#8217;s home directory by creating the container like this;</p>
 </div>
 <div class="listingblock">
+<div class="title">If you want to create the container from the command line</div>
 <div class="content">
-<pre>docker run -v /opt/OliveTinSshKeys/:/home/olivetin/.ssh/ --name OliveTin jamesread/olivetin</pre>
+<pre>docker run -v /opt/OliveTinSshKeys/:/home/olivetin/.ssh/ -v /etc/OliveTin/:/config --name OliveTin jamesread/olivetin</pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="title">If you are using docker-compose</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">services</span><span class="pi">:</span>
+    <span class="na">olivetin</span><span class="pi">:</span>
+        <span class="na">container_name</span><span class="pi">:</span> <span class="s">olivetin</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">jamesread/olivetin</span>
+        <span class="na">volumes</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">/etc/OliveTin/:/config"</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">/opt/OliveTinSshKeys:/home/olivetin/.ssh"</span>
+        <span class="na">ports</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s2">"</span><span class="s">1337:1337"</span>
+        <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span></code></pre>
+</div>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>This also works for things like SSH configuration files, if you want to use them. This is step 1 complete from the diagram above.</p>
 </div>
-</li>
-<li>
+</div>
+<div class="sect3">
+<h4 id="ssh-step-2"><a class="anchor" href="#ssh-step-2"></a><a class="link" href="#ssh-step-2"><span class="red">Step 2</span>: Setup actions that use SSH with this key</a></h4>
+<div class="paragraph">
 <p>Thankfully, step 2 is very simple! <code>ssh</code> commands in your OliveTin <code>config.yaml</code> should work without a password!, and allow OliveTin to access services, files, and other stuff outside of the OliveTin container.</p>
+</div>
 <div class="listingblock">
 <div class="title">OliveTin <code>config.yaml</code></div>
 <div class="content">
@@ -510,15 +554,6 @@ root@server2: ssh-copy-id root@server2
      <span class="nb">timeout</span>: 5</code></pre>
 </div>
 </div>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -527,7 +562,7 @@ root@server2: ssh-copy-id root@server2
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-12 22:20:55 UTC
+Last updated 2024-05-12 23:19:30 UTC
 </div>
 </div>
 </body>
