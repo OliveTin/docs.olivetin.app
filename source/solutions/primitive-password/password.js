@@ -1,12 +1,14 @@
 const myPassword = 'sekrit'
 
-const main = document.getElementsByTagName('main')[0]
+const domMain = document.getElementsByTagName('main')[0]
+domMain.style.display = 'none'
+
 const domPassword = document.createElement('input')
 const domLogin = document.createElement('button')
 
 function checkPassword () {
   if (domPassword.value === myPassword) {
-    main.style.display = 'block'
+    domMain.style.display = 'block'
     domPassword.remove()
     domLogin.remove()
   } else {
@@ -15,8 +17,6 @@ function checkPassword () {
 }
 
 function setupPasswordForm () {
-  main.style.display = 'none'
-
   domPassword.setAttribute('type', 'password')
   domPassword.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
