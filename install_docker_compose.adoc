@@ -20,10 +20,6 @@ services:
     ports: 
       - "1337:1337"
     restart: unless-stopped
-
-networks:
-  web: # should match the network defined under the container's networks section
-      external: true
 ----
 
 include::install_post_container.adoc[]
