@@ -292,7 +292,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="nginx-path" class="book toc2 toc-left">
+<body id="update-checks" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -303,24 +303,6 @@ pre.rouge .gs {
 <li><a href="config.html">Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-dns.html">Apache HTTPD - DNS based</a>
-</li>
-<li><a href="haproxy-dns.html">Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html">Traefik + Docker Compose</a>
-</li>
-<li><a href="nginx-dns.html">Nginx - DNS based</a>
-</li>
-<li><a href="nginx-path.html"><span class="toc-current">Nginx - Custom path</span></a>
-</li>
-<li><a href="caddy-dns.html">Caddy - DNS Based</a>
-</li>
-<li><a href="caddy-path.html">Caddy - Custom path</a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">Action execution</a>
 </li>
@@ -341,6 +323,32 @@ pre.rouge .gs {
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
 <li><a href="_reference.html">Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">Network ports</a>
+</li>
+<li><a href="_security.html">Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">Understanding exit codes</a>
+</li>
+<li><a href="update-checks.html"><span class="toc-current">Update Checks</span></a>
+</li>
+<li><a href="update-tracking.html">Update Checks &amp; Tracking (legacy)</a>
+</li>
+<li><a href="container-dnf.html">Installing extra container packages</a>
+</li>
+<li><a href="multi-inst.html">Multiple instances on a server</a>
+</li>
+<li><a href="snapsnots.html">Snapshot builds</a>
+</li>
+<li><a href="themes.html">Themes (for users)</a>
+</li>
+<li><a href="themes-dev.html">Themes (for developers)</a>
+</li>
+<li><a href="donations-and-sponsorship.html">Donations &amp; Sponsorship</a>
+</li>
+<li><a href="upgrade-notes.html">Upgrade Notes</a>
+</li>
+</ul>
 </li>
 <li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
@@ -351,42 +359,47 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="nginx-path"><a class="anchor" href="#nginx-path"></a><a class="link" href="#nginx-path">Nginx - Custom path</a></h3>
+<h3 id="update-checks"><a class="anchor" href="#update-checks"></a><a class="link" href="#update-checks">Update Checks</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This page is for OliveTin versions <strong>2024.06.02</strong> and afterwards. Previous versions of OliveTin used to have a form of tracking. To learn about how that worked, see <a href="update-tracking.html">update-tracking</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>These "custom path" instructions are for when you want to use OliveTin with a custom path like "apps.example.com/olivetin" instead of the root path + DNS name - eg: "olivetin.example.com". Generally it is <strong>not recommended</strong> to use a custom path for OliveTin. Instructions are provided below though, and it mostly-works.</p>
+<p>OliveTin has the ability to check for updates, which is now turned OFF if nothing is specified in your configuration file. To enable this feature, set the following in your <code>config.yaml</code> file;</p>
 </div>
 <div class="listingblock">
-<div class="title">nginx.conf</div>
+<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="nginx"><span class="k">....</span>
-        <span class="s">location</span> <span class="n">/OliveTin/</span> <span class="p">{</span>
-            <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/</span><span class="p">;</span>
-            <span class="kn">proxy_redirect</span> <span class="s">http://localhost:1337/</span> <span class="s">http://localhost/OliveTin/</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">location</span> <span class="n">/OliveTin/websocket</span> <span class="p">{</span>
-            <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="s">"websocket"</span><span class="p">;</span>
-            <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">"upgrade"</span><span class="p">;</span>
-            <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/websocket</span><span class="p">;</span>
-        <span class="p">}</span>
-<span class="k">....</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">checkForUpdates</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note, because you are changing the default path (from <code>/</code> to <code>/OliveTin/</code>), you will need to tell the OliveTin webUI where to find the API.</p>
+<p>By enabling this feature, OliveTin will;</p>
 </div>
-<div class="paragraph">
-<p>You need to also set <code>externalRestAddress</code> in your config.yaml like this;</p>
-</div>
-<div class="listingblock">
-<div class="title">OliveTin config.yaml</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">externalRestAddress</span><span class="pi">:</span> <span class="s">http://myserver/OliveTin</span></code></pre>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Do a HTTP GET in plaintext (not HTTPS) to <a href="http://update-check.olivetin.app/versions.json" class="bare">http://update-check.olivetin.app/versions.json</a> and download the contents of that file. While the server will see your IP address in it&#8217;s webserver logs, this information isn&#8217;t actively used, and the OliveTin project has no intention of actively parsing the logs to use that.</p>
+</li>
+<li>
+<p>Once OliveTin has that json file, it will compare the "latestVersion" attribute against the version it is running.</p>
+</li>
+<li>
+<p>If there is a later version, it is displayed in the page OliveTin footer.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="nginx-dns.html">Nginx - DNS based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="caddy-dns.html">Caddy - DNS Based</a> →</p>
+<p>← Previous: <a href="_understanding_exit_codes.html">Understanding exit codes</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="update-tracking.html">Update Checks &amp; Tracking (legacy)</a> →</p>
 </div>
 </div>
 <div id="footer">
