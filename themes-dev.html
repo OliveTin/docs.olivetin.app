@@ -228,7 +228,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="themes.html">Themes (for users)</a>
 </li>
-<li><a href="themes-dev.html"><span class="toc-current">Themes (for developers)</span></a>
+<li><a href="themes-dev.html"><span class="toc-current">Themes (for theme developers)</span></a>
 </li>
 <li><a href="donations-and-sponsorship.html">Donations &amp; Sponsorship</a>
 </li>
@@ -245,7 +245,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="themes-dev"><a class="anchor" href="#themes-dev"></a><a class="link" href="#themes-dev">Themes (for developers)</a></h3>
+<h3 id="themes-dev"><a class="anchor" href="#themes-dev"></a><a class="link" href="#themes-dev">Themes (for theme developers)</a></h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -258,8 +258,30 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </tr>
 </table>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Go to <a href="https://github.com/OliveTin/theme-template" class="bare">https://github.com/OliveTin/theme-template</a> and use this template repository to create your new theme repository on GitHub.</p>
+</li>
+<li>
+<p>Install OliveTin somewhere, and clone your new repository using <code>git clone</code> into your themes directory.</p>
+</li>
+<li>
+<p>Set <code>themeName: &lt;your-folder&gt;</code> in your OliveTin config.yaml and restart OliveTin.</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
-<p>OliveTin will load <code>/theme.css</code> depending on <code>themeName:</code> in your config file. Images and any other assets will be served at <code>/custom-webui/themes/mytheme/</code>.</p>
+<p>Write beautiful CSS to create your theme as you like it, commit your changes to git.</p>
+</div>
+<div class="paragraph">
+<p>Note thst OliveTin will load <code>/theme.css</code> depending on <code>themeName:</code> in your config file. Images and any other assets will be served at <code>/custom-webui/themes/mytheme/</code>.</p>
+</div>
+<div class="paragraph">
+<p>When you are done with your theme, fork <a href="https://github.com/OliveTin/themes" class="bare">https://github.com/OliveTin/themes</a> on GitHub and create a new page under the "content" directory for your new theme. Commit that to GitHub and then raise a pull request.</p>
+</div>
+<div class="paragraph">
+<p>If you meed more help, please jump on our discord server!</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -268,7 +290,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-06-04 17:03:49 UTC
+Last updated 2024-07-02 18:34:12 UTC
 </div>
 </div>
 </body>
