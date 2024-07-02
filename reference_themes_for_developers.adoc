@@ -13,7 +13,7 @@ Write beautiful CSS to create your theme as you like it, commit your changes to 
 
 Note that OliveTin will load `/theme.css` depending on `themeName:` in your config file. Images and any other assets will be served at `/custom-webui/themes/mytheme/`.
 
-=== How to list your theme on the OliveTin themes page
+==== How to list your theme on the OliveTin themes page
 
 The OliveTin themes page is here; https://olivetin.app/themes
 
