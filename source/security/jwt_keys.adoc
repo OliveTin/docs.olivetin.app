@@ -26,7 +26,7 @@ This approach can be useful if your Authentication service does not support JWKS
 .`config.yaml`
 ----
 authJwtAud: "asdf1234"
-authPubKeyPath: "/opt/mykey.crt"
+authJwtPubKeyPath: "/opt/mykey.crt"
 authJwtClaimUsername: email
 authJwtCookieName: "CF_Authorization"
 ----
