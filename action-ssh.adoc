@@ -1,6 +1,12 @@
+[#action-ssh-easy]
+=== SSH (easy setup)
+
+TODO.
 
 [#action-ssh]
-=== SSH into another machine and run a command
+=== SSH (manual setup)
+
+NOTE: There is an easy method of setting up SSH with OliveTin, which is described in the <<action-ssh-easy,SSH (easy setup)>> section. This section is for those who want to set up SSH manually.
 
 This is probably one of the most useful things OliveTin is used for - just plain old SSH, which allows it to easily connect from a container to any server running on your network to run commands. This is also the preferred method of running commands on the server that is hosting the OliveTin container image as well.
 
