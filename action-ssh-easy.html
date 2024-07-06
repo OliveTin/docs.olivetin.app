@@ -178,7 +178,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="timezone" class="book toc2 toc-left">
+<body id="action-ssh-easy" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -195,6 +195,22 @@ div.admonitionblock td:first-child {
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
 <li><a href="examples.html">Action examples</a>
+<ul class="sectlevel2">
+<li><a href="action-container-control.html">Containers - start/stop</a>
+</li>
+<li><a href="action-service.html">Restart a systemd service</a>
+</li>
+<li><a href="action-ping.html">Ping an address</a>
+</li>
+<li><a href="action-ssh-easy.html"><span class="toc-current">SSH (easy setup)</span></a>
+</li>
+<li><a href="action-ssh.html">SSH (manual setup)</a>
+</li>
+<li><a href="powershell.html">Powershell</a>
+</li>
+<li><a href="ansible-playbook.html">Ansible Playbooks</a>
+</li>
+</ul>
 </li>
 <li><a href="args.html">Arguments</a>
 </li>
@@ -207,18 +223,6 @@ div.admonitionblock td:first-child {
 <li><a href="solutions.html">Solutions</a>
 </li>
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
-<ul class="sectlevel2">
-<li><a href="customize-webui.html">Customize the web UI</a>
-</li>
-<li><a href="log-levels.html">Log Levels</a>
-</li>
-<li><a href="ports.html">Ports</a>
-</li>
-<li><a href="timezone.html"><span class="toc-current">Timezone</span></a>
-</li>
-<li><a href="prometheus.html">Prometheus</a>
-</li>
-</ul>
 </li>
 <li><a href="_reference.html">Reference</a>
 </li>
@@ -231,31 +235,13 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="timezone"><a class="anchor" href="#timezone"></a><a class="link" href="#timezone">Timezone</a></h3>
+<h3 id="action-ssh-easy"><a class="anchor" href="#action-ssh-easy"></a><a class="link" href="#action-ssh-easy">SSH (easy setup)</a></h3>
 <div class="paragraph">
-<p>OliveTin will obviously use the system time just like all other programs, but when running in a container, time works in a slightly unusual way.</p>
-</div>
-<div class="paragraph">
-<p>You may be used to using a TZ or TIMEZONE environment variable in your Linux container inages, but this is not a standard that works for all Linux distributions - it&#8217;s mostly supported by Debain based containers. OliveTin&#8217;s base container image is fedora-minimal, which deliberately does not include timezone data, to reduce storage space.</p>
-</div>
-<div class="paragraph">
-<p>To change the time in the OliveTin container, simply bind-mount the correct zone file;</p>
-</div>
-<div class="listingblock">
-<div class="title">Same as the container host</div>
-<div class="content">
-<pre>docker create -v /etc/localtime:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Different timezone to the container host</div>
-<div class="content">
-<pre>docker create -v /usr/share/zoneinfo/Japan:/etc/localtime -v /etc/OliveTin:/config --name OliveTin docker.io/jamesread/olivetin</pre>
-</div>
+<p>TODO.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="ports.html">Ports</a> | ↑ Up: <a href="_advanced_configuration.html">Advanced Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="prometheus.html">Prometheus</a> →</p>
+<p>← Previous: <a href="action-ping.html">Ping an address</a> | ↑ Up: <a href="examples.html">Action examples</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-ssh.html">SSH (manual setup)</a> →</p>
 </div>
 </div>
 <div id="footer">
