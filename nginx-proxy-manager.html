@@ -296,7 +296,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="caddy-path" class="book toc2 toc-left">
+<body id="nginx-proxy-manager" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -316,13 +316,11 @@ pre.rouge .gs {
 </li>
 <li><a href="traefik-docker-compose.html">Traefik + Docker Compose</a>
 </li>
-<li><a href="nginx-dns.html">Nginx - DNS based</a>
+<li><a href="nginx-dns.html">Nginx</a>
 </li>
-<li><a href="nginx-path.html">Nginx - Custom path</a>
+<li><a href="nginx-proxy-manager.html"><span class="toc-current">Nginx Proxy Manager</span></a>
 </li>
-<li><a href="caddy-dns.html">Caddy - DNS Based</a>
-</li>
-<li><a href="caddy-path.html"><span class="toc-current">Caddy - Custom path</span></a>
+<li><a href="caddy-dns.html">Caddy</a>
 </li>
 </ul>
 </li>
@@ -355,42 +353,78 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="caddy-path"><a class="anchor" href="#caddy-path"></a><a class="link" href="#caddy-path">Caddy - Custom path</a></h3>
+<h3 id="nginx-proxy-manager"><a class="anchor" href="#nginx-proxy-manager"></a><a class="link" href="#nginx-proxy-manager">Nginx Proxy Manager</a></h3>
+<div class="paragraph">
+<p>This is an example of DNS based proxying with Nginx Proxy Manager.</p>
+</div>
+<div class="paragraph">
+<p>This example assumes that you are trying to access OliveTin at <strong>olivetin.npm.teratan.lan</strong> and already have a DNS record pointing to the IP address of the Nginx Proxy Manager. This also assumes you are running Nginx Proxy Manager and OliveTin using Docker Compose.</p>
+</div>
 <div class="listingblock">
-<div class="title">Caddyfile</div>
+<div class="title">docker-compose.yml</div>
 <div class="content">
-<pre>....
-	handle {$GLOBAL_PORTAL_PATH}/olivetin* {
-			redir {$GLOBAL_PORTAL_PATH}/olivetin {$GLOBAL_PORTAL_PATH}/olivetin/
-			uri strip_prefix {$GLOBAL_PORTAL_PATH}/olivetin
-			basicauth {
-					{$GLOBAL_USER} HASH
-			}
-			reverse_proxy * localhost:1337
-	}
-....</pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">services</span><span class="pi">:</span>
+  <span class="na">app</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s1">'</span><span class="s">jc21/nginx-proxy-manager:latest'</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">80:80'</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">81:81'</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">443:443'</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">./data:/data</span>
+      <span class="pi">-</span> <span class="s">./letsencrypt:/etc/letsencrypt</span>
+  <span class="na">olivetin</span><span class="pi">:</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">olivetin</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">jamesread/olivetin</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">./OliveTin:/config</span> <span class="c1"># replace host path or volume as needed</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">1337:1337"</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note, because you are changing the default path (from <code>/</code> to <code>/OliveTin/</code>), you will need to tell the OliveTin webUI where to find the API.</p>
+<p>Note that OliveTin needs a configuration file to run, see the <a href="install-compose.html">docker compose install instructions</a> for a bit more detail.</p>
 </div>
 <div class="paragraph">
-<p>You need to also set <code>externalRestAddress</code> in your config.yaml like this;</p>
+<p>Assuming you have Nginx Proxy Manager running, start by adding a new proxy host.</p>
 </div>
-<div class="listingblock">
-<div class="title">OliveTin config.yaml</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Domain Names</strong>: olivetin.npm.teratan.lan (again, assume this is the domain you have set up in your DNS)</p>
+</li>
+<li>
+<p><strong>Scheme</strong>: http (OliveTin does support HTTPS if you create your own certificates, but it is more normal to speak HTTP between Nginx and OliveTin, and just use HTTPS to the proxy).</p>
+</li>
+<li>
+<p><strong>Forward Hostname/IP</strong>: 192.168.66.168 (change this to be the IP address of your docker host)</p>
+</li>
+<li>
+<p><strong>Forward Port</strong>: 1337 (this is the default port for OliveTin)</p>
+</li>
+<li>
+<p><strong>Websockets Support</strong>: Yes (OliveTin uses websockets for the Web UI)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>That really should be all that you need to get OliveTin working with Nginx Proxy Manager. If you have any issues, please check the logs of both OliveTin and Nginx Proxy Manager for any errors, and look for ways of getting <a href="support.html">support</a>.</p>
+</div>
+<div class="imageblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">externalRestAddress</span><span class="pi">:</span> <span class="s">http://myserver/OliveTin</span></code></pre>
+<img src="images/npm.png" alt="npm">
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="caddy-dns.html">Caddy - DNS Based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="actions.html">Action execution</a> →</p>
+<p>← Previous: <a href="nginx-dns.html">Nginx</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="caddy-dns.html">Caddy</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-04 12:46:38 UTC
+Last updated 2024-07-06 22:02:17 UTC
 </div>
 </div>
 </body>

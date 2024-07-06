@@ -316,13 +316,11 @@ pre.rouge .gs {
 </li>
 <li><a href="traefik-docker-compose.html">Traefik + Docker Compose</a>
 </li>
-<li><a href="nginx-dns.html">Nginx - DNS based</a>
+<li><a href="nginx-dns.html">Nginx</a>
 </li>
-<li><a href="nginx-path.html">Nginx - Custom path</a>
+<li><a href="nginx-proxy-manager.html">Nginx Proxy Manager</a>
 </li>
-<li><a href="caddy-dns.html"><span class="toc-current">Caddy - DNS Based</span></a>
-</li>
-<li><a href="caddy-path.html">Caddy - Custom path</a>
+<li><a href="caddy-dns.html"><span class="toc-current">Caddy</span></a>
 </li>
 </ul>
 </li>
@@ -355,7 +353,7 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="caddy-dns"><a class="anchor" href="#caddy-dns"></a><a class="link" href="#caddy-dns">Caddy - DNS Based</a></h3>
+<h3 id="caddy-dns"><a class="anchor" href="#caddy-dns"></a><a class="link" href="#caddy-dns">Caddy</a></h3>
 <div class="paragraph">
 <p>Caddy seems to work without any special configuration, so a simple <code>Caddyfile</code> works like this;</p>
 </div>
@@ -367,14 +365,44 @@ pre.rouge .gs {
 <span class="err">}</span></code></pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="caddy-path"><a class="anchor" href="#caddy-path"></a><a class="link" href="#caddy-path">Custom paths</a></h4>
+<div class="listingblock">
+<div class="title">Caddyfile</div>
+<div class="content">
+<pre>....
+	handle {$GLOBAL_PORTAL_PATH}/olivetin* {
+			redir {$GLOBAL_PORTAL_PATH}/olivetin {$GLOBAL_PORTAL_PATH}/olivetin/
+			uri strip_prefix {$GLOBAL_PORTAL_PATH}/olivetin
+			basicauth {
+					{$GLOBAL_USER} HASH
+			}
+			reverse_proxy * localhost:1337
+	}
+....</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note, because you are changing the default path (from <code>/</code> to <code>/OliveTin/</code>), you will need to tell the OliveTin webUI where to find the API.</p>
+</div>
+<div class="paragraph">
+<p>You need to also set <code>externalRestAddress</code> in your config.yaml like this;</p>
+</div>
+<div class="listingblock">
+<div class="title">OliveTin config.yaml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">externalRestAddress</span><span class="pi">:</span> <span class="s">http://myserver/OliveTin</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="nginx-path.html">Nginx - Custom path</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="caddy-path.html">Caddy - Custom path</a> →</p>
+<p>← Previous: <a href="nginx-proxy-manager.html">Nginx Proxy Manager</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="actions.html">Action execution</a> →</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-04 12:46:38 UTC
+Last updated 2024-07-06 22:02:17 UTC
 </div>
 </div>
 </body>
