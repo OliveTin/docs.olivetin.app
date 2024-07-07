@@ -9,6 +9,7 @@ Setup an action as follows;
 actions:
   - title: Setup SSH
     shell: olivetin-setup-eash-ssh
+    popupOnStart: execution-dialog
 ```
 
 [#action-ssh]
