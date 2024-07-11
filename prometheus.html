@@ -359,15 +359,22 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre>logLevel: INFO
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">logLevel</span><span class="pi">:</span> <span class="s">INFO</span>
 
-prometheus:
-    enabled: true
-    defaultGoMetrics: false</pre>
+<span class="na">prometheus</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">defaultGoMetrics</span><span class="pi">:</span> <span class="kc">false</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This will give you metrics, like this;</p>
+<p>It is required to restart OliveTin after changing the <code>prometheus</code> configuration.</p>
+</div>
+<div class="paragraph">
+<p>The <code>defaultGoMetrics</code> option will enable the default Go metrics, which expose statis like go_memstats_alloc_bytes, or go_memstats_heap_alloc_bytes,
+and generally most people don&#8217;t need these.</p>
+</div>
+<div class="paragraph">
+<p>This will give you metrics available at <a href="http://yourserver:1337/metrics" class="bare">http://yourserver:1337/metrics</a>. The page should look something like this;</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -392,7 +399,7 @@ olivetin_sv_count 49</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-07 12:05:16 UTC
+Last updated 2024-07-11 20:05:02 UTC
 </div>
 </div>
 </body>
