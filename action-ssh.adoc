@@ -1,7 +1,16 @@
 [#action-ssh-easy]
 === SSH (easy setup)
 
-TODO.
+Setup an action as follows; 
+
+.config.yaml
+[source,yaml]
+```
+actions:
+  - title: Setup SSH
+    shell: olivetin-setup-eash-ssh
+    popupOnStart: execution-dialog
+```
 
 [#action-ssh]
 === SSH (manual setup)
