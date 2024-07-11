@@ -143,7 +143,7 @@ prometheus:
 
 It is required to restart OliveTin after changing the `prometheus` configuration.
 
-The `defaultGoMetrics` option will enable the default Go metrics, which expose statis like go_memstats_alloc_bytes, or go_memstats_heap_alloc_bytes,
+The `defaultGoMetrics` option will enable the default Go metrics, which expose metrics like go_memstats_alloc_bytes, or go_memstats_heap_alloc_bytes,
 and generally most people don't need these.
 
 This will give you metrics available at http://yourserver:1337/metrics. The page should look something like this;
