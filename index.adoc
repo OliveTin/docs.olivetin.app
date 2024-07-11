@@ -113,7 +113,7 @@ include::solutions.adoc[]
 
 include::advanced_configuration.adoc[]
 
-include::reference.adoc[]
+include::source/reference/index.adoc[]
 
 include::troubleshooting.adoc[]
 

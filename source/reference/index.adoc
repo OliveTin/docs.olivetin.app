@@ -1,6 +1,6 @@
 == Reference
 
-include::ports.adoc[]
+include::network-ports.adoc[]
 
 include::security.adoc[]
 
