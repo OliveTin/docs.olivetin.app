@@ -82,7 +82,7 @@ include::entities.adoc[]
 
 include::source/security/index.adoc[]
 
-include::solutions.adoc[]
+include::source/solutions/index.adoc[]
 
 include::advanced_configuration.adoc[]
 
