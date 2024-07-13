@@ -1,3 +1,4 @@
+[#wol]
 === Wake On LAN from a container
 
 This is a simple solution that provides wake on lan capabilities from inside a container. It uses the simple `awake` command to send the magic packet. This can be incredibly helpful if you just need a simple button to click to wake up a machine on your network.
