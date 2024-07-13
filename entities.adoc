@@ -57,3 +57,12 @@ JSON files are parsed as if each line is a single JSON object. This can be super
 {"Command":"\"/opt/entrypoint.sh\"","CreatedAt":"2023-12-17 20:58:03 +0000 GMT","ID":"d25f37c49c35","Image":"fedora","Labels":"?","LocalVolumes":"0","Mounts":"","Names":"media-playback-container","Networks":"bridge","Ports":"","RunningFor":"27 days ago","Size":"0B","State":"exited","Status":"Exited (137) 27 days ago"}
 ----
 
+[#entity-examples]
+=== Example Entity Usage
+
+Check out the following <<solutions,Solutions>> which make good use of entities.
+
+* <<container-control-panel,Container Control Panel>>
+* <<systemd-control-panel,Systemd Control Panel>>
+
+

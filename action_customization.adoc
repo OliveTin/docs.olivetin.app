@@ -1,7 +1,8 @@
 [#action-customisation]
 == Action customisation
 
-=== Execution Feedback
+[#popup-on-start]
+=== Popup on Start (Execution Feedback)
 OliveTin now has several options to control "feedback" when actions are started. This can be controlled on
 a per-action basis, using the `popupOnStart` configuration option.
 
