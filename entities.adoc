@@ -7,7 +7,7 @@ This is really useful if you want to generate wake on lan or poweroff actions fo
 
 A very popular use case that entities were designed for was for `container` entities - in a similar way you could generate `start`, `stop`, and `restart` container actions.
 
-Entities are just loaded fome files on disk, OliveTin will also watch these files for updates while OliveTin is running, and update entities.
+Entities are just loaded from files on disk, OliveTin will also watch these files for updates while OliveTin is running, and update entities.
 
 Entities can have properties defined in those files, and those can be used in your configuration as variables. For example; `container.status`, or `vm.hostname`.
 
