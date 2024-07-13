@@ -1,5 +1,5 @@
 [#install-helm]
-=== Helm on Kubernetes Install
+=== Kubernetes with Helm
 
 Helm makes installing OliveTin on Kubernetes very easy, the official chart is hosted on Artifact Hub. 
 
