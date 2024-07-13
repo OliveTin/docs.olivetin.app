@@ -26,6 +26,10 @@ For building up from here, look at the following resources;
 
 * See the <<action-customisation,action cutomisation>> documentation to customize how those actions work.
 
+* See the <<solutions,Solutions>> documentation for just the essential configuration to achieve popular use cases.
+
+All configuration options are covered in the sollution sections
+
 [#config-list]
 === Core functionality
 
