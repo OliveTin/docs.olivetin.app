@@ -29,6 +29,6 @@ docker start olivetin_wol
 
 Then visit your OliveTin web interface at http://yourServer:1337 and you should see something that looks like this; 
 
-image::wol.png[]
+image::images/wol.png[]
 
 
