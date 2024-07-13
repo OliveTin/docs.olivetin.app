@@ -1,0 +1,21 @@
+[#action-container-control]
+=== Containers - start/stop
+
+NOTE: There is a complete example of how to setup a <<container-control-panel,container control panel>> in the solutions section.
+
+:systemd: Easy
+:container: Setup needed - see below
+include::actionHeader.adoc[]
+
+[#example-control-containers]
+....
+actions:
+  - title: Stop Plex
+    shell: docker stop plex
+
+  - title: Start plex
+    shell: docker start plex
+....
+
+include::../../snippit_container_socket.adoc[]
+

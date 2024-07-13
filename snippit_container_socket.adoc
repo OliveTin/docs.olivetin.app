@@ -22,7 +22,7 @@ docker run --privileged --user root -v /var/run/docker.sock:/var/run/docker.sock
 +
 <<container-dnf,How to install additional packages in the container>>
 +
-NOTE: The reason that the `arm` and `arm64` containers do not container docker, is that when these images are cross-compiled at build time, it takes FOREVER because we have to emulate arm. 
+NOTE: The reason that the `arm` and `arm64` containers do not include docker, is that when these images are cross-compiled at build time, it takes FOREVER because we have to emulate arm.
 
 After you have passed the socket into the container (and optionally installed docker), you should be able to setup docker actions like it's shown in the example <<example-control-containers,above>>.
 
