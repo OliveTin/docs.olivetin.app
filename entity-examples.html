@@ -179,7 +179,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="jwt" class="book toc2 toc-left">
+<body id="entity-examples" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -202,22 +202,16 @@ div.admonitionblock td:first-child {
 <li><a href="dashboards.html">Dashboards</a>
 </li>
 <li><a href="entities.html">Entities</a>
-</li>
-<li><a href="auth.html">Security</a>
 <ul class="sectlevel2">
-<li><a href="auth-concepts.html">Concepts</a>
+<li><a href="entities-yaml.html">YAML entity files</a>
 </li>
-<li><a href="acls.html">Access Control Lists (Permissions)</a>
+<li><a href="entities-json.html">JSON entity files</a>
 </li>
-<li><a href="trusted-header.html">Trusted Header Authorization</a>
-</li>
-<li><a href="jwt.html"><span class="toc-current">JWT Authorization</span></a>
-</li>
-<li><a href="jwt-keys.html">JWT with Keys</a>
-</li>
-<li><a href="jwt-hmac.html">JWT with HMAC</a>
+<li><a href="entity-examples.html"><span class="toc-current">Example Entity Usage</span></a>
 </li>
 </ul>
+</li>
+<li><a href="auth.html">Security</a>
 </li>
 <li><a href="solutions.html">Solutions</a>
 </li>
@@ -234,36 +228,23 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="jwt"><a class="anchor" href="#jwt"></a><a class="link" href="#jwt">JWT Authorization</a></h3>
+<h3 id="entity-examples"><a class="anchor" href="#entity-examples"></a><a class="link" href="#entity-examples">Example Entity Usage</a></h3>
 <div class="paragraph">
-<p>One of the best ways to do authorization with OliveTin is to pass it a <strong>JSON Web token (JWT)</strong>, after first authenticating with a popular single sign on system, like Keycloak, CloudFlare Tunnels, Authentik or Organizr.</p>
-</div>
-<div class="paragraph">
-<p>Two types of JWT mechanisms are supported;</p>
+<p>Check out the following <a href="solutions.html">Solutions</a> which make good use of entities.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong><a href="jwt-keys.html">JWT with Keys</a></strong> (eg: CloudFlare Tunnels, Authentik)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>X509 Certs/Keys on disk are supported</p>
+<p><a href="container-control-panel.html">Container Control Panel</a></p>
 </li>
 <li>
-<p><strong>JWKS</strong> is also supported</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong><a href="jwt-hmac.html">JWT with HMAC</a></strong> (eg: Organizr)</p>
+<p><a href="systemd-control-panel.html">Systemd Control Panel</a></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="trusted-header.html">Trusted Header Authorization</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="jwt-keys.html">JWT with Keys</a> →</p>
+<p>← Previous: <a href="entities-json.html">JSON entity files</a> | ↑ Up: <a href="entities.html">Entities</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="auth.html">Security</a> →</p>
 </div>
 </div>
 <div id="footer">

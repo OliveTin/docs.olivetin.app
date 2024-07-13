@@ -179,7 +179,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="jwt" class="book toc2 toc-left">
+<body id="config-list" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -188,6 +188,20 @@ div.admonitionblock td:first-child {
 <li><a href="installation.html">Installation Guide</a>
 </li>
 <li><a href="config.html">Configuration</a>
+<ul class="sectlevel2">
+<li><a href="config-list.html"><span class="toc-current">Core functionality</span></a>
+</li>
+<li><a href="_ui_customization.html">UI Customization</a>
+</li>
+<li><a href="_security_configuration.html">Security Configuration</a>
+</li>
+<li><a href="_networking_configuration.html">Networking Configuration</a>
+</li>
+<li><a href="_debugging_configuration.html">Debugging Configuration</a>
+</li>
+<li><a href="_miscellaneous_configuration.html">Miscellaneous Configuration</a>
+</li>
+</ul>
 </li>
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
@@ -204,20 +218,6 @@ div.admonitionblock td:first-child {
 <li><a href="entities.html">Entities</a>
 </li>
 <li><a href="auth.html">Security</a>
-<ul class="sectlevel2">
-<li><a href="auth-concepts.html">Concepts</a>
-</li>
-<li><a href="acls.html">Access Control Lists (Permissions)</a>
-</li>
-<li><a href="trusted-header.html">Trusted Header Authorization</a>
-</li>
-<li><a href="jwt.html"><span class="toc-current">JWT Authorization</span></a>
-</li>
-<li><a href="jwt-keys.html">JWT with Keys</a>
-</li>
-<li><a href="jwt-hmac.html">JWT with HMAC</a>
-</li>
-</ul>
 </li>
 <li><a href="solutions.html">Solutions</a>
 </li>
@@ -234,36 +234,51 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="jwt"><a class="anchor" href="#jwt"></a><a class="link" href="#jwt">JWT Authorization</a></h3>
-<div class="paragraph">
-<p>One of the best ways to do authorization with OliveTin is to pass it a <strong>JSON Web token (JWT)</strong>, after first authenticating with a popular single sign on system, like Keycloak, CloudFlare Tunnels, Authentik or Organizr.</p>
-</div>
-<div class="paragraph">
-<p>Two types of JWT mechanisms are supported;</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><a href="jwt-keys.html">JWT with Keys</a></strong> (eg: CloudFlare Tunnels, Authentik)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>X509 Certs/Keys on disk are supported</p>
-</li>
-<li>
-<p><strong>JWKS</strong> is also supported</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong><a href="jwt-hmac.html">JWT with HMAC</a></strong> (eg: Organizr)</p>
-</li>
-</ul>
-</div>
+<h3 id="config-list"><a class="anchor" href="#config-list"></a><a class="link" href="#config-list">Core functionality</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Live Reloadable</th>
+<th class="tableblock halign-left valign-top">Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>actions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The list of available actions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live Reloadable, but refreshing the web browser is recommended.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="examples.html">Action examples</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>entities</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A list of "things" you can attach actions to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live Reloadable, but restart is recommended.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="entities.html">Entities</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dashboards</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A grouping of actions, with optional displays, or actions generated from entities.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live Reloadable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="dashboards.html">Dashboards</a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="trusted-header.html">Trusted Header Authorization</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="jwt-keys.html">JWT with Keys</a> →</p>
+<p>↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_ui_customization.html">UI Customization</a> →</p>
 </div>
 </div>
 <div id="footer">

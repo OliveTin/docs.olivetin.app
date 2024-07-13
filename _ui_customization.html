@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<link rel="icon" type="image/png" href="images/icons/OliveTinLogo.png">
+<title>OliveTin documentation</title>
+<style>
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "nav content" "nav footer";
+  grid-template-columns: 20em auto;
+  grid-template-rows: auto min-content;
+  height: 100vh;
+  align-items: stretch;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus, #toc a:focus {
+  background-color: black;
+  color: white;
+}
+
+#header {
+  background-color: #efefef;
+  grid-area: nav;
+}
+
+#footer {
+  grid-area: footer;
+  justify-self: center;
+  align-self: end;
+  padding: 1em;
+}
+
+#toc {
+  padding: 1em;
+}
+
+#toc a {
+  color: black;
+}
+
+#toc li {
+  padding-bottom: .6em;
+}
+
+#toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#toc ul ul {
+  padding-left: 1.4em;
+}
+
+#toctitle {
+  font-weight: bold;
+  color: black;
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: lighter;
+  background-color: black;
+  padding: .6em;
+  margin: 0;
+  color: white;
+}
+
+#toc a:hover {
+  text-decoration: underline;
+}
+
+#content {
+  background-color: white;
+  grid-area: content;
+  max-width: 1000px;
+  padding: 1em;
+  justify-self: center;
+}
+
+#content img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+code {
+  background-color: #f7f7f8;
+}
+
+pre {
+  background-color: #f7f7f8;
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: no-wrap;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid gray;
+  padding: .4em;
+}
+
+th {
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.imageblock.right {
+  float: right;
+}
+
+.imageblock .title {
+  margin-bottom: 2em;
+}
+
+hr {
+  clear: both;
+  border: 0;
+  border-bottom: 1px solid #efefef;
+  margin: 1em;
+}
+
+div.admonitionblock.note {
+  background-color: beige;
+}
+
+div.admonitionblock td {
+  border: 0;
+}
+
+div.admonitionblock td:first-child {
+  font-weight: bold;
+}
+
+.listingblock .title {
+  background-color: #efefef;
+  margin-bottom: -1em;
+  padding: 1em;
+}
+
+.red {
+  color: white;
+  border: 1px solid black;
+  padding: .2em;
+  font-weight: bold;
+  background-color: #cc0000;
+}
+
+.red a {
+  color: white;
+}
+
+@media (max-width: 700px) {
+  body {
+    display: block;
+  }
+}
+
+
+</style>
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+</head>
+<body id="_ui_customization" class="book toc2 toc-left">
+<div id="header">
+<h1>OliveTin</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
+<li><a href="installation.html">Installation Guide</a>
+</li>
+<li><a href="config.html">Configuration</a>
+<ul class="sectlevel2">
+<li><a href="config-list.html">Core functionality</a>
+</li>
+<li><a href="_ui_customization.html"><span class="toc-current">UI Customization</span></a>
+</li>
+<li><a href="_security_configuration.html">Security Configuration</a>
+</li>
+<li><a href="_networking_configuration.html">Networking Configuration</a>
+</li>
+<li><a href="_debugging_configuration.html">Debugging Configuration</a>
+</li>
+<li><a href="_miscellaneous_configuration.html">Miscellaneous Configuration</a>
+</li>
+</ul>
+</li>
+<li><a href="reverse-proxies.html">Reverse Proxies</a>
+</li>
+<li><a href="actions.html">Action execution</a>
+</li>
+<li><a href="action-customisation.html">Action customisation</a>
+</li>
+<li><a href="examples.html">Action examples</a>
+</li>
+<li><a href="args.html">Arguments</a>
+</li>
+<li><a href="dashboards.html">Dashboards</a>
+</li>
+<li><a href="entities.html">Entities</a>
+</li>
+<li><a href="auth.html">Security</a>
+</li>
+<li><a href="solutions.html">Solutions</a>
+</li>
+<li><a href="_advanced_configuration.html">Advanced Configuration</a>
+</li>
+<li><a href="_reference.html">Reference</a>
+</li>
+<li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
+</li>
+<li><a href="api.html">API</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_ui_customization"><a class="anchor" href="#_ui_customization"></a><a class="link" href="#_ui_customization">UI Customization</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Live Reloadable</th>
+<th class="tableblock halign-left valign-top">Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pageTitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A custom title for the OliveTin page.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OliveTin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live reloadable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="customize-webui.html">Customize the web UI</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showFooter</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show (or hide) the footer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live reloadable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="customize-webui.html">Customize the web UI</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showNewVersions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show (or hide) new versions in the footer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live reloadable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="customize-webui.html">Customize the web UI</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showNavigation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show (or hide) the sidebar/topbar section navigation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live reloadable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="customize-webui.html">Customize the web UI</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sectionNavigationStyle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The style of the section navigation. <code>sidebar</code>, <code>topbar</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sidebar</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live reloadable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="customize-webui.html">Customize the web UI</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultPopupOnStart</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The default popup to show on start.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>none</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Live reloadable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="popup-on-start.html">Popup On Start</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultIconForActions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The default icon to use for actions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires Restart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultIconForDirectories</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The default icon to use for directories.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>directory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires Restart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultIconForBack</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The default icon to use for back (from directories).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&laquo;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires Restart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph nav-footer">
+<p>← Previous: <a href="config-list.html">Core functionality</a> | ↑ Up: <a href="config.html">Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_security_configuration.html">Security Configuration</a> →</p>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-07-13 23:18:41 UTC
+</div>
+</div>
+</body>
+</html>
