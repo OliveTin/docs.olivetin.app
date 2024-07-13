@@ -14,6 +14,6 @@ If you're not sure which package to use, see <<choose-package,which download do 
 You can install these packages with your Linux package manager (eg, 
 `dpkg -i OliveTin...deb` or `rpm -U OliveTin...rpm`). 
 
-include::install_post_systemd.adoc[]
+include::snippit_post_systemd.adoc[]
 
 

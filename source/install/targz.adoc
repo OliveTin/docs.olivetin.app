@@ -12,6 +12,6 @@ A .tar.gz file is provided for people who are using other Linux distributions or
 3. Copy the `OliveTin.service` file to `/etc/systemd/system/`
 4. Create a `config.yaml` in `/etc/OliveTin` using the example provided above to get you started.
 
-include::install_post_systemd.adoc[]
+include::snippit_post_systemd.adoc[]
 
 

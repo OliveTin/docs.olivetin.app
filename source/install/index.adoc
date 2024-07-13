@@ -1,0 +1,29 @@
+[#installation]
+== Installation Guide
+
+There are many ways to install OliveTin which are listed below. 
+
+include::snippit_container.adoc[]
+
+include::snippit_container_vs_service.adoc[]
+
+include::snippit_choose_package.adoc[]
+
+include::systemd.adoc[]
+
+include::linux_fedora.adoc[]
+
+include::linux_alpine.adoc[]
+
+include::linux_arch.adoc[]
+
+include::container.adoc[]
+
+include::docker_compose.adoc[]
+
+include::helm.adoc[]
+
+include::k8s.adoc[]
+
+include::targz.adoc[]
+

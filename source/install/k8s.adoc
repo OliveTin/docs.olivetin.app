@@ -37,5 +37,5 @@ Then lastly, create a Ingress rule for for that service;
 kubectl apply -f http://docs.olivetin.app/etc/k8s_ingress.yml
 ----
 
-include::install_to_config.adoc[]
+include::snippit_to_config.adoc[]
 

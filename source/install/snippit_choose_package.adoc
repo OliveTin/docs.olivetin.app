@@ -34,9 +34,9 @@ A full list of **packages** can be downloaded from the link:https://github.com/j
 [#container-images]
 ==== Container images
 
-include::note_container.adoc[]
+include::snippit_container.adoc[]
 
-include::install_container_registries.adoc[]
+include::snippit_container_registries.adoc[]
 
 The following methods can be used to install the container;
 

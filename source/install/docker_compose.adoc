@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 ----
 
-include::install_post_container.adoc[]
+include::snippit_post_container.adoc[]
 
 ==== Controlling other docker containers from a Docker Compose install of OliveTin
 
