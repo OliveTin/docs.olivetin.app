@@ -9,6 +9,7 @@ include::solution_container_control_panel.adoc[]
 include::solution_systemd_control_panel.adoc[]
 include::source/solutions/heating-control-panel/index.adoc[]
 include::source/solutions/primitive-password/index.adoc[]
+include::source/solutions/wol/index.adoc[]
 include::solution_cloudflare_access_tunnel.adoc[]
 
 === GPIO Control on Raspberry Pi
