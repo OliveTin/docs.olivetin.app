@@ -4,6 +4,9 @@ This is a simple solution that provides wake on lan capabilities from inside a c
 
 Docker containers will normally use a docker network, which is a separate network from the host network. This means that the container will not be able to send the magic packet to the host network. Therefore, we need to create the container with the `--network host` option, which will allow the container to send the magic packet to the host network (not the docker network).
 
+
+The container is also created with the `--user root` option, which allows the container to send the magic packet as root. This is necessary because the `awake` command requires root privileges to send the magic packet, and also to install the `awake` command in the container.
+
 Create the container as follows;
 
 ```bash
