@@ -16,7 +16,8 @@ a {
 }
 
 a:focus {
-  background-color: #bdb76b;
+  background-color: black;
+  color: white;
 }
 
 #header {
