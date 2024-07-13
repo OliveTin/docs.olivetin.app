@@ -297,7 +297,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="traefik-docker-compose" class="book toc2 toc-left">
+<body id="_wake_on_lan_from_a_container" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -308,22 +308,6 @@ pre.rouge .gs {
 <li><a href="config.html">Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-dns.html">Apache HTTPD - DNS based</a>
-</li>
-<li><a href="haproxy-dns.html">Haproxy - DNS based</a>
-</li>
-<li><a href="traefik-docker-compose.html"><span class="toc-current">Traefik + Docker Compose</span></a>
-</li>
-<li><a href="nginx-dns.html">Nginx</a>
-</li>
-<li><a href="nginx-proxy-manager.html">Nginx Proxy Manager</a>
-</li>
-<li><a href="caddy-dns.html">Caddy</a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">Action execution</a>
 </li>
@@ -340,6 +324,22 @@ pre.rouge .gs {
 <li><a href="auth.html">Security</a>
 </li>
 <li><a href="solutions.html">Solutions</a>
+<ul class="sectlevel2">
+<li><a href="container-control-panel.html">Container Control Panel</a>
+</li>
+<li><a href="systemd-control-panel.html">Systemd Control Panel</a>
+</li>
+<li><a href="heating-control-panel.html">Heating Control Panel</a>
+</li>
+<li><a href="_primitive_password_protection.html">Primitive password protection</a>
+</li>
+<li><a href="_wake_on_lan_from_a_container.html"><span class="toc-current">Wake On LAN from a container</span></a>
+</li>
+<li><a href="cloudflare-access-tunnels.html">Cloudflare Access &amp; Tunnels</a>
+</li>
+<li><a href="_gpio_control_on_raspberry_pi.html">GPIO Control on Raspberry Pi</a>
+</li>
+</ul>
 </li>
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
@@ -354,47 +354,63 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="traefik-docker-compose"><a class="anchor" href="#traefik-docker-compose"></a><a class="link" href="#traefik-docker-compose">Traefik + Docker Compose</a></h3>
+<h3 id="_wake_on_lan_from_a_container"><a class="anchor" href="#_wake_on_lan_from_a_container"></a><a class="link" href="#_wake_on_lan_from_a_container">Wake On LAN from a container</a></h3>
 <div class="paragraph">
-<p>The following example is known to work well with Traefik and docker-compose.</p>
+<p>This is a simple solution that provides wake on lan capabilities from inside a container. It uses the simple <code>awake</code> command to send the magic packet. This can be incredibly helpful if you just need a simple button to click to wake up a machine on your network.</p>
+</div>
+<div class="paragraph">
+<p>Docker containers will normally use a docker network, which is a separate network from the host network. This means that the container will not be able to send the magic packet to the host network. Therefore, we need to create the container with the <code>--network host</code> option, which will allow the container to send the magic packet to the host network (not the docker network).</p>
+</div>
+<div class="paragraph">
+<p>The container is also created with the <code>--user root</code> option, which allows the container to send the magic packet as root. This is necessary because the <code>awake</code> command requires root privileges to send the magic packet, and also to install the <code>awake</code> command in the container.</p>
+</div>
+<div class="paragraph">
+<p>Create the container as follows;</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.8"</span>
-<span class="na">services</span><span class="pi">:</span>
-  <span class="na">olivetin</span><span class="pi">:</span>
-    <span class="na">container_name</span><span class="pi">:</span> <span class="s">olivetin</span>
-    <span class="na">image</span><span class="pi">:</span> <span class="s">jamesread/olivetin</span>
-    <span class="na">volumes</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">/docker/olivetin:/config</span> <span class="c1"># replace host path or volume as needed</span>
-    <span class="na">ports</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">1337:1337"</span>
-    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
-    <span class="na">labels</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.enable=true"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.olivetin.entrypoints=web"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.olivetin.rule=Host(`olivetin.example.com`)"</span>
+<pre class="rouge highlight"><code data-lang="bash">user@host: docker create <span class="nt">-u</span> root <span class="nt">--network</span><span class="o">=</span>host <span class="nt">--name</span> olivetin_wol <span class="nt">-v</span> /etc/OliveTin/:/config ghcr.io/olivetin/olivetin:latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create your OliveTin <code>config.yaml</code> file in the <code>/etc/OliveTin/</code> directory on the host, with the following content;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">WakeOnLan Server1</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">awake A8:5E:45:E4:FF:2A</span>
+    <span class="na">icon</span><span class="pi">:</span> <span class="s">ping</span>
 
-  <span class="na">traefik</span><span class="pi">:</span>
-    <span class="na">image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">traefik:v2.9"</span>
-    <span class="na">container_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">traefik"</span>
-    <span class="na">command</span><span class="pi">:</span>
-      <span class="c1">#- "--log.level=DEBUG"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--api.insecure=true"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--api.dashboard=true"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--providers.docker=true"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--providers.docker.exposedbydefault=false"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">--entrypoints.web.address=:80"</span>
-    <span class="na">ports</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">80:80"</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">8080:8080"</span>
-    <span class="na">volumes</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">/var/run/docker.sock:/var/run/docker.sock:ro"</span></code></pre>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Install awake on startup</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">microdnf install -y awake</span>
+    <span class="na">hidden</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">execOnStartup</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">timeout</span><span class="pi">:</span> <span class="s">120</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Obviously adjust the config file with your own MAC addressses, creating new actions to send WOL commands as needed.</p>
+</div>
+<div class="paragraph">
+<p>Then start the container with the following command;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>docker start olivetin_wol</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then visit your OliveTin web interface at <a href="http://yourServer:1337" class="bare">http://yourServer:1337</a> and you should see something that looks like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="wol.png" alt="wol">
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="haproxy-dns.html">Haproxy - DNS based</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="nginx-dns.html">Nginx</a> →</p>
+<p>← Previous: <a href="_primitive_password_protection.html">Primitive password protection</a> | ↑ Up: <a href="solutions.html">Solutions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="cloudflare-access-tunnels.html">Cloudflare Access &amp; Tunnels</a> →</p>
 </div>
 </div>
 <div id="footer">
