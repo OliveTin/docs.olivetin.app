@@ -15,7 +15,7 @@ a {
   text-decoration: none;
 }
 
-a:focus {
+a:focus, #toc a:focus {
   background-color: black;
   color: white;
 }
