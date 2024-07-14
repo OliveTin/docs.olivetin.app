@@ -1,6 +1,6 @@
 [#apache-path]
 [#apache-dns]
-=== Apache HTTPD - DNS based
+=== Apache HTTPD
 
 This is an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337.
 

@@ -1,9 +1,9 @@
 [#install-container]
 === Container install (podman/docker)
 
-include::note_container.adoc[]
+include::snippit_container.adoc[]
 
-include::install_container_registries.adoc[]
+include::snippit_container_registries.adoc[]
 
 If you prefer to use docker-compose, then follow the <<install-compose,docker-compose installation instructions>>.
 
@@ -30,4 +30,4 @@ OliveTin does not need to be run as a root, and does not need any special capabi
 
 To change the <<timezone,changing the timezone requires a bound-mount>> from the host. Olivetin ignores the TZ variable as it is non-standard.
 
-include::install_post_container.adoc[]
+include::snippit_post_container.adoc[]

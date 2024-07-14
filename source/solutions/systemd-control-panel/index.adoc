@@ -24,7 +24,7 @@ That command will generate a file (example shown below). Let's break down that l
 [source,json]
 .An example generated `/etc/OliveTin/entities/systemd_units.json` file
 ----
-include::configs/systemd-control-panel/systemd_units.json[]
+include::config/systemd_units.json[]
 ----
 
 You can generate this file yourself the first time, but the `config.yaml` below shows how OliveTin can run the `systemctl list-units ...` command on startup, and on a schedule to update the file.
@@ -38,7 +38,7 @@ Finally, here is the example configuration file to build the dashboard;
 [source,yaml]
 .`config.yaml`
 ----
-include::configs/systemd-control-panel/config.yaml[]
+include::config/config.yaml[]
 ----
 
 

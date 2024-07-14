@@ -5,11 +5,12 @@ OliveTin was designed to be very simple, but sometimes OliveTin can get complex 
 
 This section of the docs is designed to bring everything into one place and present a scenario, with a single-page solution.
 
-include::solution_container_control_panel.adoc[]
-include::solution_systemd_control_panel.adoc[]
-include::source/solutions/heating-control-panel/index.adoc[]
-include::source/solutions/primitive-password/index.adoc[]
-include::solution_cloudflare_access_tunnel.adoc[]
+include::container-control-panel/index.adoc[]
+include::systemd-control-panel/index.adoc[]
+include::heating-control-panel/index.adoc[]
+include::primitive-password/index.adoc[]
+include::wol/index.adoc[]
+include::cloudflare_access_tunnel/index.adoc[]
 
 === GPIO Control on Raspberry Pi
 

@@ -62,34 +62,7 @@ video::Ej6NM9rmZtk[youtube,width=100%]
 [discrete]
 === Read more
 
-[#installation]
-== Installation Guide
-
-There are many ways to install OliveTin which are listed below. 
-
-include::note_container.adoc[]
-
-include::install_container_vs_service.adoc[]
-
-include::choose_package.adoc[]
-
-include::install_systemd.adoc[]
-
-include::install_linux_fedora.adoc[]
-
-include::install_linux_alpine.adoc[]
-
-include::install_linux_arch.adoc[]
-
-include::install_container.adoc[]
-
-include::install_docker_compose.adoc[]
-
-include::install_helm.adoc[]
-
-include::install_k8s.adoc[]
-
-include::install_targz.adoc[]
+include::source/install/index.adoc[]
 
 include::config.adoc[]
 
@@ -99,7 +72,7 @@ include::action_execution.adoc[]
 
 include::action_customization.adoc[]
 
-include::action_examples.adoc[]
+include::source/action_examples/index.adoc[]
 
 include::args.adoc[]
 
@@ -109,7 +82,7 @@ include::entities.adoc[]
 
 include::source/security/index.adoc[]
 
-include::solutions.adoc[]
+include::source/solutions/index.adoc[]
 
 include::advanced_configuration.adoc[]
 

@@ -1,5 +1,5 @@
 [#acls]
-=== Permissions & Access Control
+=== Access Control Lists (Permissions)
 
 include::../../snippit_earlydoc.adoc[]
 
