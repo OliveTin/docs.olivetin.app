@@ -28,6 +28,8 @@ When you come to create the config.yaml file, OliveTin will look for this in it'
 
 Because you are running outside of a container, you will also need to change the "internal" ports used by OliveTin so they are separate for all instances. OliveTin listens on 4 addresses (1 external, 3 internal) and needs 4 ports. You can read about these in the <<network-ports,network ports documentation>>.
 
+NOTE: OliveTin also supports reading the PORT environment variable, and will use this as a base port for the simgle frontend, will add 1 to start extra servers. For example of PORT is 2000, then the simgle frontend will start on port 2000, the REST API on 2001, and so on. 
+
 You could end up with a setup that looks like this;
 
 [%header]
