@@ -302,6 +302,18 @@ div.admonitionblock td:first-child {
 <div class="paragraph">
 <p>Because you are running outside of a container, you will also need to change the "internal" ports used by OliveTin so they are separate for all instances. OliveTin listens on 4 addresses (1 external, 3 internal) and needs 4 ports. You can read about these in the <a href="network-ports.html">network ports documentation</a>.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+OliveTin also supports reading the PORT environment variable, and will use this as a base port for the simgle frontend, will add 1 to start extra servers. For example of PORT is 2000, then the simgle frontend will start on port 2000, the REST API on 2001, and so on.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>You could end up with a setup that looks like this;</p>
 </div>
@@ -382,7 +394,7 @@ WantedBy=multi-user.target</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-14 09:03:18 UTC
+Last updated 2024-07-15 18:03:06 UTC
 </div>
 </div>
 </body>
