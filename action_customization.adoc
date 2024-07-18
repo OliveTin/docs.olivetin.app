@@ -61,12 +61,18 @@ image::images/executionButtons.png[]
 === Icons
 
 You can specify any HTML for an icon. It's a popular choice to use Unicode
-icons because they are extremely fast to load and there are a lot of them.
-
-Version 2024.03.06 also introduced support for Iconify, built in to OliveTin.
+icons because they are extremely fast to load and there are a lot of them, 
+but OliveTin also support Iconify, and just images. 
 
 .Examples of icons in OliveTin
 image::images/exampleIcons.png[]
+
+For a quick reference, here are some examples of how to use different types of icons in OliveTin;
+
+.`config.yaml`
+```yaml
+include::configs/icons/config.yaml[]
+```
 
 ==== Iconify Icons
 
@@ -122,14 +128,9 @@ probably be added in the future as well.
 
 Sometimes you might want to store images to use as icons, with your installation of OliveTin. This can be useful when your installation is meant to be offline, or disconnected from the internet. This is easily done.
 
-You should put icons in a new `customIcons` directory, inside the standard webui directory. The webui directory could be in a few different locations:
+OliveTin will try to create a directory called `custom-webui` in the same directory as the `config.yaml` file. If this directory exists, OliveTin will serve files from this directory as if they were in the standard webui directory, at `/customIcons/`.
 
-* If you installed OliveTin with a package, this directory is normally `/var/www/olivetin` on Linux. Create the directory `/var/www/olivetin/customIcons/`.
-* If you installed OliveTin with a Linux Container, it's probably best to bind mount a new volume into the container. 
-
-  `docker create jamesread/OliveTin --name OliveTin -v /opt/OliveTinIcons:/var/www/olivetin/customIcons ...`
-
-Once you've created this `customIcons` directory. Place your icon, for example `mrgreen.gif` into this custom icon directory. Below is a picture of Mr Green. Feel free to save his likeness and awesomeness for yourself, for future awesome offline usage.
+Ideally, put your icons in a new `<your-config-dir>/custom-webui/icons/`. Below is a picture of Mr Green. Feel free to save his likeness and awesomeness for yourself, for future awesome offline usage.
 
 .Mr Green, the original awesome smily.
 image::images/mrgreen.gif[Mr Green]
@@ -139,7 +140,7 @@ In your OliveTin config, customize your command again using HTML, like this;
 ----
 actions:
     - title: Mr Green
-      icon: '<img src = "customIcons/mrgreen.gif" />'
+      icon: '<img src = "custom-webui/icons/mrgreen.gif" />'
       shell: echo "I don't like the word 'emoji' "
 ----
 
