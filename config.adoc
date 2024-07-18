@@ -55,6 +55,7 @@ All configuration options are covered in the sollution sections
 | `defaultIconForActions` | The default icon to use for actions. | `smile` | Requires Restart | -
 | `defaultIconForDirectories` | The default icon to use for directories. | `directory` | Requires Restart | -
 | `defaultIconForBack` | The default icon to use for back (from directories). | `&laquo;` | Requires Restart | -
+| `themeName` | The theme to use. | `` | Restart recommended | <<themes,Themes>>.
 |===
 
 === Security Configuration
