@@ -179,7 +179,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="snapsnots" class="book toc2 toc-left">
+<body id="_integrations" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -203,7 +203,11 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="entities.html">Entities</a>
 </li>
-<li><a href="_integrations.html">Integrations</a>
+<li><a href="_integrations.html"><span class="toc-current">Integrations</span></a>
+<ul class="sectlevel2">
+<li><a href="hass.html">Home Assistant</a>
+</li>
+</ul>
 </li>
 <li><a href="auth.html">Security</a>
 </li>
@@ -212,32 +216,6 @@ div.admonitionblock td:first-child {
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
 <li><a href="_reference.html">Reference</a>
-<ul class="sectlevel2">
-<li><a href="network-ports.html">Network ports</a>
-</li>
-<li><a href="_security.html">Security</a>
-</li>
-<li><a href="_understanding_exit_codes.html">Understanding exit codes</a>
-</li>
-<li><a href="update-checks.html">Update Checks</a>
-</li>
-<li><a href="update-tracking.html">Update Checks &amp; Tracking (legacy)</a>
-</li>
-<li><a href="container-dnf.html">Installing extra container packages</a>
-</li>
-<li><a href="multi-inst.html">Multiple instances on a server</a>
-</li>
-<li><a href="snapsnots.html"><span class="toc-current">Snapshot builds</span></a>
-</li>
-<li><a href="themes.html">Themes (for users)</a>
-</li>
-<li><a href="themes-dev.html">Themes (for theme developers)</a>
-</li>
-<li><a href="donations-and-sponsorship.html">Donations &amp; Sponsorship</a>
-</li>
-<li><a href="upgrade-notes.html">Upgrade Notes</a>
-</li>
-</ul>
 </li>
 <li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
@@ -247,54 +225,20 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="snapsnots"><a class="anchor" href="#snapsnots"></a><a class="link" href="#snapsnots">Snapshot builds</a></h3>
-<div class="paragraph">
-<p>It&#8217;s sometimes useful to test code changes in OliveTin that are still in development - and have not yet made it into an official version, yet. Thankfully, all code changes are automatically compiled into a "snapshot" builds and are saved in GitHub actions.</p>
-</div>
-<div class="paragraph">
-<p>If you browse to GitHub actions page for OliveTin, you&#8217;ll find the "Build Snapshot" job, with a list of recent builds.</p>
-</div>
+<div class="sect1">
+<h2 id="_integrations"><a class="anchor" href="#_integrations"></a><a class="link" href="#_integrations">Integrations</a></h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/OliveTin/OliveTin/actions/workflows/build-snapshot.yml">OliveTin&#8217;s Build Snapshot page</a></p>
+<p><a href="hass.html">Home Assistant</a></p>
 </li>
 </ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/snapshots.png" alt="snapshots">
-</div>
-</div>
-<div class="paragraph">
-<p>Most of the time you will want to select the top build, unless you&#8217;ve specifically been given a build link to use.</p>
-</div>
-<div class="sect3">
-<h4 id="_download_the_snapshot_archive"><a class="anchor" href="#_download_the_snapshot_archive"></a><a class="link" href="#_download_the_snapshot_archive">Download the snapshot archive</a></h4>
-<div class="paragraph">
-<p>On the job page, you will have a single "snapshot" file listed. In this screenshot, it is 109 MB.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/snapshot-download.png" alt="snapshot download">
-</div>
-</div>
-<div class="paragraph">
-<p>Once downloaded, you can open the archive using any tool that you use to open .zip files. The contents should read something like this;</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/snapshot-archive.png" alt="snapshot archive">
-</div>
-</div>
-<div class="paragraph">
-<p>Extract the file you need, and off you go!</p>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="multi-inst.html">Multiple instances on a server</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="themes.html">Themes (for users)</a> →</p>
+<p>← Previous: <a href="entity-examples.html">Example Entity Usage</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="hass.html">Home Assistant</a> →</p>
 </div>
 </div>
 <div id="footer">
