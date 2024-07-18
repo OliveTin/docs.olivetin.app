@@ -80,6 +80,8 @@ include::dashboards.adoc[]
 
 include::entities.adoc[]
 
+include::source/integrations/index.adoc[]
+
 include::source/security/index.adoc[]
 
 include::source/solutions/index.adoc[]
