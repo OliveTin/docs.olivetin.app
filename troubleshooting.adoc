@@ -131,7 +131,7 @@ All these configuration options are `false` by default, and should be deleted fr
 
 [#dump-action-map]
 ==== Dump Action Map
-`InsecureAllowDumpActionMap: true` - will allow dumping all the actions (and those generated with entities) and their public IDs, eg: `http://server:1337/api/DumpPublicActionMap`
+`InsecureAllowDumpActionMap: true` - will allow dumping all the actions (and those generated with entities) and their public IDs, eg: `http://server:1337/api/DumpActionMap`
 
 [#dump-vars]
 ==== Dump Vars
