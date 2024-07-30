@@ -1,7 +1,7 @@
 [#contribute]
 === Contribute 
 
-First of all, a huge, huge thanks for reaching this page, and considering some form of pf contribution. Here are some suggestions below. 
+First of all, a huge, huge thanks for reading this page, and considering some form of contribution. Here are some suggestions below. 
 
 NOTE: OliveTin does not accept <<donations-and-sponsorship,Donations and Sponsorship>>.
 
