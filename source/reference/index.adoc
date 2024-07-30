@@ -18,7 +18,7 @@ include::reference_themes_for_users.adoc[]
 
 include::reference_themes_for_developers.adoc[]
 
-include::contribute.adoc
+include::contribute.adoc[]
 
 include::donations_and_sponsorship.adoc[]
 
