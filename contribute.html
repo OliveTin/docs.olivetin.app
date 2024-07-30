@@ -179,7 +179,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="examples" class="book toc2 toc-left">
+<body id="contribute" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -195,23 +195,7 @@ div.admonitionblock td:first-child {
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
-<li><a href="examples.html"><span class="toc-current">Action examples</span></a>
-<ul class="sectlevel2">
-<li><a href="action-container-control.html">Containers - start/stop</a>
-</li>
-<li><a href="action-service.html">Restart a systemd service</a>
-</li>
-<li><a href="action-ping.html">Ping an address</a>
-</li>
-<li><a href="action-ssh-easy.html">SSH (easy setup)</a>
-</li>
-<li><a href="action-ssh.html">SSH (manual setup)</a>
-</li>
-<li><a href="powershell.html">Powershell</a>
-</li>
-<li><a href="ansible-playbook.html">Ansible Playbooks</a>
-</li>
-</ul>
+<li><a href="examples.html">Action examples</a>
 </li>
 <li><a href="args.html">Arguments</a>
 </li>
@@ -228,6 +212,34 @@ div.admonitionblock td:first-child {
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
 <li><a href="_reference.html">Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">Network ports</a>
+</li>
+<li><a href="_security.html">Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">Understanding exit codes</a>
+</li>
+<li><a href="update-checks.html">Update Checks</a>
+</li>
+<li><a href="update-tracking.html">Update Checks &amp; Tracking (legacy)</a>
+</li>
+<li><a href="container-dnf.html">Installing extra container packages</a>
+</li>
+<li><a href="multi-inst.html">Multiple instances on a server</a>
+</li>
+<li><a href="snapsnots.html">Snapshot builds</a>
+</li>
+<li><a href="themes.html">Themes (for users)</a>
+</li>
+<li><a href="themes-dev.html">Themes (for theme developers)</a>
+</li>
+<li><a href="contribute.html"><span class="toc-current">Contribute</span></a>
+</li>
+<li><a href="donations-and-sponsorship.html">Donations &amp; Sponsorship</a>
+</li>
+<li><a href="upgrade-notes.html">Upgrade Notes</a>
+</li>
+</ul>
 </li>
 <li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
@@ -237,38 +249,55 @@ div.admonitionblock td:first-child {
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="examples"><a class="anchor" href="#examples"></a><a class="link" href="#examples">Action examples</a></h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="action-container-control.html">Containers - start/stop</a></p>
-</li>
-<li>
-<p><a href="action-service.html">Restart a systemd service</a></p>
-</li>
-<li>
-<p><a href="action-ping.html">Ping an address</a></p>
-</li>
-<li>
-<p><a href="action-ssh-easy.html">SSH (easy setup)</a></p>
-</li>
-<li>
-<p><a href="action-ssh.html">SSH (manual setup)</a></p>
-</li>
-<li>
-<p><a href="powershell.html">Powershell</a></p>
-</li>
-<li>
-<p><a href="ansible-playbook.html">Ansible Playbooks</a></p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="contribute"><a class="anchor" href="#contribute"></a><a class="link" href="#contribute">Contribute</a></h3>
+<div class="paragraph">
+<p>First of all, a huge, huge thanks for reaching this page, and considering some form of pf contribution. Here are some suggestions below.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+OliveTin does not accept <a href="donations-and-sponsorship.html">Donations and Sponsorship</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If you have 2 Minutes to contribute: <strong>Share how you are using OliveTin</strong>, on Reddit, Twitter/X, LinkedIn, Mastodon, or whatever - use the hashtag #OliveTin.  Show a screenshot or blog about it. Tell people how OliveTin helped you. There is also #screenshot-showcase in the OliveTin Discord community. If you want to ping me directly, I really like getting email or PMs; jump on Discord and just say it, or contact me via one of the methods found at <a href="http://jread.com" class="bare">http://jread.com</a> .</p>
+</li>
+<li>
+<p>If you have 10 minutes to contribute: <strong>Answer a call for support</strong>: look for support issues in #support on discord, or tagged om GitHub issues, and help someone out! You don&#8217;t have to solve the problem, just point someone in the right direction.</p>
+</li>
+<li>
+<p>If you have 15 minutes to contribute:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Write up a feature request</strong> on GitHub issues</p>
+</li>
+<li>
+<p><strong>Improve the docs</strong> - I make a LOT of typos! <a href="https://github.com/OliveTin/docs.olivetin.app" class="bare">https://github.com/OliveTin/docs.olivetin.app</a></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>If you have lots of time:</strong> contribute code! <a href="https://github.com/OliveTin/OliveTin/blob/main/CONTRIBUTING.adoc" class="bare">https://github.com/OliveTin/OliveTin/blob/main/CONTRIBUTING.adoc</a></p>
+</li>
+<li>
+<p><strong>If you have spare compute</strong> - spare server capacity where I can have a virtual machine with root access, then having more VMs to test OliveTin on is always very welcome indeed. I have a lot of sever capacity already though personally, so I&#8217;m probably just being greedy for CPU and RAM :-)</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="save-logs.html">Saving logs</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-container-control.html">Containers - start/stop</a> →</p>
+<p>← Previous: <a href="themes-dev.html">Themes (for theme developers)</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="donations-and-sponsorship.html">Donations &amp; Sponsorship</a> →</p>
 </div>
 </div>
 <div id="footer">
