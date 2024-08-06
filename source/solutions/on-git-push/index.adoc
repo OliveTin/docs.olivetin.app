@@ -47,10 +47,12 @@ read OLDREV NEWREV REFNAME
 OLIVETIN_REQUEST="$(cat <<EOF
 {
   "actionId": "gitops",
-  "arguments": {
-    "name": "commit",
-    "value": "$NEWREV"
-  }
+  "arguments": [
+    {
+      "name": "commit",
+      "value": "$NEWREV"
+    }
+  ]
 }
 EOF
 )"
