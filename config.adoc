@@ -95,6 +95,7 @@ All configuration options are covered in the sollution sections
 
 | `LogLevel` | The log level to use. `INFO`, `DEBUG`, `WARN` | `INFO` | Requires Restart | -
 | `LogDebugOptions` | Enable various debug logs. | `-` | Requires Restart | <<advanced-troubleshooting,Advanced Troubleshooting>>
+| `Insecure*` | Various options to disable security features. | `false` | Restart recommended | <<advanced-troubleshooting,Advanced Troubleshooting>>
 |===
 
 === Miscellaneous Configuration
