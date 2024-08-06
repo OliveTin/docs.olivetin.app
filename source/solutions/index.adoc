@@ -5,6 +5,7 @@ OliveTin was designed to be very simple, but sometimes OliveTin can get complex 
 
 This section of the docs is designed to bring everything into one place and present a scenario, with a single-page solution.
 
+include::on-git-push/index.adoc[]
 include::container-control-panel/index.adoc[]
 include::systemd-control-panel/index.adoc[]
 include::heating-control-panel/index.adoc[]
