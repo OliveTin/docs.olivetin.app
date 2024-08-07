@@ -9,16 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     name: Asciidoctoring the docs to pretty HTML!
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Get build container
-      id: adocbuild
-      uses: avattathil/asciidoctor-action@master
-      with:
-          program: "gem install rouge asciidoctor-multipage && make"
-    - name: Deploy docs to ghpages
-      uses: peaceiris/actions-gh-pages@v3
-      with: 
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        publish_branch: gh-pages
-        publish_dir: ./docs/
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get build container
+        id: adocbuild
+        uses: avattathil/asciidoctor-action@master
+        with:
+            program: "gem install rouge asciidoctor-multipage && make"
+
+      - name: Deploy docs to ghpages
+        uses: peaceiris/actions-gh-pages@v4
+        with: 
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_branch: gh-pages
+          publish_dir: ./docs/
