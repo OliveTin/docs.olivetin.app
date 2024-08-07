@@ -1,7 +1,7 @@
 [#acls]
 === Access Control Lists (Permissions)
 
-include::../../snippit_earlydoc.adoc[]
+include::../snippit_earlydoc.adoc[]
 
 OliveTin supports Access Control Lists.
 

@@ -1,7 +1,7 @@
 [#cloudflare-access-tunnels]
 === Cloudflare Access & Tunnels
 
-include::../../../snippit_earlydoc.adoc[]
+include::../../snippit_earlydoc.adoc[]
 
 Several uses use Cloudflare Access & Tunnels to grant access to OliveTin. There is no special configuration needed for OliveTin to work in this way, simply setup your Cloudflare tunnel to connect to OliveTin on port 1337.
 

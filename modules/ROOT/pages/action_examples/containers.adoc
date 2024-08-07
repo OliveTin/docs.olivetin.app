@@ -17,5 +17,5 @@ actions:
     shell: docker start plex
 ....
 
-include::../../snippit_container_socket.adoc[]
+include::../snippit_container_socket.adoc[]
 

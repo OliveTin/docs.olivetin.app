@@ -1,0 +1,12 @@
+name: olivetin
+title: OliveTin
+version: main
+start_page: intro.adoc
+asciidoc:
+  attributes:
+    source-language: asciidoc@
+    table-caption: false
+nav:
+- modules/ROOT/nav.adoc
+
+

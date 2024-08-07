@@ -1,7 +1,7 @@
 [#themes-dev]
 === Themes (for theme developers)
 
-include::../../snippit_earlydoc.adoc[]
+include::../snippit_earlydoc.adoc[]
 
 ==== Step by step theme guide
 

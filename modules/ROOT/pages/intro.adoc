@@ -1,19 +1,3 @@
-= OliveTin 
-:docinfo: shared
-:doctype: book
-:title: OliveTin documentation
-:toc: left
-:toclevels: 2
-:sectanchors:
-:sectlinks:
-:multipage-level: 2
-:favicon: images/icons/OliveTinLogo.png
-:source-highlighter: rouge
-
-toc::[]
-
-image::images/icons/OliveTinLogo.png[float="right",width = "160px"]
-
 [discrete]
 == OliveTin Introduction
 
@@ -62,34 +46,4 @@ video::Ej6NM9rmZtk[youtube,width=100%]
 [discrete]
 === Read more
 
-include::source/install/index.adoc[]
 
-include::config.adoc[]
-
-include::source/reverse-proxies/index.adoc[]
-
-include::action_execution.adoc[]
-
-include::action_customization.adoc[]
-
-include::source/action_examples/index.adoc[]
-
-include::args.adoc[]
-
-include::dashboards.adoc[]
-
-include::entities.adoc[]
-
-include::source/integrations/index.adoc[]
-
-include::source/security/index.adoc[]
-
-include::source/solutions/index.adoc[]
-
-include::advanced_configuration.adoc[]
-
-include::source/reference/index.adoc[]
-
-include::troubleshooting.adoc[]
-
-include::api.adoc[]

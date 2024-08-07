@@ -1,7 +1,7 @@
 [#themes]
 === Themes (for users)
 
-include::../../snippit_earlydoc.adoc[]
+include::../snippit_earlydoc.adoc[]
 
 Very early version of a theme website: http://www.olivetin.app/themes/
 

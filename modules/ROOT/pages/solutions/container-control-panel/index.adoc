@@ -5,7 +5,7 @@ OliveTin is frequently used to create simple container control panels, this is o
 
 image::images/solution-container-control-panel.png[]
 
-include::../../../snippit_container_socket.adoc[]
+include::../../snippit_container_socket.adoc[]
 
 ==== Entity file
 

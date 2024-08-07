@@ -1,7 +1,7 @@
 [#jwt-keys]
 === JWT with Keys
 
-include::../../snippit_earlydoc.adoc[]
+include::../snippit_earlydoc.adoc[]
 
 ==== Using Public Keys via JWKS
 
