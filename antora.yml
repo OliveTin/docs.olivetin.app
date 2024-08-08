@@ -1,6 +1,7 @@
-name: olivetin
+---
+name: ROOT
 title: OliveTin
-version: ~
+version: ''
 start_page: intro.adoc
 asciidoc:
   attributes:
