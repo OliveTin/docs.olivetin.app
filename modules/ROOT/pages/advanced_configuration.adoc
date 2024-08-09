@@ -42,6 +42,26 @@ actions:
 .The same user interface, but with the "Actions" and "Settings" buttons hidden (`showNavigation: false`)
 image::images/defaultUiHideNav.png[]
 
+[#section-navgiation-style]
+==== Section Navigation Style
+
+`sectionNavigiationStyle` - You can choose to have the section navigation buttons displayed as a Sidebar (`sidebar` - default), or along the top (`topbar`).
+
+[#custom-js]
+==== Custom JavaScript
+
+This is considered an advanced feature, and is not recommended unless you like writing your own code.
+
+You can add custom JavaScript to OliveTin, which will be executed on every page load. This can be useful for adding custom functionality to the web UI.
+
+The custom javascript should be in a file called `custom.js` and saved in `custom-webui/`, which should be in the same directory as your `config.yaml`.
+
+You will need to set `enableCustomJs` to `true` in your `config.yaml` to enable this feature.
+
+==== Custom Themes / Stylesheet rules
+
+See <<themes>>.
+
 [#show-new-versions]
 ==== Show new versions
 
