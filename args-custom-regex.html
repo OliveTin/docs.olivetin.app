@@ -366,6 +366,18 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>OliveTin version 2024.02.081 and above support custom regex patterns for argument types. Here is an example to validate against any 3 letter word;</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The regex pattern should be enclosed in single quotes, otherwise you will probably get a YAML error when starting OliveTin.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
 <div class="content">
@@ -375,8 +387,11 @@ pre.rouge .gs {
     <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "{{ message }}"</span>
     <span class="na">arguments</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">message</span>
-        <span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">regex:^</span><span class="err">\</span><span class="s">w</span><span class="err">\</span><span class="s">w</span><span class="err">\</span><span class="s">w$"</span></code></pre>
+        <span class="na">type</span><span class="pi">:</span> <span class="s1">'</span><span class="s">regex:^\w\w\w$'</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The site <a href="http://regex101.com" class="bare">http://regex101.com</a> is a good place to test your regex patterns.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -385,7 +400,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-08-09 14:27:58 UTC
+Last updated 2024-08-12 19:54:35 UTC
 </div>
 </div>
 </body>
