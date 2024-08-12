@@ -98,6 +98,8 @@ image::images/args3.png[]
 
 OliveTin version 2024.02.081 and above support custom regex patterns for argument types. Here is an example to validate against any 3 letter word;
 
+NOTE: The regex pattern should be enclosed in single quotes, otherwise you will probably get a YAML error when starting OliveTin.
+
 [source,yaml]
 .`config.yaml`
 ----
@@ -107,8 +109,11 @@ actions:
     shell: echo "{{ message }}"
     arguments:
       - name: message
-        type: "regex:^\w\w\w$"
+        type: 'regex:^\w\w\w$'
 ----
+
+The site http://regex101.com is a good place to test your regex patterns.
+
 
 
 [#arg-suggestions]
