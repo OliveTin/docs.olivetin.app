@@ -373,6 +373,18 @@ pre.rouge .gs {
 <p>OliveTin releases are published to GitHub, and the release notes are contained there. This page includes a summary of "Upgrade Notes" for breaking changes between releases.</p>
 </div>
 <div class="sect3">
+<h4 id="_2024_08_14"><a class="anchor" href="#_2024_08_14"></a><a class="link" href="#_2024_08_14">2024.08.14</a></h4>
+<div class="sect4">
+<h5 id="_navigation_change_subpaths_no_longer_supported"><a class="anchor" href="#_navigation_change_subpaths_no_longer_supported"></a><a class="link" href="#_navigation_change_subpaths_no_longer_supported">Navigation change - Subpaths no longer supported</a></h5>
+<div class="paragraph">
+<p>In the past, OliveTin supported subpaths in the URL, for example, <code><a href="http://yourServer:1337/olivetin/" class="bare">http://yourServer:1337/olivetin/</a></code> would load the OliveTin web interface. This was convenient for people who wanted to run OliveTin on a subpath of their domain for some reason, but it actually creates a lot of complexity in the code, and makes it harder to maintain. One particular change that was wanted was to be able to link to specific pages in OliveTin, for example, <code><a href="http://yourServer:1337/logs" class="bare">http://yourServer:1337/logs</a></code> or <code><a href="http://yourServer:1337/myDashboard/myFolder" class="bare">http://yourServer:1337/myDashboard/myFolder</a></code> - this became incredibly difficult to implement with the subpath support.</p>
+</div>
+<div class="paragraph">
+<p>Therefore, OliveTin no longer supports subpaths in the URL. If you have been using OliveTin with a subpath, you will need to change your configuration to use a subdomain or a different port.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_2024_04_09"><a class="anchor" href="#_2024_04_09"></a><a class="link" href="#_2024_04_09">2024.04.09</a></h4>
 <div class="sect4">
 <h5 id="_themes_directory_for_theme_users"><a class="anchor" href="#_themes_directory_for_theme_users"></a><a class="link" href="#_themes_directory_for_theme_users">Themes Directory (for theme users)</a></h5>
@@ -458,7 +470,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-08-12 19:54:35 UTC
+Last updated 2024-08-14 22:56:01 UTC
 </div>
 </div>
 </body>
