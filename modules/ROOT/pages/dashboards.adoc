@@ -207,6 +207,37 @@ dashboards:
           - title: 'Stop {{ container.Names }}'
 ----
 
+==== CSS Classes
+
+You can also add CSS classes to the display, which can be useful for styling.
+
+[source,yaml]
+----
+dashboards:
+  - title: My Containers
+    contents:
+      - title: 'Container {{ container.Names.0 }} ({{ container.Image }})'
+        entity: container
+        type: fieldset
+        contents:
+          - type: display
+            cssClass: '{{ container.State }}'
+            title: |
+              {{ container.Status }} <br /><br /><strong>{{ container.State }}</strong>
+          - title: 'Start {{ container.Names.0 }}'
+          - title: 'Stop {{ container.Names.0 }}'
+          - title: 'Remove {{ container.Names.0 }}'
+----
+
+You can then use the following CSS to style the display;
+
+[source,css]
+----
+div.display.running {
+  color: green;
+}
+----
+
 [#output-views]
 === Most recent action output
 
