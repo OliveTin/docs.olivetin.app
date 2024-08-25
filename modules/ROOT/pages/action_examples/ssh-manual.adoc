@@ -42,7 +42,12 @@ The steps in detail are below;
 Open a terminal window on _server-with-olivetin_. 
 
 [loweralpha]
-. Run `mkdir /opt/OliveTinSshKeys` to create a shared directory for your SSH key file.
+. Create the `/opt/OliveTinSshKeys` directory, to create a shared directory for your SSH key file.
++
+[source,bash]
+----
+user@server-with-olivetin: mkdir /opt/OliveTinSshKeys
+----
 +
 This will later be used as a "volume mount" when you create a docker container. 
 
