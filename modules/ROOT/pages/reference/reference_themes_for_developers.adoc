@@ -5,6 +5,7 @@ include::../snippit_earlydoc.adoc[]
 
 ==== Step by step theme guide
 
+* OliveTin will by default only read theme.css once on startup. If you are intending to change theme.css while OliveTin is running, set `themeCacheDisabled: true` in your config.yaml. This will make OliveTin read theme.css on every request, and is useful for development.
 * Go to https://github.com/OliveTin/theme-template and use this template repository to create your new theme repository on GitHub. 
 * Install OliveTin somewhere, and clone your new repository using `git clone` into your themes directory.
 * Set `themeName: <your-folder>` in your OliveTin config.yaml and restart OliveTin.
