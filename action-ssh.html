@@ -444,7 +444,12 @@ There is an easy method of setting up SSH with OliveTin, which is described in t
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Run <code>mkdir /opt/OliveTinSshKeys</code> to create a shared directory for your SSH key file.</p>
+<p>Create the <code>/opt/OliveTinSshKeys</code> directory, to create a shared directory for your SSH key file.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">user@server-with-olivetin: <span class="nb">mkdir</span> /opt/OliveTinSshKeys</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>This will later be used as a "volume mount" when you create a docker container.</p>
 </div>
@@ -583,7 +588,7 @@ root@server2: ssh-copy-id ssh-copy-id -i /opt/OliveTinSshKeys/id_rsa.pub root@se
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-08-25 23:20:48 UTC
+Last updated 2024-08-25 23:36:04 UTC
 </div>
 </div>
 </body>
