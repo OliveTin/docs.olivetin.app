@@ -46,7 +46,7 @@ Open a terminal window on _server-with-olivetin_.
 +
 [source,bash]
 ----
-user@server-with-olivetin: mkdir /opt/OliveTinSshKeys
+root@server-with-olivetin: mkdir /opt/OliveTinSshKeys
 ----
 +
 This will later be used as a "volume mount" when you create a docker container. 
