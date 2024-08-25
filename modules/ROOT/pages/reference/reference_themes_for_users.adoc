@@ -1,9 +1,7 @@
 [#themes]
 === Themes (for users)
 
-include::../snippit_earlydoc.adoc[]
-
-You can look for themes on the link::http://www.olivetin.app/themes/[OliveTin Theme Site].
+You can look for themes on the link:http://www.olivetin.app/themes/[OliveTin Theme Site].
 
 ==== The custom-webui directory
 

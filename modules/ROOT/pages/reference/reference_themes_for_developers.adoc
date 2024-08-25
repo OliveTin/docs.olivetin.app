@@ -1,8 +1,6 @@
 [#themes-dev]
 === Themes (for theme developers)
 
-include::../snippit_earlydoc.adoc[]
-
 ==== Step by step theme guide
 
 * OliveTin will by default only read theme.css once on startup. If you are intending to change theme.css while OliveTin is running, set `themeCacheDisabled: true` in your config.yaml. This will make OliveTin read theme.css on every request, and is useful for development.
