@@ -53,6 +53,10 @@ This will later be used as a "volume mount" when you create a docker container.
 
 . Run `ssh-keygen` to generate a SSH key just for OliveTin.
 +
+[source,bash]
+----
+root@server-with-olivetin: ssh-keygen
+----
 [lowerroman]
 .. Enter the file in which to save the key: `/opt/OliveTinSshKeys/id_rsa`
 .. Enter passphrase (empty for no passphrase): `<enter>`
