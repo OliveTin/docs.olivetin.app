@@ -382,18 +382,18 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </table>
 </div>
 <div class="paragraph">
-<p>Very early version of a theme website: <a href="http://www.olivetin.app/themes/" class="bare">http://www.olivetin.app/themes/</a></p>
+<p>You can look for themes on the link::http://www.olivetin.app/themes/[OliveTin Theme Site].</p>
 </div>
 <div class="sect3">
 <h4 id="_the_custom_webui_directory"><a class="anchor" href="#_the_custom_webui_directory"></a><a class="link" href="#_the_custom_webui_directory">The custom-webui directory</a></h4>
 <div class="paragraph">
-<p>OliveTin will server a directory called <code>custom-webui</code> at <code><a href="http://yourserver:1337/custom-webui/" class="bare">http://yourserver:1337/custom-webui/</a></code>, this means that all theme content should go into <code>custom-webui/themes</code>.</p>
+<p>When OliveTin starts up, it will try to create a directory called <code>custom-webui/themes/</code> in your config directory. This directory is where you can put your own custom themes.</p>
 </div>
 <div class="paragraph">
-<p>In the past, OliveTin used to lookup the theme name and send that theme name to your browser so that it could then manually request the theme stylesheet. This approach was slow, it stopped browsers caching, and it caused an awkward "flash" whenever the new theme was loaded. Now, OliveTin internally looks up your theme.css file based on your <code>themeName</code>, and will always serve this <code>theme.css</code> file at <code><a href="http://yourServer:1337/theme.css" class="bare">http://yourServer:1337/theme.css</a></code>. If you are not using a custom theme, OliveTin will just serve an empty CSS file.</p>
+<p>OliveTin will then serve this theme directory at <code><a href="http://yourserver:1337/custom-webui/themes/" class="bare">http://yourserver:1337/custom-webui/themes/</a></code>, this means that all theme content should go into <code>/custom-webui/themes/mytheme/</code>.</p>
 </div>
 <div class="paragraph">
-<p>Install Themes into your <strong>custom-webui</strong> directory, which should be in your config directory. If this directory does not exist, you can create it.</p>
+<p>Install Themes into your <code>custom-webui/themes/</code> directory, which should be in your config directory. If this directory does not exist, you can create it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -416,7 +416,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <div class="sect3">
 <h4 id="_create_your_own_theme_without_any_intention_of_publishing_it"><a class="anchor" href="#_create_your_own_theme_without_any_intention_of_publishing_it"></a><a class="link" href="#_create_your_own_theme_without_any_intention_of_publishing_it">Create your own theme (without any intention of publishing it)</a></h4>
 <div class="paragraph">
-<p>Create a sub-directory under your theme directory (normally /var/www/olivetin/themes) called "mytheme"</p>
+<p>Create a sub-directory under your theme directory (eg <code>custom-webui/themes/mytheme</code>);</p>
 </div>
 <div class="paragraph">
 <p>Set your theme in your config</p>
@@ -428,7 +428,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 </div>
 <div class="paragraph">
-<p>Add your css into /var/www/olivetin/themes/mytheme/theme.css</p>
+<p>Add your css into <code>custom-webui/themes/mytheme/theme.css</code>.</p>
 </div>
 <div class="paragraph">
 <p>Your theme css will be loaded "on top" of the existing stylesheet.</p>
@@ -446,27 +446,8 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <div class="paragraph">
 <p>Profit.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_create_a_theme_for_other_people_to_use"><a class="anchor" href="#_create_a_theme_for_other_people_to_use"></a><a class="link" href="#_create_a_theme_for_other_people_to_use">Create a theme for other people to use</a></h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Use this GitHub repository as a template to create your own theme repo: <a href="https://github.com/OliveTin/theme-template" class="bare">https://github.com/OliveTin/theme-template</a></p>
-</li>
-<li>
-<p>Fork <a href="https://github.com/olivetin/themes" class="bare">https://github.com/olivetin/themes</a></p>
-</li>
-<li>
-<p>Create a directory under "content/posts" called something like "mytheme", and populate index.md, and cover.png.</p>
-</li>
-<li>
-<p>Raise a pull request back to github.com/olivetin/themes/</p>
-</li>
-<li>
-<p>Rejoice!</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Check out <a href="themes-dev.html">Themes (for theme developers)</a> for more information on how to develop themes.</p>
 </div>
 </div>
 </div>
@@ -476,7 +457,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-08-16 19:07:34 UTC
+Last updated 2024-08-25 21:53:40 UTC
 </div>
 </div>
 </body>
