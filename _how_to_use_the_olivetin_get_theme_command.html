@@ -297,7 +297,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="exec-startup" class="book toc2 toc-left">
+<body id="_how_to_use_the_olivetin_get_theme_command" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -310,28 +310,6 @@ pre.rouge .gs {
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
 <li><a href="actions.html">Action execution</a>
-<ul class="sectlevel2">
-<li><a href="create-your-first-action.html">Create your first action</a>
-</li>
-<li><a href="exec-on-demand.html">Execute on demand</a>
-</li>
-<li><a href="exec-cron.html">Execute on schedule (cron)</a>
-</li>
-<li><a href="exec-startup.html"><span class="toc-current">Execute on startup</span></a>
-</li>
-<li><a href="exec-webhook.html">Execute on webhook</a>
-</li>
-<li><a href="exec-file-created.html">Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">Execute on file changed</a>
-</li>
-<li><a href="exec-on-calendar.html">Execute on calendar file</a>
-</li>
-<li><a href="after-completion.html">Execute after completion</a>
-</li>
-<li><a href="triggers.html">Triggers</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
@@ -352,6 +330,38 @@ pre.rouge .gs {
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
 <li><a href="_reference.html">Reference</a>
+<ul class="sectlevel2">
+<li><a href="network-ports.html">Network ports</a>
+</li>
+<li><a href="_security.html">Security</a>
+</li>
+<li><a href="_understanding_exit_codes.html">Understanding exit codes</a>
+</li>
+<li><a href="update-checks.html">Update Checks</a>
+</li>
+<li><a href="update-tracking.html">Update Checks &amp; Tracking (legacy)</a>
+</li>
+<li><a href="container-dnf.html">Installing extra container packages</a>
+</li>
+<li><a href="multi-inst.html">Multiple instances on a server</a>
+</li>
+<li><a href="snapsnots.html">Snapshot builds</a>
+</li>
+<li><a href="themes.html">Themes (for users)</a>
+</li>
+<li><a href="_how_to_use_the_olivetin_get_theme_command.html"><span class="toc-current">How to use the <code>olivetin-get-theme</code> command</span></a>
+</li>
+<li><a href="_where_do_i_find_my_themes_directory.html">Where do I find my themes directory?</a>
+</li>
+<li><a href="themes-dev.html">Themes (for theme developers)</a>
+</li>
+<li><a href="contribute.html">Contribute</a>
+</li>
+<li><a href="donations-and-sponsorship.html">Donations &amp; Sponsorship</a>
+</li>
+<li><a href="upgrade-notes.html">Upgrade Notes</a>
+</li>
+</ul>
 </li>
 <li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
 </li>
@@ -362,40 +372,33 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="exec-startup"><a class="anchor" href="#exec-startup"></a><a class="link" href="#exec-startup">Execute on startup</a></h3>
+<h3 id="_how_to_use_the_olivetin_get_theme_command"><a class="anchor" href="#_how_to_use_the_olivetin_get_theme_command"></a><a class="link" href="#_how_to_use_the_olivetin_get_theme_command">How to use the <code>olivetin-get-theme</code> command</a></h3>
 <div class="paragraph">
-<p>OliveTin can execute actions on a startup.</p>
+<p>The default OliveTin configuration comes with an action to get new OliveTin themes. If you deleted it from your configuration, you can add it back in by adding the following to your <code>config.yaml</code> file;</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Say hello</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Hello!"</span>
-    <span class="na">execOnStartup</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="dnf-startup"><a class="anchor" href="#dnf-startup"></a><a class="link" href="#dnf-startup">Example: Install additional commands into OliveTin</a></h4>
-<div class="paragraph">
-<p>This functionality to execute actions on startup is a very easy way to install additional commands in OliveTin, however it requires running OliveTin as a root user to be able to use <code>microdnf</code>;</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Install dnsmasq</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">microdnf install bind-utils</span>
-    <span class="na">execOnStartup</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
+<pre class="rouge highlight"><code data-lang="bash">actions:
+  - title: Get OliveTin Theme
+    shell: olivetin-get-theme <span class="o">{{</span> themeGitRepo <span class="o">}}</span> <span class="o">{{</span> themeFolderName <span class="o">}}</span>
+    icon: theme
+    arguments:
+      - name: themeGitRepo
+        title: Theme<span class="s1">'s Git Repository
+        description: Find new themes at https://olivetin.app/themes
+        type: url
+
+      - name: themeFolderName
+        title: Theme'</span>s Folder Name
+        <span class="nb">type</span>: ascii_identifier</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A more secure method than running DNF as root, is a manual command the temporarily runs as root. To learn more about how to install additional packages into the container in this more secure way, see <a href="container-dnf.html">installing extra container packages</a>.</p>
-</div>
+<p>When you are browsing the OliveTin Theme Site, you can click on a theme and see it&#8217;s Git Repository URL. You can then copy this URL and paste it into the <code>olivetin-get-theme</code> command.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="exec-cron.html">Execute on schedule (cron)</a> | ↑ Up: <a href="actions.html">Action execution</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-webhook.html">Execute on webhook</a> →</p>
+<p>← Previous: <a href="themes.html">Themes (for users)</a> | ↑ Up: <a href="_reference.html">Reference</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_where_do_i_find_my_themes_directory.html">Where do I find my themes directory?</a> →</p>
 </div>
 </div>
 <div id="footer">
