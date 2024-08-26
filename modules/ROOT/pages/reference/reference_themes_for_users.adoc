@@ -3,7 +3,38 @@
 
 You can look for themes on the link:http://www.olivetin.app/themes/[OliveTin Theme Site].
 
-==== The custom-webui directory
+==== Installing a theme
+
+There are 3 ways to install a theme;
+
+1. Use the `olivetin-get-theme` command to easily Git clone the theme into your `custom-webui/themes/` directory.
+2. Download the theme .zip and copy it across to your `custom-webui/themes/` directory.
+3. Git Clone the theme into your `custom-webui/themes/` directory.
+
+=== How to use the `olivetin-get-theme` command
+
+The default OliveTin configuration comes with an action to get new OliveTin themes. If you deleted it from your configuration, you can add it back in by adding the following to your `config.yaml` file;
+
+[source,bash]
+----
+actions:
+  - title: Get OliveTin Theme
+    shell: olivetin-get-theme {{ themeGitRepo }} {{ themeFolderName }}
+    icon: theme
+    arguments:
+      - name: themeGitRepo
+        title: Theme's Git Repository
+        description: Find new themes at https://olivetin.app/themes
+        type: url
+
+      - name: themeFolderName
+        title: Theme's Folder Name
+        type: ascii_identifier
+----
+
+When you are browsing the OliveTin Theme Site, you can click on a theme and see it's Git Repository URL. You can then copy this URL and paste it into the `olivetin-get-theme` command.
+
+=== Where do I find my themes directory?
 
 When OliveTin starts up, it will try to create a directory called `custom-webui/themes/` in your config directory. This directory is where you can put your own custom themes.
 
