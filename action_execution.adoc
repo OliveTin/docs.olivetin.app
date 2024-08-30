@@ -72,10 +72,32 @@ If you need per-second resolution for your actions, this can be enabled in your 
 cronSupportForSeconds: true
 
 actions:
-  title: Execute every 5 seconds
-  shell: date
-  execOnCron:
-    - "*/5 * * * * *"
+  - title: Execute every 5 seconds
+    shell: date
+    execOnCron:
+      - "*/5 * * * * *"
+----
+
+==== Cron and ACLs
+
+If you have enabled ACL, cron tasks are run as the user `cron`, which means that your ACL needs to allow the cron user to execute the action. This is one possibilty:
+
+[source,yaml]
+.`config.yaml`
+----
+accessControlLists:
+  - name: "cron"
+    matchUsernames:
+      - cron
+    permissions:
+      exec: true
+actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    execOnCron: 
+      - "@hourly"
+    acls:
+        - "cron"
 ----
 
 [#exec-startup]
