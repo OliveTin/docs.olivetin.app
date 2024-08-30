@@ -297,41 +297,45 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="exec-cron" class="book toc2 toc-left">
+<body id="install-manjaro" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <p><span class="toc-root"><a href="index.html">OliveTin documentation</a></span></p><ul class="sectlevel1">
 <li><a href="installation.html">Installation Guide</a>
+<ul class="sectlevel2">
+<li><a href="install-container-vs-service.html">Containers vs Services</a>
+</li>
+<li><a href="choose-package.html">Which download do I need?</a>
+</li>
+<li><a href="install-linuxpackage.html">Linux package install (.rpm/.deb)</a>
+</li>
+<li><a href="install-fedora.html">Fedora Linux (dnf)</a>
+</li>
+<li><a href="install-alpine.html">Alpine Linux</a>
+</li>
+<li><a href="install-archbtw.html">Arch Linux (AUR)</a>
+</li>
+<li><a href="install-manjaro.html"><span class="toc-current">Manjaro (pamac/AUR)</span></a>
+</li>
+<li><a href="install-container.html">Container install (podman/docker)</a>
+</li>
+<li><a href="install-compose.html">Docker Compose install</a>
+</li>
+<li><a href="install-helm.html">Kubernetes with Helm</a>
+</li>
+<li><a href="install-k8s.html">Kubernetes with Manifest files</a>
+</li>
+<li><a href="install-targz.html">.tar.gz Install (manual)</a>
+</li>
+</ul>
 </li>
 <li><a href="config.html">Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
 <li><a href="actions.html">Action execution</a>
-<ul class="sectlevel2">
-<li><a href="create-your-first-action.html">Create your first action</a>
-</li>
-<li><a href="exec-on-demand.html">Execute on demand</a>
-</li>
-<li><a href="exec-cron.html"><span class="toc-current">Execute on schedule (cron)</span></a>
-</li>
-<li><a href="exec-startup.html">Execute on startup</a>
-</li>
-<li><a href="exec-webhook.html">Execute on webhook</a>
-</li>
-<li><a href="exec-file-created.html">Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">Execute on file changed</a>
-</li>
-<li><a href="exec-on-calendar.html">Execute on calendar file</a>
-</li>
-<li><a href="after-completion.html">Execute after completion</a>
-</li>
-<li><a href="triggers.html">Triggers</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
@@ -362,52 +366,90 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="exec-cron"><a class="anchor" href="#exec-cron"></a><a class="link" href="#exec-cron">Execute on schedule (cron)</a></h3>
+<h3 id="install-manjaro"><a class="anchor" href="#install-manjaro"></a><a class="link" href="#install-manjaro">Manjaro (pamac/AUR)</a></h3>
 <div class="paragraph">
-<p>OliveTin can execute actions on a schedule, and uses a cron format for configuration.</p>
+<p>Please see teh <a href="install-archbtw.html">Arch Linux (AUR)</a> page for a description of the difference between <code>olivetin-bin</code> and <code>olivetin</code> in AUR. This page assumes you want to compile from source (<code>olivetin</code> package).</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Say hello</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Hello!"</span>
-    <span class="na">execOnCron</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">@hourly"</span>
-
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Say goodbye</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Say Goodbye"</span>
-    <span class="na">execOnCron</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s2">"</span><span class="s">*/5</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span> <span class="c1"># Every 5 minutes</span></code></pre>
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/go/bin/
+pamac <span class="nb">install </span>buf
+pamac <span class="nb">install </span>olivetin
+<span class="nb">sudo mkdir</span> <span class="nt">-p</span> /etc/OliveTin/custom-webui/themes/
+<span class="nb">sudo mkdir</span> <span class="nt">-p</span> /etc/OliveTin/entities/</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>This is a fantastic website: <a href="https://cron.help/" class="bare">https://cron.help/</a></p>
 </div>
 <div class="sect3">
-<h4 id="_support_for_seconds_in_cron"><a class="anchor" href="#_support_for_seconds_in_cron"></a><a class="link" href="#_support_for_seconds_in_cron">Support for seconds in cron</a></h4>
+<h4 id="_post_installation_4"><a class="anchor" href="#_post_installation_4"></a><a class="link" href="#_post_installation_4">Post installation</a></h4>
 <div class="paragraph">
-<p>The default cron format for OliveTin supports the Unix/Linux format - 5 fields, with no support for seconds. This is by far the most popular format that most people are used to.</p>
+<p>You will need to write a basic configuration file before OliveTin will startup.</p>
 </div>
 <div class="paragraph">
-<p>If you need per-second resolution for your actions, this can be enabled in your config - meaning that your cronlines will support 6 columns. The first "new" column is seconds. For example, to execute <code>date</code> every 5 seconds;</p>
+<p>Create the following basic config file at <code>/etc/OliveTin/config.yaml</code> with the
+following contents;</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
+<div class="title">The most simple <code>config.yaml</code> file.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">cronSupportForSeconds</span><span class="pi">:</span> <span class="kc">true</span>
-
-<span class="na">actions</span><span class="pi">:</span>
-  <span class="na">title</span><span class="pi">:</span> <span class="s">Execute every 5 seconds</span>
-  <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
-  <span class="na">execOnCron</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s2">"</span><span class="s">*/5</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Hello</span><span class="nv"> </span><span class="s">world!"</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo 'Hello World!'</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now that you have a configuration file, and OliveTin is installed, start it;</p>
+</div>
+<div class="listingblock">
+<div class="title">Start the service (only needed once)</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="shell">user@host: systemctl <span class="nb">enable</span> <span class="nt">--now</span> OliveTin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are running a firewall on your server, like firewalld, you will need to
+open port 1337;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="shell">user@host: firewall-cmd <span class="nt">--add-port</span> 1337/tcp <span class="nt">--permanent</span>
+user@host: firewall-cmd <span class="nt">--reload</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should be able to browse to <a href="http://yourserver:1337" class="bare">http://yourserver:1337</a> (or similar) to get to
+the web interface.</p>
+</div>
+<div class="paragraph">
+<p>If you see the OliveTin page popup in your browser, you can jump to the
+<a href="config.html">configuration section</a> as the next step.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_troubleshooting_systemd_installations_4"><a class="anchor" href="#_troubleshooting_systemd_installations_4"></a><a class="link" href="#_troubleshooting_systemd_installations_4">Troubleshooting systemd installations</a></h4>
+<div class="paragraph">
+<p>If you are having problems, you can check if OliveTin is running like this;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="shell">user@host: systemctl status OliveTin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the service has failed, scroll through the logs;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="shell">user@host: journalctl <span class="nt">-eu</span> OliveTin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you cannot understand the logs, or otherwise need help, see the <a href="support.html">Where to find help</a>
+page.</p>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="exec-on-demand.html">Execute on demand</a> | ↑ Up: <a href="actions.html">Action execution</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-startup.html">Execute on startup</a> →</p>
+<p>← Previous: <a href="install-archbtw.html">Arch Linux (AUR)</a> | ↑ Up: <a href="installation.html">Installation Guide</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="install-container.html">Container install (podman/docker)</a> →</p>
 </div>
 </div>
 <div id="footer">
