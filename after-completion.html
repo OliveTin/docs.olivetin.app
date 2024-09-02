@@ -373,11 +373,11 @@ pre.rouge .gs {
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Check date and send notification via apprise</span>
     <span class="na">icon</span><span class="pi">:</span> <span class="s">date</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
-    <span class="na">shellAfterCompleted</span><span class="pi">:</span> <span class="s2">"</span><span class="s">apprise</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">/config/apprise.yml</span><span class="nv"> </span><span class="s">-t</span><span class="nv"> </span><span class="s">'Notification:</span><span class="nv"> </span><span class="s">Backup</span><span class="nv"> </span><span class="s">script</span><span class="nv"> </span><span class="s">completed'</span><span class="nv"> </span><span class="s">-b</span><span class="nv"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">backup</span><span class="nv"> </span><span class="s">script</span><span class="nv"> </span><span class="s">completed</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">code</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">exitCode}}.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">log</span><span class="nv"> </span><span class="s">is:</span><span class="nv"> </span><span class="se">\n</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">stdout</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">'"</span></code></pre>
+    <span class="na">shellAfterCompleted</span><span class="pi">:</span> <span class="s2">"</span><span class="s">apprise</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">/config/apprise.yml</span><span class="nv"> </span><span class="s">-t</span><span class="nv"> </span><span class="s">'Notification:</span><span class="nv"> </span><span class="s">Backup</span><span class="nv"> </span><span class="s">script</span><span class="nv"> </span><span class="s">completed'</span><span class="nv"> </span><span class="s">-b</span><span class="nv"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">backup</span><span class="nv"> </span><span class="s">script</span><span class="nv"> </span><span class="s">completed</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">code</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">exitCode}}.</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">log</span><span class="nv"> </span><span class="s">is:</span><span class="nv"> </span><span class="se">\n</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">output</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">'"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When running shellAfterCompleted, you <strong>cannot</strong> use argument values - they are not passed to the command. However two special arguments are defined as shown above - <code>exitCode</code> and <code>stdout</code> from the previous <code>shell</code> command.</p>
+<p>When running shellAfterCompleted, you <strong>cannot</strong> use argument values - they are not passed to the command. However two special arguments are defined as shown above - <code>exitCode</code> and <code>output</code> from the previous <code>shell</code> command.</p>
 </div>
 <div class="paragraph">
 <p>You can only use a single <code>shellAfterCompleted</code>, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.</p>
@@ -409,7 +409,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-09-02 16:19:55 UTC
+Last updated 2024-09-02 20:05:29 UTC
 </div>
 </div>
 </body>
