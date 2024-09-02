@@ -379,22 +379,11 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">defaultPermissions</span><span class="pi">:</span>
   <span class="na">view</span><span class="pi">:</span> <span class="kc">false</span>
   <span class="na">exec</span><span class="pi">:</span> <span class="kc">false</span>
-  <span class="na">logs</span><span class="pi">:</span> <span class="kc">true</span>
-
-<span class="na">accessControlLists</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">admins</span>
-    <span class="na">addToEveryAction</span><span class="pi">:</span> <span class="kc">true</span>
-    <span class="na">permissions</span><span class="pi">:</span>
-      <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
-      <span class="na">logs</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
+  <span class="na">logs</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Or you can specify access control lists per action:</p>
-</div>
-<div class="paragraph">
-<p>You can have one default access control list, list this;</p>
 </div>
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
@@ -405,6 +394,11 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 
 <span class="na">accessControlLists</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">admins</span>
+    <span class="na">addToEveryAction</span><span class="pi">:</span> <span class="kc">false</span>
+    <span class="na">matchUsernames</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">james</span>
+    <span class="na">matchUsergroups</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">admins</span>
     <span class="na">permissions</span><span class="pi">:</span>
       <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
       <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
@@ -422,7 +416,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-08-30 15:04:10 UTC
+Last updated 2024-09-02 16:19:55 UTC
 </div>
 </div>
 </body>
