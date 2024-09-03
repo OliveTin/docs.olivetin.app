@@ -362,6 +362,9 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>If you want to start organizing OliveTin actions more effectively, then <strong>Dashboards</strong> are for you!</p>
 </div>
+<div class="paragraph">
+<p>one of the biggest reasons to use Dashboards as opposed to just the "Actions" section, is that dashboards allow you to use <a href="folders.html">Folders (Directories)</a>, and dashboards really start to get exciting when you start using <a href="entities.html">entities</a> and displays.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/dashboard.png" alt="dashboard">
@@ -382,10 +385,12 @@ pre.rouge .gs {
  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">server.name</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">Wake</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">Lan'</span>
    <span class="na">shell</span><span class="pi">:</span> <span class="s1">'</span><span class="s">wol</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">server.name</span><span class="nv"> </span><span class="s">}}'</span>
    <span class="na">timeout</span><span class="pi">:</span> <span class="m">10</span>
+   <span class="na">entity</span><span class="pi">:</span> <span class="s">server</span>
 
  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">{{</span><span class="nv"> </span><span class="s">server.name</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">Power</span><span class="nv"> </span><span class="s">Off'</span>
-   <span class="na">shell</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ssh</span><span class="nv"> </span><span class="s">root@{{</span><span class="nv"> </span><span class="s">server.name}}</span><span class="nv"> </span><span class="s">"poweroff"'</span>
+   <span class="na">shell</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ssh</span><span class="nv"> </span><span class="s">root@{{</span><span class="nv"> </span><span class="s">server.name</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">"poweroff"'</span>
    <span class="na">timeout</span><span class="pi">:</span> <span class="m">10</span>
+   <span class="na">entity</span><span class="pi">:</span> <span class="s">server</span>
 
 
 <span class="c1"># Dashboards are a way of taking actions from the default "actions" view, and</span>
@@ -465,7 +470,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-09-02 20:05:29 UTC
+Last updated 2024-09-03 09:12:53 UTC
 </div>
 </div>
 </body>
