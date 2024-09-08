@@ -22,9 +22,9 @@ include::config.adoc[]
 
 include::reverse-proxies/index.adoc[]
 
-include::action_execution.adoc[]
+include::action_execution/index.adoc[]
 
-include::action_customization.adoc[]
+include::action_customization/index.adoc[]
 
 include::action_examples/index.adoc[]
 

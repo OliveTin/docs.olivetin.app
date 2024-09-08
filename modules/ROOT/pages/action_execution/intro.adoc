@@ -1,0 +1,6 @@
+[#actions]
+== Action execution
+
+An action is a shell command, with an associated icon, and various details that describe how the command can be executed. Actions are the fundamental unit of work in OliveTin.
+
+

@@ -1,0 +1,22 @@
+[#triggers]
+=== Triggers
+
+Sometimes you want to trigger another action after the first one completes. This is mostly useful for updating hidden actions that update entity files, without having to run those updates on a cron job every 10 seconds!
+
+[source,yaml]
+----
+entities:
+  - file: /etc/OliveTin/entities/containers.json
+    name: container
+
+actions:
+  - title: stop {{ container.Names }}
+    shell: docker stop {{ container.Names}}
+    entity: container
+    trigger: update containers
+
+  - title: update containers
+    shell: docker ps -a --format=json > /etc/OliveTin/entities/containers.json
+    hidden: true
+----
+

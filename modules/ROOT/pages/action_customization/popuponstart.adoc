@@ -1,0 +1,57 @@
+[#popup-on-start]
+=== Popup on Start (Execution Feedback)
+OliveTin now has several options to control "feedback" when actions are started. This can be controlled on
+a per-action basis, using the `popupOnStart` configuration option.
+
+==== Big Flashy Buttons
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Ping the Internet
+    popupOnStart: default
+----
+
+This will also be the option that is used if no other values match.
+
+image::images/flashyButton.png[]
+
+==== Execution Dialog (Output Only)
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Check disk space
+    popupOnStart: execution-dialog-stdout-only
+----
+
+image::images/popupOutputOnly.png[]
+
+==== Execution Dialog
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Check dmesg logs
+    popupOnStart: execution-dialog
+----
+
+.Example of `popupOnStart: execution-dialog`
+image::images/executionDialog.png[]
+
+==== Execution Buttons
+
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: date
+    popupOnStart: execution-button
+----
+
+image::images/executionButtons.png[]
+
+
