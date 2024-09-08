@@ -8,6 +8,8 @@ include::exitCodes.adoc[]
 
 include::updateChecks.adoc[]
 
+include::updateTracking.adoc[]
+
 include::containerInstallPackages.adoc[]
 
 include::reference_multipleInstances.adoc[]
