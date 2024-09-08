@@ -14,19 +14,9 @@ defaultPermissions:
   view: false
   exec: false
   logs: true
-
-accessControlLists:
-  - name: admins
-    addToEveryAction: true
-    permissions:
-      view: true
-      exec: true
-      logs: true
 ----
 
 Or you can specify access control lists per action:
-
-You can have one default access control list, list this;
 
 [source,yaml]
 .`config.yaml`
@@ -37,6 +27,11 @@ defaultPermissions:
 
 accessControlLists:
   - name: admins
+    addToEveryAction: false
+    matchUsernames:
+      - james
+    matchUsergroups:
+      - admins
     permissions:
       view: true
       exec: true

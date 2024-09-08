@@ -42,12 +42,21 @@ The steps in detail are below;
 Open a terminal window on _server-with-olivetin_. 
 
 [loweralpha]
-. Run `mkdir /opt/OliveTinSshKeys` to create a shared directory for your SSH key file.
+. Create the `/opt/OliveTinSshKeys` directory, to create a shared directory for your SSH key file.
++
+[source,bash]
+----
+root@server-with-olivetin: mkdir /opt/OliveTinSshKeys
+----
 +
 This will later be used as a "volume mount" when you create a docker container. 
 
 . Run `ssh-keygen` to generate a SSH key just for OliveTin.
 +
+[source,bash]
+----
+root@server-with-olivetin: ssh-keygen
+----
 [lowerroman]
 .. Enter the file in which to save the key: `/opt/OliveTinSshKeys/id_rsa`
 .. Enter passphrase (empty for no passphrase): `<enter>`

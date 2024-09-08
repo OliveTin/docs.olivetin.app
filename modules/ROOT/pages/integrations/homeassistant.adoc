@@ -42,7 +42,7 @@ From the file editor now in your sidebar, browse the filesystem to the configura
 ----
 rest_command:
   olivetin_sleep_mindstorm:
-    url: http://olivetin.webapps.teratan.lan/api/StartActionByGetAndWait/sleep_server
+    url: http://olivetin.webapps.teratan.lan/api/StartActionByGetAndWait/server_sleep
     method: get
 ----
 

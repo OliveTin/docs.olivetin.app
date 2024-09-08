@@ -5,6 +5,8 @@ OliveTin generates a default view of actions which is useful for simple OliveTin
 
 If you want to start organizing OliveTin actions more effectively, then **Dashboards** are for you!
 
+one of the biggest reasons to use Dashboards as opposed to just the "Actions" section, is that dashboards allow you to use <<folders>>, and dashboards really start to get exciting when you start using <<entities,entities>> and displays.
+
 image::images/dashboard.png[]
 
 Example configuration
@@ -21,10 +23,12 @@ actions:
  - title: '{{ server.name }} Wake on Lan'
    shell: 'wol {{ server.name }}'
    timeout: 10
+   entity: server
 
  - title: '{{ server.name }} Power Off'
-   shell: 'ssh root@{{ server.name}} "poweroff"'
+   shell: 'ssh root@{{ server.name }} "poweroff"'
    timeout: 10
+   entity: server
 
 
 # Dashboards are a way of taking actions from the default "actions" view, and
@@ -207,17 +211,50 @@ dashboards:
           - title: 'Stop {{ container.Names }}'
 ----
 
+==== CSS Classes
+
+You can also add CSS classes to the display, which can be useful for styling.
+
+[source,yaml]
+----
+dashboards:
+  - title: My Containers
+    contents:
+      - title: 'Container {{ container.Names.0 }} ({{ container.Image }})'
+        entity: container
+        type: fieldset
+        contents:
+          - type: display
+            cssClass: '{{ container.State }}'
+            title: |
+              {{ container.Status }} <br /><br /><strong>{{ container.State }}</strong>
+          - title: 'Start {{ container.Names.0 }}'
+          - title: 'Stop {{ container.Names.0 }}'
+          - title: 'Remove {{ container.Names.0 }}'
+----
+
+You can then use the following CSS to style the display;
+
+[source,css]
+----
+div.display.running {
+  color: green;
+}
+----
+
 [#output-views]
 === Most recent action output
 
-This is considered an advanced and experimental feature at the moment. 
+This is considered an advanced and experimental feature at the moment.
 
-WARNING: If you execute too frequently (like every 5-10 seconds) OliveTin is prone to crashing. This will be fixed later.
+The `stdout-most-recent-execution` view is a way to display the most recent output of an action on a dashboard. This is useful for actions that are run on a schedule, or actions that are run on startup. This is a picture of what it looks like:
 
-WARNING: If you are running a status command, you should use `execOnStartup` and `execOnCron` to make sure it is ready for when the webui loads, or OliveTin is likely to crash.
+image::images/mre.png[]
 
+To set this up, here is the configuration you need to add to your `config.yaml` file;
+
+[source,yaml]
 ----
-
 actions:
   - title: Get status
     id: status_command
@@ -236,4 +273,6 @@ dashboards:
             title: status_command
 ----
 
-Please discuss on Discord if you need support.
+Note that the output only refreshes with the browser, not when the button is clicked. 
+
+As this is an experimental feature, please look at options for <<support>> if you need help getting it to work.

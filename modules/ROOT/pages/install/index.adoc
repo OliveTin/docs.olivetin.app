@@ -17,6 +17,8 @@ include::linux_alpine.adoc[]
 
 include::linux_arch.adoc[]
 
+include::linux_manjaro.adoc[]
+
 include::container.adoc[]
 
 include::docker_compose.adoc[]

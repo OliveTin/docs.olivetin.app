@@ -3,6 +3,14 @@
 
 OliveTin releases are published to GitHub, and the release notes are contained there. This page includes a summary of "Upgrade Notes" for breaking changes between releases.
 
+==== 2024.08.14
+
+===== Navigation change - Subpaths no longer supported
+
+In the past, OliveTin supported subpaths in the URL, for example, `http://yourServer:1337/olivetin/` would load the OliveTin web interface. This was convenient for people who wanted to run OliveTin on a subpath of their domain for some reason, but it actually creates a lot of complexity in the code, and makes it harder to maintain. One particular change that was wanted was to be able to link to specific pages in OliveTin, for example, `http://yourServer:1337/logs` or `http://yourServer:1337/myDashboard/myFolder` - this became incredibly difficult to implement with the subpath support.
+
+Therefore, OliveTin no longer supports subpaths in the URL. If you have been using OliveTin with a subpath, you will need to change your configuration to use a subdomain or a different port.
+
 ==== 2024.04.09
 
 ===== Themes Directory (for theme users)
