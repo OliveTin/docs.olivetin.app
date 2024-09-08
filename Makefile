@@ -1,3 +1,6 @@
+antora:
+	antora antora-playbook.yml
+
 default:
 	rm -rf docs
 	mkdir docs
