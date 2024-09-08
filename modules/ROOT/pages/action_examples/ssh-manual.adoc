@@ -32,7 +32,7 @@ This is a two step process;
 
 Visually, this is what it looks like - OliveTin is running in the (orange) container, and then can either connect back to _server-with-olivetin_ or _server2_.
 
-image:images/ssh-diagram.png[]
+image::../images/ssh-diagram.png[]
 
 The steps in detail are below;
 

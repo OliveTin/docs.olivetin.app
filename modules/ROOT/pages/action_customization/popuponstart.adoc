@@ -15,7 +15,7 @@ actions:
 
 This will also be the option that is used if no other values match.
 
-image::images/flashyButton.png[]
+image::../images/flashyButton.png[]
 
 ==== Execution Dialog (Output Only)
 
@@ -27,7 +27,7 @@ actions:
     popupOnStart: execution-dialog-stdout-only
 ----
 
-image::images/popupOutputOnly.png[]
+image::../images/popupOutputOnly.png[]
 
 ==== Execution Dialog
 
@@ -40,7 +40,7 @@ actions:
 ----
 
 .Example of `popupOnStart: execution-dialog`
-image::images/executionDialog.png[]
+image::../images/executionDialog.png[]
 
 ==== Execution Buttons
 
@@ -52,6 +52,6 @@ actions:
     popupOnStart: execution-button
 ----
 
-image::images/executionButtons.png[]
+image::../images/executionButtons.png[]
 
 
