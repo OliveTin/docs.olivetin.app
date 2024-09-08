@@ -1,23 +1,12 @@
-[#auth]
-== Security
-
-See <<auth-concepts,concepts>> for a good overview of how this works in OliveTin. 
+include::intro.adoc[]
 
 include::concepts.adoc[]
+
 include::acl.adoc[]
+
 include::trusted_header.adoc[]
 
-[#jwt]
-=== JWT Authorization
-
-One of the best ways to do authorization with OliveTin is to pass it a **JSON Web token (JWT)**, after first authenticating with a popular single sign on system, like Keycloak, CloudFlare Tunnels, Authentik or Organizr.
-
-Two types of JWT mechanisms are supported;
-
-* **<<jwt-keys,JWT with Keys>>** (eg: CloudFlare Tunnels, Authentik)
-** X509 Certs/Keys on disk are supported
-** **JWKS** is also supported
-* **<<jwt-hmac,JWT with HMAC>>** (eg: Organizr)
+include::jwt.adoc[]
 
 include::jwt_keys.adoc[]
 

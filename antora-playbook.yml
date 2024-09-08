@@ -1,0 +1,17 @@
+# This is for local testing only. OliveTin-antora builds prettydocs.olivetin.app.
+---
+site:
+  title: OliveTin docs
+  start_page: olive-tin::intro.adoc
+  robots: allow
+content:
+  sources:
+    - url: .
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./theme-supplemental/
+antora:
+  extensions:
+    - '@antora/lunr-extension'
