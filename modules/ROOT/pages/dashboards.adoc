@@ -94,6 +94,42 @@ do not need a `dashboards:` section in your `config.yaml` at all if you don't wa
 However, some people prefer to put every action onto a Dashboard. If you so this, OliveTin
 will hide the `Actions` view for you on the sidebar.
 
+[#dashboard-css]
+=== Change component style
+
+You can change the style of any dashboard component by adding a `cssClass` property to the component. This is useful for styling actions, displays, fieldsets and folders. Here is an example of how to add a class to an action;
+
+```yaml
+
+themeName: my-theme
+
+actions:
+  - title: My Action
+    shell: echo "Hello"
+
+dashboards:
+  - title: My Dashboard
+    contents:
+      - title: My Fieldset
+        type: fieldset
+        contents:
+          - title: My Action
+            cssClass: big-button
+```
+
+You can then create a theme, and add the following CSS to style the action;
+
+.`custom-webui/themes/my-theme/theme.css`
+```css
+.big-button {
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  grid-column: span 2;
+  grid-row: span 2;
+}
+```
+
 [#fieldsets]
 === Fieldsets
 
