@@ -417,20 +417,52 @@ pre.rouge .gs {
 
 <span class="nb">read </span>OLDREV NEWREV REFNAME
 
-<span class="nv">OLIVETIN_REQUEST</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+<span class="nv">CHANGED_FILES</span><span class="o">=</span><span class="si">$(</span>git diff <span class="nt">--name-only</span> <span class="nv">$OLDREV</span> <span class="nv">$NEWREV</span><span class="si">)</span>
+
+commit_contains_path<span class="o">()</span> <span class="o">{</span>
+        <span class="nb">local </span><span class="nv">filename</span><span class="o">=</span><span class="nv">$1</span>
+
+        <span class="k">if </span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$CHANGED_FILES</span><span class="s2">"</span> | <span class="nb">grep</span> <span class="nt">-q</span> <span class="s2">"</span><span class="nv">$filename</span><span class="s2">"</span><span class="p">;</span> <span class="k">then
+                return </span>0 <span class="c"># True</span>
+        <span class="k">else
+                return </span>1 <span class="c"># False</span>
+        <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="k">function </span>run_olivetin_action<span class="o">()</span> <span class="o">{</span>
+        <span class="nb">local </span><span class="nv">ACTION_NAME</span><span class="o">=</span><span class="nv">$1</span>
+
+        <span class="nb">echo</span> <span class="s2">"Requesting OliveTin job </span><span class="nv">$ACTION_NAME</span><span class="s2">"</span>
+
+        <span class="nv">OLIVETIN_REQUEST</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
 {
-  "actionId": "gitops",
+  "actionId": "</span><span class="nv">$ACTION_NAME</span><span class="sh">",
   "arguments": [
-    {
-      "name": "commit",
-      "value": "</span><span class="nv">$NEWREV</span><span class="sh">"
-    }
+        {
+                "name": "commit",
+                "value": "</span><span class="nv">$NEWREV</span><span class="sh">"
+        }
   ]
 }
 </span><span class="no">EOF
 </span><span class="si">)</span><span class="s2">"</span>
 
-<span class="nb">exec </span>curl <span class="nt">-sS</span> <span class="nt">--json</span> <span class="s2">"</span><span class="nv">$OLIVETIN_REQUEST</span><span class="s2">"</span> http://localhost:1337/api/StartAction</code></pre>
+        <span class="nb">exec </span>curl <span class="nt">-sS</span> <span class="nt">--json</span> <span class="s2">"</span><span class="nv">$OLIVETIN_REQUEST</span><span class="s2">"</span> http://olivetin.example.com:1337/api/StartAction
+<span class="o">}</span>
+
+<span class="k">if </span>commit_contains_path <span class="s2">"k8s-flux"</span><span class="p">;</span> <span class="k">then
+        </span>run_olivetin_action <span class="s2">"ServerConfiguration_Flux"</span>
+
+        <span class="nb">exit
+</span><span class="k">fi
+
+if </span>commit_contains_path <span class="s2">"alert.rules"</span><span class="p">;</span> <span class="k">then
+        </span>run_olivetin_action <span class="s2">"ServerConfiguration_Prom"</span>
+
+        <span class="nb">exit
+</span><span class="k">fi
+
+</span>run_olivetin_action <span class="s2">"gitops"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -460,7 +492,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-09-18 10:00:00 UTC
+Last updated 2024-10-01 20:37:44 UTC
 </div>
 </div>
 </body>
