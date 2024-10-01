@@ -44,20 +44,52 @@ First, create a new file at `/opt/myrepo.git/hooks/post-receive` with the follow
 
 read OLDREV NEWREV REFNAME
 
-OLIVETIN_REQUEST="$(cat <<EOF
+CHANGED_FILES=$(git diff --name-only $OLDREV $NEWREV)
+
+commit_contains_path() {
+        local filename=$1
+
+        if echo "$CHANGED_FILES" | grep -q "$filename"; then
+                return 0 # True
+        else
+                return 1 # False
+        fi
+}
+
+function run_olivetin_action() {
+        local ACTION_NAME=$1
+
+        echo "Requesting OliveTin job $ACTION_NAME"
+
+        OLIVETIN_REQUEST="$(cat <<EOF
 {
-  "actionId": "gitops",
+  "actionId": "$ACTION_NAME",
   "arguments": [
-    {
-      "name": "commit",
-      "value": "$NEWREV"
-    }
+        {
+                "name": "commit",
+                "value": "$NEWREV"
+        }
   ]
 }
 EOF
 )"
 
-exec curl -sS --json "$OLIVETIN_REQUEST" http://localhost:1337/api/StartAction
+        exec curl -sS --json "$OLIVETIN_REQUEST" http://olivetin.example.com:1337/api/StartAction
+}
+
+if commit_contains_path "k8s-flux"; then
+        run_olivetin_action "ServerConfiguration_Flux"
+
+        exit
+fi
+
+if commit_contains_path "alert.rules"; then
+        run_olivetin_action "ServerConfiguration_Prom"
+
+        exit
+fi
+
+run_olivetin_action "gitops"
 ----
 
 Make sure you make the script executable, and edit the last line of the script to point to your OliveTin instance.
