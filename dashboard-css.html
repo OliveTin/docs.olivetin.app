@@ -297,7 +297,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="nginx-dns" class="book toc2 toc-left">
+<body id="dashboard-css" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -308,22 +308,6 @@ pre.rouge .gs {
 <li><a href="config.html">Configuration</a>
 </li>
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
-<ul class="sectlevel2">
-<li><a href="proxy-guide.html">Reverse Proxy general guide</a>
-</li>
-<li><a href="apache-dns.html">Apache HTTPD</a>
-</li>
-<li><a href="haproxy-dns.html">Haproxy</a>
-</li>
-<li><a href="traefik-docker-compose.html">Traefik + Docker Compose</a>
-</li>
-<li><a href="nginx-dns.html"><span class="toc-current">Nginx</span></a>
-</li>
-<li><a href="nginx-proxy-manager.html">Nginx Proxy Manager</a>
-</li>
-<li><a href="caddy-dns.html">Caddy</a>
-</li>
-</ul>
 </li>
 <li><a href="actions.html">Action execution</a>
 </li>
@@ -334,6 +318,22 @@ pre.rouge .gs {
 <li><a href="args.html">Arguments</a>
 </li>
 <li><a href="dashboards.html">Dashboards</a>
+<ul class="sectlevel2">
+<li><a href="_example_dashboard_usage.html">Example Dashboard usage</a>
+</li>
+<li><a href="_the_actions_section.html">The "actions" section</a>
+</li>
+<li><a href="dashboard-css.html"><span class="toc-current">Change component style</span></a>
+</li>
+<li><a href="fieldsets.html">Fieldsets</a>
+</li>
+<li><a href="folders.html">Folders (Directories)</a>
+</li>
+<li><a href="displays.html">Displays</a>
+</li>
+<li><a href="output-views.html">Most recent action output</a>
+</li>
+</ul>
 </li>
 <li><a href="entities.html">Entities</a>
 </li>
@@ -356,75 +356,46 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="nginx-dns"><a class="anchor" href="#nginx-dns"></a><a class="link" href="#nginx-dns">Nginx</a></h3>
+<h3 id="dashboard-css"><a class="anchor" href="#dashboard-css"></a><a class="link" href="#dashboard-css">Change component style</a></h3>
 <div class="paragraph">
-<p>This is an example of DNS based proxying with Nginx.</p>
+<p>You can change the style of any dashboard component by adding a <code>cssClass</code> property to the component. This is useful for styling actions, displays, fieldsets and folders. Here is an example of how to add a class to an action;</p>
 </div>
 <div class="listingblock">
-<div class="title">/etc/nginx/cond.d/OliveTin.conf</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">themeName</span><span class="pi">:</span> <span class="s">my-theme</span>
 
-    <span class="kn">ssl_certificate</span> <span class="s">"/etc/nginx/conf.d/server.crt"</span><span class="p">;</span>
-    <span class="kn">ssl_certificate_key</span> <span class="s">"/etc/nginx/conf.d/server.key"</span><span class="p">;</span>
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">My Action</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Hello"</span>
 
-    <span class="kn">access_log</span>  <span class="n">/var/log/nginx/ot.access.log</span>  <span class="s">main</span><span class="p">;</span>
-    <span class="kn">error_log</span> <span class="n">/var/log/nginx/ot.error.log</span> <span class="s">notice</span><span class="p">;</span>
-
-    <span class="kn">server_name</span> <span class="s">olivetin.example.com</span><span class="p">;</span>
-
-    <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
-        <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/</span><span class="p">;</span>
-        <span class="kn">proxy_redirect</span> <span class="s">http://localhost:1337/</span> <span class="s">http://localhost/OliveTin/</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kn">location</span> <span class="n">/websocket</span> <span class="p">{</span>
-        <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="s">"websocket"</span><span class="p">;</span>
-        <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">"upgrade"</span><span class="p">;</span>
-        <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/websocket</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="na">dashboards</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">My Dashboard</span>
+    <span class="na">contents</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">My Fieldset</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">fieldset</span>
+        <span class="na">contents</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">My Action</span>
+            <span class="na">cssClass</span><span class="pi">:</span> <span class="s">big-button</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can then create a theme, and add the following CSS to style the action;</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>custom-webui/themes/my-theme/theme.css</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nc">.big-button</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">grid-column</span><span class="p">:</span> <span class="n">span</span> <span class="m">2</span><span class="p">;</span>
+  <span class="nl">grid-row</span><span class="p">:</span> <span class="n">span</span> <span class="m">2</span><span class="p">;</span>
 <span class="p">}</span></code></pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="nginx-path"><a class="anchor" href="#nginx-path"></a><a class="link" href="#nginx-path">Custom paths</a></h4>
-<div class="paragraph">
-<p>These "custom path" instructions are for when you want to use OliveTin with a custom path like "apps.example.com/olivetin" instead of the root path + DNS name - eg: "olivetin.example.com". Generally it is <strong>not recommended</strong> to use a custom path for OliveTin. Instructions are provided below though, and it mostly-works.</p>
-</div>
-<div class="listingblock">
-<div class="title">nginx.conf</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="nginx"><span class="k">....</span>
-        <span class="s">location</span> <span class="n">/OliveTin/</span> <span class="p">{</span>
-            <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/</span><span class="p">;</span>
-            <span class="kn">proxy_redirect</span> <span class="s">http://localhost:1337/</span> <span class="s">http://localhost/OliveTin/</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">location</span> <span class="n">/OliveTin/websocket</span> <span class="p">{</span>
-            <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="s">"websocket"</span><span class="p">;</span>
-            <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">"upgrade"</span><span class="p">;</span>
-            <span class="kn">proxy_pass</span> <span class="s">http://localhost:1337/websocket</span><span class="p">;</span>
-        <span class="p">}</span>
-<span class="k">....</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note, because you are changing the default path (from <code>/</code> to <code>/OliveTin/</code>), you will need to tell the OliveTin webUI where to find the API.</p>
-</div>
-<div class="paragraph">
-<p>You need to also set <code>externalRestAddress</code> in your config.yaml like this;</p>
-</div>
-<div class="listingblock">
-<div class="title">OliveTin config.yaml</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">externalRestAddress</span><span class="pi">:</span> <span class="s">http://myserver/OliveTin</span></code></pre>
-</div>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="traefik-docker-compose.html">Traefik + Docker Compose</a> | ↑ Up: <a href="reverse-proxies.html">Reverse Proxies</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="nginx-proxy-manager.html">Nginx Proxy Manager</a> →</p>
+<p>← Previous: <a href="_the_actions_section.html">The "actions" section</a> | ↑ Up: <a href="dashboards.html">Dashboards</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="fieldsets.html">Fieldsets</a> →</p>
 </div>
 </div>
 <div id="footer">
