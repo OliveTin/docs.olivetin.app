@@ -179,7 +179,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="_introduction_to_arguments" class="book toc2 toc-left">
+<body id="err-websocket-connection" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -198,28 +198,6 @@ div.admonitionblock td:first-child {
 <li><a href="examples.html">Action examples</a>
 </li>
 <li><a href="args.html">Arguments</a>
-<ul class="sectlevel2">
-<li><a href="_introduction_to_arguments.html"><span class="toc-current">Introduction to Arguments</span></a>
-</li>
-<li><a href="_important_safety_warning.html">Important Safety Warning</a>
-</li>
-<li><a href="arg-types.html">Argument types</a>
-</li>
-<li><a href="arg-textbox.html">Input: Textbox</a>
-</li>
-<li><a href="args-custom-regex.html">Custom regex</a>
-</li>
-<li><a href="arg-suggestions.html">Suggestions</a>
-</li>
-<li><a href="arg-dropdowns.html">Input: Dropdowns</a>
-</li>
-<li><a href="confirmation.html">Input: Confirmation</a>
-</li>
-<li><a href="arg-datetime.html">Input: DateTime</a>
-</li>
-<li><a href="env-vars.html">Environment variables</a>
-</li>
-</ul>
 </li>
 <li><a href="dashboards.html">Dashboards</a>
 </li>
@@ -236,6 +214,26 @@ div.admonitionblock td:first-child {
 <li><a href="_reference.html">Reference</a>
 </li>
 <li><a href="troubleshooting.html">Support &amp; Troubleshooting</a>
+<ul class="sectlevel2">
+<li><a href="support.html">Where to find help</a>
+</li>
+<li><a href="sosreport.html">sosreport</a>
+</li>
+<li><a href="_exit_code_127.html">Exit code 127</a>
+</li>
+<li><a href="no-puid-pgid.html">PUID and PGID support</a>
+</li>
+<li><a href="err-fetch-buttons.html">Error Getting Buttons</a>
+</li>
+<li><a href="err-websocket-connection.html"><span class="toc-current">Error Connecting to WebSocket</span></a>
+</li>
+<li><a href="err-fetch-webui-settings.html">Error Fetching WebUI Settings</a>
+</li>
+<li><a href="err-js-modules-not-supported.html">Error: JS Modules not supported</a>
+</li>
+<li><a href="advanced-troubleshooting.html">Advanced Troubleshooting</a>
+</li>
+</ul>
 </li>
 <li><a href="api.html">API</a>
 </li>
@@ -244,32 +242,16 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="_introduction_to_arguments"><a class="anchor" href="#_introduction_to_arguments"></a><a class="link" href="#_introduction_to_arguments">Introduction to Arguments</a></h3>
+<h3 id="err-websocket-connection"><a class="anchor" href="#err-websocket-connection"></a><a class="link" href="#err-websocket-connection">Error Connecting to WebSocket</a></h3>
 <div class="paragraph">
-<p>Actions and commands that OliveTin runs, without arguments, are generally quite safe - only that command can be run, without modifications. However, many users need the flexibility to set options on that command - normally called command line arguments. In OliveTin, arguments are defined in a shell commands like <code>echo {{ message }}</code>, with a bit of extra configuration.</p>
+<p>If OliveTin was working, but this error popped up, it&#8217;s most likely because your reverse proxy closed the connection due to a timeout.</p>
 </div>
 <div class="paragraph">
-<p>Examples of valid argument names are <code>{{ personName }}</code>, <code>{{ customer_number }}</code> and <code>{{ ISBN11_code }}</code>.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>a-z (case insensitive)</p>
-</li>
-<li>
-<p>_ is allowed</p>
-</li>
-<li>
-<p>numbers are allowed (argument names can also start with numbers)</p>
-</li>
-<li>
-<p>all other characters are invalid for argument names.</p>
-</li>
-</ul>
+<p>If OliveTin is always displaying this error, it&#8217;s probably your reverse proxy not handling the websocket properly. Please check the Reverse Proxy documentation for more information.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_important_safety_warning.html">Important Safety Warning</a> →</p>
+<p>← Previous: <a href="err-fetch-buttons.html">Error Getting Buttons</a> | ↑ Up: <a href="troubleshooting.html">Support &amp; Troubleshooting</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="err-fetch-webui-settings.html">Error Fetching WebUI Settings</a> →</p>
 </div>
 </div>
 <div id="footer">
