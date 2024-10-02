@@ -98,6 +98,13 @@ user@host: docker start olivetin
 
 This is most often caused by not being able to get to /api/ properly - normally due to a bad proxy config, or your network was disconnected.
 
+[#err-websocket-connection]
+=== Error Connecting to WebSocket
+
+If OliveTin was working, but this error popped up, it's most likely because your reverse proxy closed the connection due to a timeout.
+
+If OliveTin is always displaying this error, it's probably your reverse proxy not handling the websocket properly. Please check the Reverse Proxy documentation for more information.
+
 [#err-fetch-webui-settings]
 === Error Fetching WebUI Settings
 
