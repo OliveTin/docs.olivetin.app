@@ -358,7 +358,10 @@ pre.rouge .gs {
 <div class="sect2">
 <h3 id="displays"><a class="anchor" href="#displays"></a><a class="link" href="#displays">Displays</a></h3>
 <div class="paragraph">
-<p>Displays are most commonly used with entities, but they can contain any HTML, including variables as well.</p>
+<p>Displays are a way of displaying text, values, variables and similar on a dashboard.</p>
+</div>
+<div class="paragraph">
+<p>They are rendered as just a simple box, that shown alongside actions. You can add arbitary HTML to a display, which makes it useful for showing links, etc.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -369,16 +372,20 @@ pre.rouge .gs {
 <div class="title"><code>config.yaml</code></div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">dashboards</span><span class="pi">:</span>
-  <span class="c1"># This is the second dashboard.</span>
+  <span class="c1"># This the second dashboard.</span>
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">My Containers</span>
     <span class="na">contents</span><span class="pi">:</span>
+        <span class="c1"># This is a fieldset, which is a way of dashboard items together actions together.</span>
       <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Container {{ container.Names }}</span>
         <span class="na">entity</span><span class="pi">:</span> <span class="s">container</span>
         <span class="na">type</span><span class="pi">:</span> <span class="s">fieldset</span>
         <span class="na">contents</span><span class="pi">:</span>
+            <span class="c1"># This is a display</span>
           <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">display</span>
             <span class="na">title</span><span class="pi">:</span> <span class="pi">|</span>
               <span class="s">{{ container.Names }} &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;{{ container.State }}&lt;/strong&gt;</span>
+
+            <span class="c1"># These are the actions that we want on the dashboard.</span>
           <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Start</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">container.Names</span><span class="nv"> </span><span class="s">}}'</span>
           <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Stop</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">container.Names</span><span class="nv"> </span><span class="s">}}'</span></code></pre>
 </div>
@@ -424,7 +431,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-02 00:17:03 UTC
+Last updated 2024-10-12 19:09:47 UTC
 </div>
 </div>
 </body>
