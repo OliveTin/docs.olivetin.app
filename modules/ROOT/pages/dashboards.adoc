@@ -225,7 +225,9 @@ dashboards:
 [#displays]
 === Displays
 
-Displays are most commonly used with entities, but they can contain any HTML, including variables as well.
+Displays are a way of displaying text, values, variables and similar on a dashboard.
+
+They are rendered as just a simple box, that shown alongside actions. You can add arbitary HTML to a display, which makes it useful for showing links, etc.
 
 image::images/dashboard-display.png[]
 
@@ -233,16 +235,20 @@ image::images/dashboard-display.png[]
 .`config.yaml`
 ----
 dashboards:
-  # This is the second dashboard.
+  # This the second dashboard.
   - title: My Containers
     contents:
+        # This is a fieldset, which is a way of dashboard items together actions together.
       - title: Container {{ container.Names }}
         entity: container
         type: fieldset
         contents:
+            # This is a display
           - type: display
             title: |
               {{ container.Names }} <br /><br /><strong>{{ container.State }}</strong>
+
+            # These are the actions that we want on the dashboard.
           - title: 'Start {{ container.Names }}'
           - title: 'Stop {{ container.Names }}'
 ----
