@@ -1,0 +1,30 @@
+[#local-users]
+=== Username & Password
+
+include::../snippit_earlydoc.adoc[]
+
+OliveTin supports just basic users defined with a username and password in the config.yaml file. This can be used when you do not want to use a full authentication system like LDAP, OAuth2 or a Reverse Proxy.
+
+.`config.yaml`
+```yaml
+authLocalUsers:
+  enabled: true
+  users:
+    - username: james
+      password: $argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k
+```
+
+You can see from the example above that the config contains a single user called *james*, and the password is hashed using Argon2id. OliveTin provides a utility API to hash passwords using Argon2id which can be useful when you want to create new users. Simply run the following curl command to hash a password:
+
+```bash
+ curl -sS --json '{"password": "myPassword"}' http://olivetin.example.com:1337/api/PasswordHash
+ ```
+
+This will return a output like this, you can then copy and paste this hash into your config.yaml file;
+
+```
+Your password hash is: $argon2id$v=19$m=65536,t=4,p=6$dlWTV1RL04/Nuvxzl94NAg$KsYXvCFE2Eu/jkXi/dbbZM3I/2b2VByTAwRIenUwdJk
+
+Then simply visit the OliveTin web interface and browse to the login page, eg: http://olivetin.example.com:1337/login
+
+Note: Argon2id is the recommended password hashing algorithm link:https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html[recommebded by OWASP] as of October 2024. There doesn't seem to be a good reason yet to provide configuration options for changing the password hashing algorithm, but if you have a good reason, please open an issue on the GitHub repository.

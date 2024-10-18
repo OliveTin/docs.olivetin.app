@@ -11,3 +11,7 @@ include::jwt.adoc[]
 include::jwt_keys.adoc[]
 
 include::jwt_hmac.adoc[]
+
+include::oauth2.adoc[]
+
+include::local.adoc[]
