@@ -297,7 +297,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="prometheus" class="book toc2 toc-left">
+<body id="oauth2" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -324,22 +324,28 @@ pre.rouge .gs {
 <li><a href="_integrations.html">Integrations</a>
 </li>
 <li><a href="auth.html">Security</a>
+<ul class="sectlevel2">
+<li><a href="auth-concepts.html">Concepts</a>
+</li>
+<li><a href="acls.html">Access Control Lists (Permissions)</a>
+</li>
+<li><a href="trusted-header.html">Trusted Header Authorization</a>
+</li>
+<li><a href="jwt.html">JWT Authorization</a>
+</li>
+<li><a href="jwt-keys.html">JWT with Keys</a>
+</li>
+<li><a href="jwt-hmac.html">JWT with HMAC</a>
+</li>
+<li><a href="oauth2.html"><span class="toc-current">OAuth2</span></a>
+</li>
+<li><a href="local-users.html">Username &amp; Password</a>
+</li>
+</ul>
 </li>
 <li><a href="solutions.html">Solutions</a>
 </li>
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
-<ul class="sectlevel2">
-<li><a href="customize-webui.html">Customize the web UI</a>
-</li>
-<li><a href="log-levels.html">Log Levels</a>
-</li>
-<li><a href="ports.html">Ports</a>
-</li>
-<li><a href="timezone.html">Timezone</a>
-</li>
-<li><a href="prometheus.html"><span class="toc-current">Prometheus</span></a>
-</li>
-</ul>
 </li>
 <li><a href="_reference.html">Reference</a>
 </li>
@@ -352,52 +358,74 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="prometheus"><a class="anchor" href="#prometheus"></a><a class="link" href="#prometheus">Prometheus</a></h3>
-<div class="paragraph">
-<p>OliveTin supports basic Prometheus metrics, and the project is interested to hear about what more metrics people would find useful, as well!</p>
+<h3 id="oauth2"><a class="anchor" href="#oauth2"></a><a class="link" href="#oauth2">OAuth2</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This page is marked as "earlydoc", which means that it more of a collection of notes and an early draft before this page turns into good documentation later on. It is hoped that this early form of documentation is useful to you, but please understand that most documentation pages are higher quality than this. If you have suggestions or comments, please do get in contact or consider contributing your suggestions to the OliveTin documentation.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>To enable Prometheus support;</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">logLevel</span><span class="pi">:</span> <span class="s">INFO</span>
-
-<span class="na">prometheus</span><span class="pi">:</span>
-    <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
-    <span class="na">defaultGoMetrics</span><span class="pi">:</span> <span class="kc">false</span></code></pre>
-</div>
+<p>OliveTin supports OAuth2 for login with any OAuth2 compliant provider.</p>
 </div>
 <div class="paragraph">
-<p>It is required to restart OliveTin after changing the <code>prometheus</code> configuration.</p>
-</div>
-<div class="paragraph">
-<p>The <code>defaultGoMetrics</code> option will enable the default Go metrics, which expose metrics like go_memstats_alloc_bytes, or go_memstats_heap_alloc_bytes,
-and generally most people don&#8217;t need these.</p>
-</div>
-<div class="paragraph">
-<p>This will give you metrics available at <a href="http://yourserver:1337/metrics" class="bare">http://yourserver:1337/metrics</a>. The page should look something like this;</p>
+<p>At the moment, username fetching is only supported on GitHub. More will be added soon, probably with the addition of OpenID Connect support.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code># HELP olivetin_actions_requested_count The actions requested count
-# TYPE olivetin_actions_requested_count gauge
-olivetin_actions_requested_count 0
-# HELP olivetin_config_action_count Then number of actions in the config file
-# TYPE olivetin_config_action_count gauge
-olivetin_config_action_count 18
-# HELP olivetin_config_reloaded_count The number of times the config has been reloaded
-# TYPE olivetin_config_reloaded_count counter
-olivetin_config_reloaded_count 1
-# HELP olivetin_sv_count The number entries in the sv map
-# TYPE olivetin_sv_count gauge
-olivetin_sv_count 49</code></pre>
+<pre class="rouge highlight"><code>authOAuth2RedirectUri=http://localhost:1337/oauth2
+authOAuth2Providers:
+  github:
+    clientId: 1234567890
+    clientSecret: 1234567890</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_provider_configuration"><a class="anchor" href="#_provider_configuration"></a><a class="link" href="#_provider_configuration">Provider configuration</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code> - a "simple name" for the provider, used in the login redirect and internally in OliveTin, eg <code>github</code></p>
+</li>
+<li>
+<p><code>title</code> - the human-readable name of the provider, eg <code>GitHub</code></p>
+</li>
+<li>
+<p><code>clientId</code> - the client ID provided by the OAuth2 provider</p>
+</li>
+<li>
+<p><code>clientSecret</code> - the client secret provided by the OAuth2 provider</p>
+</li>
+<li>
+<p><code>icon</code> - the icon to use for the provider, eg an Iconify icon - accepts any HTML.</p>
+</li>
+<li>
+<p><code>scopes</code> - a list of scopes to request.</p>
+</li>
+<li>
+<p><code>authUrl</code> - the URL to redirect to for authentication</p>
+</li>
+<li>
+<p><code>tokenUrl</code> - the URL to exchange the code for a token</p>
+</li>
+<li>
+<p><code>whoamiUrl</code> - the URL to fetch user information from</p>
+</li>
+<li>
+<p><code>usernameField</code> - the field in the user information response to use as the username</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="timezone.html">Timezone</a> | ↑ Up: <a href="_advanced_configuration.html">Advanced Configuration</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_reference.html">Reference</a> →</p>
+<p>← Previous: <a href="jwt-hmac.html">JWT with HMAC</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="local-users.html">Username &amp; Password</a> →</p>
 </div>
 </div>
 <div id="footer">
