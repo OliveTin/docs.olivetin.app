@@ -3,12 +3,12 @@
 
 include::../snippit_earlydoc.adoc[]
 
-OliveTin supports OAuth2 for login with any OAuth2 compliant provider. 
+OliveTin supports OAuth2 for login with any OAuth2 compliant provider.
 
 At the moment, username fetching is only supported on GitHub. More will be added soon, probably with the addition of OpenID Connect support.
 
 ```yaml
-authOAuth2RedirectUrl: http://localhost:1337/oauth2/callback
+authOAuth2RedirectUrl: http://localhost:1337/oauth/callback
 authOAuth2Providers:
   github:
     clientId: 1234567890
