@@ -297,7 +297,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="arg-suggestions" class="book toc2 toc-left">
+<body id="wol" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -316,28 +316,6 @@ pre.rouge .gs {
 <li><a href="examples.html">Action examples</a>
 </li>
 <li><a href="args.html">Arguments</a>
-<ul class="sectlevel2">
-<li><a href="_introduction_to_arguments.html">Introduction to Arguments</a>
-</li>
-<li><a href="_important_safety_warning.html">Important Safety Warning</a>
-</li>
-<li><a href="arg-types.html">Argument types</a>
-</li>
-<li><a href="arg-textbox.html">Input: Textbox</a>
-</li>
-<li><a href="args-custom-regex.html">Custom regex</a>
-</li>
-<li><a href="arg-suggestions.html"><span class="toc-current">Suggestions</span></a>
-</li>
-<li><a href="arg-dropdowns.html">Input: Dropdowns</a>
-</li>
-<li><a href="confirmation.html">Input: Confirmation</a>
-</li>
-<li><a href="arg-datetime.html">Input: DateTime</a>
-</li>
-<li><a href="env-vars.html">Environment variables</a>
-</li>
-</ul>
 </li>
 <li><a href="dashboards.html">Dashboards</a>
 </li>
@@ -348,6 +326,24 @@ pre.rouge .gs {
 <li><a href="auth.html">Security</a>
 </li>
 <li><a href="solutions.html">Solutions</a>
+<ul class="sectlevel2">
+<li><a href="solution-on-git-push.html">GitOps (run actions on Git Push)</a>
+</li>
+<li><a href="container-control-panel.html">Container Control Panel</a>
+</li>
+<li><a href="systemd-control-panel.html">Systemd Control Panel</a>
+</li>
+<li><a href="heating-control-panel.html">Heating Control Panel</a>
+</li>
+<li><a href="_primitive_password_protection.html">Primitive password protection</a>
+</li>
+<li><a href="wol.html"><span class="toc-current">Wake On LAN from a container</span></a>
+</li>
+<li><a href="cloudflare-access-tunnels.html">Cloudflare Access &amp; Tunnels</a>
+</li>
+<li><a href="_gpio_control_on_raspberry_pi.html">GPIO Control on Raspberry Pi</a>
+</li>
+</ul>
 </li>
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
@@ -362,70 +358,63 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="arg-suggestions"><a class="anchor" href="#arg-suggestions"></a><a class="link" href="#arg-suggestions">Suggestions</a></h3>
+<h3 id="wol"><a class="anchor" href="#wol"></a><a class="link" href="#wol">Wake On LAN from a container</a></h3>
 <div class="paragraph">
-<p>Argument inputs can also have "suggested" values, which can make it quicker to type commonly used options. The way that these are displayed will vary depending on your browser, as they are implemented as a modern HTML5 browser feature called "datalist".</p>
+<p>This is a simple solution that provides wake on lan capabilities from inside a container. It uses the simple <code>awake</code> command to send the magic packet. This can be incredibly helpful if you just need a simple button to click to wake up a machine on your network.</p>
 </div>
 <div class="paragraph">
-<p>Suggestions are configured like this;</p>
+<p>Docker containers will normally use a docker network, which is a separate network from the host network. This means that the container will not be able to send the magic packet to the host network. Therefore, we need to create the container with the <code>--network host</code> option, which will allow the container to send the magic packet to the host network (not the docker network).</p>
+</div>
+<div class="paragraph">
+<p>The container is also created with the <code>--user root</code> option, which allows the container to send the magic packet as root. This is necessary because the <code>awake</code> command requires root privileges to send the magic packet, and also to install the <code>awake</code> command in the container.</p>
+</div>
+<div class="paragraph">
+<p>Create the container as follows;</p>
 </div>
 <div class="listingblock">
-<div class="title">Configuration example of input suggestions</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">user@host: docker create <span class="nt">-u</span> root <span class="nt">--network</span><span class="o">=</span>host <span class="nt">--name</span> olivetin_wol <span class="nt">-v</span> /etc/OliveTin/:/config ghcr.io/olivetin/olivetin:latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create your OliveTin <code>config.yaml</code> file in the <code>/etc/OliveTin/</code> directory on the host, with the following content;</p>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Restart Docker Container</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">restart</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">docker restart {{ container }}</span>
-    <span class="na">arguments</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">container</span>
-        <span class="na">title</span><span class="pi">:</span> <span class="s">Container name</span>
-        <span class="na">suggestions</span><span class="pi">:</span>
-          <span class="pi">-</span> <span class="na">plex</span><span class="pi">:</span>
-          <span class="pi">-</span> <span class="na">graefik</span><span class="pi">:</span>
-          <span class="pi">-</span> <span class="na">grafana</span><span class="pi">:</span>
-          <span class="pi">-</span> <span class="na">wifi-controller</span><span class="pi">:</span> <span class="s">WiFi Controller</span>
-          <span class="pi">-</span> <span class="na">firewall-controller</span><span class="pi">:</span> <span class="s">Firewall Controller</span></code></pre>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">WakeOnLan Server1</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">awake A8:5E:45:E4:FF:2A</span>
+    <span class="na">icon</span><span class="pi">:</span> <span class="s">ping</span>
+
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Install awake on startup</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">microdnf install -y awake</span>
+    <span class="na">hidden</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">execOnStartup</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">timeout</span><span class="pi">:</span> <span class="s">120</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the examples above, there are 5 suggestions. The first 3 suggestions contain a suggestion with a blank title. The last 2 suggestions contain a human readable title (eg: <code>wifi-controller</code> is the suggestion, and <code>WiFi Controller</code> is the title).</p>
+<p>Obviously adjust the config file with your own MAC addressses, creating new actions to send WOL commands as needed.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<code>suggestions:</code> is a yaml <strong>map</strong>, not a <strong>list</strong>. If you leave the title empty you must still end the suggestion with a ":".
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_examples"><a class="anchor" href="#_examples"></a><a class="link" href="#_examples">Examples</a></h4>
-<div class="imageblock">
-<div class="content">
-<img src="images/arg-suggestions-firefox.png" alt="arg suggestions firefox">
-</div>
-<div class="title">Figure 4. Screenshot of input suggestions with Firefox on Linux.</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/arg-suggestions-chrome.png" alt="arg suggestions chrome">
-</div>
-<div class="title">Figure 5. Screenshot of input suggestions with Chrome on Linux.</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_browser_support"><a class="anchor" href="#_browser_support"></a><a class="link" href="#_browser_support">Browser Support</a></h4>
 <div class="paragraph">
-<p><code>datalist</code> is widely supported now-a-days, but Firefox on Android notably lacks support; <a href="https://caniuse.com/datalist" class="bare">https://caniuse.com/datalist</a> . See the upstream bug here; <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1535985" class="bare">https://bugzilla.mozilla.org/show_bug.cgi?id=1535985</a> .</p>
+<p>Then start the container with the following command;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>docker start olivetin_wol</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then visit your OliveTin web interface at <a href="http://yourServer:1337" class="bare">http://yourServer:1337</a> and you should see something that looks like this;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/wol.png" alt="wol">
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="args-custom-regex.html">Custom regex</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="arg-dropdowns.html">Input: Dropdowns</a> →</p>
+<p>← Previous: <a href="_primitive_password_protection.html">Primitive password protection</a> | ↑ Up: <a href="solutions.html">Solutions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="cloudflare-access-tunnels.html">Cloudflare Access &amp; Tunnels</a> →</p>
 </div>
 </div>
 <div id="footer">
