@@ -26,6 +26,18 @@ This will return a output like this, you can then copy and paste this hash into 
 Your password hash is: $argon2id$v=19$m=65536,t=4,p=6$dlWTV1RL04/Nuvxzl94NAg$KsYXvCFE2Eu/jkXi/dbbZM3I/2b2VByTAwRIenUwdJk
 ```
 
+You can also easily hash the password using the `argon2` package:
+
+```bash
+echo -n "myPassword" | argon2 "$(openssl rand -base64 16)" -id -t 4 -m 16 -p 6 -l 32 -e
+```
+
+Or using the [hash](https://hub.docker.com/r/leplusorg/hash) docker image:
+
+```bash
+docker run --rm -i --net=none leplusorg/hash sh -c 'echo -n "myPassword" | argon2 "$(openssl rand -base64 16)" -id -t 4 -m 16 -p 6 -l 32 -e'
+```
+
 Then simply visit the OliveTin web interface and browse to the login page, eg: http://olivetin.example.com:1337/login
 
 Note: Argon2id is the recommended password hashing algorithm link:https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html[recommebded by OWASP] as of October 2024. There doesn't seem to be a good reason yet to provide configuration options for changing the password hashing algorithm, but if you have a good reason, please open an issue on the GitHub repository.
