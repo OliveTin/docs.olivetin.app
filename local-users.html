@@ -401,6 +401,22 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 </div>
 <div class="paragraph">
+<p>You can also easily hash the password using the <code>argon2</code> package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"myPassword"</span> | argon2 <span class="s2">"</span><span class="si">$(</span>openssl rand <span class="nt">-base64</span> 16<span class="si">)</span><span class="s2">"</span> <span class="nt">-id</span> <span class="nt">-t</span> 4 <span class="nt">-m</span> 16 <span class="nt">-p</span> 6 <span class="nt">-l</span> 32 <span class="nt">-e</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or using the [hash](<a href="https://hub.docker.com/r/leplusorg/hash" class="bare">https://hub.docker.com/r/leplusorg/hash</a>) docker image:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">docker run <span class="nt">--rm</span> <span class="nt">-i</span> <span class="nt">--net</span><span class="o">=</span>none leplusorg/hash sh <span class="nt">-c</span> <span class="s1">'echo -n "myPassword" | argon2 "$(openssl rand -base64 16)" -id -t 4 -m 16 -p 6 -l 32 -e'</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Then simply visit the OliveTin web interface and browse to the login page, eg: <a href="http://olivetin.example.com:1337/login" class="bare">http://olivetin.example.com:1337/login</a></p>
 </div>
 <div class="paragraph">
@@ -413,7 +429,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-23 19:40:38 UTC
+Last updated 2024-10-24 07:46:43 UTC
 </div>
 </div>
 </body>
