@@ -297,7 +297,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="wol" class="book toc2 toc-left">
+<body id="oauth2-authentik" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -324,26 +324,30 @@ pre.rouge .gs {
 <li><a href="_integrations.html">Integrations</a>
 </li>
 <li><a href="auth.html">Security</a>
-</li>
-<li><a href="solutions.html">Solutions</a>
 <ul class="sectlevel2">
-<li><a href="solution-on-git-push.html">GitOps (run actions on Git Push)</a>
+<li><a href="auth-concepts.html">Concepts</a>
 </li>
-<li><a href="container-control-panel.html">Container Control Panel</a>
+<li><a href="acls.html">Access Control Lists (Permissions)</a>
 </li>
-<li><a href="systemd-control-panel.html">Systemd Control Panel</a>
+<li><a href="trusted-header.html">Trusted Header Authorization</a>
 </li>
-<li><a href="heating-control-panel.html">Heating Control Panel</a>
+<li><a href="jwt.html">JWT Authorization</a>
 </li>
-<li><a href="_primitive_password_protection.html">Primitive password protection</a>
+<li><a href="jwt-keys.html">JWT with Keys</a>
 </li>
-<li><a href="wol.html"><span class="toc-current">Wake On LAN from a container</span></a>
+<li><a href="jwt-hmac.html">JWT with HMAC</a>
 </li>
-<li><a href="cloudflare-access-tunnels.html">Cloudflare Access &amp; Tunnels</a>
+<li><a href="oauth2.html">OAuth2</a>
 </li>
-<li><a href="_gpio_control_on_raspberry_pi.html">GPIO Control on Raspberry Pi</a>
+<li><a href="oauth2-authentik.html"><span class="toc-current">Authentik (OAuth2)</span></a>
+</li>
+<li><a href="_debugging.html">Debugging</a>
+</li>
+<li><a href="local-users.html">Username &amp; Password</a>
 </li>
 </ul>
+</li>
+<li><a href="solutions.html">Solutions</a>
 </li>
 <li><a href="_advanced_configuration.html">Advanced Configuration</a>
 </li>
@@ -358,63 +362,79 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="wol"><a class="anchor" href="#wol"></a><a class="link" href="#wol">Wake On LAN from a container</a></h3>
+<h3 id="oauth2-authentik"><a class="anchor" href="#oauth2-authentik"></a><a class="link" href="#oauth2-authentik">Authentik (OAuth2)</a></h3>
 <div class="paragraph">
-<p>This is a simple solution that provides wake on lan capabilities from inside a container. It uses the simple <code>awake</code> command to send the magic packet. This can be incredibly helpful if you just need a simple button to click to wake up a machine on your network.</p>
-</div>
-<div class="paragraph">
-<p>Docker containers will normally use a docker network, which is a separate network from the host network. This means that the container will not be able to send the magic packet to the host network. Therefore, we need to create the container with the <code>--network host</code> option, which will allow the container to send the magic packet to the host network (not the docker network).</p>
+<p>OliveTin has been tested with Authentik. This documentation page describes how to configure Authentik for use with OliveTin and assumes you already have Authentik installed and running.</p>
 </div>
 <div class="paragraph">
-<p>The container is also created with the <code>--user root</code> option, which allows the container to send the magic packet as root. This is necessary because the <code>awake</code> command requires root privileges to send the magic packet, and also to install the <code>awake</code> command in the container.</p>
-</div>
-<div class="paragraph">
-<p>Create the container as follows;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">user@host: docker create <span class="nt">-u</span> root <span class="nt">--network</span><span class="o">=</span>host <span class="nt">--name</span> olivetin_wol <span class="nt">-v</span> /etc/OliveTin/:/config ghcr.io/olivetin/olivetin:latest</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Create your OliveTin <code>config.yaml</code> file in the <code>/etc/OliveTin/</code> directory on the host, with the following content;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">WakeOnLan Server1</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">awake A8:5E:45:E4:FF:2A</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">ping</span>
-
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Install awake on startup</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">microdnf install -y awake</span>
-    <span class="na">hidden</span><span class="pi">:</span> <span class="kc">true</span>
-    <span class="na">execOnStartup</span><span class="pi">:</span> <span class="kc">true</span>
-    <span class="na">timeout</span><span class="pi">:</span> <span class="s">120</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Obviously adjust the config file with your own MAC addressses, creating new actions to send WOL commands as needed.</p>
-</div>
-<div class="paragraph">
-<p>Then start the container with the following command;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code>docker start olivetin_wol</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then visit your OliveTin web interface at <a href="http://yourServer:1337" class="bare">http://yourServer:1337</a> and you should see something that looks like this;</p>
+<p>Login as an Authentik administrator and start by creating a new app as follows;</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/wol.png" alt="wol">
+<img src="authentik_new_app.png" alt="authentik new app">
+</div>
+</div>
+<div class="paragraph">
+<p>Click Next, and on the <strong>Provider Type</strong> page select <strong>OAuth2</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="authentik_select_oauth2.png" alt="authentik select oauth2">
+</div>
+</div>
+<div class="paragraph">
+<p>Click Next, and on the <strong>Provider Configuration</strong> page, fill in the following fields;</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="authentik_provider_config.png" alt="authentik provider config">
+</div>
+</div>
+<div class="paragraph">
+<p>Scroll down, and on the same page, copy the <strong>Client ID</strong> and <strong>Client Secret</strong> fields. You will need these to configure OliveTin.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="authentik_provider_secrets.png" alt="authentik provider secrets">
+</div>
+</div>
+<div class="paragraph">
+<p>Submit this wizard to save the configuration.</p>
+</div>
+<div class="sect3">
+<h4 id="_olivetin_configuration"><a class="anchor" href="#_olivetin_configuration"></a><a class="link" href="#_olivetin_configuration">OliveTin configuration</a></h4>
+<div class="paragraph">
+<p>The necessary OliveTin configuration is as follows;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">authOAuth2RedirectURL</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://localhost:1337/oauth/callback"</span>
+<span class="na">authOAuth2Providers</span><span class="pi">:</span>
+  <span class="na">authentik</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">authentik</span>
+    <span class="na">title</span><span class="pi">:</span> <span class="s">Authentik</span>
+    <span class="na">clientID</span><span class="pi">:</span> <span class="s2">"</span><span class="s">1234567890"</span>
+    <span class="na">clientSecret</span><span class="pi">:</span> <span class="s2">"</span><span class="s">123456789012345"</span>
+    <span class="na">authURL</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://localhost:9000/application/o/authorize/"</span>
+    <span class="na">tokenURL</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://localhost:9000/application/o/token/"</span>
+    <span class="na">whoamiURL</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://localhost:9000/application/o/userinfo/"</span>
+    <span class="na">usernameField</span><span class="pi">:</span> <span class="s2">"</span><span class="s">preferred_username"</span>
+    <span class="na">icon</span><span class="pi">:</span> <span class="s">&lt;iconify-icon icon="simple-icons:authentik"&gt;&lt;/iconify-icon&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will need to restart OliveTin for the changes to take effect.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_testing"><a class="anchor" href="#_testing"></a><a class="link" href="#_testing">Testing</a></h4>
+<div class="paragraph">
+<p>You should now be able to login to OliveTin using Authentik, on the OliveTin page, a "Login" link should be available in the top right corner. This will take you to the login form, where you can select the Authentik provider.</p>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="_primitive_password_protection.html">Primitive password protection</a> | ↑ Up: <a href="solutions.html">Solutions</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="cloudflare-access-tunnels.html">Cloudflare Access &amp; Tunnels</a> →</p>
+<p>← Previous: <a href="oauth2.html">OAuth2</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_debugging.html">Debugging</a> →</p>
 </div>
 </div>
 <div id="footer">
