@@ -5,19 +5,19 @@ OliveTin has been tested with Authentik. This documentation page describes how t
 
 Login as an Authentik administrator and start by creating a new app as follows;
 
-image::authentik_new_app.png[]
+image::images/authentik_new_app.png[]
 
 Click Next, and on the **Provider Type** page select **OAuth2**.
 
-image::authentik_select_oauth2.png[]
+image::images/authentik_select_oauth2.png[]
 
 Click Next, and on the **Provider Configuration** page, fill in the following fields;
 
-image::authentik_provider_config.png[]
+image::images/authentik_provider_config.png[]
 
 Scroll down, and on the same page, copy the **Client ID** and **Client Secret** fields. You will need these to configure OliveTin.
 
-image::authentik_provider_secrets.png[]
+image::images/authentik_provider_secrets.png[]
 
 Submit this wizard to save the configuration.
 
