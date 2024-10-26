@@ -59,6 +59,7 @@
 ** xref:security/jwt.adoc[JWT Authorization]
 *** xref:security/jwt_keys.adoc[JWT with Keys]
 *** xref:security/jwt_hmac.adoc[JWT with HMAC]
+*** xref:security/oauth2.adoc[OAuth2]
 * xref:solutions/intro.adoc[Solutions]
 ** xref:solutions/on-git-push/index.adoc[Self hosted GitOps]
 ** xref:solutions/container-control-panel/index.adoc[Container Control Panel]
