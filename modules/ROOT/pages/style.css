@@ -119,6 +119,10 @@ th {
   margin-bottom: 2em;
 }
 
+.imageblock img {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
 hr {
   clear: both;
   border: 0;
