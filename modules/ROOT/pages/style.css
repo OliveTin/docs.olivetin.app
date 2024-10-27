@@ -21,8 +21,9 @@ a:focus, #toc a:focus {
 }
 
 #header {
-  background-color: #efefef;
+  background-color: #fafafa;
   grid-area: nav;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .4);
 }
 
 #footer {
@@ -111,6 +112,10 @@ th {
   text-align: left;
 }
 
+.imageblock {
+  float: center;
+}
+
 .imageblock.right {
   float: right;
 }
@@ -120,6 +125,7 @@ th {
 }
 
 .imageblock img {
+  border-radius: .4em;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
