@@ -3,9 +3,13 @@
 
 include::../snippit_earlydoc.adoc[]
 
-OliveTin supports Access Control Lists.
+You can control access to actions within OliveTin on a per-user basis, using Access Control Lists (ACL).
 
-You can have one default access control list, list this;
+An action always starts with `defaultPermissions` (see below), and then then have one or more ACLs applied to it. This means that you can for example have an action that is only available to a certain group of users, or only to a single user.
+
+Let's say you have a user `james` and a usergroup `admins`. You can then create an ACL that only allows `james` and users in the `admins` group to view and execute an action.
+
+You can specify default permissions for all actions by changing the `defaultPermissions` like this;
 
 [source,yaml]
 .`config.yaml`
@@ -16,7 +20,9 @@ defaultPermissions:
   logs: true
 ----
 
-Or you can specify access control lists per action:
+In the example above, all users will start off with the permissions to only see action logs - but will not be able to view or execute actions. 
+
+It is then possible to add an "admins" ACL on top of every action. In the example below, we define one extra ACL called "admins", which matches any users with the usergroup also called "admins". This ACL will then be applied to all actions, and will allow users in the "admins" usergroup to view and execute the action.
 
 [source,yaml]
 .`config.yaml`
@@ -27,9 +33,6 @@ defaultPermissions:
 
 accessControlLists:
   - name: admins
-    addToEveryAction: false
-    matchUsernames:
-      - james
     matchUsergroups:
       - admins
     permissions:
@@ -42,3 +45,42 @@ actions:
       - admins
 ----
 
+==== ACL Matching - usernames and usergroups.
+
+You can match users based on their usergroup which is the most common, but it is also possible to match based on the user's username.
+
+[source,yaml]
+.`config.yaml`
+```yaml
+accessControlLists:
+  - name: admins
+    matchUsergroups:
+      - admins
+    permissions:
+      view: true
+      exec: true
+
+  - name: james
+    matchUsers:
+      - james
+    permissions:
+      view: true
+      exec: true
+```
+
+==== Add an ACL to every action
+
+Sometimes you want to define an ACL that applies to all actions. It can be tedious and error prone to manually add the ACL under the "acls" list for every action, if you have several actions. Instead, there is a shortcut to add an ACL to all actions - `addToEveryAction: true`.
+
+[source,yaml]
+.`config.yaml`
+```yaml
+accessControlLists:
+  - name: admins
+    matchUsergroups:
+      - admins
+    permissions:
+      view: true
+      exec: true
+    addToEveryAction: true
+```
