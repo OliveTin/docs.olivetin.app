@@ -159,11 +159,11 @@ th {
   border-radius: 1em 0 1em 0;
 }
 
-.listingblock .title ~ .content {
+.listingblock .title ~ .content, .listingblock .title ~ .content pre {
   border-radius: 0 1em 0 1em;
 }
 
-.listingblock .content {
+.listingblock .content, .listingblock .content pre {
   border-radius: 1em;
 }
 
