@@ -129,6 +129,15 @@ th {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
+.imageblock.right img {
+  box-shadow: none;
+}
+
+
+.listingblock {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
 hr {
   clear: both;
   border: 0;
