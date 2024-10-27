@@ -13,11 +13,22 @@ body {
 
 a {
   text-decoration: none;
+  color: #36f;
+  font-weight: bold;
 }
 
 a:focus, #toc a:focus {
   background-color: black;
   color: white;
+}
+
+a:visited {
+  color: #36f;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 #header {
@@ -125,7 +136,7 @@ th {
 }
 
 .imageblock img {
-  border-radius: .4em;
+  border-radius: 1em;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -136,6 +147,7 @@ th {
 
 .listingblock {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 1em;
 }
 
 hr {
