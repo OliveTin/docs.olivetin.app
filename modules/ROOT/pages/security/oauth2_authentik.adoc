@@ -1,5 +1,5 @@
 [#oauth2-authentik]
-=== Authentik (OAuth2)
+=== OAuth2 - Authentik
 
 OliveTin has been tested with Authentik. This documentation page describes how to configure Authentik for use with OliveTin and assumes you already have Authentik installed and running.
 
