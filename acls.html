@@ -422,10 +422,16 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </table>
 </div>
 <div class="paragraph">
-<p>OliveTin supports Access Control Lists.</p>
+<p>You can control access to actions within OliveTin on a per-user basis, using Access Control Lists (ACL).</p>
 </div>
 <div class="paragraph">
-<p>You can have one default access control list, list this;</p>
+<p>An action always starts with <code>defaultPermissions</code> (see below), and then then have one or more ACLs applied to it. This means that you can for example have an action that is only available to a certain group of users, or only to a single user.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you have a user <code>james</code> and a usergroup <code>admins</code>. You can then create an ACL that only allows <code>james</code> and users in the <code>admins</code> group to view and execute an action.</p>
+</div>
+<div class="paragraph">
+<p>You can specify default permissions for all actions by changing the <code>defaultPermissions</code> like this;</p>
 </div>
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
@@ -437,7 +443,10 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 </div>
 <div class="paragraph">
-<p>Or you can specify access control lists per action:</p>
+<p>In the example above, all users will start off with the permissions to only see action logs - but will not be able to view or execute actions.</p>
+</div>
+<div class="paragraph">
+<p>It is then possible to add an "admins" ACL on top of every action. In the example below, we define one extra ACL called "admins", which matches any users with the usergroup also called "admins". This ACL will then be applied to all actions, and will allow users in the "admins" usergroup to view and execute the action.</p>
 </div>
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
@@ -448,9 +457,6 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 
 <span class="na">accessControlLists</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">admins</span>
-    <span class="na">addToEveryAction</span><span class="pi">:</span> <span class="kc">false</span>
-    <span class="na">matchUsernames</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">james</span>
     <span class="na">matchUsergroups</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">admins</span>
     <span class="na">permissions</span><span class="pi">:</span>
@@ -463,6 +469,50 @@ This page is marked as "earlydoc", which means that it more of a collection of n
       <span class="pi">-</span> <span class="s">admins</span></code></pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_acl_matching_usernames_and_usergroups"><a class="anchor" href="#_acl_matching_usernames_and_usergroups"></a><a class="link" href="#_acl_matching_usernames_and_usergroups">ACL Matching - usernames and usergroups.</a></h4>
+<div class="paragraph">
+<p>You can match users based on their usergroup which is the most common, but it is also possible to match based on the user&#8217;s username.</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">accessControlLists</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">admins</span>
+    <span class="na">matchUsergroups</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">admins</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
+
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">james</span>
+    <span class="na">matchUsers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">james</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_add_an_acl_to_every_action"><a class="anchor" href="#_add_an_acl_to_every_action"></a><a class="link" href="#_add_an_acl_to_every_action">Add an ACL to every action</a></h4>
+<div class="paragraph">
+<p>Sometimes you want to define an ACL that applies to all actions. It can be tedious and error prone to manually add the ACL under the "acls" list for every action, if you have several actions. Instead, there is a shortcut to add an ACL to all actions - <code>addToEveryAction: true</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">accessControlLists</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">admins</span>
+    <span class="na">matchUsergroups</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">admins</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">addToEveryAction</span><span class="pi">:</span> <span class="kc">true</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="auth-concepts.html">Concepts</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="trusted-header.html">Trusted Header Authorization</a> →</p>
@@ -470,7 +520,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-27 23:33:53 UTC
+Last updated 2024-10-27 23:45:10 UTC
 </div>
 </div>
 </body>
