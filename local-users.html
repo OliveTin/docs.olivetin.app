@@ -424,6 +424,8 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <div class="paragraph">
 <p>OliveTin supports just basic users defined with a username and password in the config.yaml file. This can be used when you do not want to use a full authentication system like LDAP, OAuth2 or a Reverse Proxy.</p>
 </div>
+<div class="sect3">
+<h4 id="_define_a_user"><a class="anchor" href="#_define_a_user"></a><a class="link" href="#_define_a_user">Define a user</a></h4>
 <div class="listingblock">
 <div class="title"><code>config.yaml</code></div>
 <div class="content">
@@ -434,6 +436,42 @@ This page is marked as "earlydoc", which means that it more of a collection of n
       <span class="na">password</span><span class="pi">:</span> <span class="s">$argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k</span></code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_define_users_with_a_user_group"><a class="anchor" href="#_define_users_with_a_user_group"></a><a class="link" href="#_define_users_with_a_user_group">Define users with a user group</a></h4>
+<div class="paragraph">
+<p>OliveTin local users do not need to be part of a user group, and unless any user groups are added, they will not be in any user group. However, if you want to add a user to a user group, you can do so like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">authLocalUsers</span><span class="pi">:</span>
+  <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">users</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">username</span><span class="pi">:</span> <span class="s">alice</span>
+      <span class="na">password</span><span class="pi">:</span> <span class="s">$argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k</span>
+      <span class="na">usergroups</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">admins</span>
+
+    <span class="pi">-</span> <span class="na">username</span><span class="pi">:</span> <span class="s">bob</span>
+      <span class="na">password</span><span class="pi">:</span> <span class="s">...</span>
+      <span class="na">usergroups</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">admins</span>
+
+    <span class="pi">-</span> <span class="na">username</span><span class="pi">:</span> <span class="s">charlie</span>
+      <span class="na">password</span><span class="pi">:</span> <span class="s">...</span>
+      <span class="na">usergroups</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">users</span>
+        <span class="pi">-</span> <span class="s">webmasters</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_get_a_argon2id_hashed_password"><a class="anchor" href="#_get_a_argon2id_hashed_password"></a><a class="link" href="#_get_a_argon2id_hashed_password">Get a Argon2id hashed password</a></h4>
+<div class="paragraph">
+<p>Argon2id is the recommended password hashing algorithm <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">recommebded by OWASP</a> as of October 2024. There doesn&#8217;t seem to be a good reason yet to provide configuration options for changing the password hashing algorithm, but if you have a good reason, please open an issue on the GitHub repository.</p>
+</div>
+<div class="sect4">
+<h5 id="_option_a_using_olivetin_api"><a class="anchor" href="#_option_a_using_olivetin_api"></a><a class="link" href="#_option_a_using_olivetin_api">Option A - Using OliveTin API</a></h5>
 <div class="paragraph">
 <p>You can see from the example above that the config contains a single user called <strong>james</strong>, and the password is hashed using Argon2id. OliveTin provides a utility API to hash passwords using Argon2id which can be useful when you want to create new users. Simply run the following curl command to hash a password:</p>
 </div>
@@ -450,6 +488,10 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <pre class="rouge highlight"><code>Your password hash is: $argon2id$v=19$m=65536,t=4,p=6$dlWTV1RL04/Nuvxzl94NAg$KsYXvCFE2Eu/jkXi/dbbZM3I/2b2VByTAwRIenUwdJk</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_option_b_using_the_argon2_command_line_tool"><a class="anchor" href="#_option_b_using_the_argon2_command_line_tool"></a><a class="link" href="#_option_b_using_the_argon2_command_line_tool">Option B - Using the <code>argon2</code> command line tool</a></h4>
 <div class="paragraph">
 <p>You can also easily hash the password using the <code>argon2</code> package:</p>
 </div>
@@ -458,6 +500,9 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <pre class="rouge highlight"><code data-lang="bash"><span class="nb">echo</span> <span class="nt">-n</span> <span class="s2">"myPassword"</span> | argon2 <span class="s2">"</span><span class="si">$(</span>openssl rand <span class="nt">-base64</span> 16<span class="si">)</span><span class="s2">"</span> <span class="nt">-id</span> <span class="nt">-t</span> 4 <span class="nt">-m</span> 16 <span class="nt">-p</span> 6 <span class="nt">-l</span> 32 <span class="nt">-e</span></code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_opption_c_using_the_hash_docker_image"><a class="anchor" href="#_opption_c_using_the_hash_docker_image"></a><a class="link" href="#_opption_c_using_the_hash_docker_image">OPption C - Using the <code>hash</code> docker image</a></h4>
 <div class="paragraph">
 <p>Or using the [hash](<a href="https://hub.docker.com/r/leplusorg/hash" class="bare">https://hub.docker.com/r/leplusorg/hash</a>) docker image:</p>
 </div>
@@ -469,8 +514,6 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <div class="paragraph">
 <p>Then simply visit the OliveTin web interface and browse to the login page, eg: <a href="http://olivetin.example.com:1337/login" class="bare">http://olivetin.example.com:1337/login</a></p>
 </div>
-<div class="paragraph">
-<p>Note: Argon2id is the recommended password hashing algorithm <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">recommebded by OWASP</a> as of October 2024. There doesn&#8217;t seem to be a good reason yet to provide configuration options for changing the password hashing algorithm, but if you have a good reason, please open an issue on the GitHub repository.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -479,7 +522,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-27 23:45:10 UTC
+Last updated 2024-10-28 16:00:53 UTC
 </div>
 </div>
 </body>
