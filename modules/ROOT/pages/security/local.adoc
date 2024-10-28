@@ -26,17 +26,17 @@ authLocalUsers:
   users:
     - username: alice
       password: $argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k
-      usergroups:
+      groups:
         - admins
 
     - username: bob
       password: ...
-      usergroups:
+      groups:
         - admins
 
     - username: charlie
       password: ...
-      usergroups:
+      groups:
         - users
         - webmasters
 ```
