@@ -1,7 +1,7 @@
 [#auth-concepts]
 === Concepts
 
-OliveTin does not have any built-in code for doing **Authentication** (ie: entering a username and password), however it can do **Authorization** (ie: checking permissions of a user who logged in via another system, like single sign on).
+OliveTin only has 1 method for doing **Authentication** (ie: entering a username and password -- see <<local-users>> ), however it can do **Authorization** (ie: checking permissions of a user who logged in via another system, like single sign on) in many number of ways.
 
 A popular way of deploying OliveTin is by users accessing it via another system, like a <<reverse-proxies,reverse proxy>> (eg: Traefik) or a "homepage" app (eg: Organizr). Both of these are used to handle user authentication first, before users then access OliveTin. Permissions can then be applied inside OliveTin depending on who has logged in.
 

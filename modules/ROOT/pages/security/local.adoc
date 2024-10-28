@@ -1,5 +1,5 @@
 [#local-users]
-=== Username & Password
+=== Local Users Login
 
 include::../snippit_earlydoc.adoc[]
 
