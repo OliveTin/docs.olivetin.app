@@ -59,7 +59,7 @@ This will return a output like this, you can then copy and paste this hash into 
 Your password hash is: $argon2id$v=19$m=65536,t=4,p=6$dlWTV1RL04/Nuvxzl94NAg$KsYXvCFE2Eu/jkXi/dbbZM3I/2b2VByTAwRIenUwdJk
 ```
 
-==== Option B - Using the `argon2` command line tool
+===== Option B - Using the `argon2` command line tool
 
 You can also easily hash the password using the `argon2` package:
 
@@ -67,8 +67,8 @@ You can also easily hash the password using the `argon2` package:
 echo -n "myPassword" | argon2 "$(openssl rand -base64 16)" -id -t 4 -m 16 -p 6 -l 32 -e
 ```
 
-==== OPption C - Using the `hash` docker image
-Or using the [hash](https://hub.docker.com/r/leplusorg/hash) docker image:
+===== Opption C - Using the `hash` docker image
+Or using the link:https://hub.docker.com/r/leplusorg/hash[hash] docker image:
 
 ```bash
 docker run --rm -i --net=none leplusorg/hash sh -c 'echo -n "myPassword" | argon2 "$(openssl rand -base64 16)" -id -t 4 -m 16 -p 6 -l 32 -e'
