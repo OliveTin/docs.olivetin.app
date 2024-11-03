@@ -53,6 +53,8 @@ You can see from the example above that the config contains a single user called
 curl -sS --json '{"password": "myPassword"}' http://olivetin.example.com:1337/api/PasswordHash
 ```
 
+NOTE: Curl 7.82 added support for the `--json` option, if you are using an older version of curl, see link:https://github.com/OliveTin/OliveTin/issues/462[this issue].
+
 This will return a output like this, you can then copy and paste this hash into your config.yaml file;
 
 ```
