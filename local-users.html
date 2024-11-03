@@ -480,6 +480,18 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <pre class="rouge highlight"><code data-lang="bash">curl <span class="nt">-sS</span> <span class="nt">--json</span> <span class="s1">'{"password": "myPassword"}'</span> http://olivetin.example.com:1337/api/PasswordHash</code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Curl 7.82 added support for the <code>--json</code> option, if you are using an older version of curl, see <a href="https://github.com/OliveTin/OliveTin/issues/462">this issue</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>This will return a output like this, you can then copy and paste this hash into your config.yaml file;</p>
 </div>
@@ -522,7 +534,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-01 16:00:48 UTC
+Last updated 2024-11-03 21:28:23 UTC
 </div>
 </div>
 </body>
