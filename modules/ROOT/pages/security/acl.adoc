@@ -61,7 +61,7 @@ accessControlLists:
       exec: true
 
   - name: james
-    matchUsers:
+    matchUserNames:
       - james
     permissions:
       view: true
