@@ -318,6 +318,13 @@ div.admonitionblock td:first-child {
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="jwt-keys.html">JWT with Keys</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AuthJwtDomain</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The domain to use for JWT authentication.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires restart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="jwt-hmac.html">JWT with HMAC</a>, <a href="jwt-keys.html">JWT with Keys</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>AuthJwtCertsURL</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The URL to fetch the public keys from with JWKS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
@@ -339,6 +346,13 @@ div.admonitionblock td:first-child {
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="jwt-hmac.html">JWT with HMAC</a>, <a href="jwt-keys.html">JWT with Keys</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AuthJwtPubKeyPath</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The path to the public key to use for JWT authentication.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires restart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="jwt-keys.html">JWT with Keys</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>AuthHttpHeaderUsername</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The HTTP header to use for the username.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
@@ -351,6 +365,27 @@ div.admonitionblock td:first-child {
 <td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Requires restart</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="trusted-header.html">Trusted Headers</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`AuthLocalUsers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The list of local users.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires restart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="local-users.html">Local Users</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AuthLoginUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The URL to redirect to for login.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires restart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#login-url">Login URL</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AuthRequireGuestsToLogin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Basically disables all functionality for guests. It sets all default permissions to false.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires restart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="acls.html">Access Control Lists</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DefaultPermissions</code></p></td>
@@ -375,7 +410,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-11 00:16:45 UTC
+Last updated 2024-11-11 00:23:08 UTC
 </div>
 </div>
 </body>
