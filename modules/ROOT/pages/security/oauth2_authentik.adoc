@@ -26,6 +26,8 @@ Submit this wizard to save the configuration.
 The necessary OliveTin configuration is as follows;
 
 ```yaml
+authRequireGuestsToLogin: true # Optional - depends if you want to "disable" guests.
+
 authOAuth2RedirectURL: "http://localhost:1337/oauth/callback"
 authOAuth2Providers:
   authentik:
