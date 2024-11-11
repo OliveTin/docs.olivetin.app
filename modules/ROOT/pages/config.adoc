@@ -66,11 +66,16 @@ All configuration options are covered in the sollution sections
 
 | `AuthJwtCookieName` | The name of the cookie to use for JWT authentication. | `` | Requires restart | <<jwt-hmac,JWT with HMAC>>, <<jwt-keys,JWT with Keys>>
 | `AuthJwtAud` | The audience to use for JWT authentication. | `` | Requires restart | <<jwt-keys,JWT with Keys>>
+| `AuthJwtDomain` | The domain to use for JWT authentication. | `` | Requires restart | <<jwt-hmac,JWT with HMAC>>, <<jwt-keys,JWT with Keys>>
 | `AuthJwtCertsURL` | The URL to fetch the public keys from with JWKS | `` | Requires restart | <<jwt-keys,JWT with Keys>>
 | `AuthJwtClaimUsername` | The claim to use for the username. | `sub` | Requires restart | <<jwt-hmac,JWT with HMAC>>, <<jwt-keys,JWT with Keys>>
 | `AuthJwtClaimUserGroup` | The claim to use for the usergroup. | `sub` | Requires restart | <<jwt-hmac,JWT with HMAC>>, <<jwt-keys,JWT with Keys>>
+| `AuthJwtPubKeyPath` | The path to the public key to use for JWT authentication. | `` | Requires restart | <<jwt-keys,JWT with Keys>>
 | `AuthHttpHeaderUsername` | The HTTP header to use for the username. | `` | Requires restart | <<trusted-header,Trusted Headers>>
 | `AuthHttpHeaderUserGroup` | The HTTP header to use for the usergroup. | `` | Requires restart | <<trusted-header,Trusted Headers>>
+| `AuthLocalUsers | The list of local users. | `[]` | Requires restart | <<local-users,Local Users>>
+| `AuthLoginUrl` | The URL to redirect to for login. | `` | Requires restart | <<login-url,Login URL>>
+| `AuthRequireGuestsToLogin` | Basically disables all functionality for guests. It sets all default permissions to false. | `false` | Requires restart | <<acls,Access Control Lists>>
 | `DefaultPermissions` | The default permissions to use. | `[]` | Requires restart | <<acls,Access Control Lists>>
 | `AccessControlLists` | The list of access control lists. | `[]` | Requires restart | <<acls,Access Control Lists>>
 |===
