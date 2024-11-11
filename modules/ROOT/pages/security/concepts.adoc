@@ -3,14 +3,9 @@
 
 OliveTin only has 1 method for doing **Authentication** (ie: entering a username and password -- see <<local-users>> ), however it can do **Authorization** (ie: checking permissions of a user who logged in via another system, like single sign on) in many number of ways.
 
-A popular way of deploying OliveTin is by users accessing it via another system, like a <<reverse-proxies,reverse proxy>> (eg: Traefik) or a "homepage" app (eg: Organizr). Both of these are used to handle user authentication first, before users then access OliveTin. Permissions can then be applied inside OliveTin depending on who has logged in.
+OliveTin supports the following methods of Authorization:
 
-The flow generally goes like this; 
-
-1. User browses to a website like Organizr and logs in, which sets a JWT Cookie for apps.example.com.
-2. User browses to OliveTin.apps.example.com, and the cookie is sent to OliveTin.
-3. OliveTin verifies the JWT token given the signing secret, and picks up on the `name` and `group` fields from the JWT claim.
-4. OliveTin matches any relevant ACLs based on the claims.
-5. If any ACLs are not matched, then the defaultPermissions are used.
-
+- <<trusted-header,Trusted Header>> (eg: Nginx, Apache, etc)
+- <<jwt,JWT>> (eg: Traefik, Organizr, etc)
+- <<oauth2,OAuth2>> (eg: Google, GitHub, etc)
 
