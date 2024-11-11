@@ -317,6 +317,31 @@ div.admonitionblock td:first-child {
 </li>
 </ul>
 </div>
+<div class="sect3">
+<h4 id="_jwt_flow"><a class="anchor" href="#_jwt_flow"></a><a class="link" href="#_jwt_flow">JWT Flow</a></h4>
+<div class="paragraph">
+<p>The flow generally goes like this;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User browses to a website like Organizr and logs in, which sets a JWT Cookie for apps.example.com.</p>
+</li>
+<li>
+<p>User browses to OliveTin.apps.example.com, and the cookie is sent to OliveTin.</p>
+</li>
+<li>
+<p>OliveTin verifies the JWT token given the signing secret, and picks up on the <code>name</code> and <code>group</code> fields from the JWT claim.</p>
+</li>
+<li>
+<p>OliveTin matches any relevant ACLs based on the claims.</p>
+</li>
+<li>
+<p>If any ACLs are not matched, then the defaultPermissions are used.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="trusted-header.html">Trusted Header Authorization</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="jwt-keys.html">JWT with Keys</a> →</p>
@@ -324,7 +349,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-11 00:23:08 UTC
+Last updated 2024-11-11 00:26:44 UTC
 </div>
 </div>
 </body>

@@ -295,29 +295,20 @@ div.admonitionblock td:first-child {
 <p>OliveTin only has 1 method for doing <strong>Authentication</strong> (ie: entering a username and password&#8201;&#8212;&#8201;see <a href="local-users.html">Local Users Login</a> ), however it can do <strong>Authorization</strong> (ie: checking permissions of a user who logged in via another system, like single sign on) in many number of ways.</p>
 </div>
 <div class="paragraph">
-<p>A popular way of deploying OliveTin is by users accessing it via another system, like a <a href="reverse-proxies.html">reverse proxy</a> (eg: Traefik) or a "homepage" app (eg: Organizr). Both of these are used to handle user authentication first, before users then access OliveTin. Permissions can then be applied inside OliveTin depending on who has logged in.</p>
+<p>OliveTin supports the following methods of Authorization:</p>
 </div>
-<div class="paragraph">
-<p>The flow generally goes like this;</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>User browses to a website like Organizr and logs in, which sets a JWT Cookie for apps.example.com.</p>
+<p><a href="trusted-header.html">Trusted Header</a> (eg: Nginx, Apache, etc)</p>
 </li>
 <li>
-<p>User browses to OliveTin.apps.example.com, and the cookie is sent to OliveTin.</p>
+<p><a href="jwt.html">JWT</a> (eg: Traefik, Organizr, etc)</p>
 </li>
 <li>
-<p>OliveTin verifies the JWT token given the signing secret, and picks up on the <code>name</code> and <code>group</code> fields from the JWT claim.</p>
+<p><a href="oauth2.html">OAuth2</a> (eg: Google, GitHub, etc)</p>
 </li>
-<li>
-<p>OliveTin matches any relevant ACLs based on the claims.</p>
-</li>
-<li>
-<p>If any ACLs are not matched, then the defaultPermissions are used.</p>
-</li>
-</ol>
+</ul>
 </div>
 </div>
 <div class="paragraph nav-footer">
@@ -326,7 +317,7 @@ div.admonitionblock td:first-child {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-11 00:23:08 UTC
+Last updated 2024-11-11 00:26:44 UTC
 </div>
 </div>
 </body>
