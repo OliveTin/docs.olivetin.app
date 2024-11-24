@@ -25,20 +25,16 @@ authLocalUsers:
   enabled: true
   users:
     - username: alice
+      usergroup: admins
       password: $argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k
-      groups:
-        - admins
 
     - username: bob
       password: ...
-      groups:
-        - admins
+      usergroup: admins
 
     - username: charlie
       password: ...
-      groups:
-        - users
-        - webmasters
+      usergroup: webmasters
 ```
 
 ==== Get a Argon2id hashed password
