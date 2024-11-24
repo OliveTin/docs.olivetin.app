@@ -42,6 +42,17 @@ authOAuth2Providers:
     icon: <iconify-icon icon="simple-icons:authentik"></iconify-icon>
 ```
 
+Optional configuration values to consider are:
+```yaml
+
+authOAuth2Providers:
+  authentik:
+    userGroupField: "your_mapped_group_name"
+    certBundlePath: "/path/to/mounted/certificate.pem"
+    insecureSkipVerify: true
+    connectTimeout: 15
+```
+
 You will need to restart OliveTin for the changes to take effect.
 
 ==== Testing
