@@ -453,6 +453,30 @@ pre.rouge .gs {
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_cron_and_acls"><a class="anchor" href="#_cron_and_acls"></a><a class="link" href="#_cron_and_acls">Cron and ACLs</a></h4>
+<div class="paragraph">
+<p>If you have enabled ACL, cron tasks are run as the user <code>cron</code>, which means that your ACL needs to allow the cron user to execute the action. This is one possibilty:</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">accessControlLists</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">cron"</span>
+    <span class="na">matchUsernames</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">cron</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Say hello</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Hello!"</span>
+    <span class="na">execOnCron</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">@hourly"</span>
+    <span class="na">acls</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">cron"</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="exec-on-demand.html">Execute on demand</a> | ↑ Up: <a href="actions.html">Action execution</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-startup.html">Execute on startup</a> →</p>
@@ -460,7 +484,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 20:38:04 UTC
+Last updated 2024-11-25 20:38:44 UTC
 </div>
 </div>
 </body>
