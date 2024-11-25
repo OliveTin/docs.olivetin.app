@@ -17,16 +17,19 @@ authOAuth2Providers:
 
 ==== Provider configuration
 
-* `name` - a "simple name" for the provider, used in the login redirect and internally in OliveTin, eg `github`
-* `title` - the human-readable name of the provider, eg `GitHub`
+* `name` - a "simple name" for the provider, used in the login redirect and internally in OliveTin, e.g. `github`
+* `title` - the human-readable name of the provider, e.g. `GitHub`
 * `clientId` - the client ID provided by the OAuth2 provider
 * `clientSecret` - the client secret provided by the OAuth2 provider
-* `icon` - the icon to use for the provider, eg an Iconify icon - accepts any HTML.
+* `icon` - the icon to use for the provider. Accepts any HTML, e.g. `<iconify-icon icon="simple-icons:authentik"></iconify-icon>`
 * `scopes` - a list of scopes to request.
 * `authUrl` - the URL to redirect to for authentication
 * `tokenUrl` - the URL to exchange the code for a token
 * `whoamiUrl` - the URL to fetch user information from
 * `usernameField` - the field in the user information response to use as the username
-
+* `userGroupField` - the field in the user information response to use as the group. This is a string containing one group name, e.g. `olivetin_group`
+* `certBundlePath` - the path to a certificate to add to the truststore for authentication requests, e.g. `/certs/internal.crt`
+* `insecureSkipVerify` - a boolean to disable certificate verfication
+* `connectTimeout` - an integer for seconds until the request will timeout, e.g. `10`
 
 
