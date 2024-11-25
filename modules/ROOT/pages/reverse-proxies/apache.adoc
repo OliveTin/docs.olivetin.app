@@ -1,0 +1,22 @@
+[#apache-path]
+[#apache-dns]
+=== Apache HTTPD
+
+This is an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337.
+
+./etc/httpd/conf.d/OliveTin.conf
+[source,apache]
+----
+<VirtualHost *:80>
+ServerName olivetin.example.com
+ProxyPass / http://localhost:1337/
+ProxyPassReverse / http://localhost:1337/
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/websocket
+RewriteRule /(.) ws://localhost:1337/websocket [P,L]
+</VirtualHost>
+----
+
+Note, you virtual host should *not* include a DocumentRoot directive - httpd is just proxying OliveTin, not serving it's actual pages.
+

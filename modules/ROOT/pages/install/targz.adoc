@@ -1,0 +1,17 @@
+[#install-targz]
+=== .tar.gz Install (manual)
+
+This is an option for an advanced setup, for users who cannot user the .deb or .rpm packages.
+
+==== Manual setup (.tar.gz)
+
+A .tar.gz file is provided for people who are using other Linux distributions or want to set things up manually. 
+
+1. Copy the `OliveTin` binary to `/usr/local/bin/OliveTin`
+2. Copy the `webui` directory contents to `/var/www/olivetin/` (eg, `/var/www/olivetin/index.html`)
+3. Copy the `OliveTin.service` file to `/etc/systemd/system/`
+4. Create a `config.yaml` in `/etc/OliveTin` using the example provided above to get you started.
+
+include::snippit_post_systemd.adoc[]
+
+

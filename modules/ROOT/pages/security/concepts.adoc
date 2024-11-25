@@ -1,0 +1,11 @@
+[#auth-concepts]
+=== Concepts
+
+OliveTin only has 1 method for doing **Authentication** (ie: entering a username and password -- see <<local-users>> ), however it can do **Authorization** (ie: checking permissions of a user who logged in via another system, like single sign on) in many number of ways.
+
+OliveTin supports the following methods of Authorization:
+
+- <<trusted-header,Trusted Header>> (eg: Nginx, Apache, etc)
+- <<jwt,JWT>> (eg: Traefik, Organizr, etc)
+- <<oauth2,OAuth2>> (eg: Google, GitHub, etc)
+

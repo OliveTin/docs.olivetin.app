@@ -1,0 +1,18 @@
+[#install-fedora]
+=== Fedora Linux (dnf)
+
+Fedora is included in the Fedora Project official repositories. For an overview of versions, see the Package Sources page;
+
+https://src.fedoraproject.org/rpms/OliveTin
+
+==== Installation 
+
+Install using `dnf` (or yum, on older versions of Fedora); 
+
+----
+user@host: dnf install -y OliveTin
+----
+
+include::snippit_post_systemd.adoc[]
+
+

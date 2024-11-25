@@ -1,0 +1,32 @@
+[#oauth2]
+=== OAuth2
+
+include::../snippit_earlydoc.adoc[]
+
+OliveTin supports OAuth2 for login with any OAuth2 compliant provider.
+
+At the moment, username fetching is only supported on GitHub. More will be added soon, probably with the addition of OpenID Connect support.
+
+```yaml
+authOAuth2RedirectUrl: http://localhost:1337/oauth/callback
+authOAuth2Providers:
+  github:
+    clientId: 1234567890
+    clientSecret: 1234567890
+```
+
+==== Provider configuration
+
+* `name` - a "simple name" for the provider, used in the login redirect and internally in OliveTin, eg `github`
+* `title` - the human-readable name of the provider, eg `GitHub`
+* `clientId` - the client ID provided by the OAuth2 provider
+* `clientSecret` - the client secret provided by the OAuth2 provider
+* `icon` - the icon to use for the provider, eg an Iconify icon - accepts any HTML.
+* `scopes` - a list of scopes to request.
+* `authUrl` - the URL to redirect to for authentication
+* `tokenUrl` - the URL to exchange the code for a token
+* `whoamiUrl` - the URL to fetch user information from
+* `usernameField` - the field in the user information response to use as the username
+
+
+

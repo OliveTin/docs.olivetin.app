@@ -1,0 +1,33 @@
+[#caddy-dns]
+=== Caddy
+
+Caddy seems to work without any special configuration, so a simple `Caddyfile` works like this;
+
+.Caddyfile
+[source,nginx]
+----
+http://olivetin.example.com {
+        reverse_proxy * http://localhost:1337
+}
+----
+
+
+[#caddy-path]
+==== Custom paths
+
+.Caddyfile
+----
+....
+	handle {$GLOBAL_PORTAL_PATH}/olivetin* {
+			redir {$GLOBAL_PORTAL_PATH}/olivetin {$GLOBAL_PORTAL_PATH}/olivetin/
+			uri strip_prefix {$GLOBAL_PORTAL_PATH}/olivetin       
+			basicauth {              
+					{$GLOBAL_USER} HASH
+			}     
+			reverse_proxy * localhost:1337
+	}
+....
+----
+
+include::snippit-external-rest.adoc[]
+

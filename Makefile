@@ -1,5 +1,10 @@
-html:
-	asciidoctor -r asciidoctor-multipage -b multipage_html5 -a stylesheet=style.css -o index.html index.adoc -D docs
-	cp -r style.css images api docs/ 
+default:
+	cd modules/ROOT/pages && ln -sf index_asciidoctor.adoc index.adoc
+	rm -rf docs
+	mkdir docs
+	$(MAKE) -C modules/ROOT
+	cp CNAME README.md docs/
 
-.PHONY: html
+antora:
+	cd modules/ROOT/pages && ln -sf index_antora.adoc index.adoc
+	antora antora-playbook.yml

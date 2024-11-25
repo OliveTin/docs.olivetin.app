@@ -1,0 +1,25 @@
+[#install-helm]
+=== Kubernetes with Helm
+
+Helm makes installing OliveTin on Kubernetes very easy, the official chart is hosted on Artifact Hub. 
+
+https://artifacthub.io/packages/search?repo=olivetin[image:https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/olivetin[Artifact Hub]]
+
+==== Quickstart
+
+----
+user@host: helm repo add olivetin https://olivetin.github.io/OliveTin-HelmChart/
+user@host: helm install olivetin olivetin/olivetin
+----
+
+include::snippit_to_config.adoc[]
+
+==== Included templates
+
+You can view the raw templates here: https://github.com/OliveTin/OliveTin-HelmChart/tree/main/templates
+
+* Deployment
+* ConfigMap
+* Service
+* Ingress (optional)
+

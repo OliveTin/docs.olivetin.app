@@ -1,0 +1,320 @@
+[#dashboards]
+== Dashboards
+
+OliveTin generates a default view of actions which is useful for simple OliveTin use cases - this is always called "Actions" and cannot be renamed. The Actions view also does not support entities, fieldsets or folders.
+
+If you want to start organizing OliveTin actions more effectively, then **Dashboards** are for you!
+
+one of the biggest reasons to use Dashboards as opposed to just the "Actions" section, is that dashboards allow you to use <<folders>>, and dashboards really start to get exciting when you start using <<entities,entities>> and displays.
+
+image::images/dashboard.png[]
+
+Example configuration
+
+[source,yaml]
+.`config.yaml`
+----
+# Actions MUST be defined in the actions section, not in the dashboards
+# section. The dashboards only "link" to actions by their title.
+actions:
+ - title: Ping All Servers
+   shell: echo "ping all..."
+
+ - title: '{{ server.name }} Wake on Lan'
+   shell: 'wol {{ server.name }}'
+   timeout: 10
+   entity: server
+
+ - title: '{{ server.name }} Power Off'
+   shell: 'ssh root@{{ server.name }} "poweroff"'
+   timeout: 10
+   entity: server
+
+
+# Dashboards are a way of taking actions from the default "actions" view, and
+# organizing them into groups - either into folders, or fieldsets.
+#
+# The only way to properly use entities, are to use them with a `fieldset` on
+# a dashboard.
+dashboards:
+  # Top level items are dashboards.
+  - title: My Servers
+    contents:
+      # On dashboards, all items need to be in a "fieldset". If you don't 
+      # specify a fieldset, actions will be assigned to a fieldset with a title
+      # called "default".
+      - title: All Servers
+        type: fieldset
+        contents:
+        # The contents of a dashboard will try to look for an action with a
+        # matching title IF the `contents: ` property is empty.
+        - title: Ping All Servers
+
+        # If you create an item with some "contents:", OliveTin will show that as
+        # directory.
+        - title: Hypervisors
+          contents:
+            - title: Ping hypervisor1
+            - title: Ping hypervisor2
+
+      # If you specify `type: fieldset` and some `contents`, it will show your
+      # actions grouped together without a folder.
+      - type: fieldset
+        entity: server
+        title: 'Server: {{ server.hostname }}'
+        contents:
+          # By default OliveTin will look for an action with a matching title
+          # and put it on the dashboard.
+          #
+          # Fieldsets  also support `type: display`, which can display arbitary
+          # text. This is useful for displaying things like a container's state.
+          - type: display
+            title: |
+              Hostname: <strong>{{ server.name }}</strong>
+              IP Address: <strong>{{ server.ip }}</strong>
+
+          # These are the actions (defined above) that we want on the dashboard.
+          - title: '{{ server.name }} Wake on Lan'
+          - title: '{{ server.name }} Power Off'
+----
+
+=== Example Dashboard usage
+
+Check out the following examples of dashboards in several complete OliveTin solutions;
+
+* <<container-control-panel,Container Control Panel>>
+* <<systemd-control-panel,Systemd Control Panel>>
+
+=== The "actions" section
+
+To make Olivetin easy to use, it generates a default "Actions" section for you, as many 
+people don't want the hassle of having to configure dashboards. This is fine, you absolutely
+do not need a `dashboards:` section in your `config.yaml` at all if you don't want it.
+
+However, some people prefer to put every action onto a Dashboard. If you so this, OliveTin
+will hide the `Actions` view for you on the sidebar.
+
+[#dashboard-css]
+=== Change component style
+
+You can change the style of any dashboard component by adding a `cssClass` property to the component. This is useful for styling actions, displays, fieldsets and folders. Here is an example of how to add a class to an action;
+
+```yaml
+
+themeName: my-theme
+
+actions:
+  - title: My Action
+    shell: echo "Hello"
+
+dashboards:
+  - title: My Dashboard
+    contents:
+      - title: My Fieldset
+        type: fieldset
+        contents:
+          - title: My Action
+            cssClass: big-button
+```
+
+You can then create a theme, and add the following CSS to style the action;
+
+.`custom-webui/themes/my-theme/theme.css`
+```css
+.big-button {
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  grid-column: span 2;
+  grid-row: span 2;
+}
+```
+
+[#fieldsets]
+=== Fieldsets
+
+It is possible to group actions together in a "group", which is not a directory, but is called
+a "fieldset". This is an example of a fieldset that contains two <<folders,folders>>.
+
+image::images/fieldset.png[]
+
+Fieldsets are defined under a <<dashboards,dashboards>> in your config.yaml.
+
+.`config.yaml`
+[source,yaml]
+----
+dashboards:
+  - title: My First Dashboard
+    contents:
+      - title: Fieldset 1
+        type: fieldset
+        contents: []
+
+      - title: Fieldset 2
+        type: fieldset
+        contents: []
+----
+
+Fieldsets are also generated for you when you use <<entities,entities>>.
+
+.`config.yaml`
+[source,yaml]
+----
+dashboards:
+  - title: My First Dashboard
+    contents:
+      - title: Fieldset 1
+        type: fieldset
+        entity: server
+        contents:
+          - title: Start {{ server.Name }}
+          - title: Shutdown {{ server.Name }}
+----
+
+[#folders]
+=== Folders (Directories)
+
+Folders (Directories) are a good way to group up actions in the same way that you would
+organize files on your computer into directories.
+
+image::images/folders.png[]
+
+You must first create a dashboard to use a directory, and then you "reference" actions that you
+want in that folder based on the action name. Anything without a "contents" property is treated
+as an action.
+
+Let's look at the example below with 4 actions, 2 top level folders and 1 subfolder.
+
+.`config.yaml`
+[source,yaml]
+----
+actions:
+  - title: Action 1
+    shell: echo "action1"
+
+  - title: Action 2
+    shell: echo "action2"
+
+  - title: Action 3
+    shell: echo "action3"
+
+  - title: Action 4
+    shell: echo "action4"
+
+dashboards:
+  - title: My First Dashboard
+    contents:
+      - title: Fieldset 1
+        type: fieldset
+        contents:
+          - title: Folder 1
+            contents:
+              - title: Action 1
+              - title: Action 2
+
+              - title: Subfolder 2
+                contents:
+                  - title: Action 3
+
+          - title: Folder 2
+            contents:
+              - title: Action 4
+
+----
+
+[#displays]
+=== Displays
+
+Displays are a way of displaying text, values, variables and similar on a dashboard.
+
+They are rendered as just a simple box, that shown alongside actions. You can add arbitary HTML to a display, which makes it useful for showing links, etc.
+
+image::images/dashboard-display.png[]
+
+[source,yaml]
+.`config.yaml`
+----
+dashboards:
+  # This the second dashboard.
+  - title: My Containers
+    contents:
+        # This is a fieldset, which is a way of dashboard items together actions together.
+      - title: Container {{ container.Names }}
+        entity: container
+        type: fieldset
+        contents:
+            # This is a display
+          - type: display
+            title: |
+              {{ container.Names }} <br /><br /><strong>{{ container.State }}</strong>
+
+            # These are the actions that we want on the dashboard.
+          - title: 'Start {{ container.Names }}'
+          - title: 'Stop {{ container.Names }}'
+----
+
+==== CSS Classes
+
+You can also add CSS classes to the display, which can be useful for styling.
+
+[source,yaml]
+----
+dashboards:
+  - title: My Containers
+    contents:
+      - title: 'Container {{ container.Names.0 }} ({{ container.Image }})'
+        entity: container
+        type: fieldset
+        contents:
+          - type: display
+            cssClass: '{{ container.State }}'
+            title: |
+              {{ container.Status }} <br /><br /><strong>{{ container.State }}</strong>
+          - title: 'Start {{ container.Names.0 }}'
+          - title: 'Stop {{ container.Names.0 }}'
+          - title: 'Remove {{ container.Names.0 }}'
+----
+
+You can then use the following CSS to style the display;
+
+[source,css]
+----
+div.display.running {
+  color: green;
+}
+----
+
+[#output-views]
+=== Most recent action output
+
+This is considered an advanced and experimental feature at the moment.
+
+The `stdout-most-recent-execution` view is a way to display the most recent output of an action on a dashboard. This is useful for actions that are run on a schedule, or actions that are run on startup. This is a picture of what it looks like:
+
+image::images/mre.png[]
+
+To set this up, here is the configuration you need to add to your `config.yaml` file;
+
+[source,yaml]
+----
+actions:
+  - title: Get status
+    id: status_command
+    shell: date
+    execOnStartup: true
+    execOnCron:
+      - "*/1 * * * *"
+
+dashboards:
+  - title: Control Panel
+    contents:
+      - title: Status
+        type: fieldset
+        contents:
+          - type: stdout-most-recent-execution
+            title: status_command
+----
+
+Note that the output only refreshes with the browser, not when the button is clicked. 
+
+As this is an experimental feature, please look at options for <<support>> if you need help getting it to work.

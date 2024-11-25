@@ -1,0 +1,59 @@
+[#oauth2-authentik]
+=== OAuth2 - Authentik
+
+OliveTin has been tested with Authentik. This documentation page describes how to configure Authentik for use with OliveTin and assumes you already have Authentik installed and running.
+
+Login as an Authentik administrator and start by creating a new app as follows;
+
+image::images/authentik_new_app.png[]
+
+Click Next, and on the **Provider Type** page select **OAuth2**.
+
+image::images/authentik_select_oauth2.png[]
+
+Click Next, and on the **Provider Configuration** page, fill in the following fields;
+
+image::images/authentik_provider_config.png[]
+
+Scroll down, and on the same page, copy the **Client ID** and **Client Secret** fields. You will need these to configure OliveTin.
+
+image::images/authentik_provider_secrets.png[]
+
+Submit this wizard to save the configuration.
+
+==== OliveTin configuration
+
+The necessary OliveTin configuration is as follows;
+
+```yaml
+authRequireGuestsToLogin: true # Optional - depends if you want to "disable" guests.
+
+authOAuth2RedirectURL: "http://localhost:1337/oauth/callback"
+authOAuth2Providers:
+  authentik:
+    name: authentik
+    title: Authentik
+    clientID: "1234567890"
+    clientSecret: "123456789012345"
+    authURL: "http://localhost:9000/application/o/authorize/"
+    tokenURL: "http://localhost:9000/application/o/token/"
+    whoamiURL: "http://localhost:9000/application/o/userinfo/"
+    usernameField: "preferred_username"
+    icon: <iconify-icon icon="simple-icons:authentik"></iconify-icon>
+```
+
+You will need to restart OliveTin for the changes to take effect.
+
+==== Testing
+
+You should now be able to login to OliveTin using Authentik, on the OliveTin page, a "Login" link should be available in the top right corner. This will take you to the login form, where you can select the Authentik provider.
+
+
+==== Debugging
+
+OliveTin logs OAuth2 flows quite extensively. If you are having trouble with OAuth2, you should check your OliveTin logs. 
+
+==== Next steps
+
+Once you have OAuth2 working, you will probably want to configure access control lists in OliveTin. This is described in the <<acls,Access Control Lists>> documentation page.
+

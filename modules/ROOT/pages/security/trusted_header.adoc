@@ -1,0 +1,14 @@
+[#trusted-header]
+=== Trusted Header Authorization
+
+include::../snippit_earlydoc.adoc[]
+
+[source,yaml]
+.`config.yaml`
+----
+authHttpHeaderUsername: "X-Username"
+authHttpHeaderUsergroup: "X-Usergroup"
+----
+
+NOTE: You *must* set `AuthHttpHeaderUsername` to some value, even if you only intend to use `AuthHttpHeaderUsergroup`, otherwise usergroups will be ignored.
+
