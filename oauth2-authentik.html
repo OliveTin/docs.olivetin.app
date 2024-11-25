@@ -471,6 +471,19 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="paragraph">
+<p>Optional configuration values to consider are:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">authOAuth2Providers</span><span class="pi">:</span>
+  <span class="na">authentik</span><span class="pi">:</span>
+    <span class="na">userGroupField</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your_mapped_group_name"</span>
+    <span class="na">certBundlePath</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/path/to/mounted/certificate.pem"</span>
+    <span class="na">insecureSkipVerify</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">connectTimeout</span><span class="pi">:</span> <span class="s">15</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>You will need to restart OliveTin for the changes to take effect.</p>
 </div>
 </div>
@@ -499,7 +512,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-24 20:48:06 UTC
+Last updated 2024-11-25 20:38:04 UTC
 </div>
 </div>
 </body>

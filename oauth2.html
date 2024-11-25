@@ -441,10 +441,10 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <div class="ulist">
 <ul>
 <li>
-<p><code>name</code> - a "simple name" for the provider, used in the login redirect and internally in OliveTin, eg <code>github</code></p>
+<p><code>name</code> - a "simple name" for the provider, used in the login redirect and internally in OliveTin, e.g. <code>github</code></p>
 </li>
 <li>
-<p><code>title</code> - the human-readable name of the provider, eg <code>GitHub</code></p>
+<p><code>title</code> - the human-readable name of the provider, e.g. <code>GitHub</code></p>
 </li>
 <li>
 <p><code>clientId</code> - the client ID provided by the OAuth2 provider</p>
@@ -453,7 +453,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <p><code>clientSecret</code> - the client secret provided by the OAuth2 provider</p>
 </li>
 <li>
-<p><code>icon</code> - the icon to use for the provider, eg an Iconify icon - accepts any HTML.</p>
+<p><code>icon</code> - the icon to use for the provider. Accepts any HTML, e.g. <code>&lt;iconify-icon icon="simple-icons:authentik"&gt;&lt;/iconify-icon&gt;</code></p>
 </li>
 <li>
 <p><code>scopes</code> - a list of scopes to request.</p>
@@ -470,6 +470,18 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 <li>
 <p><code>usernameField</code> - the field in the user information response to use as the username</p>
 </li>
+<li>
+<p><code>userGroupField</code> - the field in the user information response to use as the group. This is a string containing one group name, e.g. <code>olivetin_group</code></p>
+</li>
+<li>
+<p><code>certBundlePath</code> - the path to a certificate to add to the truststore for authentication requests, e.g. <code>/certs/internal.crt</code></p>
+</li>
+<li>
+<p><code>insecureSkipVerify</code> - a boolean to disable certificate verfication</p>
+</li>
+<li>
+<p><code>connectTimeout</code> - an integer for seconds until the request will timeout, e.g. <code>10</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -480,7 +492,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-24 20:48:06 UTC
+Last updated 2024-11-25 20:38:04 UTC
 </div>
 </div>
 </body>
