@@ -448,9 +448,119 @@ pre.rouge .gs {
 <p>Submit this wizard to save the configuration.</p>
 </div>
 <div class="sect3">
+<h4 id="_group_mapping"><a class="anchor" href="#_group_mapping"></a><a class="link" href="#_group_mapping">Group Mapping</a></h4>
+<div class="paragraph">
+<p>As of OliveTin <code>2024.11.24</code>, one group can be processed from OAuth at login. To map a user&#8217;s groups to OliveTin from Authentik, there are a few options. Examples of two will be shown below.</p>
+</div>
+<div class="sect4">
+<h5 id="_first_prefix_match"><a class="anchor" href="#_first_prefix_match"></a><a class="link" href="#_first_prefix_match">First Prefix Match</a></h5>
+<div class="paragraph">
+<p>The below will match the first group the user is a member of that matches the prefix defined in <code>group_prefix</code>, which is set to <code>olivetin</code>. If no match is found, the group <code>guest</code> is returned by default. Both <code>group_prefix</code> and <code>returned_group</code> can be changed to your needs.</p>
+</div>
+<div class="paragraph">
+<p>In Authentik: <code>Admin Interface &gt; Customization &gt; Property Mappings &gt; Create &gt; Scope Mapping</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name: <code>olivetin-group-mapping</code></p>
+</li>
+<li>
+<p>Scope Name: <code>olivetin-group-mapping</code></p>
+</li>
+<li>
+<p>Description: <code>map first group that starts with "olivetin"</code></p>
+</li>
+<li>
+<p>Expression:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="n">group_prefix</span> <span class="o">=</span> <span class="sh">"</span><span class="s">olivetin</span><span class="sh">"</span>
+<span class="n">returned_group</span> <span class="o">=</span> <span class="sh">"</span><span class="s">guest</span><span class="sh">"</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group</span><span class="p">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">user</span><span class="p">.</span><span class="n">ak_groups</span><span class="p">.</span><span class="nf">all</span><span class="p">()]</span>
+
+<span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">group</span><span class="p">.</span><span class="nf">startswith</span><span class="p">(</span><span class="n">group_prefix</span><span class="p">):</span>
+        <span class="n">returned_group</span> <span class="o">=</span> <span class="n">group</span>
+        <span class="k">break</span>
+
+<span class="k">return</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">olivetin_group</span><span class="sh">"</span><span class="p">:</span> <span class="n">returned_group</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_specific_group_match"><a class="anchor" href="#_specific_group_match"></a><a class="link" href="#_specific_group_match">Specific Group Match</a></h5>
+<div class="paragraph">
+<p>The below will match the specified group name to one of the groups the user is a member of. If no match is found, the group <code>guest</code> is returned by default. Both <code>olivetin_group</code> and <code>returned_group</code> can be changed to your needs.</p>
+</div>
+<div class="paragraph">
+<p>In Authentik: <code>Admin Interface &gt; Customization &gt; Property Mappings &gt; Create &gt; Scope Mapping</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Name: <code>olivetin-group-mapping-specific</code></p>
+</li>
+<li>
+<p>Scope Name: <code>olivetin-group-mapping-specific</code></p>
+</li>
+<li>
+<p>Description: <code>search and map specified group for olivetin</code></p>
+</li>
+<li>
+<p>Expression:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="n">olivetin_group</span> <span class="o">=</span> <span class="sh">"</span><span class="s">olivetin-users</span><span class="sh">"</span>
+<span class="n">returned_group</span> <span class="o">=</span> <span class="sh">"</span><span class="s">guest</span><span class="sh">"</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">group</span><span class="p">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">user</span><span class="p">.</span><span class="n">ak_groups</span><span class="p">.</span><span class="nf">all</span><span class="p">()]</span>
+
+<span class="k">if</span> <span class="n">olivetin_group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="n">returned_group</span> <span class="o">=</span> <span class="n">olivetin_group</span>
+
+<span class="k">return</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">olivetin_group_specific</span><span class="sh">"</span><span class="p">:</span> <span class="n">returned_group</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_enable_group_mapping"><a class="anchor" href="#_enable_group_mapping"></a><a class="link" href="#_enable_group_mapping">Enable Group Mapping</a></h5>
+<div class="paragraph">
+<p>After creating the scope mapping in Authentik, you will need to add it to your provider. For the your OliveTin config, use the <code>userGroupField</code> mentioned in the following section.</p>
+</div>
+<div class="paragraph">
+<p>In Authentik: <code>Admin Interface &gt; Applications &gt;  Providers &gt; {Your Provider} &gt; Edit</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open <code>Advanced protocol settings</code></p>
+</li>
+<li>
+<p>Under <code>Scopes</code>, add <code>{your_scope_map}</code> to <code>Selected Scopes</code></p>
+</li>
+<li>
+<p>Click <code>Update</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_olivetin_configuration"><a class="anchor" href="#_olivetin_configuration"></a><a class="link" href="#_olivetin_configuration">OliveTin configuration</a></h4>
 <div class="paragraph">
-<p>The necessary OliveTin configuration is as follows;</p>
+<p>The necessary OliveTin configuration is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -512,7 +622,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 20:38:44 UTC
+Last updated 2024-11-25 23:43:38 UTC
 </div>
 </div>
 </body>
