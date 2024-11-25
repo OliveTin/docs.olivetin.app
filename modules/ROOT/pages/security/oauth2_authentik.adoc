@@ -21,9 +21,73 @@ image::images/authentik_provider_secrets.png[]
 
 Submit this wizard to save the configuration.
 
+==== Group Mapping
+
+As of OliveTin `2024.11.24`, one group can be processed from OAuth at login. To map a user's groups to OliveTin from Authentik, there are a few options. Examples of two will be shown below.
+
+===== First Prefix Match
+
+The below will match the first group the user is a member of that matches the prefix defined in `group_prefix`, which is set to `olivetin`. If no match is found, the group `guest` is returned by default. Both `group_prefix` and `returned_group` can be changed to your needs.
+
+In Authentik: `Admin Interface > Customization > Property Mappings > Create > Scope Mapping`
+
+- Name: `olivetin-group-mapping`
+- Scope Name: `olivetin-group-mapping`
+- Description: `map first group that starts with "olivetin"`
+- Expression:
+```python
+group_prefix = "olivetin"
+returned_group = "guest"
+
+groups = [group.name for group in user.ak_groups.all()]
+
+for group in groups:
+    if group.startswith(group_prefix):
+        returned_group = group
+        break
+
+return {
+    "olivetin_group": returned_group
+}
+```
+
+===== Specific Group Match
+
+The below will match the specified group name to one of the groups the user is a member of. If no match is found, the group `guest` is returned by default. Both `olivetin_group` and `returned_group` can be changed to your needs.
+
+In Authentik: `Admin Interface > Customization > Property Mappings > Create > Scope Mapping`
+
+- Name: `olivetin-group-mapping-specific`
+- Scope Name: `olivetin-group-mapping-specific`
+- Description: `search and map specified group for olivetin`
+- Expression:
+```python
+olivetin_group = "olivetin-users"
+returned_group = "guest"
+
+groups = [group.name for group in user.ak_groups.all()]
+
+if olivetin_group in groups:
+    returned_group = olivetin_group
+
+return {
+    "olivetin_group_specific": returned_group
+}
+```
+
+===== Enable Group Mapping
+
+After creating the scope mapping in Authentik, you will need to add it to your provider. For the your OliveTin config, use the `userGroupField` mentioned in the following section.
+
+In Authentik: `Admin Interface > Applications >  Providers > {Your Provider} > Edit`
+
+- Open `Advanced protocol settings`
+- Under `Scopes`, add `{your_scope_map}` to `Selected Scopes`
+- Click `Update`
+
 ==== OliveTin configuration
 
-The necessary OliveTin configuration is as follows;
+The necessary OliveTin configuration is as follows:
 
 ```yaml
 authRequireGuestsToLogin: true # Optional - depends if you want to "disable" guests.
@@ -44,7 +108,6 @@ authOAuth2Providers:
 
 Optional configuration values to consider are:
 ```yaml
-
 authOAuth2Providers:
   authentik:
     userGroupField: "your_mapped_group_name"
