@@ -9,7 +9,7 @@ OliveTin can execute actions on a schedule, and uses a cron format for configura
 actions:
   - title: Say hello
     shell: echo "Hello!"
-    execOnCron: 
+    execOnCron:
       - "@hourly"
 
   - title: Say goodbye
@@ -39,3 +39,24 @@ actions:
 ----
 
 
+==== Cron and ACLs
+
+If you have enabled ACL, cron tasks are run as the user `cron`, which means that your ACL needs to allow the cron user to execute the action. This is one possibilty:
+
+[source,yaml]
+.`config.yaml`
+----
+accessControlLists:
+  - name: "cron"
+    matchUsernames:
+      - cron
+    permissions:
+      exec: true
+actions:
+  - title: Say hello
+    shell: echo "Hello!"
+    execOnCron:
+      - "@hourly"
+    acls:
+        - "cron"
+----
