@@ -1,12 +1,12 @@
 [#wol]
 === Wake On LAN from a container
 
-This is a simple solution that provides wake on lan capabilities from inside a container. It uses the simple `awake` command to send the magic packet. This can be incredibly helpful if you just need a simple button to click to wake up a machine on your network.
+This is a simple solution that provides wake on lan capabilities from inside a container. It uses the simple `ether-wake` command to send the magic packet. This can be incredibly helpful if you just need a simple button to click to wake up a machine on your network.
 
 Docker containers will normally use a docker network, which is a separate network from the host network. This means that the container will not be able to send the magic packet to the host network. Therefore, we need to create the container with the `--network host` option, which will allow the container to send the magic packet to the host network (not the docker network).
 
 
-The container is also created with the `--user root` option, which allows the container to send the magic packet as root. This is necessary because the `awake` command requires root privileges to send the magic packet, and also to install the `awake` command in the container.
+The container is also created with the `--user root` option, which allows the container to send the magic packet as root. This is necessary because the `ether-wake` command requires root privileges to send the magic packet, and also to install the `ether-wake` command, which is bundled with `net-tools` in the container.
 
 Create the container as follows;
 
