@@ -4,7 +4,7 @@ actions:
     icon: ping
 
   - title: Install ether-wake on startup
-    shell: microdnf install -y net tools
+    shell: microdnf install -y net-tools
     hidden: true
     execOnStartup: true
     timeout: 120
