@@ -408,13 +408,13 @@ pre.rouge .gs {
 <div class="sect2">
 <h3 id="wol"><a class="anchor" href="#wol"></a><a class="link" href="#wol">Wake On LAN from a container</a></h3>
 <div class="paragraph">
-<p>This is a simple solution that provides wake on lan capabilities from inside a container. It uses the simple <code>awake</code> command to send the magic packet. This can be incredibly helpful if you just need a simple button to click to wake up a machine on your network.</p>
+<p>This is a simple solution that provides wake on lan capabilities from inside a container. It uses the simple <code>ether-wake</code> command to send the magic packet. This can be incredibly helpful if you just need a simple button to click to wake up a machine on your network.</p>
 </div>
 <div class="paragraph">
 <p>Docker containers will normally use a docker network, which is a separate network from the host network. This means that the container will not be able to send the magic packet to the host network. Therefore, we need to create the container with the <code>--network host</code> option, which will allow the container to send the magic packet to the host network (not the docker network).</p>
 </div>
 <div class="paragraph">
-<p>The container is also created with the <code>--user root</code> option, which allows the container to send the magic packet as root. This is necessary because the <code>awake</code> command requires root privileges to send the magic packet, and also to install the <code>awake</code> command in the container.</p>
+<p>The container is also created with the <code>--user root</code> option, which allows the container to send the magic packet as root. This is necessary because the <code>ether-wake</code> command requires root privileges to send the magic packet, and also to install the <code>ether-wake</code> command, which is bundled with <code>net-tools</code> in the container.</p>
 </div>
 <div class="paragraph">
 <p>Create the container as follows;</p>
@@ -431,11 +431,11 @@ pre.rouge .gs {
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">WakeOnLan Server1</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">awake A8:5E:45:E4:FF:2A</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">ether-wake A8:5E:45:E4:FF:2A</span>
     <span class="na">icon</span><span class="pi">:</span> <span class="s">ping</span>
 
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Install awake on startup</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">microdnf install -y awake</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Install ether-wake on startup</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">microdnf install -y net-tools</span>
     <span class="na">hidden</span><span class="pi">:</span> <span class="kc">true</span>
     <span class="na">execOnStartup</span><span class="pi">:</span> <span class="kc">true</span>
     <span class="na">timeout</span><span class="pi">:</span> <span class="s">120</span></code></pre>
@@ -467,7 +467,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-11-25 23:43:38 UTC
+Last updated 2024-12-17 16:44:32 UTC
 </div>
 </div>
 </body>
