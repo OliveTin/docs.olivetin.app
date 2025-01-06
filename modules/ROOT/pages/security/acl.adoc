@@ -3,7 +3,15 @@
 
 include::../snippit_earlydoc.adoc[]
 
-You can control access to actions within OliveTin on a per-user basis, using Access Control Lists (ACL).
+You can control access to actions within OliveTin on a per-user basis, using Access Control Lists (ACL), which work by grouping an Action, a User (or User Group), and a List of Permissions.
+
+[mermaid, "sample", png]
+....
+graph TD
+    A[Action] -->|ACL| B[ACL]
+    B -->|User/UserGroup| C[User/UserGroup]
+    B -->|Permissions| D[Permissions]
+....
 
 An action always starts with `defaultPermissions` (see below), and then then have one or more ACLs applied to it. This means that you can for example have an action that is only available to a certain group of users, or only to a single user.
 
