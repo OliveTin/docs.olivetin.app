@@ -222,130 +222,12 @@ div.admonitionblock td:first-child {
 
 
 </style>
-<style>
-pre.rouge table td { padding: 5px; }
-pre.rouge table pre { margin: 0; }
-pre.rouge, pre.rouge .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
-  color: #cf222e;
-}
-pre.rouge .gr {
-  color: #f6f8fa;
-}
-pre.rouge .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-pre.rouge .nb {
-  color: #953800;
-}
-pre.rouge .nc {
-  color: #953800;
-}
-pre.rouge .no {
-  color: #953800;
-}
-pre.rouge .nn {
-  color: #953800;
-}
-pre.rouge .sr {
-  color: #116329;
-}
-pre.rouge .na {
-  color: #116329;
-}
-pre.rouge .nt {
-  color: #116329;
-}
-pre.rouge .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-pre.rouge .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-pre.rouge .kc {
-  color: #0550ae;
-}
-pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
-  color: #0550ae;
-}
-pre.rouge .sb {
-  color: #0550ae;
-}
-pre.rouge .bp {
-  color: #0550ae;
-}
-pre.rouge .ne {
-  color: #0550ae;
-}
-pre.rouge .nl {
-  color: #0550ae;
-}
-pre.rouge .py {
-  color: #0550ae;
-}
-pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
-  color: #0550ae;
-}
-pre.rouge .o, pre.rouge .ow {
-  color: #0550ae;
-}
-pre.rouge .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
-  color: #0a3069;
-}
-pre.rouge .nd {
-  color: #8250df;
-}
-pre.rouge .nf, pre.rouge .fm {
-  color: #8250df;
-}
-pre.rouge .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
-  color: #6e7781;
-}
-pre.rouge .gl {
-  color: #6e7781;
-}
-pre.rouge .gt {
-  color: #6e7781;
-}
-pre.rouge .ni {
-  color: #24292f;
-}
-pre.rouge .si {
-  color: #24292f;
-}
-pre.rouge .ge {
-  color: #24292f;
-  font-style: italic;
-}
-pre.rouge .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-</style>
 <style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
                        font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="ratelimits" class="book toc2 toc-left">
+<body id="example-login-required" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -360,24 +242,6 @@ pre.rouge .gs {
 <li><a href="actions.html">Action execution</a>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
-<ul class="sectlevel2">
-<li><a href="popup-on-start.html">Popup on Start (Execution Feedback)</a>
-</li>
-<li><a href="icons.html">Icons</a>
-</li>
-<li><a href="timeout.html">Timeouts</a>
-</li>
-<li><a href="_run_as_different_users.html">Run as different users</a>
-</li>
-<li><a href="concurrency.html">Concurrency</a>
-</li>
-<li><a href="ratelimits.html"><span class="toc-current">Rate limiting</span></a>
-</li>
-<li><a href="action-ids.html">IDs</a>
-</li>
-<li><a href="save-logs.html">Saving logs</a>
-</li>
-</ul>
 </li>
 <li><a href="examples.html">Action examples</a>
 </li>
@@ -390,6 +254,28 @@ pre.rouge .gs {
 <li><a href="_integrations.html">Integrations</a>
 </li>
 <li><a href="auth.html">Security</a>
+<ul class="sectlevel2">
+<li><a href="auth-concepts.html">Concepts</a>
+</li>
+<li><a href="acls.html">Access Control Lists (Permissions)</a>
+</li>
+<li><a href="trusted-header.html">Trusted Header Authorization</a>
+</li>
+<li><a href="jwt.html">JWT Authorization</a>
+</li>
+<li><a href="jwt-keys.html">JWT with Keys</a>
+</li>
+<li><a href="jwt-hmac.html">JWT with HMAC</a>
+</li>
+<li><a href="oauth2.html">OAuth2</a>
+</li>
+<li><a href="oauth2-authentik.html">OAuth2 - Authentik</a>
+</li>
+<li><a href="local-users.html">Local Users Login</a>
+</li>
+<li><a href="example-login-required.html"><span class="toc-current">Example: Dashboards that requires login</span></a>
+</li>
+</ul>
 </li>
 <li><a href="_full_example_configuration.html">Full example configuration</a>
 </li>
@@ -408,36 +294,13 @@ pre.rouge .gs {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="ratelimits"><a class="anchor" href="#ratelimits"></a><a class="link" href="#ratelimits">Rate limiting</a></h3>
+<h3 id="example-login-required"><a class="anchor" href="#example-login-required"></a><a class="link" href="#example-login-required">Example: Dashboards that requires login</a></h3>
 <div class="paragraph">
-<p>By default, OliveTin allows you to execute actions as fast as you can click the button. This is fine if you are running OliveTin with trusted users in a trusted environment, but otherwise you may want to rate limit actions.</p>
-</div>
-<div class="paragraph">
-<p>Rate limiting is implemented like this;</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">date</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">clock</span>
-    <span class="na">maxRate</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">limit</span><span class="pi">:</span> <span class="m">3</span>
-        <span class="na">duration</span><span class="pi">:</span> <span class="s">5m</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you try to execute <code>date</code> more than 3 times in 5 minutes, you will get a log message that looks like this;</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>INFO Blocked from executing. This action has run 3 out of 3 allowed times in the last 5m.  actionTitle="date"</pre>
-</div>
+<p>A common use case for OliveTin with security is to expose some dashboards that require login to be able to use. This page brings together the configuration options that are needed to achieve this.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="concurrency.html">Concurrency</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-ids.html">IDs</a> →</p>
+<p>← Previous: <a href="local-users.html">Local Users Login</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="_full_example_configuration.html">Full example configuration</a> →</p>
 </div>
 </div>
 <div id="footer">

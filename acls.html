@@ -391,7 +391,11 @@ pre.rouge .gs {
 </li>
 <li><a href="local-users.html">Local Users Login</a>
 </li>
+<li><a href="example-login-required.html">Example: Dashboards that requires login</a>
+</li>
 </ul>
+</li>
+<li><a href="_full_example_configuration.html">Full example configuration</a>
 </li>
 <li><a href="solutions.html">Solutions</a>
 </li>
@@ -422,7 +426,15 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </table>
 </div>
 <div class="paragraph">
-<p>You can control access to actions within OliveTin on a per-user basis, using Access Control Lists (ACL).</p>
+<p>You can control access to actions within OliveTin on a per-user basis, using Access Control Lists (ACL), which work by grouping an Action, a User (or User Group), and a List of Permissions.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>graph TD
+    A[Action] --&gt;|ACL| B[ACL]
+    B --&gt;|User/UserGroup| C[User/UserGroup]
+    B --&gt;|Permissions| D[Permissions]</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>An action always starts with <code>defaultPermissions</code> (see below), and then then have one or more ACLs applied to it. This means that you can for example have an action that is only available to a certain group of users, or only to a single user.</p>
@@ -520,7 +532,7 @@ This page is marked as "earlydoc", which means that it more of a collection of n
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-17 16:44:32 UTC
+Last updated 2025-01-06 22:10:46 UTC
 </div>
 </div>
 </body>

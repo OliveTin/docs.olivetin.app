@@ -345,7 +345,7 @@ pre.rouge .gs {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="ratelimits" class="book toc2 toc-left">
+<body id="_full_example_configuration" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -360,24 +360,6 @@ pre.rouge .gs {
 <li><a href="actions.html">Action execution</a>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
-<ul class="sectlevel2">
-<li><a href="popup-on-start.html">Popup on Start (Execution Feedback)</a>
-</li>
-<li><a href="icons.html">Icons</a>
-</li>
-<li><a href="timeout.html">Timeouts</a>
-</li>
-<li><a href="_run_as_different_users.html">Run as different users</a>
-</li>
-<li><a href="concurrency.html">Concurrency</a>
-</li>
-<li><a href="ratelimits.html"><span class="toc-current">Rate limiting</span></a>
-</li>
-<li><a href="action-ids.html">IDs</a>
-</li>
-<li><a href="save-logs.html">Saving logs</a>
-</li>
-</ul>
 </li>
 <li><a href="examples.html">Action examples</a>
 </li>
@@ -391,7 +373,13 @@ pre.rouge .gs {
 </li>
 <li><a href="auth.html">Security</a>
 </li>
-<li><a href="_full_example_configuration.html">Full example configuration</a>
+<li><a href="_full_example_configuration.html"><span class="toc-current">Full example configuration</span></a>
+<ul class="sectlevel2">
+<li><a href="_important_configuration_option_authrequiregueststologin.html">Important configuration option: <code>AuthRequireGuestsToLogin</code></a>
+</li>
+<li><a href="_per_action_acls_vs_addtoeveryaction.html">Per-action ACLs, vs <code>addToEveryAction</code></a>
+</li>
+</ul>
 </li>
 <li><a href="solutions.html">Solutions</a>
 </li>
@@ -407,37 +395,60 @@ pre.rouge .gs {
 </div>
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="ratelimits"><a class="anchor" href="#ratelimits"></a><a class="link" href="#ratelimits">Rate limiting</a></h3>
-<div class="paragraph">
-<p>By default, OliveTin allows you to execute actions as fast as you can click the button. This is fine if you are running OliveTin with trusted users in a trusted environment, but otherwise you may want to rate limit actions.</p>
-</div>
-<div class="paragraph">
-<p>Rate limiting is implemented like this;</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>config.yaml</code></div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">date</span>
-    <span class="na">shell</span><span class="pi">:</span> <span class="s">date</span>
-    <span class="na">icon</span><span class="pi">:</span> <span class="s">clock</span>
-    <span class="na">maxRate</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">limit</span><span class="pi">:</span> <span class="m">3</span>
-        <span class="na">duration</span><span class="pi">:</span> <span class="s">5m</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you try to execute <code>date</code> more than 3 times in 5 minutes, you will get a log message that looks like this;</p>
-</div>
+<div class="sect1">
+<h2 id="_full_example_configuration"><a class="anchor" href="#_full_example_configuration"></a><a class="link" href="#_full_example_configuration">Full example configuration</a></h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>INFO Blocked from executing. This action has run 3 out of 3 allowed times in the last 5m.  actionTitle="date"</pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">logLevel</span><span class="pi">:</span> <span class="s2">"</span><span class="s">INFO"</span>
+
+<span class="na">authRequireGuestsToLogin</span><span class="pi">:</span> <span class="kc">true</span>
+
+<span class="na">accessControlLists</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">admins"</span>
+    <span class="na">permissions</span><span class="pi">:</span>
+      <span class="na">view</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">exec</span><span class="pi">:</span> <span class="kc">true</span>
+      <span class="na">logs</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">matchUsergroups</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">admins"</span>
+    <span class="na">addToEveryAction</span><span class="pi">:</span> <span class="kc">true</span>
+
+
+<span class="na">authLocalUsers</span><span class="pi">:</span>
+  <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">users</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">username</span><span class="pi">:</span> <span class="s2">"</span><span class="s">admin"</span>
+      <span class="na">usergroup</span><span class="pi">:</span> <span class="s">admins</span>
+      <span class="na">password</span><span class="pi">:</span> <span class="s">&lt;&lt; your password hash here &gt;&gt;</span>
+
+<span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Restart"</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="s">echo "Restart"</span>
+
+<span class="na">dashboards</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Admin</span><span class="nv"> </span><span class="s">Dashboard"</span>
+    <span class="na">contents</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Restart"</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note, to use this configuration, you will need to replace <code>&lt;&lt; your password hash here &gt;&gt;</code> with a password hash. You can generate a password hash by looking at the options in the <a href="local-users.html">Local Users Login</a> configuration section.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="_important_configuration_option_authrequiregueststologin.html">Important configuration option: &lt;code&gt;AuthRequireGuestsToLogin&lt;/code</a>&gt;</p>
+</li>
+<li>
+<p><a href="_per_action_acls_vs_addtoeveryaction.html">Per-action ACLs, vs &lt;code&gt;addToEveryAction&lt;/code</a>&gt;</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="concurrency.html">Concurrency</a> | ↑ Up: <a href="action-customisation.html">Action customisation</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="action-ids.html">IDs</a> →</p>
+<p>← Previous: <a href="example-login-required.html">Example: Dashboards that requires login</a> | ↑ Up: <a href="index.html">OliveTin documentation</a> | Next: <a href="_important_configuration_option_authrequiregueststologin.html">Important configuration option: &lt;code&gt;AuthRequireGuestsToLogin&lt;/code</a>&gt; →</p>
 </div>
 </div>
 <div id="footer">
