@@ -1,5 +1,5 @@
 [#example-login-required]
-=== Example: Dashboards that requires login
+=== Example: Dashboards that require user login
 
 A common use case for OliveTin with security is to expose some dashboards that require login to be able to use. This page brings together the configuration options that are needed to achieve this.
 
