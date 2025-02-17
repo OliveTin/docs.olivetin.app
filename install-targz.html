@@ -416,17 +416,31 @@ pre.rouge .gs {
 <div class="sect2">
 <h3 id="install-targz"><a class="anchor" href="#install-targz"></a><a class="link" href="#install-targz">.tar.gz Install (manual)</a></h3>
 <div class="paragraph">
-<p>This is an option for an advanced setup, for users who cannot user the .deb or .rpm packages.</p>
+<p>Installing OliveTin from a .tar.gz file is considered advanced setup, and is provided for users who cannot use the .deb or .rpm packages, or who don&#8217;t want to use the Linux container.</p>
 </div>
 <div class="sect3">
 <h4 id="_manual_setup_tar_gz"><a class="anchor" href="#_manual_setup_tar_gz"></a><a class="link" href="#_manual_setup_tar_gz">Manual setup (.tar.gz)</a></h4>
-<div class="paragraph">
-<p>A .tar.gz file is provided for people who are using other Linux distributions or want to set things up manually.</p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Copy the <code>OliveTin</code> binary to <code>/usr/local/bin/OliveTin</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Make sure it is executable: <code>chmod +x /usr/local/bin/OliveTin</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Make a directory for the configuration files: <code>mkdir -p /etc/OliveTin</code></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Copy the <code>config.yaml</code> file to <code>/etc/OliveTin/</code></p>
+</li>
+</ol>
+</div>
 </li>
 <li>
 <p>Copy the <code>webui</code> directory contents to <code>/var/www/olivetin/</code> (eg, <code>/var/www/olivetin/index.html</code>)</p>
@@ -436,6 +450,34 @@ pre.rouge .gs {
 </li>
 <li>
 <p>Create a <code>config.yaml</code> in <code>/etc/OliveTin</code> using the example provided above to get you started.</p>
+</li>
+<li>
+<p>Files in the <code>var</code> directory are all considered optional.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>var/entities/</code> contains some example entity files used by the default config.yaml. You can copy these to <code>/etc/OliveTin/entities/</code> if you want to use them.</p>
+</li>
+<li>
+<p><code>var/helper-actions/</code> contains some helpers that are mostly useful for containers. These should be copied to somewhere on your path if you want to use them, such as <code>/usr/local/bin/</code>.</p>
+</li>
+<li>
+<p><code>var/initscript/OliveTin</code> is provided for init-based systems. You can copy this to <code>/etc/init.d/OliveTin</code> and make it executable if you want to use it.</p>
+</li>
+<li>
+<p><code>var/manpage/OliveTin.1.gz</code> contains the manpage for OliveTin. You can copy this to <code>/usr/share/man/man1/</code> if you want to use it.</p>
+</li>
+<li>
+<p><code>var/marketing</code> contains some marketing materials used by the repository. You can probably ignore these unless you&#8217;re writing a blog article or something.</p>
+</li>
+<li>
+<p><code>var/openrc/OliveTin</code> is provided for OpenRC-based systems. You can copy this to <code>/etc/init.d/OliveTin</code> and make it executable if you want to use it.</p>
+</li>
+<li>
+<p><code>var/tekton</code> is a directory that contains an experimental Tekton base image builder. You don&#8217;t need this.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -515,7 +557,7 @@ page.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-01-06 22:13:37 UTC
+Last updated 2025-02-17 21:17:29 UTC
 </div>
 </div>
 </body>
