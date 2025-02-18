@@ -425,7 +425,38 @@ pre.rouge .gs {
 <div class="listingblock">
 <div class="title"><code>/etc/OliveTin/config.yaml</code></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="yaml"><span class="s">include::config.yaml`</span></code></pre>
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">actions</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">check log directory</span>
+    <span class="na">hidden</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">function addDirectory {</span>
+        <span class="s">COUNT=$(ls -l $1 | wc -l)</span>
+        <span class="s">echo "- directory: $1" &gt;&gt; /etc/OliveTin/entities/directories.yaml</span>
+        <span class="s">echo "  count: $COUNT" &gt;&gt; /etc/OliveTin/entities/directories.yaml</span>
+      <span class="s">}</span>
+
+      <span class="s">truncate -s 0 /etc/OliveTin/entities/directories.yaml</span>
+      <span class="s">addDirectory /var/log/</span>
+      <span class="s">addDirectory /home/xconspirisist/logs</span>
+    <span class="na">execOnStartup</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">execOnCron</span><span class="pi">:</span> <span class="s2">"</span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">clean {{ log_directory.directory }} ({{log_directory.count }} files)</span>
+    <span class="na">shell</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">echo "Removing all files in {{ log_directory.directory }}"</span>
+    <span class="na">entity</span><span class="pi">:</span> <span class="s">log_directory</span>
+
+<span class="na">entities</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">log_directory</span>
+    <span class="na">file</span><span class="pi">:</span> <span class="s">/etc/OliveTin/entities/directories.yaml</span>
+
+<span class="na">dashboards</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Log Actions</span>
+    <span class="na">contents</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">entity</span><span class="pi">:</span> <span class="s">log_directory</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">fieldset</span>
+        <span class="na">contents</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">clean {{ log_directory.directory }} ({{log_directory.count }} files)</span></code></pre>
 </div>
 </div>
 </div>
@@ -436,7 +467,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-02-18 22:41:04 UTC
+Last updated 2025-02-18 22:43:36 UTC
 </div>
 </div>
 </body>
