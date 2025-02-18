@@ -11,7 +11,6 @@ Installing OliveTin from a .tar.gz file is considered advanced setup, and is pro
 .. Copy the `config.yaml` file to `/etc/OliveTin/`
 . Copy the `webui` directory contents to `/var/www/olivetin/` (eg, `/var/www/olivetin/index.html`)
 . Copy the `OliveTin.service` file to `/etc/systemd/system/`
-. Create a `config.yaml` in `/etc/OliveTin` using the example provided above to get you started.
 . Files in the `var` directory are all considered optional.
 .. `var/entities/` contains some example entity files used by the default config.yaml. You can copy these to `/etc/OliveTin/entities/` if you want to use them.
 .. `var/helper-actions/` contains some helpers that are mostly useful for containers. These should be copied to somewhere on your path if you want to use them, such as `/usr/local/bin/`.
