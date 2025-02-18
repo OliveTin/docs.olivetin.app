@@ -6,6 +6,7 @@ include::heating-control-panel/index.adoc[]
 include::primitive-password/index.adoc[]
 include::wol/index.adoc[]
 include::cloudflare_access_tunnel/index.adoc[]
+include::directory-actions/index.adoc[]
 
 === GPIO Control on Raspberry Pi
 
