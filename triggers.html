@@ -414,6 +414,18 @@ pre.rouge .gs {
 <div class="paragraph">
 <p>Sometimes you want to trigger another action after the first one completes. This is mostly useful for updating hidden actions that update entity files, without having to run those updates on a cron job every 10 seconds!</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+OliveTin used to support a single action trigger, but now supports multiple triggers. The field <code>trigger</code> was renamed to <code>triggers</code> and is now an array of triggers.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="yaml"><span class="na">entities</span><span class="pi">:</span>
@@ -424,7 +436,8 @@ pre.rouge .gs {
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">stop {{ container.Names }}</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s">docker stop {{ container.Names}}</span>
     <span class="na">entity</span><span class="pi">:</span> <span class="s">container</span>
-    <span class="na">trigger</span><span class="pi">:</span> <span class="s">update containers</span>
+    <span class="na">trigger</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">update containers</span>
 
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">update containers</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s">docker ps -a --format=json &gt; /etc/OliveTin/entities/containers.json</span>
@@ -438,7 +451,7 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-02-18 23:10:24 UTC
+Last updated 2025-02-18 23:28:21 UTC
 </div>
 </div>
 </body>
