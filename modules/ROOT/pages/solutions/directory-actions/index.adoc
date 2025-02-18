@@ -12,6 +12,6 @@ This is a quick and simple way to build actions based on directories.
 [source,yaml]
 .`/etc/OliveTin/config.yaml`
 ----
-include::config.yaml`
+include::config.yaml[]
 ----
 
