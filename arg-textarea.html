@@ -227,7 +227,7 @@ div.admonitionblock td:first-child {
              .nav-footer{text-align: center; margin-top: auto;}
              .nav-footer > p > a {white-space: nowrap;}</style>
 </head>
-<body id="exec-on-demand" class="book toc2 toc-left">
+<body id="arg-textarea" class="book toc2 toc-left">
 <div id="header">
 <h1>OliveTin</h1>
 <div id="toc" class="toc2">
@@ -240,34 +240,36 @@ div.admonitionblock td:first-child {
 <li><a href="reverse-proxies.html">Reverse Proxies</a>
 </li>
 <li><a href="actions.html">Action execution</a>
-<ul class="sectlevel2">
-<li><a href="create-your-first-action.html">Create your first action</a>
-</li>
-<li><a href="exec-on-demand.html"><span class="toc-current">Execute on demand</span></a>
-</li>
-<li><a href="exec-cron.html">Execute on schedule (cron)</a>
-</li>
-<li><a href="exec-startup.html">Execute on startup</a>
-</li>
-<li><a href="exec-webhook.html">Execute on webhook</a>
-</li>
-<li><a href="exec-file-created.html">Execute on file created</a>
-</li>
-<li><a href="exec-file-changed.html">Execute on file changed</a>
-</li>
-<li><a href="exec-on-calendar.html">Execute on calendar file</a>
-</li>
-<li><a href="after-completion.html">Execute after completion</a>
-</li>
-<li><a href="triggers.html">Triggers</a>
-</li>
-</ul>
 </li>
 <li><a href="action-customisation.html">Action customisation</a>
 </li>
 <li><a href="examples.html">Action examples</a>
 </li>
 <li><a href="args.html">Arguments</a>
+<ul class="sectlevel2">
+<li><a href="_introduction_to_arguments.html">Introduction to Arguments</a>
+</li>
+<li><a href="_important_safety_warning.html">Important Safety Warning</a>
+</li>
+<li><a href="arg-types.html">Argument types</a>
+</li>
+<li><a href="arg-textbox.html">Input: Textbox</a>
+</li>
+<li><a href="args-custom-regex.html">Custom regex</a>
+</li>
+<li><a href="arg-suggestions.html">Suggestions</a>
+</li>
+<li><a href="arg-dropdowns.html">Input: Dropdowns</a>
+</li>
+<li><a href="confirmation.html">Input: Confirmation</a>
+</li>
+<li><a href="arg-datetime.html">Input: DateTime</a>
+</li>
+<li><a href="arg-textarea.html"><span class="toc-current">Input: Textarea</span></a>
+</li>
+<li><a href="env-vars.html">Environment variables</a>
+</li>
+</ul>
 </li>
 <li><a href="dashboards.html">Dashboards</a>
 </li>
@@ -292,13 +294,16 @@ div.admonitionblock td:first-child {
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="exec-on-demand"><a class="anchor" href="#exec-on-demand"></a><a class="link" href="#exec-on-demand">Execute on demand</a></h3>
+<h3 id="arg-textarea"><a class="anchor" href="#arg-textarea"></a><a class="link" href="#arg-textarea">Input: Textarea</a></h3>
 <div class="paragraph">
-<p>This is the default, meaning that the action shows up on a dashboard, and at the moment cannot be changed.</p>
+<p>OliveTin supports multi-line text inputs, which can be useful for longer messages or scripts. You should set your argument <code>type</code> to <code>raw_string_multiline</code> to use these.</p>
+</div>
+<div class="paragraph">
+<p>As the name implies, textareas are raw, and are NOT validated by any regex.</p>
 </div>
 </div>
 <div class="paragraph nav-footer">
-<p>← Previous: <a href="create-your-first-action.html">Create your first action</a> | ↑ Up: <a href="actions.html">Action execution</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="exec-cron.html">Execute on schedule (cron)</a> →</p>
+<p>← Previous: <a href="arg-datetime.html">Input: DateTime</a> | ↑ Up: <a href="args.html">Arguments</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="env-vars.html">Environment variables</a> →</p>
 </div>
 </div>
 <div id="footer">
