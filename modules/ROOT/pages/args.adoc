@@ -43,6 +43,7 @@ A full list of argument types are below;
 | url                         | <<arg-textbox,Textbox>>           | A url, e.g. https://github.com/OliveTin
 | confirmation                | <<confirmation,Confirmation>> | A "hidden" argument that makes the action require a confirmation before launching. See <<confirmation,confirmation arguments>>.
 | n/a, but `choices` used     | <<arg-dropdowns,Dropdown>>         | A "hidden" argument that makes the action require a confirmation before launching.
+| raw_string_multiline        | <<arg-textarea,Textarea>>         | Anything. This is **dangerous**, as effectively people can type anything they like
 |===
 
 [#arg-textbox]
@@ -261,6 +262,13 @@ The OliveTin server does try to parse and validate the date on the server side t
 
 **This is safe**, as what really matters is what the server allows to be passed to be executed - and that is checked.
 ====
+
+[#arg-textarea]
+=== Input: Textarea
+
+OliveTin supports multi-line text inputs, which can be useful for longer messages or scripts. You should set your argument `type` to `raw_string_multiline` to use these.
+
+As the name implies, textareas are raw, and are NOT validated by any regex.
 
 [#env-vars]
 === Environment variables
