@@ -18,7 +18,7 @@ You can see from the above example that the header response sets a cookie called
 
 You can also that the body of the response is a JSON object with a simple `success` key, which will be `true` if the login was successful, and `false` if it was not.
 
-=== Check login with `WhoAmI`
+==== Check login with `WhoAmI`
 
 You can check your current login status by using the `/WhoAmI` API call. This is a GET request, and you need to provide the `olivetin-sid-local` cookie in the request. Here is an example of how you can check your login status via a cURL request;
 
