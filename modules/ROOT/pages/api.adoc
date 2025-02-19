@@ -186,3 +186,4 @@ user@host: curl http://olivetinServer:1337/api/readyz
 
 The response will always be "status: ok" to indicate that the API is up, or it will timeout. 
 
+include::api_login.adoc[]
