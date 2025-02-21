@@ -73,3 +73,20 @@ docker run --rm -i --net=none leplusorg/hash sh -c 'echo -n "myPassword" | argon
 ```
 
 Then simply visit the OliveTin web interface and browse to the login page, eg: http://olivetin.example.com:1337/login
+
+==== Force login page
+
+If you don't want to allow guests to do anything in OliveTin, you can use the `authRequireGuestsToLogin` option to force all users to login before they do anything. This will redirect all users to the login page if they are not logged in, and it will also set `defaultPermissions` to `false`, meaning that permissions must be explicitly set for each user or user group.
+
+.`config.yaml`
+```yaml
+
+authRequireGuestsToLogin: true
+
+authLocalUsers:
+  enabled: true
+  users:
+    - username: james
+      password: $argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k
+```
+
