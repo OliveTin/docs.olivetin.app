@@ -525,6 +525,24 @@ Curl 7.82 added support for the <code>--json</code> option, if you are using an 
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_force_login_page"><a class="anchor" href="#_force_login_page"></a><a class="link" href="#_force_login_page">Force login page</a></h4>
+<div class="paragraph">
+<p>If you don&#8217;t want to allow guests to do anything in OliveTin, you can use the <code>authRequireGuestsToLogin</code> option to force all users to login before they do anything. This will redirect all users to the login page if they are not logged in, and it will also set <code>defaultPermissions</code> to <code>false</code>, meaning that permissions must be explicitly set for each user or user group.</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>config.yaml</code></div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">authRequireGuestsToLogin</span><span class="pi">:</span> <span class="kc">true</span>
+
+<span class="na">authLocalUsers</span><span class="pi">:</span>
+  <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">users</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">username</span><span class="pi">:</span> <span class="s">james</span>
+      <span class="na">password</span><span class="pi">:</span> <span class="s">$argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph nav-footer">
 <p>← Previous: <a href="oauth2-authentik.html">OAuth2 - Authentik</a> | ↑ Up: <a href="auth.html">Security</a> | ⌂ Home: <a href="index.html">OliveTin documentation</a> | Next: <a href="example-login-required.html">Example: Dashboards that require user login</a> →</p>
@@ -532,7 +550,7 @@ Curl 7.82 added support for the <code>--json</code> option, if you are using an 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-02-19 01:54:28 UTC
+Last updated 2025-02-21 17:19:53 UTC
 </div>
 </div>
 </body>
