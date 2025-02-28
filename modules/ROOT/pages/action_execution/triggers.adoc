@@ -15,7 +15,7 @@ actions:
   - title: stop {{ container.Names }}
     shell: docker stop {{ container.Names}}
     entity: container
-    trigger:
+    triggers:
       - update containers
 
   - title: update containers
