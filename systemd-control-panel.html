@@ -484,13 +484,15 @@ To control systemd, you will need the root user. If you are running OliveTin sys
     <span class="na">shell</span><span class="pi">:</span> <span class="s">systemctl stop {{ systemd_unit.unit }}</span>
     <span class="na">icon</span><span class="pi">:</span> <span class="s">&lt;iconify-icon icon="zondicons:hand-stop"&gt;&lt;/iconify-icon&gt;</span>
     <span class="na">entity</span><span class="pi">:</span> <span class="s">systemd_unit</span>
-    <span class="na">trigger</span><span class="pi">:</span> <span class="s">Update services file</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">Update services file</span>
 
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Start {{ systemd_unit.unit }}</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s">systemctl start {{ systemd_unit.unit }}</span>
     <span class="na">icon</span><span class="pi">:</span> <span class="s">&lt;iconify-icon icon="ic:round-directions-run"&gt;&lt;/iconify-icon&gt;</span>
     <span class="na">entity</span><span class="pi">:</span> <span class="s">systemd_unit</span>
-    <span class="na">trigger</span><span class="pi">:</span> <span class="s">Update services file</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">Update services file</span>
 
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Update services file</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s">systemctl list-units -a -o json --no-pager | jq -c 'map(select (.unit | contains ("upsilon", "podman", "boot.mount"))) | .[]'  &gt; /etc/OliveTin/entities/systemd_units.json</span>
@@ -523,7 +525,7 @@ To control systemd, you will need the root user. If you are running OliveTin sys
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-02-21 17:19:53 UTC
+Last updated 2025-02-28 22:08:08 UTC
 </div>
 </div>
 </body>

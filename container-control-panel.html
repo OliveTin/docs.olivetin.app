@@ -511,16 +511,18 @@ The reason that the <code>arm</code> and <code>arm64</code> containers do not in
     <span class="na">icon</span><span class="pi">:</span> <span class="s">box</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s">docker start {{ container.Names }}</span>
     <span class="na">entity</span><span class="pi">:</span> <span class="s">container</span>
-    <span class="na">trigger</span><span class="pi">:</span> <span class="s">Update container entity file</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">Update container entity file</span>
 
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Stop {{ container.Names }}</span>
     <span class="na">icon</span><span class="pi">:</span> <span class="s">box</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s">docker stop {{ container.Names }}</span>
     <span class="na">entity</span><span class="pi">:</span> <span class="s">container</span>
-    <span class="na">trigger</span><span class="pi">:</span> <span class="s">Update container entity file</span>
+    <span class="na">triggers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">Update container entity file</span>
 
   <span class="c1"># This is a hidden action, that is run on startup, and every 5 minutes, and </span>
-  <span class="c1"># when the above start/stop commands are run (see the `trigger` property).</span>
+  <span class="c1"># when the above start/stop commands are run (see the `triggers` property).</span>
 
   <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Update container entity file</span>
     <span class="na">shell</span><span class="pi">:</span> <span class="s1">'</span><span class="s">docker</span><span class="nv"> </span><span class="s">ps</span><span class="nv"> </span><span class="s">-a</span><span class="nv"> </span><span class="s">--format</span><span class="nv"> </span><span class="s">json</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">/etc/OliveTin/entities/containers.json'</span>
@@ -558,7 +560,7 @@ The reason that the <code>arm</code> and <code>arm64</code> containers do not in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-02-21 17:19:53 UTC
+Last updated 2025-02-28 22:08:08 UTC
 </div>
 </div>
 </body>
