@@ -7,7 +7,7 @@ NOTE: There is an easy method of setting up SSH with OliveTin, which is describe
 
 :systemd: Easy
 :container: Needs some setting up - see the <<ssh-container,SSH Container setup instructions>>
-include::actionHeader.adoc[]
+include::partial$action_examples/actionHeader.adoc[]
 
 .OliveTin `config.yaml`
 [source,shell]
@@ -32,7 +32,7 @@ This is a two step process;
 
 Visually, this is what it looks like - OliveTin is running in the (orange) container, and then can either connect back to _server-with-olivetin_ or _server2_.
 
-image::../images/ssh-diagram.png[]
+image::../ssh-diagram.png[]
 
 The steps in detail are below;
 

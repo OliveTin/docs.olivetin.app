@@ -18,5 +18,5 @@ You will need to this every time you upgrade OliveTin.
 [source,javascript]
 .`password.js`
 ----
-include::password.js[]
+include::example$solutions/primitive-password/password.js[]
 ----

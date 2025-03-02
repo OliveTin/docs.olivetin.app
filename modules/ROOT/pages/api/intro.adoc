@@ -20,11 +20,6 @@ The gRPC API only listens on localhost default, but it can be set to listen publ
 
 Please do talk to the developers on Discord if you'd like help using the API, or you're thinking about building something interesting using the API!
 
-[#api-start-action]
-=== Starting Actions from the API
-
-include::api_start_action_overview.adoc[]
-
 [#api-request-idurl]
 ==== Request type: Action ID in the URL
 
@@ -165,25 +160,3 @@ PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:
 user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
 ----
 
-=== Misc API calls
-
-==== Example API call: Get the dashboard buttons ("components")
-
-.curl
-----
-user@host: curl http://olivetinServer:1337/api/GetDashboardComponents 
-----
-
-==== Example API call: readyz Healthcheck
-
-This is useful for configuring healthchecks in docker containers, or on Kubernetes.
-
-.curl
-----
-user@host: curl http://olivetinServer:1337/api/readyz
-{"status": "ok"}
-----
-
-The response will always be "status: ok" to indicate that the API is up, or it will timeout. 
-
-include::api_login.adoc[]

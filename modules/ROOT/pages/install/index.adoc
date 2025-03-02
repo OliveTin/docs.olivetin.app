@@ -9,7 +9,7 @@ include::snippit_container_vs_service.adoc[]
 
 include::snippit_choose_package.adoc[]
 
-include::systemd.adoc[]
+include::rpmdeb.adoc[]
 
 include::linux_fedora.adoc[]
 

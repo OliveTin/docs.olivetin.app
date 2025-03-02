@@ -1,0 +1,8 @@
+[#err-websocket-connection]
+=== Error Connecting to WebSocket
+
+If OliveTin was working, but this error popped up, it's most likely because your reverse proxy closed the connection due to a timeout.
+
+If OliveTin is always displaying this error, it's probably your reverse proxy not handling the websocket properly. Please check the Reverse Proxy documentation for more information.
+
+

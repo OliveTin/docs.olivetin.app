@@ -5,7 +5,7 @@ NOTE: There is a complete example of how to setup a <<container-control-panel,co
 
 :systemd: Easy
 :container: Setup needed - see below
-include::actionHeader.adoc[]
+include::partial$action_examples/actionHeader.adoc[]
 
 [#example-control-containers]
 ....

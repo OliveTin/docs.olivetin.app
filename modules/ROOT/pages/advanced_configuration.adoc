@@ -11,7 +11,7 @@ The OliveTin web UI is reasonably customizable - parts of the page that you don'
 
 You can customize the page title;
 
-image::images/page-title.png[]
+image::page-title.png[]
 
 .`config.yaml`
 [source,yaml]
@@ -25,7 +25,7 @@ pageTitle: My OliveTin Instance
 You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.
 
 .The default user interface with the "Actions" and "Settings" buttons shown.
-image::images/defaultUiWithNav.png[]
+image::defaultUiWithNav.png[]
 
 To have OliveTin hide these buttons, add `showNavigation: false` to your config.yaml;
 
@@ -40,7 +40,7 @@ actions:
 ----
 
 .The same user interface, but with the "Actions" and "Settings" buttons hidden (`showNavigation: false`)
-image::images/defaultUiHideNav.png[]
+image::defaultUiHideNav.png[]
 
 [#section-navgiation-style]
 ==== Section Navigation Style

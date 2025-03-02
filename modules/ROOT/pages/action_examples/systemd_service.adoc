@@ -3,7 +3,7 @@
 
 :systemd: Easy
 :container: Not really possible to do.
-include::actionHeader.adoc[]
+include::partial$action_examples/actionHeader.adoc[]
 
 [source,yaml]
 ....

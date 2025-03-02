@@ -3,9 +3,9 @@
 
 **link:https://www.olivetin.app[OliveTin]** gives **safe** and **simple** access to predefined shell commands from a web interface.
 
-image:images/icons/GitHub.png[inline] link:https://github.com/jamesread/OliveTin[OliveTin on GitHub]
+image:icons/GitHub.png[inline] link:https://github.com/jamesread/OliveTin[OliveTin on GitHub]
 
-image:images/icons/Discord.png[inline] link:https://discord.gg/jhYWWpNJ3v[Chat on Discord]
+image:icons/Discord.png[inline] link:https://discord.gg/jhYWWpNJ3v[Chat on Discord]
 
 The link:https://www.olivetin.app[OliveTin Homepage is here]. This site that you are viewing is the documentation for OliveTin.
 

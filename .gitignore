@@ -1,6 +1,6 @@
 **/*.swp
 **/*.swo
-modules/ROOT/pages/index.adoc
 docs/
 build/
 node_modules
+modules/ROOT/.cache

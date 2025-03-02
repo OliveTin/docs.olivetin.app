@@ -3,7 +3,7 @@
 
 :systemd: Easy
 :container: Not possible
-include::actionHeader.adoc[]
+include::partial$action_examples/actionHeader.adoc[]
 
 Powershell requires `pwsh` to execute commands.
 

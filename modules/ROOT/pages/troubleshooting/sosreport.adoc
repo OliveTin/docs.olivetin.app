@@ -1,0 +1,62 @@
+[#sosreport]
+=== sosreport
+
+OliveTin has a useful feature to gather information about your installation that is useful when you're asking for help - when you have a support request. If you are able to provide sosreport, this generally helps others help you a lot. The **sosreport** feature does NOT send any information to the developers or anybody else, it's simply text - **copy and paste it** to where someone is trying to help you!
+
+[source,yaml]
+.Example SOS Report
+----
+### SOSREPORT START (copy all text to SOSREPORT END)
+# Build:
+commit: nocommit
+version: dev
+date: nodate
+
+# Runtime:
+os: linux
+osreleaseprettyname: PRETTY_NAME="Fedora Linux 37 (Workstation Edition)"
+arch: amd64
+incontainer: false
+lastbrowseruseragent: ""
+
+# Config:
+countofactions: 7
+loglevel: INFO
+
+### SOSREPORT END  (copy all text from SOSREPORT START)
+----
+
+You can then copy and paste this text into a GitHub issue, discussion, Discord chat, or wherever else someone might be helping you.
+
+
+==== How do I generate a sosreport?
+
+OliveTin needs to be able to startup and it's API needs to be functional. Once OliveTin is started, simply browse to: http://myserver:1337/api/sosreport
+
+==== Optional: Allow insecure (but easy) dumping of SOS Reports to the browser
+
+There is a configuration option you can set in your config.yaml that allows you to easily dump SOS Reports to your browser when visiting the API. This is turned off by default, as you should not allow anybody to request a sosreport at any time that they like, but you can enable this option temporarily to easily get access to the SOS Report.
+
+[source,yaml]
+.`config.yaml`
+----
+InsecureAllowDumpSos: true
+----
+
+==== Default: SOS Report dump to logs
+
+You should get a simple JSON message saying something like;
+
+----
+alert: "Your SOS Report has been logged to OliveTin logs."
+----
+
+If you see this, great! The actual contents of the sosreport are not returned to your browser for security reasons (guests could get info about your installation, etc). 
+
+To find the sosreport depends on how you are running OliveTin, if you are running in a container, then try `docker logs olivetin` (where "olivetin" is your container name). If you are running using systemd, then try `journalctl -eu OliveTin`.
+
+==== What if I cannot even get to the OliveTin API?
+
+OliveTin's web interface doesn't need to be working to get a sosreport (as the web interface and the API are separate). However, if OliveTin won't even startup, or you cannot seem to get to the API, then sadly a sosreport can't help you. Please do specify that when you ask for help.
+
+

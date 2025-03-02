@@ -13,7 +13,7 @@ NOTE: This is the easy method of setting up SSH with OliveTin - this generates a
 
 Visually, this is what it looks like - OliveTin is running in the (orange) container, and then can either connect back to _server-with-olivetin_ or _server2_.
 
-image::../images/ssh-diagram.png[]
+image::../ssh-diagram.png[]
 
 [#ssh-easy-step-1]
 ==== [red]#Step 1#: Run the olivetin-setup-easy-ssh script

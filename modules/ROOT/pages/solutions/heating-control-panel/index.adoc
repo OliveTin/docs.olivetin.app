@@ -3,7 +3,7 @@
 
 This was inspired by a GitHub issue to control heating; https://github.com/OliveTin/OliveTin/issues/73
 
-image::images/dashboard-heating-control-panel.png[]
+image::dashboard-heating-control-panel.png[]
 
 ==== Entity file
 
@@ -12,7 +12,7 @@ To build this, we use an <<entities,entity>> file that stores and updates the st
 [source,yaml]
 .`/etc/OliveTin/entities/heating.yaml`
 ----
-include::configs/heating.yaml[]
+include::example$solutions/heating-control-panel/configs/heating.yaml[]
 ----
 
 ==== Configuration
@@ -22,7 +22,7 @@ Then use the following configuration file;
 [source,yaml]
 .`config.yaml`
 ----
-include::configs/config.yaml[]
+include::example$solutions/heating-control-panel/configs/config.yaml[]
 ----
 
 

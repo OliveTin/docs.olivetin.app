@@ -9,7 +9,7 @@ a lot of flexibility if needed.
 Here is the default flow of traffic in OliveTin without any config changes.
 
 .Flow of an inbound network request
-image::../../images/portDiagram.png[]
+image::../../portDiagram.png[]
 
 1. Traffic comes into OliveTin over your network and hits the only port
 listening - 1337, which listens on all interfaces. This is a micro HTTP reverse

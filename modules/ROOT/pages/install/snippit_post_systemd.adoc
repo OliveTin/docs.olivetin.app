@@ -1,4 +1,4 @@
-==== Post installation
+== Post installation
 
 You will need to write a basic configuration file before OliveTin will startup.
 
@@ -32,7 +32,7 @@ user@host: firewall-cmd --reload
 
 include::snippit_to_config.adoc[]
 
-==== Troubleshooting systemd installations
+== Troubleshooting systemd installations
 
 If you are having problems, you can check if OliveTin is running like this; 
 

@@ -1,7 +1,7 @@
-* xref:install/index.adoc[Installation Guide]
+* Installation Guide
 ** xref:install/snippit_container_vs_service.adoc[Containers vs Services]
 ** xref:install/snippit_choose_package.adoc[Which download do I need?]
-** xref:install/systemd.adoc[Linux Package Install (.rpm/.deb)]
+** xref:install/rpmdeb.adoc[Linux Package Install (.rpm/.deb)]
 ** xref:install/linux_fedora.adoc[Fedora Linux (dnf)]
 ** xref:install/linux_alpine.adoc[Alpine Linux]
 ** xref:install/linux_arch.adoc[Arch Linux (AUR)]
@@ -11,14 +11,15 @@
 ** xref:install/k8s.adoc[Kubernetes with Manifest files]
 ** xref:install/targz.adoc[.tar.gz Install (manual)]
 * xref:config.adoc[Configuration]
-* xref:reverse-proxies/intro.adoc[Reverse Proxies]
+* Reverse Proxies
+** xref:reverse-proxies/intro.adoc[Introduction]
 ** xref:reverse-proxies/apache.adoc[Apache]
 ** xref:reverse-proxies/caddy.adoc[Caddy]
 ** xref:reverse-proxies/haproxy.adoc[HAProxy]
 ** xref:reverse-proxies/nginx.adoc[Nginx]
 ** xref:reverse-proxies/nginx_proxy_manager.adoc[Nginx Proxy Manager]
 ** xref:reverse-proxies/traefik.adoc[Traefik]
-* xref:action_execution.adoc[Action Execution]
+* Action Execution
 ** xref:action_execution/intro.adoc[Introduction]
 ** xref:action_execution/create_your_first.adoc[Create your first action]
 ** xref:action_execution/ondemand.adoc[Execute on demand]
@@ -30,7 +31,7 @@
 ** xref:action_execution/oncalendar.adoc[Execute on calendar file]
 ** xref:action_execution/aftercompletion.adoc[Execute after completion]
 ** xref:action_execution/triggers.adoc[Triggers]
-* xref:action_customization.adoc[Action Customization]
+* Action Customization
 ** xref:action_customization/intro.adoc[Intro]
 ** xref:action_customization/popuponstart.adoc[Popup on start]
 ** xref:action_customization/icons.adoc[Icons]
@@ -40,7 +41,7 @@
 ** xref:action_customization/ratelimiting.adoc[Rate Limiting]
 ** xref:action_customization/ids.adoc[IDs]
 ** xref:action_customization/savelogs.adoc[Save Logs]
-* xref:action_examples/intro.adoc[Action Examples]
+* Action Examples
 ** xref:action_examples/containers.adoc[Containers]
 ** xref:action_examples/systemd_service.adoc[Systemd Service]
 ** xref:action_examples/ping.adoc[Ping]
@@ -49,10 +50,22 @@
 ** xref:action_examples/powershell.adoc[Powershell]
 ** xref:action_examples/ansible.adoc[Ansible]
 * xref:args.adoc[Arguments]
-* xref:dashboards.adoc[Dashboards]
-* xref:entities.adoc[Entities]
-* xref:integrations/index.adoc[Integrations]
-* xref:security/intro.adoc[Security]
+* Dashboards
+** xref:dashboards/intro.adoc[Intro]
+** xref:dashboards/examples.adoc[Examples]
+** xref:dashboards/actions.adoc[Actions]
+** xref:dashboards/css.adoc[Change component style]
+** xref:dashboards/2-fieldsets.adoc[Fieldsets]
+** xref:dashboards/3-folders.adoc[Folders]
+** xref:dashboards/4-displays.adoc[Displays]
+** xref:dashboards/5-output-views.adoc[Output Views]
+* Entities
+** xref:entities/intro.adoc[Intro]
+** xref:entities/examples.adoc[Examples]
+** xref:entities/yaml.adoc[YAML Entity Files]
+** xref:entities/json.adoc[JSON Entity Files]
+* Integrations
+* Security
 ** xref:security/concepts.adoc[Concepts]
 ** xref:security/acl.adoc[Access Control Lists (Permissions)]
 ** xref:security/trusted_header.adoc[Trusted Header Authorization]
@@ -62,7 +75,7 @@
 ** xref:security/oauth2.adoc[OAuth2]
 ** xref:security/local.adoc[Local Users Login]
 *** xref:security/example_login_required.adoc[Example: Login Required]
-* xref:solutions/intro.adoc[Solutions]
+* Solutions
 ** xref:solutions/on-git-push/index.adoc[Self hosted GitOps]
 ** xref:solutions/container-control-panel/index.adoc[Container Control Panel]
 ** xref:solutions/systemd-control-panel/index.adoc[Systemd Control Panel]
@@ -70,8 +83,8 @@
 ** xref:solutions/primitive-password/index.adoc[Primitive Password Protection]
 ** xref:solutions/wol/index.adoc[Wake on LAN]
 ** xref:solutions/cloudflare_access_tunnel/index.adoc[Cloudflare Access & Tunnels]
-* xref:advanced_configuration.adoc[Advanced Configuration]
-* xref:reference/intro.adoc[Reference]
+* Advanced Configuration
+* Reference
 ** xref:reference/network-ports.adoc[Network Ports]
 ** xref:reference/security.adoc[Security]
 ** xref:reference/exitCodes.adoc[Exit Codes]
@@ -85,5 +98,18 @@
 ** xref:reference/contribute.adoc[Contribute]
 ** xref:reference/donations_and_sponsorship.adoc[Donations & Sponsorship]
 ** xref:reference/upgrade_notes.adoc[Updates Notes]
-* xref:troubleshooting.adoc[Troubleshooting]
-* xref:api.adoc[API]
+* Troubleshooting
+** xref:troubleshooting/wheretofindhelp.adoc[Where to find help]
+** xref:troubleshooting/sosreport.adoc[SOSReport]
+** xref:troubleshooting/puid-guid.adoc[No PUID/GUID support]
+** xref:troubleshooting/log-debug-options.adoc[Log Debug Options]
+** xref:troubleshooting/exit127.adoc[Exit Code 127]
+** xref:troubleshooting/err-fetch-webui-settings.adoc[Error: WebUI Settings]
+** xref:troubleshooting/err-fetch-buttons.adoc[Error: Fetch Buttons]
+** xref:troubleshooting/err-js-modules-not-supported.adoc[Error: JS Modules not supported]
+** xref:troubleshooting/err-websocket-connection.adoc[Error: Websocket Connection]
+* API
+** xref:api/intro.adoc[Intro]
+** xref:api/start_action.adoc[Start Actions from the API]
+** xref:api/misc.adoc[Misc API calls]
+** xref:api/login.adoc[Local user login via the API]

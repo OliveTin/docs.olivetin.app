@@ -2,7 +2,7 @@
 ---
 site:
   title: OliveTin docs
-  start_page: olive-tin::intro.adoc
+  start_page: ROOT::index.adoc
   robots: allow
 content:
   sources:

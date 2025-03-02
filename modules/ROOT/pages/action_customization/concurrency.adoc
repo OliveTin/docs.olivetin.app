@@ -16,7 +16,7 @@ actions:
 
 If you try and run a 2nd instance of this action while the first is currently running, you'll get a "blocked" message that looks like this;
 
-image::../images/blocked.png[]
+image::../blocked.png[]
 
 Additionally, OliveTin will log a message that looks like this;
 

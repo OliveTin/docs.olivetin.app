@@ -8,7 +8,7 @@ This example assumes that you are trying to access OliveTin at **olivetin.npm.te
 .docker-compose.yml
 [source,yaml]
 ----
-include::etc/npm-docker-compose.yml[]
+include::example$reverse-proxies/etc/npm-docker-compose.yml[]
 ----
 
 Note that OliveTin needs a configuration file to run, see the <<install-compose,docker compose install instructions>> for a bit more detail.
@@ -23,5 +23,5 @@ Assuming you have Nginx Proxy Manager running, start by adding a new proxy host.
 
 That really should be all that you need to get OliveTin working with Nginx Proxy Manager. If you have any issues, please check the logs of both OliveTin and Nginx Proxy Manager for any errors, and look for ways of getting <<support,support>>.
 
-image::images/npm.png[]
+image::npm.png[]
 

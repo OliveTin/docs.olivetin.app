@@ -6,13 +6,13 @@ icons because they are extremely fast to load and there are a lot of them,
 but OliveTin also support Iconify, and just images. 
 
 .Examples of icons in OliveTin
-image::../images/exampleIcons.png[]
+image::../exampleIcons.png[]
 
 For a quick reference, here are some examples of how to use different types of icons in OliveTin;
 
 .`config.yaml`
 ```yaml
-include::../configs/icons/config.yaml[]
+include::example$action_customization/icons/config.yaml[]
 ```
 
 ==== Iconify Icons
@@ -23,7 +23,7 @@ Note, the icons are loaded from the internet, but should be cached by your brows
 
 On the Iconfiy website, you should select **Iconify Icon**
 
-image::../images/iconify.png[]
+image::../iconify.png[]
 
 Then copy this icon code, and place it in your config;
 
@@ -37,7 +37,7 @@ actions:
 
 And you should get something that looks like this;
 
-image::../images/action-button-iconify.png[]
+image::../action-button-iconify.png[]
 
 ==== Unicode icons ("emoji")
 
@@ -74,7 +74,7 @@ OliveTin will try to create a directory called `custom-webui` in the same direct
 Ideally, put your icons in a new `<your-config-dir>/custom-webui/icons/`. Below is a picture of Mr Green. Feel free to save his likeness and awesomeness for yourself, for future awesome offline usage.
 
 .Mr Green, the original awesome smily.
-image::../images/mrgreen.gif[Mr Green]
+image::../mrgreen.gif[Mr Green]
 
 In your OliveTin config, customize your command again using HTML, like this;
 
@@ -87,7 +87,7 @@ actions:
 
 This will result in a locally hosted icon that will work offline, that looks like this;
 
-image::../images/mrGreenAction.png[]
+image::../mrGreenAction.png[]
 
 ////
 === CSS styles

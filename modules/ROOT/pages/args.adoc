@@ -82,18 +82,18 @@ actions:
 
 This will give you a normal button, like this;
 
-image::images/args1.png[]
+image::args1.png[]
 
 However, when you click on it, you'll get a prompt to enter arguments, like this;
 
-image::images/args2.png[]
+image::args2.png[]
 
 You'll see that the type is set to `ascii_sentence`. This applies fairly safe
 input validation to arguments, so that only a-z, 0-9, spaces and .'s are allowed. 
 
 When you start the action, and it's finished, go to the "logs" view to view the output of the command we've just run.
 
-image::images/args3.png[]
+image::args3.png[]
 
 [#args-custom-regex]
 === Custom regex
@@ -150,10 +150,10 @@ NOTE: `suggestions:` is a yaml **map**, not a **list**. If you leave the title e
 ==== Examples
 
 .Screenshot of input suggestions with Firefox on Linux.
-image::images/arg-suggestions-firefox.png[]
+image::arg-suggestions-firefox.png[]
 
 .Screenshot of input suggestions with Chrome on Linux.
-image::images/arg-suggestions-chrome.png[]
+image::arg-suggestions-chrome.png[]
 
 ==== Browser Support
 
@@ -184,11 +184,11 @@ Note that when predefined choices are used, the argument type is ignored.
 
 This is what it looks like in the web interface;
 
-image::images/args4.png[]
+image::args4.png[]
 
 Then finally, when you execute this command, it would look something like this (remember that this is just a basic "echo" command). 
 
-image::images/args-choices-exec.png[]
+image::args-choices-exec.png[]
 
 [#args-dropdown-entities]
 ==== Using Entities in Dropdowns
@@ -216,7 +216,7 @@ entities:
 
 This is what it looks like in the web interface;
 
-image::images/args-choices-entities.png[]
+image::args-choices-entities.png[]
 
 [#confirmation]
 === Input: Confirmation
@@ -234,7 +234,7 @@ actions:
         title: Are you sure?!
 ----
 
-image::images/action-confirmation.png[]
+image::action-confirmation.png[]
 
 Notice in the webui the "start" button is disabled.
 
@@ -254,7 +254,7 @@ actions:
         title: My Favourite DateTime
 ----
 
-image::images/arg-datetime.png[]
+image::arg-datetime.png[]
 
 [NOTE]
 ====

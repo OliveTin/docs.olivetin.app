@@ -14,7 +14,7 @@ actions:
 
 If OliveTin is running, it should popup on your dashboard like this; 
 
-image::images/hello-world.png[]
+image::hello-world.png[]
 
 Simply click on the button to execute the shell command. You can expand the executions to view the logs.
 

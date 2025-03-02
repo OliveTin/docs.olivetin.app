@@ -1,0 +1,9 @@
+[#entity-examples]
+=== Example Entity Usage
+
+Check out the following <<solutions,Solutions>> which make good use of entities.
+
+* <<container-control-panel,Container Control Panel>>
+* <<systemd-control-panel,Systemd Control Panel>>
+
+

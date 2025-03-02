@@ -1,0 +1,7 @@
+=== Example Dashboard usage
+
+Check out the following examples of dashboards in several complete OliveTin solutions;
+
+* <<container-control-panel,Container Control Panel>>
+* <<systemd-control-panel,Systemd Control Panel>>
+

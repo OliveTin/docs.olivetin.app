@@ -2,7 +2,7 @@
 name: ROOT
 title: OliveTin
 version: ''
-start_page: intro.adoc
+start_page: index.adoc
 asciidoc:
   attributes:
     source-language: asciidoc@

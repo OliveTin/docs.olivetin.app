@@ -3,7 +3,7 @@
 
 :systemd: Easy
 :container: Easy
-include::actionHeader.adoc[]
+include::partial$action_examples/actionHeader.adoc[]
 ....
 actions:
     # This sends 1 ping to google.com.
