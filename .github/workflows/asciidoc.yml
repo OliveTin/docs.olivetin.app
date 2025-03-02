@@ -1,4 +1,4 @@
-name: Publish to GitHub Pages
+name: Publish to GitHub Pages with Lunr Search Extension
 on:
   push:
     branches: [main]
@@ -27,8 +27,8 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-    - name: Install Antora
-      run: npm i antora
+    - name: Install Antora with the Antora Lunr Extension
+      run: npm i antora @antora/lunr-extension
     - name: Generate Site
       run: npx antora antora-playbook.yml
     - name: Upload Artifacts
