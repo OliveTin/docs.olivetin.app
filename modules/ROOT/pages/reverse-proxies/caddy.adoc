@@ -29,5 +29,5 @@ http://olivetin.example.com {
 ....
 ----
 
-include::snippit-external-rest.adoc[]
+include::partial$reverse-proxies/external-rest.adoc[]
 

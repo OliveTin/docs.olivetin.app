@@ -31,4 +31,4 @@ dashboards:
 
 Note that the output only refreshes with the browser, not when the button is clicked. 
 
-As this is an experimental feature, please look at options for <<support>> if you need help getting it to work.
+As this is an experimental feature, please look at options for xref:troubleshooting/wheretofindhelp.adoc[support] if you need help getting it to work.

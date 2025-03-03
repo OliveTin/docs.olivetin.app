@@ -6,7 +6,7 @@
 | Running in a **container**   | {container}
 |===
 
-==== Example config.yaml 
+== Example config.yaml 
 
 // Unset variables 
 :container!:

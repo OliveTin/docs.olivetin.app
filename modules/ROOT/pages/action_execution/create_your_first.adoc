@@ -20,11 +20,10 @@ Simply click on the button to execute the shell command. You can expand the exec
 
 ==== What do I try next?
 
-* See a list of <<examples,example actions>>.
-* <<action-customisation,Customize>> the action icon, timeout, etc.
-* <<exec-cron,Execute on a schedule (cron)>>
-* <<exec-startup,Execute on startup>>
-* <<exec-webhook,Execute on webhook>>
-* <<exec-file-created,Execute on file created>>
-* <<exec-file-changed,Execute on file changed>>
+* xref:action_customisation/intro.adoc[Customize] the action icon, timeout, etc.
+* xref:action_execution/oncron.adoc[Execute on a schedule (cron)]
+* xref:action_execution/onstartup.adoc[Execute on startup]
+* xref:action_execution/onwebhook.adoc[Execute on webhook]
+* xref:action_execution/onfilecreated.adoc[Execute on file created]
+* xref:action_execution/onfilechanged.adoc[Execute on file changed]
 

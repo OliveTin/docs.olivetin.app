@@ -1,11 +1,11 @@
 [#jwt-hmac]
-=== JWT with HMAC
+= JWT with HMAC
 
 You need to know your JWT **Cookie Name** and **Hash Secret**. Whatever tool you are using to authenticate users will probably have instructions on how to find this.
 
 * link:https://docs.organizr.app/features/server-authentication#validating-the-token[Organizr - Under "Validating the token"]
 
-==== Adding JWT details to OliveTin config.yaml
+== Adding JWT details to OliveTin config.yaml
 
 Setup your config file so it has something like this;
 
@@ -23,11 +23,11 @@ authJwtClaimUsergroup: "usergroup"
 
 Note that your `authJwtCookieName` and `authJwtSecret` will need to be set exactly as they appear in your Authentication software.
 
-===== Usable claims
+=== Usable claims
 
 OliveTin currently can match Access Control Lists based on a **username** or **primary user group**. These must be called `name` and `group` respectively. You can see if these are being used properly turning on `DEBUG` logging and looking at the jwt claims.
 
-===== Setup default permissions
+=== Setup default permissions
 
 OliveTin will assume that guests are able to View and Execute every action by default. When you are setting up authorization you probably want to limit this. You can do that by setting `defaultPermissions` like this;
 
@@ -41,7 +41,7 @@ defaultPermissions:
     exec: false
 ----
 
-=====  Setup OliveTin Access Control Lists 
+===  Setup OliveTin Access Control Lists 
 
 Access Control Lists are a way to override the default permissions.
 
@@ -85,7 +85,7 @@ actions:
 
 In the example above, the `admins` ACL is automatically added to every action, because `addToEveryAction` is true. 
 
-==== Customizing field names
+== Customizing field names
 
 You may need to customize the field names for your JWT authentication. 
 

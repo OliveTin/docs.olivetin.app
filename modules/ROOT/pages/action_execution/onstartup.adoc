@@ -1,5 +1,5 @@
 [#exec-startup]
-=== Execute on startup
+= Execute on startup
 
 OliveTin can execute actions on a startup. 
 
@@ -13,7 +13,7 @@ actions:
 ----
 
 [#dnf-startup]
-==== Example: Install additional commands into OliveTin
+== Example: Install additional commands into OliveTin
 
 This functionality to execute actions on startup is a very easy way to install additional commands in OliveTin, however it requires running OliveTin as a root user to be able to use `microdnf`;
 
@@ -26,7 +26,7 @@ actions:
     execOnStartup: true
 ----
 
-A more secure method than running DNF as root, is a manual command the temporarily runs as root. To learn more about how to install additional packages into the container in this more secure way, see <<container-dnf,installing extra container packages>>.
+A more secure method than running DNF as root, is a manual command the temporarily runs as root. To learn more about how to install additional packages into the container in this more secure way, see xref:reference/containerInstallPackages.adoc[Installing extra container packages].
 
 
 

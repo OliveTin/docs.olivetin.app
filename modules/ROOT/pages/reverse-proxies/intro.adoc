@@ -19,7 +19,7 @@ DNS Name based virtual hosts (eg: olivetin.example.com ) are easier to setup and
 
 ===== Which port?
 
-If you look at OliveTin startup logs, you will see OliveTin starting services on several ports. For most users, even under reverse proxy configurations, just proxying port 1337 should be all that is needed. To better understand why OliveTin uses several internal ports by default, see <<network-ports,network-ports>>.
+If you look at OliveTin startup logs, you will see OliveTin starting services on several ports. For most users, even under reverse proxy configurations, just proxying port 1337 should be all that is needed. To better understand why OliveTin uses several internal ports by default, see xref:reference/network-ports.adoc[network-ports].
 
 ==== Handling websockets
 

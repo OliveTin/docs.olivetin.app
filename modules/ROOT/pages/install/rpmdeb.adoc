@@ -9,11 +9,11 @@ There are .deb, .rpm, and similar packages published for OliveTin on each
 release page. Pick a package most relevant to the Linux distribution you are
 using from the link:https://github.com/jamesread/OliveTin/releases[downloads page].
 
-If you're not sure which package to use, see <<choose-package,which download do I need?>>
+If you're not sure which package to use, see xref:install/choose_package.adoc[which download do I need?].
 
 You can install these packages with your Linux package manager (eg, 
 `dpkg -i OliveTin...deb` or `rpm -U OliveTin...rpm`). 
 
-include::snippit_post_systemd.adoc[]
+include::partial$install/post_systemd.adoc[]
 
 

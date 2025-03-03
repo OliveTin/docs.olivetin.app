@@ -13,6 +13,5 @@ Install using `dnf` (or yum, on older versions of Fedora);
 user@host: dnf install -y OliveTin
 ----
 
-include::snippit_post_systemd.adoc[]
-
+include::partial$install/post_systemd.adoc[]
 

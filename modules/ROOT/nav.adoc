@@ -21,7 +21,6 @@
 ** xref:reverse-proxies/nginx_proxy_manager.adoc[Nginx Proxy Manager]
 ** xref:reverse-proxies/traefik.adoc[Traefik]
 * Action Execution
-** xref:action_execution/intro.adoc[Introduction]
 ** xref:action_execution/create_your_first.adoc[Create your first action]
 ** xref:action_execution/ondemand.adoc[Execute on demand]
 ** xref:action_execution/oncron.adoc[Execute on schedule (cron)]
@@ -44,6 +43,7 @@
 ** xref:action_customization/savelogs.adoc[Save Logs]
 * Action Examples
 ** xref:action_examples/containers.adoc[Containers]
+*** xref:action_examples/docker-proxy.adoc[Docker control, via proxy]
 ** xref:action_examples/systemd_service.adoc[Systemd Service]
 ** xref:action_examples/ping.adoc[Ping]
 ** xref:action_examples/ssh-easy.adoc[SSH (easy)]
@@ -86,9 +86,11 @@
 *** xref:security/jwt_keys.adoc[JWT with Keys]
 *** xref:security/jwt_hmac.adoc[JWT with HMAC]
 ** xref:security/oauth2.adoc[OAuth2]
+** xref:security/oauth2_authentik.adoc[OAuth2 with Authentik]
 ** xref:security/local.adoc[Local Users Login]
 *** xref:security/example_login_required.adoc[Example: Login Required]
 * Solutions
+** xref:solutions/intro.adoc[Solutions Introduction]
 ** xref:solutions/on-git-push/index.adoc[Self hosted GitOps]
 ** xref:solutions/container-control-panel/index.adoc[Container Control Panel]
 ** xref:solutions/systemd-control-panel/index.adoc[Systemd Control Panel]
@@ -97,7 +99,12 @@
 ** xref:solutions/wol/index.adoc[Wake on LAN]
 ** xref:solutions/cloudflare_access_tunnel/index.adoc[Cloudflare Access & Tunnels]
 * Advanced Configuration
-** xref:advanced_configuration/intro.adoc[Advanced Configuration]
+** xref:advanced_configuration/intro.adoc[Intro]
+** xref:advanced_configuration/logs.adoc[Logs]
+** xref:advanced_configuration/ports.adoc[Ports]
+** xref:advanced_configuration/prometheus.adoc[Prometheus]
+** xref:advanced_configuration/timezones.adoc[Timezones]
+** xref:advanced_configuration/webui.adoc[WebUI]
 * Reference
 ** xref:reference/network-ports.adoc[Network Ports]
 ** xref:reference/security.adoc[Security]
@@ -112,6 +119,7 @@
 ** xref:reference/contribute.adoc[Contribute]
 ** xref:reference/donations_and_sponsorship.adoc[Donations & Sponsorship]
 ** xref:reference/upgrade_notes.adoc[Updates Notes]
+** xref:reference/multiple_instances.adoc[Multiple Instances]
 * Troubleshooting
 ** xref:troubleshooting/wheretofindhelp.adoc[Where to find help]
 ** xref:troubleshooting/sosreport.adoc[SOSReport]

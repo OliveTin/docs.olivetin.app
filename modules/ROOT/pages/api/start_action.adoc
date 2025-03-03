@@ -13,3 +13,143 @@ There are several variants of this API call available which might be easier for 
 | `StartActionByGetAndWait`    | GET         | <<api-request-idurl,Action ID in the URL>>         | <<api-response-logentry,Log Entry (waits for the action to finish)>>
 |======================================================
 
+[#api-request-idurl]
+==== Request type: Action ID in the URL
+
+Used by:
+
+* `StartActionByGet`
+* `StartActionByGetAndWait`
+
+If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an ID directly in the URL, <<api-eg-startIdUrl,see the example>>.
+
+[#api-request-obj]
+==== Request type: OliveTin request object
+
+Used by:
+
+* `StartAction`
+* `StartActionAndWait`
+
+[source,json]
+.OliveTin request object structure
+----
+{
+  "actionId": "string",
+  "arguments": [
+    {
+      "name": "string",
+      "value": "string"
+    }
+  ],
+  "uniqueTrackingId": "string"
+}
+----
+
+To find your Action ID, and understand how Action IDs work, see the xref:action_customization/ids.adoc[Action ID] documentation
+
+If you need more control over the execution, then the only other option is to submit a `OliveTin reqjest object`, which is just a very simple JSON structure like this;
+
+[source,json]
+----
+{
+    "actionId": "Generate cryptocurrency",
+    "arguments": [],
+    "uniqueTrackingId": "my-tracking-id",
+}
+----
+
+More detailed examples can be seen below.
+
+[#api-response-trackingid]
+==== Response type: Execution Tracking ID
+
+Used by:
+
+* `StartAction`
+* `StartActionByGet`
+
+.Example Execution Tracking ID response
+[source,json]
+----
+{"executionTrackingId":"5bb4860c-bbd0-4bc9-a7d6-42240551500c"}
+----
+
+[#api-response-logentry]
+==== Response type: LogEntry
+
+Used by:
+
+* `StartActionAndWait`
+* `StartActionByGetAndWait`
+
+.Example log entry
+[source,json]
+----
+{
+    "logEntry": {
+        "datetimeStarted": "2024-02-27 14:14:49",
+        "actionTitle": "Restart httpd on server1",
+        "stdout": "",
+        "stderr": "",
+        "timedOut": true,
+        "exitCode": -1,
+        "user": "",
+        "userClass": "",
+        "actionIcon": "&#128260;",
+        "tags": [
+
+        ],
+        "executionTrackingId": "b04b1e90-d457-4158-b7dc-da9e81f21568",
+        "datetimeFinished": "2024-02-27 14:14:52",
+        "actionId": "restart_httpd",
+        "executionStarted": true,
+        "executionFinished": true,
+        "blocked": false
+    }
+}
+----
+
+[#api-eg-startIdUrl]
+==== Example API call; Start an action by ID in the URL
+
+.curl
+----
+user@host: curl http://olivetin.example.com/api/StartActionByGet/pingGithub
+----
+
+The corresponding config.yaml would look like this;
+
+[source,yaml]
+----
+actions:
+  - title: Ping GitHub.com
+    id: pingGithub
+    shell: ping github.com -c 1
+----
+
+IDs are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
+
+==== Example API call: Start an action using `StartAction`
+
+[source,bash]
+.curl
+----
+user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionId": "nuclear_reactor_shutdown"}'
+----
+
+[source,powershell]
+.Powershell
+----
+PS C:\Users\xcons> $json = '{"actionId": "deploy_attack_gnomes"}'
+PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
+----
+
+==== Example API call: Start an action using `StartAction` with arguments
+
+[source,bash]
+.curl
+----
+user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
+----
+

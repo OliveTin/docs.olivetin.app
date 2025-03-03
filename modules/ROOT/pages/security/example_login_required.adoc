@@ -26,7 +26,7 @@ authLocalUsers:
   users:
     - username: "admin"
       usergroup: admins
-      password: << your password hash here >>
+      password: -- your password hash here --
 
 actions:
   - title: "Restart"
@@ -38,7 +38,7 @@ dashboards:
       - title: "Restart"
 ```
 
-Note, to use this configuration, you will need to replace `<< your password hash here >>` with a password hash. You can generate a password hash by looking at the options in the <<local-users>> configuration section.
+Note, to use this configuration, you will need to replace `-- your password hash here --` with a password hash. You can generate a password hash by looking at the options in the xref:local.adoc[local-users] configuration section.
 
 ==== Important configuration option: `AuthRequireGuestsToLogin`
 

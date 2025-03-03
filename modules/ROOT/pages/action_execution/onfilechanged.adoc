@@ -22,6 +22,6 @@ actions:
       - /home/user/Downloads/
 ----
 
-include::action_execution_onfileindir_arguments.adoc[]
+include::partial$action_execution/onfileindir_arguments.adoc[]
 
 

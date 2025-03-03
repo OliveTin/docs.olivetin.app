@@ -1,5 +1,5 @@
 [#action-container-proxy]
-==== Using the Docker proxy
+= Using the Docker proxy
 
 You can use a docker socket proxy as an additional security measure and as an alternative to mounting the docker socket directly. 
 

@@ -12,7 +12,7 @@ user@host: helm repo add olivetin https://olivetin.github.io/OliveTin-HelmChart/
 user@host: helm install olivetin olivetin/olivetin
 ----
 
-include::snippit_to_config.adoc[]
+include::partial$install/to_config.adoc[]
 
 ==== Included templates
 

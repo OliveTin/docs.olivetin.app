@@ -20,6 +20,6 @@ for file in adoc_files:
 
 unnavigable_files = sorted(unnavigable_files)
 
-print("Unnavigable files:")
+print("Unnavigable files:", len(unnavigable_files))
 for file in unnavigable_files:
     print(file)

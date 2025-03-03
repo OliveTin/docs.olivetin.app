@@ -1,4 +1,4 @@
-==== Setup if running inside a container
+== Setup if running inside a container
 
 You can control other containers, when running OliveTin inside a container
 itself, however you need to do some extra setup when creating the OliveTin

@@ -85,5 +85,5 @@ body {
 
 Profit.
 
-Check out <<themes-dev>> for more information on how to develop themes.
+Check out xref:reference/reference_themes_for_developers.adoc[Themes for Developers] for more information on how to develop themes.
 

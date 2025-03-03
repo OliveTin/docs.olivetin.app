@@ -2,6 +2,6 @@
 
 Check out the following examples of dashboards in several complete OliveTin solutions;
 
-* <<container-control-panel,Container Control Panel>>
-* <<systemd-control-panel,Systemd Control Panel>>
+* xref:solutions/container-control-panel/index.adoc[Container Control Panel]
+* xref:solutions/systemd-control-panel/index.index[Systemd Control Panel]
 

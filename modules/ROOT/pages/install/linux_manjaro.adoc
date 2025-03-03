@@ -1,7 +1,7 @@
 [#install-manjaro]
 === Manjaro (pamac/AUR)
 
-Please see teh <<install-archbtw>> page for a description of the difference between `olivetin-bin` and `olivetin` in AUR. This page assumes you want to compile from source (`olivetin` package).
+Please see teh xref:install-archbtw[Arch Linux] page for a description of the difference between `olivetin-bin` and `olivetin` in AUR. This page assumes you want to compile from source (`olivetin` package).
 
 [source,bash]
 ----
@@ -13,6 +13,6 @@ sudo mkdir -p /etc/OliveTin/entities/
 ----
 
 
-include::snippit_post_systemd.adoc[]
+include::partial$install/post_systemd.adoc[]
 
 

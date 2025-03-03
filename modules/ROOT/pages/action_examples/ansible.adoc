@@ -2,7 +2,7 @@
 === Ansible Playbooks
 
 :systemd: Easy
-:container: Install the `ansible` package in your <<container-dnf,OliveTin container>>.
+:container: Install the `ansible` package in your xref:reference/containerInstallPackages.adoc[OliveTin container].
 include::partial$action_examples/actionHeader.adoc[]
 
 Many users use OliveTin to easily execute Ansible playbooks, somtimes as a simple alternative to AWX.
@@ -17,5 +17,5 @@ actions:
     timeout: 120
 ----
 
-You probably want to set the <<timeout>> to more than the default 3 seconds.
+You probably want to set the xref:action_customization/timeouts.adoc[timeout] to more than the default 3 seconds.
 

@@ -15,6 +15,6 @@ Install using `yay`;
 user@host: yay -Syu olivetin
 ----
 
-include::snippit_post_systemd.adoc[]
+include::partial$install/post_systemd.adoc[]
 
 

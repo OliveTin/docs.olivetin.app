@@ -1,7 +1,7 @@
 [#update-tracking]
 === Update Checks & Tracking (legacy)
 
-NOTE: This page is for OliveTin versions **2022-01-06** to **2024.06.02**. To see the current behavior of update checking, go to <<update-checks,update-checks>>
+NOTE: This page is for OliveTin versions **2022-01-06** to **2024.06.02**. To see the current behavior of update checking, go to xref:updateChecks.adoc[update checks]
 
 The OliveTin server will now check for updates on startup, and every 7 days after that. It will report those updates as a log message in the console. It does not apply any updates, because this is the choice and responsibility of whoever is running OliveTin to decide if, when, and how to apply any updates.
 

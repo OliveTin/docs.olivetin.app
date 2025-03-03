@@ -36,7 +36,7 @@ Now that you have a configuration file, and the OliveTin container created, you 
 user@host: docker start olivetin
 ----
 
-include::snippit_to_config.adoc[]
+include::partial$install/to_config.adoc[]
 
 == Troubleshooting podman/docker installations
 

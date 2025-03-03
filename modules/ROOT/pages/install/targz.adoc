@@ -20,6 +20,6 @@ Installing OliveTin from a .tar.gz file is considered advanced setup, and is pro
 .. `var/openrc/OliveTin` is provided for OpenRC-based systems. You can copy this to `/etc/init.d/OliveTin` and make it executable if you want to use it.
 .. `var/tekton` is a directory that contains an experimental Tekton base image builder. You don't need this.
 
-include::snippit_post_systemd.adoc[]
+include::partial$install/post_systemd.adoc[]
 
 

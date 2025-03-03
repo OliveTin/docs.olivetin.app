@@ -5,6 +5,6 @@
 
 include::../api/start_action.adoc[]
 
-For examples of how to use all of these functions, check out the <<api-start-action,Start Action API reference>>.
+For examples of how to use all of these functions, check out the xref:api/start_action.adoc[Start Action API reference].
 
 

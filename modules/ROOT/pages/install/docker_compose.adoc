@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 ----
 
-include::snippit_post_container.adoc[]
+include::partial$install/post_container.adoc[]
 
 == Controlling other docker containers from a Docker Compose install of OliveTin
 
@@ -59,12 +59,12 @@ services:
     ...
 ----
 
-NOTE: <<no-puid-pgid,PUID and PGID are not used>> by the official OliveTin container image.
+NOTE: xref:reference/puidguid.adoc[PUID and PGID are not used] by the official OliveTin container image.
 
 [#docker-compose-traefik]
 == Using Traefik with Docker Compose 
 
 Traefik is a popular reverse proxy that seems to be used a lot in people's
-Docker compose setups. See the <<traefik-docker-compose,Traefik + Docker Compose>> page for more details.
+Docker compose setups. See the xref:reverse-proxies/traefik.adoc[Traefik + Docker Compose] page for more details.
 
 

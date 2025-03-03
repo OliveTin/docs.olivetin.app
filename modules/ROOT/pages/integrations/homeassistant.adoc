@@ -18,7 +18,7 @@ actions:
 
 You then need to know the URL to call to trigger this action. This URL is the OliveTin API URL, with the action ID appended to it. For example, if your OliveTin is running at `http://yourserver:1337`, the URL to call to trigger the action above would be `http://yourserver:1337/api/StartActionAndWait/server_sleep`.
 
-You can learn more about starting actions via the OliveTin API by reading the link <<api-start-action,Starting Actions via the API>> page, but the method "StartActionAndWait" is the one you will want to use for Home Assistant.
+You can learn more about starting actions via the OliveTin API by reading the link xref:api/start_action.adoc[Starting Actions via the API] page, but the method "StartActionAndWait" is the one you will want to use for Home Assistant.
 
 ==== Add the REST API call to Home Assistant
 

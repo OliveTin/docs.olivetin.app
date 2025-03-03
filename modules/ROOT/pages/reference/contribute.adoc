@@ -3,8 +3,7 @@
 
 First of all, a huge, huge thanks for reading this page, and considering some form of contribution. Here are some suggestions below. 
 
-NOTE: OliveTin does not accept <<donations-and-sponsorship,Donations and Sponsorship>>.
-
+NOTE: OliveTin does not accept xref:donations_and_sponsorship.adoc[Donations and Sponsorship].
 
 . If you have 2 Minutes to contribute: **Share how you are using OliveTin**, on Reddit, Twitter/X, LinkedIn, Mastodon, or whatever - use the hashtag #OliveTin.  Show a screenshot or blog about it. Tell people how OliveTin helped you. There is also #screenshot-showcase in the OliveTin Discord community. If you want to ping me directly, I really like getting email or PMs; jump on Discord and just say it, or contact me via one of the methods found at http://jread.com .
 . If you have 10 minutes to contribute: **Answer a call for support**: look for support issues in #support on discord, or tagged om GitHub issues, and help someone out! You don't have to solve the problem, just point someone in the right direction. 

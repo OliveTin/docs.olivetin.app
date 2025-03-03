@@ -30,7 +30,7 @@ user@host: firewall-cmd --add-port 1337/tcp --permanent
 user@host: firewall-cmd --reload
 ----
 
-include::snippit_to_config.adoc[]
+include::partial$install/to_config.adoc[]
 
 == Troubleshooting systemd installations
 

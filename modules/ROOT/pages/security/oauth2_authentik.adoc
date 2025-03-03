@@ -129,5 +129,5 @@ OliveTin logs OAuth2 flows quite extensively. If you are having trouble with OAu
 
 ==== Next steps
 
-Once you have OAuth2 working, you will probably want to configure access control lists in OliveTin. This is described in the <<acls,Access Control Lists>> documentation page.
+Once you have OAuth2 working, you will probably want to configure access control lists in OliveTin. This is described in the xref:acl.adoc[Access Control Lists] documentation page.
 
