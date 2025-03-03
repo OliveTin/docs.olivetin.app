@@ -2,7 +2,7 @@
 
 === Update Checks
 
-NOTE: This page is for OliveTin versions **2024.06.02** and afterwards. Previous versions of OliveTin used to have a form of tracking. To learn about how that worked, see xref:updateTracking.adoc[update tracking].
+NOTE: This page is for OliveTin versions **2024.06.02** and afterwards. Previous versions of OliveTin used to have a form of tracking. To learn about how that worked, see xref:reference/updateTracking.adoc[update tracking].
 
 OliveTin has the ability to check for updates, which is now turned OFF if nothing is specified in your configuration file. To enable this feature, set the following in your `config.yaml` file;
 

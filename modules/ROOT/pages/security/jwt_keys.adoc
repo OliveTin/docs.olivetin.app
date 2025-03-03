@@ -33,4 +33,4 @@ authJwtCookieName: "CF_Authorization"
 
 == See Also
 
-* xref:solutions/cloudflare_access_tunnels/index.adoc[Cloudflare Access & Tunnels Solution]
+* xref:solutions/cloudflare_access_tunnel/index.adoc[Cloudflare Access & Tunnels Solution]

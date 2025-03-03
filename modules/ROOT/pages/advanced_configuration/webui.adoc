@@ -71,7 +71,7 @@ logLevel: "INFO"
 showNewVersions: false
 ----
 
-OliveTin does not check for updates by default. To enable it, see xref:reference/update-checks.adoc[enable update checking].
+OliveTin does not check for updates by default. To enable it, see xref:reference/updateChecks.adoc[enable update checking].
 
 [#show-footer]
 ==== Show the footer 

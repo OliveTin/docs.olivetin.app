@@ -11,7 +11,7 @@ This example assumes that you are trying to access OliveTin at **olivetin.npm.te
 include::example$reverse-proxies/etc/npm-docker-compose.yml[]
 ----
 
-Note that OliveTin needs a configuration file to run, see the xref:install/docker_compose.md[docker compose install instructions] for a bit more detail.
+Note that OliveTin needs a configuration file to run, see the xref:install/docker_compose.adoc[docker compose install instructions] for a bit more detail.
 
 Assuming you have Nginx Proxy Manager running, start by adding a new proxy host.
 

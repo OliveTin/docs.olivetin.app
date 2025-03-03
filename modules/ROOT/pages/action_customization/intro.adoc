@@ -1,4 +1,4 @@
 [#action-customisation]
 == Action customisation
 
-
+There are several ways to customize actions. See the links in this section to see how to do it.

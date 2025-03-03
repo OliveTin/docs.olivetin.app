@@ -31,8 +31,7 @@
 ** xref:action_execution/oncalendar.adoc[Execute on calendar file]
 ** xref:action_execution/aftercompletion.adoc[Execute after completion]
 ** xref:action_execution/triggers.adoc[Triggers]
-* Action Customization
-** xref:action_customization/intro.adoc[Intro]
+* xref:action_customization/intro.adoc[Action Customization]
 ** xref:action_customization/popuponstart.adoc[Popup on start]
 ** xref:action_customization/icons.adoc[Icons]
 ** xref:action_customization/timeouts.adoc[Timeouts]
@@ -41,7 +40,7 @@
 ** xref:action_customization/ratelimiting.adoc[Rate Limiting]
 ** xref:action_customization/ids.adoc[IDs]
 ** xref:action_customization/savelogs.adoc[Save Logs]
-* Action Examples
+* xref:action_examples/intro.adoc[Action Examples]
 ** xref:action_examples/containers.adoc[Containers]
 *** xref:action_examples/docker-proxy.adoc[Docker control, via proxy]
 ** xref:action_examples/systemd_service.adoc[Systemd Service]
@@ -112,7 +111,6 @@
 ** xref:reference/updateChecks.adoc[Update Checks]
 ** xref:reference/updateTracking.adoc[Update Tracking (legacy)]
 ** xref:reference/containerInstallPackages.adoc[Install packages in containers]
-** xref:reference/reference_multipleInstances.adoc[Multiple Instances]
 ** xref:reference/reference_snapshots.adoc[Snapshots]
 ** xref:reference/reference_themes_for_users.adoc[Themes (for users)]
 ** xref:reference/reference_themes_for_developers.adoc[Themes (for developers)]
@@ -123,7 +121,7 @@
 * Troubleshooting
 ** xref:troubleshooting/wheretofindhelp.adoc[Where to find help]
 ** xref:troubleshooting/sosreport.adoc[SOSReport]
-** xref:troubleshooting/puid-guid.adoc[No PUID/GUID support]
+** xref:troubleshooting/puid-pgid.adoc[No PUID/PGID support]
 ** xref:troubleshooting/log-debug-options.adoc[Log Debug Options]
 ** xref:troubleshooting/exit127.adoc[Exit Code 127]
 ** xref:troubleshooting/err-fetch-webui-settings.adoc[Error: WebUI Settings]

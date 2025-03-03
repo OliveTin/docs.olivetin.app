@@ -59,7 +59,7 @@ services:
     ...
 ----
 
-NOTE: xref:reference/puidguid.adoc[PUID and PGID are not used] by the official OliveTin container image.
+NOTE: xref:troubleshooting/puid-pgid.adoc[PUID and PGID are not used] by the official OliveTin container image.
 
 [#docker-compose-traefik]
 == Using Traefik with Docker Compose 

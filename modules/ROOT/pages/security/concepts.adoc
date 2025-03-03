@@ -1,11 +1,11 @@
 [#auth-concepts]
 === Concepts
 
-OliveTin only has 1 method for doing **Authentication** (ie: entering a username and password -- see xref:local.adoc[Local Users] ), however it can do **Authorization** (ie: checking permissions of a user who logged in via another system, like single sign on) in many number of ways.
+OliveTin only has 1 method for doing **Authentication** (ie: entering a username and password -- see xref:security/local.adoc[Local Users] ), however it can do **Authorization** (ie: checking permissions of a user who logged in via another system, like single sign on) in many number of ways.
 
 OliveTin supports the following methods of Authorization:
 
-- xref:trusted_header.adoc[Trusted Header] (eg: Nginx, Apache, etc)
-- xref:jwt.adoc[JWT] (eg: Traefik, Organizr, etc)
-- xref:oauth2.adoc[OAuth2] (eg: Google, GitHub, etc)
+- xref:security/trusted_header.adoc[Trusted Header] (eg: Nginx, Apache, etc)
+- xref:security/jwt.adoc[JWT] (eg: Traefik, Organizr, etc)
+- xref:security/oauth2.adoc[OAuth2] (eg: Google, GitHub, etc)
 

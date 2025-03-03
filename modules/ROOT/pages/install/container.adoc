@@ -5,7 +5,7 @@ include::partial$install/container.adoc[]
 
 include::partial$install/container_registries.adoc[]
 
-If you prefer to use docker-compose, then follow the xref:install/docker_compose.md[docker-compose] installation instructions>>.
+If you prefer to use docker-compose, then follow the xref:install/docker_compose.adoc[docker-compose] installation instructions>>.
 
 The standard container setup just needs **port 1337** forwarded for web traffic, and a volume **to store the configuration file**. Note that OliveTin containers expect the config to be in `/config/` inside the container, but it doesn't really matter where this directory is mounted from on the host. This documention uses the convention of `/etc/OliveTin` on the host, but `/dockerStuff/OliveTin/` or similar would be fine.
 
@@ -18,16 +18,16 @@ user@host: docker pull jamesread/olivetin
 user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:ro docker.io/jamesread/olivetin
 ....
 
-NOTE: The OliveTin container is built using fedora-minimal, which doesn't use customizations that some people may be familiar with from popular projects like LSIO, or debian-based containers. The two top misunderstandings are xref:reference/puidpgid.adoc[PUID and PGID are ignored]. Please see the instructions below if you're not familiar with changing users or timezones.
+NOTE: The OliveTin container is built using fedora-minimal, which doesn't use customizations that some people may be familiar with from popular projects like LSIO, or debian-based containers. The two top misunderstandings are xref:troubleshooting/puid-pgid.adoc[PUID and PGID are ignored]. Please see the instructions below if you're not familiar with changing users or timezones.
 
 [#container-user]
 == Container user
 
-OliveTin does not need to be run as a root, and does not need any special capabilities. If you want to change the user that OliveTin runs as, use `--user` when creating the container. OliveTin ignores xref:reference/puidpgid.adoc[PUID and PGID].
+OliveTin does not need to be run as a root, and does not need any special capabilities. If you want to change the user that OliveTin runs as, use `--user` when creating the container. OliveTin ignores xref:troubleshooting/puid-pgid.adoc[PUID and PGID].
 
 [#container-timezone]
 == Container timezone
 
-To change the xref:reference/timezone.adoc[changing the timezone requires a bound-mount] from the host. Olivetin ignores the TZ variable as it is non-standard.
+To change the xref:advanced_configuration/timezones.adoc[changing the timezone requires a bound-mount] from the host. Olivetin ignores the TZ variable as it is non-standard.
 
 include::partial$install/post_container.adoc[]

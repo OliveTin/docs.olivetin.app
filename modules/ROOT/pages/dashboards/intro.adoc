@@ -5,7 +5,7 @@ OliveTin generates a default view of actions which is useful for simple OliveTin
 
 If you want to start organizing OliveTin actions more effectively, then **Dashboards** are for you!
 
-one of the biggest reasons to use Dashboards as opposed to just the "Actions" section, is that dashboards allow you to use xref:dashboards/folders.adoc[Folders], and dashboards really start to get exciting when you start using xref:entities/intro.adoc[entities] and displays.
+one of the biggest reasons to use Dashboards as opposed to just the "Actions" section, is that dashboards allow you to use xref:dashboards/3-folders.adoc[Folders], and dashboards really start to get exciting when you start using xref:entities/intro.adoc[entities] and displays.
 
 image::dashboard.png[]
 

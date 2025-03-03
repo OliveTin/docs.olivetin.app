@@ -6,7 +6,7 @@ import re
 nav_file = open('nav.adoc', 'r')
 nav_string = nav_file.read()
 
-adoc_files = glob.glob('pages/**/*.adoc')
+adoc_files = glob.glob('pages/**.adoc')
 
 filelist = dict()
 

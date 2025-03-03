@@ -20,7 +20,7 @@ Simply click on the button to execute the shell command. You can expand the exec
 
 ==== What do I try next?
 
-* xref:action_customisation/intro.adoc[Customize] the action icon, timeout, etc.
+* xref:action_customization/intro.adoc[Customize] the action icon, timeout, etc.
 * xref:action_execution/oncron.adoc[Execute on a schedule (cron)]
 * xref:action_execution/onstartup.adoc[Execute on startup]
 * xref:action_execution/onwebhook.adoc[Execute on webhook]
