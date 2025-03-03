@@ -11,15 +11,7 @@ ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
-  supplemental_files:
-    - path: ./theme-supplemental/
-    - path: ui.yml
-      contents: |
-        static_files:
-        - CNAME
-    - path: CNAME
-      contents: |
-        docs.olivetin.app
+  supplemental_files: ./theme-supplemental/
 antora:
   extensions:
     - '@antora/lunr-extension'
