@@ -12,8 +12,7 @@
 ** xref:install/k8s.adoc[Kubernetes with Manifest files]
 ** xref:install/targz.adoc[.tar.gz Install (manual)]
 * xref:config.adoc[Configuration]
-* Reverse Proxies
-** xref:reverse-proxies/intro.adoc[Introduction]
+* xref:reverse-proxies/intro.adoc[Reverse Proxies]
 ** xref:reverse-proxies/apache.adoc[Apache]
 ** xref:reverse-proxies/caddy.adoc[Caddy]
 ** xref:reverse-proxies/haproxy.adoc[HAProxy]
@@ -49,8 +48,7 @@
 ** xref:action_examples/ssh-manual.adoc[SSH (manual)]
 ** xref:action_examples/powershell.adoc[Powershell]
 ** xref:action_examples/ansible.adoc[Ansible]
-* Arguments
-** xref:args/intro.adoc[Intro]
+* xref:args/intro.adoc[Arguments]
 ** xref:args/safety.adoc[Safety]
 ** xref:args/types.adoc[Types]
 ** xref:args/input.adoc[Input]
@@ -61,8 +59,7 @@
 ** xref:args/input_confirmation.adoc[Input: Confirmation]
 ** xref:args/input_textarea.adoc[Input: Textarea]
 ** xref:args/env.adoc[Environment Variables]
-* Dashboards
-** xref:dashboards/intro.adoc[Intro]
+* xref:dashboards/intro.adoc[Dashboards]
 ** xref:dashboards/examples.adoc[Examples]
 ** xref:dashboards/actions.adoc[Actions]
 ** xref:dashboards/css.adoc[Change component style]
@@ -70,15 +67,13 @@
 ** xref:dashboards/3-folders.adoc[Folders]
 ** xref:dashboards/4-displays.adoc[Displays]
 ** xref:dashboards/5-output-views.adoc[Output Views]
-* Entities
-** xref:entities/intro.adoc[Intro]
+* xref:entities/intro.adoc[Entities]
 ** xref:entities/examples.adoc[Examples]
 ** xref:entities/yaml.adoc[YAML Entity Files]
 ** xref:entities/json.adoc[JSON Entity Files]
 * Integrations
 ** xref:integrations/homeassistant.adoc[Home Assistant]
-* Security
-** xref:security/concepts.adoc[Concepts]
+* xref:security/concepts.adoc[Security]
 ** xref:security/acl.adoc[Access Control Lists (Permissions)]
 ** xref:security/trusted_header.adoc[Trusted Header Authorization]
 ** xref:security/jwt.adoc[JWT Authorization]
@@ -88,8 +83,7 @@
 ** xref:security/oauth2_authentik.adoc[OAuth2 with Authentik]
 ** xref:security/local.adoc[Local Users Login]
 *** xref:security/example_login_required.adoc[Example: Login Required]
-* Solutions
-** xref:solutions/intro.adoc[Solutions Introduction]
+* xref:solutions/intro.adoc[Solutions]
 ** xref:solutions/on-git-push/index.adoc[Self hosted GitOps]
 ** xref:solutions/container-control-panel/index.adoc[Container Control Panel]
 ** xref:solutions/systemd-control-panel/index.adoc[Systemd Control Panel]
@@ -97,8 +91,7 @@
 ** xref:solutions/primitive-password/index.adoc[Primitive Password Protection]
 ** xref:solutions/wol/index.adoc[Wake on LAN]
 ** xref:solutions/cloudflare_access_tunnel/index.adoc[Cloudflare Access & Tunnels]
-* Advanced Configuration
-** xref:advanced_configuration/intro.adoc[Intro]
+* xref:advanced_configuration/intro.adoc[Advanced Configuration]
 ** xref:advanced_configuration/logs.adoc[Logs]
 ** xref:advanced_configuration/ports.adoc[Ports]
 ** xref:advanced_configuration/prometheus.adoc[Prometheus]
@@ -129,8 +122,7 @@
 ** xref:troubleshooting/err-js-modules-not-supported.adoc[Error: JS Modules not supported]
 ** xref:troubleshooting/err-websocket-connection.adoc[Error: Websocket Connection]
 ** xref:troubleshooting/advanced.adoc[Advanced Troubleshooting]
-* API
-** xref:api/intro.adoc[Intro]
+* xref:api/intro.adoc[API]
 ** xref:api/start_action.adoc[Start Actions from the API]
 ** xref:api/misc.adoc[Misc API calls]
 ** xref:api/login.adoc[Local user login via the API]
