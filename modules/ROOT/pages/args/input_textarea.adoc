@@ -1,0 +1,8 @@
+[#arg-textarea]
+= Input: Textarea
+
+OliveTin supports multi-line text inputs, which can be useful for longer messages or scripts. You should set your argument `type` to `raw_string_multiline` to use these.
+
+As the name implies, textareas are raw, and are NOT validated by any regex.
+
+

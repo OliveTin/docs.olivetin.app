@@ -1,5 +1,5 @@
 [#config]
-== Configuration
+= Configuration
 
 OliveTin is controlled by a `config.yaml` file. On startup, it looks for this
 file in the following locations; 
@@ -31,7 +31,7 @@ For building up from here, look at the following resources;
 All configuration options are covered in the sollution sections
 
 [#config-list]
-=== Core functionality
+== Core functionality
 
 |===
 | Option | Description | Default | Live Reloadable | Documentation
@@ -41,7 +41,7 @@ All configuration options are covered in the sollution sections
 | `dashboards` | A grouping of actions, with optional displays, or actions generated from entities. | `-` | Live Reloadable | <<dashboards,Dashboards>>
 |===
 
-=== UI Customization
+== UI Customization
 
 |===
 | Option | Description | Default | Live Reloadable | Documentation
@@ -59,7 +59,7 @@ All configuration options are covered in the sollution sections
 | `themeName` | The theme to use. | `` | Restart recommended | <<themes,Themes>>.
 |===
 
-=== Security Configuration
+== Security Configuration
 
 |===
 | Option | Description | Default | Live Reloadable | Documentation
@@ -80,7 +80,7 @@ All configuration options are covered in the sollution sections
 | `AccessControlLists` | The list of access control lists. | `[]` | Requires restart | <<acls,Access Control Lists>>
 |===
 
-=== Networking Configuration
+== Networking Configuration
 
 |===
 | Option | Description | Default | Live Reloadable | Documentation
@@ -94,7 +94,7 @@ All configuration options are covered in the sollution sections
 | `ExternalRestAddress` | The address the web browser should use to connect to the API. | `.` | Requires Restart | <<network-ports,Network Ports>>
 |===
 
-=== Debugging Configuration
+== Debugging Configuration
 
 |===
 | Option | Description | Default | Live Reloadable | Documentation
@@ -104,7 +104,7 @@ All configuration options are covered in the sollution sections
 | `Insecure*` | Various options to disable security features. | `false` | Restart recommended | <<advanced-troubleshooting,Advanced Troubleshooting>>
 |===
 
-=== Miscellaneous Configuration
+== Miscellaneous Configuration
 
 |===
 | Option | Description | Default | Live Reloadable | Documentation

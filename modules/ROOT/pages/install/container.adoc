@@ -1,5 +1,5 @@
 [#install-container]
-=== Container install (podman/docker)
+= Container install (podman/docker)
 
 include::snippit_container.adoc[]
 
@@ -21,12 +21,12 @@ user@host: docker create --name olivetin -p 1337:1337 -v /etc/OliveTin/:/config:
 NOTE: The OliveTin container is built using fedora-minimal, which doesn't use customizations that some people may be familiar with from popular projects like LSIO, or debian-based containers. The two top misunderstandings are <<no-puid-pgid,PUID and PGID are ignored>>. Please see the instructions below if you're not familiar with changing users or timezones.
 
 [#container-user]
-==== Container user
+== Container user
 
 OliveTin does not need to be run as a root, and does not need any special capabilities. If you want to change the user that OliveTin runs as, use `--user` when creating the container. OliveTin ignores <<no-puid-pgid,PUID and PGID>>.
 
 [#container-timezone]
-==== Container timezone
+== Container timezone
 
 To change the <<timezone,changing the timezone requires a bound-mount>> from the host. Olivetin ignores the TZ variable as it is non-standard.
 

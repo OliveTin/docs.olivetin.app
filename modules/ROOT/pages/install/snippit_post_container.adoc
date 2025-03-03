@@ -1,4 +1,4 @@
-==== Post installation (container)
+== Post installation (container)
 
 You will need to write a basic configuration file before OliveTin will startup.
 
@@ -38,7 +38,7 @@ user@host: docker start olivetin
 
 include::snippit_to_config.adoc[]
 
-==== Troubleshooting podman/docker installations
+== Troubleshooting podman/docker installations
 
 If you are having problems in starting OliveTin, or OliveTin is crashing on startup, then check the logs like this;
 

@@ -1,5 +1,5 @@
 [#install-compose]
-=== Docker Compose install
+= Docker Compose install
 
 Docker compose is a popular way to define multi-container applications using a 
 infrastructure as code approach. 
@@ -24,7 +24,7 @@ services:
 
 include::snippit_post_container.adoc[]
 
-==== Controlling other docker containers from a Docker Compose install of OliveTin
+== Controlling other docker containers from a Docker Compose install of OliveTin
 
 If you want to use OliveTin running in a container to control other Docker containers, you will need to pass through the Docker sock in your compose file. 
 
@@ -45,7 +45,7 @@ services:
 
 You will probably need to tell this container to run as root as well, to control docker (see below).
 
-==== Controlling the docker user with Docker Compose
+== Controlling the docker user with Docker Compose
 
 This is the correct way to tell the OliveTin container to run as root (or any other user);
 
@@ -62,7 +62,7 @@ services:
 NOTE: <<no-puid-pgid,PUID and PGID are not used>> by the official OliveTin container image.
 
 [#docker-compose-traefik]
-==== Using Traefik with Docker Compose 
+== Using Traefik with Docker Compose 
 
 Traefik is a popular reverse proxy that seems to be used a lot in people's
 Docker compose setups. See the <<traefik-docker-compose,Traefik + Docker Compose>> page for more details.
