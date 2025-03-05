@@ -1,9 +1,9 @@
 [#customize-webui]
-=== Customize the web UI
+= Customize the web UI
 
 The OliveTin web UI is reasonably customizable - parts of the page that you don't need can be hidden when they're not needed. 
 
-==== Page Title
+== Page Title
 
 You can customize the page title;
 
@@ -16,7 +16,7 @@ pageTitle: My OliveTin Instance
 ----
 
 [#show-nav]
-==== Show Navigation 
+== Show Navigation 
 
 You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.
 
@@ -39,12 +39,12 @@ actions:
 image::defaultUiHideNav.png[]
 
 [#section-navgiation-style]
-==== Section Navigation Style
+== Section Navigation Style
 
 `sectionNavigationStyle` - You can choose to have the section navigation buttons displayed as a Sidebar (`sidebar` - default), or along the top (`topbar`).
 
 [#custom-js]
-==== Custom JavaScript
+== Custom JavaScript
 
 This is considered an advanced feature, and is not recommended unless you like writing your own code.
 
@@ -54,13 +54,13 @@ The custom javascript should be in a file called `custom.js` and saved in `custo
 
 You will need to set `enableCustomJs` to `true` in your `config.yaml` to enable this feature.
 
-==== Custom Themes / Stylesheet rules
+== Custom Themes / Stylesheet rules
 
 * xref:reference/reference_themes_for_users.adoc[Themes for Users]
 * xref:reference/reference_themes_for_developers.adoc[Themes for Developers]
 
 [#show-new-versions]
-==== Show new versions
+== Show new versions
 
 You can disable the "new version" information in the footer - the default for `showNewVersions` is `true`; 
 
@@ -74,7 +74,7 @@ showNewVersions: false
 OliveTin does not check for updates by default. To enable it, see xref:reference/updateChecks.adoc[enable update checking].
 
 [#show-footer]
-==== Show the footer 
+== Show the footer 
 
 You can disable the entire footer, if you would like a really minimal interface. The default for `showFooter` is `true`.
 

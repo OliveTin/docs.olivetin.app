@@ -1,5 +1,5 @@
 [#update-tracking]
-=== Update Checks & Tracking (legacy)
+= Update Checks & Tracking (legacy)
 
 NOTE: This page is for OliveTin versions **2022-01-06** to **2024.06.02**. To see the current behavior of update checking, go to xref:reference/updateChecks.adoc[update checks]
 
@@ -7,7 +7,7 @@ The OliveTin server will now check for updates on startup, and every 7 days afte
 
 The information OliveTin sends to the update server is stored/saved., and this could be considered a form of tracking - that is tracking installations, not tracking people. This page hopefully helps explain what, how and why that information is used so you can be informed (and make changes if you wish).
 
-==== Design considerations
+== Design considerations
 
 * The source code for the update check (client), and the update service are open and on GitHub, freely auditable.
 * A generated installation ID (which is just a UUID), that is used to differentiate between installations <<installation-id,more info>>.
@@ -17,7 +17,7 @@ The information OliveTin sends to the update server is stored/saved., and this c
 * The update check can be disabled.
 
 [#update-sent]
-==== What is sent (and tracked)
+== What is sent (and tracked)
 
 When OliveTin checks for updates, it will send the following;
 
@@ -36,7 +36,7 @@ Here is an example of a log entry that is sent/stored;
 If you would like to audit the update code, look at the following directory; https://github.com/OliveTin/OliveTin/tree/main/internal/updatecheck
 
 [#installation-id]
-==== What is the OliveTin installation ID?
+== What is the OliveTin installation ID?
 
 This is a randomly generated link:https://en.wikipedia.org/wiki/Universally_unique_identifier[UUID] - that is not based on your operating system, not on any of your data. OliveTin tries to create a random installation-id.txt in your config directory when it starts up. 
 
@@ -45,7 +45,7 @@ The reason for creating a installation ID is to tell the differences between ins
 In older versions of OliveTin, the MachineID was used instead of InstallationID (see below). 
 
 [#machine-id]
-==== Why do you need my machine ID?
+== Why do you need my machine ID?
 
 This was changed in OliveTin - the MachineID is no longer collected, and the project moved to InstallationID instead. The answer is kept here for old versions.
 
@@ -59,7 +59,7 @@ The reason for getting the machine ID is to tell the differences between install
 without this identifier, we would not know if 10 instances, or 1 instances of
 OliveTin are running a specific version. 
 
-==== Why do you need to store any information at all?
+== Why do you need to store any information at all?
 
 This is incredibly useful information for project developers to know, because;
 
@@ -67,30 +67,30 @@ This is incredibly useful information for project developers to know, because;
 2. This helps the project better understand what are the most popular operating systems and architectures (ie, so more testing can be done).
 3. How many old versions of the project to support?
 
-==== What is stored?
+== What is stored?
 
 The update service only stores the information that is sent - <<update-sent,explained with an example above>>. 
 
 You can audit the update service code here; https://github.com/OliveTin/update-check.olivetin.app
 
-==== What is not sent/stored
+== What is not sent/stored
 
 * No information about you, users of your system, no files, nothing else apart from what is mentioned above.
 * Not your public IP address, or any information about your network
 * Not any information about how you have configured OliveTin, or any actions.
 
-==== Where is the information sent
+== Where is the information sent
 
 To http://update-check.olivetin.app . This is a virtual machine which stores the logs on the machine filesystem. The data is accessible to all who which to view it, in the interest of transparency.
 
-==== Why isn’t this opt-in?
+== Why isn’t this opt-in?
 
 It seems the majority of software does perform update checks by default like this - Chrome, Firefox, most modern Operating Systems, etc. Because no information about people, or your data is being used, apart from your installation ID, this seems like a safe default.
 
 Also, if this were to default off, many people probably would not think about turning it on.
 
 [#disable-update-checks]
-==== How do I disable update checking?
+== How do I disable update checking?
 
 If you are worried about privacy, or similar, please do make your concerns known. This is best if this is an open discussion.
 
@@ -99,7 +99,7 @@ But, simply, to disable this feature, add to your config file;
 	checkForUpdates: false
 
 [#hide-news-versions]
-==== How can I hide version upgrades in the OliveTin web interface?
+== How can I hide version upgrades in the OliveTin web interface?
 
 Set the following in your configuration file;
 
@@ -108,7 +108,7 @@ Set the following in your configuration file;
 OliveTin will need to be restarted for this change to have affect.
 
 [#hsts]
-==== Why can't I visit update-check.olivetin.app in my browser?
+== Why can't I visit update-check.olivetin.app in my browser?
 
 The root domain for OliveTin (OliveTin.app) has HSTS turned on - this forces your browser to use SSL (HTTPS - the little encryption padlock) for all subdomains - including www.olivetin.app and docs.olivetin.app. Although both of those websites don't transmit anything that really needs encrypion, the web is certainly moving to having SSL turned on everywhere. It even has a positive impact on search engine rankings!
 

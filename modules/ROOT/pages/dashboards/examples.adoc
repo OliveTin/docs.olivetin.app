@@ -1,4 +1,4 @@
-=== Example Dashboard usage
+= Example Dashboard usage
 
 Check out the following examples of dashboards in several complete OliveTin solutions;
 

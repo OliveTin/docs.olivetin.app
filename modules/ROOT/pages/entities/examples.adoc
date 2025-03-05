@@ -1,5 +1,5 @@
 [#entity-examples]
-=== Example Entity Usage
+= Example Entity Usage
 
 Check out the following xref:solutions/intro.adoc[Solutions] which make good use of entities.
 

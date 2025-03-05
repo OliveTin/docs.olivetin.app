@@ -1,5 +1,5 @@
 [#exec-file-created]
-=== Execute on file created
+= Execute on file created
 
 You can execute an action when a file is created in a directory. The argument `filename` is pre-populated for you.
 

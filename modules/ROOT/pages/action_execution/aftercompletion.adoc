@@ -1,5 +1,5 @@
 [#after-completion]
-=== Execute after completion
+= Execute after completion
 
 Sometimes you want to execute another command after the main command executes, this is often the case when you want to check the status of the main command, or if you want to send a notification.
 

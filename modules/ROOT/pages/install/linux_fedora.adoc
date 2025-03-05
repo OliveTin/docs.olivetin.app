@@ -1,11 +1,11 @@
 [#install-fedora]
-=== Fedora Linux (dnf)
+= Fedora Linux (dnf)
 
 Fedora is included in the Fedora Project official repositories. For an overview of versions, see the Package Sources page;
 
 https://src.fedoraproject.org/rpms/OliveTin
 
-==== Installation 
+== Installation 
 
 Install using `dnf` (or yum, on older versions of Fedora); 
 

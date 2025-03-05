@@ -1,8 +1,8 @@
 [#timeout]
-=== Timeouts
+= Timeouts
 
-By default, actions in OliveTin have a 3 second timeout. This means that
-OliveTin will kill the action if it is running for too long. 
+By default, actions in OliveTin have a **3 second timeout**. This means that
+OliveTin will kill the action if it is running for too long.
 
 You can set your own timeouts like this;
 
@@ -19,7 +19,7 @@ at least is probably a bad case for OliveTin. Therefore, if you set a timeout
 seconds. If you think you have a use case where a shorter (or infinite) timeout
 makes sense, please open an issue and let's discuss.
 
-==== Check the logs
+== Check the logs
 
 If a action really does "time out", it will show in the logs with "(timed out)" next to the exist code;
 

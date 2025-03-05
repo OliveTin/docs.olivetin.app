@@ -1,5 +1,5 @@
 [#prometheus]
-=== Prometheus
+= Prometheus
 
 OliveTin supports basic Prometheus metrics, and the project is interested to hear about what more metrics people would find useful, as well!
 

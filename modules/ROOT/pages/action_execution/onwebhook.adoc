@@ -1,9 +1,7 @@
 [#exec-webhook]
-=== Execute on webhook
+= Execute on webhook
 
 "Webhooks" are nothing more and a name for a type of REST API call, typically using the HTTP POST method. This is already what OliveTin uses to drive it's web interface - specifically the `StartAction` API call.
-
-include::../api/start_action.adoc[]
 
 For examples of how to use all of these functions, check out the xref:api/start_action.adoc[Start Action API reference].
 

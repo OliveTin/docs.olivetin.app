@@ -1,5 +1,5 @@
 [#concurrency]
-=== Concurrency
+= Concurrency
 
 By default, OliveTin will allow you to run several instances of an action at the same time. For example, an action might take 20 seconds, and if you click the button 3 times, for a time there will be 3 actions running at the same time.
 

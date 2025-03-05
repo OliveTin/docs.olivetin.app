@@ -1,5 +1,5 @@
 [#create-your-first-action]
-=== Create your first action
+= Create your first action
 
 This is an example of your very first action. First of all, edit your config.yaml, and enter this YAML markup;
 
@@ -18,7 +18,7 @@ image::hello-world.png[]
 
 Simply click on the button to execute the shell command. You can expand the executions to view the logs.
 
-==== What do I try next?
+== What do I try next?
 
 * xref:action_customization/intro.adoc[Customize] the action icon, timeout, etc.
 * xref:action_execution/oncron.adoc[Execute on a schedule (cron)]

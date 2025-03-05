@@ -1,9 +1,9 @@
 [#multi-inst]
-=== Multiple instances on a server
+= Multiple instances on a server
 
 Several users will find themselves wanting to run multiple instances of OliveTin. Depending on how you've setup OliveTin depends on how easy it is to configure that. This page includes instructions for OliveTin installed as a container, and as a package (.tar.gz).
 
-==== With Containers
+== With Containers
 
 This is the easiest way to run multiple OliveTin instances. Follow the xref:install/container.adoc[Container Installation instructions], or similar for xref:install/docker_compose.adoc[Docker Compose], xref:install/helm.adoc[Helm] or similar to get started.
 
@@ -14,7 +14,7 @@ This is the easiest way to run multiple OliveTin instances. Follow the xref:inst
 
 You do not need to change the listenAddresses / ports for the other 3 ports that OliveTin uses, when you are running inside a container. 
 
-==== Without containers - using a package (.tar.gz)
+== Without containers - using a package (.tar.gz)
 
 If you are not using containers, then it is probably best not to use a `.deb/.rpm` installation, as those packages can only be installed for one instance.
 

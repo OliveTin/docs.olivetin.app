@@ -1,5 +1,5 @@
 [#timezone]
-=== Timezone
+= Timezones
 
 OliveTin will obviously use the system time just like all other programs, but when running in a container, time works in a slightly unusual way. 
 

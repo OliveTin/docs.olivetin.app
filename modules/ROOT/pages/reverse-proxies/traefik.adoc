@@ -1,5 +1,5 @@
 [#traefik-docker-compose]
-=== Traefik + Docker Compose
+= Traefik + Docker Compose
 
 The following example is known to work well with Traefik and docker-compose.
 

@@ -1,5 +1,5 @@
 [#err-websocket-connection]
-=== Error Connecting to WebSocket
+= Error Connecting to WebSocket
 
 If OliveTin was working, but this error popped up, it's most likely because your reverse proxy closed the connection due to a timeout.
 

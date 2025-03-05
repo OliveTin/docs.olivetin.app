@@ -1,4 +1,4 @@
-==== File in dir arguments
+== File in dir arguments
 
 |===
 | Predefined Argument   | Example

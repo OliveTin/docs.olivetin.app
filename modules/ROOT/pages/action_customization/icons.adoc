@@ -1,9 +1,9 @@
 [#icons]
-=== Icons
+= Icons
 
 You can specify any HTML for an icon. It's a popular choice to use Unicode
 icons because they are extremely fast to load and there are a lot of them, 
-but OliveTin also support Iconify, and just images. 
+but OliveTin also support Iconify, and simple PNG, JPG, WEBP and similar images.
 
 .Examples of icons in OliveTin
 image::../exampleIcons.png[]
@@ -15,7 +15,7 @@ For a quick reference, here are some examples of how to use different types of i
 include::example$action_customization/icons/config.yaml[]
 ```
 
-==== Iconify Icons
+== Iconify Icons
 
 Browse over 200,000 icons that can be used with OliveTin here; https://icon-sets.iconify.design/
 
@@ -39,10 +39,14 @@ And you should get something that looks like this;
 
 image::../action-button-iconify.png[]
 
-==== Unicode icons ("emoji")
+== Unicode icons ("emoji")
 
-For example on the link:https://symbl.cc/en/emoji/[here is a list of
-"Emoji" in unicode]. If you find "link:https://symbl.cc/en/1F60E/[Smiling face with sunglasses]" you can click 
+Using simple emoji (unicode) icons from your browser's font is extremely fast, and can look good on some platforms. However, the icons are platform specific, which mean's they'll look different between browsers and between operating systems. 
+
+There are great sites like link:https://symbl.cc/en/emoji/[symbl.cc - a list of
+"Emoji" in unicode]. 
+
+For example, if you find "link:https://symbl.cc/en/1F60E/[Smiling face with sunglasses]" you can click 
 on it to see it's "HTML-code". In OliveTin, you'd setup the icon like this;
 
 ----
@@ -52,7 +56,7 @@ actions:
     shell: echo "You are awesome"
 ----
 
-==== Full HTML icons (`<img src ...`)
+== Full HTML icons (`<img src ...`)
 You can also specify the full HTML for an image, like;
 
 ----
@@ -62,10 +66,7 @@ actions:
       shell: docker ps
 ----
 
-NOTE: This full HTML thing is very customizable, but easier options will
-probably be added in the future as well. 
-
-==== Saving and serving icons for "offline" use
+=== Saving and serving icons for "offline" use
 
 Sometimes you might want to store images to use as icons, with your installation of OliveTin. This can be useful when your installation is meant to be offline, or disconnected from the internet. This is easily done.
 
@@ -90,7 +91,7 @@ This will result in a locally hosted icon that will work offline, that looks lik
 image::../mrGreenAction.png[]
 
 ////
-=== CSS styles
+= CSS styles
 
 OliveTin allows you to write any CSS style rules directly on a single action.
 This is both pretty powerful if you want an action to have a particular style,
@@ -100,7 +101,7 @@ break things! Be careful!
 A tutorial on how to use CSS can easily be found online, but here are some
 examples;
 
-==== Example: Bold & Purple action
+== Example: Bold & Purple action
 
 ----
 - actions:

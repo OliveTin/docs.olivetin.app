@@ -1,5 +1,5 @@
 [#entities-json]
-=== JSON entity files
+= JSON entity files
 
 JSON files are parsed as if each line is a single JSON object. This can be super helpful for getting a list of containers, for example; `docker ps -a --format=json > /etc/OliveTin/containers.json`.
 

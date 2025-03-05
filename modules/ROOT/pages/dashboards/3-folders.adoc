@@ -1,5 +1,5 @@
 [#folders]
-=== Folders (Directories)
+= Folders (Directories)
 
 Folders (Directories) are a good way to group up actions in the same way that you would
 organize files on your computer into directories.

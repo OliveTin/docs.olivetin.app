@@ -1,5 +1,5 @@
 [#dashboard-css]
-=== Change component style
+= Change component style
 
 You can change the style of any dashboard component by adding a `cssClass` property to the component. This is useful for styling actions, displays, fieldsets and folders. Here is an example of how to add a class to an action;
 

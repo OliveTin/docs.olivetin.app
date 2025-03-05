@@ -1,5 +1,5 @@
 [#acls]
-=== Access Control Lists (Permissions)
+= Access Control Lists (Permissions)
 
 include::../snippit_earlydoc.adoc[]
 
@@ -53,7 +53,7 @@ actions:
       - admins
 ----
 
-==== ACL Matching - usernames and usergroups.
+== ACL Matching - usernames and usergroups.
 
 You can match users based on their usergroup which is the most common, but it is also possible to match based on the user's username.
 
@@ -76,7 +76,7 @@ accessControlLists:
       exec: true
 ```
 
-==== Add an ACL to every action
+== Add an ACL to every action
 
 Sometimes you want to define an ACL that applies to all actions. It can be tedious and error prone to manually add the ACL under the "acls" list for every action, if you have several actions. Instead, there is a shortcut to add an ACL to all actions - `addToEveryAction: true`.
 

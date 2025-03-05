@@ -1,5 +1,5 @@
 [#save-logs]
-=== Saving logs
+= Saving logs
 
 By default, OliveTin only keeps logs in memory, meaning that if you restart OliveTin your logs will be lost. For some use cases this is acceptable, but you can configure OliveTin to save logs for you.
 

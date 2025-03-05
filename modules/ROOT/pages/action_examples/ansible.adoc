@@ -1,5 +1,5 @@
 [#ansible-playbook]
-=== Ansible Playbooks
+= Ansible Playbooks
 
 :systemd: Easy
 :container: Install the `ansible` package in your xref:reference/containerInstallPackages.adoc[OliveTin container].

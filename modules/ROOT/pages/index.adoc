@@ -43,7 +43,4 @@ video::Ej6NM9rmZtk[youtube,width=100%]
 * **Lightweight on resources** - uses only a few MB of RAM and barely any CPU. Written in Go, with a web interface written as a modern, responsive, Single Page App that uses the REST/gRPC API.
 * **Good amount of unit tests and style checks** - helps potential contributors be consistent, and helps with maintainability.
 
-[discrete]
-=== Read more
-
-
+You can learn more about OliveTin in the link:https://www.olivetin.app[OliveTin Homepage].

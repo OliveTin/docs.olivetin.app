@@ -1,9 +1,9 @@
 [#container-dnf]
-=== Installing extra container packages
+= Installing extra container packages
 
 The official OliveTin container image is based on Fedora Linux. Fedora has shown to offer a great mix of stability and support over two decades. The base container image for OliveTin is relatively lightweight, with not many tools installed by default. This keeps the download size small, but you may want to add additional packages.
 
-==== Quickstart - using DNF to install additional packages
+== Quickstart - using DNF to install additional packages
 
 You can of course create your own container image, but this is probably a lot of work for new users, or people who just want a few extra packages/commands. Instead of creating a whole new container image, you can simply run `microdnf` (the Fodora package manager) to install more commands.
 
@@ -28,7 +28,7 @@ Note that if you upgrade the OliveTin container image, you will need to reinstal
 +
 Once you have finished installing these packages, just exit the root shell using `exit`. You don't need to restart the container - and OliveTin does not need to run as root to use most commands.
 
-==== See also
+== See also
 
 * link:https://hub.docker.com/r/jamesread/olivetin[OliveTin container on Docker Hub]
 * xref:install/container.adoc[Installing using a container]

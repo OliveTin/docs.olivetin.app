@@ -1,5 +1,5 @@
 [#caddy-dns]
-=== Caddy
+= Caddy
 
 Caddy seems to work without any special configuration, so a simple `Caddyfile` works like this;
 
@@ -13,7 +13,7 @@ http://olivetin.example.com {
 
 
 [#caddy-path]
-==== Custom paths
+== Custom paths
 
 .Caddyfile
 ----

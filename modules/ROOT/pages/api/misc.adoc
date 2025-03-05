@@ -1,13 +1,13 @@
-=== Misc API calls
+= Misc API calls
 
-==== Example API call: Get the dashboard buttons ("components")
+== Example API call: Get the dashboard buttons ("components")
 
 .curl
 ----
 user@host: curl http://olivetinServer:1337/api/GetDashboardComponents 
 ----
 
-==== Example API call: readyz Healthcheck
+== Example API call: readyz Healthcheck
 
 This is useful for configuring healthchecks in docker containers, or on Kubernetes.
 

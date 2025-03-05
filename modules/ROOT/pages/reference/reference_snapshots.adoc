@@ -1,5 +1,5 @@
 [#snapsnots]
-=== Snapshot builds
+= Snapshot builds
 
 It's sometimes useful to test code changes in OliveTin that are still in development - and have not yet made it into an official version, yet. Thankfully, all code changes are automatically compiled into a "snapshot" builds and are saved in GitHub actions.
 
@@ -11,7 +11,7 @@ image::snapshots.png[]
 
 Most of the time you will want to select the top build, unless you've specifically been given a build link to use. 
 
-==== Download the snapshot archive
+== Download the snapshot archive
 
 On the job page, you will have a single "snapshot" file listed. In this screenshot, it is 109 MB.
 

@@ -1,5 +1,5 @@
 [#install-manjaro]
-=== Manjaro (pamac/AUR)
+= Manjaro (pamac/AUR)
 
 Please see teh xref:install-archbtw[Arch Linux] page for a description of the difference between `olivetin-bin` and `olivetin` in AUR. This page assumes you want to compile from source (`olivetin` package).
 

@@ -1,5 +1,5 @@
 [#action-service]
-=== Restart a systemd service
+= Restart a systemd service
 
 :systemd: Easy
 :container: Not really possible to do.

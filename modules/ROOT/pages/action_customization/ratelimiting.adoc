@@ -1,5 +1,5 @@
 [#ratelimits]
-=== Rate limiting
+= Rate limiting
 
 By default, OliveTin allows you to execute actions as fast as you can click the button. This is fine if you are running OliveTin with trusted users in a trusted environment, but otherwise you may want to rate limit actions.
 

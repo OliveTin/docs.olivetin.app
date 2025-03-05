@@ -1,7 +1,7 @@
 [#themes-dev]
-=== Themes (for theme developers)
+= Themes (for theme developers)
 
-==== Step by step theme guide
+== Step by step theme guide
 
 * OliveTin will by default only read theme.css once on startup. If you are intending to change theme.css while OliveTin is running, set `themeCacheDisabled: true` in your config.yaml. This will make OliveTin read theme.css on every request, and is useful for development.
 * Go to https://github.com/OliveTin/theme-template and use this template repository to create your new theme repository on GitHub. 
@@ -12,7 +12,7 @@ Write beautiful CSS to create your theme as you like it, commit your changes to 
 
 Note that OliveTin will load `/theme.css` depending on `themeName:` in your config file. Images and any other assets will be served at `/custom-webui/themes/mytheme/`.
 
-==== Understanding theme URLs
+== Understanding theme URLs
 
 When you create a theme, OliveTin will serve your theme's CSS at `/theme.css` and any other assets at `/custom-webui/themes/mytheme/`. This might be a little strange at first, as your theme.css file wil be in the `/custom-webui/themes/mytheme/` directory, but OliveTin will still serve it at `/theme.css`. Let's explain why this happens;
 
@@ -38,7 +38,7 @@ body {
 }
 ```
 
-==== How to list your theme on the OliveTin themes page
+== How to list your theme on the OliveTin themes page
 
 The OliveTin themes page is here; https://olivetin.app/themes
 

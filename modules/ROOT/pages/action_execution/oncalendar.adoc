@@ -1,5 +1,5 @@
 [#exec-on-calendar]
-=== Execute on calendar file
+= Execute on calendar file
 
 NOTE: The feature is currently experimental. 
 

@@ -1,11 +1,11 @@
 [#cloudflare-access-tunnels]
-=== Cloudflare Access & Tunnels
+= Cloudflare Access & Tunnels
 
 include::../../snippit_earlydoc.adoc[]
 
 Several uses use Cloudflare Access & Tunnels to grant access to OliveTin. There is no special configuration needed for OliveTin to work in this way, simply setup your Cloudflare tunnel to connect to OliveTin on port 1337.
 
-==== Trusting the Cloudflare JWT Token
+== Trusting the Cloudflare JWT Token
 
 . Get your **AUD** Tag (`authJwtAud`)
 .. Login to your CloudFlare dashboard and go to link:https://one.dash.cloudflare.com/[**Zero Trust**]
@@ -34,7 +34,7 @@ authJwtCookieName: "CF_Authorization"
 
 You may well want to set `logLevel: DEBUG` and `insecureAllowDumpJwtClaims: true` in your config when testing JWT for the first time.
 
-==== Trusting the authentication header (not recommended)
+== Trusting the authentication header (not recommended)
 
 If you are using Cloudflare Access, and want to use the username given by Cloudflare in OliveTin ACLs, then you can use the Cloudflare cookie like this;
 

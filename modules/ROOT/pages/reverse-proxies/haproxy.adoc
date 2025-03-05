@@ -1,5 +1,5 @@
 [#haproxy-dns]
-=== Haproxy
+= Haproxy
 
 This is a straightforward example of how to setup a DNS name based HAProxy setup for OliveTin.
 

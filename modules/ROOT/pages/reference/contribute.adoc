@@ -1,5 +1,5 @@
 [#contribute]
-=== Contribute 
+= Contribute 
 
 First of all, a huge, huge thanks for reading this page, and considering some form of contribution. Here are some suggestions below. 
 

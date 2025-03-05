@@ -1,9 +1,9 @@
 [#install-targz]
-=== .tar.gz Install (manual)
+= .tar.gz Install (manual)
 
 Installing OliveTin from a .tar.gz file is considered advanced setup, and is provided for users who cannot use the .deb or .rpm packages, or who don't want to use the Linux container.
 
-==== Manual setup (.tar.gz)
+== Manual setup (.tar.gz)
 
 . Copy the `OliveTin` binary to `/usr/local/bin/OliveTin`
 .. Make sure it is executable: `chmod +x /usr/local/bin/OliveTin`

@@ -10,7 +10,7 @@ NOTE: There is an easy method of setting up SSH with OliveTin, which is describe
 include::partial$action_examples/actionHeader.adoc[]
 
 .OliveTin `config.yaml`
-[source,shell]
+[source,yaml]
 ....
 actions:
     # This will SSH into a server an run the command 'service httpd restart'
@@ -23,7 +23,7 @@ actions:
 *Note about SSH keys*: You should make sure that the user that OliveTin is running as has access to a SSH key. This applies to container images as well. The setup instructions below briefly explain how to generate a SSH key and make it accessible to OliveTin which is running inside a container.
 
 [#ssh-container]
-== SSH from inside a Container - setup instructions
+ SSH from inside a Container - setup instructions
 
 This is a two step process;
 
@@ -37,7 +37,7 @@ image::../ssh-diagram.png[]
 The steps in detail are below;
 
 [#ssh-step-1]
-== [red]#Step 1#: Give OliveTin a SSH key
+ [red]#Step 1#: Give OliveTin a SSH key
 
 Open a terminal window on _server-with-olivetin_. 
 
@@ -142,7 +142,7 @@ services:
 This also works for things like SSH configuration files, if you want to use them. This is step 1 complete from the diagram above.
 
 [#ssh-step-2]
-== [red]#Step 2#: Setup actions that use SSH with this key
+ [red]#Step 2#: Setup actions that use SSH with this key
 
 Thankfully, step 2 is very simple! `ssh` commands in your OliveTin `config.yaml` should work without a password!, and allow OliveTin to access services, files, and other stuff outside of the OliveTin container.
 

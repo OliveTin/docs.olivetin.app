@@ -1,5 +1,5 @@
 [#trusted-header]
-=== Trusted Header Authorization
+= Trusted Header Authorization
 
 include::../snippit_earlydoc.adoc[]
 

@@ -1,5 +1,5 @@
 [#displays]
-=== Displays
+= Displays
 
 Displays are a way of displaying text, values, variables and similar on a dashboard.
 
@@ -29,7 +29,7 @@ dashboards:
           - title: 'Stop {{ container.Names }}'
 ----
 
-==== CSS Classes
+== CSS Classes
 
 You can also add CSS classes to the display, which can be useful for styling.
 

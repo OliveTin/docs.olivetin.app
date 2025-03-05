@@ -1,5 +1,5 @@
 [#api-start-action]
-=== Starting Actions from the API
+= Starting Actions from the API
 
 There are several variants of this API call available which might be easier for scripts (or humans) to work with!
 
@@ -14,7 +14,7 @@ There are several variants of this API call available which might be easier for 
 |======================================================
 
 [#api-request-idurl]
-==== Request type: Action ID in the URL
+== Request type: Action ID in the URL
 
 Used by:
 
@@ -24,7 +24,7 @@ Used by:
 If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an ID directly in the URL, <<api-eg-startIdUrl,see the example>>.
 
 [#api-request-obj]
-==== Request type: OliveTin request object
+== Request type: OliveTin request object
 
 Used by:
 
@@ -62,7 +62,7 @@ If you need more control over the execution, then the only other option is to su
 More detailed examples can be seen below.
 
 [#api-response-trackingid]
-==== Response type: Execution Tracking ID
+== Response type: Execution Tracking ID
 
 Used by:
 
@@ -76,7 +76,7 @@ Used by:
 ----
 
 [#api-response-logentry]
-==== Response type: LogEntry
+== Response type: LogEntry
 
 Used by:
 
@@ -111,7 +111,7 @@ Used by:
 ----
 
 [#api-eg-startIdUrl]
-==== Example API call; Start an action by ID in the URL
+== Example API call; Start an action by ID in the URL
 
 .curl
 ----
@@ -130,7 +130,7 @@ actions:
 
 IDs are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
 
-==== Example API call: Start an action using `StartAction`
+== Example API call: Start an action using `StartAction`
 
 [source,bash]
 .curl
@@ -145,7 +145,7 @@ PS C:\Users\xcons> $json = '{"actionId": "deploy_attack_gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
 ----
 
-==== Example API call: Start an action using `StartAction` with arguments
+== Example API call: Start an action using `StartAction` with arguments
 
 [source,bash]
 .curl

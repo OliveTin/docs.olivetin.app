@@ -1,5 +1,5 @@
 [#nginx-dns]
-=== Nginx
+= Nginx
 
 This is an example of DNS based proxying with Nginx.
 
@@ -11,7 +11,7 @@ include::example$reverse-proxies/etc/reverse_proxy_nginx_dns.conf[]
 
 
 [#nginx-path]
-==== Custom paths
+== Custom paths
 
 These "custom path" instructions are for when you want to use OliveTin with a custom path like "apps.example.com/olivetin" instead of the root path + DNS name - eg: "olivetin.example.com". Generally it is **not recommended** to use a custom path for OliveTin. Instructions are provided below though, and it mostly-works.
 

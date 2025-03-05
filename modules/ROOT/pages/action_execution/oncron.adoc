@@ -1,5 +1,5 @@
 [#exec-cron]
-=== Execute on schedule (cron)
+= Execute on schedule (cron)
 
 OliveTin can execute actions on a schedule, and uses a cron format for configuration.
 
@@ -20,7 +20,7 @@ actions:
 
 This is a fantastic website: https://cron.help/
 
-==== Support for seconds in cron
+== Support for seconds in cron
 
 The default cron format for OliveTin supports the Unix/Linux format - 5 fields, with no support for seconds. This is by far the most popular format that most people are used to.
 
@@ -39,7 +39,7 @@ actions:
 ----
 
 
-==== Cron and ACLs
+== Cron and ACLs
 
 If you have enabled ACL, cron tasks are run as the user `cron`, which means that your ACL needs to allow the cron user to execute the action. This is one possibilty:
 

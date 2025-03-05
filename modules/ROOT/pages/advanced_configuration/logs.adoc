@@ -1,5 +1,5 @@
 [#log-levels]
-=== Log Levels
+= Log Levels
 OliveTin supports a few different log levels. The default logLevel is `INFO`. 
 
 You can set a `logLevel` in config.yaml like this;

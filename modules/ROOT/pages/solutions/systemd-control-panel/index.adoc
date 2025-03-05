@@ -1,5 +1,5 @@
 [#systemd-control-panel]
-=== Systemd Control Panel
+= Systemd Control Panel
 
 OliveTin can be used to manage selected systemd units (services) as well. This is powered by OliveTin's powerful <<entities,entity support>>. Here is a screenshot of what that can look like (dark theme preference enabled).
 
@@ -7,7 +7,7 @@ image::solution-systemd-control-panel.png[]
 
 NOTE: To control systemd, you will need the root user. If you are running OliveTin systemd service itself, then OliveTin should be configured to run as root. The alternative is to use OliveTin in a container, and use <<action-ssh,SSH>> to connect back to the host (as a user that can manage systemd -usually root). This is not an OliveTin limitation, it's just how systemd security works.
 
-==== Entity file
+== Entity file
 
 To build this Systemd Control dashboard, we use an <<entities,entity>> file that stores and updates produced by `systemctl list-units..`, output to a json format, and then filtered with jq (JSON Query). Here is the full command that we will use in our config later;
 
@@ -31,7 +31,7 @@ You can generate this file yourself the first time, but the `config.yaml` below 
 
 Note that if the file does not exist the first time OliveTin starts up, then OliveTin will will issue an error about not finding the file to monitor it. An easy way around this is to simply restart OliveTin a 2nd time, so that on the 2nd startup it will find the file (because it will be created the first time OliveTin starts up).
 
-==== Configuration
+== Configuration
 
 Finally, here is the example configuration file to build the dashboard;
 

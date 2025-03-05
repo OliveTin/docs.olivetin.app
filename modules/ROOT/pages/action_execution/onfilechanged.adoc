@@ -1,5 +1,5 @@
 [#exec-file-changed]
-=== Execute on file changed
+= Execute on file changed
 
 You can execute an action when a file is changed in a directory. The argument `filename` is pre-populated for you.
 

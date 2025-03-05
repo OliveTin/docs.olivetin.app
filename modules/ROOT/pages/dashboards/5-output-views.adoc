@@ -1,5 +1,5 @@
 [#output-views]
-=== Most recent action output
+= Most recent action output
 
 This is considered an advanced and experimental feature at the moment.
 

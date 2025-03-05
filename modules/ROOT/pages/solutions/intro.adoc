@@ -1,5 +1,5 @@
 [#solutions]
-== Solutions
+= Solutions
 
 OliveTin was designed to be very simple, but sometimes OliveTin can get complex - especially if you are trying to do something where you need to jump between lots of different parts of the documentation!
 

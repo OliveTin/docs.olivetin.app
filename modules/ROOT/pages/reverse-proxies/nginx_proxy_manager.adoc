@@ -1,5 +1,5 @@
 [#nginx-proxy-manager]
-=== Nginx Proxy Manager
+= Nginx Proxy Manager
 
 This is an example of DNS based proxying with Nginx Proxy Manager.
 

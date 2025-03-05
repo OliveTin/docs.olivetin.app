@@ -1,5 +1,5 @@
 [#oauth2-authentik]
-=== OAuth2 - Authentik
+= OAuth2 - Authentik
 
 OliveTin has been tested with Authentik. This documentation page describes how to configure Authentik for use with OliveTin and assumes you already have Authentik installed and running.
 
@@ -21,11 +21,11 @@ image::authentik_provider_secrets.png[]
 
 Submit this wizard to save the configuration.
 
-==== Group Mapping
+== Group Mapping
 
 As of OliveTin `2024.11.24`, one group can be processed from OAuth at login. To map a user's groups to OliveTin from Authentik, there are a few options. Examples of two will be shown below.
 
-===== First Prefix Match
+=== First Prefix Match
 
 The below will match the first group the user is a member of that matches the prefix defined in `group_prefix`, which is set to `olivetin`. If no match is found, the group `guest` is returned by default. Both `group_prefix` and `returned_group` can be changed to your needs.
 
@@ -51,7 +51,7 @@ return {
 }
 ```
 
-===== Specific Group Match
+=== Specific Group Match
 
 The below will match the specified group name to one of the groups the user is a member of. If no match is found, the group `guest` is returned by default. Both `olivetin_group` and `returned_group` can be changed to your needs.
 
@@ -75,7 +75,7 @@ return {
 }
 ```
 
-===== Enable Group Mapping
+=== Enable Group Mapping
 
 After creating the scope mapping in Authentik, you will need to add it to your provider. For the your OliveTin config, use the `userGroupField` mentioned in the following section.
 
@@ -85,7 +85,7 @@ In Authentik: `Admin Interface > Applications >  Providers > {Your Provider} > E
 - Under `Scopes`, add `your_scope_map` to `Selected Scopes`
 - Click `Update`
 
-==== OliveTin configuration
+== OliveTin configuration
 
 The necessary OliveTin configuration is as follows:
 
@@ -118,16 +118,16 @@ authOAuth2Providers:
 
 You will need to restart OliveTin for the changes to take effect.
 
-==== Testing
+== Testing
 
 You should now be able to login to OliveTin using Authentik, on the OliveTin page, a "Login" link should be available in the top right corner. This will take you to the login form, where you can select the Authentik provider.
 
 
-==== Debugging
+== Debugging
 
 OliveTin logs OAuth2 flows quite extensively. If you are having trouble with OAuth2, you should check your OliveTin logs. 
 
-==== Next steps
+== Next steps
 
 Once you have OAuth2 working, you will probably want to configure access control lists in OliveTin. This is described in the xref:security/acl.adoc[Access Control Lists] documentation page.
 

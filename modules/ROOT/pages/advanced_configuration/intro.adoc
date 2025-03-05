@@ -1,4 +1,4 @@
-== Advanced Configuration
+= Advanced Configuration
 
 This section includes optional configuration options that are used less frequently by most users.
 

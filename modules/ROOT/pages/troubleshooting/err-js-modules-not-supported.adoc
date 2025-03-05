@@ -1,5 +1,5 @@
 [#err-js-modules-not-supported]
-=== Error: JS Modules not supported
+= Error: JS Modules not supported
 
 This is most likely because you are using a very old browser, or have some Javascript disabled.
 

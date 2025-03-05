@@ -1,4 +1,4 @@
-=== Run as different users
+= Run as different users
 
 OliveTin does not *need* to run as root. It does not request any special
 permissions from the operating system that require root (as long as you run on
@@ -13,7 +13,7 @@ Linux OS has several great ways to do this already, and adding support for it
 in OliveTin just adds bloat when there are perfectly good ways that already
 exist.
 
-==== EG: Using sudo;
+== EG: Using sudo;
 
 ----
 actions:

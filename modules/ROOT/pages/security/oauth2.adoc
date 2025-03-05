@@ -1,5 +1,5 @@
 [#oauth2]
-=== OAuth2
+= OAuth2
 
 include::../snippit_earlydoc.adoc[]
 
@@ -15,7 +15,7 @@ authOAuth2Providers:
     clientSecret: 1234567890
 ```
 
-==== Provider configuration
+== Provider configuration
 
 * `name` - a "simple name" for the provider, used in the login redirect and internally in OliveTin, e.g. `github`
 * `title` - the human-readable name of the provider, e.g. `GitHub`

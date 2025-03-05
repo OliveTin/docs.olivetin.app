@@ -1,4 +1,4 @@
-=== The "actions" section
+= The "actions" section
 
 To make Olivetin easy to use, it generates a default "Actions" section for you, as many 
 people don't want the hassle of having to configure dashboards. This is fine, you absolutely

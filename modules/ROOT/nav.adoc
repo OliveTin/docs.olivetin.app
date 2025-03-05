@@ -96,7 +96,7 @@
 ** xref:advanced_configuration/ports.adoc[Ports]
 ** xref:advanced_configuration/prometheus.adoc[Prometheus]
 ** xref:advanced_configuration/timezones.adoc[Timezones]
-** xref:advanced_configuration/webui.adoc[WebUI]
+** xref:advanced_configuration/webui.adoc[Customize the WebUI]
 * Reference
 ** xref:reference/network-ports.adoc[Network Ports]
 ** xref:reference/security.adoc[Security]

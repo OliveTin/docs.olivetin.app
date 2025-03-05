@@ -1,5 +1,5 @@
 [#auth-concepts]
-=== Concepts
+= Concepts
 
 OliveTin only has 1 method for doing **Authentication** (ie: entering a username and password -- see xref:security/local.adoc[Local Users] ), however it can do **Authorization** (ie: checking permissions of a user who logged in via another system, like single sign on) in many number of ways.
 

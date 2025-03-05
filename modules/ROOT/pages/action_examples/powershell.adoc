@@ -1,5 +1,5 @@
 [#powershell]
-=== Powershell
+= Powershell
 
 :systemd: Easy
 :container: Not possible

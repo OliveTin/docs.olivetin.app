@@ -1,5 +1,5 @@
 [#solution-on-git-push]
-=== GitOps (run actions on Git Push) ===
+= GitOps (run actions on Git Push)
 
 image::gitops.png[]
 
@@ -12,7 +12,7 @@ To set up OliveTin to run actions on Git push, you will need to:
 1. Create a new OliveTin action that you want to run on push.
 2. Set up a Git `post-receive` hook to trigger the OliveTin action.
 
-==== Create a New OliveTin Action ====
+== Create a New OliveTin Action
 
 First, you will need to create a new OliveTin action that you want to run when you push to your Git repository. This could be anything you like - for example, running tests, building your project, or deploying your code. The example below is a simple action that echoes a message to the console:
 
@@ -33,7 +33,7 @@ actions:
 
 Note that OliveTin will expose all arguments as environment variables in uppercase as shown in the example above. You can of course use the `{{ commit }}` syntax instead and it will do the same thing.
 
-==== Add a Git hook script ====
+== Add a Git hook script
 
 The following below assumes that you have a Git repository initialized as a bare repository, at `/opt/myrepo.git`. If you have a different repository location, you will need to adjust the paths accordingly.
 

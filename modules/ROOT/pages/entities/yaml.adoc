@@ -1,5 +1,5 @@
 [#entities-yaml]
-=== YAML entity files
+= YAML entity files
 
 YAML files are the default expected format, so you can use .yml, .yaml, or even .txt - as long as the file contains a valid yaml LIST, then it will be loaded. 
 

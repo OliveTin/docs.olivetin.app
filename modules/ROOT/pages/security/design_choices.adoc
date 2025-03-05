@@ -1,0 +1,9 @@
+= Security design choices
+
+OliveTin has a few design choices that should help it's general security posture.
+
+* OliveTin does deliberate not have any web based control panel where commands can be typed in. This is try to avoid arbitary command execution vulnerabilities caused by authentication bypass attacks.
+* Control over what commands are run is determined via the `config.yaml` alone. OliveTin does NOT write to the config.yaml in any way. This is to avoid any of arbitary command execution vulnerabilities caused by writing to the config.yaml.
+* OliveTin listens on just 1 open public port by default (1337). The rest of the ports only listen on `localhost` so you don't have to worry about them in your firewall.
+* Standard Linux controls can be used to run OliveTin as non-root, with `sudo` permissions if needed. See the action customization section of these docs for more details.
+* Robust code-scanning, code review, and dependency analysis at build-time. OliveTin uses many linters and code checkers, especially on new pull requests. Out dated dependencies are addressed quickly.

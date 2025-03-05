@@ -1,5 +1,5 @@
 [#triggers]
-=== Triggers
+= Triggers
 
 Sometimes you want to trigger another action after the first one completes. This is mostly useful for updating hidden actions that update entity files, without having to run those updates on a cron job every 10 seconds!
 

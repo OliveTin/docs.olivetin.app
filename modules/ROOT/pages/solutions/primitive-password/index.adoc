@@ -1,6 +1,9 @@
-=== Primitive password protection
+= Primitive password protection
 
-It is possible to hadd extremely primitive password protection to OliveTin. This is not at all secure to someone that knows the absolute basics of "view source", but if you just want to keep family members away or add a very primitive layer of "security", there are some members of the community that have found this useful.
+[WARNING]
+This solution was requested before OliveTin supported propper password protection. This is not secure and should not be used unless only very primitive protection is needed. Otherwise, please use xref:security/local.adoc[Local Users].
+
+It is possible to add extremely primitive password protection to OliveTin. This is not at all secure to someone that knows the absolute basics of "view source", but if you just want to keep family members away or add a very primitive layer of "security", there are some members of the community that have found this useful.
 
 This assumes you are running OliveTin as a systemd service, if you are running in a container, jump on the discord server for help how to do this.
 

@@ -1,6 +1,6 @@
 [#update-checks]
 
-=== Update Checks
+= Update Checks
 
 NOTE: This page is for OliveTin versions **2024.06.02** and afterwards. Previous versions of OliveTin used to have a form of tracking. To learn about how that worked, see xref:reference/updateTracking.adoc[update tracking].
 
