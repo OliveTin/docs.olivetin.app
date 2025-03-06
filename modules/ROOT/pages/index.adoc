@@ -1,4 +1,3 @@
-[discrete]
 = OliveTin Introduction
 
 **link:https://www.olivetin.app[OliveTin]** gives **safe** and **simple** access to predefined shell commands from a web interface.
@@ -11,7 +10,6 @@ The link:https://www.olivetin.app[OliveTin Homepage is here]. This site that you
 
 '''
 
-[discrete]
 == Use cases
 
 **Safely** give access to commands, for less technical people;
@@ -26,12 +24,10 @@ The link:https://www.olivetin.app[OliveTin Homepage is here]. This site that you
 * eg: Run long running on your servers from your cell phone. `dnf update -y`
 * eg: Define complex commands with lots of preset arguments, and turn a few arguments into dropdown select boxes. `docker rm {{ container }} && docker create {{ container }} && docker start {{ container }}`
 
-[discrete]
 == Demo
 
 video::Ej6NM9rmZtk[youtube,width=100%]
 
-[discrete]
 == Features
 
 * **Responsive, touch-friendly UI** - great for tablets and mobile
