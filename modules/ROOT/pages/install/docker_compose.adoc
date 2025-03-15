@@ -10,7 +10,6 @@ you started;
 [source,yaml]
 .`docker-compose.yml`
 ----
-version: "3.8"
 services:
   olivetin:
     container_name: olivetin
@@ -32,7 +31,6 @@ You will need to adjust your docker-compose file to include the docker socket, l
 
  `docker-compose.yml` including docker socket
 ----
-version: "3.8"
 services:
   olivetin:
     container_name: olivetin
@@ -50,7 +48,6 @@ You will probably need to tell this container to run as root as well, to control
 This is the correct way to tell the OliveTin container to run as root (or any other user);
 
 ----
-version: "3.8"
 services:
   olivetin:
     container_name: olivetin
