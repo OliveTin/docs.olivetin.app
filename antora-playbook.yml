@@ -16,6 +16,10 @@ antora:
   extensions:
     - '@antora/lunr-extension'
 asciidoc:
+  attributes:
+    kroki-fetch-diagram: true
+    kroki-default-format: png
   extensions:
     - '@asciidoctor/tabs'
+    - 'asciidoctor-kroki'
 
