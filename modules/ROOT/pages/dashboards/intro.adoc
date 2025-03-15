@@ -9,7 +9,7 @@ one of the biggest reasons to use Dashboards as opposed to just the "Actions" se
 
 image::dashboard.png[]
 
-Example configuration
+== Example configuration
 
 [source,yaml]
 .`config.yaml`

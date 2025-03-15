@@ -15,3 +15,7 @@ ui:
 antora:
   extensions:
     - '@antora/lunr-extension'
+asciidoc:
+  extensions:
+    - '@asciidoctor/tabs'
+
