@@ -1,0 +1,12 @@
+= Common Argument options
+
+== Rejecting empty values (null)
+
+```yaml
+actions:
+  - shell: echo "Hello {{ name }}!"
+    arguments:
+	  - name: name
+	    rejectNull: true`
+```
+
