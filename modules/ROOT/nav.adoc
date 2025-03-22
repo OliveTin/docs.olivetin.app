@@ -1,4 +1,4 @@
-* xref:install/intro.md[Installation Guide]
+* xref:install/intro.adoc[Installation Guide]
 ** xref:install/container_vs_service.adoc[Containers vs Services]
 ** xref:install/choose_package.adoc[Which download do I need?]
 ** xref:install/rpmdeb.adoc[Linux Package Install (.rpm/.deb)]
