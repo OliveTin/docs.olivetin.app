@@ -47,7 +47,7 @@
 ** xref:action_customization/ids.adoc[IDs]
 ** xref:action_customization/savelogs.adoc[Save Logs]
 * xref:action_examples/intro.adoc[Action Examples]
-** xref:action_examples/containers.adoc[Containers]
+** xref:action_examples/containers.adoc[Containers - start/stop]
 *** xref:action_examples/docker-proxy.adoc[Docker control, via proxy]
 ** xref:action_examples/systemd_service.adoc[Systemd Service]
 ** xref:action_examples/ping.adoc[Ping]
