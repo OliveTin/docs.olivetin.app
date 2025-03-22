@@ -1,0 +1,5 @@
+= Windows install
+
+Windows? Isn't that for playing games?
+
+link:https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin-windows-amd64.tar.gz[`OliveTin-windows-amd64.zip`]

@@ -1,0 +1,5 @@
+= BSD
+
+Using BSD? Good for you! :-)
+
+https://github.com/OliveTin/OliveTin/releases/latest/OliveTin-freebsd-amd64.tar.gz

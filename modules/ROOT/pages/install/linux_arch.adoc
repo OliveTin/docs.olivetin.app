@@ -15,6 +15,9 @@ Install using `yay`;
 user@host: yay -Syu olivetin
 ----
 
+[WARNING]
+One does not simply just do something with Arch without telling someone about it. Therefore, after you successfully install OliveTin on Arch, that you tell at least two people "I'm using OliveTin on Arch, btw". :-)
+
 include::partial$install/post_systemd.adoc[]
 
 

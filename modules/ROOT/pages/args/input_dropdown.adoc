@@ -57,4 +57,4 @@ This is what it looks like in the web interface;
 
 image::args-choices-entities.png[]
 
-
+include::partial$args/reject-null.adoc[]
