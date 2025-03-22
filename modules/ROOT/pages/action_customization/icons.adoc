@@ -70,9 +70,9 @@ actions:
 
 Sometimes you might want to store images to use as icons, with your installation of OliveTin. This can be useful when your installation is meant to be offline, or disconnected from the internet. This is easily done.
 
-OliveTin will try to create a directory called `custom-webui` in the same directory as the `config.yaml` file. If this directory exists, OliveTin will serve files from this directory as if they were in the standard webui directory, at `/customIcons/`.
+OliveTin will try to create a directory called `custom-webui` in the same directory as the `config.yaml` file. If this directory exists, OliveTin will serve files from this directory as if they were in the standard webui directory, in the same path as your OliveTin web UI.
 
-Ideally, put your icons in a new `<your-config-dir>/custom-webui/icons/`. Below is a picture of Mr Green. Feel free to save his likeness and awesomeness for yourself, for future awesome offline usage.
+Ideally, put your icons in a directory like `<your-config-dir>/custom-webui/icons/`. If this directory contained a file called "mrgreen.gif", then it would be served at `http://myserver:1337/custom-webui/icons/mrgreen.gif`. Below is a picture of Mr Green. Feel free to save his likeness and awesomeness for yourself, for future awesome offline usage.
 
 .Mr Green, the original awesome smily.
 image::../mrgreen.gif[Mr Green]

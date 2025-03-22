@@ -43,6 +43,19 @@ image::defaultUiHideNav.png[]
 
 `sectionNavigationStyle` - You can choose to have the section navigation buttons displayed as a Sidebar (`sidebar` - default), or along the top (`topbar`).
 
+=== Sidebar navigation (default)
+
+`sectionNavigationStyle: sidebar` looks like this;
+
+image::sidebar.png[]
+
+=== Topbar Navigation
+
+
+`sectionNavigationStyle: topbar` looks like this;
+
+image::topbar.png[]
+
 [#custom-js]
 == Custom JavaScript
 
