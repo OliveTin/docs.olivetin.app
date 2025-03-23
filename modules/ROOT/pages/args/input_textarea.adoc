@@ -5,4 +5,17 @@ OliveTin supports multi-line text inputs, which can be useful for longer message
 
 As the name implies, textareas are raw, and are NOT validated by any regex.
 
+[source,yaml]
+.`config.yaml`
+----
+actions:
+  - title: Save text to file
+    shell: echo "$CONTENT" > file
+    arguments:
+      - type: raw_string_multiline
+        name: content
+----
 
+This renders like this;
+
+image::args-multiline-text.png[]

@@ -2,6 +2,8 @@
 [#apache-dns]
 = Apache HTTPD
 
+include::partial$reverse-proxies/diagram.adoc[]
+
 This is an example of how to setup a DNS name based Apache HTTPD proxy for OliveTin. It assumes OliveTin is running on localhost, port 1337.
 
 ./etc/httpd/conf.d/OliveTin.conf

@@ -1,6 +1,8 @@
 [#nginx-dns]
 = Nginx
 
+include::partial$reverse-proxies/diagram.adoc[]
+
 This is an example of DNS based proxying with Nginx.
 
 ./etc/nginx/cond.d/OliveTin.conf

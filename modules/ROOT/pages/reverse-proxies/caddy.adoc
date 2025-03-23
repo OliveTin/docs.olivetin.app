@@ -1,6 +1,8 @@
 [#caddy-dns]
 = Caddy
 
+include::partial$reverse-proxies/diagram.adoc[]
+
 Caddy seems to work without any special configuration, so a simple `Caddyfile` works like this;
 
 .Caddyfile

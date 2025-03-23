@@ -1,5 +1,8 @@
 [#haproxy-dns]
-= Haproxy
+= HAProxy
+
+:proxy: HAProxy
+include::partial$reverse-proxies/diagram.adoc[]
 
 This is a straightforward example of how to setup a DNS name based HAProxy setup for OliveTin.
 

@@ -1,6 +1,8 @@
 [#traefik-docker-compose]
 = Traefik + Docker Compose
 
+include::partial$reverse-proxies/diagram.adoc[]
+
 The following example is known to work well with Traefik and docker-compose.
 
 [source,yaml]

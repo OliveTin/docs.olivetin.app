@@ -1,6 +1,8 @@
 [#nginx-proxy-manager]
 = Nginx Proxy Manager
 
+include::partial$reverse-proxies/diagram.adoc[]
+
 This is an example of DNS based proxying with Nginx Proxy Manager.
 
 This example assumes that you are trying to access OliveTin at **olivetin.npm.teratan.lan** and already have a DNS record pointing to the IP address of the Nginx Proxy Manager. This also assumes you are running Nginx Proxy Manager and OliveTin using Docker Compose.
