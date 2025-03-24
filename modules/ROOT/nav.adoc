@@ -93,6 +93,7 @@
 ** xref:security/design_choices.adoc[Security Design Choices]
 * Integrations
 ** xref:integrations/homeassistant.adoc[Home Assistant]
+** xref:integrations/stream-deck.adoc[Stream-Deck]
 ** xref:security/oauth2_authentik.adoc[Authentik]
 ** xref:reverse-proxies/intro.adoc[Reverse Proxies]
 * xref:solutions/intro.adoc[Solutions]
