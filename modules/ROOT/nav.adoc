@@ -89,7 +89,7 @@
 ** xref:security/oauth2.adoc[OAuth2]
 ** xref:security/oauth2_authentik.adoc[OAuth2 with Authentik]
 ** xref:security/local.adoc[Local Users Login]
-** Security examples
+** xref:security/examples.adoc[Security examples]
 *** xref:security/example_login_required.adoc[Example: Login Required]
 *** xref:security/example_some_admin_actions.adoc[Example: Some actions require admin]
 ** xref:security/design_choices.adoc[Security Design Choices]
