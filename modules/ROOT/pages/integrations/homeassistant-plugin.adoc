@@ -1,0 +1,25 @@
+= Home Assistant (Integration)
+
+This is now the recommended way to integrate OliveTin and Home Assistant.
+
+
+. Install HACS
+. Go to HACS in your home assistant control panel. Click the "..." dropdown in the top right corner.
+. Select "Custom repositories"
+.. **Repository link**: https://github.com/OliveTin/OliveTin-HomeAssistant
+.. **Type**: Integration
+
+. Go to "Settings"
+. Select "Devices & Services"
+. Click "Add integration"
+.. Select "OliveTin"
+.. Host: http://your-server:1337/api
+.. Username: <blank>
+.. Password: <blank>
+. Under "Configured", you should see OliveTin. Open it by clicking on the arrow.
+
+image:hass-configure-integration.png[]
+
+. After configuring it, you should see buttons appear in Home Assistant;
+
+image:hass-buttons.png[]
