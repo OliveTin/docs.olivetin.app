@@ -53,7 +53,7 @@ Annotations:  meta.helm.sh/release-name: olivetin
 Data
 ====
 config.yaml:
-----
+--
 actions:
   - title: "Hello world!"
     shell: echo 'Hello World!'
