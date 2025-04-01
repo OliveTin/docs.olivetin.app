@@ -7,10 +7,10 @@ https://artifacthub.io/packages/search?repo=olivetin[image:https://img.shields.i
 
 == Dependencies
 
-* [X] A Kubernetes environment setup and running
-* [X] Kubernetes client installed and authenticated
-* [X] An ingress controller configure for web traffic
-* [X] Helm installed and authenticated to the cluster
+* [x] A Kubernetes environment setup and running
+* [x] Kubernetes client installed and authenticated
+* [x] An ingress controller configure for web traffic
+* [x] Helm installed and authenticated to the cluster
 
 == Installation
 
