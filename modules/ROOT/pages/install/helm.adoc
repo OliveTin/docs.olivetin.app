@@ -5,7 +5,14 @@ Helm makes installing OliveTin on Kubernetes very easy, the official chart is ho
 
 https://artifacthub.io/packages/search?repo=olivetin[image:https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/olivetin[Artifact Hub]]
 
-== Quickstart
+== Dependencies
+
+* A Kubernetes environment setup and running
+* Kubernetes client installed and authenticated
+* An ingress controller configure for web traffic
+* Helm installed and authenticated to the cluster
+
+== Installation
 
 [source,shell]
 ----
@@ -18,6 +25,8 @@ STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 ----
+
+== Configure
 
 After a minute or two, check the pod status;
 
@@ -59,12 +68,12 @@ user@host: kubectl rollout restart deploy/olivetin
 deployment.apps/olivetin restarted
 ----
 
-== Optional: Run container as root
+== Optional: Install kubernetes-client inside OliveTin container
 
-You may want to install additional packages in the container, or do things that require root. You can do this by editing the deployment:
+The OliveTin container runs as a non-privileged user by default, so to install packages you need to become root. The quick and easy way to do this in Kubernetes without building your own image is to switch the SecurityContext to run OliveTin as a root;
 
 .Find this...
-[source, yaml]
+[source,yaml]
 ----
       securityContext: {}
 ----
@@ -76,7 +85,68 @@ You may want to install additional packages in the container, or do things that 
 	    runAsUser: 0
 ----
 
-You can then follow the instructions to xref::reference/containerInstallPackages.adoc[install extra packages in containers] for example.
+You can then follow the instructions to xref::reference/containerInstallPackages.adoc[install extra packages in containers]. For example;
+
+[source,bash]
+----
+user@host: kubectl exec -it deploy/olivetin -- /bin/bash
+bash-5.2# microdnf install kubernetes-client
+Updating and loading repositories:
+Repositories loaded.
+Package "kubernetes-client-1.29.14-2.fc40.x86_64" is already installed.
+
+Nothing to do.
+bash-5.2#
+----
+
+=== Allow OliveTin container to get pods;
+
+Create the following cluster role;
+
+[source,yaml]
+----
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: pod-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+----
+
+Create a cluster role binding;
+
+[source,shell]
+----
+user@host: kubectl create clusterrolebinding --clusterrole=pod-reader --serviceaccount myolivetinnamespace:default --namespace myolivetinnamespace read-pods-default
+----
+
+Add `kubectl` job to OliveTin config with `kubectl edit cm/olivetin-config`;
+
+[source,yaml]
+----
+apiVersion: v1
+data:
+  config.yaml: |
+    actions:
+      - title: "Hello world!"
+        shell: echo 'Hello World!'
+
+      - title: "Get pods"
+	    shell: kubectl get pods
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: olivetin
+    meta.helm.sh/release-namespace: default
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: olivetin-config
+  namespace: default
+----
+
+Don't forget to restart the OliveTin deployment as good measure, because Kubernetes can be slow to update configmaps.
 
 include::partial$install/to_config.adoc[]
 
