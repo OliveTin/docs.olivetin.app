@@ -70,6 +70,7 @@ All configuration options are covered in the sollution sections
 | `AuthJwtCertsURL` | The URL to fetch the public keys from with JWKS | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Keys]
 | `AuthJwtClaimUsername` | The claim to use for the username. | `sub` | Requires restart | xref:security/jwt_hmac.adoc[JWT with HMAC], xref:security/jwt_keys.adoc[JWT with Keys]
 | `AuthJwtClaimUserGroup` | The claim to use for the usergroup. | `sub` | Requires restart | xref:security/jwt_hmac.adoc[JWT with HMAC], xref:security/jwt_keys.adoc[JWT with Keys]
+| `AuthJwtHeader` | The HTTP header to use for JWT authentication. | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Key]
 | `AuthJwtPubKeyPath` | The path to the public key to use for JWT authentication. | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Key]
 | `AuthHttpHeaderUsername` | The HTTP header to use for the username. | `` | Requires restart | xref:security/trusted_header.adoc[Trusted Headers]
 | `AuthHttpHeaderUserGroup` | The HTTP header to use for the usergroup. | `` | Requires restart | xref:security/trusted_header.adoc[Trusted Headers]
