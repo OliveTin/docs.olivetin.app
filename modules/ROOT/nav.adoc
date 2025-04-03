@@ -108,6 +108,7 @@
 ** xref:solutions/cloudflare_access_tunnel/index.adoc[Cloudflare Access & Tunnels]
 * xref:advanced_configuration/intro.adoc[Advanced Configuration]
 ** xref:advanced_configuration/logs.adoc[Logs]
+** xref:advanced_configuration/config_envs.adoc[Config Envs]
 ** xref:advanced_configuration/ports.adoc[Ports]
 ** xref:advanced_configuration/prometheus.adoc[Prometheus]
 ** xref:advanced_configuration/timezones.adoc[Timezones]

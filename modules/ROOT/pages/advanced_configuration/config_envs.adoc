@@ -1,0 +1,26 @@
+[#config-envs]
+= Environment Variables in the Config File
+
+You can pull configuration values from environment variables like this:
+
+.`config.yaml`
+[source,yaml]
+----
+logLevel: ${{ LOG_LEVEL }}
+
+pageTitle: Olivetin - ${{ DEPLOY_ENV }}
+
+actions:
+    ...
+----
+
+While loading the config file, Olivetin will substitute the value of the named environment variable for the token.
+If the variable is unset, Olivetin will use an empty string as the value and log a warning. This syntax works even for
+configuration values that aren't strings, as long as the final string value can be converted to the proper type.
+
+== Notes
+
+. These variables are read while loading the config file. Changes in the environment won't be reflected until the config
+file is reloaded. If you want to read environment variables at execution time in your action's `shell` line, make sure
+to use regular shell syntax, i.e., `$FOO` rather than `${{ FOO }}`. See xref:args/env.adoc[environment variables]
+for info on using environment variables in your actions.
