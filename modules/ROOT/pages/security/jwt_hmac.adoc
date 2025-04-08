@@ -25,7 +25,9 @@ Note that your `authJwtCookieName` and `authJwtSecret` will need to be set exact
 
 == Usable claims
 
-OliveTin currently can match Access Control Lists based on a **username** or **primary user group**. These must be called `name` and `group` respectively. You can see if these are being used properly turning on `DEBUG` logging and looking at the jwt claims.
+OliveTin currently can match Access Control Lists based on a **username** or **user group(s)**. You can see if these are being used properly turning on `DEBUG` logging and looking at the jwt claims.
+
+If `authJwtClaimUsergroup` is any array, ACL groups will match any of the user groups in the array.
 
 == Setup default permissions
 
