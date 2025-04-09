@@ -103,6 +103,7 @@
 ** xref:solutions/container-control-panel/index.adoc[Container Control Panel]
 ** xref:solutions/systemd-control-panel/index.adoc[Systemd Control Panel]
 ** xref:solutions/heating-control-panel/index.adoc[Heating Control Panel]
+** xref:solutions/k8s-control-panel-hosted/index.adoc[Kubernetes Control Panel (hosted)]
 ** xref:solutions/primitive-password/index.adoc[Primitive Password Protection]
 ** xref:solutions/wol/index.adoc[Wake on LAN]
 ** xref:solutions/cloudflare_access_tunnel/index.adoc[Cloudflare Access & Tunnels]
