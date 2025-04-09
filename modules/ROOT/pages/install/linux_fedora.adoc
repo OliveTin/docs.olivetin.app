@@ -5,7 +5,17 @@ Fedora is included in the Fedora Project official repositories. For an overview 
 
 https://src.fedoraproject.org/rpms/OliveTin
 
-== Installation 
+== Installation (project package)
+
+[bash]
+----
+root@host: rpm -U https://github.com/OliveTin/OliveTin/releases/latest/download/OliveTin_linux_amd64.rpm
+----
+
+== Installation (distribution package)
+
+WARN: 
+The package included in the Fedora repositories is currently very old, and is not recommended. Please use the project package instead.
 
 Install using `dnf` (or yum, on older versions of Fedora); 
 
