@@ -1,6 +1,6 @@
 = Solution: Kubernetes Control Panel (Hosted)
 
-This solution gives you quick and easy buttons to run kubectl commands, when OliveTin is running on top of Kubernetes. This can be very easy for quick debugging purposes when you cannot type (eg from a mobile phone), or to  give junior sysadmins access to do basic predefined tasks.
+This solution gives you quick and easy buttons to run kubectl commands, when OliveTin is running on top of Kubernetes (this means OliveTin is "hosted" by Kubernetes). This can be very easy for quick debugging purposes when you cannot type (eg from a mobile phone), or to  give junior sysadmins access to do basic predefined tasks.
 
 This use case is enabled by simply providing the OliveTin pod access to talk to the kubernetes API, and using `kubectl` which is preinstalled with modern versions of OliveTin.
 
