@@ -5,9 +5,11 @@ Helm makes installing OliveTin on Kubernetes very easy, the official chart is ho
 
 https://artifacthub.io/packages/search?repo=olivetin[image:https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/olivetin[Artifact Hub]]
 
-== Dependencies
+== Requirements
 
-* [x] A Kubernetes environment setup and running
+=== Prerequisites
+
+* [x] A Kubernetes cluster setup and running
 * [x] Kubernetes client installed and authenticated
 * [x] An ingress controller configure for web traffic
 * [x] Helm installed and authenticated to the cluster
@@ -103,6 +105,17 @@ bash-5.2#
 
 Create the following cluster role;
 
+[tabs]
+====
+kubectl cli::
++
+--
+----
+user@host: k create clusterrole --resource=pods --verb=get,list,watch olivetin-reader
+----
+--
+manifest::
+--
 [source,yaml]
 ----
 kind: ClusterRole
@@ -114,6 +127,8 @@ rules:
   resources: ["pods"]
   verbs: ["get", "list", "watch"]
 ----
+--
+====
 
 Create a cluster role binding;
 
