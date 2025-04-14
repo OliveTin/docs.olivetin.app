@@ -75,7 +75,7 @@ include::partial$install/to_config.adoc[]
 
 == Included templates
 
-You can view the raw templates here: https://github.com/OliveTin/OliveTin-HelmChart/tree/main/templates
+You can view the raw templates here: https://github.com/OliveTin/OliveTin-HelmChart/tree/main/charts/olivetin/templates
 
 * Deployment
 * ConfigMap
