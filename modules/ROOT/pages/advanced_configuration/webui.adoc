@@ -84,7 +84,21 @@ showFooter: false
 
 This means the <<show-new-versions,`showNewVersions`>> configuration option will automatically be `false` as well.
 
+== Additional section navigation links
 
+You can add custom links to the OliveTin navigation bar. This is useful if you want to link to other OliveTin instances, or other web applications.
+
+[source,yaml]
+----
+additionalNavigationLinks:
+  - title: Duck Duck Go
+    url: https://duckduckgo.com
+    target: _blank
+----
+
+This will render like this;
+
+image::additionalNavigationLinks.png[]
 
 [#custom-js]
 == Custom JavaScript
