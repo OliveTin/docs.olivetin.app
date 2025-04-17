@@ -3,10 +3,14 @@
 
 == Step by step theme guide
 
+OliveTin themes are simply a directory of CSS and other assets. OliveTin looks for a directory called `custom-webui/themes/<theme-folder-name>` in the same directory as your `config.yaml` file.
+
+Start by creating a directory called `custom-webui/themes/<theme-folder-name>` in the same directory as your `config.yaml` file. This is where you will put your theme files. A theme must also have a theme.css file, which is the main CSS file for your theme. This file must be called `theme.css` and must be in the same directory as your theme folder.
+
 * OliveTin will by default only read theme.css once on startup. If you are intending to change theme.css while OliveTin is running, set `themeCacheDisabled: true` in your config.yaml. This will make OliveTin read theme.css on every request, and is useful for development.
 * Go to https://github.com/OliveTin/theme-template and use this template repository to create your new theme repository on GitHub. 
 * Install OliveTin somewhere, and clone your new repository using `git clone` into your themes directory.
-* Set `themeName: <your-folder>` in your OliveTin config.yaml and restart OliveTin.
+* Set `themeName: <theme-folder-name>` in your OliveTin config.yaml and restart OliveTin.
 
 Write beautiful CSS to create your theme as you like it, commit your changes to git.
 

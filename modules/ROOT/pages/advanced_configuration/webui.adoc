@@ -16,11 +16,11 @@ pageTitle: My OliveTin Instance
 ----
 
 [#show-nav]
-== Show Navigation 
+== Navigation - show / hide
 
 You can choose to hide the navigation elements in OliveTin, to present a simplified user interface.
 
-.The default user interface with the "Actions" and "Settings" buttons shown.
+.The default user interface with the sidebar shown
 image::defaultUiWithNav.png[]
 
 To have OliveTin hide these buttons, add `showNavigation: false` to your config.yaml;
@@ -35,7 +35,7 @@ actions:
     ....
 ----
 
-.The same user interface, but with the "Actions" and "Settings" buttons hidden (`showNavigation: false`)
+.The same user interface, but with the sidebar hidden (`showNavigation: false`)
 image::defaultUiHideNav.png[]
 
 [#section-navgiation-style]
@@ -43,37 +43,20 @@ image::defaultUiHideNav.png[]
 
 `sectionNavigationStyle` - You can choose to have the section navigation buttons displayed as a Sidebar (`sidebar` - default), or along the top (`topbar`).
 
-=== Sidebar navigation (default)
+=== Sidebar navigation style (default)
 
 `sectionNavigationStyle: sidebar` looks like this;
 
 image::sidebar.png[]
 
-=== Topbar Navigation
-
+=== Topbar navigation style
 
 `sectionNavigationStyle: topbar` looks like this;
 
 image::topbar.png[]
 
-[#custom-js]
-== Custom JavaScript
-
-This is considered an advanced feature, and is not recommended unless you like writing your own code.
-
-You can add custom JavaScript to OliveTin, which will be executed on every page load. This can be useful for adding custom functionality to the web UI.
-
-The custom javascript should be in a file called `custom.js` and saved in `custom-webui/`, which should be in the same directory as your `config.yaml`.
-
-You will need to set `enableCustomJs` to `true` in your `config.yaml` to enable this feature.
-
-== Custom Themes / Stylesheet rules
-
-* xref:reference/reference_themes_for_users.adoc[Themes for Users]
-* xref:reference/reference_themes_for_developers.adoc[Themes for Developers]
-
 [#show-new-versions]
-== Show new versions
+== New version available - show/hide
 
 You can disable the "new version" information in the footer - the default for `showNewVersions` is `true`; 
 
@@ -86,8 +69,9 @@ showNewVersions: false
 
 OliveTin does not check for updates by default. To enable it, see xref:reference/updateChecks.adoc[enable update checking].
 
+
 [#show-footer]
-== Show the footer 
+== Footer visibility - show / hide
 
 You can disable the entire footer, if you would like a really minimal interface. The default for `showFooter` is `true`.
 
@@ -101,3 +85,58 @@ showFooter: false
 This means the <<show-new-versions,`showNewVersions`>> configuration option will automatically be `false` as well.
 
 
+
+[#custom-js]
+== Custom JavaScript
+
+This is considered an advanced feature, and is not recommended unless you like writing your own code.
+
+You can add custom JavaScript to OliveTin, which will be executed on every page load. This can be useful for adding custom functionality to the web UI.
+
+1. The custom javascript should be in a file called `custom.js` and saved in `custom-webui/`, which should be in the same directory as your `config.yaml`.
+2. You can put whatever code you like really in your `custom.js` file. 
+3. Set `enableCustomJs: true` in your `config.yaml` to enable this feature.
+4. Restart OliveTin. Note that the custom JavaScript will only be loaded once on startup, so if you are changing the custom JavaScript while OliveTin is running, you will need to restart OliveTin to see the changes.
+
+== Custom CSS (with a custom theme)
+
+You can customize OliveTin with themes, but it's also possible to write your on very simple theme that contains just a few CSS rules to change the look and feel of OliveTin. This is very useful if you just want to change the colours of OliveTin, or hide a few elements.
+
+=== Writing a simple theme with a CSS change
+
+You'll need to create a new theme, and let's assume our theme namme is going to be called `uihack`. OliveTin themes are simply a directory of CSS and other assets. OliveTin looks for a directory called `custom-webui/themes/<theme-folder-name>` in the same directory as your `config.yaml` file. 
+
+Start by creating a directory called `custom-webui/themes/uihack` relative to the same directory as your `config.yaml` file. In this directory, create a file called `theme.css`.
+
+[source,yaml]
+----
+├── config.yaml
+└── custom-webui
+    └── themes
+        └── uihack
+            └── theme.css
+----
+
+Here's an example of what your `theme.css` should contain;
+
+```css
+body {
+	background-color: red;
+}
+```
+
+=== Setup OliveTin config to use your theme
+
+Now you need to tell OliveTin to use your new theme. To do this, set `themeName: uihack` in your OliveTin config.yaml and restart OliveTin.
+
+```yaml
+logLevel: "INFO"
+themeName: uihack
+```
+
+[WARNING]
+OliveTin will by default only read theme.css once on startup. If you are intending to change theme.css while OliveTin is running, set `themeCacheDisabled: true` in your config.yaml. This will make OliveTin read theme.css on every request, and is useful for development.
+
+Restart OliveTin for the theme change to take effect. Beware of the theme cache mentioned above, if you are making changes to the CCS and refreshing the page a few times.
+
+* xref:reference/reference_themes_for_developers.adoc[More information on theme development]
