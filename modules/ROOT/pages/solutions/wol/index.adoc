@@ -11,7 +11,7 @@ The container is also created with the `--user root` option, which allows the co
 Create the container as follows;
 
 ```bash
-user@host: docker create -u root --network=host --name olivetin_wol -v /etc/OliveTin/:/config ghcr.io/olivetin/olivetin:latest
+user@host: docker create -u root --network=host --name olivetin_wol -v /etc/OliveTin/:/config:ro ghcr.io/olivetin/olivetin:latest
 ```
 
 Create your OliveTin `config.yaml` file in the `/etc/OliveTin/` directory on the host, with the following content;
