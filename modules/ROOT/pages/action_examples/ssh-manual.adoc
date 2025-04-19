@@ -121,7 +121,7 @@ You should mount your SSH keys directory into the OliveTin user's home directory
 +
 .If you want to create the container from the command line
 ----
-docker run -v /opt/OliveTinSshKeys/:/home/olivetin/.ssh/ -v /etc/OliveTin/:/config --name OliveTin jamesread/olivetin
+docker run -v /opt/OliveTinSshKeys/:/home/olivetin/.ssh/ -v /etc/OliveTin/:/config:ro --name OliveTin jamesread/olivetin
 ----
 +
 .If you are using docker-compose
@@ -132,7 +132,7 @@ services:
         container_name: olivetin
         image: jamesread/olivetin
         volumes:
-          - "/etc/OliveTin/:/config"
+          - "/etc/OliveTin/:/config:ro"
           - "/opt/OliveTinSshKeys:/home/olivetin/.ssh"
         ports:
           - "1337:1337"
