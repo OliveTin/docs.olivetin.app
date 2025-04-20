@@ -79,7 +79,7 @@
 ** xref:entities/yaml.adoc[YAML Entity Files]
 ** xref:entities/json.adoc[JSON Entity Files]
 * xref:security/concepts.adoc[Security]
-** xref:security/acl.adoc[Access Control Lists (Permissions)]
+** xref:security/acl.adoc[Access Control Lists]
 ** xref:security/trusted_header.adoc[Trusted Header Authorization]
 ** xref:security/jwt.adoc[JWT Authorization]
 *** xref:security/jwt_keys.adoc[JWT with Keys]
