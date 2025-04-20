@@ -1,7 +1,7 @@
 = Security Design & Hardening Recommendations
 
 [WARNING]
-OliveTin has not *yet* had a remote code execution vulnerability found in it. However, what OliveTin does, it is possible, and likely that a security vulnerability will be found in the future. This document explains how OliveTin is designed so that you can make an informed decision about how to use OliveTin in your environment. It also provides hardening recommendations to help you secure OliveTin.
+OliveTin has not *yet* had a remote code execution vulnerability found in it. However, given what OliveTin does, it is possible, and likely that a security vulnerability will be found in the future. This document explains how OliveTin is designed so that you can make an informed decision about how to use OliveTin in your environment. It also provides hardening recommendations to help you secure OliveTin.
 
 == Security Design
 
