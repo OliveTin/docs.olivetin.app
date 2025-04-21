@@ -14,8 +14,8 @@ If running inside a Docker container:
 
 If running without using containers: 
 
-2. Download the theme .zip and copy it across to your `custom-webui/themes/` directory.
-3. Git Clone the theme into your `custom-webui/themes/` directory.
+1. Download the theme .zip and copy it across to your `custom-webui/themes/` directory.
+2. Git Clone the theme into your `custom-webui/themes/` directory.
 
 [#get-theme]
 == How to use the `olivetin-get-theme` command
