@@ -18,6 +18,10 @@ image::hello-world.png[]
 
 Simply click on the button to execute the shell command. You can expand the executions to view the logs.
 
+== Important considerations
+
+* The action title must be unique. If you have multiple actions with the same title, only one will be shown.
+
 == What do I try next?
 
 * xref:action_customization/intro.adoc[Customize] the action icon, timeout, etc.
