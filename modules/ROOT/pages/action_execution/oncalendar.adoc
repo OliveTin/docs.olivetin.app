@@ -19,7 +19,7 @@ This is how you setup an action to use the calendar file:
 [source,yaml]
 .`config.yaml`
 ----
-actioms: 
+actions: 
   - title: start server
     shell: echo "Starting Server!"
     execOnCalendarFile: start-server-calendar.yaml
