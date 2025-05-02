@@ -63,3 +63,21 @@ This is what it looks like in the web interface;
 image::args-choices-entities.png[]
 
 include::partial$args/reject-null.adoc[]
+
+== Default values
+
+Dropdown arguments can also have default values. This is done by adding a `default` key to the argument definition.
+
+include::partial$config-start.adoc[]
+----
+actions:
+  - title: "Print your favorite movie"
+    shell: echo '{{ movie }} is amazing'
+    arguments:
+      - name: movie
+        choices:
+          - value: "Star Wars"
+          - value: "Star Trek"
+          - value: "The Matrix"
+        default: "Star Trek"
+----
