@@ -14,7 +14,7 @@
 ***** xref:install/docker_compose.adoc[Docker Compose]
 ***** xref:install/helm.adoc[Kubernetes with Helm]
 ***** xref:install/k8s.adoc[Kubernetes with Manifests]
-*** xref:install/bsd.adoc[FreeBSD]
+*** xref:install/bsd.adoc[BSD]
 *** xref:install/windows.adoc[Windows]
 *** xref:install/macos.adoc[MacOS]
 *** xref:install/choose_package.adoc[All download options]
