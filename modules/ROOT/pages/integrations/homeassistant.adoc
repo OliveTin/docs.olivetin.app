@@ -1,6 +1,9 @@
 [#hass]
 = Home Assistant (REST)
 
+[NOTE]
+The recommended way to integrate HomeAssistant and OliveTin is via the xref:integrations/homeassistant-integration.adoc[HACS integration].
+
 Home Assistant is able to call REST API endpoints, making integration with OliveTin possible without any custom plugins or integrations in Home Assistant. This does require modifying your Home Assistant configuration.yml file though.
 
 == Give you actions an ID
