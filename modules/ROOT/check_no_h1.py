@@ -3,7 +3,7 @@
 import glob
 import re
 
-adoc_files = glob.glob('pages/**/*.adoc')
+adoc_files = glob.glob('pages/**/*.adoc', recursive=True)
 
 filelist = list()
 

@@ -1,7 +1,7 @@
 [#trusted-header]
 = Trusted Header Authorization
 
-include::../snippit_earlydoc.adoc[]
+include::partial$earlydoc.adoc[]
 
 [source,yaml]
 .`config.yaml`

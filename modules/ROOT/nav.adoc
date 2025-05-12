@@ -107,6 +107,7 @@
 ** xref:solutions/primitive-password/index.adoc[Primitive Password Protection]
 ** xref:solutions/wol/index.adoc[Wake on LAN]
 ** xref:solutions/cloudflare_access_tunnel/index.adoc[Cloudflare Access & Tunnels]
+** xref:solutions/directory-actions/index.adoc[Directory Actions]
 * xref:advanced_configuration/intro.adoc[Advanced Configuration]
 ** xref:advanced_configuration/logs.adoc[Logging - Application]
 ** xref:advanced_configuration/logs-actions.adoc[Logging - Actions]

@@ -1,7 +1,7 @@
 [#oauth2]
 = OAuth2
 
-include::../snippit_earlydoc.adoc[]
+include::partial$earlydoc.adoc[]
 
 OliveTin supports OAuth2 for login with any OAuth2 compliant provider.
 
