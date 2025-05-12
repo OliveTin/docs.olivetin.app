@@ -62,5 +62,5 @@ actions:
     shellAfterCompleted: "apprise -c /config/apprise.yml -t 'notification: test' -b 'date is {{ stdout }}'"
 ----
 
-NOTE: OliveTin does support JWT cookies that Cloudflare uses, which is arguably more secure. It's just that nobody in the Discord has worked out how to get the keys needed from Cloudflare to decrypt this cookie yet! See the <<jwt>> documentation for some starter points. If you figure this out, it would be most welcome to share your solution with the community.
+NOTE: OliveTin does support JWT cookies that Cloudflare uses, which is arguably more secure. It's just that nobody in the Discord has worked out how to get the keys needed from Cloudflare to decrypt this cookie yet! See the xref::security/jwt.adoc[JWT] documentation for some starter points. If you figure this out, it would be most welcome to share your solution with the community.
 

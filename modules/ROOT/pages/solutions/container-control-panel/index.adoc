@@ -9,7 +9,7 @@ include::partial$container_socket.adoc[]
 
 == Entity file
 
-To build this Container Control dashboard, we use an <<entities,entity>> file that stores and updates produced by `docker ps --format json > /etc/OliveTin/entities/containers.json`
+To build this Container Control dashboard, we use an xref::entities/intro.adoc[entity file] that stores and updates produced by `docker ps --format json > /etc/OliveTin/entities/containers.json`
 
 [source,yaml]
 .`/etc/OliveTin/entities/containers.json`
