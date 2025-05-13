@@ -140,6 +140,7 @@
 ** xref:troubleshooting/err-fetch-buttons.adoc[Error: Fetch Buttons]
 ** xref:troubleshooting/err-js-modules-not-supported.adoc[Error: JS Modules not supported]
 ** xref:troubleshooting/err-websocket-connection.adoc[Error: Websocket Connection]
+** xref:troubleshooting/err-webui-mismatch.adoc[Error: WebUI Version Mismatch]
 ** xref:troubleshooting/advanced.adoc[Advanced Troubleshooting]
 * xref:api/intro.adoc[API]
 ** xref:api/start_action.adoc[Start Actions from the API]
