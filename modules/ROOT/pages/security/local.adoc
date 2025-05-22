@@ -5,20 +5,21 @@ OliveTin supports just basic users defined with a username and password in the c
 
 == Define a user
 
-.`config.yaml`
-```yaml
+include::partial$config-start.adoc[]
+----
 authLocalUsers:
   enabled: true
   users:
     - username: james
       password: $argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k
-```
+----
 
 == Define users with a user group
 
 OliveTin local users do not need to be part of a user group, and unless any user groups are added, they will not be in any user group. However, if you want to add a user to a user group, you can do so like this:
 
-```yaml
+include::partial$config-start.adoc[]
+----
 authLocalUsers:
   enabled: true
   users:
@@ -33,11 +34,11 @@ authLocalUsers:
     - username: charlie
       password: ...
       usergroup: webmasters
-```
+----
 
 == Get a Argon2id hashed password
 
-Argon2id is the recommended password hashing algorithm link:https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html[recommebded by OWASP] as of October 2024. There doesn't seem to be a good reason yet to provide configuration options for changing the password hashing algorithm, but if you have a good reason, please open an issue on the GitHub repository.
+You will notice from the configuration examples above that the password is hashed using Argon2id. You can use any of the following methods to generate a Argon2id hashed password;
 
 === Option A - Using OliveTin API
 
@@ -72,13 +73,16 @@ docker run --rm -i --net=none leplusorg/hash sh -c 'echo -n "myPassword" | argon
 
 Then simply visit the OliveTin web interface and browse to the login page, eg: http://olivetin.example.com:1337/login
 
+=== Why does OliveTin use Argon2id? 
+Argon2id is the password hashing algorithm that is link:https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html[recommended by OWASP] as of October 2024. There doesn't seem to be a good reason yet to provide configuration options for changing the password hashing algorithm, but if you have a good reason, please open an issue on the GitHub repository.
+
+
 == Force login page
 
 If you don't want to allow guests to do anything in OliveTin, you can use the `authRequireGuestsToLogin` option to force all users to login before they do anything. This will redirect all users to the login page if they are not logged in, and it will also set `defaultPermissions` to `false`, meaning that permissions must be explicitly set for each user or user group.
 
-.`config.yaml`
-```yaml
-
+include::partial$config-start.adoc[]
+----
 authRequireGuestsToLogin: true
 
 authLocalUsers:
@@ -86,5 +90,5 @@ authLocalUsers:
   users:
     - username: james
       password: $argon2id$v=19$m=65536,t=4,p=6$LnNW4sw+jZfa5Ex3YjfuHQ$vl8pjUJhxNmBxScV4lI3cgAZPkNB1rSrnX6ibgoAP8k
-```
+----
 
