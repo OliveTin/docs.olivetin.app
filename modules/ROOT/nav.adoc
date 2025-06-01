@@ -16,6 +16,7 @@
 ***** xref:install/k8s.adoc[Kubernetes with Manifests]
 *** xref:install/bsd.adoc[BSD]
 *** xref:install/windows.adoc[Windows]
+**** xref:install/windows_service.adoc[Windows Service]
 *** xref:install/macos.adoc[MacOS]
 *** xref:install/choose_package.adoc[All download options]
 * xref:config.adoc[Configuration]

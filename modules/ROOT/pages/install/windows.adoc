@@ -1,8 +1,8 @@
 = Windows install
 
-Windows? Isn't that for playing games?
+Yes, OliveTin is supported on Windows, too!
 
-Well, yes, but you can use OliveTin on Windows too!
+You can instal install OliveTin as a Windows service, follow the instructions to xref:install/windows_service.adoc[install OliveTin as a Windows service].
 
 == Download and run
 
