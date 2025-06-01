@@ -19,6 +19,11 @@ services:
     ports: 
       - "1337:1337"
     restart: unless-stopped
+
+
+volumes:
+  OliveTin-config:
+    external: false
 ----
 
 include::partial$install/post_container.adoc[]
