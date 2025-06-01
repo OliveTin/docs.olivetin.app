@@ -60,7 +60,7 @@
 ** xref:args/safety.adoc[Safety]
 ** xref:args/types.adoc[Types]
 ** xref:args/input.adoc[Input]
-** xref:args/password.adoc[Input]
+** xref:args/password.adoc[Password]
 ** xref:args/regex.adoc[Regex]
 ** xref:args/suggestions.adoc[Suggestions]
 ** xref:args/input_dropdown.adoc[Input: Dropdown]
