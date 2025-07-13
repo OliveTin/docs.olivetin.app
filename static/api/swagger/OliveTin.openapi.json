@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "OliveTin.proto",
-    "version": "version not set"
+    "title": "OliveTin API",
+    "version": "OliveTin classic (calver)"
   },
   "tags": [
     {
@@ -23,7 +23,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DumpPublicIdActionMapResponse"
+              "$ref": "#/definitions/v1DumpPublicIdActionMapResponse"
             }
           },
           "default": {
@@ -45,7 +45,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DumpVarsResponse"
+              "$ref": "#/definitions/v1DumpVarsResponse"
             }
           },
           "default": {
@@ -67,7 +67,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ExecutionStatusResponse"
+              "$ref": "#/definitions/v1ExecutionStatusResponse"
             }
           },
           "default": {
@@ -83,7 +83,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ExecutionStatusRequest"
+              "$ref": "#/definitions/v1ExecutionStatusRequest"
             }
           }
         ],
@@ -99,7 +99,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/GetDashboardComponentsResponse"
+              "$ref": "#/definitions/v1GetDashboardComponentsResponse"
             }
           },
           "default": {
@@ -121,7 +121,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/GetLogsResponse"
+              "$ref": "#/definitions/v1GetLogsResponse"
             }
           },
           "default": {
@@ -131,6 +131,15 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "startOffset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
         "tags": [
           "OliveTinApiService"
         ]
@@ -143,7 +152,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/KillActionResponse"
+              "$ref": "#/definitions/v1KillActionResponse"
             }
           },
           "default": {
@@ -159,7 +168,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/KillActionRequest"
+              "$ref": "#/definitions/v1KillActionRequest"
             }
           }
         ],
@@ -175,7 +184,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/LocalUserLoginResponse"
+              "$ref": "#/definitions/v1LocalUserLoginResponse"
             }
           },
           "default": {
@@ -191,7 +200,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LocalUserLoginRequest"
+              "$ref": "#/definitions/v1LocalUserLoginRequest"
             }
           }
         ],
@@ -245,7 +254,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/PasswordHashRequest"
+              "$ref": "#/definitions/v1PasswordHashRequest"
             }
           }
         ],
@@ -261,7 +270,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/StartActionResponse"
+              "$ref": "#/definitions/v1StartActionResponse"
             }
           },
           "default": {
@@ -277,7 +286,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/StartActionRequest"
+              "$ref": "#/definitions/v1StartActionRequest"
             }
           }
         ],
@@ -293,7 +302,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/StartActionAndWaitResponse"
+              "$ref": "#/definitions/v1StartActionAndWaitResponse"
             }
           },
           "default": {
@@ -309,7 +318,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/StartActionAndWaitRequest"
+              "$ref": "#/definitions/v1StartActionAndWaitRequest"
             }
           }
         ],
@@ -325,7 +334,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/StartActionByGetResponse"
+              "$ref": "#/definitions/v1StartActionByGetResponse"
             }
           },
           "default": {
@@ -355,7 +364,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/StartActionByGetAndWaitResponse"
+              "$ref": "#/definitions/v1StartActionByGetAndWaitResponse"
             }
           },
           "default": {
@@ -385,7 +394,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ValidateArgumentTypeResponse"
+              "$ref": "#/definitions/v1ValidateArgumentTypeResponse"
             }
           },
           "default": {
@@ -401,7 +410,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ValidateArgumentTypeRequest"
+              "$ref": "#/definitions/v1ValidateArgumentTypeRequest"
             }
           }
         ],
@@ -417,7 +426,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/WhoAmIResponse"
+              "$ref": "#/definitions/v1WhoAmIResponse"
             }
           },
           "default": {
@@ -439,7 +448,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/GetReadyzResponse"
+              "$ref": "#/definitions/v1GetReadyzResponse"
             }
           },
           "default": {
@@ -478,463 +487,6 @@
     }
   },
   "definitions": {
-    "Action": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "icon": {
-          "type": "string"
-        },
-        "canExec": {
-          "type": "boolean"
-        },
-        "arguments": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/ActionArgument"
-          }
-        },
-        "popupOnStart": {
-          "type": "string"
-        },
-        "order": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "ActionArgument": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "defaultValue": {
-          "type": "string"
-        },
-        "choices": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/ActionArgumentChoice"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "suggestions": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ActionArgumentChoice": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        }
-      }
-    },
-    "ActionEntityPair": {
-      "type": "object",
-      "properties": {
-        "actionTitle": {
-          "type": "string"
-        },
-        "entityPrefix": {
-          "type": "string"
-        }
-      }
-    },
-    "DashboardComponent": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "contents": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/DashboardComponent"
-          }
-        },
-        "icon": {
-          "type": "string"
-        },
-        "cssClass": {
-          "type": "string"
-        }
-      }
-    },
-    "DumpPublicIdActionMapResponse": {
-      "type": "object",
-      "properties": {
-        "alert": {
-          "type": "string"
-        },
-        "contents": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/ActionEntityPair"
-          }
-        }
-      }
-    },
-    "DumpVarsResponse": {
-      "type": "object",
-      "properties": {
-        "alert": {
-          "type": "string"
-        },
-        "contents": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "Entity": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "icon": {
-          "type": "string"
-        },
-        "actions": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/Action"
-          }
-        }
-      }
-    },
-    "ExecutionStatusRequest": {
-      "type": "object",
-      "properties": {
-        "executionTrackingId": {
-          "type": "string"
-        },
-        "actionId": {
-          "type": "string"
-        }
-      }
-    },
-    "ExecutionStatusResponse": {
-      "type": "object",
-      "properties": {
-        "logEntry": {
-          "$ref": "#/definitions/LogEntry"
-        }
-      }
-    },
-    "GetDashboardComponentsResponse": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "actions": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/Action"
-          }
-        },
-        "entities": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/Entity"
-          }
-        },
-        "dashboards": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/DashboardComponent"
-          }
-        },
-        "authenticatedUser": {
-          "type": "string"
-        },
-        "authenticatedUserProvider": {
-          "type": "string"
-        }
-      }
-    },
-    "GetLogsResponse": {
-      "type": "object",
-      "properties": {
-        "logs": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/LogEntry"
-          }
-        }
-      }
-    },
-    "GetReadyzResponse": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "KillActionRequest": {
-      "type": "object",
-      "properties": {
-        "executionTrackingId": {
-          "type": "string"
-        }
-      }
-    },
-    "KillActionResponse": {
-      "type": "object",
-      "properties": {
-        "executionTrackingId": {
-          "type": "string"
-        },
-        "killed": {
-          "type": "boolean"
-        },
-        "alreadyCompleted": {
-          "type": "boolean"
-        },
-        "found": {
-          "type": "boolean"
-        }
-      }
-    },
-    "LocalUserLoginRequest": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      }
-    },
-    "LocalUserLoginResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
-    },
-    "LogEntry": {
-      "type": "object",
-      "properties": {
-        "datetimeStarted": {
-          "type": "string"
-        },
-        "actionTitle": {
-          "type": "string"
-        },
-        "output": {
-          "type": "string"
-        },
-        "timedOut": {
-          "type": "boolean"
-        },
-        "exitCode": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "user": {
-          "type": "string"
-        },
-        "userClass": {
-          "type": "string"
-        },
-        "actionIcon": {
-          "type": "string"
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "executionTrackingId": {
-          "type": "string"
-        },
-        "datetimeFinished": {
-          "type": "string"
-        },
-        "actionId": {
-          "type": "string"
-        },
-        "executionStarted": {
-          "type": "boolean"
-        },
-        "executionFinished": {
-          "type": "boolean"
-        },
-        "blocked": {
-          "type": "boolean"
-        }
-      }
-    },
-    "PasswordHashRequest": {
-      "type": "object",
-      "properties": {
-        "password": {
-          "type": "string"
-        }
-      }
-    },
-    "StartActionAndWaitRequest": {
-      "type": "object",
-      "properties": {
-        "actionId": {
-          "type": "string"
-        },
-        "arguments": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/StartActionArgument"
-          }
-        }
-      }
-    },
-    "StartActionAndWaitResponse": {
-      "type": "object",
-      "properties": {
-        "logEntry": {
-          "$ref": "#/definitions/LogEntry"
-        }
-      }
-    },
-    "StartActionArgument": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
-    "StartActionByGetAndWaitResponse": {
-      "type": "object",
-      "properties": {
-        "logEntry": {
-          "$ref": "#/definitions/LogEntry"
-        }
-      }
-    },
-    "StartActionByGetResponse": {
-      "type": "object",
-      "properties": {
-        "executionTrackingId": {
-          "type": "string"
-        }
-      }
-    },
-    "StartActionRequest": {
-      "type": "object",
-      "properties": {
-        "actionId": {
-          "type": "string"
-        },
-        "arguments": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/StartActionArgument"
-          }
-        },
-        "uniqueTrackingId": {
-          "type": "string"
-        }
-      }
-    },
-    "StartActionResponse": {
-      "type": "object",
-      "properties": {
-        "executionTrackingId": {
-          "type": "string"
-        }
-      }
-    },
-    "ValidateArgumentTypeRequest": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "ValidateArgumentTypeResponse": {
-      "type": "object",
-      "properties": {
-        "valid": {
-          "type": "boolean"
-        },
-        "description": {
-          "type": "string"
-        }
-      }
-    },
-    "WhoAmIResponse": {
-      "type": "object",
-      "properties": {
-        "authenticatedUser": {
-          "type": "string"
-        },
-        "usergroup": {
-          "type": "string"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "acls": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "sid": {
-          "type": "string"
-        }
-      }
-    },
     "apiHttpBody": {
       "type": "object",
       "properties": {
@@ -985,6 +537,506 @@
             "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
+        }
+      }
+    },
+    "v1Action": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "canExec": {
+          "type": "boolean"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ActionArgument"
+          }
+        },
+        "popupOnStart": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ActionArgument": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ActionArgumentChoice"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "suggestions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1ActionArgumentChoice": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ActionEntityPair": {
+      "type": "object",
+      "properties": {
+        "actionTitle": {
+          "type": "string"
+        },
+        "entityPrefix": {
+          "type": "string"
+        }
+      }
+    },
+    "v1DashboardComponent": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DashboardComponent"
+          }
+        },
+        "icon": {
+          "type": "string"
+        },
+        "cssClass": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Diagnostics": {
+      "type": "object",
+      "properties": {
+        "SshFoundKey": {
+          "type": "string"
+        },
+        "SshFoundConfig": {
+          "type": "string"
+        }
+      }
+    },
+    "v1DumpPublicIdActionMapResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v1ActionEntityPair"
+          }
+        }
+      }
+    },
+    "v1DumpVarsResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1EffectivePolicy": {
+      "type": "object",
+      "properties": {
+        "showDiagnostics": {
+          "type": "boolean"
+        },
+        "showLogList": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1Entity": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Action"
+          }
+        }
+      }
+    },
+    "v1ExecutionStatusRequest": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        },
+        "actionId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ExecutionStatusResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/v1LogEntry"
+        }
+      }
+    },
+    "v1GetDashboardComponentsResponse": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Action"
+          }
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Entity"
+          }
+        },
+        "dashboards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DashboardComponent"
+          }
+        },
+        "authenticatedUser": {
+          "type": "string"
+        },
+        "authenticatedUserProvider": {
+          "type": "string"
+        },
+        "effectivePolicy": {
+          "$ref": "#/definitions/v1EffectivePolicy"
+        },
+        "diagnostics": {
+          "$ref": "#/definitions/v1Diagnostics"
+        }
+      }
+    },
+    "v1GetLogsResponse": {
+      "type": "object",
+      "properties": {
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1LogEntry"
+          }
+        },
+        "countRemaining": {
+          "type": "string",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v1GetReadyzResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1KillActionRequest": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1KillActionResponse": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        },
+        "killed": {
+          "type": "boolean"
+        },
+        "alreadyCompleted": {
+          "type": "boolean"
+        },
+        "found": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1LocalUserLoginRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "v1LocalUserLoginResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1LogEntry": {
+      "type": "object",
+      "properties": {
+        "datetimeStarted": {
+          "type": "string"
+        },
+        "actionTitle": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        },
+        "timedOut": {
+          "type": "boolean"
+        },
+        "exitCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userClass": {
+          "type": "string"
+        },
+        "actionIcon": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "executionTrackingId": {
+          "type": "string"
+        },
+        "datetimeFinished": {
+          "type": "string"
+        },
+        "actionId": {
+          "type": "string"
+        },
+        "executionStarted": {
+          "type": "boolean"
+        },
+        "executionFinished": {
+          "type": "boolean"
+        },
+        "blocked": {
+          "type": "boolean"
+        },
+        "datetimeIndex": {
+          "type": "string",
+          "format": "int64"
+        },
+        "canKill": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1PasswordHashRequest": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "v1StartActionAndWaitRequest": {
+      "type": "object",
+      "properties": {
+        "actionId": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1StartActionArgument"
+          }
+        }
+      }
+    },
+    "v1StartActionAndWaitResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/v1LogEntry"
+        }
+      }
+    },
+    "v1StartActionArgument": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "v1StartActionByGetAndWaitResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/v1LogEntry"
+        }
+      }
+    },
+    "v1StartActionByGetResponse": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1StartActionRequest": {
+      "type": "object",
+      "properties": {
+        "actionId": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1StartActionArgument"
+          }
+        },
+        "uniqueTrackingId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1StartActionResponse": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ValidateArgumentTypeRequest": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ValidateArgumentTypeResponse": {
+      "type": "object",
+      "properties": {
+        "valid": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "v1WhoAmIResponse": {
+      "type": "object",
+      "properties": {
+        "authenticatedUser": {
+          "type": "string"
+        },
+        "usergroup": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "acls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sid": {
+          "type": "string"
         }
       }
     }
