@@ -3,7 +3,10 @@
 = API Overview 
 This section of the documentation is intended for developers, and those who want to hack around with OliveTin and extend it. This page provides a few pointers to get started. 
 
-**Short version**: http://olivetinServer:1337/api for the REST API. link:http://docs.olivetin.app/api/[Swagger] documents the API.
+**Short version**: 
+
+* http://olivetinServer:1337/api on your OliveTin server to get the REST API. 
+* link:http://docs.olivetin.app/api/[Swagger] documents the API.
 
 **Longer version**: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. 
 
@@ -13,9 +16,9 @@ The gRPC API only listens on localhost default, but it can be set to listen publ
 
 == Links
 
-* link:http://docs.olivetin.app/api/[Swagger UI for OliveTin API]
-* link:http://docs.olivetin.app/api/OliveTin.openapi.json[OpenAPI JSON Definition]
-* link:https://github.com/OliveTin/OliveTin/blob/main/OliveTin.proto[The OliveTin Protobuf file]. 
+* link:http://docs.olivetin.app/api/swagger/[Swagger UI for OliveTin API]
+* link:http://docs.olivetin.app/api/swagger/OliveTin.openapi.json[OpenAPI JSON Definition]
+* link:https://github.com/OliveTin/OliveTin/blob/main/proto/olivetin/api/v1/olivetin.proto[The OliveTin Protobuf file]. 
 
 Please do talk to the developers on Discord if you'd like help using the API, or you're thinking about building something interesting using the API!
 
