@@ -3,7 +3,7 @@
 
 There are several variants of this API call available which might be easier for scripts (or humans) to work with!
 
-include:partial!api/start_action_methods.adoc[tags=api-start-action-methods]
+include::partial$api/start_action_methods.adoc[]
 
 [#api-request-idurl]
 == Request type: Action ID in the URL
