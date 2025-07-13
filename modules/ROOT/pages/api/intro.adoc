@@ -6,7 +6,7 @@ This section of the documentation is intended for developers, and those who want
 **Short version**: 
 
 * http://olivetinServer:1337/api on your OliveTin server to get the REST API. 
-* link:http://docs.olivetin.app/api/[Swagger] documents the API.
+* link:http://docs.olivetin.app/api/swagger/[Swagger] documents the API.
 
 **Longer version**: The OliveTin API is formally defined using the Protobuf IDL, which generates gRPC stubs, as well as a REST Gateway. 
 

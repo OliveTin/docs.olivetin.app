@@ -29,11 +29,9 @@ jobs:
         node-version: '18'
     - name: Install Antora with the Antora Lunr Extension
       run: npm i antora @antora/lunr-extension
-    - name: Generate Site
-      run: npx antora antora-playbook.yml
 
-    - name: Create CNAME file
-      run: cp CNAME build/site/CNAME
+    - name: Generate Site
+      run: make
 
     - name: Upload Artifacts
       uses: actions/upload-pages-artifact@v3
