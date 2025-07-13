@@ -1,0 +1,12 @@
+There are 4 main methods to start an action in OliveTin, which can be used in scripts or other applications. These methods allow you to trigger actions either immediately or wait for them to complete, and they can be accessed via HTTP requests.
+
+.Webhook/API reference table
+[%header]
+|======================================================
+| Function                     | HTTP Method | Request Type (How to select an action)             | Response Type
+| `StartAction`                | POST        | <<api-request-obj,OliveTin request object>>        | <<api-response-trackingid,Execution Tracking ID>>
+| `StartActionByGet`           | GET         | <<api-request-idurl,Action ID in the URL>>         | <<api-response-trackingid,Execution Tracking ID>>
+| `StartActionAndWait`         | POST        | <<api-request-obj,OliveTin request object>>        | <<api-response-logentry,Log Entry (waits for the action to finish)>>
+| `StartActionByGetAndWait`    | GET         | <<api-request-idurl,Action ID in the URL>>         | <<api-response-logentry,Log Entry (waits for the action to finish)>>
+|======================================================
+

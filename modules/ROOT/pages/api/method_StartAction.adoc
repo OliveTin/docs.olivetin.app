@@ -1,0 +1,3 @@
+= API Method: StartAction
+
+include:partial!api/start_action_methods.adoc[tags=api-start-action-methods]
