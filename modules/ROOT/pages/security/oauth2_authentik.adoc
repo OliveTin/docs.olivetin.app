@@ -54,7 +54,7 @@ In Authentik: `Admin Interface > Customization > Property Mappings > Create > Sc
 groups = [group.name for group in user.ak_groups.all()]
 
 return {
-    "olivetin_group": ",".join(groups)
+    "olivetin_group_list": ",".join(groups)
 }
 ----
 
@@ -84,7 +84,7 @@ for group in groups:
         break
 
 return {
-    "olivetin_group_list": returned_group
+    "olivetin_group_first": returned_group
 }
 ----
 
@@ -159,7 +159,7 @@ authHttpHeaderUserGroupSep: "," # Optional - only needed if you use the multiple
 
 authOAuth2Providers:
   authentik:
-    userGroupField: "olivetin_group_list" # or "olivetin_group_specific" or "olivetin_group_mappings_multiple"
+    userGroupField: "olivetin_group_list" # or "olivetin_group_first" or "olivetin_group_specific" depending on which mapping you used
     certBundlePath: "/path/to/mounted/certificate.pem"
     insecureSkipVerify: true
     connectTimeout: 15
