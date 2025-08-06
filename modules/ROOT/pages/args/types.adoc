@@ -11,6 +11,7 @@ A full list of argument types are below;
 | ascii                       | xref:args/input.adoc[Textbox]           | a-z (case insensitive), 0-9, but no spaces or punctuation
 | ascii_identifier            | xref:args/input.adoc[Textbox]           | Like a DNS name, a-Z (case insensitive), 0-9, `-`, `.`, and `_`. 
 | ascii_sentence              | xref:args/input.adoc[Textbox]           | a-z (case insensitive), 0-9, with spaces, `.` and `,`. 
+| unicode_identifier          | xref:args/input.adoc[Textbox]           | Like an ascii identifier, but allows unicode characters. This is useful for languages that use non-ascii characters, such as Chinese, Japanese, etc.
 | email                       | xref:args/input.adoc[Textbox]           | An email address.
 | password                    | xref:args/password.adoc[Password]       | A password, which is hidden when typed.
 | very_dangerous_raw_string   | xref:args/input.adoc[Textbox]           | Anything. This is **incredibly dangerous**, as effectively people can type anything they like, including executing additional commands beyond what you specify. Absolutely should not be used unless your OliveTin instance can only be used by people you trust entirely.
