@@ -19,6 +19,9 @@
 **** xref:install/windows_service.adoc[Windows Service]
 *** xref:install/macos.adoc[MacOS]
 *** xref:install/choose_package.adoc[All download options]
+* Upgrade Guide
+** xref:upgrade/2k3k.adoc[Upgrading from 2k to 3k]
+** xref:upgrade/upgrade_notes.adoc[Updates Notes]
 * xref:config.adoc[Configuration]
 * xref:reverse-proxies/intro.adoc[Reverse Proxies]
 ** xref:reverse-proxies/apache.adoc[Apache]
@@ -134,7 +137,6 @@
 ** xref:reference/reference_themes_for_developers.adoc[Themes (for developers)]
 ** xref:reference/contribute.adoc[Contribute]
 ** xref:reference/donations_and_sponsorship.adoc[Donations & Sponsorship]
-** xref:reference/upgrade_notes.adoc[Updates Notes]
 ** xref:reference/multiple_instances.adoc[Multiple Instances]
 * Troubleshooting
 ** xref:troubleshooting/wheretofindhelp.adoc[Where to find help]
