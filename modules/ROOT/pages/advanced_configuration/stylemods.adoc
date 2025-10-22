@@ -1,0 +1,22 @@
+= Stylemods
+
+There are several style modifications that some people like to use, which can easily be added to OliveTin. The configuration syntax in your .config.yaml is very simple, and looks like this with a single style mod;
+
+[source,yaml]
+----
+stylemodes:
+  - sm-side-icons
+----	
+
+You can add as many style mods as you like, but note that some of them may conflict with each other. The style mods are applied in the order they are listed, so if you have a conflict, the last one in the list will take precedence.
+
+== Available Style Mods
+
+* `sm-side-icons`: Display action buttons with the icons on the left hand side rather than above the text.
+* `sm-imageicons-fullwidth`: Display image icons in full width, rather than the default size.
+
+The list of style mods on this page 
+
+== Feature history
+
+* OliveTin `2025.7.29` introduced the ability to use style modifications, or "style mods".

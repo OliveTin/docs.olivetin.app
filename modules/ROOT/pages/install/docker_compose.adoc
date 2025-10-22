@@ -35,6 +35,8 @@ If you want to use OliveTin running in a container to control other Docker conta
 You will need to adjust your docker-compose file to include the docker socket, like this;
 
  `docker-compose.yml` including docker socket
+[source,yaml]
+.docker-compose.yml
 ----
 services:
   olivetin:
@@ -60,6 +62,9 @@ services:
     user: root 
     ...
 ----
+
+See xref:action_examples/containers.adoc[containers] for alternatives to running as root.
+
 
 NOTE: xref:troubleshooting/puid-pgid.adoc[PUID and PGID are not used] by the official OliveTin container image.
 
