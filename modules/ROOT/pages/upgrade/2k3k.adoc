@@ -1,5 +1,7 @@
 = Understanding OliveTin 2k vs 3k
 
+NOTE: OliveTin 3k is basically "rebuilding OliveTin for the future" - and aims to have high compatibility with OliveTin 2k while people migrate. However, as we all know, stuff will break when 3k is new - so please be patient, and report issues as you find them! OliveTin 2k isn't going anywhere anytime soon!
+
 == Quick summary of key points
 
 - OliveTin versions like 2022.11.11 and 2023.04.15 are part of "**OliveTin 2k**" (2000 series) and use a **calendar versioning** (calver) scheme. These versions are stable and will continue to receive updates and support but will not receive new features.
