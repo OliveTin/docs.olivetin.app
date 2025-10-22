@@ -16,7 +16,7 @@ The original version of OliveTin was released in May 2021, and it used a version
 
 However, this worked just fine for a while, but as OliveTin grew, it became clearer that most packaging systems and users were more accustomed to the more traditional [https://semver.org](semver) (Semantic Versioning) system. As a stopgap measure, OliveTin switched the format of it's versioning to use dots (".") instead of dashes ("-") in an attempt to make it look more like a traditional semver version. This resulted in a change with version **2022.11.11** (November 11th, 2022 - what a cool  date!).
 
-As OliveTin continued to mature, and more features were added, it became clear that there were some major architecture and library choices that were no longer ideal. Switching these out (like the configuration library, Viper), is a really major change, and isn't something that is good to do without a lot of users being very aware of it. In May 2025, a proposal was launched to switch OliveTin to a more traditional semver versioning system. You can view the defail of that proposal here: https://github.com/OliveTin/OliveTin/discussions/591
+As OliveTin continued to mature, and more features were added, it became clear that there were some major architecture and library choices that were no longer ideal. Switching these out (like the configuration library, Viper), is a really major change, and isn't something that is good to do without a lot of users being very aware of it. In May 2025, a proposal was launched to switch OliveTin to a more traditional semver versioning system. You can view the detail of that proposal here: https://github.com/OliveTin/OliveTin/discussions/591
 
 In short, the benefits of switching to semver are;
 
@@ -29,7 +29,7 @@ This proposal seemed to be positively received by the community, and so the Jame
 
 == What were the major reasons for the technology changes in OliveTin 3k?
 
-OliveTin 2k has the following technology choices which limited it's potential for stability, maintinability and growth;
+OliveTin 2k has the following technology choices which limited it's potential for stability, maintainability and growth;
 
 - The communication between the client and the server uses gRPC, which is then fronted by a REST API and messages are very hackily wrapped in JSON. This has worked remarkably well, but the web has moved on to offer websockets and streaming in a far better way, and connectrpc solves many of these challenges neatly and elegantly. 
 - The configuration library, Viper, is a defacto standard in Go several years ago - big projects like kubectl and others use it. However the library is extremely heavyweight (lots of dependencies), it has lots of open issues, and doesn't support some commonly requested features like configuration file splitting and inclusion - which would really help user's manage large configurations.
@@ -58,7 +58,7 @@ The developers of this project have quite a lot of test infrastructure around Ol
 
 === OliveTin Configuration files
 
-To date, no changes are required to the configuration file (and configs are being automatically migrated internally to OliveTin 3k - without rewiting the original config file).
+To date, no changes are required to the configuration file (and configs are being automatically migrated internally to OliveTin 3k - without rewriting the original config file).
 
 However, it is possible that some configuration changes will be necessary as we learn more about people's setups with OliveTin 2k.
 
