@@ -10,3 +10,4 @@ There are 4 main methods to start an action in OliveTin, which can be used in sc
 | `StartActionByGetAndWait`    | GET         | <<api-request-idurl,Action ID in the URL>>         | <<api-response-logentry,Log Entry (waits for the action to finish)>>
 |======================================================
 
+You can also browse these methods in the link:htts://docs.olivetin.app/api/swagger/[OpenAPI/Swagger] docs if you prefer.
