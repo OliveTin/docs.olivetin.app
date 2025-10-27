@@ -93,6 +93,7 @@
 *** xref:security/jwt_hmac.adoc[JWT with HMAC]
 ** xref:security/oauth2.adoc[OAuth2]
 *** xref:security/oauth2_authentik.adoc[OAuth2 with Authentik]
+*** xref:security/oauth2_autelia.adoc[OAuth2 with Authelia]
 *** xref:security/oauth2_pocketid.adoc[OAuth2 with Pocket ID]
 ** xref:security/local.adoc[Local Users Login]
 ** xref:security/examples.adoc[Security examples]
