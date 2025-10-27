@@ -30,11 +30,11 @@ identity_providers:
         consent_mode: implicit
 ----
 
-* hmac_secret generated with openssl rand -hex 64 or can be authelia crypto rand --length 64 --charset alphanumeric too Source
-* Private key generated with openssl genrsa -out oidc.key 2048 and openssl rsa -in oidc.key -pubout -out oidc.pub but only used the oidc.key here
-* client_id olivetin is for the example, as per authelia docs the recomendation is a random string generated with authelia authelia crypto rand --length 72 --charset rfc3986 Source
-* consent_mode I had to set this one up as implicit or every time I loged in it was an extra step where you had to authorize OliveTin to access profile and openid. Source
-* client_secret is recommended in the docs to be generated with authelia crypto hash generate pbkdf2 --variant sha512 --random --random.length 72 --random.charset rfc3986 and it gives you the password (Random password on the example) and the hash (Digest on the example). Olivetin needs the password and Authelia the hash https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-secret
+* hmac_secret generated with `openssl rand -hex 64 or can be authelia crypto rand --length 64 --charset alphanumeric` link:https://www.authelia.com/reference/guides/generating-secure-values/#generating-a-random-alphanumeric-string[Source]
+* Private key generated with `openssl genrsa -out oidc.key 2048 and openssl rsa -in oidc.key -pubout -out oidc.pub` but only used the oidc.key here
+* client_id olivetin is for the example, as per authelia docs the recomendation is a random string generated with `authelia authelia crypto rand --length 72 --charset rfc3986` link:https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-id--identifier[Source]
+* consent_mode I had to set this one up as implicit or every time I loged in it was an extra step where you had to authorize OliveTin to access profile and openid. link:https://www.authelia.com/configuration/identity-providers/openid-connect/clients/#consent_mode[Source]
+* client_secret is recommended in the docs to be generated with `authelia crypto hash generate pbkdf2 --variant sha512 --random --random.length 72 --random.charset rfc3986` and it gives you the password (Random password on the example) and the hash (Digest on the example). Olivetin needs the password and Authelia the hash link:https://www.authelia.com/integration/openid-connect/frequently-asked-questions/#client-secret[Source]
 
 ----
 Random Password: JxMbHrQgmykaVm2n0p_5q6P_YoZG_YdRWvHxHbVJ5Alv.Ni3OJPVPHEJ6Tfw_AklrwayFl39
