@@ -1,0 +1,717 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "olivetin/api/v1/olivetin.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "OliveTinApiService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1Action": {
+      "type": "object",
+      "properties": {
+        "bindingId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "canExec": {
+          "type": "boolean"
+        },
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ActionArgument"
+          }
+        },
+        "popupOnStart": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "timeout": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "v1ActionArgument": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1ActionArgumentChoice"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "suggestions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1ActionArgumentChoice": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ActionEntityPair": {
+      "type": "object",
+      "properties": {
+        "actionTitle": {
+          "type": "string"
+        },
+        "entityPrefix": {
+          "type": "string"
+        }
+      }
+    },
+    "v1AdditionalLink": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Dashboard": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DashboardComponent"
+          }
+        }
+      }
+    },
+    "v1DashboardComponent": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1DashboardComponent"
+          }
+        },
+        "icon": {
+          "type": "string"
+        },
+        "cssClass": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/definitions/v1Action"
+        }
+      }
+    },
+    "v1DumpPublicIdActionMapResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v1ActionEntityPair"
+          }
+        }
+      }
+    },
+    "v1DumpVarsResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1EffectivePolicy": {
+      "type": "object",
+      "properties": {
+        "showDiagnostics": {
+          "type": "boolean"
+        },
+        "showLogList": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1Entity": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "uniqueKey": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "v1EntityDefinition": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "instances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1Entity"
+          }
+        },
+        "usedOnDashboards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1EventConfigChanged": {
+      "type": "object"
+    },
+    "v1EventEntityChanged": {
+      "type": "object"
+    },
+    "v1EventExecutionFinished": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/v1LogEntry"
+        }
+      }
+    },
+    "v1EventExecutionStarted": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/v1LogEntry"
+        }
+      }
+    },
+    "v1EventOutputChunk": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        }
+      }
+    },
+    "v1EventStreamResponse": {
+      "type": "object",
+      "properties": {
+        "entityChanged": {
+          "$ref": "#/definitions/v1EventEntityChanged"
+        },
+        "configChanged": {
+          "$ref": "#/definitions/v1EventConfigChanged"
+        },
+        "executionFinished": {
+          "$ref": "#/definitions/v1EventExecutionFinished"
+        },
+        "executionStarted": {
+          "$ref": "#/definitions/v1EventExecutionStarted"
+        },
+        "outputChunk": {
+          "$ref": "#/definitions/v1EventOutputChunk"
+        }
+      }
+    },
+    "v1ExecutionStatusResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/v1LogEntry"
+        }
+      }
+    },
+    "v1GetActionBindingResponse": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "$ref": "#/definitions/v1Action"
+        }
+      }
+    },
+    "v1GetActionLogsResponse": {
+      "type": "object",
+      "properties": {
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1LogEntry"
+          }
+        },
+        "countRemaining": {
+          "type": "string",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64"
+        },
+        "totalCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "startOffset": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v1GetDashboardResponse": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "dashboard": {
+          "$ref": "#/definitions/v1Dashboard"
+        }
+      }
+    },
+    "v1GetDiagnosticsResponse": {
+      "type": "object",
+      "properties": {
+        "SshFoundKey": {
+          "type": "string"
+        },
+        "SshFoundConfig": {
+          "type": "string"
+        }
+      }
+    },
+    "v1GetEntitiesResponse": {
+      "type": "object",
+      "properties": {
+        "entityDefinitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1EntityDefinition"
+          }
+        }
+      }
+    },
+    "v1GetLogsResponse": {
+      "type": "object",
+      "properties": {
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1LogEntry"
+          }
+        },
+        "countRemaining": {
+          "type": "string",
+          "format": "int64"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64"
+        },
+        "totalCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "startOffset": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v1GetReadyzResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1InitResponse": {
+      "type": "object",
+      "properties": {
+        "showFooter": {
+          "type": "boolean"
+        },
+        "showNavigation": {
+          "type": "boolean"
+        },
+        "showNewVersions": {
+          "type": "boolean"
+        },
+        "availableVersion": {
+          "type": "string"
+        },
+        "currentVersion": {
+          "type": "string"
+        },
+        "pageTitle": {
+          "type": "string"
+        },
+        "sectionNavigationStyle": {
+          "type": "string"
+        },
+        "defaultIconForBack": {
+          "type": "string"
+        },
+        "enableCustomJs": {
+          "type": "boolean"
+        },
+        "authLoginUrl": {
+          "type": "string"
+        },
+        "authLocalLogin": {
+          "type": "boolean"
+        },
+        "styleMods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "oAuth2Providers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1OAuth2Provider"
+          }
+        },
+        "additionalLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v1AdditionalLink"
+          }
+        },
+        "rootDashboards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "authenticatedUser": {
+          "type": "string"
+        },
+        "authenticatedUserProvider": {
+          "type": "string"
+        },
+        "effectivePolicy": {
+          "$ref": "#/definitions/v1EffectivePolicy"
+        },
+        "bannerMessage": {
+          "type": "string"
+        },
+        "bannerCss": {
+          "type": "string"
+        },
+        "showDiagnostics": {
+          "type": "boolean"
+        },
+        "showLogList": {
+          "type": "boolean"
+        },
+        "loginRequired": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1KillActionResponse": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        },
+        "killed": {
+          "type": "boolean"
+        },
+        "alreadyCompleted": {
+          "type": "boolean"
+        },
+        "found": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1LocalUserLoginResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1LogEntry": {
+      "type": "object",
+      "properties": {
+        "datetimeStarted": {
+          "type": "string"
+        },
+        "actionTitle": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        },
+        "timedOut": {
+          "type": "boolean"
+        },
+        "exitCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userClass": {
+          "type": "string"
+        },
+        "actionIcon": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "executionTrackingId": {
+          "type": "string"
+        },
+        "datetimeFinished": {
+          "type": "string"
+        },
+        "actionId": {
+          "type": "string"
+        },
+        "executionStarted": {
+          "type": "boolean"
+        },
+        "executionFinished": {
+          "type": "boolean"
+        },
+        "blocked": {
+          "type": "boolean"
+        },
+        "datetimeIndex": {
+          "type": "string",
+          "format": "int64"
+        },
+        "canKill": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1LogoutResponse": {
+      "type": "object"
+    },
+    "v1OAuth2Provider": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PasswordHashResponse": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SosReportResponse": {
+      "type": "object",
+      "properties": {
+        "alert": {
+          "type": "string"
+        }
+      }
+    },
+    "v1StartActionAndWaitResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/v1LogEntry"
+        }
+      }
+    },
+    "v1StartActionArgument": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "v1StartActionByGetAndWaitResponse": {
+      "type": "object",
+      "properties": {
+        "logEntry": {
+          "$ref": "#/definitions/v1LogEntry"
+        }
+      }
+    },
+    "v1StartActionByGetResponse": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1StartActionResponse": {
+      "type": "object",
+      "properties": {
+        "executionTrackingId": {
+          "type": "string"
+        }
+      }
+    },
+    "v1ValidateArgumentTypeResponse": {
+      "type": "object",
+      "properties": {
+        "valid": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "v1WhoAmIResponse": {
+      "type": "object",
+      "properties": {
+        "authenticatedUser": {
+          "type": "string"
+        },
+        "usergroup": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "acls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sid": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
