@@ -13,7 +13,12 @@ actions:
     shellAfterCompleted: "apprise -c /config/apprise.yml -t 'Notification: Backup script completed' -b 'The backup script completed with code {{ exitCode}}. The log is: \n {{ output }} '"
 ----
 
-When running shellAfterCompleted, you *cannot* use argument values - they are not passed to the command. However two special arguments are defined as shown above - `exitCode` and `output` from the previous `shell` command. 
+When running shellAfterCompleted, you *cannot* use argument values - they are not passed to the command. However the following special arguments are defined; 
+
+* `{{ exitCode }}` - The exit code of the previous shell command
+* `{{ output }}` - The standard output of the previous shell command
+* `{{ ot_executionTrackingId }}` - The unique execution tracking id for this execution
+* `{{ ot_username }}` - The username of the user who started the execution (if any - could be `guest` or `cron`).
 
 You can only use a single `shellAfterCompleted`, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.
 
@@ -29,5 +34,6 @@ urls:
   - tgram://bottoken/ChatID
 ----
 
+== See Also
 
-
+* xref:triggers.adoc[Triggers] - Executing full actions after this one (with separate arguments, etc).
