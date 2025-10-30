@@ -1,1846 +1,2769 @@
-openapi: 3.1.0
-info:
-  title: olivetin.api.v1
-paths:
-  /olivetin.api.v1.OliveTinApiService/DumpPublicIdActionMap:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: DumpPublicIdActionMap
-      operationId: olivetin.api.v1.OliveTinApiService.DumpPublicIdActionMap
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.DumpPublicIdActionMapRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.DumpPublicIdActionMapResponse'
-  /olivetin.api.v1.OliveTinApiService/DumpVars:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: DumpVars
-      operationId: olivetin.api.v1.OliveTinApiService.DumpVars
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.DumpVarsRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.DumpVarsResponse'
-  /olivetin.api.v1.OliveTinApiService/EventStream: {}
-  /olivetin.api.v1.OliveTinApiService/ExecutionStatus:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: ExecutionStatus
-      operationId: olivetin.api.v1.OliveTinApiService.ExecutionStatus
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.ExecutionStatusRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.ExecutionStatusResponse'
-  /olivetin.api.v1.OliveTinApiService/GetActionBinding:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: GetActionBinding
-      operationId: olivetin.api.v1.OliveTinApiService.GetActionBinding
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.GetActionBindingRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.GetActionBindingResponse'
-  /olivetin.api.v1.OliveTinApiService/GetActionLogs:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: GetActionLogs
-      operationId: olivetin.api.v1.OliveTinApiService.GetActionLogs
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.GetActionLogsRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.GetActionLogsResponse'
-  /olivetin.api.v1.OliveTinApiService/GetDashboard:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: GetDashboard
-      operationId: olivetin.api.v1.OliveTinApiService.GetDashboard
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.GetDashboardRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.GetDashboardResponse'
-  /olivetin.api.v1.OliveTinApiService/GetDiagnostics:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: GetDiagnostics
-      operationId: olivetin.api.v1.OliveTinApiService.GetDiagnostics
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.GetDiagnosticsRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.GetDiagnosticsResponse'
-  /olivetin.api.v1.OliveTinApiService/GetEntities:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: GetEntities
-      operationId: olivetin.api.v1.OliveTinApiService.GetEntities
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.GetEntitiesRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.GetEntitiesResponse'
-  /olivetin.api.v1.OliveTinApiService/GetEntity:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: GetEntity
-      operationId: olivetin.api.v1.OliveTinApiService.GetEntity
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.GetEntityRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.Entity'
-  /olivetin.api.v1.OliveTinApiService/GetLogs:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: GetLogs
-      operationId: olivetin.api.v1.OliveTinApiService.GetLogs
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.GetLogsRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.GetLogsResponse'
-  /olivetin.api.v1.OliveTinApiService/GetReadyz:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: GetReadyz
-      operationId: olivetin.api.v1.OliveTinApiService.GetReadyz
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.GetReadyzRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.GetReadyzResponse'
-  /olivetin.api.v1.OliveTinApiService/Init:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: Init
-      operationId: olivetin.api.v1.OliveTinApiService.Init
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.InitRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.InitResponse'
-  /olivetin.api.v1.OliveTinApiService/KillAction:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: KillAction
-      operationId: olivetin.api.v1.OliveTinApiService.KillAction
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.KillActionRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.KillActionResponse'
-  /olivetin.api.v1.OliveTinApiService/LocalUserLogin:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: LocalUserLogin
-      operationId: olivetin.api.v1.OliveTinApiService.LocalUserLogin
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.LocalUserLoginRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.LocalUserLoginResponse'
-  /olivetin.api.v1.OliveTinApiService/Logout:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: Logout
-      operationId: olivetin.api.v1.OliveTinApiService.Logout
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.LogoutRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.LogoutResponse'
-  /olivetin.api.v1.OliveTinApiService/PasswordHash:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: PasswordHash
-      operationId: olivetin.api.v1.OliveTinApiService.PasswordHash
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.PasswordHashRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.PasswordHashResponse'
-  /olivetin.api.v1.OliveTinApiService/RestartAction:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: RestartAction
-      operationId: olivetin.api.v1.OliveTinApiService.RestartAction
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.RestartActionRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.StartActionResponse'
-  /olivetin.api.v1.OliveTinApiService/SosReport:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: SosReport
-      operationId: olivetin.api.v1.OliveTinApiService.SosReport
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.SosReportRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.SosReportResponse'
-  /olivetin.api.v1.OliveTinApiService/StartAction:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: StartAction
-      operationId: olivetin.api.v1.OliveTinApiService.StartAction
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.StartActionRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.StartActionResponse'
-  /olivetin.api.v1.OliveTinApiService/StartActionAndWait:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: StartActionAndWait
-      operationId: olivetin.api.v1.OliveTinApiService.StartActionAndWait
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.StartActionAndWaitRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.StartActionAndWaitResponse'
-  /olivetin.api.v1.OliveTinApiService/StartActionByGet:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: StartActionByGet
-      operationId: olivetin.api.v1.OliveTinApiService.StartActionByGet
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.StartActionByGetRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.StartActionByGetResponse'
-  /olivetin.api.v1.OliveTinApiService/StartActionByGetAndWait:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: StartActionByGetAndWait
-      operationId: olivetin.api.v1.OliveTinApiService.StartActionByGetAndWait
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.StartActionByGetAndWaitRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.StartActionByGetAndWaitResponse'
-  /olivetin.api.v1.OliveTinApiService/ValidateArgumentType:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: ValidateArgumentType
-      operationId: olivetin.api.v1.OliveTinApiService.ValidateArgumentType
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.ValidateArgumentTypeRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.ValidateArgumentTypeResponse'
-  /olivetin.api.v1.OliveTinApiService/WhoAmI:
-    post:
-      tags:
-        - olivetin.api.v1.OliveTinApiService
-      summary: WhoAmI
-      operationId: olivetin.api.v1.OliveTinApiService.WhoAmI
-      parameters:
-        - name: Connect-Protocol-Version
-          in: header
-          required: true
-          schema:
-            $ref: '#/components/schemas/connect-protocol-version'
-        - name: Connect-Timeout-Ms
-          in: header
-          schema:
-            $ref: '#/components/schemas/connect-timeout-header'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/olivetin.api.v1.WhoAmIRequest'
-        required: true
-      responses:
-        default:
-          description: Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/connect.error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/olivetin.api.v1.WhoAmIResponse'
-components:
-  schemas:
-    connect-protocol-version:
-      type: number
-      title: Connect-Protocol-Version
-      enum:
-        - 1
-      description: Define the version of the Connect protocol
-      const: 1
-    connect-timeout-header:
-      type: number
-      title: Connect-Timeout-Ms
-      description: Define the timeout, in ms
-    connect.error:
-      type: object
-      properties:
-        code:
-          type: string
-          examples:
-            - not_found
-          enum:
-            - canceled
-            - unknown
-            - invalid_argument
-            - deadline_exceeded
-            - not_found
-            - already_exists
-            - permission_denied
-            - resource_exhausted
-            - failed_precondition
-            - aborted
-            - out_of_range
-            - unimplemented
-            - internal
-            - unavailable
-            - data_loss
-            - unauthenticated
-          description: The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
-        message:
-          type: string
-          description: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/connect.error_details.Any'
-          description: A list of messages that carry the error details. There is no limit on the number of messages.
-      title: Connect Error
-      additionalProperties: true
-      description: 'Error type returned by Connect: https://connectrpc.com/docs/go/errors/#http-representation'
-    connect.error_details.Any:
-      type: object
-      properties:
-        type:
-          type: string
-          description: 'A URL that acts as a globally unique identifier for the type of the serialized message. For example: `type.googleapis.com/google.rpc.ErrorInfo`. This is used to determine the schema of the data in the `value` field and is the discriminator for the `debug` field.'
-        value:
-          type: string
-          format: binary
-          description: The Protobuf message, serialized as bytes and base64-encoded. The specific message type is identified by the `type` field.
-        debug:
-          oneOf:
-            - type: object
-              title: Any
-              additionalProperties: true
-              description: Detailed error information.
-          discriminator:
-            propertyName: type
-          title: Debug
-          description: Deserialized error detail payload. The 'type' field indicates the schema. This field is for easier debugging and should not be relied upon for application logic.
-      additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message, with an additional debug field for ConnectRPC error details.
-    olivetin.api.v1.Action:
-      type: object
-      properties:
-        bindingId:
-          type: string
-          title: binding_id
-        title:
-          type: string
-          title: title
-        icon:
-          type: string
-          title: icon
-        canExec:
-          type: boolean
-          title: can_exec
-        arguments:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.ActionArgument'
-          title: arguments
-        popupOnStart:
-          type: string
-          title: popup_on_start
-        order:
-          type: integer
-          title: order
-          format: int32
-        timeout:
-          type: integer
-          title: timeout
-          format: int32
-      title: Action
-      additionalProperties: false
-    olivetin.api.v1.ActionArgument:
-      type: object
-      properties:
-        name:
-          type: string
-          title: name
-        title:
-          type: string
-          title: title
-        type:
-          type: string
-          title: type
-        defaultValue:
-          type: string
-          title: default_value
-        choices:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.ActionArgumentChoice'
-          title: choices
-        description:
-          type: string
-          title: description
-        suggestions:
-          type: object
-          title: suggestions
-          additionalProperties:
-            type: string
-            title: value
-      title: ActionArgument
-      additionalProperties: false
-    olivetin.api.v1.ActionArgument.SuggestionsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type: string
-          title: value
-      title: SuggestionsEntry
-      additionalProperties: false
-    olivetin.api.v1.ActionArgumentChoice:
-      type: object
-      properties:
-        value:
-          type: string
-          title: value
-        title:
-          type: string
-          title: title
-      title: ActionArgumentChoice
-      additionalProperties: false
-    olivetin.api.v1.ActionEntityPair:
-      type: object
-      properties:
-        actionTitle:
-          type: string
-          title: action_title
-        entityPrefix:
-          type: string
-          title: entity_prefix
-      title: ActionEntityPair
-      additionalProperties: false
-    olivetin.api.v1.AdditionalLink:
-      type: object
-      properties:
-        title:
-          type: string
-          title: title
-        url:
-          type: string
-          title: url
-      title: AdditionalLink
-      additionalProperties: false
-    olivetin.api.v1.Dashboard:
-      type: object
-      properties:
-        title:
-          type: string
-          title: title
-        contents:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.DashboardComponent'
-          title: contents
-      title: Dashboard
-      additionalProperties: false
-    olivetin.api.v1.DashboardComponent:
-      type: object
-      properties:
-        title:
-          type: string
-          title: title
-        type:
-          type: string
-          title: type
-        contents:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.DashboardComponent'
-          title: contents
-        icon:
-          type: string
-          title: icon
-        cssClass:
-          type: string
-          title: css_class
-        action:
-          title: action
-          $ref: '#/components/schemas/olivetin.api.v1.Action'
-      title: DashboardComponent
-      additionalProperties: false
-    olivetin.api.v1.DumpPublicIdActionMapRequest:
-      type: object
-      title: DumpPublicIdActionMapRequest
-      additionalProperties: false
-    olivetin.api.v1.DumpPublicIdActionMapResponse:
-      type: object
-      properties:
-        alert:
-          type: string
-          title: alert
-        contents:
-          type: object
-          title: contents
-          additionalProperties:
-            title: value
-            $ref: '#/components/schemas/olivetin.api.v1.ActionEntityPair'
-      title: DumpPublicIdActionMapResponse
-      additionalProperties: false
-    olivetin.api.v1.DumpPublicIdActionMapResponse.ContentsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          title: value
-          $ref: '#/components/schemas/olivetin.api.v1.ActionEntityPair'
-      title: ContentsEntry
-      additionalProperties: false
-    olivetin.api.v1.DumpVarsRequest:
-      type: object
-      title: DumpVarsRequest
-      additionalProperties: false
-    olivetin.api.v1.DumpVarsResponse:
-      type: object
-      properties:
-        alert:
-          type: string
-          title: alert
-        contents:
-          type: object
-          title: contents
-          additionalProperties:
-            type: string
-            title: value
-      title: DumpVarsResponse
-      additionalProperties: false
-    olivetin.api.v1.DumpVarsResponse.ContentsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type: string
-          title: value
-      title: ContentsEntry
-      additionalProperties: false
-    olivetin.api.v1.EffectivePolicy:
-      type: object
-      properties:
-        showDiagnostics:
-          type: boolean
-          title: show_diagnostics
-        showLogList:
-          type: boolean
-          title: show_log_list
-      title: EffectivePolicy
-      additionalProperties: false
-    olivetin.api.v1.Entity:
-      type: object
-      properties:
-        title:
-          type: string
-          title: title
-        uniqueKey:
-          type: string
-          title: unique_key
-        type:
-          type: string
-          title: type
-      title: Entity
-      additionalProperties: false
-    olivetin.api.v1.EntityDefinition:
-      type: object
-      properties:
-        title:
-          type: string
-          title: title
-        instances:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.Entity'
-          title: instances
-        usedOnDashboards:
-          type: array
-          items:
-            type: string
-          title: used_on_dashboards
-      title: EntityDefinition
-      additionalProperties: false
-    olivetin.api.v1.EventConfigChanged:
-      type: object
-      title: EventConfigChanged
-      additionalProperties: false
-    olivetin.api.v1.EventEntityChanged:
-      type: object
-      title: EventEntityChanged
-      additionalProperties: false
-    olivetin.api.v1.EventExecutionFinished:
-      type: object
-      properties:
-        logEntry:
-          title: log_entry
-          $ref: '#/components/schemas/olivetin.api.v1.LogEntry'
-      title: EventExecutionFinished
-      additionalProperties: false
-    olivetin.api.v1.EventExecutionStarted:
-      type: object
-      properties:
-        logEntry:
-          title: log_entry
-          $ref: '#/components/schemas/olivetin.api.v1.LogEntry'
-      title: EventExecutionStarted
-      additionalProperties: false
-    olivetin.api.v1.EventOutputChunk:
-      type: object
-      properties:
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-        output:
-          type: string
-          title: output
-      title: EventOutputChunk
-      additionalProperties: false
-    olivetin.api.v1.EventStreamRequest:
-      type: object
-      title: EventStreamRequest
-      additionalProperties: false
-    olivetin.api.v1.EventStreamResponse:
-      type: object
-      oneOf:
-        - properties:
-            configChanged:
-              title: config_changed
-              $ref: '#/components/schemas/olivetin.api.v1.EventConfigChanged'
-          title: config_changed
-          required:
-            - configChanged
-        - properties:
-            entityChanged:
-              title: entity_changed
-              $ref: '#/components/schemas/olivetin.api.v1.EventEntityChanged'
-          title: entity_changed
-          required:
-            - entityChanged
-        - properties:
-            executionFinished:
-              title: execution_finished
-              $ref: '#/components/schemas/olivetin.api.v1.EventExecutionFinished'
-          title: execution_finished
-          required:
-            - executionFinished
-        - properties:
-            executionStarted:
-              title: execution_started
-              $ref: '#/components/schemas/olivetin.api.v1.EventExecutionStarted'
-          title: execution_started
-          required:
-            - executionStarted
-        - properties:
-            outputChunk:
-              title: output_chunk
-              $ref: '#/components/schemas/olivetin.api.v1.EventOutputChunk'
-          title: output_chunk
-          required:
-            - outputChunk
-      title: EventStreamResponse
-      additionalProperties: false
-    olivetin.api.v1.ExecutionStatusRequest:
-      type: object
-      properties:
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-        actionId:
-          type: string
-          title: action_id
-      title: ExecutionStatusRequest
-      additionalProperties: false
-    olivetin.api.v1.ExecutionStatusResponse:
-      type: object
-      properties:
-        logEntry:
-          title: log_entry
-          $ref: '#/components/schemas/olivetin.api.v1.LogEntry'
-      title: ExecutionStatusResponse
-      additionalProperties: false
-    olivetin.api.v1.GetActionBindingRequest:
-      type: object
-      properties:
-        bindingId:
-          type: string
-          title: binding_id
-      title: GetActionBindingRequest
-      additionalProperties: false
-    olivetin.api.v1.GetActionBindingResponse:
-      type: object
-      properties:
-        action:
-          title: action
-          $ref: '#/components/schemas/olivetin.api.v1.Action'
-      title: GetActionBindingResponse
-      additionalProperties: false
-    olivetin.api.v1.GetActionLogsRequest:
-      type: object
-      properties:
-        actionId:
-          type: string
-          title: action_id
-        startOffset:
-          type:
-            - integer
-            - string
-          title: start_offset
-          format: int64
-      title: GetActionLogsRequest
-      additionalProperties: false
-    olivetin.api.v1.GetActionLogsResponse:
-      type: object
-      properties:
-        logs:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.LogEntry'
-          title: logs
-        countRemaining:
-          type:
-            - integer
-            - string
-          title: count_remaining
-          format: int64
-        pageSize:
-          type:
-            - integer
-            - string
-          title: page_size
-          format: int64
-        totalCount:
-          type:
-            - integer
-            - string
-          title: total_count
-          format: int64
-        startOffset:
-          type:
-            - integer
-            - string
-          title: start_offset
-          format: int64
-      title: GetActionLogsResponse
-      additionalProperties: false
-    olivetin.api.v1.GetDashboardRequest:
-      type: object
-      properties:
-        title:
-          type: string
-          title: title
-      title: GetDashboardRequest
-      additionalProperties: false
-    olivetin.api.v1.GetDashboardResponse:
-      type: object
-      properties:
-        title:
-          type: string
-          title: title
-        dashboard:
-          title: dashboard
-          $ref: '#/components/schemas/olivetin.api.v1.Dashboard'
-      title: GetDashboardResponse
-      additionalProperties: false
-    olivetin.api.v1.GetDiagnosticsRequest:
-      type: object
-      title: GetDiagnosticsRequest
-      additionalProperties: false
-    olivetin.api.v1.GetDiagnosticsResponse:
-      type: object
-      properties:
-        SshFoundKey:
-          type: string
-          title: SshFoundKey
-        SshFoundConfig:
-          type: string
-          title: SshFoundConfig
-      title: GetDiagnosticsResponse
-      additionalProperties: false
-    olivetin.api.v1.GetEntitiesRequest:
-      type: object
-      title: GetEntitiesRequest
-      additionalProperties: false
-    olivetin.api.v1.GetEntitiesResponse:
-      type: object
-      properties:
-        entityDefinitions:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.EntityDefinition'
-          title: entity_definitions
-      title: GetEntitiesResponse
-      additionalProperties: false
-    olivetin.api.v1.GetEntityRequest:
-      type: object
-      properties:
-        uniqueKey:
-          type: string
-          title: unique_key
-        type:
-          type: string
-          title: type
-      title: GetEntityRequest
-      additionalProperties: false
-    olivetin.api.v1.GetLogsRequest:
-      type: object
-      properties:
-        startOffset:
-          type:
-            - integer
-            - string
-          title: start_offset
-          format: int64
-      title: GetLogsRequest
-      additionalProperties: false
-    olivetin.api.v1.GetLogsResponse:
-      type: object
-      properties:
-        logs:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.LogEntry'
-          title: logs
-        countRemaining:
-          type:
-            - integer
-            - string
-          title: count_remaining
-          format: int64
-        pageSize:
-          type:
-            - integer
-            - string
-          title: page_size
-          format: int64
-        totalCount:
-          type:
-            - integer
-            - string
-          title: total_count
-          format: int64
-        startOffset:
-          type:
-            - integer
-            - string
-          title: start_offset
-          format: int64
-      title: GetLogsResponse
-      additionalProperties: false
-    olivetin.api.v1.GetReadyzRequest:
-      type: object
-      title: GetReadyzRequest
-      additionalProperties: false
-    olivetin.api.v1.GetReadyzResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          title: status
-      title: GetReadyzResponse
-      additionalProperties: false
-    olivetin.api.v1.InitRequest:
-      type: object
-      title: InitRequest
-      additionalProperties: false
-    olivetin.api.v1.InitResponse:
-      type: object
-      properties:
-        showFooter:
-          type: boolean
-          title: showFooter
-        showNavigation:
-          type: boolean
-          title: showNavigation
-        showNewVersions:
-          type: boolean
-          title: showNewVersions
-        availableVersion:
-          type: string
-          title: availableVersion
-        currentVersion:
-          type: string
-          title: currentVersion
-        pageTitle:
-          type: string
-          title: pageTitle
-        sectionNavigationStyle:
-          type: string
-          title: sectionNavigationStyle
-        defaultIconForBack:
-          type: string
-          title: defaultIconForBack
-        enableCustomJs:
-          type: boolean
-          title: enableCustomJs
-        authLoginUrl:
-          type: string
-          title: authLoginUrl
-        authLocalLogin:
-          type: boolean
-          title: authLocalLogin
-        styleMods:
-          type: array
-          items:
-            type: string
-          title: styleMods
-        oAuth2Providers:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.OAuth2Provider'
-          title: oAuth2Providers
-        additionalLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.AdditionalLink'
-          title: additionalLinks
-        rootDashboards:
-          type: array
-          items:
-            type: string
-          title: rootDashboards
-        authenticatedUser:
-          type: string
-          title: authenticated_user
-        authenticatedUserProvider:
-          type: string
-          title: authenticated_user_provider
-        effectivePolicy:
-          title: effective_policy
-          $ref: '#/components/schemas/olivetin.api.v1.EffectivePolicy'
-        bannerMessage:
-          type: string
-          title: banner_message
-        bannerCss:
-          type: string
-          title: banner_css
-        showDiagnostics:
-          type: boolean
-          title: show_diagnostics
-        showLogList:
-          type: boolean
-          title: show_log_list
-        loginRequired:
-          type: boolean
-          title: login_required
-      title: InitResponse
-      additionalProperties: false
-    olivetin.api.v1.KillActionRequest:
-      type: object
-      properties:
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-      title: KillActionRequest
-      additionalProperties: false
-    olivetin.api.v1.KillActionResponse:
-      type: object
-      properties:
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-        killed:
-          type: boolean
-          title: killed
-        alreadyCompleted:
-          type: boolean
-          title: already_completed
-        found:
-          type: boolean
-          title: found
-      title: KillActionResponse
-      additionalProperties: false
-    olivetin.api.v1.LocalUserLoginRequest:
-      type: object
-      properties:
-        username:
-          type: string
-          title: username
-        password:
-          type: string
-          title: password
-      title: LocalUserLoginRequest
-      additionalProperties: false
-    olivetin.api.v1.LocalUserLoginResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          title: success
-      title: LocalUserLoginResponse
-      additionalProperties: false
-    olivetin.api.v1.LogEntry:
-      type: object
-      properties:
-        datetimeStarted:
-          type: string
-          title: datetime_started
-        actionTitle:
-          type: string
-          title: action_title
-        output:
-          type: string
-          title: output
-        timedOut:
-          type: boolean
-          title: timed_out
-        exitCode:
-          type: integer
-          title: exit_code
-          format: int32
-        user:
-          type: string
-          title: user
-        userClass:
-          type: string
-          title: user_class
-        actionIcon:
-          type: string
-          title: action_icon
-        tags:
-          type: array
-          items:
-            type: string
-          title: tags
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-        datetimeFinished:
-          type: string
-          title: datetime_finished
-        actionId:
-          type: string
-          title: action_id
-        executionStarted:
-          type: boolean
-          title: execution_started
-        executionFinished:
-          type: boolean
-          title: execution_finished
-        blocked:
-          type: boolean
-          title: blocked
-        datetimeIndex:
-          type:
-            - integer
-            - string
-          title: datetime_index
-          format: int64
-        canKill:
-          type: boolean
-          title: can_kill
-      title: LogEntry
-      additionalProperties: false
-    olivetin.api.v1.LogoutRequest:
-      type: object
-      title: LogoutRequest
-      additionalProperties: false
-    olivetin.api.v1.LogoutResponse:
-      type: object
-      title: LogoutResponse
-      additionalProperties: false
-    olivetin.api.v1.OAuth2Provider:
-      type: object
-      properties:
-        title:
-          type: string
-          title: title
-        url:
-          type: string
-          title: url
-        icon:
-          type: string
-          title: icon
-      title: OAuth2Provider
-      additionalProperties: false
-    olivetin.api.v1.PasswordHashRequest:
-      type: object
-      properties:
-        password:
-          type: string
-          title: password
-      title: PasswordHashRequest
-      additionalProperties: false
-    olivetin.api.v1.PasswordHashResponse:
-      type: object
-      properties:
-        hash:
-          type: string
-          title: hash
-      title: PasswordHashResponse
-      additionalProperties: false
-    olivetin.api.v1.RestartActionRequest:
-      type: object
-      properties:
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-      title: RestartActionRequest
-      additionalProperties: false
-    olivetin.api.v1.SosReportRequest:
-      type: object
-      title: SosReportRequest
-      additionalProperties: false
-    olivetin.api.v1.SosReportResponse:
-      type: object
-      properties:
-        alert:
-          type: string
-          title: alert
-      title: SosReportResponse
-      additionalProperties: false
-    olivetin.api.v1.StartActionAndWaitRequest:
-      type: object
-      properties:
-        actionId:
-          type: string
-          title: action_id
-        arguments:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.StartActionArgument'
-          title: arguments
-      title: StartActionAndWaitRequest
-      additionalProperties: false
-    olivetin.api.v1.StartActionAndWaitResponse:
-      type: object
-      properties:
-        logEntry:
-          title: log_entry
-          $ref: '#/components/schemas/olivetin.api.v1.LogEntry'
-      title: StartActionAndWaitResponse
-      additionalProperties: false
-    olivetin.api.v1.StartActionArgument:
-      type: object
-      properties:
-        name:
-          type: string
-          title: name
-        value:
-          type: string
-          title: value
-      title: StartActionArgument
-      additionalProperties: false
-    olivetin.api.v1.StartActionByGetAndWaitRequest:
-      type: object
-      properties:
-        actionId:
-          type: string
-          title: action_id
-      title: StartActionByGetAndWaitRequest
-      additionalProperties: false
-    olivetin.api.v1.StartActionByGetAndWaitResponse:
-      type: object
-      properties:
-        logEntry:
-          title: log_entry
-          $ref: '#/components/schemas/olivetin.api.v1.LogEntry'
-      title: StartActionByGetAndWaitResponse
-      additionalProperties: false
-    olivetin.api.v1.StartActionByGetRequest:
-      type: object
-      properties:
-        actionId:
-          type: string
-          title: action_id
-      title: StartActionByGetRequest
-      additionalProperties: false
-    olivetin.api.v1.StartActionByGetResponse:
-      type: object
-      properties:
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-      title: StartActionByGetResponse
-      additionalProperties: false
-    olivetin.api.v1.StartActionRequest:
-      type: object
-      properties:
-        bindingId:
-          type: string
-          title: binding_id
-        arguments:
-          type: array
-          items:
-            $ref: '#/components/schemas/olivetin.api.v1.StartActionArgument'
-          title: arguments
-        uniqueTrackingId:
-          type: string
-          title: unique_tracking_id
-      title: StartActionRequest
-      additionalProperties: false
-    olivetin.api.v1.StartActionResponse:
-      type: object
-      properties:
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-      title: StartActionResponse
-      additionalProperties: false
-    olivetin.api.v1.ValidateArgumentTypeRequest:
-      type: object
-      properties:
-        value:
-          type: string
-          title: value
-        type:
-          type: string
-          title: type
-      title: ValidateArgumentTypeRequest
-      additionalProperties: false
-    olivetin.api.v1.ValidateArgumentTypeResponse:
-      type: object
-      properties:
-        valid:
-          type: boolean
-          title: valid
-        description:
-          type: string
-          title: description
-      title: ValidateArgumentTypeResponse
-      additionalProperties: false
-    olivetin.api.v1.WatchExecutionRequest:
-      type: object
-      properties:
-        executionTrackingId:
-          type: string
-          title: execution_tracking_id
-      title: WatchExecutionRequest
-      additionalProperties: false
-    olivetin.api.v1.WatchExecutionUpdate:
-      type: object
-      properties:
-        update:
-          type: string
-          title: update
-      title: WatchExecutionUpdate
-      additionalProperties: false
-    olivetin.api.v1.WhoAmIRequest:
-      type: object
-      title: WhoAmIRequest
-      additionalProperties: false
-    olivetin.api.v1.WhoAmIResponse:
-      type: object
-      properties:
-        authenticatedUser:
-          type: string
-          title: authenticated_user
-        usergroup:
-          type: string
-          title: usergroup
-        provider:
-          type: string
-          title: provider
-        acls:
-          type: array
-          items:
-            type: string
-          title: acls
-        sid:
-          type: string
-          title: sid
-      title: WhoAmIResponse
-      additionalProperties: false
-security: []
-tags:
-  - name: olivetin.api.v1.OliveTinApiService
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "olivetin.api.v1"
+  },
+  "paths": {
+    "/olivetin.api.v1.OliveTinApiService/DumpPublicIdActionMap": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "DumpPublicIdActionMap",
+        "operationId": "olivetin.api.v1.OliveTinApiService.DumpPublicIdActionMap",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.DumpPublicIdActionMapRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.DumpPublicIdActionMapResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/DumpVars": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "DumpVars",
+        "operationId": "olivetin.api.v1.OliveTinApiService.DumpVars",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.DumpVarsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.DumpVarsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/EventStream": {},
+    "/olivetin.api.v1.OliveTinApiService/ExecutionStatus": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "ExecutionStatus",
+        "operationId": "olivetin.api.v1.OliveTinApiService.ExecutionStatus",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.ExecutionStatusRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.ExecutionStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/GetActionBinding": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetActionBinding",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetActionBinding",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetActionBindingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.GetActionBindingResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/GetActionLogs": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetActionLogs",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetActionLogs",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetActionLogsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.GetActionLogsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/GetDashboard": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetDashboard",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetDashboard",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetDashboardRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.GetDashboardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/GetDiagnostics": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetDiagnostics",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetDiagnostics",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetDiagnosticsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.GetDiagnosticsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/GetEntities": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetEntities",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetEntities",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetEntitiesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.GetEntitiesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/GetEntity": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetEntity",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetEntity",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetEntityRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.Entity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/GetLogs": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetLogs",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetLogs",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetLogsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.GetLogsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/GetReadyz": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetReadyz",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetReadyz",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetReadyzRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.GetReadyzResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/Init": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "Init",
+        "operationId": "olivetin.api.v1.OliveTinApiService.Init",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.InitRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.InitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/KillAction": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "KillAction",
+        "operationId": "olivetin.api.v1.OliveTinApiService.KillAction",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.KillActionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.KillActionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/LocalUserLogin": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "LocalUserLogin",
+        "operationId": "olivetin.api.v1.OliveTinApiService.LocalUserLogin",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.LocalUserLoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.LocalUserLoginResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/Logout": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "Logout",
+        "operationId": "olivetin.api.v1.OliveTinApiService.Logout",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.LogoutRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.LogoutResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/PasswordHash": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "PasswordHash",
+        "operationId": "olivetin.api.v1.OliveTinApiService.PasswordHash",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.PasswordHashRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.PasswordHashResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/RestartAction": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "RestartAction",
+        "operationId": "olivetin.api.v1.OliveTinApiService.RestartAction",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.RestartActionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.StartActionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/SosReport": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "SosReport",
+        "operationId": "olivetin.api.v1.OliveTinApiService.SosReport",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.SosReportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.SosReportResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/StartAction": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "StartAction",
+        "operationId": "olivetin.api.v1.OliveTinApiService.StartAction",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.StartActionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.StartActionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/StartActionAndWait": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "StartActionAndWait",
+        "operationId": "olivetin.api.v1.OliveTinApiService.StartActionAndWait",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.StartActionAndWaitRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.StartActionAndWaitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/StartActionByGet": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "StartActionByGet",
+        "operationId": "olivetin.api.v1.OliveTinApiService.StartActionByGet",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.StartActionByGetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.StartActionByGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/StartActionByGetAndWait": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "StartActionByGetAndWait",
+        "operationId": "olivetin.api.v1.OliveTinApiService.StartActionByGetAndWait",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.StartActionByGetAndWaitRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.StartActionByGetAndWaitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/ValidateArgumentType": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "ValidateArgumentType",
+        "operationId": "olivetin.api.v1.OliveTinApiService.ValidateArgumentType",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.ValidateArgumentTypeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.ValidateArgumentTypeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/olivetin.api.v1.OliveTinApiService/WhoAmI": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "WhoAmI",
+        "operationId": "olivetin.api.v1.OliveTinApiService.WhoAmI",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.WhoAmIRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.WhoAmIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "connect-protocol-version": {
+        "type": "number",
+        "title": "Connect-Protocol-Version",
+        "enum": [
+          1
+        ],
+        "description": "Define the version of the Connect protocol",
+        "const": 1
+      },
+      "connect-timeout-header": {
+        "type": "number",
+        "title": "Connect-Timeout-Ms",
+        "description": "Define the timeout, in ms"
+      },
+      "connect.error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "examples": [
+              "not_found"
+            ],
+            "enum": [
+              "canceled",
+              "unknown",
+              "invalid_argument",
+              "deadline_exceeded",
+              "not_found",
+              "already_exists",
+              "permission_denied",
+              "resource_exhausted",
+              "failed_precondition",
+              "aborted",
+              "out_of_range",
+              "unimplemented",
+              "internal",
+              "unavailable",
+              "data_loss",
+              "unauthenticated"
+            ],
+            "description": "The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code]."
+          },
+          "message": {
+            "type": "string",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client."
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/connect.error_details.Any"
+            },
+            "description": "A list of messages that carry the error details. There is no limit on the number of messages."
+          }
+        },
+        "title": "Connect Error",
+        "additionalProperties": true,
+        "description": "Error type returned by Connect: https://connectrpc.com/docs/go/errors/#http-representation"
+      },
+      "connect.error_details.Any": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "A URL that acts as a globally unique identifier for the type of the serialized message. For example: `type.googleapis.com/google.rpc.ErrorInfo`. This is used to determine the schema of the data in the `value` field and is the discriminator for the `debug` field."
+          },
+          "value": {
+            "type": "string",
+            "format": "binary",
+            "description": "The Protobuf message, serialized as bytes and base64-encoded. The specific message type is identified by the `type` field."
+          },
+          "debug": {
+            "oneOf": [
+              {
+                "type": "object",
+                "title": "Any",
+                "additionalProperties": true,
+                "description": "Detailed error information."
+              }
+            ],
+            "discriminator": {
+              "propertyName": "type"
+            },
+            "title": "Debug",
+            "description": "Deserialized error detail payload. The 'type' field indicates the schema. This field is for easier debugging and should not be relied upon for application logic."
+          }
+        },
+        "additionalProperties": true,
+        "description": "Contains an arbitrary serialized message along with a @type that describes the type of the serialized message, with an additional debug field for ConnectRPC error details."
+      },
+      "olivetin.api.v1.Action": {
+        "type": "object",
+        "properties": {
+          "bindingId": {
+            "type": "string",
+            "title": "binding_id"
+          },
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "icon": {
+            "type": "string",
+            "title": "icon"
+          },
+          "canExec": {
+            "type": "boolean",
+            "title": "can_exec"
+          },
+          "arguments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.ActionArgument"
+            },
+            "title": "arguments"
+          },
+          "popupOnStart": {
+            "type": "string",
+            "title": "popup_on_start"
+          },
+          "order": {
+            "type": "integer",
+            "title": "order",
+            "format": "int32"
+          },
+          "timeout": {
+            "type": "integer",
+            "title": "timeout",
+            "format": "int32"
+          }
+        },
+        "title": "Action",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ActionArgument": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "type": {
+            "type": "string",
+            "title": "type"
+          },
+          "defaultValue": {
+            "type": "string",
+            "title": "default_value"
+          },
+          "choices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.ActionArgumentChoice"
+            },
+            "title": "choices"
+          },
+          "description": {
+            "type": "string",
+            "title": "description"
+          },
+          "suggestions": {
+            "type": "object",
+            "title": "suggestions",
+            "additionalProperties": {
+              "type": "string",
+              "title": "value"
+            }
+          }
+        },
+        "title": "ActionArgument",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ActionArgument.SuggestionsEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "title": "SuggestionsEntry",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ActionArgumentChoice": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "title": "value"
+          },
+          "title": {
+            "type": "string",
+            "title": "title"
+          }
+        },
+        "title": "ActionArgumentChoice",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ActionEntityPair": {
+        "type": "object",
+        "properties": {
+          "actionTitle": {
+            "type": "string",
+            "title": "action_title"
+          },
+          "entityPrefix": {
+            "type": "string",
+            "title": "entity_prefix"
+          }
+        },
+        "title": "ActionEntityPair",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.AdditionalLink": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "url": {
+            "type": "string",
+            "title": "url"
+          }
+        },
+        "title": "AdditionalLink",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.Dashboard": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "contents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.DashboardComponent"
+            },
+            "title": "contents"
+          }
+        },
+        "title": "Dashboard",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DashboardComponent": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "type": {
+            "type": "string",
+            "title": "type"
+          },
+          "contents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.DashboardComponent"
+            },
+            "title": "contents"
+          },
+          "icon": {
+            "type": "string",
+            "title": "icon"
+          },
+          "cssClass": {
+            "type": "string",
+            "title": "css_class"
+          },
+          "action": {
+            "title": "action",
+            "$ref": "#/components/schemas/olivetin.api.v1.Action"
+          }
+        },
+        "title": "DashboardComponent",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DumpPublicIdActionMapRequest": {
+        "type": "object",
+        "title": "DumpPublicIdActionMapRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DumpPublicIdActionMapResponse": {
+        "type": "object",
+        "properties": {
+          "alert": {
+            "type": "string",
+            "title": "alert"
+          },
+          "contents": {
+            "type": "object",
+            "title": "contents",
+            "additionalProperties": {
+              "title": "value",
+              "$ref": "#/components/schemas/olivetin.api.v1.ActionEntityPair"
+            }
+          }
+        },
+        "title": "DumpPublicIdActionMapResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DumpPublicIdActionMapResponse.ContentsEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "title": "value",
+            "$ref": "#/components/schemas/olivetin.api.v1.ActionEntityPair"
+          }
+        },
+        "title": "ContentsEntry",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DumpVarsRequest": {
+        "type": "object",
+        "title": "DumpVarsRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DumpVarsResponse": {
+        "type": "object",
+        "properties": {
+          "alert": {
+            "type": "string",
+            "title": "alert"
+          },
+          "contents": {
+            "type": "object",
+            "title": "contents",
+            "additionalProperties": {
+              "type": "string",
+              "title": "value"
+            }
+          }
+        },
+        "title": "DumpVarsResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DumpVarsResponse.ContentsEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "title": "ContentsEntry",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EffectivePolicy": {
+        "type": "object",
+        "properties": {
+          "showDiagnostics": {
+            "type": "boolean",
+            "title": "show_diagnostics"
+          },
+          "showLogList": {
+            "type": "boolean",
+            "title": "show_log_list"
+          }
+        },
+        "title": "EffectivePolicy",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.Entity": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "uniqueKey": {
+            "type": "string",
+            "title": "unique_key"
+          },
+          "type": {
+            "type": "string",
+            "title": "type"
+          }
+        },
+        "title": "Entity",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EntityDefinition": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "instances": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.Entity"
+            },
+            "title": "instances"
+          },
+          "usedOnDashboards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "used_on_dashboards"
+          }
+        },
+        "title": "EntityDefinition",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EventConfigChanged": {
+        "type": "object",
+        "title": "EventConfigChanged",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EventEntityChanged": {
+        "type": "object",
+        "title": "EventEntityChanged",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EventExecutionFinished": {
+        "type": "object",
+        "properties": {
+          "logEntry": {
+            "title": "log_entry",
+            "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+          }
+        },
+        "title": "EventExecutionFinished",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EventExecutionStarted": {
+        "type": "object",
+        "properties": {
+          "logEntry": {
+            "title": "log_entry",
+            "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+          }
+        },
+        "title": "EventExecutionStarted",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EventOutputChunk": {
+        "type": "object",
+        "properties": {
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          },
+          "output": {
+            "type": "string",
+            "title": "output"
+          }
+        },
+        "title": "EventOutputChunk",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EventStreamRequest": {
+        "type": "object",
+        "title": "EventStreamRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EventStreamResponse": {
+        "type": "object",
+        "oneOf": [
+          {
+            "properties": {
+              "configChanged": {
+                "title": "config_changed",
+                "$ref": "#/components/schemas/olivetin.api.v1.EventConfigChanged"
+              }
+            },
+            "title": "config_changed",
+            "required": [
+              "configChanged"
+            ]
+          },
+          {
+            "properties": {
+              "entityChanged": {
+                "title": "entity_changed",
+                "$ref": "#/components/schemas/olivetin.api.v1.EventEntityChanged"
+              }
+            },
+            "title": "entity_changed",
+            "required": [
+              "entityChanged"
+            ]
+          },
+          {
+            "properties": {
+              "executionFinished": {
+                "title": "execution_finished",
+                "$ref": "#/components/schemas/olivetin.api.v1.EventExecutionFinished"
+              }
+            },
+            "title": "execution_finished",
+            "required": [
+              "executionFinished"
+            ]
+          },
+          {
+            "properties": {
+              "executionStarted": {
+                "title": "execution_started",
+                "$ref": "#/components/schemas/olivetin.api.v1.EventExecutionStarted"
+              }
+            },
+            "title": "execution_started",
+            "required": [
+              "executionStarted"
+            ]
+          },
+          {
+            "properties": {
+              "outputChunk": {
+                "title": "output_chunk",
+                "$ref": "#/components/schemas/olivetin.api.v1.EventOutputChunk"
+              }
+            },
+            "title": "output_chunk",
+            "required": [
+              "outputChunk"
+            ]
+          }
+        ],
+        "title": "EventStreamResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ExecutionStatusRequest": {
+        "type": "object",
+        "properties": {
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          },
+          "actionId": {
+            "type": "string",
+            "title": "action_id"
+          }
+        },
+        "title": "ExecutionStatusRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ExecutionStatusResponse": {
+        "type": "object",
+        "properties": {
+          "logEntry": {
+            "title": "log_entry",
+            "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+          }
+        },
+        "title": "ExecutionStatusResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetActionBindingRequest": {
+        "type": "object",
+        "properties": {
+          "bindingId": {
+            "type": "string",
+            "title": "binding_id"
+          }
+        },
+        "title": "GetActionBindingRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetActionBindingResponse": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "title": "action",
+            "$ref": "#/components/schemas/olivetin.api.v1.Action"
+          }
+        },
+        "title": "GetActionBindingResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetActionLogsRequest": {
+        "type": "object",
+        "properties": {
+          "actionId": {
+            "type": "string",
+            "title": "action_id"
+          },
+          "startOffset": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "start_offset",
+            "format": "int64"
+          }
+        },
+        "title": "GetActionLogsRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetActionLogsResponse": {
+        "type": "object",
+        "properties": {
+          "logs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+            },
+            "title": "logs"
+          },
+          "countRemaining": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "count_remaining",
+            "format": "int64"
+          },
+          "pageSize": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "page_size",
+            "format": "int64"
+          },
+          "totalCount": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "total_count",
+            "format": "int64"
+          },
+          "startOffset": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "start_offset",
+            "format": "int64"
+          }
+        },
+        "title": "GetActionLogsResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetDashboardRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          }
+        },
+        "title": "GetDashboardRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetDashboardResponse": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "dashboard": {
+            "title": "dashboard",
+            "$ref": "#/components/schemas/olivetin.api.v1.Dashboard"
+          }
+        },
+        "title": "GetDashboardResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetDiagnosticsRequest": {
+        "type": "object",
+        "title": "GetDiagnosticsRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetDiagnosticsResponse": {
+        "type": "object",
+        "properties": {
+          "SshFoundKey": {
+            "type": "string",
+            "title": "SshFoundKey"
+          },
+          "SshFoundConfig": {
+            "type": "string",
+            "title": "SshFoundConfig"
+          }
+        },
+        "title": "GetDiagnosticsResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetEntitiesRequest": {
+        "type": "object",
+        "title": "GetEntitiesRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetEntitiesResponse": {
+        "type": "object",
+        "properties": {
+          "entityDefinitions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.EntityDefinition"
+            },
+            "title": "entity_definitions"
+          }
+        },
+        "title": "GetEntitiesResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetEntityRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueKey": {
+            "type": "string",
+            "title": "unique_key"
+          },
+          "type": {
+            "type": "string",
+            "title": "type"
+          }
+        },
+        "title": "GetEntityRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetLogsRequest": {
+        "type": "object",
+        "properties": {
+          "startOffset": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "start_offset",
+            "format": "int64"
+          }
+        },
+        "title": "GetLogsRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetLogsResponse": {
+        "type": "object",
+        "properties": {
+          "logs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+            },
+            "title": "logs"
+          },
+          "countRemaining": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "count_remaining",
+            "format": "int64"
+          },
+          "pageSize": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "page_size",
+            "format": "int64"
+          },
+          "totalCount": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "total_count",
+            "format": "int64"
+          },
+          "startOffset": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "start_offset",
+            "format": "int64"
+          }
+        },
+        "title": "GetLogsResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetReadyzRequest": {
+        "type": "object",
+        "title": "GetReadyzRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetReadyzResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "status"
+          }
+        },
+        "title": "GetReadyzResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.InitRequest": {
+        "type": "object",
+        "title": "InitRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.InitResponse": {
+        "type": "object",
+        "properties": {
+          "showFooter": {
+            "type": "boolean",
+            "title": "showFooter"
+          },
+          "showNavigation": {
+            "type": "boolean",
+            "title": "showNavigation"
+          },
+          "showNewVersions": {
+            "type": "boolean",
+            "title": "showNewVersions"
+          },
+          "availableVersion": {
+            "type": "string",
+            "title": "availableVersion"
+          },
+          "currentVersion": {
+            "type": "string",
+            "title": "currentVersion"
+          },
+          "pageTitle": {
+            "type": "string",
+            "title": "pageTitle"
+          },
+          "sectionNavigationStyle": {
+            "type": "string",
+            "title": "sectionNavigationStyle"
+          },
+          "defaultIconForBack": {
+            "type": "string",
+            "title": "defaultIconForBack"
+          },
+          "enableCustomJs": {
+            "type": "boolean",
+            "title": "enableCustomJs"
+          },
+          "authLoginUrl": {
+            "type": "string",
+            "title": "authLoginUrl"
+          },
+          "authLocalLogin": {
+            "type": "boolean",
+            "title": "authLocalLogin"
+          },
+          "styleMods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "styleMods"
+          },
+          "oAuth2Providers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.OAuth2Provider"
+            },
+            "title": "oAuth2Providers"
+          },
+          "additionalLinks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.AdditionalLink"
+            },
+            "title": "additionalLinks"
+          },
+          "rootDashboards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "rootDashboards"
+          },
+          "authenticatedUser": {
+            "type": "string",
+            "title": "authenticated_user"
+          },
+          "authenticatedUserProvider": {
+            "type": "string",
+            "title": "authenticated_user_provider"
+          },
+          "effectivePolicy": {
+            "title": "effective_policy",
+            "$ref": "#/components/schemas/olivetin.api.v1.EffectivePolicy"
+          },
+          "bannerMessage": {
+            "type": "string",
+            "title": "banner_message"
+          },
+          "bannerCss": {
+            "type": "string",
+            "title": "banner_css"
+          },
+          "showDiagnostics": {
+            "type": "boolean",
+            "title": "show_diagnostics"
+          },
+          "showLogList": {
+            "type": "boolean",
+            "title": "show_log_list"
+          },
+          "loginRequired": {
+            "type": "boolean",
+            "title": "login_required"
+          }
+        },
+        "title": "InitResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.KillActionRequest": {
+        "type": "object",
+        "properties": {
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          }
+        },
+        "title": "KillActionRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.KillActionResponse": {
+        "type": "object",
+        "properties": {
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          },
+          "killed": {
+            "type": "boolean",
+            "title": "killed"
+          },
+          "alreadyCompleted": {
+            "type": "boolean",
+            "title": "already_completed"
+          },
+          "found": {
+            "type": "boolean",
+            "title": "found"
+          }
+        },
+        "title": "KillActionResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.LocalUserLoginRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "username"
+          },
+          "password": {
+            "type": "string",
+            "title": "password"
+          }
+        },
+        "title": "LocalUserLoginRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.LocalUserLoginResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "title": "success"
+          }
+        },
+        "title": "LocalUserLoginResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.LogEntry": {
+        "type": "object",
+        "properties": {
+          "datetimeStarted": {
+            "type": "string",
+            "title": "datetime_started"
+          },
+          "actionTitle": {
+            "type": "string",
+            "title": "action_title"
+          },
+          "output": {
+            "type": "string",
+            "title": "output"
+          },
+          "timedOut": {
+            "type": "boolean",
+            "title": "timed_out"
+          },
+          "exitCode": {
+            "type": "integer",
+            "title": "exit_code",
+            "format": "int32"
+          },
+          "user": {
+            "type": "string",
+            "title": "user"
+          },
+          "userClass": {
+            "type": "string",
+            "title": "user_class"
+          },
+          "actionIcon": {
+            "type": "string",
+            "title": "action_icon"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "tags"
+          },
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          },
+          "datetimeFinished": {
+            "type": "string",
+            "title": "datetime_finished"
+          },
+          "actionId": {
+            "type": "string",
+            "title": "action_id"
+          },
+          "executionStarted": {
+            "type": "boolean",
+            "title": "execution_started"
+          },
+          "executionFinished": {
+            "type": "boolean",
+            "title": "execution_finished"
+          },
+          "blocked": {
+            "type": "boolean",
+            "title": "blocked"
+          },
+          "datetimeIndex": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "datetime_index",
+            "format": "int64"
+          },
+          "canKill": {
+            "type": "boolean",
+            "title": "can_kill"
+          }
+        },
+        "title": "LogEntry",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.LogoutRequest": {
+        "type": "object",
+        "title": "LogoutRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.LogoutResponse": {
+        "type": "object",
+        "title": "LogoutResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.OAuth2Provider": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "url": {
+            "type": "string",
+            "title": "url"
+          },
+          "icon": {
+            "type": "string",
+            "title": "icon"
+          }
+        },
+        "title": "OAuth2Provider",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.PasswordHashRequest": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "title": "password"
+          }
+        },
+        "title": "PasswordHashRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.PasswordHashResponse": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string",
+            "title": "hash"
+          }
+        },
+        "title": "PasswordHashResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.RestartActionRequest": {
+        "type": "object",
+        "properties": {
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          }
+        },
+        "title": "RestartActionRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.SosReportRequest": {
+        "type": "object",
+        "title": "SosReportRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.SosReportResponse": {
+        "type": "object",
+        "properties": {
+          "alert": {
+            "type": "string",
+            "title": "alert"
+          }
+        },
+        "title": "SosReportResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionAndWaitRequest": {
+        "type": "object",
+        "properties": {
+          "actionId": {
+            "type": "string",
+            "title": "action_id"
+          },
+          "arguments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.StartActionArgument"
+            },
+            "title": "arguments"
+          }
+        },
+        "title": "StartActionAndWaitRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionAndWaitResponse": {
+        "type": "object",
+        "properties": {
+          "logEntry": {
+            "title": "log_entry",
+            "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+          }
+        },
+        "title": "StartActionAndWaitResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionArgument": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "title": "StartActionArgument",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionByGetAndWaitRequest": {
+        "type": "object",
+        "properties": {
+          "actionId": {
+            "type": "string",
+            "title": "action_id"
+          }
+        },
+        "title": "StartActionByGetAndWaitRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionByGetAndWaitResponse": {
+        "type": "object",
+        "properties": {
+          "logEntry": {
+            "title": "log_entry",
+            "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+          }
+        },
+        "title": "StartActionByGetAndWaitResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionByGetRequest": {
+        "type": "object",
+        "properties": {
+          "actionId": {
+            "type": "string",
+            "title": "action_id"
+          }
+        },
+        "title": "StartActionByGetRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionByGetResponse": {
+        "type": "object",
+        "properties": {
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          }
+        },
+        "title": "StartActionByGetResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionRequest": {
+        "type": "object",
+        "properties": {
+          "bindingId": {
+            "type": "string",
+            "title": "binding_id"
+          },
+          "arguments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.StartActionArgument"
+            },
+            "title": "arguments"
+          },
+          "uniqueTrackingId": {
+            "type": "string",
+            "title": "unique_tracking_id"
+          }
+        },
+        "title": "StartActionRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.StartActionResponse": {
+        "type": "object",
+        "properties": {
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          }
+        },
+        "title": "StartActionResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ValidateArgumentTypeRequest": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "title": "value"
+          },
+          "type": {
+            "type": "string",
+            "title": "type"
+          }
+        },
+        "title": "ValidateArgumentTypeRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ValidateArgumentTypeResponse": {
+        "type": "object",
+        "properties": {
+          "valid": {
+            "type": "boolean",
+            "title": "valid"
+          },
+          "description": {
+            "type": "string",
+            "title": "description"
+          }
+        },
+        "title": "ValidateArgumentTypeResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.WatchExecutionRequest": {
+        "type": "object",
+        "properties": {
+          "executionTrackingId": {
+            "type": "string",
+            "title": "execution_tracking_id"
+          }
+        },
+        "title": "WatchExecutionRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.WatchExecutionUpdate": {
+        "type": "object",
+        "properties": {
+          "update": {
+            "type": "string",
+            "title": "update"
+          }
+        },
+        "title": "WatchExecutionUpdate",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.WhoAmIRequest": {
+        "type": "object",
+        "title": "WhoAmIRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.WhoAmIResponse": {
+        "type": "object",
+        "properties": {
+          "authenticatedUser": {
+            "type": "string",
+            "title": "authenticated_user"
+          },
+          "usergroup": {
+            "type": "string",
+            "title": "usergroup"
+          },
+          "provider": {
+            "type": "string",
+            "title": "provider"
+          },
+          "acls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "acls"
+          },
+          "sid": {
+            "type": "string",
+            "title": "sid"
+          }
+        },
+        "title": "WhoAmIResponse",
+        "additionalProperties": false
+      }
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "olivetin.api.v1.OliveTinApiService"
+    }
+  ]
+}
