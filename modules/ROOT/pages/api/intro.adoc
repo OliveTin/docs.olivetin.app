@@ -16,8 +16,10 @@ The gRPC API only listens on localhost default, but it can be set to listen publ
 
 == Links
 
-* link:http://docs.olivetin.app/api/swagger/[Swagger UI for OliveTin API]
-* link:http://docs.olivetin.app/api/swagger/OliveTin.openapi.json[OpenAPI JSON Definition]
+* link:http://docs.olivetin.app/api/swagger/[OliveTin 2k API: Swagger UI]
+* link:http://docs.olivetin.app/api/swagger/OliveTin.openapi.json[OpenAPI 2k API: OpenAPI JSON Definition]
+* link:http://docs.olivetin.app/api/swagger/3k/[OliveTin 3k API: Swagger UI]
+* link:http://docs.olivetin.app/api/swagger/3k/OliveTin.openapi.json[OpenAPI 3k API: OpenAPI JSON Definition]
 * link:https://github.com/OliveTin/OliveTin/blob/main/proto/olivetin/api/v1/olivetin.proto[The OliveTin Protobuf file]. 
 
 Please do talk to the developers on Discord if you'd like help using the API, or you're thinking about building something interesting using the API!
