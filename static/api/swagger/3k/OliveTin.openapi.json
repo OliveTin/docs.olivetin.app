@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "olivetin.api.v1"
+    "title": "OliveTin 3k API"
   },
   "paths": {
     "/olivetin.api.v1.OliveTinApiService/DumpPublicIdActionMap": {
