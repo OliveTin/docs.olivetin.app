@@ -19,6 +19,11 @@ Deleted packages will not be supported in any way;
 == History of deleted packages;
 
 * **OliveTin 2025-11-06** - deleted due to wrong tag format (2025-11-06 instead of 2025.11.06)
-  * GitHub releases page
-  * GHCR
-  * Docker Hub
+** GitHub releases page
+** GHCR
+** Docker Hub
+
+* **OliveTin 2025-10-30** - deleted due to wrong tag format (2025-10-30 instead of 2025.10.30)
+** GitHub releases page
+** GHCR
+** Docker Hub
