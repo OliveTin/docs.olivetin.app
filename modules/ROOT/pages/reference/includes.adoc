@@ -1,0 +1,14 @@
+= Includes
+
+OliveTin 3k supports including configuration files from other files. This is useful for organizing large configurations or reusing common settings across multiple actions.
+
+== Include Syntax
+
+To include another configuration file, use the following syntax in your main configuration file:
+
+[source,yaml]
+----	
+include: config.d
+----
+
+This will include all config files in the <config dir>/config.d/ directory.

@@ -141,6 +141,7 @@
 ** xref:reference/donations_and_sponsorship.adoc[Donations & Sponsorship]
 ** xref:reference/multiple_instances.adoc[Multiple Instances]
 ** xref:reference/release_policy.adoc[Release Policy]
+** xref:reference/includes.adoc[Includes]
 * Troubleshooting
 ** xref:troubleshooting/wheretofindhelp.adoc[Where to find help]
 ** xref:troubleshooting/sosreport.adoc[SOSReport]
