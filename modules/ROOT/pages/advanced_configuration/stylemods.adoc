@@ -4,7 +4,7 @@ There are several style modifications that some people like to use, which can ea
 
 [source,yaml]
 ----
-stylemodes:
+stylemods:
   - sm-side-icons
 ----	
 
