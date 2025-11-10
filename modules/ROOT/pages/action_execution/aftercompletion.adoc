@@ -36,4 +36,4 @@ urls:
 
 == See Also
 
-* xref:triggers.adoc[Triggers] - Executing full actions after this one (with separate arguments, etc).
+* xref:./triggers.adoc[Triggers] - Executing full actions after this one (with separate arguments, etc).
