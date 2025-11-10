@@ -4,9 +4,25 @@ NOTE: OliveTin 3k is basically "rebuilding OliveTin for the future" - and aims t
 
 == Quick summary of key points
 
-- OliveTin versions like 2022.11.11 and 2023.04.15 are part of "**OliveTin 2k**" (2000 series) and use a **calendar versioning** (calver) scheme. These versions are stable and will continue to receive updates and support but will not receive new features.
- - There is no plan to stop supporting OliveTin 2k versions until at least 31st December 2028.
-- OliveTin versions starting from 3000.0.0 and onwards are part of "**OliveTin 3k**" (3000 series) and also use a **semantic versioning scheme**. These versions will receive new features, improvements, and updates.
+|===
+| Release Series | Versioning Scheme | Supported Until
+
+| **OliveTin 2k** 
+
+eg: 2022.11.11
+
+eg: 2023.04.15
+| Calendar Versioning (calver)
+| At least 31st December 2028 (bug fixes and security updates only)
+
+| **OliveTin 3k**
+
+eg: 3000.0.0
+
+eg: 3000.1.0
+| Semantic Versioning (semver)
+| Ongoing - new features and updates
+|===
 
 Users who are upgrading are encouraged to try OliveTin 3k, but understand that it represents several major technology changes, so subtle things might change or break in the first few releases. The objective is to maintain as much compatibility as is pragmatically possible, and highlight any breaking changes clearly.
 
