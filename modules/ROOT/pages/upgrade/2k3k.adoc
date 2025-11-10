@@ -82,6 +82,8 @@ Change your `latest` tag to `latest-2k` in your container definitions.
 - `olivetin/olivetin:latest-3k` - This tag will always point to the latest OliveTin 3k version (eg 3000.2.0)
 - `olivetin/olivetin:latest` - This tag will always point to the latest OliveTin version (currently 3k)
 
+xref:install/container.adoc[More information about installing OliveTin in containers]
+
 === What does GitHub "latest" point to?
 
 GitHub's "latest" release tag isn't super helpful. It currently points to the "release that was pushed last". So sometimes this will be 2k, and sometimes this will be 3k. We're trying to find a way to fix this.
