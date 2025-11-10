@@ -20,7 +20,7 @@
 *** xref:install/macos.adoc[MacOS]
 *** xref:install/choose_package.adoc[All download options]
 * Upgrade Guide
-** xref:upgrade/2k3k.adoc[Upgrading from 2k to 3k]
+** xref:upgrade/2k3k.adoc[Understanding OliveTin 2k vs 3k]
 ** xref:upgrade/upgrade_notes.adoc[Updates Notes]
 * xref:config.adoc[Configuration]
 * xref:reverse-proxies/intro.adoc[Reverse Proxies]

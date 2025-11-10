@@ -56,6 +56,20 @@ Users are encouraged to try OliveTin 3k, but understand that it represents sever
 
 The developers of this project have quite a lot of test infrastructure around OliveTin 3k (more than was possible with 2k), and would like to **strongly urge problems with updates to be reported, so that they can be fixed when possible**. 
 
+=== How do I stop my OliveTin 2k containers from upgrading to OliveTin 3k automatically?
+
+Change your `latest` tag to `latest-2k` in your container definitions. 
+
+3 tags now exist for container images and container registries;
+
+- `olivetin/olivetin:latest-2k` - This tag will always point to the latest OliveTin 2k version (eg 2025.11.11)
+- `olivetin/olivetin:latest-3k` - This tag will always point to the latest OliveTin 3k version (eg 3000.2.0)
+- `olivetin/olivetin:latest` - This tag will always point to the latest OliveTin version (currently 3k)
+
+=== What does GitHub "latest" point to?
+
+GitHub's "latest" release tag isn't super helpful. It currently points to the "release that was pushed last". So sometimes this will be 2k, and sometimes this will be 3k. We're trying to find a way to fix this.
+
 == What are the changes I need to make to upgrade from OliveTin 2k to 3k?
 
 === OliveTin Configuration files
