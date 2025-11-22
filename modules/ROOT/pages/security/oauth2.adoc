@@ -32,4 +32,9 @@ authOAuth2Providers:
 * `insecureSkipVerify` - a boolean to disable certificate verfication
 * `connectTimeout` - an integer for seconds until the request will timeout, e.g. `10`
 
+== Built-in providers (`name`)
 
+OliveTin comes with a few built-in providers for convenience. If you are using one of these with a `name`, then you don't need to specify the various URLs, scopes, icon, usernameField, etc. It will be automatically configured for you. You will still need to provide the client ID and client secret.
+
+* `github` - GitHub
+* `google` - Google
