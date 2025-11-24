@@ -22,6 +22,9 @@
 * Upgrade Guide
 ** xref:upgrade/2k3k.adoc[Understanding 2k vs 3k]
 ** xref:upgrade/upgrade_notes.adoc[Updates Notes]
+** xref:upgrade/github_latest.adoc[Warning: GitHub Latest]
+** xref:reference/updateChecks.adoc[Update Checks]
+** xref:reference/updateTracking.adoc[Update Tracking (legacy)]
 * xref:config.adoc[Configuration]
 * xref:reverse-proxies/intro.adoc[Reverse Proxies]
 ** xref:reverse-proxies/apache.adoc[Apache]
@@ -131,8 +134,6 @@
 * Reference
 ** xref:reference/network-ports.adoc[Network Ports]
 ** xref:reference/exitCodes.adoc[Exit Codes]
-** xref:reference/updateChecks.adoc[Update Checks]
-** xref:reference/updateTracking.adoc[Update Tracking (legacy)]
 ** xref:reference/containerInstallPackages.adoc[Install packages in containers]
 ** xref:reference/reference_snapshots.adoc[Snapshots]
 ** xref:reference/reference_themes_for_users.adoc[Themes (for users)]
