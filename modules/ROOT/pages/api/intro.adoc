@@ -1,5 +1,7 @@
 [#api]
 
+The OliveTin 2k API is different to the OliveTin 3k API.
+
 = API Overview 
 This section of the documentation is intended for developers, and those who want to hack around with OliveTin and extend it. This page provides a few pointers to get started. 
 
