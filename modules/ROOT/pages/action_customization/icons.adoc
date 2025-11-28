@@ -56,6 +56,34 @@ actions:
     shell: echo "You are awesome"
 ----
 
+=== Unicode alises 
+
+OliveTin has hard-coded aliases for a few commonly used icons, so you don't have to type out the full unicode codes. A list of those hard coded icons is;
+
+.Alias'd unicode reference table
+[%header]
+|===
+| Alias                       | Rendered as                       
+
+| `poop`                      | &#x1f4a9; 
+| `smile`                     | &#x1F600;
+|	`ping`                      | &#x1f4e1;
+|	`backup`                    | &#128190;
+|	`reboot`                    | &#128260;
+|	`restart`                   | &#128260;
+|	`box`                       | &#128230;
+|	`ashtonished`               | &#128562;
+|	`clock`                     | &#128338;
+|	`disk`                      | &#128189;
+|	`logs`                      | &#128269;
+|	`light`                     | &#128161;
+|	`robot`                     | &#129302;
+|	`ssh`                       | &#128272;
+|	`theme`                     | &#127912;
+|===
+
+A full reference can be found in: https://github.com/OliveTin/OliveTin/blob/main/service/internal/config/emoji.go
+
 == Full HTML icons (`<img src ...`)
 You can also specify the full HTML for an image, like;
 
