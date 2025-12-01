@@ -1,5 +1,7 @@
 = Entity Directories
 
+NOTE: Entity directories were added in 3000.6.0.
+
 Entity directories are a way of grouping actions together based on a single entity instance.
 
 For example, if you have a `server` entity, you can create a directory called `servers` and then add all the actions that you want to apply to all servers to that directory.
