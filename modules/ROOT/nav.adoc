@@ -84,6 +84,7 @@
 ** xref:dashboards/3-folders.adoc[Folders]
 ** xref:dashboards/4-displays.adoc[Displays]
 ** xref:dashboards/5-output-views.adoc[Output Views]
+** xref:dashboards/entity-directories.adoc[Entity Directories]
 * xref:entities/intro.adoc[Entities]
 ** xref:entities/examples.adoc[Examples]
 ** xref:entities/yaml.adoc[YAML Entity Files]
