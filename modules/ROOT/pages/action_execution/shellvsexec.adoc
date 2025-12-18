@@ -1,6 +1,6 @@
 = Shell vs Exec
 
-OliveTin supports two different methods to run commands: `shell` and `exec`. The difference between these two is thta "shell" accepts strings, and will wrap that whole command in a shall with "bash -c". Exec uses a syscall directly to execute commands.
+OliveTin supports two different methods to run commands: `shell` and `exec`. The difference between these two is that "shell" accepts strings, and will wrap that whole command in a shell with "bash -c". Exec uses a syscall directly to execute commands.
 
 * **Shell** is more flexible, because it allows you to chain commands (eg, using &&) and redirect or pipe output (eg: ">" or "|").
 * **Exec** is more secure, because it does not invoke a shell, and thus avoids shell injection attacks.
