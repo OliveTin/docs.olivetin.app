@@ -1,4 +1,17 @@
 [#action-customisation]
 = Action customisation
 
-There are several ways to customize actions. See the links in this section to see how to do it.
+Actions in OliveTin can be customized in many ways to fit your specific needs. This section covers various customization options that allow you to control how actions behave, appear, and execute.
+
+You can customize actions by:
+
+* Setting icons to make actions visually distinct
+* Configuring timeouts to control how long actions can run
+* Assigning actions to specific users or groups
+* Controlling concurrency to limit how many instances of an action can run simultaneously
+* Setting rate limits to prevent actions from being executed too frequently
+* Assigning unique IDs for API access
+* Configuring log saving for audit trails
+* Setting popup behaviors when actions start
+
+See the links in this section for detailed information on each customization option.

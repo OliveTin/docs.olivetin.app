@@ -1,5 +1,18 @@
 = Advanced Configuration
 
-This section includes optional configuration options that are used less frequently by most users.
+This section covers advanced configuration options that provide additional control and customization for OliveTin. These options are typically used by users who need fine-grained control over logging, diagnostics, networking, UI customization, and other advanced features.
+
+Topics covered in this section include:
+
+* Application and action logging configuration
+* Diagnostics and troubleshooting tools
+* Environment variable configuration
+* Network port configuration
+* Style modifications for UI customization
+* Prometheus metrics integration
+* Timezone configuration
+* Web UI customization options
+
+Most users will not need to modify these settings for basic OliveTin usage, but they become important when you need to integrate OliveTin into complex environments or customize its behavior to match specific requirements.
 
 

@@ -28,7 +28,7 @@ For building up from here, look at the following resources;
 
 * See the xref:solutions/intro.adoc[Solutions] documentation for just the essential configuration to achieve popular use cases.
 
-All configuration options are covered in the sollution sections
+All configuration options are covered in the solution sections
 
 [#config-list]
 == Core functionality
@@ -48,14 +48,14 @@ All configuration options are covered in the sollution sections
 
 | `pageTitle` | A custom title for the OliveTin page. | `OliveTin` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
 | `showFooter` | Show (or hide) the footer. | `true` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
-| `showNewVersions` | Show (or hide) new versions in the footer. | `true` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI]>.
+| `showNewVersions` | Show (or hide) new versions in the footer. | `true` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
 | `showNavigation` | Show (or hide) the sidebar/topbar section navigation. | `true` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
 | `sectionNavigationStyle` | The style of the section navigation. `sidebar`, `topbar` | `sidebar` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
 | `defaultPopupOnStart` | The default popup to show on start. | `none` | Live reloadable | xref:action_customization/popuponstart.adoc[Popup On Start].
 | `defaultIconForActions` | The default icon to use for actions. | `smile` | Requires Restart | -
 | `defaultIconForDirectories` | The default icon to use for directories. | `directory` | Requires Restart | -
 | `defaultIconForBack` | The default icon to use for back (from directories). | `&laquo;` | Requires Restart | -
-| `enableCustomJs` | Enable custom JavaScript. | `false` | Live Reloadable, band refreshing the web browser is required. | xref:advanced_configuration/webui.adoc[Custom JS].
+| `enableCustomJs` | Enable custom JavaScript. | `false` | Live Reloadable, but refreshing the web browser is required. | xref:advanced_configuration/webui.adoc[Custom JS].
 | `themeName` | The theme to use. | `` | Restart recommended | xref:reference/reference_themes_for_users.adoc[Themes].
 |===
 
@@ -64,17 +64,17 @@ All configuration options are covered in the sollution sections
 |===
 | Option | Description | Default | Live Reloadable | Documentation
 
-| `AuthJwtCookieName` | The name of the cookie to use for JWT authentication. | `` | Requires restart | xref:security/jwt_hmac.adoc[JWT with HMAC>>, xref:security/jwt_keys.adoc[JWT with Keys]
+| `AuthJwtCookieName` | The name of the cookie to use for JWT authentication. | `` | Requires restart | xref:security/jwt_hmac.adoc[JWT with HMAC], xref:security/jwt_keys.adoc[JWT with Keys]
 | `AuthJwtAud` | The audience to use for JWT authentication. | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Keys]
 | `AuthJwtDomain` | The domain to use for JWT authentication. | `` | Requires restart | xref:security/jwt_hmac.adoc[JWT with HMAC], xref:security/jwt_keys.adoc[JWT with Keys]
 | `AuthJwtCertsURL` | The URL to fetch the public keys from with JWKS | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Keys]
 | `AuthJwtClaimUsername` | The claim to use for the username. | `sub` | Requires restart | xref:security/jwt_hmac.adoc[JWT with HMAC], xref:security/jwt_keys.adoc[JWT with Keys]
 | `AuthJwtClaimUserGroup` | The claim to use for the usergroup. | `sub` | Requires restart | xref:security/jwt_hmac.adoc[JWT with HMAC], xref:security/jwt_keys.adoc[JWT with Keys]
-| `AuthJwtHeader` | The HTTP header to use for JWT authentication. | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Key]
-| `AuthJwtPubKeyPath` | The path to the public key to use for JWT authentication. | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Key]
+| `AuthJwtHeader` | The HTTP header to use for JWT authentication. | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Keys]
+| `AuthJwtPubKeyPath` | The path to the public key to use for JWT authentication. | `` | Requires restart | xref:security/jwt_keys.adoc[JWT with Keys]
 | `AuthHttpHeaderUsername` | The HTTP header to use for the username. | `` | Requires restart | xref:security/trusted_header.adoc[Trusted Headers]
 | `AuthHttpHeaderUserGroup` | The HTTP header to use for the usergroup. | `` | Requires restart | xref:security/trusted_header.adoc[Trusted Headers]
-| `AuthLocalUsers | The list of local users. | `[]` | Requires restart | xref:security/local.adoc[Local Users]
+| `AuthLocalUsers` | The list of local users. | `[]` | Requires restart | xref:security/local.adoc[Local Users]
 | `AuthLoginUrl` | The URL to redirect to for login. | `` | Requires restart | xref:security/local.adoc[Login URL]
 | `AuthRequireGuestsToLogin` | Basically disables all functionality for guests. It sets all default permissions to false. | `false` | Requires restart | xref:security/acl.adoc[Access Control Lists]
 | `DefaultPermissions` | The default permissions to use. | `[]` | Requires restart | xref:security/acl.adoc[Access Control Lists]

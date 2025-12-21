@@ -118,7 +118,7 @@ You can customize OliveTin with themes, but it's also possible to write your on 
 
 === Writing a simple theme with a CSS change
 
-You'll need to create a new theme, and let's assume our theme namme is going to be called `uihack`. OliveTin themes are simply a directory of CSS and other assets. OliveTin looks for a directory called `custom-webui/themes/<theme-folder-name>` in the same directory as your `config.yaml` file. 
+You'll need to create a new theme, and let's assume our theme name is going to be called `uihack`. OliveTin themes are simply a directory of CSS and other assets. OliveTin looks for a directory called `custom-webui/themes/<theme-folder-name>` in the same directory as your `config.yaml` file. 
 
 Start by creating a directory called `custom-webui/themes/uihack` relative to the same directory as your `config.yaml` file. In this directory, create a file called `theme.css`.
 
