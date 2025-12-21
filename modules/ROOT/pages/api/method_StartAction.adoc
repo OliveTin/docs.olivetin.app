@@ -15,13 +15,13 @@ include::partial$api/start_action_methods.adoc[]
 [source,bash]
 .curl
 ----
-user@host: curl "http://olivetin.webapps.teratan.lan/api/StartAction" --json '{"actionId": "nuclear_reactor_shutdown"}'
+user@host: curl "http://olivetin.webapps.teratan.lan/api/StartAction" --json '{"bindingId": "nuclear_reactor_shutdown"}'
 ----
 
 [source,powershell]
 .Powershell
 ----
-PS C:\Users\xcons> $json = '{"actionId": "deploy_attack_gnomes"}'
+PS C:\Users\xcons> $json = '{"bindingId": "deploy_attack_gnomes"}'
 PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
 ----
 
@@ -30,6 +30,6 @@ PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:
 [source,bash]
 .curl
 ----
-user:host: curl 'http://olivetin.example.com/api/StartAction' --json '{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
+user:host: curl 'http://olivetin.example.com/api/StartAction' --json '{"bindingId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
 ----
 
