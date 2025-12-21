@@ -15,7 +15,7 @@ include::partial$api/start_action_methods.adoc[]
 [source,bash]
 .curl
 ----
-user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionId": "nuclear_reactor_shutdown"}'
+user@host: curl "http://olivetin.webapps.teratan.lan/api/StartAction" --json '{"actionId": "nuclear_reactor_shutdown"}'
 ----
 
 [source,powershell]
@@ -30,6 +30,6 @@ PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:
 [source,bash]
 .curl
 ----
-user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
+user:host: curl 'http://olivetin.example.com/api/StartAction' --json '{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
 ----
 
