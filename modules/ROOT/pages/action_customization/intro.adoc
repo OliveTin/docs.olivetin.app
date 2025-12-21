@@ -15,3 +15,17 @@ You can customize actions by:
 * Setting popup behaviors when actions start
 
 See the links in this section for detailed information on each customization option.
+
+== What's Next?
+
+Explore specific customization options:
+
+* xref:action_customization/icons.adoc[Customize icons] - Set visual icons for your actions
+* xref:action_customization/timeouts.adoc[Configure timeouts] - Control how long actions can run
+* xref:action_customization/users.adoc[Assign to users] - Restrict actions to specific users
+* xref:action_customization/concurrency.adoc[Control concurrency] - Limit simultaneous executions
+* xref:action_customization/ratelimiting.adoc[Set rate limits] - Prevent actions from running too frequently
+* xref:action_customization/popuponstart.adoc[Configure popups] - Control popup behavior when actions start
+* xref:action_customization/savelogs.adoc[Save action logs] - Configure log retention for actions
+* xref:action_customization/ids.adoc[Set action IDs] - Assign IDs for API access
+

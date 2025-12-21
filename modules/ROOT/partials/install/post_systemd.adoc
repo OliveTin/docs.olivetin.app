@@ -48,5 +48,5 @@ If the service has failed, scroll through the logs;
 user@host: journalctl -eu OliveTin
 ----
 
-If you cannot understand the logs, or otherwise need help, see the <<support>>
+If you cannot understand the logs, or otherwise need help, see the xref:troubleshooting/wheretofindhelp.adoc[support page].
 page.

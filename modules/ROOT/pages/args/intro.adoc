@@ -10,4 +10,14 @@ Examples of valid argument names are `{{ personName }}`, `{{ customer_number }}`
 * numbers are allowed (argument names can also start with numbers)
 * all other characters are invalid for argument names.
 
+== What's Next?
+
+Now that you understand how arguments work, explore the different argument types and features:
+
+* xref:args/types.adoc[Argument types] - Learn about different input types (text, dropdown, checkbox, etc.)
+* xref:args/safety.adoc[Argument safety] - Understand how OliveTin keeps arguments safe
+* xref:args/suggestions.adoc[Argument suggestions] - Add dynamic suggestions to help users
+* xref:args/regex.adoc[Input validation with regex] - Validate user input with regular expressions
+* xref:args/env.adoc[Environment variables] - Use arguments to set environment variables
+* xref:action_examples/intro.adoc[See examples] - View real-world examples using arguments
 

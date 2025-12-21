@@ -15,7 +15,7 @@ NOTE: Simplest for most users. Podman does not have this requirement.
 - Run the container with `--privileged` and as `root` (eg `--user root`).
 - This avoids user/group permission issues on `/var/run/docker.sock`.
 
-If you are getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 by default, which is not allowed by your docker host. Running with `--user root` under `--privileged` resolves this quickly. Note that <<no-puid-pgid,PUID and PGID variables will not work>>.
+If you are getting "permission denied" errors it is probably because OliveTin runs as user UID 1000 by default, which is not allowed by your docker host. Running with `--user root` under `--privileged` resolves this quickly. Note that xref:troubleshooting/puid-pgid.adoc[PUID and PGID variables will not work].
 
 ==== Option 2 — Run as non-root in the host `docker` group (no `--privileged`)
 

@@ -58,4 +58,4 @@ If you are having problems in starting OliveTin, or OliveTin is crashing on star
 user@host: docker logs OliveTin
 ----
 
-If you cannot understand the logs, or otherwise need help, see the <<support,support page>>.
+If you cannot understand the logs, or otherwise need help, see the xref:troubleshooting/wheretofindhelp.adoc[support page].

@@ -31,3 +31,14 @@ actions:
 ----
 
 When in doubt, prefer `exec` over `shell` for better security. Shell was added in both OliveTin 3k and OliveTin 2k in October 2025.
+
+== What's Next?
+
+Now that you understand execution methods, continue building your actions:
+
+* xref:action_execution/create_your_first.adoc[Create your first action] - Build a simple action to get started
+* xref:args/intro.adoc[Add arguments to actions] - Make actions interactive with user input
+* xref:action_execution/oncron.adoc[Schedule actions] - Set up automated execution
+* xref:action_execution/onwebhook.adoc[Trigger via webhooks] - Integrate with external systems
+* xref:security/concepts.adoc[Configure security] - Secure your actions with authentication and authorization
+* xref:action_examples/intro.adoc[Browse examples] - See real-world action configurations
