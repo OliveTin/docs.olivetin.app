@@ -14,6 +14,10 @@ You can add as many style mods as you like, but note that some of them may confl
 
 * `sm-side-icons`: Display action buttons with the icons on the left hand side rather than above the text.
 * `sm-imageicons-fullwidth`: Display image icons in full width, rather than the default size.
+* `sm-transparent-header`: Make the header background transparent.
+* `sm-transparent-footer`: Make the footer background transparent.
+
+NOTE: The `sm-transparent-header` and `sm-transparent-footer` style mods often fix themes that were designed for OliveTin 2k.
 
 The list of style mods on this page is maintained as new style modifications are added to OliveTin. 
 

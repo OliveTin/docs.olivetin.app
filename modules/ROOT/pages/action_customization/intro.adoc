@@ -10,6 +10,7 @@ You can customize actions by:
 * Assigning actions to specific users or groups
 * Controlling concurrency to limit how many instances of an action can run simultaneously
 * Setting rate limits to prevent actions from being executed too frequently
+* Using enabled expressions to dynamically enable/disable actions based on entity state
 * Assigning unique IDs for API access
 * Configuring log saving for audit trails
 * Setting popup behaviors when actions start
@@ -25,6 +26,7 @@ Explore specific customization options:
 * xref:action_customization/users.adoc[Assign to users] - Restrict actions to specific users
 * xref:action_customization/concurrency.adoc[Control concurrency] - Limit simultaneous executions
 * xref:action_customization/ratelimiting.adoc[Set rate limits] - Prevent actions from running too frequently
+* xref:action_customization/enabledExpression.adoc[Enabled expressions] - Dynamically enable/disable actions based on entity state
 * xref:action_customization/popuponstart.adoc[Configure popups] - Control popup behavior when actions start
 * xref:action_customization/savelogs.adoc[Save action logs] - Configure log retention for actions
 * xref:action_customization/ids.adoc[Set action IDs] - Assign IDs for API access
