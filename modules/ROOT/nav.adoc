@@ -111,6 +111,7 @@
 ** xref:integrations/homeassistant-integration.adoc[Home Assistant (HACS Integration)]
 ** xref:integrations/homeassistant.adoc[Home Assistant (REST)]
 ** xref:integrations/stream-deck.adoc[Stream-Deck]
+** xref:integrations/n8n.adoc[n8n]
 ** xref:security/oauth2_authentik.adoc[Authentik]
 ** xref:security/oauth2_pocketid.adoc[Pocket ID]
 ** xref:reverse-proxies/intro.adoc[Reverse Proxies]
