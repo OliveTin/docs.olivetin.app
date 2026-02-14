@@ -17,8 +17,8 @@ When running shellAfterCompleted, you *cannot* use argument values - they are no
 
 * `{{ exitCode }}` - The exit code of the previous shell command
 * `{{ output }}` - The standard output of the previous shell command
-* `{{ ot_executionTrackingId }}` - The unique execution tracking id for this execution
-* `{{ ot_username }}` - The username of the user who started the execution (if any - could be `guest` or `cron`).
+* `{{ .Arguments.ot_executionTrackingId }}` - The unique execution tracking id for this execution (version 3k; in 2k use `{{ ot_executionTrackingId }}`)
+* `{{ .Arguments.ot_username }}` - The username of the user who started the execution (version 3k; in 2k use `{{ ot_username }}`). May be `guest` or `cron` for unauthenticated or automated runs.
 
 You can only use a single `shellAfterCompleted`, so use it for notifications, or similar. It would be an antipattern to use this do run 2 commands making up a mini script.
 
