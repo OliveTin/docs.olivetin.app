@@ -1,6 +1,8 @@
 [#version-display]
 = Version display
 
+NOTE: This feature was added in OliveTin version 3000.11.0.
+
 OliveTin can show or hide the application version in the web interface. This is controlled by the **showVersionNumber** policy, which can be set globally or per user/group via xref:security/acl.adoc#_acls_and_policies_global[ACL policies].
 
 == What you see
