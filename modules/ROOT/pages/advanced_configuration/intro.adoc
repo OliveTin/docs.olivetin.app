@@ -12,6 +12,7 @@ Topics covered in this section include:
 * Prometheus metrics integration
 * Timezone configuration
 * Web UI customization options
+* Version display in the footer (show or hide the application version)
 
 Most users will not need to modify these settings for basic OliveTin usage, but they become important when you need to integrate OliveTin into complex environments or customize its behavior to match specific requirements.
 
@@ -28,4 +29,4 @@ Explore the advanced configuration options:
 * xref:advanced_configuration/timezones.adoc[Configure timezones] - Set timezone handling for actions
 * xref:advanced_configuration/config_envs.adoc[Use environment variables] - Configure environment variable handling
 * xref:reference/network-ports.adoc[Understand network ports] - Learn about OliveTin's port configuration
-
+* xref:reference/version_display.adoc[Version display] - Show or hide the application version in the footer

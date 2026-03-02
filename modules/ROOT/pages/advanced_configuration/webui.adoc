@@ -55,6 +55,15 @@ image::sidebar.png[]
 
 image::topbar.png[]
 
+[#show-version-number]
+== Version number in the footer
+
+You can control whether the installed OliveTin version is shown in the web interface. When enabled (the default), the footer displays text like **OliveTin 2024.06.02**. When disabled, the footer shows only **OliveTin** with no version number.
+
+This is controlled by the **showVersionNumber** policy (in `defaultPolicy` or per user/group in ACLs). Hiding the version also hides any "new version available" link in the footer and redacts the version in the xref:troubleshooting/sosreport.adoc[SOS Report], which can be useful for privacy when sharing reports.
+
+* xref:reference/version_display.adoc[Version display] — full configuration and policy examples
+
 [#show-new-versions]
 == New version available - show/hide
 

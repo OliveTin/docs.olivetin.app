@@ -49,6 +49,7 @@ All configuration options are covered in the solution sections
 | `pageTitle` | A custom title for the OliveTin page. | `OliveTin` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
 | `showFooter` | Show (or hide) the footer. | `true` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
 | `showNewVersions` | Show (or hide) new versions in the footer. | `true` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
+| `defaultPolicy.showVersionNumber` | Show (or hide) the application version in the footer. Can be overridden per user/group in ACLs. | `true` | Requires restart | xref:reference/version_display.adoc[Version display]
 | `showNavigation` | Show (or hide) the sidebar/topbar section navigation. | `true` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
 | `sectionNavigationStyle` | The style of the section navigation. `sidebar`, `topbar` | `sidebar` | Live reloadable | xref:advanced_configuration/webui.adoc[Customize the web UI].
 | `defaultPopupOnStart` | The default popup to show on start. | `none` | Live reloadable | xref:action_customization/popuponstart.adoc[Popup On Start].
