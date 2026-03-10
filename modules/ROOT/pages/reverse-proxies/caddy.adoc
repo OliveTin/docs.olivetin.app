@@ -3,7 +3,7 @@
 
 include::partial$reverse-proxies/diagram.adoc[]
 
-Caddy seems to work without any special configuration, so a simple `Caddyfile` works like this;
+Caddy seems to work without any special configuration for websockets. If you see websocket disconnects, you may need to increase timeouts; see xref:troubleshooting/err-websocket-connection.adoc#reverse-proxies-will-close-websockets[Reverse proxies will close websockets]. A simple `Caddyfile` works like this;
 
 .Caddyfile
 [source,nginx]

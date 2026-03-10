@@ -98,7 +98,7 @@ However, it is possible that some configuration changes will be necessary as we 
 
 === Reverse Proxy configurations
 
-If you are using a reverse proxy (like Nginx, Apache, Caddy, Traefik etc), then you will need to make some changes to your configuration. This is because OliveTin 3k uses websockets for communication between the client and the server, instead of gRPC over HTTP/2.
+If you are using a reverse proxy (like Nginx, Apache, Caddy, Traefik etc), then you will need to make some changes to your configuration. This is because OliveTin 3k uses websockets for communication between the client and the server, instead of gRPC over HTTP/2. Many proxies use short default timeouts and will close websocket connections; increase the websocket or proxy timeout in your proxy config to avoid disconnects (OliveTin will reconnect automatically). See xref:troubleshooting/err-websocket-connection.adoc#reverse-proxies-will-close-websockets[Reverse proxies will close websockets] for more.
 
 Please refer to the [Reverse Proxies](reverse-proxies/intro.adoc) section of the documentation for updated configuration examples for various reverse proxies.
 

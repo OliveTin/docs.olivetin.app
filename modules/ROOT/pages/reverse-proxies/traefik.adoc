@@ -3,7 +3,7 @@
 
 include::partial$reverse-proxies/diagram.adoc[]
 
-The following example is known to work well with Traefik and docker-compose.
+The following example is known to work well with Traefik and docker-compose. If you see websocket disconnects, increase the proxy timeout in Traefik; see xref:troubleshooting/err-websocket-connection.adoc#reverse-proxies-will-close-websockets[Reverse proxies will close websockets].
 
 [source,yaml]
 ----
