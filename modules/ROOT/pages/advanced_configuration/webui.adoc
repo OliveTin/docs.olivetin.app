@@ -38,6 +38,23 @@ actions:
 .The same user interface, but with the sidebar hidden (`showNavigation: false`)
 image::defaultUiHideNav.png[]
 
+[#show-navigate-on-start-icons]
+== Navigate-on-start icons on action buttons
+
+When enabled (the default), each action button can show a small icon indicating what happens when the action is started:
+
+* **Popup dialog** — the action opens a popup (e.g. `popupOnStart: execution-dialog`)
+* **Argument form** — the action opens an argument form on start
+* **Run in background** — the action runs without opening a dialog
+
+Set `showNavigateOnStartIcons: false` in your `config.yaml` to hide these indicator icons for a cleaner look.
+
+.`config.yaml`
+[source,yaml]
+----
+showNavigateOnStartIcons: false
+----
+
 [#section-navgiation-style]
 == Section Navigation Style
 
