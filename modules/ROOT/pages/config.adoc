@@ -79,6 +79,8 @@ All configuration options are covered in the sollution sections
 | `AuthRequireGuestsToLogin` | Basically disables all functionality for guests. It sets all default permissions to false. | `false` | Requires restart | xref:security/acl.adoc[Access Control Lists]
 | `DefaultPermissions` | The default permissions to use. | `[]` | Requires restart | xref:security/acl.adoc[Access Control Lists]
 | `AccessControlLists` | The list of access control lists. | `[]` | Requires restart | xref:security/acl.adoc[Access Control Lists]
+| `security.headerContentSecurityPolicy` | Whether to send a `Content-Security-Policy` header from the single HTTP frontend. | `true` | Live reloadable | xref:security/content_security_policy.adoc[Content Security Policy headers]
+| `security.contentSecurityPolicy` | CSP header value when `security.headerContentSecurityPolicy` is enabled. If empty, a built-in default is used. | (built-in default) | Live reloadable | xref:security/content_security_policy.adoc[Content Security Policy headers]
 |===
 
 == Networking Configuration

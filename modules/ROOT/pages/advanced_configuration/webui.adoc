@@ -112,6 +112,8 @@ You can add custom JavaScript to OliveTin, which will be executed on every page 
 3. Set `enableCustomJs: true` in your `config.yaml` to enable this feature.
 4. Restart OliveTin. Note that the custom JavaScript will only be loaded once on startup, so if you are changing the custom JavaScript while OliveTin is running, you will need to restart OliveTin to see the changes.
 
+If the browser blocks your script or network calls with Content Security Policy errors, see xref:security/content_security_policy.adoc[Content Security Policy headers] for how to adjust or disable the CSP sent by OliveTin.
+
 == Custom CSS (with a custom theme)
 
 You can customize OliveTin with themes, but it's also possible to write your on very simple theme that contains just a few CSS rules to change the look and feel of OliveTin. This is very useful if you just want to change the colours of OliveTin, or hide a few elements.
