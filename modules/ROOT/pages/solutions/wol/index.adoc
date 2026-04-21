@@ -33,4 +33,22 @@ Then visit your OliveTin web interface at http://yourServer:1337 and you should 
 
 image::solutions/wol/preview.png[]
 
+== Wake on LAN via docker container
 
+This is an alternative solution that provides WoL capabilities to the OliveTin container,
+
+but has the advantage the OliveTin container does not have to run on the host network ( `--network host` ).
+This may be useful if your networking configuration relies on docker `bridge`
+networks (or other more complex networking configurations).
+
+It requires that OliveTin is configured with permissions that allow it to control docker. 
+
+include::partial$container_socket.adoc[]
+
+Now you can add actions to your OliveTin config file that use a separate
+docker container (on the `host` network) to send the WOL commands.
+
+[source,yaml]
+----
+include::example$solutions/wol/config_docker.yaml[]
+----

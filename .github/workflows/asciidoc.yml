@@ -21,12 +21,15 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with: 
+        fetch-depth: 0
+
     - name: Configure Pages
       uses: actions/configure-pages@v5
     - name: Install Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
     - name: Install Antora with the Antora Lunr Extension
       run: npm i antora @antora/lunr-extension
 

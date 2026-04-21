@@ -139,3 +139,14 @@ accessControlLists:
       exec: true
 ```
 
+== What's Next?
+
+Now that you understand ACLs, here's how to implement them:
+
+* xref:security/examples.adoc[View security examples] - See complete ACL configurations
+* xref:security/example_login_required.adoc[Example: Login required] - Configure login requirements
+* xref:security/example_some_admin_actions.adoc[Example: Admin-only actions] - Restrict actions to admins
+* xref:security/local.adoc[Set up local users] - Create users for ACL matching
+* xref:security/oauth2.adoc[Configure OAuth2] - Set up OAuth2 for user groups
+* xref:security/design_choices.adoc[Security design recommendations] - Learn best practices for ACL design
+

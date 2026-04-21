@@ -38,6 +38,23 @@ actions:
 .The same user interface, but with the sidebar hidden (`showNavigation: false`)
 image::defaultUiHideNav.png[]
 
+[#show-navigate-on-start-icons]
+== Navigate-on-start icons on action buttons
+
+When enabled (the default), each action button can show a small icon indicating what happens when the action is started:
+
+* **Popup dialog** — the action opens a popup (e.g. `popupOnStart: execution-dialog`)
+* **Argument form** — the action opens an argument form on start
+* **Run in background** — the action runs without opening a dialog
+
+Set `showNavigateOnStartIcons: false` in your `config.yaml` to hide these indicator icons for a cleaner look.
+
+.`config.yaml`
+[source,yaml]
+----
+showNavigateOnStartIcons: false
+----
+
 [#section-navgiation-style]
 == Section Navigation Style
 
@@ -54,6 +71,15 @@ image::sidebar.png[]
 `sectionNavigationStyle: topbar` looks like this;
 
 image::topbar.png[]
+
+[#show-version-number]
+== Version number in the footer
+
+You can control whether the installed OliveTin version is shown in the web interface. When enabled (the default), the footer displays text like **OliveTin 2024.06.02**. When disabled, the footer shows only **OliveTin** with no version number.
+
+This is controlled by the **showVersionNumber** policy (in `defaultPolicy` or per user/group in ACLs). Hiding the version also hides any "new version available" link in the footer and redacts the version in xref:troubleshooting/server-diagnostics.adoc[server diagnostics] output, which can be useful for privacy when sharing reports.
+
+* xref:reference/version_display.adoc[Version display] — full configuration and policy examples
 
 [#show-new-versions]
 == New version available - show/hide
@@ -120,7 +146,7 @@ You can customize OliveTin with themes, but it's also possible to write your on 
 
 === Writing a simple theme with a CSS change
 
-You'll need to create a new theme, and let's assume our theme namme is going to be called `uihack`. OliveTin themes are simply a directory of CSS and other assets. OliveTin looks for a directory called `custom-webui/themes/<theme-folder-name>` in the same directory as your `config.yaml` file. 
+You'll need to create a new theme, and let's assume our theme name is going to be called `uihack`. OliveTin themes are simply a directory of CSS and other assets. OliveTin looks for a directory called `custom-webui/themes/<theme-folder-name>` in the same directory as your `config.yaml` file. 
 
 Start by creating a directory called `custom-webui/themes/uihack` relative to the same directory as your `config.yaml` file. In this directory, create a file called `theme.css`.
 

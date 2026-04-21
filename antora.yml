@@ -2,6 +2,7 @@
 name: ROOT
 title: OliveTin
 version: ''
+display_version: 'Version 3k'
 start_page: index.adoc
 asciidoc:
   attributes:

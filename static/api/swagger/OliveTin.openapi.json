@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "OliveTin API",
-    "version": "OliveTin classic (calver)"
+    "title": "OliveTin 2k API",
+    "version": "OliveTin 2k (calver)"
   },
   "tags": [
     {

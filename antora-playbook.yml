@@ -4,9 +4,12 @@ site:
   title: OliveTin docs
   start_page: ROOT::index.adoc
   robots: allow
+  url: https://docs.olivetin.app
 content:
   sources:
     - url: .
+    - url: . 
+      branches: [ 2k ]
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable

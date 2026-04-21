@@ -1,4 +1,4 @@
 antora:
-	npx antora antora-playbook.yml
+	npx antora antora-playbook.yml --log-level info
 	cp CNAME build/site/
 	cp -r static/* build/site/

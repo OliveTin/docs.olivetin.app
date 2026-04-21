@@ -10,8 +10,8 @@ include::partial$api/start_action_methods.adoc[]
 
 Used by:
 
-* `StartActionByGet`
-* `StartActionByGetAndWait`
+*** xref:api/method_StartActionByGet.adoc[StartActionByGet]
+*** xref:api/method_StartActionByGetAndWait.adoc[StartActionByGetAndWait]
 
 If you are trying to integrate OliveTin with your own scripts or processes, it's probably easiest to start actions by using an ID directly in the URL, <<api-eg-startIdUrl,see the example>>.
 
@@ -20,8 +20,8 @@ If you are trying to integrate OliveTin with your own scripts or processes, it's
 
 Used by:
 
-* `StartAction`
-* `StartActionAndWait`
+*** xref:api/method_StartAction.adoc[StartAction]
+*** xref:api/method_StartActionAndWait.adoc[StartActionAndWait]
 
 [source,json]
 .OliveTin request object structure
@@ -58,8 +58,8 @@ More detailed examples can be seen below.
 
 Used by:
 
-* `StartAction`
-* `StartActionByGet`
+*** xref:api/method_StartAction.adoc[StartAction]
+*** xref:api/method_StartActionByGet.adoc[StartActionByGet]
 
 .Example Execution Tracking ID response
 [source,json]
@@ -72,8 +72,8 @@ Used by:
 
 Used by:
 
-* `StartActionAndWait`
-* `StartActionByGetAndWait`
+*** xref:api/method_StartActionAndWait.adoc[StartActionAndWait]
+*** xref:api/method_StartActionByGetAndWait.adoc[StartActionByGetAndWait]
 
 .Example log entry
 [source,json]
@@ -102,46 +102,4 @@ Used by:
 }
 ----
 
-[#api-eg-startIdUrl]
-== Example API call; Start an action by ID in the URL
-
-.curl
-----
-user@host: curl http://olivetin.example.com/api/StartActionByGet/pingGithub
-----
-
-The corresponding config.yaml would look like this;
-
-[source,yaml]
-----
-actions:
-  - title: Ping GitHub.com
-    id: pingGithub
-    shell: ping github.com -c 1
-----
-
-IDs are used by these API calls, as you probably want the interface to display a human-readable title, whereas the API call doesn't want to have spaces or punctuation.
-
-== Example API call: Start an action using `StartAction`
-
-[source,bash]
-.curl
-----
-user@host: curl -X POST "http://olivetin.webapps.teratan.lan/api/StartAction" -d '{"actionId": "nuclear_reactor_shutdown"}'
-----
-
-[source,powershell]
-.Powershell
-----
-PS C:\Users\xcons> $json = '{"actionId": "deploy_attack_gnomes"}'
-PS C:\Users\xcons> Invoke-RestMethod -Method "Post" -Uri "http://olivetinServer:1337/api/StartAction" -Body $json 
-----
-
-== Example API call: Start an action using `StartAction` with arguments
-
-[source,bash]
-.curl
-----
-user:host: curl -X POST 'http://olivetin.example.com/api/StartAction' -d '{"actionId": "Ping_host", "arguments": [{"name": "host", "value": "example.com"},{"name": "count", "value": "1"}]}'
-----
 

@@ -76,3 +76,4 @@ accessControlLists:
 
 * xref:action_customization/savelogs.adoc[Saving Action logs]
 * xref:advanced_configuration/logs.adoc[Application Logs]
+* xref:advanced_configuration/logs-calendar.adoc[Logs Calendar View]

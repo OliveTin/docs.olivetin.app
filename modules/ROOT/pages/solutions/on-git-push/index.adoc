@@ -5,7 +5,12 @@ image::gitops.png[]
 
 A really helpful thing to do with OliveTin is to have it run actions when you push to a Git repository. This is a great way to automate things like running tests, building your project, or deploying your code - this turns OliveTin into a powerful GitOps tool, or even a Continuous Integration tool.
 
-This guide assumes that you are using a self-hosted Git repository, and uses a standard Git `post-receive` hook to trigger OliveTin actions. If you are using a hosted Git service like GitHub, GitLab, or Bitbucket, you will need to check their documentation for how to trigger actions on push.
+This guide assumes that you are using a self-hosted Git repository, and uses a standard Git `post-receive` hook to trigger OliveTin actions.
+
+[TIP]
+====
+**Using GitHub?** OliveTin has built-in support for GitHub webhooks with templates that make configuration simple. See xref:action_execution/onwebhook_github.adoc[GitHub Webhooks] for an easier approach that doesn't require writing hook scripts.
+====
 
 To set up OliveTin to run actions on Git push, you will need to:
 

@@ -10,10 +10,10 @@ logLevel: "INFO"
 accessControlLists:
   - name: "noguests"
     permissions: 
-	  view: false
-	  exec: false
-	  logs: false
-	matchUsernames: [ "guest" ]
+      view: false
+      exec: false
+      logs: false
+    matchUsernames: [ "guest" ]
 
   - name: "admins"
     permissions:
@@ -31,18 +31,18 @@ authLocalUsers:
 
 actions:
   - title: "Date"
-	shell: date
+    shell: date
 
   - title: "Reboot"
     shell: reboot" # Note that this won't work inside a container
-	acls:
-	  - "noguests"
-	  - "admins"
+    acls:
+      - "noguests"
+      - "admins"
 
 dashboards:
   - title: "Guest Dashboard"
     contents:
-	  - title: "Date"
+      - title: "Date"
 
   - title: "Admin Dashboard"
     contents:

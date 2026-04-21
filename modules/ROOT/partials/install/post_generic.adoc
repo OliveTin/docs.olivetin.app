@@ -18,6 +18,8 @@ include::partial$install/to_config.adoc[]
 
 == Troubleshooting installations
 
-If you are having problems, OliveTin will log it's status on startup. Check the log messages in the terminal. 
+If you are having problems, OliveTin will log it's status on startup. Check the log messages in the terminal.
+
+For tips on capturing and sharing that output, see xref:troubleshooting/service-logs.adoc[Service logs (troubleshooting)].
 
 If you cannot understand the logs, or otherwise need help, see the xref:troubleshooting/wheretofindhelp.adoc[support page].

@@ -23,3 +23,13 @@ entities:
 
 Entity Actions can only be used on xref:dashboards/intro.adoc[Dashboards].
 
+== What's Next?
+
+Now that you understand entities, here's how to use them effectively:
+
+* xref:entities/yaml.adoc[Create YAML entity files] - Learn the YAML format for entity files
+* xref:entities/json.adoc[Create JSON entity files] - Learn the JSON format for entity files
+* xref:entities/examples.adoc[View entity examples] - See complete examples of entity configurations
+* xref:dashboards/intro.adoc[Use entities in dashboards] - Combine entities with dashboards for dynamic action generation
+* xref:solutions/container-control-panel/index.adoc[Container control panel solution] - See a complete example using container entities
+* xref:solutions/systemd-control-panel/index.adoc[Systemd control panel solution] - See a complete example using systemd entities

@@ -31,3 +31,21 @@ You can change the `logLevel` while OliveTin is running, and it should update as
 INFO Setting log level to warning
 ----
 
+== JSON Log Format
+
+* OliveTin 2k supports JSON log format from version **2025.10.30**.
+* OliveTin 3k supports JSON log format from version **3000.2.2**.
+
+You can enable JSON log format by setting the `OLIVETIN_LOG_FORMAT` environment variable to `json`.
+
+[source,bash]
+.Example of setting `OLIVETIN_LOG_FORMAT` to `json`.
+----
+root@server: ./OliveTin
+{"commit":"nocommit","date":"nodate","level":"info","msg":"OliveTin initializing","time":"2025-10-30T10:09:55Z","version":"dev"}
+{"level":"debug","msg":"Value of -configdir flag","time":"2025-10-30T10:09:55Z","value":"."}
+{"level":"debug","msg":"servicehost nonwin","time":"2025-10-30T10:09:55Z"}
+{"level":"info","msg":"Setting log level to info","time":"2025-10-30T10:09:55Z"}
+{"level":"info","msg":"OliveTin initialization complete","time":"2025-10-30T10:09:55Z"}
+{"configDir":"/home/xconspirisist/sandbox/Development/OliveTin/OliveTin","level":"info","msg":"OliveTin started","time":"2025-10-30T10:09:55Z"}
+----
