@@ -1,6 +1,0 @@
-[#ports]
-= Ports
-
-See xref:reference/network-ports.adoc[the network ports] documentation in the reference section.
-
-

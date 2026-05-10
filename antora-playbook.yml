@@ -1,4 +1,8 @@
-# This is for local testing only. OliveTin-antora builds prettydocs.olivetin.app.
+# GitHub Actions (`make`) builds the published site from this playbook.
+# - Current OliveTin documentation AsciiDoc lives in OliveTin under docs/ (branch next).
+# - Legacy 2.x documentation remains on this repository’s branch 2k until it is retired.
+# For local builds against an unpublished OliveTin clone, point the first content source url
+# to your clone path and use branches: [HEAD].
 ---
 site:
   title: OliveTin docs
@@ -7,9 +11,11 @@ site:
   url: https://docs.olivetin.app
 content:
   sources:
+    - url: https://github.com/OliveTin/OliveTin.git
+      branches: [next]
+      start_path: docs
     - url: .
-    - url: . 
-      branches: [ 2k ]
+      branches: [2k]
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
@@ -25,4 +31,3 @@ asciidoc:
   extensions:
     - '@asciidoctor/tabs'
     - 'asciidoctor-kroki'
-

@@ -1,4 +1,0 @@
-[#support]
-= Where to find help
-
-include::partial$support.adoc[]

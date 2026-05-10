@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: olivetin-config
-data:
-  config.yaml: |
-    actions:
-      - title: "Hello world!"
-        shell: echo 'Hello World!'
