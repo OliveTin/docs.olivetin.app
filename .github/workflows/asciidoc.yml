@@ -15,9 +15,22 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Local Kroki avoids public kroki.io rate limits and 504s during asciidoctor-kroki fetches.
+    services:
+      mermaid:
+        image: yuzutech/kroki-mermaid
+      kroki:
+        image: yuzutech/kroki
+        ports:
+          - 8000:8000
+        env:
+          KROKI_MERMAID_HOST: mermaid
+        options: --tmpfs /tmp:exec
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      KROKI_SERVER_URL: http://localhost:8000
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -32,6 +45,34 @@ jobs:
         node-version: '20'
     - name: Install Antora with the Antora Lunr Extension
       run: npm i antora @antora/lunr-extension
+
+    - name: Wait for Kroki
+      run: |
+        set -e
+        gateway_ok=0
+        for i in $(seq 1 90); do
+          if curl -fsS --max-time 5 "http://localhost:8000/" >/dev/null 2>&1; then
+            echo "Kroki gateway is up (attempt $i)"
+            gateway_ok=1
+            break
+          fi
+          sleep 2
+        done
+        if [ "$gateway_ok" != 1 ]; then
+          echo "Kroki gateway did not become ready in time"
+          exit 1
+        fi
+        # Minimal Mermaid diagram (graph LR; A-->B) via gateway + kroki-mermaid companion
+        MERM_URL='http://localhost:8000/mermaid/svg/eNpLL0osyFDwCbJWcNTVtXMCACcQBEc'
+        for i in $(seq 1 45); do
+          if curl -fsS --max-time 30 "$MERM_URL" -o /tmp/kroki-mermaid-smoke.svg; then
+            echo "Kroki Mermaid path is healthy (attempt $i)"
+            exit 0
+          fi
+          sleep 2
+        done
+        echo "Kroki Mermaid did not become ready in time"
+        exit 1
 
     - name: Generate Site
       run: make
