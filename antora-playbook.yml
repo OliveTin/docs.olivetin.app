@@ -24,6 +24,7 @@ ui:
 antora:
   extensions:
     - '@antora/lunr-extension'
+    - '@cerbos/antora-llm-generator'
 asciidoc:
   attributes:
     kroki-fetch-diagram: true
@@ -31,3 +32,4 @@ asciidoc:
   extensions:
     - '@asciidoctor/tabs'
     - 'asciidoctor-kroki'
+
