@@ -527,6 +527,64 @@
         }
       }
     },
+    "/olivetin.api.v1.OliveTinApiService/GetExecutionQueue": {
+      "post": {
+        "tags": [
+          "olivetin.api.v1.OliveTinApiService"
+        ],
+        "summary": "GetExecutionQueue",
+        "operationId": "olivetin.api.v1.OliveTinApiService.GetExecutionQueue",
+        "parameters": [
+          {
+            "name": "Connect-Protocol-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/connect-protocol-version"
+            }
+          },
+          {
+            "name": "Connect-Timeout-Ms",
+            "in": "header",
+            "schema": {
+              "$ref": "#/components/schemas/connect-timeout-header"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/olivetin.api.v1.GetExecutionQueueRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/connect.error"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/olivetin.api.v1.GetExecutionQueueResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/olivetin.api.v1.OliveTinApiService/GetLogs": {
       "post": {
         "tags": [
@@ -991,13 +1049,13 @@
         }
       }
     },
-    "/olivetin.api.v1.OliveTinApiService/SosReport": {
+    "/olivetin.api.v1.OliveTinApiService/ServerDiagnostics": {
       "post": {
         "tags": [
           "olivetin.api.v1.OliveTinApiService"
         ],
-        "summary": "SosReport",
-        "operationId": "olivetin.api.v1.OliveTinApiService.SosReport",
+        "summary": "ServerDiagnostics",
+        "operationId": "olivetin.api.v1.OliveTinApiService.ServerDiagnostics",
         "parameters": [
           {
             "name": "Connect-Protocol-Version",
@@ -1019,7 +1077,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/olivetin.api.v1.SosReportRequest"
+                "$ref": "#/components/schemas/olivetin.api.v1.ServerDiagnosticsRequest"
               }
             }
           },
@@ -1041,7 +1099,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/olivetin.api.v1.SosReportResponse"
+                  "$ref": "#/components/schemas/olivetin.api.v1.ServerDiagnosticsResponse"
                 }
               }
             }
@@ -1528,6 +1586,66 @@
             "type": "integer",
             "title": "timeout",
             "format": "int32"
+          },
+          "datetimeRateLimitExpires": {
+            "type": "string",
+            "title": "datetime_rate_limit_expires",
+            "description": "Datetime when rate limit expires (empty string if not rate limited), format: \"2006-01-02 15:04:05\""
+          },
+          "execOnStartup": {
+            "type": "boolean",
+            "title": "exec_on_startup"
+          },
+          "execOnCron": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "exec_on_cron"
+          },
+          "execOnFileCreatedInDir": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "exec_on_file_created_in_dir"
+          },
+          "execOnFileChangedInDir": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "exec_on_file_changed_in_dir"
+          },
+          "execOnCalendarFile": {
+            "type": "string",
+            "title": "exec_on_calendar_file"
+          },
+          "execOnWebhooks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.ActionWebhookExecHint"
+            },
+            "title": "exec_on_webhooks"
+          },
+          "justification": {
+            "type": "string",
+            "title": "justification"
+          },
+          "hasRunningInstance": {
+            "type": "boolean",
+            "title": "has_running_instance"
+          },
+          "hasQueuedInstance": {
+            "type": "boolean",
+            "title": "has_queued_instance"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.ActionGroupMembership"
+            },
+            "title": "groups"
           }
         },
         "title": "Action",
@@ -1570,6 +1688,10 @@
               "type": "string",
               "title": "value"
             }
+          },
+          "suggestionsBrowserKey": {
+            "type": "string",
+            "title": "suggestions_browser_key"
           }
         },
         "title": "ActionArgument",
@@ -1605,19 +1727,101 @@
         "title": "ActionArgumentChoice",
         "additionalProperties": false
       },
-      "olivetin.api.v1.ActionEntityPair": {
+      "olivetin.api.v1.ActionGroupMembership": {
         "type": "object",
         "properties": {
-          "actionTitle": {
+          "name": {
             "type": "string",
-            "title": "action_title"
+            "title": "name"
           },
-          "entityPrefix": {
-            "type": "string",
-            "title": "entity_prefix"
+          "maxConcurrent": {
+            "type": "integer",
+            "title": "max_concurrent",
+            "format": "int32"
+          },
+          "queueSize": {
+            "type": "integer",
+            "title": "queue_size",
+            "format": "int32"
           }
         },
-        "title": "ActionEntityPair",
+        "title": "ActionGroupMembership",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ActionSearchHint": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "bindingId": {
+            "type": "string",
+            "title": "binding_id"
+          }
+        },
+        "title": "ActionSearchHint",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ActionWebhookExecHint": {
+        "type": "object",
+        "properties": {
+          "template": {
+            "type": "string",
+            "title": "template"
+          },
+          "matchPath": {
+            "type": "string",
+            "title": "match_path"
+          },
+          "matchHeaders": {
+            "type": "object",
+            "title": "match_headers",
+            "additionalProperties": {
+              "type": "string",
+              "title": "value"
+            }
+          },
+          "matchQuery": {
+            "type": "object",
+            "title": "match_query",
+            "additionalProperties": {
+              "type": "string",
+              "title": "value"
+            }
+          }
+        },
+        "title": "ActionWebhookExecHint",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ActionWebhookExecHint.MatchHeadersEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "title": "MatchHeadersEntry",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ActionWebhookExecHint.MatchQueryEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "title": "MatchQueryEntry",
         "additionalProperties": false
       },
       "olivetin.api.v1.AdditionalLink": {
@@ -1633,6 +1837,45 @@
           }
         },
         "title": "AdditionalLink",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ConfigIssue": {
+        "type": "object",
+        "properties": {
+          "severity": {
+            "type": "string",
+            "title": "severity"
+          },
+          "code": {
+            "type": "string",
+            "title": "code"
+          },
+          "message": {
+            "type": "string",
+            "title": "message"
+          },
+          "actionId": {
+            "type": "string",
+            "title": "action_id"
+          },
+          "actionTitle": {
+            "type": "string",
+            "title": "action_title"
+          },
+          "argumentName": {
+            "type": "string",
+            "title": "argument_name"
+          },
+          "source": {
+            "type": "string",
+            "title": "source"
+          },
+          "configFile": {
+            "type": "string",
+            "title": "config_file"
+          }
+        },
+        "title": "ConfigIssue",
         "additionalProperties": false
       },
       "olivetin.api.v1.Dashboard": {
@@ -1682,9 +1925,55 @@
           "action": {
             "title": "action",
             "$ref": "#/components/schemas/olivetin.api.v1.Action"
+          },
+          "entityType": {
+            "type": "string",
+            "title": "entity_type"
+          },
+          "entityKey": {
+            "type": "string",
+            "title": "entity_key"
           }
         },
         "title": "DashboardComponent",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DashboardNavigationTarget": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "entityType": {
+            "type": "string",
+            "title": "entity_type"
+          },
+          "entityKey": {
+            "type": "string",
+            "title": "entity_key"
+          },
+          "path": {
+            "type": "string",
+            "title": "path"
+          }
+        },
+        "title": "DashboardNavigationTarget",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.DebugBinding": {
+        "type": "object",
+        "properties": {
+          "actionTitle": {
+            "type": "string",
+            "title": "action_title"
+          },
+          "entityPrefix": {
+            "type": "string",
+            "title": "entity_prefix"
+          }
+        },
+        "title": "DebugBinding",
         "additionalProperties": false
       },
       "olivetin.api.v1.DumpPublicIdActionMapRequest": {
@@ -1704,7 +1993,7 @@
             "title": "contents",
             "additionalProperties": {
               "title": "value",
-              "$ref": "#/components/schemas/olivetin.api.v1.ActionEntityPair"
+              "$ref": "#/components/schemas/olivetin.api.v1.DebugBinding"
             }
           }
         },
@@ -1720,7 +2009,7 @@
           },
           "value": {
             "title": "value",
-            "$ref": "#/components/schemas/olivetin.api.v1.ActionEntityPair"
+            "$ref": "#/components/schemas/olivetin.api.v1.DebugBinding"
           }
         },
         "title": "ContentsEntry",
@@ -1775,6 +2064,10 @@
           "showLogList": {
             "type": "boolean",
             "title": "show_log_list"
+          },
+          "showVersionNumber": {
+            "type": "boolean",
+            "title": "show_version_number"
           }
         },
         "title": "EffectivePolicy",
@@ -1794,9 +2087,50 @@
           "type": {
             "type": "string",
             "title": "type"
+          },
+          "directories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "directories"
+          },
+          "fields": {
+            "type": "object",
+            "title": "fields",
+            "additionalProperties": {
+              "type": "string",
+              "title": "value"
+            }
+          },
+          "relatedActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.EntityRelatedAction"
+            },
+            "title": "related_actions"
+          },
+          "icon": {
+            "type": "string",
+            "title": "icon"
           }
         },
         "title": "Entity",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.Entity.FieldsEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "title": "FieldsEntry",
         "additionalProperties": false
       },
       "olivetin.api.v1.EntityDefinition": {
@@ -1819,9 +2153,93 @@
               "type": "string"
             },
             "title": "used_on_dashboards"
+          },
+          "icon": {
+            "type": "string",
+            "title": "icon"
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.EntityProperty"
+            },
+            "title": "properties"
+          },
+          "totalInstances": {
+            "type": "integer",
+            "title": "total_instances",
+            "format": "int32"
           }
         },
         "title": "EntityDefinition",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EntityProperty": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "title": {
+            "type": "string",
+            "title": "title"
+          }
+        },
+        "title": "EntityProperty",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EntityRelatedAction": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "title": "action",
+            "$ref": "#/components/schemas/olivetin.api.v1.Action"
+          },
+          "prefilledArguments": {
+            "type": "object",
+            "title": "prefilled_arguments",
+            "additionalProperties": {
+              "type": "string",
+              "title": "value"
+            }
+          }
+        },
+        "title": "EntityRelatedAction",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EntityRelatedAction.PrefilledArgumentsEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "title": "PrefilledArgumentsEntry",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EntitySearchHint": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "type": {
+            "type": "string",
+            "title": "type"
+          },
+          "uniqueKey": {
+            "type": "string",
+            "title": "unique_key"
+          }
+        },
+        "title": "EntitySearchHint",
         "additionalProperties": false
       },
       "olivetin.api.v1.EventConfigChanged": {
@@ -1854,6 +2272,11 @@
           }
         },
         "title": "EventExecutionStarted",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.EventHeartbeat": {
+        "type": "object",
+        "title": "EventHeartbeat",
         "additionalProperties": false
       },
       "olivetin.api.v1.EventOutputChunk": {
@@ -1929,6 +2352,18 @@
           },
           {
             "properties": {
+              "heartbeat": {
+                "title": "heartbeat",
+                "$ref": "#/components/schemas/olivetin.api.v1.EventHeartbeat"
+              }
+            },
+            "title": "heartbeat",
+            "required": [
+              "heartbeat"
+            ]
+          },
+          {
+            "properties": {
               "outputChunk": {
                 "title": "output_chunk",
                 "$ref": "#/components/schemas/olivetin.api.v1.EventOutputChunk"
@@ -1941,6 +2376,88 @@
           }
         ],
         "title": "EventStreamResponse",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ExecutionQueueAction": {
+        "type": "object",
+        "properties": {
+          "bindingId": {
+            "type": "string",
+            "title": "binding_id"
+          },
+          "actionTitle": {
+            "type": "string",
+            "title": "action_title"
+          },
+          "actionIcon": {
+            "type": "string",
+            "title": "action_icon"
+          },
+          "maxConcurrent": {
+            "type": "integer",
+            "title": "max_concurrent",
+            "format": "int32"
+          },
+          "activeCount": {
+            "type": "integer",
+            "title": "active_count",
+            "format": "int32"
+          },
+          "entityPrefix": {
+            "type": "string",
+            "title": "entity_prefix"
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+            },
+            "title": "entries"
+          }
+        },
+        "title": "ExecutionQueueAction",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ExecutionQueueGroup": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "icon": {
+            "type": "string",
+            "title": "icon"
+          },
+          "maxConcurrent": {
+            "type": "integer",
+            "title": "max_concurrent",
+            "format": "int32"
+          },
+          "activeCount": {
+            "type": "integer",
+            "title": "active_count",
+            "format": "int32"
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.ExecutionQueueAction"
+            },
+            "title": "actions"
+          },
+          "queuedCount": {
+            "type": "integer",
+            "title": "queued_count",
+            "format": "int32"
+          },
+          "queueSize": {
+            "type": "integer",
+            "title": "queue_size",
+            "format": "int32"
+          }
+        },
+        "title": "ExecutionQueueGroup",
         "additionalProperties": false
       },
       "olivetin.api.v1.ExecutionStatusRequest": {
@@ -1964,10 +2481,29 @@
           "logEntry": {
             "title": "log_entry",
             "$ref": "#/components/schemas/olivetin.api.v1.LogEntry"
+          },
+          "backToDashboards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.DashboardNavigationTarget"
+            },
+            "title": "back_to_dashboards"
           }
         },
         "title": "ExecutionStatusResponse",
         "additionalProperties": false
+      },
+      "olivetin.api.v1.Features": {
+        "type": "object",
+        "properties": {
+          "headerSearch": {
+            "type": "boolean",
+            "title": "header_search"
+          }
+        },
+        "title": "Features",
+        "additionalProperties": false,
+        "description": "Features are global opt-in flags from config.yaml features.*.\nAll flags default to false and gate alpha / experimental functionality."
       },
       "olivetin.api.v1.GetActionBindingRequest": {
         "type": "object",
@@ -1986,6 +2522,13 @@
           "action": {
             "title": "action",
             "$ref": "#/components/schemas/olivetin.api.v1.Action"
+          },
+          "backToDashboards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.DashboardNavigationTarget"
+            },
+            "title": "back_to_dashboards"
           }
         },
         "title": "GetActionBindingResponse",
@@ -2062,6 +2605,14 @@
           "title": {
             "type": "string",
             "title": "title"
+          },
+          "entityType": {
+            "type": "string",
+            "title": "entity_type"
+          },
+          "entityKey": {
+            "type": "string",
+            "title": "entity_key"
           }
         },
         "title": "GetDashboardRequest",
@@ -2097,6 +2648,13 @@
           "SshFoundConfig": {
             "type": "string",
             "title": "SshFoundConfig"
+          },
+          "configIssues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.ConfigIssue"
+            },
+            "title": "config_issues"
           }
         },
         "title": "GetDiagnosticsResponse",
@@ -2104,6 +2662,26 @@
       },
       "olivetin.api.v1.GetEntitiesRequest": {
         "type": "object",
+        "properties": {
+          "entityType": {
+            "type": "string",
+            "title": "entity_type"
+          },
+          "filter": {
+            "type": "string",
+            "title": "filter"
+          },
+          "page": {
+            "type": "integer",
+            "title": "page",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "title": "page_size",
+            "format": "int32"
+          }
+        },
         "title": "GetEntitiesRequest",
         "additionalProperties": false
       },
@@ -2136,6 +2714,30 @@
         "title": "GetEntityRequest",
         "additionalProperties": false
       },
+      "olivetin.api.v1.GetExecutionQueueRequest": {
+        "type": "object",
+        "title": "GetExecutionQueueRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.GetExecutionQueueResponse": {
+        "type": "object",
+        "properties": {
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.ExecutionQueueGroup"
+            },
+            "title": "groups"
+          },
+          "totalActive": {
+            "type": "integer",
+            "title": "total_active",
+            "format": "int32"
+          }
+        },
+        "title": "GetExecutionQueueResponse",
+        "additionalProperties": false
+      },
       "olivetin.api.v1.GetLogsRequest": {
         "type": "object",
         "properties": {
@@ -2146,6 +2748,25 @@
             ],
             "title": "start_offset",
             "format": "int64"
+          },
+          "dateFilter": {
+            "type": "string",
+            "title": "date_filter",
+            "description": "Optional date filter in YYYY-MM-DD format"
+          },
+          "pageSize": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "title": "page_size",
+            "format": "int64",
+            "description": "Number of logs per page (optional; server default used if 0 or unset)"
+          },
+          "filter": {
+            "type": "string",
+            "title": "filter",
+            "description": "Optional filter expression (see logs UI syntax help)"
           }
         },
         "title": "GetLogsRequest",
@@ -2324,6 +2945,39 @@
           "loginRequired": {
             "type": "boolean",
             "title": "login_required"
+          },
+          "availableThemes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "available_themes",
+            "description": "List of available theme names"
+          },
+          "showNavigateOnStartIcons": {
+            "type": "boolean",
+            "title": "show_navigate_on_start_icons"
+          },
+          "configIssueCount": {
+            "type": "integer",
+            "title": "config_issue_count",
+            "format": "int32"
+          },
+          "rootDashboardEntries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.RootDashboard"
+            },
+            "title": "root_dashboard_entries"
+          },
+          "searchHints": {
+            "title": "search_hints",
+            "$ref": "#/components/schemas/olivetin.api.v1.SearchHints",
+            "description": "Client-side search index hints. Omitted when login is required\nor features.header_search is false.\nEntities match GetEntities visibility; actions use view ACL.\nDashboards are indexed client-side from root_dashboard_entries."
+          },
+          "features": {
+            "title": "features",
+            "$ref": "#/components/schemas/olivetin.api.v1.Features"
           }
         },
         "title": "InitResponse",
@@ -2440,10 +3094,6 @@
             "type": "string",
             "title": "datetime_finished"
           },
-          "actionId": {
-            "type": "string",
-            "title": "action_id"
-          },
           "executionStarted": {
             "type": "boolean",
             "title": "execution_started"
@@ -2467,6 +3117,35 @@
           "canKill": {
             "type": "boolean",
             "title": "can_kill"
+          },
+          "datetimeRateLimitExpires": {
+            "type": "string",
+            "title": "datetime_rate_limit_expires",
+            "description": "Datetime when rate limit expires (empty string if not rate limited), format: \"2006-01-02 15:04:05\""
+          },
+          "bindingId": {
+            "type": "string",
+            "title": "binding_id",
+            "description": "Binding ID for matching rate limits to action buttons"
+          },
+          "queued": {
+            "type": "boolean",
+            "title": "queued"
+          },
+          "queuedForGroup": {
+            "type": "string",
+            "title": "queued_for_group"
+          },
+          "justification": {
+            "type": "string",
+            "title": "justification"
+          },
+          "arguments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.StartActionArgument"
+            },
+            "title": "arguments"
           }
         },
         "title": "LogEntry",
@@ -2489,13 +3168,13 @@
             "type": "string",
             "title": "title"
           },
-          "url": {
-            "type": "string",
-            "title": "url"
-          },
           "icon": {
             "type": "string",
             "title": "icon"
+          },
+          "key": {
+            "type": "string",
+            "title": "key"
           }
         },
         "title": "OAuth2Provider",
@@ -2534,12 +3213,49 @@
         "title": "RestartActionRequest",
         "additionalProperties": false
       },
-      "olivetin.api.v1.SosReportRequest": {
+      "olivetin.api.v1.RootDashboard": {
         "type": "object",
-        "title": "SosReportRequest",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "category": {
+            "type": "string",
+            "title": "category"
+          }
+        },
+        "title": "RootDashboard",
         "additionalProperties": false
       },
-      "olivetin.api.v1.SosReportResponse": {
+      "olivetin.api.v1.SearchHints": {
+        "type": "object",
+        "properties": {
+          "entities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.EntitySearchHint"
+            },
+            "title": "entities",
+            "description": "Lightweight titles for client search only. Omits fields, icons, and payloads.\nDashboards are not included; clients index Init.root_dashboard_entries instead."
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/olivetin.api.v1.ActionSearchHint"
+            },
+            "title": "actions"
+          }
+        },
+        "title": "SearchHints",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ServerDiagnosticsRequest": {
+        "type": "object",
+        "title": "ServerDiagnosticsRequest",
+        "additionalProperties": false
+      },
+      "olivetin.api.v1.ServerDiagnosticsResponse": {
         "type": "object",
         "properties": {
           "alert": {
@@ -2547,7 +3263,7 @@
             "title": "alert"
           }
         },
-        "title": "SosReportResponse",
+        "title": "ServerDiagnosticsResponse",
         "additionalProperties": false
       },
       "olivetin.api.v1.StartActionAndWaitRequest": {
@@ -2563,6 +3279,10 @@
               "$ref": "#/components/schemas/olivetin.api.v1.StartActionArgument"
             },
             "title": "arguments"
+          },
+          "justification": {
+            "type": "string",
+            "title": "justification"
           }
         },
         "title": "StartActionAndWaitRequest",
@@ -2655,6 +3375,10 @@
           "uniqueTrackingId": {
             "type": "string",
             "title": "unique_tracking_id"
+          },
+          "justification": {
+            "type": "string",
+            "title": "justification"
           }
         },
         "title": "StartActionRequest",
@@ -2681,6 +3405,14 @@
           "type": {
             "type": "string",
             "title": "type"
+          },
+          "bindingId": {
+            "type": "string",
+            "title": "binding_id"
+          },
+          "argumentName": {
+            "type": "string",
+            "title": "argument_name"
           }
         },
         "title": "ValidateArgumentTypeRequest",
